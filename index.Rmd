@@ -1,0 +1,53 @@
+---
+title: "Lab or Lecture Title"
+author: "[Your Name Here!]"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: cosmo
+  
+---
+
+```{r setup, include=FALSE}
+###########################################################################
+################# DON'T DELETE THIS PART!!!!!##############################
+###########################################################################
+                                                                          #
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)      #
+                                                                          #
+library(tidyverse)           #The tidyverse has all of our data tools     #
+library(ggthemes)            #ggthemes makes our graphs look nicer        #
+                                                                          # 
+theme_set(                                #this sets the theme for all    #
+  theme_tufte() +                         #plots that we make             #
+  theme(text=element_text(family="sans")) + 
+  theme(axis.text.x = element_text(angle=-90))                            #
+  )                                                                       #
+                                                                          #
+                                                                          #
+                                                                          #
+### Below is where you read and store your data.                          #
+                                                                          #
+#youShouldRenameThis <- read_csv("death penalty data.csv")
+                                                                          #
+                                                                          #
+                                                                          #
+############# ^ ################################# ^ #######################
+############# | ## DON'T DELETE THIS PART!!!!!### | #######################
+############# | ################################# | #######################
+```
+
+## Delete Below This ## 
+
+Remember, the white part is where we type our thoughts/ovservations/narrative.
+
+```{r}
+
+# And here in the gray part is our code
+
+
+```
+
