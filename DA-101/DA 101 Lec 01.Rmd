@@ -1,0 +1,135 @@
+---
+title: "DA 101 Lec 01"
+author: "Ali Miller"
+date: "8/30/2019"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+```
+
+## Programming Basics
+
+### Assignment <-
+
+The arrow is used to create and "assign" new varibles.
+
+```{r}
+
+2*3
+
+# The above hasn't been stored.
+
+# Let's store the result and name it:
+
+myVariable <- 2*3
+
+#about naming variables:  have a consistent style!  Not too short!
+
+data <- 2*3     ### <- this is a bad name!!
+
+# my style:  camelCase
+
+camelCaseLooksLikeThis <- 4*8
+
+
+
+camelCaseLooksLikeThis
+
+
+
+
+```
+
+
+### $ operator - choosing variables
+
+Let's use the built-in "iris" dataset to practice choosing variables.
+
+R has lots of included data that we can use for practice.  
+
+```{r}
+
+#Here, I just want to show you that you can use the assignment <- with built-in data to practice.
+
+
+# What if I wanted to focus -only- on the species?  I could make a new variable with just that data:
+mySpecies <- iris$Species
+
+
+#Another example here: saving the Sepal Width
+mySepalWidth <- iris$Sepal.Width
+
+
+```
+
+
+## Mighty Six:  Most Important Data Flow Ops
+
+### Filter
+The filter() command does exactly what it sounds like!
+
+
+```{r}
+
+# let's get a table of the virginicas:
+
+filter(iris, Species=="virginica")     #<----------------------
+#                                                             |
+#a better way:  "pipes".  exactly the same!                   | These two are identical!
+#                                                             |
+iris %>% filter(Species == "virginica")   #<-------------------
+
+#The pipe is the %>% thingie.  It plugs the output of the left into the input of the right.
+#Pipes make it easy to chain together lots of operations on data.
+
+
+#Check out this example:
+
+iris %>% filter(Species == "virginica") %>%     #We want only virginicas
+  filter(Sepal.Length >6) %>%                   #and also Sepal Length bigger than 6
+  filter(Petal.Length <5.8)                     #and also Petal Length less than 5.8
+
+
+#another example:  setosa plants with petal length longer than 5:
+
+iris %>% filter(Species == "setosa") %>%
+         filter(Petal.Length>5) 
+
+
+
+#Who are the women of star wars?
+
+starwars %>% filter(gender == "female") 
+
+
+# find all women in star wars from Tatooine
+
+starwars %>% filter(gender == "female") %>%
+             filter(homeworld == "Tatooine")
+
+
+
+# What about all women from tatooine with birth year later than 50?
+
+starwars %>% filter(gender == "female") %>%
+             filter(homeworld == "Tatooine") %>% 
+             filter(birth_year>50)
+
+# The example below does exactly the same thing, but without using pipes.
+# I know which one I prefer to work with!
+
+filter(filter( filter(starwars, gender=="female"), homeworld == "Tatooine"), birth_year>50)
+
+#aah!  it's so gross!  the above is terrible code, even though it works!
+```
+
+
+

@@ -1,0 +1,55 @@
+---
+title: "DA 101 Lecture Journal"
+author: "Ali Miller"
+date: "8/30/2019"
+output: 
+  html_document:
+    theme: simplex
+    toc: true
+    toc_depth: 3
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+*Note: All section numbers come from our text, ["R For Data Science"]("https://r4ds.had.co.nz").  
+
+## Thursday 8/29
+
+- Intro to class, syllabus day
+- Intro to R and RStudio
+
+
+## Friday 8/30
+
+- 12.2:  Tidy data
+- 5.1: Data Types
+- 4.2: Coding basics
+  - Dataframe, class(), $
+  - Assigmnent:  <-
+  - Functions
+- 5.2:  dplyr (the mighty six) *[ctd next time]*
+
+## Monday 9/2
+
+- Chapter 5:  The six dplyr functions:
+  - `filter()`, `select()`, `arrange()`, `mutate()`, `group_by()`, and `summarise()`
+
+## Wednesday 9/4
+
+- Read:  ["Section 5.5"](https://r4ds.had.co.nz/transform.html#add-new-variables-with-mutate) in our book, study the examples with `mutate()`
+- `count()`, `mutate()`
+- Babynames data exercise
+
+## Thursday 9/5
+
+- Begin Lab 1.  
+  - This Thurs will be our first "real" lab day.  
+  - You'll have the whole period to work on your project.
+
+
+
+
+
+

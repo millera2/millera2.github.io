@@ -1,0 +1,69 @@
+---
+title: "Math 120 Lec 01"
+author: "Ali Miller"
+date: "8/30/2019"
+output: 
+  html_document:
+    code_folding: show
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning=FALSE)
+```
+
+## Intro
+
+Warning!  I'm a fast typist.  You don't have to keep up with this!  I'll share it with you after class.
+
+**Do** keep up with the code.
+
+It's ok if you don't understand all of it.  In fact, there will be lots you don't understand!  That's ok!
+
+Let's just play the game together.  With practice, you'll understand the logic.
+
+Before we get going, we'll need our tools!  Here, we'll use the "tidverse"
+
+```{r}
+
+#load the library:
+
+library(tidyverse)
+
+
+
+```
+
+The tidyverse has all of our most important data tools.
+
+Ok, now we need data:
+
+```{r}
+
+deathPenaltyData <- read_csv("death penalty data.csv")
+
+
+```
+We've got our data.  Now what?
+
+It's up to us!  What variables are we interested in?
+
+Let's plot age:
+
+```{r}
+
+qplot(Age, data=deathPenaltyData)
+
+
+```
+
+
+Ok, let's look at Sex:
+
+```{r}
+
+qplot(Sex, data=deathPenaltyData)
+
+```
+
+
+

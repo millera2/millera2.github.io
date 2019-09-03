@@ -1,13 +1,12 @@
 ---
-title: "Lab or Lecture Title"
-author: "[Your Name Here!]"
-date: "`r format(Sys.time(), '%d %B, %Y')`"
+title: "Prof Miller's Homepage"
+date: "Updated: `r format(Sys.time(), '%d %B, %Y')`"
 output: 
   html_document:
     toc: true
     toc_depth: 3
-    code_folding: show
     theme: cosmo
+  
   
 ---
 
@@ -40,14 +39,14 @@ theme_set(                                #this sets the theme for all    #
 ############# | ################################# | #######################
 ```
 
-## Delete Below This ## 
+## Math 120 
 
-Remember, the white part is where we type our thoughts/ovservations/narrative.
+- [Lecture Journal]("Math-120/Math-120-Lecture-Journal.html")
+- [Lec 02]("Math-120/Math-120-Lec-02.html")
+- [Lec 01]("Math-120/Math-120-Lec-01.html")
 
-```{r}
+## Data Analytics 101
 
-# And here in the gray part is our code
-
-
-```
-
+- [Lecture Journal]("DA-101/DA-101-Lecture-Journal.html")
+- [Lec 02]("DA-101/DA-101-Lec-02.html")
+- [Lec 01]("DA-101/DA-101-Lec-01.html")
