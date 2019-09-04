@@ -4,7 +4,7 @@ author: "Ali Miller"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
   html_document:
-    theme: simplex
+    theme: yeti
     toc: true
     toc_depth: 3
 ---
