@@ -32,7 +32,7 @@ theme_set(                                #this sets the theme for all    #
                                                                           #
 #youShouldRenameThis <- read_csv("death penalty data.csv")
                                                                           #
-                                                                          #
+#
                                                                           #
 ############# ^ ################################# ^ #######################
 ############# | ## DON'T DELETE THIS PART!!!!!### | #######################
