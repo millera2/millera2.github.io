@@ -41,12 +41,12 @@ theme_set(                                #this sets the theme for all    #
 
 ## Math 120 
 
-- [Lecture Journal]("https://millera2.github.io/Math-120-Lecture-Journal.html")
-- [Lec 02]("https://millera2.github.io/Math-120/Math-120-Lec-02.html")
-- [Lec 01]("https://millera2.github.io/Math-120/Math-120-Lec-01.html")
+- [Lecture Journal](https://millera2.github.io/Math-120-Lecture-Journal.html)
+- [Lec 02](https://millera2.github.io/Math-120/Math-120-Lec-02.html)
+- [Lec 01](https://millera2.github.io/Math-120/Math-120-Lec-01.html)
 
 ## Data Analytics 101
 
 - [Lecture Journal]("https://millera2.github.io/DA-101/DA-101-Lecture-Journal.html")
-- [Lec 02]("https://millera2.github.io/DA-101/DA-101-Lec-02.html")
-- [Lec 01]("https://millera2.github.io/DA-101/DA-101-Lec-01.html")
+- [Lec 02](https://millera2.github.io/DA-101/DA-101-Lec-02.html)
+- [Lec 01](https://millera2.github.io/DA-101/DA-101-Lec-01.html)
