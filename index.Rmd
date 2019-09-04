@@ -72,8 +72,12 @@ theme_set(                                #this sets the theme for all    #
 - [DA 101 Shared Folder on Google](https://drive.google.com/drive/folders/1-gITNFSEY_cUjLh1VShKmUkAr4XCf3Zx?usp=sharing)
 
 ## Texbook Links
-- [Math 120 Textbook]("https://www.openintro.org/stat/textbook.php?stat_book=os")
-- [DA 101 Texbook]("https://r4ds.had.co.nz")
 
+- [Math 120 Textbook](https://www.openintro.org/stat/textbook.php?stat_book=os)
+- [DA 101 Texbook](https://r4ds.had.co.nz)
 
+## TA Hours
+
+- [Math 120: Allen](https://millera2.github.io/Math-120/Office-Hours.html)
+- [DA 101: Emily](https://millera2.github.io/DA-101/Office-Hours.html)
 

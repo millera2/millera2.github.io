@@ -1,0 +1,44 @@
+---
+title: "Allen's Office Hours"
+
+output: 
+  html_document:
+    theme: yeti
+  
+---
+
+```{r setup, include=FALSE}
+###########################################################################
+################# DON'T DELETE THIS PART!!!!!##############################
+###########################################################################
+                                                                          #
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)      #
+                                                                          #
+library(tidyverse)           #The tidyverse has all of our data tools     #
+library(ggthemes)            #ggthemes makes our graphs look nicer        #
+                                                                          # 
+theme_set(                                #this sets the theme for all    #
+  theme_tufte() +                         #plots that we make             #
+  theme(text=element_text(family="sans"))                                 #
+  )                                                                       #
+                                                                          #
+                                                                          #
+                                                                          #
+### Below is where you read and store your data.                          #
+                                                                          #
+                                                                          #
+                                                                          #
+                                                                          #
+############# ^ ################################# ^ #######################
+############# | ## DON'T DELETE THIS PART!!!!!### | #######################
+############# | ################################# | #######################
+```
+
+You can find Allen in Shepardson Hall, Second Floor Study Room.  
+
+Allen's email: primac_a1@denison.edu
+
+- Mondays at 6-7pm
+- Tues at 2:30pm-4:30pm
+- Wed at 3-4pm
+- Thurs 2-3pm

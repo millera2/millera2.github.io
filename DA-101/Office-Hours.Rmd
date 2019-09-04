@@ -1,0 +1,44 @@
+---
+title: "Emily's Office Hours"
+
+output: 
+  html_document:
+    theme: yeti
+  
+---
+
+```{r setup, include=FALSE}
+###########################################################################
+################# DON'T DELETE THIS PART!!!!!##############################
+###########################################################################
+                                                                          #
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)      #
+                                                                          #
+library(tidyverse)           #The tidyverse has all of our data tools     #
+library(ggthemes)            #ggthemes makes our graphs look nicer        #
+                                                                          # 
+theme_set(                                #this sets the theme for all    #
+  theme_tufte() +                         #plots that we make             #
+  theme(text=element_text(family="sans"))                                 #
+  )                                                                       #
+                                                                          #
+                                                                          #
+                                                                          #
+### Below is where you read and store your data.                          #
+                                                                          #
+                                                                          #
+                                                                          #
+                                                                          #
+############# ^ ################################# ^ #######################
+############# | ## DON'T DELETE THIS PART!!!!!### | #######################
+############# | ################################# | #######################
+```
+
+You can find Emily in the DA Computer Lab, top floor of Burton Morgan.  
+
+**Note**: I've been assured that you can all get into Burton Morgan until 11pm.  **If you can't get in, please let me know as soon as possible**.  I can't fix it that night, but I can fix it for next time.
+
+Emily's email: allen_e1@denison.edu
+
+- Sunday 7pm-8:30pm
+- Thursday 8pm-9pm
