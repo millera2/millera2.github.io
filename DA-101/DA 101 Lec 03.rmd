@@ -8,6 +8,7 @@ output:
     toc_depth: 3
     code_folding: show
     theme: journal
+    df_print: paged
   
 ---
 
@@ -49,7 +50,7 @@ as.Date(deathPenaltyData$Date,
         format("%Y") ->
         deathPenaltyData$Date
 
-deathPenaltyData %>% head %>% kable %>% kable_styling()
+deathPenaltyData %>% head 
 
 
 
@@ -76,11 +77,11 @@ Problem:  we want percent, not totals!  Let's find them using count.
 ```{r}
 
 
-deathPenaltyData %>% count(State, Race)
+deathPenaltyData %>% count(State, Race) %>% head
 
 #compare to original:
 
-deathPenaltyData %>% head %>% kable %>% kable_styling()
+deathPenaltyData %>% head
 
 
 ```

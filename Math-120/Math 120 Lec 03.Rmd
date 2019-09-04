@@ -8,6 +8,7 @@ output:
     toc_depth: 3
     code_folding: show
     theme: journal
+    df_print: paged
   
 ---
 
@@ -110,7 +111,7 @@ The above shows the bones for describing data!
 Look at the iris dataset:
 
 ```{r}
-iris %>% head %>% kable %>% kable_styling()
+iris %>% head 
 
 
 
