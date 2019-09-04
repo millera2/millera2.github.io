@@ -48,11 +48,11 @@ theme_set(                                #this sets the theme for all    #
 ## Data Analytics 101
 
 - [Lecture Journal](https://millera2.github.io/DA-101/DA-101-Lecture-Journal.html)
-- [Lec 02](https://millera2.github.io/DA-101/DA-101-Lec-02.html)
-- [Lec 01](https://millera2.github.io/DA-101/DA-101-Lec-01.html)
+- [Lec 02](./millera2.github.io/DA-101/DA-101-Lec-02.html)
+- [Lec 01](./millera2.github.io/DA-101/DA-101-Lec-01.html)
 
 ## Datasets
 
-- [Baby Names](millera2.github.io/Data/baby_names.csv)
-- [Death Penalty](millera2.github.io/Data/death-penalty-data.csv)
-- [CIRP DATASET](https://millera2.github.io/Data/CIRP_DATA_2014_CLEAN.csv)
+- [Baby Names](./millera2.github.io/Data/baby_names.csv)
+- [Death Penalty](./millera2.github.io/Data/death-penalty-data.csv)
+- [CIRP DATASET](./millera2.github.io/Data/CIRP_DATA_2014_CLEAN.csv)
