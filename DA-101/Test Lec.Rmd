@@ -1,0 +1,74 @@
+---
+title: "Lab or Lecture Title"
+author: "[Your Name Here!]"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: journal
+  
+---
+
+```{r setup, include=FALSE}
+###########################################################################
+################# DON'T DELETE THIS PART!!!!!##############################
+###########################################################################
+                                                                          #
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)      #
+                                                                          #
+library(tidyverse)           #The tidyverse has all of our data tools     #
+library(ggthemes)            #ggthemes makes our graphs look nicer        #
+                                                                          # 
+theme_set(                                #this sets the theme for all    #
+  theme_tufte() +                         #plots that we make             #
+  theme(text=element_text(family="sans"))                                 #
+  )                                                                       #
+                                                                          #
+                                                                          #
+                                                                          #
+### Below is where you read and store your data.                          #
+                                                                          #
+youShouldRenameThis <- read_csv("death penalty data.csv")
+                                                                          #
+                                                                          #
+                                                                          #
+############# ^ ################################# ^ #######################
+############# | ## DON'T DELETE THIS PART!!!!!### | #######################
+############# | ################################# | #######################
+```
+
+## Delete Below This ## 
+
+Remember, the white part is where we type our thoughts/ovservations/narrative.
+
+```{r}
+
+# And here in the gray part is our code
+
+youShouldRenameThis %>% count(State, Race) %>% group_by(State) %>% mutate(prop = n/sum(n)) ->
+  raceByState
+
+qplot(x=State,
+      y=prop,
+      geom="col",
+      fill=Race,
+      data=raceByState)+theme(axis.text.x = element_text(angle=-90))
+
+babies <- read_csv("../Data/CIRP_DATA_2014_CLEAN.csv")
+
+deathPenaltyData <- youShouldRenameThis
+
+qplot(deathPenaltyData$Age)
+
+qplot(iris$Petal.Width , bins=10)
+
+qplot(mpg$displ, bins=20)
+
+qplot(mpg$cty)
+
+qplot(mpg$hwy, bins=10)
+
+```
+
