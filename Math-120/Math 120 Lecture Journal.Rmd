@@ -13,7 +13,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-*Note: All section numbers come from our text, ["R For Data Science"]("https://r4ds.had.co.nz").  
+*Note: All section numbers come from our text, [Openintro Statistics]("https://www.openintro.org/stat/textbook.php?stat_book=os").  
 
 ## Thursday 8/29
 
