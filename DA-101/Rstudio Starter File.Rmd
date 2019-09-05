@@ -1,5 +1,5 @@
 ---
-title: "Lab or Lecture Title"
+title: "RStudio Starter File"
 author: "[Your Name Here!]"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
@@ -8,6 +8,7 @@ output:
     toc_depth: 3
     code_folding: show
     theme: journal
+    df_print: paged
   
 ---
 
@@ -23,7 +24,8 @@ library(ggthemes)            #ggthemes makes our graphs look nicer        #
                                                                           # 
 theme_set(                                #this sets the theme for all    #
   theme_tufte() +                         #plots that we make             #
-  theme(text=element_text(family="sans"))                                 #
+  theme(text=element_text(family="sans"))+                                #
+  theme(axis.text.x = element_text(angle=-90))                            #
   )                                                                       #
                                                                           #
                                                                           #
@@ -45,8 +47,7 @@ Remember, the white part is where we type our thoughts/ovservations/narrative.
 
 ```{r}
 
-# And here in the gray part is our code
-
+# The grey part is where your code goes.  This is a comment!
 
 
 ```
