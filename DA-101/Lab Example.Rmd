@@ -1,0 +1,80 @@
+---
+title: "Your Lab Should Look Something Like This"
+author: "[Your Name Here!]"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    code_folding: hide
+    theme: journal
+    df_print: paged
+  
+---
+
+```{r setup, include=FALSE}
+###########################################################################
+################# DON'T DELETE THIS PART!!!!!##############################
+###########################################################################
+                                                                          #
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)      #
+                                                                          #
+library(tidyverse)           #The tidyverse has all of our data tools     #
+library(ggthemes)            #ggthemes makes our graphs look nicer        #
+                                                                          # 
+theme_set(                                #this sets the theme for all    #
+  theme_tufte() +                         #plots that we make             #
+  theme(text=element_text(family="sans"))+                                #
+  theme(axis.text.x = element_text(angle=-90))                            #
+  )                                                                       #
+                                                                          #
+                                                                          #
+                                                                          #
+### Below is where you read and store your data.                          #
+                                                                          #
+youShouldRenameThis <- read_csv("death penalty data.csv")
+                                                                          #
+                                                                          #
+                                                                          #
+############# ^ ################################# ^ #######################
+############# | ## DON'T DELETE THIS PART!!!!!### | #######################
+############# | ################################# | #######################
+```
+
+## Into: The Thesis/Title/Idea Thingie
+
+First, I'm writing a paragraph introducing my thesis.  This paragraph clearly establishes my goal/motivation/idea, and introduces readers to the key points that will be covered.  Don't make it long, don't make it flowery.  Have fun, but stick to the facts.  Never, ever say something like, "Since the beginning of time, ..." or "Everyone knows that....".  Anatomically modern humans have only existed on planet earth for ~200 thousand years, but the universe is about 13.5 billion years old.
+
+```{r}
+
+# Here's a comment explaining the code for my first graph/summary.
+
+qplot(Sepal.Length, 
+      fill=Species, 
+      data=iris,
+      xlab = "This is the data that was recorded",
+      ylab = "This is a count or percent, depending on your graph",
+      main = "Here's where you tell 'em what the graph is about.")
+
+
+```
+
+Here's a paragraph where I talk about the graph that's above.  Here's what it means.  Here's why that makes sense.  Here's how that connects to my thesis/idea/goal/thingie.  Even though I didn't display the stat summary table, here's where I talk about important stats and explain what that means about my data.  And, that leads into the second graph because of reasons.
+
+```{r}
+#Here's another comment explaining my code.  Always comment your code!
+
+qplot(x=hwy, y=cty, data=mpg, color=as.factor(cyl),
+      xlab = "This is what was recorded",
+      ylab = "In this graph, we're looking at counts",
+      main = "This Title Explains What This Graph Is About")
+
+
+
+
+```
+
+Here's another paragraph talking about the graph!  Here's what it means.  Here's why that makes sense.  Here's how that connects to my thesis/idea/goal/thingie.  Even though I won't trouble the reader with the details of the mean, median, standard deviation, etc, etc, I can still discuss them here.  I'd explain it in lay-person terms though:  here's what the center means.  Here's what the spread means.   Here's how it connects to the other graph that I've got, and why that makes sense.
+
+Here's a paragraph that really cements how everything is connected.  We have evidence from the above analysis that thing A and thing B and possibly thing C are true, and that's interesting because of reasons. Here's a sentence that'll get my report past 350 words; make sure you do **not** use filler sentences like this!  You have lots and lots to talk about; focus on just important stuff.
+
+Here's a paragraph summarizing my findings, connecting the dots in a way that non-experts can clearly understand.  The writing style is direct and matter-of-fact.  Everything you say is supported by the visuals and stats that you presented earlier.  Here are some reccommenations I have.  This section is short, but important:  we use it to connect the analysis to matters of practical importance.  Also, this paragraph suggest a course of action for further study (and there's **always** further study needed!).
+
