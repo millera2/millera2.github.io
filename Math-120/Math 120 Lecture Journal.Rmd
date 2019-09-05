@@ -59,6 +59,27 @@ knitr::opts_chunk$set(echo = TRUE)
 - **Start your lab before class**, so that you can get help!
 
 
+## Friday 9/6
+
+- Reading discussion:  how did lab go?  Thoughts? Questions? Insights?
+- Box Plots and Scatterplots In-Depth
+  - Parts of a Boxplot
+  - Weird-looking boxplot examples!
+  - When scatterplots make sense (and when they don't)
+- Sampling 
+  - Population 
+  - Sample
+  - Census
+- Sampling Problems
+  - "Representative" or not?
+  - Bias
+  - Non-response
+  - Confounding Variables
+- Sampling Strategies
+  - SRS
+  - Stratified
+  - Clustered
+  - Multistage
 
 
 
