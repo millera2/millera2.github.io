@@ -7,7 +7,7 @@ output:
     toc: true
     toc_depth: 3
     code_folding: show
-    theme: journal
+    theme: simplex
     df_print: paged
   
 ---
