@@ -1,13 +1,14 @@
 ---
-title: "Lab or Lecture Title"
-author: "[Your Name Here!]"
-date: "`r format(Sys.time(), '%d %B, %Y')`"
+title: "Lec 02"
+author: "Ali Miller"
+date: "9/01/2019"
 output: 
   html_document:
     toc: true
     toc_depth: 3
     code_folding: show
-    theme: journal
+    theme: simplex
+    df_print: paged
   
 ---
 

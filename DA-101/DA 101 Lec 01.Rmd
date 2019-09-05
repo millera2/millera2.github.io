@@ -1,5 +1,5 @@
 ---
-title: "DA 101 Lec 01"
+title: "Lec 01"
 author: "Ali Miller"
 date: "8/30/2019"
 output: 
@@ -7,12 +7,18 @@ output:
     toc: true
     toc_depth: 3
     code_folding: show
+    theme: simplex
+    df_print: paged
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+library(ggthemes)
 library(tidyverse)
+theme_set(                                #this sets the theme for all    #
+  theme_tufte() +                         #plots that we make             #
+  theme(text=element_text(family="sans"))                                 #
+  )        
 ```
 
 ## Programming Basics

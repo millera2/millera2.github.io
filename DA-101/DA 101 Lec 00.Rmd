@@ -2,11 +2,23 @@
 title: "Lec 0"
 author: "Ali Miller"
 date: "8/29/2019"
-output: html_document
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: simplex
+    df_print: paged
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+library(ggthemes)
+library(tidyverse)
+theme_set(                                #this sets the theme for all    #
+  theme_tufte() +                         #plots that we make             #
+  theme(text=element_text(family="sans"))                                 #
+  )        
 ```
 
 ## Intro - Exploratory Data Analysis
