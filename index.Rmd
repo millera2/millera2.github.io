@@ -7,7 +7,9 @@ output:
     toc: true
     toc_depth: 3
     theme: yeti
-  
+    includes:
+        in_header: "favicon.html" 
+      
   
 ---
 
