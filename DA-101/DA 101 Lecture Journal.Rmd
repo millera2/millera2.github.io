@@ -48,6 +48,27 @@ knitr::opts_chunk$set(echo = TRUE)
   - This Thurs will be our first "real" lab day.  
   - You'll have the whole period to work on your project.
 
+##  Friday 9/6
+
+- Reading Response:  What is Big Data?
+
+## Monday 
+
+- Wakeup Challenge
+  - Using the built-in `starwars` dataset (be sure to `library(tidyverse)` first), use the `count()` command to tally up gender and eye color (eg, how many starwars females have brown eyes?
+  - Use `group_by()` and `mutate` to find out the percentage of each eye color within each gender (eg, what percent of female characters have black eyes?)
+- Tidy Data, Revisited
+  - Meaning of [Tidy Data](https://r4ds.had.co.nz/tidy-data.html) 
+  - Example:  [Dr. Supp's Data](https://ndownloader.figshare.com/files/2252083)
+     -  How to Make it Tidy?
+  - Tidy Data Worksheet
+  - `gather()` and `spread()`
+     - Ex: gathering `table4a` and `table4b`
+     - Ex: spreading `table2`
+  - In-class Challenges
+     - Tidy up the [Billboard Data](https://millera2.github.io/Data/billboard.csv)
+
+
 
 
 

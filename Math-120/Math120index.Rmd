@@ -1,0 +1,109 @@
+
+---
+title: "Math 120 Fall 2019 Homepage"
+date: "Updated: `r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    theme: yeti
+
+      
+  
+---
+
+```{r setup, include=FALSE}
+###########################################################################
+################# DON'T DELETE THIS PART!!!!!##############################
+###########################################################################
+                                                                          #
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)      #
+                                                                          #
+library(tidyverse)           #The tidyverse has all of our data tools     #
+library(ggthemes)            #ggthemes makes our graphs look nicer        #
+                                                                          # 
+theme_set(                                #this sets the theme for all    #
+  theme_tufte() +                         #plots that we make             #
+  theme(text=element_text(family="sans")) + 
+  theme(axis.text.x = element_text(angle=-90))                            #
+  )                                                                       #
+                                                                          #
+                                                                          #
+                                                                          #
+### Below is where you read and store your data.                          #
+                                                                          #
+#youShouldRenameThis <- read_csv("death penalty data.csv")
+                                                                          #
+#
+                                                                          #
+############# ^ ################################# ^ #######################
+############# | ## DON'T DELETE THIS PART!!!!!### | #######################
+############# | ################################# | #######################
+```
+
+
+
+## Math 120 Lecture Notes
+*They look great on your phone, so you can read them anywhere.  Steal my code!  Don't understand something?  Ask me!*
+
+- [Lecture Journal](https://millera2.github.io/Math-120/Math-120-Lecture-Journal.html)
+- [Lec 04](https://millera2.github.io/Math-120/Math-120-Lec-04.html)
+- [Lec 03 ](https://millera2.github.io/Math-120/Math-120-Lec-03.html)
+- [Lec 02 ](https://millera2.github.io/Math-120/Math-120-Lec-02.html)
+- [Lec 01 ](https://millera2.github.io/Math-120/Math-120-Lec-01.html)
+
+
+## Next Quiz: Wed 9/11
+
+- Lecture Coverage:  Lec 04 and Lec 05
+- Topics:
+  - Undestanding box plots and scatterplots (weird examples)
+  - Sampling, Studies, and Related Issues
+- Texbook: Ch 2
+- Pracrice Problems
+  - 1.17, 1.19, 2.5, 2.10, 2.12, 2.13, 2.15, 
+
+
+
+## Datasets
+
+
+- [Baby Names](https://drive.google.com/file/d/1W5baem_xOJ9SVlaD_QHnXNdfA9dtBXaS/view?usp=sharing)
+  - *Counts of **all** American first names since 18-something.*
+- [Death Penalty](https://millera2.github.io/Data/death-penalty-data.csv)
+  - *Records of every American who's received capital punishment.*
+- [CIRP DATASET](https://drive.google.com/file/d/1-FxOfb3-Hm8DPKSpkqlHGZ91154xMW4s/view?usp=sharing)
+  - *DU Freshmen Survey Data from 2014.  Not public data.*
+
+## Helpful Files
+
+- [RStudio Starter File](https://drive.google.com/file/d/1-KLgwkXWAdVXmGTku51VtD4nncbkbhON/view?usp=sharing)
+  - *(Start all of your labs and lectures with this.  Forget to* Save As*? Just download it again!)*
+
+- [Prof Miller's Scratchpad](https://docs.google.com/document/d/1oSEe98j0aBPkbYyuubEn5ON4mjph3uOzIbeskYLC0y0/edit?usp=sharing)
+  - *(Here's where I can share code with you in-class)*
+
+## Google Drive Links
+
+- [Math 120 Shared Folder on Google](https://drive.google.com/drive/folders/1SaRW5G78k-eVFIENuAk0qzmJFHd7SRPa?usp=sharing)
+  - *(Look here for Reading Assignments and Labs)*
+
+## Texbook Links
+
+- [Math 120 Textbook](https://www.openintro.org/stat/textbook.php?stat_book=os)
+  - *OpenIntro Statistics* is an excellent, free introduction to modern statistical analysis.
+- [DA 101 Texbook](https://r4ds.had.co.nz)
+  - *R For Data Science* is a concise, approachable introduction to to topic with many good code examples to play with.
+
+## TA Hours
+
+You can find Allen in Shepardson Hall, Second Floor Study Room.  
+
+Allen's email: primac_a1@denison.edu
+
+- Mondays at 6-7pm
+- Tues at 2:30pm-4:30pm
+- Wed at 3-4pm
+- Thurs 2-3pm
+
+

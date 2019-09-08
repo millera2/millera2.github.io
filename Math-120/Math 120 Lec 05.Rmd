@@ -1,13 +1,13 @@
 ---
-title: "Lab or Lecture Title"
+title: "Math 120 Lec 05"
 author: "[Your Name Here!]"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
   html_document:
     toc: true
-    toc_depth: 3
+    toc_depth: 4
     code_folding: show
-    theme: journal
+    theme: simplex
   
 ---
 
@@ -30,7 +30,7 @@ theme_set(                                #this sets the theme for all    #
                                                                           #
 ### Below is where you read and store your data.                          #
                                                                           #
-youShouldRenameThis <- read_csv("death penalty data.csv")
+#youShouldRenameThis <- read_csv("death penalty data.csv")
                                                                           #
                                                                           #
                                                                           #
@@ -39,119 +39,87 @@ youShouldRenameThis <- read_csv("death penalty data.csv")
 ############# | ################################# | #######################
 ```
 
-## Delete Below This ## 
+##  Reading Discussion: Sampling Strategies
 
-Remember, the white part is where we type our thoughts/ovservations/narrative.
+Can you imagine/invent a scenario?
 
-```{r}
+## Sampling 
 
-# And here in the gray part is our code
+### Populations, Samples, and Inference
 
-youShouldRenameThis %>% count(State, Race) %>% group_by(State) %>% mutate(prop = n/sum(n)) ->
-  raceByState
+- **Population**:  All individuals of interest. (Too big!)
+- **Sample**:  A subset that we can actually work with.
+- **Statistical Inference**:  
 
-qplot(x=State,
-      y=prop,
-      geom="col",
-      fill=Race,
-      data=raceByState)+theme(axis.text.x = element_text(angle=-90))
+### Robust Statistics
 
-babies <- read_csv("../Data/baby_names.csv")
+A statistic is **robust** if it's not not affected by skew/outliers.
 
 
-babies %>% group_by(Year, Gender) %>% mutate(Total = sum(Count))
-
-library(tidyverse)
-
-cirpData <- read_csv("CIRP_DATA_2014_CLEAN.csv")
-
-cirpData %>% View
-
-
-qplot(YRSTUDY1, data=cirpData)
-qplot(YRSTUDY2, data=cirpData, fill=SEX)
-
-#How to make a stacked bar plot:
-
-cirpData %>% 
-  ggplot(aes(YRSTUDY1, fill=SEX))+
-  geom_bar(position="dodge")
-
-
-#-or-
-
-cirpData %>% 
-  ggplot(aes(YRSTUDY1, fill=SEX))+
-  geom_bar(position="fill")
+#### Example: `mpg` displacement
 
 
 
 
-# bar plot/histogram
-qplot(YRSTUDY1,
-      data=cirpData,
-      geom="bar")
+### Observational Studies vs Experiments
+
+**Key difference**: In an experiment, we *apply a treatment*.
+
+- Think: 
+  - A survey is ...
+  - A medical trial is  ...
 
 
-#box plot
+   
 
-qplot(x=SEX, y=HSGPA, 
-      data=cirpData,
-      geom="boxplot")
-
-# scatterplot
-
-qplot(x=HSGPA, y=YRSTUDY1,
-      data=cirpData,
-      geom="point") + geom_jitter(width = 1/2, alpha=1/2)
-
-
-# scatterplot with "jitter"
- 
-qplot(x=HSGPA, y=YRSTUDY1,
-      data=cirpData,
-      geom="point") + geom_jitter(width = 1/2, alpha=1/2)
-```
+#### Ex: 1.22a
 
 
 
 
+## Sampling Problems
+
+We need to be sure our sample is "good"!
+
+### "Representative" or not?
+
+In order to be useful, we need some assurance that the sample is "similar to" the population.  
+
+In mathese:  Hope our statistics are close to the true population parameter.
+
+
+###  Bias, Nonresponse Bias, and Confounding Variables
+
+- **Sample Bias**:  Some indivuals ("cases") more likely to be observed.
+- **Nonresponse Bias**:  Some individuals excluded from sample selection process.
+- **Confounding Variables**:  Other variables that might affect response variable.
+
+#### Ex:  1,22c, 1.24 and 1.26
 
 
 
 
-Let's do a count example:
+## Sampling Strategies
 
+### Simple Random Sample (SRS)
 
-```{r}
+- Every member of the population is equally likely to be sampled.
+- Best kind!
 
-deathPenaltyData %>% count(State, Race) %>%
-                     group_by(State) %>%
-                     summarize(Total = sum(n))
+### Stratified
 
-```
+- Break into similar "strata", SRS within each strata.
+- Ensure all groups represented.
+- Example strata: gender, age, income, education, etc.
 
+### Clustered
 
-"Select" will pick variables that you want.
+- Break into "clusters", randomloy select which clusters used, sample everyone in chosen clusters.
+- Useful for sample over large geographic area
+- Example clusters: city block, county
 
-```{r}
-deathPenaltyData %>% head
-```
+### Multistage
 
-Suppose we -only care- about age, sex, race:
+- First cluster, then SRS within selected clusters.  Nice, but expensive.
 
-```{r}
-deathPenaltyData %>% select(Age, Sex, Race)
-```
-
-Filter is different, since the variable has to match your search condition
-
-Example:  What if I want only women?
-
-```{r}
-
-deathPenaltyData %>% select(Sex) %>% filter(Sex == "Female")
-
-deathPenaltyData %>% filter(Sex == "Female")
-```
-
+### Ex: 1.19, 1.23

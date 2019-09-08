@@ -1,14 +1,14 @@
 
 ---
-title: "Prof Miller's Homepage"
+title: "DA 101 Fall 2019 Homepage"
+author: Ali Miller
 date: "Updated: `r format(Sys.time(), '%d %B, %Y')`"
 output: 
   html_document:
-    toc: false
+    toc: true
     toc_depth: 3
     theme: yeti
-    includes:
-        in_header: "favicon.html" 
+    
       
   
 ---
@@ -42,7 +42,47 @@ theme_set(                                #this sets the theme for all    #
 ############# | ################################# | #######################
 ```
 
-## Course Links 
 
-- [Math 120](https://millera2.github.io/Math-120/Math120index.html)
-- [DA 101](https://millera2.github.io/DA-101/DA101index.html)
+
+## DA 101 Lectures
+
+- [Lecture Journal](https://millera2.github.io/DA-101/DA-101-Lecture-Journal.html)
+- [Lec 03](https://millera2.github.io/DA-101/DA-101-Lec-03.html)
+- [Lec 02](https://millera2.github.io/DA-101/DA-101-Lec-02.html)
+- [Lec 01](https://millera2.github.io/DA-101/DA-101-Lec-01.html)
+- [Lec 00](https://millera2.github.io/DA-101/DA-101-Lec-00.html)
+
+
+## Datasets
+
+- [Billboard Top 200](https://millera2.github.io/Data/billboard.csv)
+- [Baby Names](https://drive.google.com/file/d/1W5baem_xOJ9SVlaD_QHnXNdfA9dtBXaS/view?usp=sharing)
+- [Death Penalty](https://millera2.github.io/Data/death-penalty-data.csv)
+- [CIRP DATASET](https://drive.google.com/file/d/1-FxOfb3-Hm8DPKSpkqlHGZ91154xMW4s/view?usp=sharing)
+
+## Helpful Files
+
+- [RStudio Starter File](https://drive.google.com/file/d/1-KLgwkXWAdVXmGTku51VtD4nncbkbhON/view?usp=sharing)
+- [Prof Miller's Scratchpad](https://docs.google.com/document/d/1oSEe98j0aBPkbYyuubEn5ON4mjph3uOzIbeskYLC0y0/edit?usp=sharing)
+
+## Google Drive Link
+
+
+- [DA 101 Shared Folder on Google](https://drive.google.com/drive/folders/1-gITNFSEY_cUjLh1VShKmUkAr4XCf3Zx?usp=sharing)
+
+## Texbook Links
+
+- [Math 120 Textbook](https://www.openintro.org/stat/textbook.php?stat_book=os)
+- [DA 101 Texbook](https://r4ds.had.co.nz)
+
+## TA Hours
+
+You can find Emily in the DA Computer Lab, top floor of Burton Morgan.  
+
+
+Emily's email: allen_e1@denison.edu
+
+- Sunday 7pm-8:30pm
+- Thursday 8pm-9pm
+
+

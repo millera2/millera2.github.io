@@ -66,21 +66,95 @@ knitr::opts_chunk$set(echo = TRUE)
   - Parts of a Boxplot
   - Weird-looking boxplot examples!
   - When scatterplots make sense (and when they don't)
-- Sampling 
-  - Population 
-  - Sample
-  - Census
-- Sampling Problems
-  - "Representative" or not?
-  - Bias
-  - Non-response
-  - Confounding Variables
-- Sampling Strategies
-  - SRS
+  
+  
+## Monday 9/9
+
+Reading Discussion: Sampling Strategies
+
+Can you imagine/invent a scenario?
+
+Sampling 
+
+- Populations, Samples, and Inference
+
+    - **Population**:  All individuals of interest. (Too big!)
+    - **Sample**:  A subset that we can actually work with.
+    - **Statistical Inference**:  
+
+- Robust Statistics
+
+  - A statistic is **robust** if it's not not affected by skew/outliers.
+
+
+  - Example: `mpg` displacement
+
+
+
+
+- Observational Studies vs Experiments
+
+  - **Key difference**: In an experiment, we *apply a treatment*.
+
+  - Think: 
+    - A survey is ...
+    - A medical trial is  ...
+
+
+   
+
+  - Ex: 1.22a
+
+
+
+
+Sampling Problems
+
+  - We need to be sure our sample is "good"!
+
+    - "Representative" or not?
+
+    - In order to be useful, we need some assurance that the sample is "similar to" the population.  
+
+    - In mathese:  Hope our statistics are close to the true population parameter.
+
+
+-  Bias, Nonresponse Bias, and Confounding Variables
+
+    - **Sample Bias**:  Some indivuals ("cases") more likely to be observed.
+    - **Nonresponse Bias**:  Some individuals excluded from sample selection process.
+    - **Confounding Variables**:  Other variables that might affect response variable.
+
+     - Ex:  1,22c, 1.24 and 1.26
+
+
+
+
+Sampling Strategies
+
+  - Simple Random Sample (SRS)
+
+    - Every member of the population is equally likely to be sampled.
+    - Best kind!
+
   - Stratified
+
+    - Break into similar "strata", SRS within each strata.
+    - Ensure all groups represented.
+    - Example strata: gender, age, income, education, etc.
+
   - Clustered
+
+    - Break into "clusters", randomloy select which clusters used, sample everyone in chosen clusters.
+    - Useful for sample over large geographic area
+    - Example clusters: city block, county
+
   - Multistage
 
+    - First cluster, then SRS within selected clusters.  Nice, but expensive.
 
-
-
+    - Ex: 1.19, 1.23
+    
+    
+    
+    
