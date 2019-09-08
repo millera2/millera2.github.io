@@ -8,6 +8,7 @@ output:
     toc_depth: 3
     code_folding: show
     theme: simplex
+    df_print: paged
   
 ---
 
