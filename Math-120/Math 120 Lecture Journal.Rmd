@@ -15,78 +15,10 @@ knitr::opts_chunk$set(echo = TRUE)
 
 *Note: All section numbers come from our text, [Openintro Statistics]("https://www.openintro.org/stat/textbook.php?stat_book=os").  
 
-## Thursday 8/29
 
-- Intro to class, syllabus day
-
-
-## Friday 8/30
-
-- Reading Discussion: Data Types 
-  - Continuous, Discrete, Ordinal, Nominal
-  - Identify which is which
-- Intro to RStudio
-  - Start a new RMarkdown file
-- Important new code:
-   - `read_csv()`
-   - `<-` 
-   - `qplot()`
-
-## Monday 9/2
-
-- Reading Discussion:  Lab 1
-  - Understand the codebook?
-  - What variables are you interested in?
-- Exploratory Data Analysis (EDA) in RStudio:
-  -`filter()`
-  - Types of visuals, stats
-  - How to facet by color (`fill= ...`), and what can go wrong.
-
-## Wednesday 9/4
-- Textbook:  Chapter 2
-- Imporant numerical summaries of data (statistics):
-  - mean, median (measures of **center**)
-  - standard deviation, iqr (measures of **spread**)
-- Important visual summaries of data (graphs):
-  - Histograms, boxplots, Scatterplots, Violin Plots
-- Describing distributions
-  - Understanding **shape**, **center**, and **spread**.
-  
-## Thursday 9/5
-
-- Lab day!  Still begin with reading discussion.
-- You'll have the whole hour to work.
-- **Start your lab before class**, so that you can get help!
+**<big>NOTICE:</big>** The most recent lecture now shows up on the top.  How convenient! 
 
 
-## Friday 9/6
-
-- Reading discussion:  how did lab go?  Thoughts? Questions? Insights?
-- Box Plots and Scatterplots In-Depth
-  - Parts of a Boxplot
-  - Weird-looking boxplot examples!
-  - When scatterplots make sense (and when they don't)
-  
-  
-## Monday 9/9
-
-- Reading Discussion: Sampling Strategies
-- Sampling 
-  - Populations, Samples, and Inference
-  - Robust Statistics
-  - Example: `mpg` displacement
-  - Observational Studies vs Experiments
-  - Ex: 1.22a
-- Sampling Problems
-  -  Bias, Nonresponse Bias, and Confounding Variables
-     - Ex:  1,22c, 1.24 and 1.26
-- Sampling Strategies
-  - Simple Random Sample (SRS)
-  - Stratified
-  - Clustered
-  - Multistage
-  - Ex: 1.19, 1.23
-  
   
 ## Wednesday 9/11
 
@@ -111,7 +43,82 @@ knitr::opts_chunk$set(echo = TRUE)
   - Interpreting Residual Plots
 - Effects of Outliers
   
+
+ 
+## Monday 9/9
+
+- Reading Discussion: Sampling Strategies
+- Sampling 
+  - Populations, Samples, and Inference
+  - Robust Statistics
+  - Example: `mpg` displacement
+  - Observational Studies vs Experiments
+  - Ex: 1.22a
+- Sampling Problems
+  -  Bias, Nonresponse Bias, and Confounding Variables
+     - Ex:  1,22c, 1.24 and 1.26
+- Sampling Strategies
+  - Simple Random Sample (SRS)
+  - Stratified
+  - Clustered
+  - Multistage
+  - Ex: 1.19, 1.23
+  
+    
+## Friday 9/6
+
+- Reading discussion:  how did lab go?  Thoughts? Questions? Insights?
+- Box Plots and Scatterplots In-Depth
+  - Parts of a Boxplot
+  - Weird-looking boxplot examples!
+  - When scatterplots make sense (and when they don't)
+  
     
     
-    
-    
+## Thursday 9/5
+
+- Lab day!  Still begin with reading discussion.
+- You'll have the whole hour to work.
+- **Start your lab before class**, so that you can get help!
+
+
+## Wednesday 9/4
+- Textbook:  Chapter 2
+- Imporant numerical summaries of data (statistics):
+  - mean, median (measures of **center**)
+  - standard deviation, iqr (measures of **spread**)
+- Important visual summaries of data (graphs):
+  - Histograms, boxplots, Scatterplots, Violin Plots
+- Describing distributions
+  - Understanding **shape**, **center**, and **spread**.
+  
+
+## Monday 9/2
+
+- Reading Discussion:  Lab 1
+  - Understand the codebook?
+  - What variables are you interested in?
+- Exploratory Data Analysis (EDA) in RStudio:
+  -`filter()`
+  - Types of visuals, stats
+  - How to facet by color (`fill= ...`), and what can go wrong.
+
+
+
+## Friday 8/30
+
+- Reading Discussion: Data Types 
+  - Continuous, Discrete, Ordinal, Nominal
+  - Identify which is which
+- Intro to RStudio
+  - Start a new RMarkdown file
+- Important new code:
+   - `read_csv()`
+   - `<-` 
+   - `qplot()`
+   
+   
+   
+## Thursday 8/29
+
+- Intro to class, syllabus day
