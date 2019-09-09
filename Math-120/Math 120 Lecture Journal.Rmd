@@ -94,7 +94,7 @@ knitr::opts_chunk$set(echo = TRUE)
 - Intro to Correlation and Linear Regression
   - Examples:  `mpg` data
   - Key qualities of a relationship
-- Linear correlation coefficient $r$
+- Linear correlation coefficient $r$,
   - What $r$ is
   - What $r$ measures
   - Example: 8.8 on page 314
