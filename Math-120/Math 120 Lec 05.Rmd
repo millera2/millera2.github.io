@@ -49,14 +49,58 @@ Can you imagine/invent a scenario?
 
 - **Population**:  All individuals of interest. (Too big!)
 - **Sample**:  A subset that we can actually work with.
-- **Statistical Inference**:  
+- **Statistical Inference**:  The process of making conclusions about populations, given the results of our sample data.
+
+
+Note: a "statistic" is a numerical summary of a sample.  A "parameter" is a numerical summary of the population.
+
+We hope to say something smart about parameters **based on** statistics.
+
+Examples of statistics:
+
+- mean
+- median
+- stdev
+- iqr
+- mode
+- proportion
 
 ### Robust Statistics
 
 A statistic is **robust** if it's not not affected by skew/outliers.
 
 
+
+
 #### Example: `mpg` displacement
+
+
+```{r}
+
+mpg %>% head
+
+qplot(displ, data=mpg, bins=8)
+
+```
+
+Observation: clear right skew.  Question:  how does this affect the "center"?  Let's look!
+
+```{r}
+
+mean(mpg$displ)
+median(mpg$displ)
+
+
+```
+
+Commentary:  we see here that the mean is not robust.  It's being affected by the right skew of the distr.  
+
+(Note:  mean always gets pulled with skew, but median isn't affected)
+
+Another example:  iqr and stddev.  
+
+IQR:  range of middle 50%, doesn't care about extremes
+Stdev:  average distance from the mean, gets messed up by outliers
 
 
 
@@ -66,14 +110,25 @@ A statistic is **robust** if it's not not affected by skew/outliers.
 **Key difference**: In an experiment, we *apply a treatment*.
 
 - Think: 
-  - A survey is ...
-  - A medical trial is  ...
+  - A survey is an *observational study*
+  - A medical trial is an *experiment*.
+  
+Important note:  observational studies can never establish **causation**, only **correlation**
+
+Remember:   **correlation does not imply causation**.
 
 
    
 
-#### Ex: 1.22a
+#### Ex: 1.22ab
 
+Observational study, we didn't apply a treatment.
+
+Explanatory variable:  stress
+
+Response variable:  muscle cramps
+
+Confounding variables: coffee and sleep make it hard to see if stress is really the important factor.
 
 
 
@@ -96,7 +151,15 @@ In mathese:  Hope our statistics are close to the true population parameter.
 
 #### Ex:  1,22c, 1.24 and 1.26
 
+1.24:  Phone book could introduce non-response bias; not everyone is listed.  They'd never be sampled!
 
+
+1.26:
+
+- Nonresponse bias:  families with zero children are never sampled.
+- Sample bias:  families with many children are more likely to be sampled!
+
+Could bias measure of "family size" to be bigger!
 
 
 ## Sampling Strategies
@@ -114,7 +177,7 @@ In mathese:  Hope our statistics are close to the true population parameter.
 
 ### Clustered
 
-- Break into "clusters", randomloy select which clusters used, sample everyone in chosen clusters.
+- Break into "clusters", randomly select which clusters used, sample everyone in chosen clusters.
 - Useful for sample over large geographic area
 - Example clusters: city block, county
 
@@ -123,3 +186,10 @@ In mathese:  Hope our statistics are close to the true population parameter.
 - First cluster, then SRS within selected clusters.  Nice, but expensive.
 
 ### Ex: 1.19, 1.23
+
+1.19:  The groups are obviously the lab sections.
+
+Makes sense to do stratified sample:  we suspect that the lab sections have something in common.
+
+Clustering doesn't make sense here:  we'd be leaving out a lab section(s) entirely if they weren't our chosen clusters.
+
