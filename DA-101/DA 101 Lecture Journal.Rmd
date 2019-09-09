@@ -52,7 +52,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 - Reading Response:  What is Big Data?
 
-## Monday 
+## Monday 9/9
 
 - Wakeup Challenge
   - Using the built-in `starwars` dataset (be sure to `library(tidyverse)` first), use the `count()` command to tally up gender and eye color (eg, how many starwars females have brown eyes?
@@ -64,13 +64,21 @@ knitr::opts_chunk$set(echo = TRUE)
   - Tidy Data Worksheet
   - `gather()` and `spread()`
      - Ex: gathering `table4a` and `table4b`
-     - Ex: spreading `table2`
-  - In-class Challenges
-     - Tidy up the [Billboard Data](https://millera2.github.io/Data/billboard.csv)
+    
+## Wednesday 9/11
 
-
-
-
-
-
-
+ 
+- Wake-up Challenge: Tidy up the [Billboard Data](https://millera2.github.io/Data/billboard.csv) using `gather()`
+- Ex: spreading `table2`
+- Data Wrangling
+   - Understanding `class`
+   - Setting data types:  
+     - `as.factor`, 
+     - Example: [(unclean) CIRP data](https://millera2.github.io/Data/CIRP2014Data.csv) , HSGPA by SEX
+     - `as.numeric`, `as.double`, `as.integer`
+     - `as.Date`
+     - Example: [Lobbyist Data](https://millera2.github.io/Data/lobbyist-data-gifts.csv)
+   - Renaming factor levels with `recode`
+     - Example: [(unclean) CIRP data](https://millera2.github.io/Data/CIRP2014Data.csv)
+   - Joining Tables
+     - Example: Lahman baseball scores database
