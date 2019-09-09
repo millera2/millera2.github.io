@@ -1,6 +1,6 @@
 ---
 title: "DA 101 Lec 04"
-author: "[Your Name Here!]"
+author: "Ali Miller"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
   html_document:
