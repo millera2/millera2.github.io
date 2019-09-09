@@ -401,7 +401,7 @@ summary {
 
 <h1 class="title toc-ignore">Math 120 Lecture Journal</h1>
 <h4 class="author">Ali Miller</h4>
-<h4 class="date">08 September, 2019</h4>
+<h4 class="date">09 September, 2019</h4>
 
 </div>
 
@@ -414,6 +414,7 @@ summary {
 <li><a href="#thursday-95">Thursday 9/5</a></li>
 <li><a href="#friday-96">Friday 9/6</a></li>
 <li><a href="#monday-99">Monday 9/9</a></li>
+<li><a href="#wednesday-911">Wednesday 9/11</a></li>
 </ul>
 </div>
 
@@ -500,72 +501,64 @@ summary {
 </div>
 <div id="monday-99" class="section level2">
 <h2>Monday 9/9</h2>
-<p>Reading Discussion: Sampling Strategies</p>
-<p>Can you imagine/invent a scenario?</p>
-<p>Sampling</p>
 <ul>
-<li><p>Populations, Samples, and Inference</p>
+<li>Reading Discussion: Sampling Strategies</li>
+<li>Sampling
 <ul>
-<li><strong>Population</strong>: All individuals of interest. (Too big!)</li>
-<li><strong>Sample</strong>: A subset that we can actually work with.</li>
-<li><strong>Statistical Inference</strong>:</li>
+<li>Populations, Samples, and Inference</li>
+<li>Robust Statistics</li>
+<li>Example: <code>mpg</code> displacement</li>
+<li>Observational Studies vs Experiments</li>
+<li>Ex: 1.22a</li>
 </ul></li>
-<li><p>Robust Statistics</p>
+<li>Sampling Problems
 <ul>
-<li><p>A statistic is <strong>robust</strong> if it’s not not affected by skew/outliers.</p></li>
-<li><p>Example: <code>mpg</code> displacement</p></li>
+<li>Bias, Nonresponse Bias, and Confounding Variables
+<ul>
+<li>Ex: 1,22c, 1.24 and 1.26</li>
 </ul></li>
-<li><p>Observational Studies vs Experiments</p>
-<ul>
-<li><p><strong>Key difference</strong>: In an experiment, we <em>apply a treatment</em>.</p></li>
-<li>Think:
-<ul>
-<li>A survey is …</li>
-<li>A medical trial is …</li>
 </ul></li>
-<li><p>Ex: 1.22a</p></li>
-</ul></li>
-</ul>
-<p>Sampling Problems</p>
+<li>Sampling Strategies
 <ul>
-<li><p>We need to be sure our sample is “good”!</p>
-<ul>
-<li><p>“Representative” or not?</p></li>
-<li><p>In order to be useful, we need some assurance that the sample is “similar to” the population.</p></li>
-<li><p>In mathese: Hope our statistics are close to the true population parameter.</p></li>
-</ul></li>
-<li><p>Bias, Nonresponse Bias, and Confounding Variables</p>
-<ul>
-<li><strong>Sample Bias</strong>: Some indivuals (“cases”) more likely to be observed.</li>
-<li><strong>Nonresponse Bias</strong>: Some individuals excluded from sample selection process.</li>
-<li><p><strong>Confounding Variables</strong>: Other variables that might affect response variable.</p></li>
-<li><p>Ex: 1,22c, 1.24 and 1.26</p></li>
+<li>Simple Random Sample (SRS)</li>
+<li>Stratified</li>
+<li>Clustered</li>
+<li>Multistage</li>
+<li>Ex: 1.19, 1.23</li>
 </ul></li>
 </ul>
-<p>Sampling Strategies</p>
+</div>
+<div id="wednesday-911" class="section level2">
+<h2>Wednesday 9/11</h2>
 <ul>
-<li><p>Simple Random Sample (SRS)</p>
+<li>Reading Discussion: Linear Regression</li>
+<li>Intro to Correlation and Linear Regression
 <ul>
-<li>Every member of the population is equally likely to be sampled.</li>
-<li>Best kind!</li>
+<li>Examples: <code>mpg</code> data</li>
+<li>Key qualities of a relationship</li>
 </ul></li>
-<li><p>Stratified</p>
+<li>Linear correlation coefficient <span class="math inline">\(r\)</span>
 <ul>
-<li>Break into similar “strata”, SRS within each strata.</li>
-<li>Ensure all groups represented.</li>
-<li>Example strata: gender, age, income, education, etc.</li>
+<li>What <span class="math inline">\(r\)</span> is</li>
+<li>What <span class="math inline">\(r\)</span> measures</li>
+<li>Example: 8.8 on page 314</li>
 </ul></li>
-<li><p>Clustered</p>
+<li>Least Squares Equation
 <ul>
-<li>Break into “clusters”, randomloy select which clusters used, sample everyone in chosen clusters.</li>
-<li>Useful for sample over large geographic area</li>
-<li>Example clusters: city block, county</li>
+<li>The equation</li>
+<li>Uniqueness</li>
+<li>Idea behind deriving it</li>
+<li>Using <code>lm</code> in R</li>
+<li>Making predictions</li>
+<li>Meaning of the coefficients</li>
 </ul></li>
-<li><p>Multistage</p>
+<li>Residuals
 <ul>
-<li><p>First cluster, then SRS within selected clusters. Nice, but expensive.</p></li>
-<li><p>Ex: 1.19, 1.23</p></li>
+<li>Meaning (math and graphical)</li>
+<li>Example: <code>mpg</code> data</li>
+<li>Interpreting Residual Plots</li>
 </ul></li>
+<li>Effects of Outliers</li>
 </ul>
 </div>
 

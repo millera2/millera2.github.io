@@ -70,90 +70,47 @@ knitr::opts_chunk$set(echo = TRUE)
   
 ## Monday 9/9
 
-Reading Discussion: Sampling Strategies
-
-Can you imagine/invent a scenario?
-
-Sampling 
-
-- Populations, Samples, and Inference
-
-    - **Population**:  All individuals of interest. (Too big!)
-    - **Sample**:  A subset that we can actually work with.
-    - **Statistical Inference**:  
-
-- Robust Statistics
-
-  - A statistic is **robust** if it's not not affected by skew/outliers.
-
-
+- Reading Discussion: Sampling Strategies
+- Sampling 
+  - Populations, Samples, and Inference
+  - Robust Statistics
   - Example: `mpg` displacement
-
-
-
-
-- Observational Studies vs Experiments
-
-  - **Key difference**: In an experiment, we *apply a treatment*.
-
-  - Think: 
-    - A survey is ...
-    - A medical trial is  ...
-
-
-   
-
+  - Observational Studies vs Experiments
   - Ex: 1.22a
-
-
-
-
-Sampling Problems
-
-  - We need to be sure our sample is "good"!
-
-    - "Representative" or not?
-
-    - In order to be useful, we need some assurance that the sample is "similar to" the population.  
-
-    - In mathese:  Hope our statistics are close to the true population parameter.
-
-
--  Bias, Nonresponse Bias, and Confounding Variables
-
-    - **Sample Bias**:  Some indivuals ("cases") more likely to be observed.
-    - **Nonresponse Bias**:  Some individuals excluded from sample selection process.
-    - **Confounding Variables**:  Other variables that might affect response variable.
-
+- Sampling Problems
+  -  Bias, Nonresponse Bias, and Confounding Variables
      - Ex:  1,22c, 1.24 and 1.26
-
-
-
-
-Sampling Strategies
-
+- Sampling Strategies
   - Simple Random Sample (SRS)
-
-    - Every member of the population is equally likely to be sampled.
-    - Best kind!
-
   - Stratified
-
-    - Break into similar "strata", SRS within each strata.
-    - Ensure all groups represented.
-    - Example strata: gender, age, income, education, etc.
-
   - Clustered
-
-    - Break into "clusters", randomloy select which clusters used, sample everyone in chosen clusters.
-    - Useful for sample over large geographic area
-    - Example clusters: city block, county
-
   - Multistage
+  - Ex: 1.19, 1.23
+  
+  
+## Wednesday 9/11
 
-    - First cluster, then SRS within selected clusters.  Nice, but expensive.
-
-    - Ex: 1.19, 1.23
+- Reading Discussion: Linear Regression
+- Intro to Correlation and Linear Regression
+  - Examples:  `mpg` data
+  - Key qualities of a relationship
+- Linear correlation coefficient $r$
+  - What $r$ is
+  - What $r$ measures
+  - Example: 8.8 on page 314
+- Least Squares Equation
+  - The equation
+  - Uniqueness
+  - Idea behind deriving it
+  - Using `lm` in R
+  - Making predictions
+  - Meaning of the coefficients
+- Residuals
+  - Meaning (math and graphical)
+  - Example: `mpg` data
+  - Interpreting Residual Plots
+- Effects of Outliers
+  
     
     
     
