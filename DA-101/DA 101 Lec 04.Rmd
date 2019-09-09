@@ -1,0 +1,129 @@
+---
+title: "DA 101 Lec 04"
+author: "[Your Name Here!]"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: simplex
+    df_print: paged
+  
+---
+
+```{r setup, include=FALSE}
+###########################################################################
+################# DON'T DELETE THIS PART!!!!!##############################
+###########################################################################
+                                                                          #
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)      #
+                                                                          #
+library(tidyverse)           #The tidyverse has all of our data tools     #
+library(ggthemes)            #ggthemes makes our graphs look nicer        #
+                                                                          # 
+theme_set(                                #this sets the theme for all    #
+  theme_tufte() +                         #plots that we make             #
+  theme(text=element_text(family="sans"))                                 #
+  )                                                                       #
+                                                                          #
+                                                                          #
+                                                                          #
+### Below is where you read and store your data.                          #
+                                                                          #
+youShouldRenameThis <- read_csv("death penalty data.csv")
+                                                                          #
+                                                                          #
+                                                                          #
+############# ^ ################################# ^ #######################
+############# | ## DON'T DELETE THIS PART!!!!!### | #######################
+############# | ################################# | #######################
+```
+
+## Wakeup Challenge
+
+- Using the built-in `starwars` dataset (be sure to `library(tidyverse)` first), use the `count()` command to tally up gender and eye color (eg, how many starwars females have brown eyes?
+
+
+
+```{r}
+starwars %>% head()
+
+starwars %>% count(gender, eye_color) %>%
+             group_by(gender) %>%
+             mutate(percent = n/sum(n))
+
+```
+
+
+
+- Use `group_by()` and `mutate` to find out the percentage of each eye color within each gender (eg, what percent of female characters have black eyes?)
+
+
+
+## Tidy Data, Revisited
+
+- Meaning of [Tidy Data](https://r4ds.had.co.nz/tidy-data.html) 
+- Example:  [Dr. Supp's Data](https://ndownloader.figshare.com/files/2252083)
+   -  How to Make it Tidy?
+   
+   
+Question:  notice any problems with this dataset?  Differences between 2013 and 2014?
+   
+
+## Tidy Data Worksheet
+
+## `gather()` and `spread()`
+
+Gather makes tables longer, spread makes tables shorter and wider.
+
+
+### Ex: gathering `table4a` and `table4b`
+
+```{r}
+table4a
+table4b
+
+table4a %>% gather(`1999`, `2000`, key = "year", value="cases" ) -> tidy4a
+
+```
+
+Cool!  Now, our data is tidy:  each variable has a column (here, we created "year" and every row is a seperate observation).
+
+Now, you tidy up table4b:
+
+```{r}
+#note: table 4b contains "population data"
+
+#don't forget to name them!
+
+table4b %>% 
+  gather(`1999`, `2000`, key="year", value="population") -> 
+  tidy4b
+
+
+
+```
+
+One further:  combine the two into one big tidy dataset!
+
+```{r}
+
+tidy4a
+tidy4b
+
+#useful new function alert!!! left_join()
+
+left_join(tidy4a, tidy4b) %>% mutate(rate = cases/population)
+
+```
+
+
+### Ex: spreading `table2`
+
+## In-class Challenges
+
+### Tidy up the Billboard Data
+
+
+
