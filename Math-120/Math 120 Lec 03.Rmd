@@ -1,7 +1,7 @@
 ---
-title: "Lec 03"
-author: "[Your Name Here!]"
-date: "`r format(Sys.time(), '%d %B, %Y')`"
+title: "Math 120 Lec 03"
+author: "Ali Miller"
+date: "09/04/2019"
 output: 
   html_document:
     toc: true

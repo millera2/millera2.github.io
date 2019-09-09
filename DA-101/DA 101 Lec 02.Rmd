@@ -1,7 +1,7 @@
 ---
-title: "Lec 02"
+title: "DA 101 Lec 02"
 author: "Ali Miller"
-date: "9/01/2019"
+date: "9/02/2019"
 output: 
   html_document:
     toc: true

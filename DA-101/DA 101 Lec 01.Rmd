@@ -1,5 +1,5 @@
 ---
-title: "Lec 01"
+title: "DA 101 Lec 01"
 author: "Ali Miller"
 date: "8/30/2019"
 output: 
