@@ -18,18 +18,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 **<big>NOTICE:</big>** The most recent lecture now shows up on the top.  How convenient! 
 
+## Thursday 9/12
 
-  
-## Wednesday 9/11
-
-- Reading Discussion: Linear Regression
-- Intro to Correlation and Linear Regression
-  - Examples:  `mpg` data
-  - Key qualities of a relationship
-- Linear correlation coefficient $r$,
-  - What $r$ is
-  - What $r$ measures
-  - Example: 8.8 on page 314
 - Least Squares Equation
   - The equation
   - Uniqueness
@@ -42,6 +32,19 @@ knitr::opts_chunk$set(echo = TRUE)
   - Example: `mpg` data
   - Interpreting Residual Plots
 - Effects of Outliers
+
+  
+## Wednesday 9/11
+
+- Reading Discussion: Linear Regression
+- Intro to Correlation and Linear Regression
+  - Examples:  `mpg` data
+  - Key qualities of a relationship
+- Linear correlation coefficient $r$,
+  - What $r$ is
+  - What $r$ measures
+  - Example: 8.8 on page 314
+
   
 
  
