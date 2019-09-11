@@ -55,17 +55,14 @@ theme_set(                                #this sets the theme for all    #
 - [Lec 01 ](https://millera2.github.io/Math-120/Math-120-Lec-01.html)
 
 
-## Next Quiz: Wed 9/11
+## Next Quiz: Wed 9/18
 
-- Lecture Coverage:  Lec 04 and Lec 05
-- Topics:
-  - Undestanding box plots and scatterplots (weird examples)
-  - Sampling, Studies, and Related Issues
-- Texbook: Ch 2
-- Pracrice Problems
-  - 1.17, 1.19, 2.5, 2.10, 2.12, 2.13, 2.15, 
+- Lecture Coverage:  Lec 06, Lec 07, and Lec 08
+- Topics:  Linear regression, equation of least squres, understanding coefficients, $r$, $r^2$, residuals.
 
+## Labs
 
+- [Lab 2](https://millera2.github.io/Math-120/Math-120-Lab-2.html)
 
 ## Datasets
 
