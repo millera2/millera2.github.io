@@ -184,9 +184,34 @@ cor(mpg$cty, mpg$displ)
 
 ### Uniqueness
 
+There's only one "best" fit line.  Whew!
+
 ### Idea behind deriving it
 
+Make the vertical distance
+
+
+
 ### Using lm in R
+
+```{r}
+
+mpgModel <- lm(hwy~cty, data=mpg)
+
+summary(mpgModel)
+
+predict(mpgModel, data.frame(cty=c(20,21)))
+
+.89204 + 1.33746*20
+
+class(mpgModel)
+
+plot(mpgModel)
+
+
+
+```
+
 
 
 ### Making predictions

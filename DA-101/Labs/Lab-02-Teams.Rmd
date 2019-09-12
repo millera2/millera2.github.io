@@ -1,12 +1,10 @@
 ---
-title: "Math 120 Lec xx"
-author: "Your Name"
+title: "DA 101 Lab 2 Teams"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
   html_document:
-    toc: true
+    toc: false
     toc_depth: 3
-    code_folding: show
     theme: simplex
     df_print: paged
   
@@ -30,15 +28,36 @@ theme_set(theme_tufte() +
 #------------------------------------------------#
 ```
 
-## Delete Below This ## 
+### Team 1
 
-Remember, the white part is where we type our thoughts/obvservations/narrative.
+- Andrew Bolin
+- Monique
+- Garrett
+- Catherine
 
-```{r}
+### Team 2
 
-# And here in the gray part is our code
+- Shivika
+- Amanda
+- Claire
+- Soyoung
+
+### Team 3
+
+- Jake
+- Patrick
+- Aditi
+- My
+
+### Team 4
+
+- Kevin
+- David
+- Jeff
 
 
+### Team 5
 
-```
-
+- Jon
+- Shuying
+- Cole

@@ -1,53 +1,43 @@
 ---
-title: "RStudio Starter File"
-author: "[Your Name Here!]"
+title: "Math 120 Lec xx"
+author: "Your Name"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
   html_document:
     toc: true
     toc_depth: 3
     code_folding: show
-    theme: journal
+    theme: simplex
     df_print: paged
   
 ---
 
 ```{r setup, include=FALSE}
-###########################################################################
-################# DON'T DELETE THIS PART!!!!!##############################
-###########################################################################
-                                                                          #
-knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)      #
-                                                                          #
-library(tidyverse)           #The tidyverse has all of our data tools     #
-library(ggthemes)            #ggthemes makes our graphs look nicer        #
-                                                                          # 
-theme_set(                                #this sets the theme for all    #
-  theme_tufte() +                         #plots that we make             #
-  theme(text=element_text(family="sans"))+                                #
-  theme(axis.text.x = element_text(angle=-90))                            #
-  )                                                                       #
-                                                                          #
-                                                                          #
-                                                                          #
-### Below is where you read and store your data.                          #
-                                                                          #
-youShouldRenameThis <- read_csv("death penalty data.csv")
-                                                                          #
-                                                                          #
-                                                                          #
-############# ^ ################################# ^ #######################
-############# | ## DON'T DELETE THIS PART!!!!!### | #######################
-############# | ################################# | #######################
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
 ```
 
 ## Delete Below This ## 
 
-Remember, the white part is where we type our thoughts/ovservations/narrative.
+Remember, the white part is where we type our thoughts/obvservations/narrative.
 
 ```{r}
 
-# The grey part is where your code goes.  This is a comment!
+# And here in the gray part is our code
+
 
 
 ```
