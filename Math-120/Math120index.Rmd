@@ -13,9 +13,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-###########################################################################
-################# DON'T DELETE THIS PART!!!!!##############################
-###########################################################################
+
                                                                           #
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)      #
                                                                           #
@@ -30,15 +28,7 @@ theme_set(                                #this sets the theme for all    #
                                                                           #
                                                                           #
                                                                           #
-### Below is where you read and store your data.                          #
-                                                                          #
-#youShouldRenameThis <- read_csv("death penalty data.csv")
-                                                                          #
-#
-                                                                          #
-############# ^ ################################# ^ #######################
-############# | ## DON'T DELETE THIS PART!!!!!### | #######################
-############# | ################################# | #######################
+
 ```
 
 
@@ -76,7 +66,7 @@ theme_set(                                #this sets the theme for all    #
 
 ## Helpful Files
 
-- [RStudio Starter File](https://drive.google.com/file/d/1-KLgwkXWAdVXmGTku51VtD4nncbkbhON/view?usp=sharing)
+- [RStudio Starter File](https://millera2.github.io/Math-120/Rstudio-Starter-File.Rmd)
   - *(Start all of your labs and lectures with this.  Forget to* Save As*? Just download it again!)*
 
 - [Prof Miller's Scratchpad](https://docs.google.com/document/d/1oSEe98j0aBPkbYyuubEn5ON4mjph3uOzIbeskYLC0y0/edit?usp=sharing)
