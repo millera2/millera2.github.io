@@ -64,7 +64,7 @@ theme_set(                                #this sets the theme for all    #
 
 ## Helpful Files
 
-- [RStudio Starter File](https://millera2.github.io/DA-101/Rstudio-Starter-File.Rmd)
+- [RStudio Starter File](https://drive.google.com/file/d/11BeqynZbBAKSgezmbSkNVZTcK_05EuEY/view?usp=sharing)
 - [Prof Miller's Scratchpad](https://docs.google.com/document/d/1oSEe98j0aBPkbYyuubEn5ON4mjph3uOzIbeskYLC0y0/edit?usp=sharing)
 
 ## Google Drive Link
