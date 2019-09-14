@@ -40,9 +40,9 @@ youShouldRenameThis <- read_csv("death penalty data.csv")
 ############# | ################################# | #######################
 ```
 
-## Reading Discussion: Linear Regression
 
-##Intro to Correlation and Linear Regression
+
+## Intro to Correlation and Linear Regression
 
 
 We start with a scatterplot, an x-y plot of two numerical variables.
@@ -78,7 +78,7 @@ qplot(displ, cty, data=mpg, geom="point")
 
 2) Direction:  pos or neg.
 
-In examples, the first cty vs hwy is positive.  Both go up together!  However, displ vs cty is a negative rel:  if displ gets bigger, cty gets smaller.
+    - In examples, the first cty vs hwy is positive.  Both go up together!  However, displ vs cty is a negative rel:  if displ gets bigger, cty gets smaller.
 
 
 3) Strength.  In our examples, cty/hwy is stronger than displ/cty.
@@ -90,13 +90,13 @@ Note: this little "r" is different from our big "R".
 
 The correl coefficient r measures the strength and direction of our relationship.
 
-If r is close to 1, strong pos rel.
+- If r is close to 1, strong pos rel.
 
-If r is close to -1, strong neg rel.
+- If r is close to -1, strong neg rel.
 
-If r is close to zero, there's not a linear relationship.  
+- If r is close to zero, there's not a linear relationship.  
 
-Warning!  r only describes linear relationships.  Ex on board:
+Warning!  **r only describes linear relationships**.  Ex on board: smiley scatterplot.
 
 ##### Properties of r
 
@@ -122,15 +122,15 @@ Identifying r in graphs.
 
 It's a line!  In high school, you wrote:
 
-y = mx+b
+- y = mx+b
 
 In stats, we use different letters:
 
-yhat = b_1 *x + b_0
+- $\hat{y} = b_1 \cdot x + b_0$
 
-b_1 is the slope (like m)
+$b_1$ is the slope (like m)
 
-b_0 is the intercept (like b)
+$b_0$ is the intercept (like b)
 
 Exactly the same!
 
@@ -143,20 +143,14 @@ Exactly the same!
 
 # here's how to find equation for cty and hwy in mpg:
 
-
-
 lm(hwy~cty, data=mpg)
-
-
-
-mpg %>% head
 
 ```
 
 Observations:  
 
 - The ~ has a special meaning:  here, hwy is a function of cty.  Note that y comes first:  here, that's hwy fuel efficiency.
-- I.e., we're predicting hwy based on cty.
+- I.e., we're predicting hwy mpg based on cty mpg.
 
 
 Let's visualize:
@@ -188,7 +182,7 @@ The least-square line is unique, i.e., *the best* linear model.
 
 This is a releif, we don't have to worry about *which line*!!
 
-Names:
+It has many names:
 
 - Least square line
 - The regression line
@@ -204,7 +198,7 @@ The least square line is the one that makes the square error as small as possibl
 
 Question:  why minimize square error:
 
-(y-yhat)^2
+$$(y-\hat{y})^2$$
 
 Some residuals are neg, some are pos.  We don't want them to cancel out!  So, we square to get all positive terms.
 
@@ -277,7 +271,7 @@ Thus, we're predicting hwy mpg based upon cty mpg.
 
 You can now get coeffs from lm.  But what do they **mean**?
 
-First:  slope = b_1.  Slope tells you the amount of change in y for each unit change in x.
+First:  slope = $b_1$.  Slope tells you the amount of change in $y$ for each unit change in $x$.
 
 In other words:  if x gets bigger by 1, then we expect y to change by [slope].
 
@@ -286,7 +280,7 @@ y: hwy fuel efficiency in mpg
 
 All together:  If a car's city fuel efficiency increases by 1mpg, we expect its highway fuel efficiency to increase by 1.337mpg.
 
-2nd:  b_0 = the intercept
+2nd:  $b_0$ = the intercept
 
 The intercept is our prediction when x=0.
 
@@ -299,7 +293,7 @@ Extrapolation is the process of using "unreasonable" x values to predict y.  "Un
 ## Residuals
 
 Residuals are:
-- e = (y - yhat)
+- $e = (y - \hat{y})$
 - the vertical distance between points and the line
 - the error in our precition!  We hope they're small!
 
@@ -311,9 +305,6 @@ Seeing these in R is super easy:
 
 
 summary(mpgModel)
-
-
-
 
 #the model thingie contains all the residuals as a variable.
 
@@ -353,7 +344,7 @@ If residuals follow a visible pattern, it suggests that there could be a better 
 
 ## Coefficient of Determination R^2
 
-The symbol is R^2 or r^2.  Btw, it really is (r)^2.
+The symbol is $R^2$ or $r^2$.  Btw, it really is $(r)^2$.
 
 R^2 tells us something special:  it's the percent of variation in the y data that because of the linear rel with the x data.
 
@@ -367,11 +358,12 @@ summary(myModel)
 qplot(displ, cty, data=mpg)
 ```
 
-Here, r^2 is .6376.  Woah!
+Here, $r^2$ is .6376.  Woah!
 
 Even though we know that displacement (i.e. size) of the engine isn't the only thing affecting city mpg, it accounts for about 63.76% of the variation we see in city mpg.
 
 
 
 
-##Effects of Outliers
+## Effects of Outliers
+
