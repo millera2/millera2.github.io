@@ -1954,7 +1954,12 @@ summary(mpgModel)</code></pre>
 </div>
 <div id="residuals" class="section level2">
 <h2>Residuals</h2>
-<p>Residuals are: - <span class="math inline">\(e = (y - \hat{y})\)</span> - the vertical distance between points and the line - the error in our precition! We hope they’re small!</p>
+<p>Residuals are:</p>
+<ul>
+<li>residual = <span class="math inline">\(e_i = y - \hat{y}\)</span></li>
+<li>the vertical distance between points and the line</li>
+<li>the <strong>error</strong> in our precition (that’s why we use <span class="math inline">\(e\)</span> to name them)! We hope they’re small!</li>
+</ul>
 <p>In order to see if we have a “good” model, we need to analyze these.</p>
 <p>Seeing these in R is super easy:</p>
 <pre class="r"><code>summary(mpgModel)</code></pre>

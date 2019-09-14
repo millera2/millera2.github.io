@@ -293,9 +293,10 @@ Extrapolation is the process of using "unreasonable" x values to predict y.  "Un
 ## Residuals
 
 Residuals are:
-- $e = (y - \hat{y})$
+
+- residual = $e_i = y - \hat{y}$ 
 - the vertical distance between points and the line
-- the error in our precition!  We hope they're small!
+- the **error** in our precition (that's why we use $e$ to name them)!  We hope they're small!
 
 In order to see if we have a "good" model, we need to analyze these.  
 
