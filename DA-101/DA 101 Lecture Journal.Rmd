@@ -15,56 +15,30 @@ knitr::opts_chunk$set(echo = TRUE)
 
 *Note: All section numbers come from our text, ["R For Data Science"]("https://r4ds.had.co.nz").  
 
-## Thursday 8/29
 
-- Intro to class, syllabus day
-- Intro to R and RStudio
+## Monday 9/16
 
-
-## Friday 8/30
-
-- 12.2:  Tidy data
-- 5.1: Data Types
-- 4.2: Coding basics
-  - Dataframe, class(), $
-  - Assigmnent:  <-
-  - Functions
-- 5.2:  dplyr (the mighty six) *[ctd next time]*
-
-## Monday 9/2
-
-- Chapter 5:  The six dplyr functions:
-  - `filter()`, `select()`, `arrange()`, `mutate()`, `group_by()`, and `summarise()`
-
-## Wednesday 9/4
-
-- Read:  ["Section 5.5"](https://r4ds.had.co.nz/transform.html#add-new-variables-with-mutate) in our book, study the examples with `mutate()`
-- `count()`, `mutate()`
-- Babynames data exercise
-
-## Thursday 9/5
-
-- Begin Lab 1.  
-  - This Thurs will be our first "real" lab day.  
-  - You'll have the whole period to work on your project.
-
-##  Friday 9/6
-
-- Reading Response:  What is Big Data?
-
-## Monday 9/9
-
-- Wakeup Challenge
-  - Using the built-in `starwars` dataset (be sure to `library(tidyverse)` first), use the `count()` command to tally up gender and eye color (eg, how many starwars females have brown eyes?
-  - Use `group_by()` and `mutate` to find out the percentage of each eye color within each gender (eg, what percent of female characters have black eyes?)
-- Tidy Data, Revisited
-  - Meaning of [Tidy Data](https://r4ds.had.co.nz/tidy-data.html) 
-  - Example:  [Dr. Supp's Data](https://ndownloader.figshare.com/files/2252083)
-     -  How to Make it Tidy?
-  - Tidy Data Worksheet
+#### In-Class Challenge:  Dirty Data
+- You'll use the tools we've leanned to clean up a dataset.
   - `gather()` and `spread()`
-     - Ex: gathering `table4a` and `table4b`
-    
+  - `as.factor()`, `as.Date()`, etc
+  - `colnames()`
+  - `setnames()`  $\leftarrow$ (this one is new, can you figure it out?)
+- Neat `format()` tricks for `Date`
+- Joining tables with `Join`
+  - Example:  Lahman Data
+
+
+## Friday 9/13
+
+Reading Discussion - Missing Data
+
+
+## Thursday 9/12
+
+Begin Lab 2 - Data Collection
+
+
 ## Wednesday 9/11
 
  
@@ -82,3 +56,65 @@ knitr::opts_chunk$set(echo = TRUE)
      - Example: [(unclean) CIRP data](https://millera2.github.io/Data/CIRP2014Data.csv)
    - Joining Tables
      - Example: Lahman baseball scores database
+
+## Monday 9/9
+
+- Wakeup Challenge
+  - Using the built-in `starwars` dataset (be sure to `library(tidyverse)` first), use the `count()` command to tally up gender and eye color (eg, how many starwars females have brown eyes?
+  - Use `group_by()` and `mutate` to find out the percentage of each eye color within each gender (eg, what percent of female characters have black eyes?)
+- Tidy Data, Revisited
+  - Meaning of [Tidy Data](https://r4ds.had.co.nz/tidy-data.html) 
+  - Example:  [Dr. Supp's Data](https://ndownloader.figshare.com/files/2252083)
+     -  How to Make it Tidy?
+  - Tidy Data Worksheet
+  - `gather()` and `spread()`
+     - Ex: gathering `table4a` and `table4b`
+     
+##  Friday 9/6
+
+- Reading Response:  What is Big Data?   
+
+## Thursday 9/5
+
+- Begin Lab 1.  
+  - This Thurs will be our first "real" lab day.  
+  - You'll have the whole period to work on your project.
+
+
+
+## Wednesday 9/4
+
+- Read:  ["Section 5.5"](https://r4ds.had.co.nz/transform.html#add-new-variables-with-mutate) in our book, study the examples with `mutate()`
+- `count()`, `mutate()`
+- Babynames data exercise
+
+
+## Monday 9/2
+
+- Chapter 5:  The six dplyr functions:
+  - `filter()`, `select()`, `arrange()`, `mutate()`, `group_by()`, and `summarise()`
+
+    
+## Friday 8/30
+
+- 12.2:  Tidy data
+- 5.1: Data Types
+- 4.2: Coding basics
+  - Dataframe, class(), $
+  - Assigmnent:  <-
+  - Functions
+- 5.2:  dplyr (the mighty six) *[ctd next time]*
+
+
+
+
+## Thursday 8/29
+
+- Intro to class, syllabus day
+- Intro to R and RStudio
+
+
+
+
+     
+  

@@ -407,95 +407,48 @@ summary {
 
 <div id="TOC">
 <ul>
-<li><a href="#thursday-829">Thursday 8/29</a></li>
-<li><a href="#friday-830">Friday 8/30</a></li>
-<li><a href="#monday-92">Monday 9/2</a></li>
-<li><a href="#wednesday-94">Wednesday 9/4</a></li>
-<li><a href="#thursday-95">Thursday 9/5</a></li>
-<li><a href="#friday-96">Friday 9/6</a></li>
-<li><a href="#monday-99">Monday 9/9</a></li>
+<li><a href="#monday-916">Monday 9/16</a></li>
+<li><a href="#friday-913">Friday 9/13</a></li>
+<li><a href="#thursday-912">Thursday 9/12</a></li>
 <li><a href="#wednesday-911">Wednesday 9/11</a></li>
+<li><a href="#monday-99">Monday 9/9</a></li>
+<li><a href="#friday-96">Friday 9/6</a></li>
+<li><a href="#thursday-95">Thursday 9/5</a></li>
+<li><a href="#wednesday-94">Wednesday 9/4</a></li>
+<li><a href="#monday-92">Monday 9/2</a></li>
+<li><a href="#friday-830">Friday 8/30</a></li>
+<li><a href="#thursday-829">Thursday 8/29</a></li>
 </ul>
 </div>
 
 <p>*Note: All section numbers come from our text, <a href="%22https://r4ds.had.co.nz%22">“R For Data Science”</a>.</p>
-<div id="thursday-829" class="section level2">
-<h2>Thursday 8/29</h2>
+<div id="monday-916" class="section level2">
+<h2>Monday 9/16</h2>
+<div id="in-class-challenge-dirty-data" class="section level4">
+<h4>In-Class Challenge: Dirty Data</h4>
 <ul>
-<li>Intro to class, syllabus day</li>
-<li>Intro to R and RStudio</li>
-</ul>
-</div>
-<div id="friday-830" class="section level2">
-<h2>Friday 8/30</h2>
+<li>You’ll use the tools we’ve leanned to clean up a dataset.
 <ul>
-<li>12.2: Tidy data</li>
-<li>5.1: Data Types</li>
-<li>4.2: Coding basics
-<ul>
-<li>Dataframe, class(), $</li>
-<li>Assigmnent: &lt;-</li>
-<li>Functions</li>
+<li><code>gather()</code> and <code>spread()</code></li>
+<li><code>as.factor()</code>, <code>as.Date()</code>, etc</li>
+<li><code>colnames()</code></li>
+<li><code>setnames()</code> <span class="math inline">\(\leftarrow\)</span> (this one is new, can you figure it out?)</li>
 </ul></li>
-<li>5.2: dplyr (the mighty six) <em>[ctd next time]</em></li>
-</ul>
-</div>
-<div id="monday-92" class="section level2">
-<h2>Monday 9/2</h2>
+<li>Neat <code>format()</code> tricks for <code>Date</code></li>
+<li>Joining tables with <code>Join</code>
 <ul>
-<li>Chapter 5: The six dplyr functions:
-<ul>
-<li><code>filter()</code>, <code>select()</code>, <code>arrange()</code>, <code>mutate()</code>, <code>group_by()</code>, and <code>summarise()</code></li>
+<li>Example: Lahman Data</li>
 </ul></li>
 </ul>
 </div>
-<div id="wednesday-94" class="section level2">
-<h2>Wednesday 9/4</h2>
-<ul>
-<li>Read: <a href="https://r4ds.had.co.nz/transform.html#add-new-variables-with-mutate">“Section 5.5”</a> in our book, study the examples with <code>mutate()</code></li>
-<li><code>count()</code>, <code>mutate()</code></li>
-<li>Babynames data exercise</li>
-</ul>
 </div>
-<div id="thursday-95" class="section level2">
-<h2>Thursday 9/5</h2>
-<ul>
-<li>Begin Lab 1.
-<ul>
-<li>This Thurs will be our first “real” lab day.<br />
-</li>
-<li>You’ll have the whole period to work on your project.</li>
-</ul></li>
-</ul>
+<div id="friday-913" class="section level2">
+<h2>Friday 9/13</h2>
+<p>Reading Discussion - Missing Data</p>
 </div>
-<div id="friday-96" class="section level2">
-<h2>Friday 9/6</h2>
-<ul>
-<li>Reading Response: What is Big Data?</li>
-</ul>
-</div>
-<div id="monday-99" class="section level2">
-<h2>Monday 9/9</h2>
-<ul>
-<li>Wakeup Challenge
-<ul>
-<li>Using the built-in <code>starwars</code> dataset (be sure to <code>library(tidyverse)</code> first), use the <code>count()</code> command to tally up gender and eye color (eg, how many starwars females have brown eyes?</li>
-<li>Use <code>group_by()</code> and <code>mutate</code> to find out the percentage of each eye color within each gender (eg, what percent of female characters have black eyes?)</li>
-</ul></li>
-<li>Tidy Data, Revisited
-<ul>
-<li>Meaning of <a href="https://r4ds.had.co.nz/tidy-data.html">Tidy Data</a></li>
-<li>Example: <a href="https://ndownloader.figshare.com/files/2252083">Dr. Supp’s Data</a>
-<ul>
-<li>How to Make it Tidy?</li>
-</ul></li>
-<li>Tidy Data Worksheet</li>
-<li><code>gather()</code> and <code>spread()</code>
-<ul>
-<li>Ex: gathering <code>table4a</code> and <code>table4b</code></li>
-</ul></li>
-</ul></li>
-</ul>
+<div id="thursday-912" class="section level2">
+<h2>Thursday 9/12</h2>
+<p>Begin Lab 2 - Data Collection</p>
 </div>
 <div id="wednesday-911" class="section level2">
 <h2>Wednesday 9/11</h2>
@@ -522,6 +475,84 @@ summary {
 <li>Example: Lahman baseball scores database</li>
 </ul></li>
 </ul></li>
+</ul>
+</div>
+<div id="monday-99" class="section level2">
+<h2>Monday 9/9</h2>
+<ul>
+<li>Wakeup Challenge
+<ul>
+<li>Using the built-in <code>starwars</code> dataset (be sure to <code>library(tidyverse)</code> first), use the <code>count()</code> command to tally up gender and eye color (eg, how many starwars females have brown eyes?</li>
+<li>Use <code>group_by()</code> and <code>mutate</code> to find out the percentage of each eye color within each gender (eg, what percent of female characters have black eyes?)</li>
+</ul></li>
+<li>Tidy Data, Revisited
+<ul>
+<li>Meaning of <a href="https://r4ds.had.co.nz/tidy-data.html">Tidy Data</a></li>
+<li>Example: <a href="https://ndownloader.figshare.com/files/2252083">Dr. Supp’s Data</a>
+<ul>
+<li>How to Make it Tidy?</li>
+</ul></li>
+<li>Tidy Data Worksheet</li>
+<li><code>gather()</code> and <code>spread()</code>
+<ul>
+<li>Ex: gathering <code>table4a</code> and <code>table4b</code></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<div id="friday-96" class="section level2">
+<h2>Friday 9/6</h2>
+<ul>
+<li>Reading Response: What is Big Data?</li>
+</ul>
+</div>
+<div id="thursday-95" class="section level2">
+<h2>Thursday 9/5</h2>
+<ul>
+<li>Begin Lab 1.
+<ul>
+<li>This Thurs will be our first “real” lab day.<br />
+</li>
+<li>You’ll have the whole period to work on your project.</li>
+</ul></li>
+</ul>
+</div>
+<div id="wednesday-94" class="section level2">
+<h2>Wednesday 9/4</h2>
+<ul>
+<li>Read: <a href="https://r4ds.had.co.nz/transform.html#add-new-variables-with-mutate">“Section 5.5”</a> in our book, study the examples with <code>mutate()</code></li>
+<li><code>count()</code>, <code>mutate()</code></li>
+<li>Babynames data exercise</li>
+</ul>
+</div>
+<div id="monday-92" class="section level2">
+<h2>Monday 9/2</h2>
+<ul>
+<li>Chapter 5: The six dplyr functions:
+<ul>
+<li><code>filter()</code>, <code>select()</code>, <code>arrange()</code>, <code>mutate()</code>, <code>group_by()</code>, and <code>summarise()</code></li>
+</ul></li>
+</ul>
+</div>
+<div id="friday-830" class="section level2">
+<h2>Friday 8/30</h2>
+<ul>
+<li>12.2: Tidy data</li>
+<li>5.1: Data Types</li>
+<li>4.2: Coding basics
+<ul>
+<li>Dataframe, class(), $</li>
+<li>Assigmnent: &lt;-</li>
+<li>Functions</li>
+</ul></li>
+<li>5.2: dplyr (the mighty six) <em>[ctd next time]</em></li>
+</ul>
+</div>
+<div id="thursday-829" class="section level2">
+<h2>Thursday 8/29</h2>
+<ul>
+<li>Intro to class, syllabus day</li>
+<li>Intro to R and RStudio</li>
 </ul>
 </div>
 
