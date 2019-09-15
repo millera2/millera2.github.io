@@ -1939,14 +1939,24 @@ summary(mpgModel)</code></pre>
 <div id="meaning-of-the-coefficients" class="section level3">
 <h3>Meaning of the coefficients</h3>
 <p>You can now get coeffs from lm. But what do they <strong>mean</strong>?</p>
-<p>First: slope = <span class="math inline">\(b_1\)</span>. Slope tells you the amount of change in <span class="math inline">\(y\)</span> for each unit change in <span class="math inline">\(x\)</span>.</p>
-<p>In other words: if x gets bigger by 1, then we expect y to change by [slope].</p>
-<p>x: cty fuel efficiency in mpg y: hwy fuel efficiency in mpg</p>
-<p>All together: If a car’s city fuel efficiency increases by 1mpg, we expect its highway fuel efficiency to increase by 1.337mpg.</p>
-<p>2nd: <span class="math inline">\(b_0\)</span> = the intercept</p>
-<p>The intercept is our prediction when <span class="math inline">\(x=0\)</span>.</p>
-<p>If a car has a city mpg of zero, we expect its highway mpg to be 0.892. Notice: this doesn’t make sense! Note: this is an example of “extrapolation”, since <span class="math inline">\(x=0\)</span> is unreasonable.</p>
-<p>Extrapolation is the process of using “unreasonable” x values to predict y. “Unreasonable” is up to your good human judgement. More on that later.</p>
+<ul>
+<li>First: <strong>slope</strong> = <span class="math inline">\(b_1\)</span>.<br />
+</li>
+<li>Slope tells you the amount of change in <span class="math inline">\(y\)</span> for each unit change in <span class="math inline">\(x\)</span>.</li>
+<li><p>In other words: if x gets bigger by 1, then we expect y to change by [slope].</p>
+<ul>
+<li>x: cty fuel efficiency in mpg</li>
+<li>y: hwy fuel efficiency in mpg</li>
+<li>All together: If a car’s city fuel efficiency increases by 1mpg, we expect its highway fuel efficiency to increase by 1.337mpg.</li>
+</ul></li>
+<li>2nd: <span class="math inline">\(b_0\)</span> = <strong>the intercept</strong>.<br />
+</li>
+<li><p>The intercept is our prediction when <span class="math inline">\(x=0\)</span>.</p>
+<ul>
+<li>If a car has a city mpg of zero, we expect its highway mpg to be 0.892. Notice: this doesn’t make sense! Note: this is an example of “extrapolation”, since <span class="math inline">\(x=0\)</span> is unreasonable.</li>
+</ul></li>
+<li><p><strong>Extrapolation</strong> is the process of using “unreasonable” x values to predict y. “Unreasonable” is up to your good human judgement.</p></li>
+</ul>
 </div>
 </div>
 <div id="residuals" class="section level2">

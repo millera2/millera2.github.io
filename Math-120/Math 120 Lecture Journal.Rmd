@@ -18,6 +18,17 @@ knitr::opts_chunk$set(echo = TRUE)
 
 **<big>NOTICE:</big>** The most recent lecture now shows up on the top.  How convenient! 
 
+## Monday 9/16
+
+- Interpreting residualal plots (continued)
+- Examining the effects of outliers 
+- Examples!
+
+
+## Friday 9/13
+
+Lab - Linear Regression
+
 ## Thursday 9/12
 
 - Least Squares Equation

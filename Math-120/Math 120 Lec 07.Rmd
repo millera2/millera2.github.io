@@ -271,23 +271,21 @@ Thus, we're predicting hwy mpg based upon cty mpg.
 
 You can now get coeffs from lm.  But what do they **mean**?
 
-First:  slope = $b_1$.  Slope tells you the amount of change in $y$ for each unit change in $x$.
+- First:  **slope** = $b_1$.  
+- Slope tells you the amount of change in $y$ for each unit change in $x$.
+- In other words:  if x gets bigger by 1, then we expect y to change by [slope].
 
-In other words:  if x gets bigger by 1, then we expect y to change by [slope].
+    - x: cty fuel efficiency in mpg
+    - y: hwy fuel efficiency in mpg
+    - All together:  If a car's city fuel efficiency increases by 1mpg, we expect its highway fuel efficiency to increase by 1.337mpg.
 
-x: cty fuel efficiency in mpg
-y: hwy fuel efficiency in mpg
+- 2nd:  $b_0$ = **the intercept**.  
+- The intercept is our prediction when $x=0$.
 
-All together:  If a car's city fuel efficiency increases by 1mpg, we expect its highway fuel efficiency to increase by 1.337mpg.
-
-2nd:  $b_0$ = the intercept
-
-The intercept is our prediction when $x=0$.
-
-If a car has a city mpg of zero, we expect its highway mpg to be 0.892.  Notice:  this doesn't make sense!  Note: this is an example of "extrapolation", since $x=0$ is unreasonable.
+  - If a car has a city mpg of zero, we expect its highway mpg to be 0.892.  Notice:  this doesn't make sense!  Note: this is an example of "extrapolation", since $x=0$ is unreasonable.
 
 
-Extrapolation is the process of using "unreasonable" x values to predict y.  "Unreasonable" is up to your good human judgement.  More on that later.
+- **Extrapolation** is the process of using "unreasonable" x values to predict y.  "Unreasonable" is up to your good human judgement.  
 
 
 ## Residuals
