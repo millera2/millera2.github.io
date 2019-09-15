@@ -1,5 +1,5 @@
 ---
-title: "Math 120 Lec 06 "
+title: "Math 120 Lec 06-07"
 author: "Ali Miller"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
@@ -43,7 +43,7 @@ youShouldRenameThis <- read_csv("death penalty data.csv")
 
 
 ## Intro to Correlation and Linear Regression
-
+[Note:  This is a continuation of the work in Lec 06]
 
 We start with a scatterplot, an x-y plot of two numerical variables.
 
@@ -98,11 +98,11 @@ The correl coefficient r measures the strength and direction of our relationship
 
 Warning!  **r only describes linear relationships**.  Ex on board: smiley scatterplot.
 
-##### Properties of r
+##### Properties of $r$
 
--   -1 < r < 1    always!!!!!  (not possible to have r=1.3)
+-   -1 < $r$ < 1    always!!!!!  (not possible to have $r$=1.3)
 - doesn't matter which is x, which is y
-- r doesn't depend on units (i.e. feet/meters)  (whew! don't have to worry about data units!!)
+- $r$ doesn't depend on units (i.e. feet/meters)  (whew! don't have to worry about data units!!)
 
 
 
@@ -111,7 +111,7 @@ Warning!  **r only describes linear relationships**.  Ex on board: smiley scatte
 
 ### Example: 8.8 on page 314
 
-Identifying r in graphs.
+Identifying $r$ in graphs.
 
 ## Least Squares Equation
 
@@ -122,15 +122,15 @@ Identifying r in graphs.
 
 It's a line!  In high school, you wrote:
 
-- y = mx+b
+ $$y = mx+b$$
 
 In stats, we use different letters:
 
-- $\hat{y} = b_1 \cdot x + b_0$
+$$\hat{y} = b_1 \cdot x + b_0$$
 
-$b_1$ is the slope (like m)
+$b_1$ is the slope (like $m$)
 
-$b_0$ is the intercept (like b)
+$b_0$ is the intercept (like $b$)
 
 Exactly the same!
 
@@ -230,7 +230,7 @@ summary(mpgModel)
 
 ### Making predictions
 
-R has built-in prediction thingies, but don't use them:  it's easy!
+R has built-in prediction thingies, but don't use them:  it's easier just calculating.
 
 Ex:  Using this model, predict the hwy fuel efficiency of a car that gets 30mpg in the city.
 
@@ -282,9 +282,9 @@ All together:  If a car's city fuel efficiency increases by 1mpg, we expect its 
 
 2nd:  $b_0$ = the intercept
 
-The intercept is our prediction when x=0.
+The intercept is our prediction when $x=0$.
 
-If a car has a city mpg of zero, we expect its highway mpg to be 0.892.  Notice:  this doesn't make sense!  Note: this is an example of "extrapolation", since x=0 is unreasonable.
+If a car has a city mpg of zero, we expect its highway mpg to be 0.892.  Notice:  this doesn't make sense!  Note: this is an example of "extrapolation", since $x=0$ is unreasonable.
 
 
 Extrapolation is the process of using "unreasonable" x values to predict y.  "Unreasonable" is up to your good human judgement.  More on that later.
@@ -343,11 +343,11 @@ If residuals follow a visible pattern, it suggests that there could be a better 
 
 
 
-## Coefficient of Determination R^2
+## Coefficient of Determination $R^2$
 
 The symbol is $R^2$ or $r^2$.  Btw, it really is $(r)^2$.
 
-R^2 tells us something special:  it's the percent of variation in the y data that because of the linear rel with the x data.
+$R^2$ tells us something special:  it's the percent of variation in the y data that because of the linear rel with the x data.
 
 Eg: mpg:  displ (x) vs (cty) (y)
 
@@ -368,3 +368,4 @@ Even though we know that displacement (i.e. size) of the engine isn't the only t
 
 ## Effects of Outliers
 
+(to be continued)
