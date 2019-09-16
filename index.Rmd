@@ -49,8 +49,5 @@ theme_set(                                #this sets the theme for all    #
 
 <br><br><br><br><br>
 
-<<<<<<< HEAD
+
 <small> [Prof Miller's Top Secret Super Awesome Private R Server](http://140.141.132.155:8787/) </small>
-=======
-- [Prof Miller's Top Secret Super Awesome Private R Server](http://140.141.132.155:8787/)
->>>>>>> f476cee91e69acbf3b255f4cc75e69ccde3d91bc
