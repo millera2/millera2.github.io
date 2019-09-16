@@ -1,0 +1,184 @@
+---
+title: "DA 101 Lec 06"
+author: "Ali Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 4
+    code_folding: show
+    theme: simplex
+    df_print: paged
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+## Data Scrubbing Overview
+
+There's no one way to wrangle data; each dataset is unique (and uniquely messy!).  However, there are some "best practices" to follow:
+
+### 1) Need Tidy Data
+
+- Useful functions:  `gather()` and `spread()`
+
+
+### 2) Variables Have Correct "Type"
+
+- Useful functions:  "as functions":  as.Date(), as.int(), as.numeric(), as.str() etc
+
+Ex:  dates shoul be in date format so that we can do math
+Ex:  In the CIRP Data:
+
+```{r}
+cirpData <- read_csv("CIRP2014Data.csv")
+head(cirpData)
+
+```
+See:  sex is wrong type.  It should be a factor!  Use as.factor()
+
+
+### 3) Values Have Sensible Format
+
+Example:  cirp data should have "male" and "female", not 1 and 2.
+
+- Useful functions:  `recode()` changes "factor levels", and `sub()` is useful to edit formatting.
+
+I.e, `1` = "Male", `2` = "Female.
+
+
+### 4) Variable Names Are Human-Readable
+
+- Useful functions:  `rename()`
+
+```{r}
+cirpData %>% head
+cirpData %>% rename(YrEnglish = YRSTUDY1)
+
+# In class, I forgot the exact syntax of the `rename()` command.  Here's how I reminded myself:
+
+help("rename")
+
+```
+
+The cirp data has all kinds of wrangling opportunities.  Changing sex to facor.  Changing factor levels ot male/female.  Changing HSGPA labels to actual grades (A, B, ...) 
+
+
+
+
+
+
+## In-Class Challenge
+
+Can you tidy these datasets?  Each dataset gives a diffrent report about departments on several campuses.
+
+```{r}
+liberalArtsFunding <- read_csv("Liberal Arts Funding.csv")
+liberalArtsGenderRatio <- read_csv("Liberal Arts Gender Ratio.csv")
+liberalArtsRanking <- read_csv("Liberal Arts Ranking.csv")
+liberalArtsStudents <- read_csv("Liberal Arts Students.csv")
+liberalArtsFaculty <- read_csv("Liberal Arts Faculty.csv")
+#Funding Table
+
+#gather the data
+tidyFunding <- 
+  liberalArtsFunding %>% 
+  gather(Math, `Poli Sci`, Econ, English,
+         key="Department", value="Funding")
+
+#fix format issues
+tidyFunding$Funding <- 
+  sub("000","",tidyFunding$Funding)
+
+tidyFunding$Funding <- 
+  sub("k","",tidyFunding$Funding)
+
+
+#Gender Ratio Table
+
+
+tidyGenderRatio <- 
+  liberalArtsGenderRatio %>% 
+  gather(Math, `Poli Sci`, Econ, English, 
+         key="Department", value="Gender Ratio")
+
+tidyGenderRatio$`Gender Ratio` <-
+  sub("%", "", tidyGenderRatio$`Gender Ratio`)
+
+
+#Ranking Table
+
+tidyRanking <- 
+  liberalArtsRanking %>% 
+  gather(Math, `Poli Sci`, Econ, English, 
+         key="Department", value="Ranking")
+
+#clean up!
+
+tidyRanking$Ranking <- 
+  sub("th","", tidyRanking$Ranking)
+
+tidyRanking$Ranking <- 
+  sub("rd","", tidyRanking$Ranking)
+
+tidyRanking$Ranking <- 
+  sub("nd","", tidyRanking$Ranking)
+
+
+
+#Students and Faculty Tables
+
+tidyStudents <- 
+  liberalArtsStudents %>% 
+  gather(Math, Psych, Econ, English, 
+         key="Department", value="Students")
+
+tidyFaculty <- 
+  liberalArtsFaculty %>% 
+  gather(Math, Psych, Econ, English, 
+         key="Department", value="Faculty")
+
+
+#Join The Tables
+
+tidyTable <- tidyFaculty %>% 
+  full_join(tidyFunding) %>% 
+  full_join(tidyGenderRatio) %>% 
+  full_join(tidyRanking) %>%
+  full_join(tidyStudents) 
+
+tidyTable
+
+```
+
+Note that 
+
+
+Follow-up Questions:
+
+1) How many departments have more than 20000 in funding?  Hint: `filter()`
+
+2) How many departments have more than 20000 in funding and a gender ratio higher than 10%?  Hint:  `filter()`
+
+3) Make a table that contains the total number of students at each school. (`group_by()` and `summarise()`)
+
+4) Add a column that shows student/teacher ratio. (`mutate()`)
+
+5) Sort the table by funding. (`arrange()`)
+
