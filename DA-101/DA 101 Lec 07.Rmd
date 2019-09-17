@@ -30,63 +30,7 @@ theme_set(theme_tufte() +
 #------------------------------------------------#
 ```
 
-## Data Scrubbing Overview
-
-There's no one way to wrangle data; each dataset is unique (and uniquely messy!).  However, there are some "best practices" to follow:
-
-### 1) Need Tidy Data
-
-- Useful functions:  `gather()` and `spread()`
-
-
-### 2) Variables Have Correct "Type"
-
-- Useful functions:  "as functions":  as.Date(), as.int(), as.numeric(), as.str() etc
-
-Ex:  dates shoul be in date format so that we can do math
-Ex:  In the CIRP Data:
-
-```{r}
-cirpData <- read_csv("CIRP2014Data.csv")
-head(cirpData)
-
-```
-See:  sex is wrong type.  It should be a factor!  Use as.factor()
-
-
-### 3) Values Have Sensible Format
-
-Example:  cirp data should have "male" and "female", not 1 and 2.
-
-- Useful functions:  `recode()` changes "factor levels", and `sub()` is useful to edit formatting.
-
-I.e, `1` = "Male", `2` = "Female.
-
-
-### 4) Variable Names Are Human-Readable
-
-- Useful functions:  `rename()`
-
-```{r}
-cirpData %>% head
-cirpData %>% rename(YrEnglish = YRSTUDY1)
-
-# In class, I forgot the exact syntax of the `rename()` command.  Here's how I reminded myself:
-
-help("rename")
-
-```
-
-The cirp data has all kinds of wrangling opportunities.  Changing sex to facor.  Changing factor levels ot male/female.  Changing HSGPA labels to actual grades (A, B, ...) 
-
-
-
-
-
-
-## In-Class Challenge
-
-Can you tidy these datasets?  Each dataset gives a diffrent report about departments on several campuses.
+## From Last Time:
 
 ```{r}
 liberalArtsFunding <- read_csv("Liberal Arts Funding.csv")
