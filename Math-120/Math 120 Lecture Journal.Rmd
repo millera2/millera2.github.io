@@ -18,6 +18,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 **<big>NOTICE:</big>** The most recent lecture now shows up on the top.  How convenient! 
 
+# Week 4
 
 ## Wednesday 9/19
 
@@ -36,6 +37,7 @@ knitr::opts_chunk$set(echo = TRUE)
 - Examining the effects of outliers 
 - Examples!
 
+# Week 3
 
 ## Friday 9/13
 
@@ -89,7 +91,8 @@ Lab - Linear Regression
   - Clustered
   - Multistage
   - Ex: 1.19, 1.23
-  
+ 
+# Week 2 
     
 ## Friday 9/6
 
@@ -130,6 +133,7 @@ Lab - Linear Regression
   - How to facet by color (`fill= ...`), and what can go wrong.
 
 
+# Week 1
 
 ## Friday 8/30
 
