@@ -1,5 +1,5 @@
 ---
-title: "Your Title"
+title: "DA 101 Lec 07"
 author: "Your Name"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
@@ -30,15 +30,94 @@ theme_set(theme_tufte() +
 #------------------------------------------------#
 ```
 
-## Delete Below This ## 
+## In-class Activity 2: The Second Part 
 
-Remember, the white part is where we type our thoughts/obvservations/narrative.
+Here's all the neat stuff we did last time:
+
 
 ```{r}
+liberalArtsFunding <- read_csv("Liberal Arts Funding.csv")
+liberalArtsGenderRatio <- read_csv("Liberal Arts Gender Ratio.csv")
+liberalArtsRanking <- read_csv("Liberal Arts Ranking.csv")
+liberalArtsStudents <- read_csv("Liberal Arts Students.csv")
+liberalArtsFaculty <- read_csv("Liberal Arts Faculty.csv")
+#Funding Table
 
-# And here in the gray part is our code
+#gather the data
+tidyFunding <- 
+  liberalArtsFunding %>% 
+  gather(Math, `Poli Sci`, Econ, English,
+         key="Department", value="Funding")
+
+#fix format issues
+tidyFunding$Funding <- 
+  sub("000","",tidyFunding$Funding)
+
+tidyFunding$Funding <- 
+  sub("k","",tidyFunding$Funding)
 
 
+#Gender Ratio Table
+
+
+tidyGenderRatio <- 
+  liberalArtsGenderRatio %>% 
+  gather(Math, `Poli Sci`, Econ, English, 
+         key="Department", value="Gender Ratio")
+
+tidyGenderRatio$`Gender Ratio` <-
+  sub("%", "", tidyGenderRatio$`Gender Ratio`)
+
+
+#Ranking Table
+
+tidyRanking <- 
+  liberalArtsRanking %>% 
+  gather(Math, `Poli Sci`, Econ, English, 
+         key="Department", value="Ranking")
+
+#clean up!
+
+tidyRanking$Ranking <- 
+  sub("th","", tidyRanking$Ranking)
+
+tidyRanking$Ranking <- 
+  sub("rd","", tidyRanking$Ranking)
+
+tidyRanking$Ranking <- 
+  sub("nd","", tidyRanking$Ranking)
+
+
+
+#Students and Faculty Tables
+
+tidyStudents <- 
+  liberalArtsStudents %>% 
+  gather(Math, Psych, Econ, English, 
+         key="Department", value="Students")
+
+tidyFaculty <- 
+  liberalArtsFaculty %>% 
+  gather(Math, Psych, Econ, English, 
+         key="Department", value="Faculty")
+
+
+#Join The Tables
+
+tidyTable <- tidyFaculty %>% 
+  full_join(tidyFunding) %>% 
+  full_join(tidyGenderRatio) %>% 
+  full_join(tidyRanking) %>%
+  full_join(tidyStudents) 
+
+tidyTable
 
 ```
+
+### Question:  Are we done wrangling?
+
+```{r}
+tidyTable %>% filter(Funding>10)
+```
+
 
