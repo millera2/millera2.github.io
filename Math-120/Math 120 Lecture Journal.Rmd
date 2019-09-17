@@ -18,12 +18,26 @@ knitr::opts_chunk$set(echo = TRUE)
 
 **<big>NOTICE:</big>** The most recent lecture now shows up on the top.  How convenient! 
 
+# Week 4
+
+## Wednesday 9/19
+
+- Reading Discussion: What is Randomness?
+- Final Considerations about Linear Models (for now)
+  - Use numerical variables
+  - Correlation $\neq$ causation!
+  - Spurrious Correlations
+- Randomness
+  - In-class Demo: Gambling!!!
+
+
 ## Monday 9/16
 
 - Interpreting residualal plots (continued)
 - Examining the effects of outliers 
 - Examples!
 
+# Week 3
 
 ## Friday 9/13
 
@@ -77,7 +91,8 @@ Lab - Linear Regression
   - Clustered
   - Multistage
   - Ex: 1.19, 1.23
-  
+ 
+# Week 2 
     
 ## Friday 9/6
 
@@ -118,6 +133,7 @@ Lab - Linear Regression
   - How to facet by color (`fill= ...`), and what can go wrong.
 
 
+# Week 1
 
 ## Friday 8/30
 
