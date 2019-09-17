@@ -18,6 +18,18 @@ knitr::opts_chunk$set(echo = TRUE)
 
 **<big>NOTICE:</big>** The most recent lecture now shows up on the top.  How convenient! 
 
+
+## Wednesday 9/19
+
+- Reading Discussion: What is Randomness?
+- Final Considerations about Linear Models (for now)
+  - Use numerical variables
+  - Correlation $\neq$ causation!
+  - Spurrious Correlations
+- Randomness
+  - In-class Demo: Gambling!!!
+
+
 ## Monday 9/16
 
 - Interpreting residualal plots (continued)
