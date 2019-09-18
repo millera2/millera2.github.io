@@ -18,9 +18,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 **<big>NOTICE:</big>** The most recent lecture now shows up on the top.  How convenient! 
 
-# Week 4
+## Week 4
 
-## Wednesday 9/19
+### Wednesday 9/19
 
 - Reading Discussion: What is Randomness?
 - Final Considerations about Linear Models (for now)
@@ -31,19 +31,19 @@ knitr::opts_chunk$set(echo = TRUE)
   - In-class Demo: Gambling!!!
 
 
-## Monday 9/16
+### Monday 9/16
 
 - Interpreting residualal plots (continued)
 - Examining the effects of outliers 
 - Examples!
 
-# Week 3
+## Week 3
 
-## Friday 9/13
+### Friday 9/13
 
 Lab - Linear Regression
 
-## Thursday 9/12
+### Thursday 9/12
 
 - Least Squares Equation
   - The equation
@@ -59,7 +59,7 @@ Lab - Linear Regression
 - Effects of Outliers
 
   
-## Wednesday 9/11
+### Wednesday 9/11
 
 - Reading Discussion: Linear Regression
 - Intro to Correlation and Linear Regression
@@ -73,7 +73,7 @@ Lab - Linear Regression
   
 
  
-## Monday 9/9
+### Monday 9/9
 
 - Reading Discussion: Sampling Strategies
 - Sampling 
@@ -92,9 +92,9 @@ Lab - Linear Regression
   - Multistage
   - Ex: 1.19, 1.23
  
-# Week 2 
+## Week 2 
     
-## Friday 9/6
+### Friday 9/6
 
 - Reading discussion:  how did lab go?  Thoughts? Questions? Insights?
 - Box Plots and Scatterplots In-Depth
@@ -104,14 +104,14 @@ Lab - Linear Regression
   
     
     
-## Thursday 9/5
+### Thursday 9/5
 
 - Lab day!  Still begin with reading discussion.
 - You'll have the whole hour to work.
 - **Start your lab before class**, so that you can get help!
 
 
-## Wednesday 9/4
+### Wednesday 9/4
 - Textbook:  Chapter 2
 - Imporant numerical summaries of data (statistics):
   - mean, median (measures of **center**)
@@ -122,7 +122,7 @@ Lab - Linear Regression
   - Understanding **shape**, **center**, and **spread**.
   
 
-## Monday 9/2
+### Monday 9/2
 
 - Reading Discussion:  Lab 1
   - Understand the codebook?
@@ -133,9 +133,9 @@ Lab - Linear Regression
   - How to facet by color (`fill= ...`), and what can go wrong.
 
 
-# Week 1
+## Week 1
 
-## Friday 8/30
+### Friday 8/30
 
 - Reading Discussion: Data Types 
   - Continuous, Discrete, Ordinal, Nominal
@@ -149,6 +149,6 @@ Lab - Linear Regression
    
    
    
-## Thursday 8/29
+### Thursday 8/29
 
 - Intro to class, syllabus day
