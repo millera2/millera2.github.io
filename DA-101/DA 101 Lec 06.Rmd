@@ -167,10 +167,12 @@ tidyTable
 
 ```
 
-Note that 
+## Where are we now?
 
 
-Follow-up Questions:
+
+
+## Follow-up Questions:
 
 1) How many departments have more than 20000 in funding?  Hint: `filter()`
 

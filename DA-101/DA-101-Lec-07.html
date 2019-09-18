@@ -10,7 +10,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Your Name" />
+<meta name="author" content="Ali Miller" />
 
 
 <title>DA 101 Lec 07</title>
@@ -1717,22 +1717,27 @@ summary {
 
 
 <h1 class="title toc-ignore">DA 101 Lec 07</h1>
-<h4 class="author">Your Name</h4>
-<h4 class="date">17 September, 2019</h4>
+<h4 class="author">Ali Miller</h4>
+<h4 class="date">18 September, 2019</h4>
 
 </div>
 
 <div id="TOC">
 <ul>
-<li><a href="#in-class-activity-2-the-second-part">In-class Activity 2: The Second Part</a><ul>
-<li><a href="#question-are-we-done-wrangling">Question: Are we done wrangling?</a></li>
+<li><a href="#from-last-time">From Last Time:</a></li>
+<li><a href="#where-are-we-now">Where are we now?</a></li>
+<li><a href="#follow-up-questions">Follow-up Questions:</a><ul>
+<li><a href="#how-many-departments-have-more-than-20000-in-funding-hint-filter">1) How many departments have more than 20000 in funding? Hint: <code>filter()</code></a></li>
+<li><a href="#how-many-departments-have-more-than-20000-in-funding-and-a-gender-ratio-higher-than-10-hint-filter">2) How many departments have more than 20000 in funding and a gender ratio higher than 10%? Hint: <code>filter()</code></a></li>
+<li><a href="#make-a-table-that-contains-the-total-number-of-students-at-each-school.-group_by-and-summarise">3) Make a table that contains the total number of students at each school. (<code>group_by()</code> and <code>summarise()</code>)</a></li>
+<li><a href="#add-a-column-that-shows-studentteacher-ratio.-mutate">4) Add a column that shows student/teacher ratio. (<code>mutate()</code>)</a></li>
+<li><a href="#sort-the-table-by-funding.-arrange">5) Sort the table by funding. (<code>arrange()</code>)</a></li>
 </ul></li>
 </ul>
 </div>
 
-<div id="in-class-activity-2-the-second-part" class="section level2">
-<h2>In-class Activity 2: The Second Part</h2>
-<p>Here’s all the neat stuff we did last time:</p>
+<div id="from-last-time" class="section level2">
+<h2>From Last Time:</h2>
 <pre class="r"><code>liberalArtsFunding &lt;- read_csv(&quot;Liberal Arts Funding.csv&quot;)
 liberalArtsGenderRatio &lt;- read_csv(&quot;Liberal Arts Gender Ratio.csv&quot;)
 liberalArtsRanking &lt;- read_csv(&quot;Liberal Arts Ranking.csv&quot;)
@@ -1813,12 +1818,127 @@ tidyTable</code></pre>
 {"columns":[{"label":["School"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Department"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Faculty"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Funding"],"name":[4],"type":["chr"],"align":["left"]},{"label":["Gender Ratio"],"name":[5],"type":["chr"],"align":["left"]},{"label":["Ranking"],"name":[6],"type":["chr"],"align":["left"]},{"label":["Students"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"Denison","2":"Math","3":"9","4":"80","5":"8","6":"22","7":"89"},{"1":"Vassar","2":"Math","3":"2","4":"25","5":"5","6":"10","7":"77"},{"1":"Wooster","2":"Math","3":"9","4":"30","5":"2","6":"13","7":"83"},{"1":"Kenyon","2":"Math","3":"5","4":"10","5":"7","6":"2","7":"10"},{"1":"Oberlin","2":"Math","3":"8","4":"15","5":"8","6":"14","7":"40"},{"1":"Denison","2":"Psych","3":"3","4":"NA","5":"NA","6":"NA","7":"11"},{"1":"Vassar","2":"Psych","3":"9","4":"NA","5":"NA","6":"NA","7":"77"},{"1":"Wooster","2":"Psych","3":"13","4":"NA","5":"NA","6":"NA","7":"71"},{"1":"Kenyon","2":"Psych","3":"7","4":"NA","5":"NA","6":"NA","7":"12"},{"1":"Oberlin","2":"Psych","3":"9","4":"NA","5":"NA","6":"NA","7":"66"},{"1":"Denison","2":"Econ","3":"15","4":"21","5":"5","6":"10","7":"23"},{"1":"Vassar","2":"Econ","3":"1","4":"15","5":"8","6":"8","7":"37"},{"1":"Wooster","2":"Econ","3":"8","4":"21","5":"10","6":"13","7":"47"},{"1":"Kenyon","2":"Econ","3":"15","4":"15","5":"27","6":"4","7":"82"},{"1":"Oberlin","2":"Econ","3":"5","4":"41","5":"13","6":"21st","7":"57"},{"1":"Denison","2":"English","3":"2","4":"15","5":"7","6":"14","7":"16"},{"1":"Vassar","2":"English","3":"11","4":"21","5":"4","6":"1st","7":"88"},{"1":"Wooster","2":"English","3":"11","4":"44","5":"15","6":"17","7":"60"},{"1":"Kenyon","2":"English","3":"13","4":"7","5":"15","6":"7","7":"55"},{"1":"Oberlin","2":"English","3":"6","4":"8","5":"18","6":"38","7":"74"},{"1":"Denison","2":"Poli Sci","3":"NA","4":"30","5":"9","6":"8","7":"NA"},{"1":"Vassar","2":"Poli Sci","3":"NA","4":"32","5":"12","6":"17","7":"NA"},{"1":"Wooster","2":"Poli Sci","3":"NA","4":"15","5":"12","6":"3","7":"NA"},{"1":"Kenyon","2":"Poli Sci","3":"NA","4":"21","5":"13","6":"12","7":"NA"},{"1":"Oberlin","2":"Poli Sci","3":"NA","4":"71","5":"15","6":"25","7":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div id="question-are-we-done-wrangling" class="section level3">
-<h3>Question: Are we done wrangling?</h3>
-<pre class="r"><code>tidyTable %&gt;% filter(Funding&gt;10)</code></pre>
+</div>
+<div id="where-are-we-now" class="section level2">
+<h2>Where are we now?</h2>
+<p>Hey, why are there nas? Well, let’s look at the data</p>
+<pre class="r"><code>liberalArtsFaculty</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["School"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Department"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Faculty"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Funding"],"name":[4],"type":["chr"],"align":["left"]},{"label":["Gender Ratio"],"name":[5],"type":["chr"],"align":["left"]},{"label":["Ranking"],"name":[6],"type":["chr"],"align":["left"]},{"label":["Students"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"Denison","2":"Math","3":"9","4":"80","5":"8","6":"22","7":"89"},{"1":"Vassar","2":"Math","3":"2","4":"25","5":"5","6":"10","7":"77"},{"1":"Wooster","2":"Math","3":"9","4":"30","5":"2","6":"13","7":"83"},{"1":"Oberlin","2":"Math","3":"8","4":"15","5":"8","6":"14","7":"40"},{"1":"Denison","2":"Econ","3":"15","4":"21","5":"5","6":"10","7":"23"},{"1":"Vassar","2":"Econ","3":"1","4":"15","5":"8","6":"8","7":"37"},{"1":"Wooster","2":"Econ","3":"8","4":"21","5":"10","6":"13","7":"47"},{"1":"Kenyon","2":"Econ","3":"15","4":"15","5":"27","6":"4","7":"82"},{"1":"Oberlin","2":"Econ","3":"5","4":"41","5":"13","6":"21st","7":"57"},{"1":"Denison","2":"English","3":"2","4":"15","5":"7","6":"14","7":"16"},{"1":"Vassar","2":"English","3":"11","4":"21","5":"4","6":"1st","7":"88"},{"1":"Wooster","2":"English","3":"11","4":"44","5":"15","6":"17","7":"60"},{"1":"Kenyon","2":"English","3":"13","4":"7","5":"15","6":"7","7":"55"},{"1":"Oberlin","2":"English","3":"6","4":"8","5":"18","6":"38","7":"74"},{"1":"Denison","2":"Poli Sci","3":"NA","4":"30","5":"9","6":"8","7":"NA"},{"1":"Vassar","2":"Poli Sci","3":"NA","4":"32","5":"12","6":"17","7":"NA"},{"1":"Wooster","2":"Poli Sci","3":"NA","4":"15","5":"12","6":"3","7":"NA"},{"1":"Kenyon","2":"Poli Sci","3":"NA","4":"21","5":"13","6":"12","7":"NA"},{"1":"Oberlin","2":"Poli Sci","3":"NA","4":"71","5":"15","6":"25","7":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["School"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Math"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Psych"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Econ"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["English"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"Denison","2":"9","3":"3","4":"15","5":"2"},{"1":"Vassar","2":"2","3":"9","4":"1","5":"11"},{"1":"Wooster","2":"9","3":"13","4":"8","5":"11"},{"1":"Kenyon","2":"5","3":"7","4":"15","5":"13"},{"1":"Oberlin","2":"8","3":"9","4":"5","5":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<pre class="r"><code>liberalArtsRanking</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["School"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Math"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Poli Sci"],"name":[3],"type":["chr"],"align":["left"]},{"label":["Econ"],"name":[4],"type":["chr"],"align":["left"]},{"label":["English"],"name":[5],"type":["chr"],"align":["left"]}],"data":[{"1":"Denison","2":"22nd","3":"8th","4":"10th","5":"14th"},{"1":"Vassar","2":"10th","3":"17th","4":"8th","5":"1st"},{"1":"Wooster","2":"13th","3":"3rd","4":"13th","5":"17th"},{"1":"Kenyon","2":"2nd","3":"12th","4":"4th","5":"7th"},{"1":"Oberlin","2":"14th","3":"25th","4":"21st","5":"38th"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Observation: the full join uses <strong>all</strong> data from all tables. If there’s not a match in one table, then those entries are filled with NA.</p>
+<p>Challenge: instead of full_join, try inner_join. What happens?</p>
+<pre class="r"><code>tidyFaculty %&gt;% 
+  inner_join(tidyFunding) %&gt;% 
+  inner_join(tidyGenderRatio) %&gt;% 
+  inner_join(tidyRanking) %&gt;%
+  inner_join(tidyStudents) </code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["School"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Department"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Faculty"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Funding"],"name":[4],"type":["chr"],"align":["left"]},{"label":["Gender Ratio"],"name":[5],"type":["chr"],"align":["left"]},{"label":["Ranking"],"name":[6],"type":["chr"],"align":["left"]},{"label":["Students"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"Denison","2":"Math","3":"9","4":"80","5":"8","6":"22","7":"89"},{"1":"Vassar","2":"Math","3":"2","4":"25","5":"5","6":"10","7":"77"},{"1":"Wooster","2":"Math","3":"9","4":"30","5":"2","6":"13","7":"83"},{"1":"Kenyon","2":"Math","3":"5","4":"10","5":"7","6":"2","7":"10"},{"1":"Oberlin","2":"Math","3":"8","4":"15","5":"8","6":"14","7":"40"},{"1":"Denison","2":"Econ","3":"15","4":"21","5":"5","6":"10","7":"23"},{"1":"Vassar","2":"Econ","3":"1","4":"15","5":"8","6":"8","7":"37"},{"1":"Wooster","2":"Econ","3":"8","4":"21","5":"10","6":"13","7":"47"},{"1":"Kenyon","2":"Econ","3":"15","4":"15","5":"27","6":"4","7":"82"},{"1":"Oberlin","2":"Econ","3":"5","4":"41","5":"13","6":"21st","7":"57"},{"1":"Denison","2":"English","3":"2","4":"15","5":"7","6":"14","7":"16"},{"1":"Vassar","2":"English","3":"11","4":"21","5":"4","6":"1st","7":"88"},{"1":"Wooster","2":"English","3":"11","4":"44","5":"15","6":"17","7":"60"},{"1":"Kenyon","2":"English","3":"13","4":"7","5":"15","6":"7","7":"55"},{"1":"Oberlin","2":"English","3":"6","4":"8","5":"18","6":"38","7":"74"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Inner join only takes data that’s in <strong>Both</strong> tables. I.e., has to be in all of them.</p>
+<p>Note: there’s also,</p>
+<ul>
+<li><code>left_join</code> uses everything in the first dataset, only what matches from the second. Useful for adding on data that matchs.</li>
+</ul>
+<pre class="r"><code>left_join(tidyFaculty, tidyRanking)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["School"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Department"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Faculty"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Ranking"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"Denison","2":"Math","3":"9","4":"22"},{"1":"Vassar","2":"Math","3":"2","4":"10"},{"1":"Wooster","2":"Math","3":"9","4":"13"},{"1":"Kenyon","2":"Math","3":"5","4":"2"},{"1":"Oberlin","2":"Math","3":"8","4":"14"},{"1":"Denison","2":"Psych","3":"3","4":"NA"},{"1":"Vassar","2":"Psych","3":"9","4":"NA"},{"1":"Wooster","2":"Psych","3":"13","4":"NA"},{"1":"Kenyon","2":"Psych","3":"7","4":"NA"},{"1":"Oberlin","2":"Psych","3":"9","4":"NA"},{"1":"Denison","2":"Econ","3":"15","4":"10"},{"1":"Vassar","2":"Econ","3":"1","4":"8"},{"1":"Wooster","2":"Econ","3":"8","4":"13"},{"1":"Kenyon","2":"Econ","3":"15","4":"4"},{"1":"Oberlin","2":"Econ","3":"5","4":"21st"},{"1":"Denison","2":"English","3":"2","4":"14"},{"1":"Vassar","2":"English","3":"11","4":"1st"},{"1":"Wooster","2":"English","3":"11","4":"17"},{"1":"Kenyon","2":"English","3":"13","4":"7"},{"1":"Oberlin","2":"English","3":"6","4":"38"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>This result has all data from tidyfaculty, and sticks NAs in for rankins where missing.</p>
+<p>Cool observation:</p>
+<ul>
+<li>Full join gave us 25 rows (all)</li>
+<li>Inner join gave us 15 rows (only those that match)</li>
+<li>Left_join gave us 20 rows: all in the left, only matching on the right.</li>
+</ul>
+</div>
+<div id="follow-up-questions" class="section level2">
+<h2>Follow-up Questions:</h2>
+<pre class="r"><code>tidyTable</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["School"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Department"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Faculty"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Funding"],"name":[4],"type":["chr"],"align":["left"]},{"label":["Gender Ratio"],"name":[5],"type":["chr"],"align":["left"]},{"label":["Ranking"],"name":[6],"type":["chr"],"align":["left"]},{"label":["Students"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"Denison","2":"Math","3":"9","4":"80","5":"8","6":"22","7":"89"},{"1":"Vassar","2":"Math","3":"2","4":"25","5":"5","6":"10","7":"77"},{"1":"Wooster","2":"Math","3":"9","4":"30","5":"2","6":"13","7":"83"},{"1":"Kenyon","2":"Math","3":"5","4":"10","5":"7","6":"2","7":"10"},{"1":"Oberlin","2":"Math","3":"8","4":"15","5":"8","6":"14","7":"40"},{"1":"Denison","2":"Psych","3":"3","4":"NA","5":"NA","6":"NA","7":"11"},{"1":"Vassar","2":"Psych","3":"9","4":"NA","5":"NA","6":"NA","7":"77"},{"1":"Wooster","2":"Psych","3":"13","4":"NA","5":"NA","6":"NA","7":"71"},{"1":"Kenyon","2":"Psych","3":"7","4":"NA","5":"NA","6":"NA","7":"12"},{"1":"Oberlin","2":"Psych","3":"9","4":"NA","5":"NA","6":"NA","7":"66"},{"1":"Denison","2":"Econ","3":"15","4":"21","5":"5","6":"10","7":"23"},{"1":"Vassar","2":"Econ","3":"1","4":"15","5":"8","6":"8","7":"37"},{"1":"Wooster","2":"Econ","3":"8","4":"21","5":"10","6":"13","7":"47"},{"1":"Kenyon","2":"Econ","3":"15","4":"15","5":"27","6":"4","7":"82"},{"1":"Oberlin","2":"Econ","3":"5","4":"41","5":"13","6":"21st","7":"57"},{"1":"Denison","2":"English","3":"2","4":"15","5":"7","6":"14","7":"16"},{"1":"Vassar","2":"English","3":"11","4":"21","5":"4","6":"1st","7":"88"},{"1":"Wooster","2":"English","3":"11","4":"44","5":"15","6":"17","7":"60"},{"1":"Kenyon","2":"English","3":"13","4":"7","5":"15","6":"7","7":"55"},{"1":"Oberlin","2":"English","3":"6","4":"8","5":"18","6":"38","7":"74"},{"1":"Denison","2":"Poli Sci","3":"NA","4":"30","5":"9","6":"8","7":"NA"},{"1":"Vassar","2":"Poli Sci","3":"NA","4":"32","5":"12","6":"17","7":"NA"},{"1":"Wooster","2":"Poli Sci","3":"NA","4":"15","5":"12","6":"3","7":"NA"},{"1":"Kenyon","2":"Poli Sci","3":"NA","4":"21","5":"13","6":"12","7":"NA"},{"1":"Oberlin","2":"Poli Sci","3":"NA","4":"71","5":"15","6":"25","7":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div id="how-many-departments-have-more-than-20000-in-funding-hint-filter" class="section level4">
+<h4>1) How many departments have more than 20000 in funding? Hint: <code>filter()</code></h4>
+<pre class="r"><code>tidyTable %&gt;% filter(Funding &gt; 20) %&gt;% nrow</code></pre>
+<pre><code>## [1] 14</code></pre>
+<p>Woah! Notice that funding is still a character type!</p>
+<p>Fix:</p>
+<pre class="r"><code>tidyTable %&gt;% filter(as.integer(Funding) &gt; 20) %&gt;% nrow</code></pre>
+<pre><code>## [1] 12</code></pre>
+<p>Wooooah! Using correct data types is super important! R tried to guess how the character works, but it guessed wrong!!</p>
+</div>
+<div id="how-many-departments-have-more-than-20000-in-funding-and-a-gender-ratio-higher-than-10-hint-filter" class="section level4">
+<h4>2) How many departments have more than 20000 in funding and a gender ratio higher than 10%? Hint: <code>filter()</code></h4>
+<pre class="r"><code>tidyTable %&gt;% filter(as.integer(Funding) &gt; 20  &amp; as.integer(`Gender Ratio`)&gt;10 )</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["School"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Department"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Faculty"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Funding"],"name":[4],"type":["chr"],"align":["left"]},{"label":["Gender Ratio"],"name":[5],"type":["chr"],"align":["left"]},{"label":["Ranking"],"name":[6],"type":["chr"],"align":["left"]},{"label":["Students"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"Oberlin","2":"Econ","3":"5","4":"41","5":"13","6":"21st","7":"57"},{"1":"Wooster","2":"English","3":"11","4":"44","5":"15","6":"17","7":"60"},{"1":"Vassar","2":"Poli Sci","3":"NA","4":"32","5":"12","6":"17","7":"NA"},{"1":"Kenyon","2":"Poli Sci","3":"NA","4":"21","5":"13","6":"12","7":"NA"},{"1":"Oberlin","2":"Poli Sci","3":"NA","4":"71","5":"15","6":"25","7":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="make-a-table-that-contains-the-total-number-of-students-at-each-school.-group_by-and-summarise" class="section level4">
+<h4>3) Make a table that contains the total number of students at each school. (<code>group_by()</code> and <code>summarise()</code>)</h4>
+<pre class="r"><code>tidyTable %&gt;% group_by(School) %&gt;% summarize(StudentTotal = sum(Students, na.rm = TRUE))</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["School"],"name":[1],"type":["chr"],"align":["left"]},{"label":["StudentTotal"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"Denison","2":"139"},{"1":"Kenyon","2":"159"},{"1":"Oberlin","2":"237"},{"1":"Vassar","2":"279"},{"1":"Wooster","2":"261"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Challenge: same, but average number of students:</p>
+<pre class="r"><code>tidyTable %&gt;% group_by(School) %&gt;% summarize(StudentMean= mean(Students, na.rm = TRUE))</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["School"],"name":[1],"type":["chr"],"align":["left"]},{"label":["StudentMean"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"Denison","2":"34.75"},{"1":"Kenyon","2":"39.75"},{"1":"Oberlin","2":"59.25"},{"1":"Vassar","2":"69.75"},{"1":"Wooster","2":"65.25"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="add-a-column-that-shows-studentteacher-ratio.-mutate" class="section level4">
+<h4>4) Add a column that shows student/teacher ratio. (<code>mutate()</code>)</h4>
+<pre class="r"><code>tidyTable %&gt;% mutate(studentTeacherRatio = Students/Faculty)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["School"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Department"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Faculty"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Funding"],"name":[4],"type":["chr"],"align":["left"]},{"label":["Gender Ratio"],"name":[5],"type":["chr"],"align":["left"]},{"label":["Ranking"],"name":[6],"type":["chr"],"align":["left"]},{"label":["Students"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["studentTeacherRatio"],"name":[8],"type":["dbl"],"align":["right"]}],"data":[{"1":"Denison","2":"Math","3":"9","4":"80","5":"8","6":"22","7":"89","8":"9.888889"},{"1":"Vassar","2":"Math","3":"2","4":"25","5":"5","6":"10","7":"77","8":"38.500000"},{"1":"Wooster","2":"Math","3":"9","4":"30","5":"2","6":"13","7":"83","8":"9.222222"},{"1":"Kenyon","2":"Math","3":"5","4":"10","5":"7","6":"2","7":"10","8":"2.000000"},{"1":"Oberlin","2":"Math","3":"8","4":"15","5":"8","6":"14","7":"40","8":"5.000000"},{"1":"Denison","2":"Psych","3":"3","4":"NA","5":"NA","6":"NA","7":"11","8":"3.666667"},{"1":"Vassar","2":"Psych","3":"9","4":"NA","5":"NA","6":"NA","7":"77","8":"8.555556"},{"1":"Wooster","2":"Psych","3":"13","4":"NA","5":"NA","6":"NA","7":"71","8":"5.461538"},{"1":"Kenyon","2":"Psych","3":"7","4":"NA","5":"NA","6":"NA","7":"12","8":"1.714286"},{"1":"Oberlin","2":"Psych","3":"9","4":"NA","5":"NA","6":"NA","7":"66","8":"7.333333"},{"1":"Denison","2":"Econ","3":"15","4":"21","5":"5","6":"10","7":"23","8":"1.533333"},{"1":"Vassar","2":"Econ","3":"1","4":"15","5":"8","6":"8","7":"37","8":"37.000000"},{"1":"Wooster","2":"Econ","3":"8","4":"21","5":"10","6":"13","7":"47","8":"5.875000"},{"1":"Kenyon","2":"Econ","3":"15","4":"15","5":"27","6":"4","7":"82","8":"5.466667"},{"1":"Oberlin","2":"Econ","3":"5","4":"41","5":"13","6":"21st","7":"57","8":"11.400000"},{"1":"Denison","2":"English","3":"2","4":"15","5":"7","6":"14","7":"16","8":"8.000000"},{"1":"Vassar","2":"English","3":"11","4":"21","5":"4","6":"1st","7":"88","8":"8.000000"},{"1":"Wooster","2":"English","3":"11","4":"44","5":"15","6":"17","7":"60","8":"5.454545"},{"1":"Kenyon","2":"English","3":"13","4":"7","5":"15","6":"7","7":"55","8":"4.230769"},{"1":"Oberlin","2":"English","3":"6","4":"8","5":"18","6":"38","7":"74","8":"12.333333"},{"1":"Denison","2":"Poli Sci","3":"NA","4":"30","5":"9","6":"8","7":"NA","8":"NA"},{"1":"Vassar","2":"Poli Sci","3":"NA","4":"32","5":"12","6":"17","7":"NA","8":"NA"},{"1":"Wooster","2":"Poli Sci","3":"NA","4":"15","5":"12","6":"3","7":"NA","8":"NA"},{"1":"Kenyon","2":"Poli Sci","3":"NA","4":"21","5":"13","6":"12","7":"NA","8":"NA"},{"1":"Oberlin","2":"Poli Sci","3":"NA","4":"71","5":"15","6":"25","7":"NA","8":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Challenge: Find average student teacher ratio at the schools (by department)</p>
+<pre class="r"><code>tidyTable %&gt;% group_by(Department) %&gt;% mutate(AvgRatio = mean(Students/Faculty, na.rm = TRUE))</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["School"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Department"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Faculty"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Funding"],"name":[4],"type":["chr"],"align":["left"]},{"label":["Gender Ratio"],"name":[5],"type":["chr"],"align":["left"]},{"label":["Ranking"],"name":[6],"type":["chr"],"align":["left"]},{"label":["Students"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["AvgRatio"],"name":[8],"type":["dbl"],"align":["right"]}],"data":[{"1":"Denison","2":"Math","3":"9","4":"80","5":"8","6":"22","7":"89","8":"12.922222"},{"1":"Vassar","2":"Math","3":"2","4":"25","5":"5","6":"10","7":"77","8":"12.922222"},{"1":"Wooster","2":"Math","3":"9","4":"30","5":"2","6":"13","7":"83","8":"12.922222"},{"1":"Kenyon","2":"Math","3":"5","4":"10","5":"7","6":"2","7":"10","8":"12.922222"},{"1":"Oberlin","2":"Math","3":"8","4":"15","5":"8","6":"14","7":"40","8":"12.922222"},{"1":"Denison","2":"Psych","3":"3","4":"NA","5":"NA","6":"NA","7":"11","8":"5.346276"},{"1":"Vassar","2":"Psych","3":"9","4":"NA","5":"NA","6":"NA","7":"77","8":"5.346276"},{"1":"Wooster","2":"Psych","3":"13","4":"NA","5":"NA","6":"NA","7":"71","8":"5.346276"},{"1":"Kenyon","2":"Psych","3":"7","4":"NA","5":"NA","6":"NA","7":"12","8":"5.346276"},{"1":"Oberlin","2":"Psych","3":"9","4":"NA","5":"NA","6":"NA","7":"66","8":"5.346276"},{"1":"Denison","2":"Econ","3":"15","4":"21","5":"5","6":"10","7":"23","8":"12.255000"},{"1":"Vassar","2":"Econ","3":"1","4":"15","5":"8","6":"8","7":"37","8":"12.255000"},{"1":"Wooster","2":"Econ","3":"8","4":"21","5":"10","6":"13","7":"47","8":"12.255000"},{"1":"Kenyon","2":"Econ","3":"15","4":"15","5":"27","6":"4","7":"82","8":"12.255000"},{"1":"Oberlin","2":"Econ","3":"5","4":"41","5":"13","6":"21st","7":"57","8":"12.255000"},{"1":"Denison","2":"English","3":"2","4":"15","5":"7","6":"14","7":"16","8":"7.603730"},{"1":"Vassar","2":"English","3":"11","4":"21","5":"4","6":"1st","7":"88","8":"7.603730"},{"1":"Wooster","2":"English","3":"11","4":"44","5":"15","6":"17","7":"60","8":"7.603730"},{"1":"Kenyon","2":"English","3":"13","4":"7","5":"15","6":"7","7":"55","8":"7.603730"},{"1":"Oberlin","2":"English","3":"6","4":"8","5":"18","6":"38","7":"74","8":"7.603730"},{"1":"Denison","2":"Poli Sci","3":"NA","4":"30","5":"9","6":"8","7":"NA","8":"NaN"},{"1":"Vassar","2":"Poli Sci","3":"NA","4":"32","5":"12","6":"17","7":"NA","8":"NaN"},{"1":"Wooster","2":"Poli Sci","3":"NA","4":"15","5":"12","6":"3","7":"NA","8":"NaN"},{"1":"Kenyon","2":"Poli Sci","3":"NA","4":"21","5":"13","6":"12","7":"NA","8":"NaN"},{"1":"Oberlin","2":"Poli Sci","3":"NA","4":"71","5":"15","6":"25","7":"NA","8":"NaN"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="sort-the-table-by-funding.-arrange" class="section level4">
+<h4>5) Sort the table by funding. (<code>arrange()</code>)</h4>
+<pre class="r"><code>help(arrange)
+
+
+arrange(tidyTable, Funding)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["School"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Department"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Faculty"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Funding"],"name":[4],"type":["chr"],"align":["left"]},{"label":["Gender Ratio"],"name":[5],"type":["chr"],"align":["left"]},{"label":["Ranking"],"name":[6],"type":["chr"],"align":["left"]},{"label":["Students"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"Kenyon","2":"Math","3":"5","4":"10","5":"7","6":"2","7":"10"},{"1":"Oberlin","2":"Math","3":"8","4":"15","5":"8","6":"14","7":"40"},{"1":"Vassar","2":"Econ","3":"1","4":"15","5":"8","6":"8","7":"37"},{"1":"Kenyon","2":"Econ","3":"15","4":"15","5":"27","6":"4","7":"82"},{"1":"Denison","2":"English","3":"2","4":"15","5":"7","6":"14","7":"16"},{"1":"Wooster","2":"Poli Sci","3":"NA","4":"15","5":"12","6":"3","7":"NA"},{"1":"Denison","2":"Econ","3":"15","4":"21","5":"5","6":"10","7":"23"},{"1":"Wooster","2":"Econ","3":"8","4":"21","5":"10","6":"13","7":"47"},{"1":"Vassar","2":"English","3":"11","4":"21","5":"4","6":"1st","7":"88"},{"1":"Kenyon","2":"Poli Sci","3":"NA","4":"21","5":"13","6":"12","7":"NA"},{"1":"Vassar","2":"Math","3":"2","4":"25","5":"5","6":"10","7":"77"},{"1":"Wooster","2":"Math","3":"9","4":"30","5":"2","6":"13","7":"83"},{"1":"Denison","2":"Poli Sci","3":"NA","4":"30","5":"9","6":"8","7":"NA"},{"1":"Vassar","2":"Poli Sci","3":"NA","4":"32","5":"12","6":"17","7":"NA"},{"1":"Oberlin","2":"Econ","3":"5","4":"41","5":"13","6":"21st","7":"57"},{"1":"Wooster","2":"English","3":"11","4":"44","5":"15","6":"17","7":"60"},{"1":"Kenyon","2":"English","3":"13","4":"7","5":"15","6":"7","7":"55"},{"1":"Oberlin","2":"Poli Sci","3":"NA","4":"71","5":"15","6":"25","7":"NA"},{"1":"Oberlin","2":"English","3":"6","4":"8","5":"18","6":"38","7":"74"},{"1":"Denison","2":"Math","3":"9","4":"80","5":"8","6":"22","7":"89"},{"1":"Denison","2":"Psych","3":"3","4":"NA","5":"NA","6":"NA","7":"11"},{"1":"Vassar","2":"Psych","3":"9","4":"NA","5":"NA","6":"NA","7":"77"},{"1":"Wooster","2":"Psych","3":"13","4":"NA","5":"NA","6":"NA","7":"71"},{"1":"Kenyon","2":"Psych","3":"7","4":"NA","5":"NA","6":"NA","7":"12"},{"1":"Oberlin","2":"Psych","3":"9","4":"NA","5":"NA","6":"NA","7":"66"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<pre class="r"><code>tidyTable %&gt;% arrange(Funding)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["School"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Department"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Faculty"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Funding"],"name":[4],"type":["chr"],"align":["left"]},{"label":["Gender Ratio"],"name":[5],"type":["chr"],"align":["left"]},{"label":["Ranking"],"name":[6],"type":["chr"],"align":["left"]},{"label":["Students"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"Kenyon","2":"Math","3":"5","4":"10","5":"7","6":"2","7":"10"},{"1":"Oberlin","2":"Math","3":"8","4":"15","5":"8","6":"14","7":"40"},{"1":"Vassar","2":"Econ","3":"1","4":"15","5":"8","6":"8","7":"37"},{"1":"Kenyon","2":"Econ","3":"15","4":"15","5":"27","6":"4","7":"82"},{"1":"Denison","2":"English","3":"2","4":"15","5":"7","6":"14","7":"16"},{"1":"Wooster","2":"Poli Sci","3":"NA","4":"15","5":"12","6":"3","7":"NA"},{"1":"Denison","2":"Econ","3":"15","4":"21","5":"5","6":"10","7":"23"},{"1":"Wooster","2":"Econ","3":"8","4":"21","5":"10","6":"13","7":"47"},{"1":"Vassar","2":"English","3":"11","4":"21","5":"4","6":"1st","7":"88"},{"1":"Kenyon","2":"Poli Sci","3":"NA","4":"21","5":"13","6":"12","7":"NA"},{"1":"Vassar","2":"Math","3":"2","4":"25","5":"5","6":"10","7":"77"},{"1":"Wooster","2":"Math","3":"9","4":"30","5":"2","6":"13","7":"83"},{"1":"Denison","2":"Poli Sci","3":"NA","4":"30","5":"9","6":"8","7":"NA"},{"1":"Vassar","2":"Poli Sci","3":"NA","4":"32","5":"12","6":"17","7":"NA"},{"1":"Oberlin","2":"Econ","3":"5","4":"41","5":"13","6":"21st","7":"57"},{"1":"Wooster","2":"English","3":"11","4":"44","5":"15","6":"17","7":"60"},{"1":"Kenyon","2":"English","3":"13","4":"7","5":"15","6":"7","7":"55"},{"1":"Oberlin","2":"Poli Sci","3":"NA","4":"71","5":"15","6":"25","7":"NA"},{"1":"Oberlin","2":"English","3":"6","4":"8","5":"18","6":"38","7":"74"},{"1":"Denison","2":"Math","3":"9","4":"80","5":"8","6":"22","7":"89"},{"1":"Denison","2":"Psych","3":"3","4":"NA","5":"NA","6":"NA","7":"11"},{"1":"Vassar","2":"Psych","3":"9","4":"NA","5":"NA","6":"NA","7":"77"},{"1":"Wooster","2":"Psych","3":"13","4":"NA","5":"NA","6":"NA","7":"71"},{"1":"Kenyon","2":"Psych","3":"7","4":"NA","5":"NA","6":"NA","7":"12"},{"1":"Oberlin","2":"Psych","3":"9","4":"NA","5":"NA","6":"NA","7":"66"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
