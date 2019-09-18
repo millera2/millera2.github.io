@@ -20,10 +20,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Week 4
 
-<<<<<<< HEAD
-### Wednesday 9/19
-=======
-## Thursday 9/20
+### Thursday 9/20
 
 - Understanding Contingency (Two-Way) Tables
 - Making Contingency Tables in R
@@ -35,7 +32,7 @@ knitr::opts_chunk$set(echo = TRUE)
 - Checking Independence
 
 ## Wednesday 9/19
->>>>>>> bc2f87858dd3f8c31f6ee530566afd1204866ad2
+
 
 - Reading Discussion: What is Randomness?
 - Final Considerations about Linear Models (for now)
