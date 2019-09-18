@@ -67,8 +67,6 @@ Warning for lab:  definitely don't use a categorical variable for you final mode
 
 ### Correlation ≠ causation!
 
-$\neq$
-
 Just because two things are correlated, that *doesn't* mean that one causes the other.
 
 It's possible that there's a causal relationship, but that's very hard to show.  Need many experiments (not observational studies)!!!

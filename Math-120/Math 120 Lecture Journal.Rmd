@@ -20,6 +20,17 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Week 4
 
+## Thursday 9/20
+
+- Understanding Contingency (Two-Way) Tables
+- Making Contingency Tables in R
+- Mutually Exclusive/Disjoint Events
+  - The "or" rule for mutually exclusive events
+- Conditional Probability
+- Independent Events
+  - The "and" rule for independent events
+- Checking Independence
+
 ## Wednesday 9/19
 
 - Reading Discussion: What is Randomness?
