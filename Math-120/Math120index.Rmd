@@ -37,6 +37,7 @@ theme_set(                                #this sets the theme for all    #
 *They look great on your phone, so you can read them anywhere.  Steal my code!  Don't understand something?  Ask me!*
 
 - [Lecture Journal](https://millera2.github.io/Math-120/Math-120-Lecture-Journal.html)
+- [Lec 09](https://millera2.github.io/Math-120/Math-120-Lec-09.html)
 - [Lec 08](https://millera2.github.io/Math-120/Math-120-Lec-08.html)
 - [Lec 06 - 07](https://millera2.github.io/Math-120/Math-120-Lec-07.html)
 - [Lec 05](https://millera2.github.io/Math-120/Math-120-Lec-05.html)

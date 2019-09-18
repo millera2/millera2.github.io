@@ -1718,7 +1718,7 @@ summary {
 
 <h1 class="title toc-ignore">Math 120 Lec 09</h1>
 <h4 class="author">Your Name</h4>
-<h4 class="date">17 September, 2019</h4>
+<h4 class="date">18 September, 2019</h4>
 
 </div>
 
@@ -1731,7 +1731,10 @@ summary {
 <li><a href="#spurrious-correlations">Spurrious Correlations</a></li>
 <li><a href="#randomness">Randomness</a></li>
 </ul></li>
-<li><a href="#in-class-demo-gambling">In-class Demo: Gambling!!!</a></li>
+<li><a href="#in-class-demo-gambling">In-class Demo: Gambling!!!</a><ul>
+<li><a href="#key-ideas">Key Ideas:</a></li>
+<li><a href="#law-of-large-numbers">Law of large numbers</a></li>
+</ul></li>
 </ul>
 </div>
 
@@ -1742,12 +1745,63 @@ summary {
 <h2>Final Considerations about Linear Models (for now)</h2>
 <div id="use-numerical-variables" class="section level3">
 <h3>Use numerical variables</h3>
+<p>Warning: Liner regression doesn’t make sense for categorical variables.</p>
+<p>Extra warning: R will still try to do it anyway. That doesn’t mean it’s correct.</p>
+<pre class="r"><code>mpg %&gt;% head</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["manufacturer"],"name":[1],"type":["chr"],"align":["left"]},{"label":["model"],"name":[2],"type":["chr"],"align":["left"]},{"label":["displ"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["year"],"name":[4],"type":["int"],"align":["right"]},{"label":["cyl"],"name":[5],"type":["int"],"align":["right"]},{"label":["trans"],"name":[6],"type":["chr"],"align":["left"]},{"label":["drv"],"name":[7],"type":["chr"],"align":["left"]},{"label":["cty"],"name":[8],"type":["int"],"align":["right"]},{"label":["hwy"],"name":[9],"type":["int"],"align":["right"]},{"label":["fl"],"name":[10],"type":["chr"],"align":["left"]},{"label":["class"],"name":[11],"type":["chr"],"align":["left"]}],"data":[{"1":"audi","2":"a4","3":"1.8","4":"1999","5":"4","6":"auto(l5)","7":"f","8":"18","9":"29","10":"p","11":"compact"},{"1":"audi","2":"a4","3":"1.8","4":"1999","5":"4","6":"manual(m5)","7":"f","8":"21","9":"29","10":"p","11":"compact"},{"1":"audi","2":"a4","3":"2.0","4":"2008","5":"4","6":"manual(m6)","7":"f","8":"20","9":"31","10":"p","11":"compact"},{"1":"audi","2":"a4","3":"2.0","4":"2008","5":"4","6":"auto(av)","7":"f","8":"21","9":"30","10":"p","11":"compact"},{"1":"audi","2":"a4","3":"2.8","4":"1999","5":"6","6":"auto(l5)","7":"f","8":"16","9":"26","10":"p","11":"compact"},{"1":"audi","2":"a4","3":"2.8","4":"1999","5":"6","6":"manual(m5)","7":"f","8":"18","9":"26","10":"p","11":"compact"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Here, it doesn’t make sense to use manufacturer or model (or any of the other categorical variables!).</p>
+<pre class="r"><code>stupidModel &lt;- lm(cty ~ manufacturer, data=mpg)
+
+
+summary(stupidModel)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = cty ~ manufacturer, data = mpg)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -7.5294 -1.6349 -0.1351  1.0000 14.0741 
+## 
+## Coefficients:
+##                        Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)             17.6111     0.6892  25.552  &lt; 2e-16 ***
+## manufacturerchevrolet   -2.6111     0.9618  -2.715 0.007160 ** 
+## manufacturerdodge       -4.4760     0.8403  -5.327 2.48e-07 ***
+## manufacturerford        -3.6111     0.9039  -3.995 8.84e-05 ***
+## manufacturerhonda        6.8333     1.1938   5.724 3.40e-08 ***
+## manufacturerhyundai      1.0317     1.0420   0.990 0.323192    
+## manufacturerjeep        -4.1111     1.2425  -3.309 0.001096 ** 
+## manufacturerland rover  -6.1111     1.6164  -3.781 0.000202 ***
+## manufacturerlincoln     -6.2778     1.8235  -3.443 0.000690 ***
+## manufacturermercury     -4.3611     1.6164  -2.698 0.007517 ** 
+## manufacturernissan       0.4658     1.0643   0.438 0.662060    
+## manufacturerpontiac     -0.6111     1.4782  -0.413 0.679710    
+## manufacturersubaru       1.6746     1.0420   1.607 0.109474    
+## manufacturertoyota       0.9183     0.8524   1.077 0.282502    
+## manufacturervolkswagen   3.3148     0.8898   3.725 0.000248 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 2.924 on 219 degrees of freedom
+## Multiple R-squared:  0.5563, Adjusted R-squared:  0.5279 
+## F-statistic: 19.61 on 14 and 219 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>Even though we get a summary, this still doesn’t make much sense!</p>
+<p>Warning for lab: definitely don’t use a categorical variable for you final model!</p>
 </div>
 <div id="correlation-causation" class="section level3">
 <h3>Correlation ≠ causation!</h3>
+<p><span class="math inline">\(\neq\)</span></p>
+<p>Just because two things are correlated, that <em>doesn’t</em> mean that one causes the other.</p>
+<p>It’s possible that there’s a causal relationship, but that’s very hard to show. Need many experiments (not observational studies)!!!</p>
 </div>
 <div id="spurrious-correlations" class="section level3">
 <h3>Spurrious Correlations</h3>
+<p>Notice how silly those correlations are, but also notice that r is very strong for all!</p>
+<p>Just because there’s a strong r, that doesn’t mean that one causes the other. Super, super, super important!</p>
 </div>
 <div id="randomness" class="section level3">
 <h3>Randomness</h3>
@@ -1755,6 +1809,29 @@ summary {
 </div>
 <div id="in-class-demo-gambling" class="section level2">
 <h2>In-class Demo: Gambling!!!</h2>
+<p>Interesting observation: for the original dice rolls, they’re all over the place. 1s, 2s, 3, …, 6s.. they’re all equally likely and impossible to predict.</p>
+<p>However, the -averages- over many rolls are <strong>very</strong> predictable.</p>
+<p>This illustrates the key idea of probabilty: individuals are impossible to predict, but <strong>groups</strong> are very predictable. The bigger the group, the better our prediction.</p>
+<div id="key-ideas" class="section level3">
+<h3>Key Ideas:</h3>
+<p>(note: all in text in chapter 3)</p>
+<ul>
+<li><p>A random event or random experiment is any scenario where the outcome is unknowable. I.e, dice roll.</p></li>
+<li><p>The probability that an event E occurs isthe proption of times we’d observe E, if we repeated the experiment an infinite number of times.</p></li>
+</ul>
+<p>Example: Let’s say E = we roll a 4.</p>
+<p>Intuitive (and correct) answer: 1/6. If we could roll our dice infinity times, we’d see a “4” on 1 out of every six rolls.</p>
+<p>Question: how can we roll the dice an infinite number of times??</p>
+<p>Answer: you can’t! Have to settle for the largest n we can afford.</p>
+<p>This isn’t terrible news, because of the <strong>law of large numbers</strong>!</p>
+</div>
+<div id="law-of-large-numbers" class="section level3">
+<h3>Law of large numbers</h3>
+<p>As the number of repetitions (n) of an experiment increases, our observed proportion will become closer and closer to the true probability.</p>
+<p>What a relief! As long as n is big, our observed probability is close to the true prob. <strong>And</strong>, we can say how close (i.e., margin of error).</p>
+<p>Dice example: true average is 3.5, and you all got close to it (between 3 and 4). More dice rolls, you get closer still!</p>
+<p>Probability is the math tool that lets us make conclusions about our data!! This works because <strong>randomness is highly ordered</strong>.</p>
+</div>
 </div>
 
 

@@ -1,5 +1,5 @@
 ---
-title: "DA 101 Lec 06"
+title: "DA 101 Lec 07"
 author: "Ali Miller"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
@@ -109,22 +109,133 @@ tidyTable <- tidyFaculty %>%
 
 tidyTable
 
+
+
+
 ```
 
 ## Where are we now?
 
+Hey, why are there nas?  Well, let's look at the data
+
+```{r}
+liberalArtsFaculty
+liberalArtsRanking
+```
+Observation: the full join uses **all** data from all tables.  If there's not a match in one table, then those entries are filled with NA.
+
+Challenge:  instead of full_join, try inner_join.  What happens?
+
+```{r}
+tidyFaculty %>% 
+  inner_join(tidyFunding) %>% 
+  inner_join(tidyGenderRatio) %>% 
+  inner_join(tidyRanking) %>%
+  inner_join(tidyStudents) 
+```
 
 
+
+Inner join only takes data that's in **Both** tables.  I.e., has to be in all of them.
+
+Note:  there's also,
+
+- `left_join` uses everything in the first dataset, only what matches from the second.  Useful for adding on data that matchs.
+
+
+```{r}
+left_join(tidyFaculty, tidyRanking)
+```
+
+This result has all data from tidyfaculty, and sticks NAs in for rankins where missing.
+
+Cool observation: 
+
+- Full join gave us 25 rows (all)
+- Inner join gave us 15 rows (only those that match)
+- Left_join gave us 20 rows:  all in the left, only matching on the right.
 
 ## Follow-up Questions:
 
-1) How many departments have more than 20000 in funding?  Hint: `filter()`
 
-2) How many departments have more than 20000 in funding and a gender ratio higher than 10%?  Hint:  `filter()`
+```{r}
+tidyTable
+```
 
-3) Make a table that contains the total number of students at each school. (`group_by()` and `summarise()`)
 
-4) Add a column that shows student/teacher ratio. (`mutate()`)
 
-5) Sort the table by funding. (`arrange()`)
+#### 1) How many departments have more than 20000 in funding?  Hint: `filter()`
+
+
+```{r}
+tidyTable %>% filter(Funding > 20) %>% nrow
+```
+
+
+Woah!  Notice that funding is still a character type!
+
+Fix:
+
+```{r}
+tidyTable %>% filter(as.integer(Funding) > 20) %>% nrow
+```
+
+
+Wooooah!  Using correct data types is super important!  R tried to guess how the character works, but it guessed wrong!!
+
+
+#### 2) How many departments have more than 20000 in funding and a gender ratio higher than 10%?  Hint:  `filter()`
+
+```{r}
+tidyTable %>% filter(as.integer(Funding) > 20  & as.integer(`Gender Ratio`)>10 )
+```
+
+
+
+#### 3) Make a table that contains the total number of students at each school. (`group_by()` and `summarise()`)
+
+```{r}
+tidyTable %>% group_by(School) %>% summarize(StudentTotal = sum(Students, na.rm = TRUE))
+```
+
+Challenge:  same, but average number of students:
+
+
+```{r}
+tidyTable %>% group_by(School) %>% summarize(StudentMean= mean(Students, na.rm = TRUE))
+
+```
+
+
+#### 4) Add a column that shows student/teacher ratio. (`mutate()`)
+
+```{r}
+
+tidyTable %>% mutate(studentTeacherRatio = Students/Faculty)
+
+```
+
+
+Challenge:  Find average student teacher ratio at the schools (by department)
+
+```{r}
+tidyTable %>% group_by(Department) %>% mutate(AvgRatio = mean(Students/Faculty, na.rm = TRUE))
+```
+
+
+
+
+#### 5) Sort the table by funding. (`arrange()`)
+
+
+```{r}
+help(arrange)
+
+
+arrange(tidyTable, Funding)
+
+
+tidyTable %>% arrange(Funding)
+
+```
 
