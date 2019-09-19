@@ -18,7 +18,33 @@ knitr::opts_chunk$set(echo = TRUE)
 
 **<big>NOTICE:</big>** The most recent lecture now shows up on the top.  How convenient! 
 
-## Week 4
+## Week 5 (Next Week)
+
+### Monday 9/24
+
+- Discrete Random Variables
+- Discrete Probability Distributions
+- Simple Example:  Rolling a single dice
+- Medium Example:  Sum of two dice
+- Expected Value of a discrete distro
+  - Definition
+  - Single dice example
+  - Sum of two dice example
+- Variance of a discrete distro
+  - Definition
+  - Single dice example
+  - Sum of two dice example
+- Linear Combos of Random Variables
+  - Mean of a linear combo
+    - Example:  
+  - Variance of a linear combo
+    - Example:
+
+
+## Week 4 (This Week)
+
+### Friday 9/21
+- TBA
 
 ### Thursday 9/20
 
