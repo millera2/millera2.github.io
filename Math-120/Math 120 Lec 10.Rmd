@@ -151,7 +151,7 @@ that's it!  "And" on the top, "Given" on the bottom.
 
 ## Independent Events
 
-
+normal  <big>  bigger </big>
 
 ### The "and" rule for independent events
 
