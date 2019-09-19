@@ -33,22 +33,120 @@ theme_set(theme_tufte() +
 
 ## Understanding Contingency (Two-Way) Tables
 
+Why two-way tables?  They're great for humans!
 
+The let us compare two categorical variables.
+
+Ex: reading discussion data.
+
+### Example Problems (Basics)
+
+If a a photo is selected at random, what's the probability...
+
+a) ... the photo was correctly identified as a fasion photo?
+
+= 197/1822
+
+
+b)  ... the photo is a fashion photo?
+
+=309/1822
+
+c)  ... computer thought it was a fashion photo?
+
+219/1822
+
+
+d) ... it's a fashion photo -or- the computer thought it was a fashion photo.
+
+
+(197+22+112)/1822
+
+
+```{r}
+(197+22+112)/1822
+```
+
+For scienteists, mathematicians, computer scientist, and everyone else, "or" is "inclusive or".  I.e., could be one, could be the other, could be both.
 
 ## Making Contingency Tables in R
+
+It's easy!  Just use the `table()` command!
+
+Example:  mpg data.  Two way table for class and drive shaft (drv).
+
+```{r}
+mpg %>% head
+
+table(mpg$class, mpg$drv)
+```
+
+Btw, it's also easy to get sums/total
+
+
+```{r}
+table(mpg$class, mpg$drv) %>% addmargins()
+```
 
 
 
 ## Mutually Exclusive/Disjoint Events
 
+The mean what you think they do:  it's impossible to be in both events!
 
+I.e., the number of outcomes in both event A and event B is zero!
+
+One more way:  The probability P(A and B) = 0.
+
+Ex:  Are the events "is a pickup" and "has front wheel drive" mutually exclusive?
+
+Answer:  since there are 0 pickups with front wheel drive, they **are** mutually exclusive/disjoint.
 
 ### The "or" rule for mutually exclusive events
 
 
+If A, B are disjoint, then:
+
+$$  P(A or B) = P(A) + P(B) - P(A and B)        $$
+
+Note:  since A, B are disjoint, the "and" prob is zero!  Thus,
+
+$$  P(A \cup B) = P(A)+P(B)   $$
+
+Use this on the car example:  what's the probability that a randomly selected car is either a pickup -or- has front wheel drive?  We already know they're mutually exclusive.  Use the rule!
+
+```{r}
+table(mpg$class, mpg$drv) %>% addmargins()
+```
+
+P(Pickup or FWD) = P(Pickup)+P(FWD)-P(Pickup and FWD)
+                 = 33/234   + 106/234 - 0/234
+
+```{r}
+33/234   + 106/234 - 0/234
+```
+                 
+                 
+Challenge:  draw venn for disjoint events:
+
+(see board, two seperate circles.)
 
 ## Conditional Probability
 
+Conditional:  we know that some other event has happened.
+
+P(A | B) = "the probability that A happens, given that B has occurred"
+
+The given condition comes after the bar.
+
+P(Rains | Cloudy outside) = Probability of rain, given that we see it's cloudy outside.
+
+For the formula P(A|B), we know B happened, care about A:
+
+
+P(A|B) =  P(A and B) / P(B)
+
+that's it!  "And" on the top, "Given" on the bottom.
 
 
 ## Independent Events

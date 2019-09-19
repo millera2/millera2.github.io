@@ -1718,13 +1718,15 @@ summary {
 
 <h1 class="title toc-ignore">Math 120 Lec 10</h1>
 <h4 class="author">Your Name</h4>
-<h4 class="date">18 September, 2019</h4>
+<h4 class="date">19 September, 2019</h4>
 
 </div>
 
 <div id="TOC">
 <ul>
-<li><a href="#understanding-contingency-two-way-tables">Understanding Contingency (Two-Way) Tables</a></li>
+<li><a href="#understanding-contingency-two-way-tables">Understanding Contingency (Two-Way) Tables</a><ul>
+<li><a href="#example-problems-basics">Example Problems (Basics)</a></li>
+</ul></li>
 <li><a href="#making-contingency-tables-in-r">Making Contingency Tables in R</a></li>
 <li><a href="#mutually-exclusivedisjoint-events">Mutually Exclusive/Disjoint Events</a><ul>
 <li><a href="#the-or-rule-for-mutually-exclusive-events">The “or” rule for mutually exclusive events</a></li>
@@ -1739,18 +1741,107 @@ summary {
 
 <div id="understanding-contingency-two-way-tables" class="section level2">
 <h2>Understanding Contingency (Two-Way) Tables</h2>
+<p>Why two-way tables? They’re great for humans!</p>
+<p>The let us compare two categorical variables.</p>
+<p>Ex: reading discussion data.</p>
+<div id="example-problems-basics" class="section level3">
+<h3>Example Problems (Basics)</h3>
+<p>If a a photo is selected at random, what’s the probability…</p>
+<ol style="list-style-type: lower-alpha">
+<li>… the photo was correctly identified as a fasion photo?</li>
+</ol>
+<p>= 197/1822</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>… the photo is a fashion photo?</li>
+</ol>
+<p>=309/1822</p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>… computer thought it was a fashion photo?</li>
+</ol>
+<p>219/1822</p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>… it’s a fashion photo -or- the computer thought it was a fashion photo.</li>
+</ol>
+<p>(197+22+112)/1822</p>
+<pre class="r"><code>(197+22+112)/1822</code></pre>
+<pre><code>## [1] 0.1816685</code></pre>
+<p>For scienteists, mathematicians, computer scientist, and everyone else, “or” is “inclusive or”. I.e., could be one, could be the other, could be both.</p>
+</div>
 </div>
 <div id="making-contingency-tables-in-r" class="section level2">
 <h2>Making Contingency Tables in R</h2>
+<p>It’s easy! Just use the <code>table()</code> command!</p>
+<p>Example: mpg data. Two way table for class and drive shaft (drv).</p>
+<pre class="r"><code>mpg %&gt;% head</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["manufacturer"],"name":[1],"type":["chr"],"align":["left"]},{"label":["model"],"name":[2],"type":["chr"],"align":["left"]},{"label":["displ"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["year"],"name":[4],"type":["int"],"align":["right"]},{"label":["cyl"],"name":[5],"type":["int"],"align":["right"]},{"label":["trans"],"name":[6],"type":["chr"],"align":["left"]},{"label":["drv"],"name":[7],"type":["chr"],"align":["left"]},{"label":["cty"],"name":[8],"type":["int"],"align":["right"]},{"label":["hwy"],"name":[9],"type":["int"],"align":["right"]},{"label":["fl"],"name":[10],"type":["chr"],"align":["left"]},{"label":["class"],"name":[11],"type":["chr"],"align":["left"]}],"data":[{"1":"audi","2":"a4","3":"1.8","4":"1999","5":"4","6":"auto(l5)","7":"f","8":"18","9":"29","10":"p","11":"compact"},{"1":"audi","2":"a4","3":"1.8","4":"1999","5":"4","6":"manual(m5)","7":"f","8":"21","9":"29","10":"p","11":"compact"},{"1":"audi","2":"a4","3":"2.0","4":"2008","5":"4","6":"manual(m6)","7":"f","8":"20","9":"31","10":"p","11":"compact"},{"1":"audi","2":"a4","3":"2.0","4":"2008","5":"4","6":"auto(av)","7":"f","8":"21","9":"30","10":"p","11":"compact"},{"1":"audi","2":"a4","3":"2.8","4":"1999","5":"6","6":"auto(l5)","7":"f","8":"16","9":"26","10":"p","11":"compact"},{"1":"audi","2":"a4","3":"2.8","4":"1999","5":"6","6":"manual(m5)","7":"f","8":"18","9":"26","10":"p","11":"compact"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<pre class="r"><code>table(mpg$class, mpg$drv)</code></pre>
+<pre><code>##             
+##               4  f  r
+##   2seater     0  0  5
+##   compact    12 35  0
+##   midsize     3 38  0
+##   minivan     0 11  0
+##   pickup     33  0  0
+##   subcompact  4 22  9
+##   suv        51  0 11</code></pre>
+<p>Btw, it’s also easy to get sums/total</p>
+<pre class="r"><code>table(mpg$class, mpg$drv) %&gt;% addmargins()</code></pre>
+<pre><code>##             
+##                4   f   r Sum
+##   2seater      0   0   5   5
+##   compact     12  35   0  47
+##   midsize      3  38   0  41
+##   minivan      0  11   0  11
+##   pickup      33   0   0  33
+##   subcompact   4  22   9  35
+##   suv         51   0  11  62
+##   Sum        103 106  25 234</code></pre>
 </div>
 <div id="mutually-exclusivedisjoint-events" class="section level2">
 <h2>Mutually Exclusive/Disjoint Events</h2>
+<p>The mean what you think they do: it’s impossible to be in both events!</p>
+<p>I.e., the number of outcomes in both event A and event B is zero!</p>
+<p>One more way: The probability P(A and B) = 0.</p>
+<p>Ex: Are the events “is a pickup” and “has front wheel drive” mutually exclusive?</p>
+<p>Answer: since there are 0 pickups with front wheel drive, they <strong>are</strong> mutually exclusive/disjoint.</p>
 <div id="the-or-rule-for-mutually-exclusive-events" class="section level3">
 <h3>The “or” rule for mutually exclusive events</h3>
+<p>If A, B are disjoint, then:</p>
+<p><span class="math display">\[  P(A or B) = P(A) + P(B) - P(A and B)        \]</span></p>
+<p>Note: since A, B are disjoint, the “and” prob is zero! Thus,</p>
+<p><span class="math display">\[  P(A \cup B) = P(A)+P(B)   \]</span></p>
+<p>Use this on the car example: what’s the probability that a randomly selected car is either a pickup -or- has front wheel drive? We already know they’re mutually exclusive. Use the rule!</p>
+<pre class="r"><code>table(mpg$class, mpg$drv) %&gt;% addmargins()</code></pre>
+<pre><code>##             
+##                4   f   r Sum
+##   2seater      0   0   5   5
+##   compact     12  35   0  47
+##   midsize      3  38   0  41
+##   minivan      0  11   0  11
+##   pickup      33   0   0  33
+##   subcompact   4  22   9  35
+##   suv         51   0  11  62
+##   Sum        103 106  25 234</code></pre>
+<p>P(Pickup or FWD) = P(Pickup)+P(FWD)-P(Pickup and FWD) = 33/234 + 106/234 - 0/234</p>
+<pre class="r"><code>33/234   + 106/234 - 0/234</code></pre>
+<pre><code>## [1] 0.5940171</code></pre>
+<p>Challenge: draw venn for disjoint events:</p>
+<p>(see board, two seperate circles.)</p>
 </div>
 </div>
 <div id="conditional-probability" class="section level2">
 <h2>Conditional Probability</h2>
+<p>Conditional: we know that some other event has happened.</p>
+<p>P(A | B) = “the probability that A happens, given that B has occurred”</p>
+<p>The given condition comes after the bar.</p>
+<p>P(Rains | Cloudy outside) = Probability of rain, given that we see it’s cloudy outside.</p>
+<p>For the formula P(A|B), we know B happened, care about A:</p>
+<p>P(A|B) = P(A and B) / P(B)</p>
+<p>that’s it! “And” on the top, “Given” on the bottom.</p>
 </div>
 <div id="independent-events" class="section level2">
 <h2>Independent Events</h2>
