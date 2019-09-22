@@ -48,10 +48,15 @@ theme_set(                                #this sets the theme for all    #
 - [Lec 01 ](https://millera2.github.io/Math-120/Math-120-Lec-01.html)
 
 
-## Next Quiz: Wed 9/18
+## Next Quiz: Wed 9/25
 
-- Lecture Coverage:  Lec 06, Lec 07, and Lec 08
-- Topics:  Linear regression, equation of least squres, understanding coefficients, $r$, $r^2$, residuals.
+- Lecture Coverage:  Lec 09, 10, and first half of 11.
+- Topics:  
+  - Probability, 
+  - law of large numbers, 
+  - contingency tables, 
+  - independent events, mutually exclusive events
+  - "or" rule, "and" rule for independent events.
 
 ## Labs
 

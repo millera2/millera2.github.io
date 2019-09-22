@@ -1,5 +1,5 @@
 ---
-title: "Math 120 Lec 10"
+title: "Math 120 Lec 10-11"
 author: "Your Name"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
@@ -153,9 +153,30 @@ that's it!  "And" on the top, "Given" on the bottom.
 
 
 
+
 ### The "and" rule for independent events
 
 
 
 ## Checking Independence
+
+### Example:  mpg drv and class
+
+
+### Example:  Death Penalty data
+
+```{r}
+deathData <- read_csv("death penalty data.csv")
+
+deathData%>% head
+
+table(deathData$Region, deathData$Method) %>% addmargins()
+
+
+
+1175/1442*158/1442
+
+152/1442
+```
+
 

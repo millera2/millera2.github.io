@@ -1,6 +1,6 @@
 ---
-title: "Math 120 Lec xx"
-author: "Your Name"
+title: "DA 101 Lec 08"
+author: "Ali Miller"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
   html_document:
@@ -9,7 +9,6 @@ output:
     code_folding: show
     theme: simplex
     df_print: paged
-  
   
 ---
 
@@ -31,15 +30,26 @@ theme_set(theme_tufte() +
 #------------------------------------------------#
 ```
 
-## Delete Below This ## 
+##  Hyp Tests and Significance: and intro
 
-Remember, the white part is where we type our thoughts/obvservations/narrative.
+*[Brief powerpoint in-class, available on Google Drive shared folder.]*
 
-```{r}
+In our reading about Breakfast studies, we learned that p-values and hypothesis tests are often misused.  A big problem:  software like R makeas it super easy to perform the tests, but that doesn't mean you know what you're doing!
 
-# And here in the gray part is our code
+A big goal of mine:  to help take the "magic" out of hypothesis tests so that students (you!) can use them appropriately and insightfully.
+
+## Case studies for hyp tests
+
+Let's analyze some examples in-depth, using datasets we're familiar with.
+
+### iris dataset
 
 
 
-```
+
+### mpg dataset
+
+
+### garlic mustard dataset
+
 

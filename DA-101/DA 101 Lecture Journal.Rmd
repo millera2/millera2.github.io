@@ -16,14 +16,23 @@ knitr::opts_chunk$set(echo = TRUE)
 *Note: All section numbers come from our text, ["R For Data Science"]("https://r4ds.had.co.nz").  
 
 
+## Monday 9/23
+
+- Hyp Tests and Significance: and intro
+- Case studies for hyp tests:
+  - iris dataset
+  - mpg dataset
+  - garlic mustard dataset
+- Lahman Database: Join Practice
+
+
 ## Wednesday 9/18
 
 - In RStudio:  The wrangled Liberal Arts data from last time.
   - (See Lec 06 for details, or copy/paste from Prof Miller's Scratch Pad)
 - Joins: the idea
 - Using dplyr functions on the wrangled Liberal Arts Data
-- Lahman Database: Join Practice
-- Hyp Tests and Significance: and intro
+
 
 
 ## Monday 9/16
