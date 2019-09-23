@@ -1,0 +1,113 @@
+---
+title: "Math 120 Lab 03 - Basic Probability"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: false
+    toc_depth: 3
+    code_folding: show
+    theme: yeti
+    df_print: paged
+  
+---
+
+```{r setup, include=FALSE}
+###########################################################################
+################# DON'T DELETE THIS PART!!!!!##############################
+###########################################################################
+                                                                          #
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)      #
+                                                                          #
+library(tidyverse)           #The tidyverse has all of our data tools     #
+library(ggthemes)            #ggthemes makes our graphs look nicer        #
+                                                                          # 
+theme_set(                                #this sets the theme for all    #
+  theme_tufte() +                         #plots that we make             #
+  theme(text=element_text(family="sans"))                                 #
+  )                                                                       #
+                                                                          #
+                                                                          #
+                                                                          #
+### Below is where you read and store your data.                          #
+                                                                          #
+youShouldRenameThis <- read_csv("death penalty data.csv")
+                                                                          #
+                                                                          #
+                                                                          #
+############# ^ ################################# ^ #######################
+############# | ## DON'T DELETE THIS PART!!!!!### | #######################
+############# | ################################# | #######################
+```
+
+
+
+## Introduction
+
+In this lab, we'll be making and interpreting contingency tables based on the death penalty dataset.  Students will demonstrate knowledge of basic probability concepts in the context of a real-world dataset.  
+
+## The dataset
+
+[You can download the data here](https://millera2.github.io/Data/death-penalty-data.csv), although you probably already have it from our work in class.  Most of the variables in the dataset (`death-penalty-data.csv`) have easy-to-understand column names, and thus no codebook is provided.
+
+You're already familiar with this dataset:  it's a list of names and details about all 1,442 Americans who've received the death penalty since the practice was legalized in 1977.  In this lab, you'll be answering some basic probability questions about the dataset.  You'll use the `table()` command quite frequently, so be sure to refer to our lecture notes for good examples.
+
+
+## Deliverables
+
+This lab is a bit more "structured" than others.  You have a list of questions to answer specifically, rather than a big topic to address wholistically.  That said, be sure to prent all of your work in a polished document that uses clean formatting, tight grammar, and crisp technical writing.  **If your problem refers to a table or distribution, be sure to include that table/distro in the discussion!**
+
+Your audience this time:  c'est moi, Prof Miller!  Show your dear old math professor everything you've learned about probability so far.  Here are things I'd like you to answer specifically:
+
+1) If an executed prisoner is randomly selected from the data, what's the probability that they died by lethal injection?  
+
+2) If three executed prisoners are randomly selected from the data, what's the probability that all three died by lethal injection?  What assumption must you make in order to compute this probability?  Is that a reasonable assumption?
+
+3) If an executed prisoner is randomly selected from the data, what's the probability that they died by lethal injection given that they were executed in the south?  
+
+4) If an executed prisoner is randomly selected from the data, what's the probability that either they're black or that they died in the south?
+
+5) If an executed prisoner is randomly selected from the data, what's the probability that they're both black and they died by electrocution?
+
+6) Consider the events A and B, where
+  - A = the event that a randomly selected executed prisoner is from the Midwest.
+  - B = the event that a randomly selected executed prisoner died by firing squad.
+  - Are events A and B mutually exclusive?  Why or why not?
+  
+7) Consider the events A and B, where
+  - A = the event that a randomly selected executed prisoner is from the Midwest.
+  - B = the event that a randomly selected executed prisoner died by firing squad.
+  - Using the definition of independence established in class, are events A and B independent?  Why or why not?  Is that the end of the story?  Are we convinced one way or the other?
+  
+8) Suppose X = the number of victims killed by a prisoner who's received the death penalty.  Construct a probability distribution for X.  Find the mean and variance of X.
+
+9) Referring to all the probabilities you've computed above: are these theoretical probabilities or relative frequency probabilities?  How does that contextualize the conclusions you've made?  What does the Law of Large Numbers have to say about it all?
+
+
+
+## Deadline and Grading
+
+This lab is due **Sunday, Sept 29th at 11:59pm**.   **I'll charge a 20% late fee per day late.**  
+
+I will assign grades on this project ”holistically”, not using a scoring sheet where each item is worth a certain number of points.
+
+- **B**: A ”B” project is very well done. It should have sound analysis, use appropriate statistical tools, support analysis with the appropriate graphs and other visual aids, and be a well-written document.
+
+- **C**: A ”C” project is solid, but usually lacking in one of the areas listed above. 
+
+- **D/F**: Projects below a C are severely deficient in the basic criteria or have failed to complete the assignment.
+
+- **A**: An ”A” project is truly above ordinary; it has exceptional qualities that make it stand out distinctly. An ”A” project is not the default grade.
+  - Does the project fulfill the requirements of the assignment?
+  - Does this report have a ”thesis” or ”story” that is the focus? Does the rest of the report support the thesis?
+  - Does the report use the subject matter from this unit appropriately? Are there tools being used in the wrong way? Is there an obvious tool that might have been used but was overlooked?
+  - Are the graphics factually correct? Are they formatted well? Do they give the first visual impression that is supportive of the thesis/story of the report, or do they indicate a different story?
+  - Is the report well-written? Is there good organization of ideas? Is the story/thesis communicated clearly? Is the analysis grounded in reasonable use of statis- tics? Is the paper free of mechanical and grammatical errors?
+  - Does the report provide the right context for the target audience? Is the right information provided? Have the right assumptions been made about what the audience knows or does not know?
+  
+  
+  
+  
+  
+  
+  
+  
