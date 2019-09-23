@@ -69,14 +69,14 @@ Your audience this time:  c'est moi, Prof Miller!  Show your dear old math profe
 5) If an executed prisoner is randomly selected from the data, what's the probability that they're both black and they died by electrocution?
 
 6) Consider the events A and B, where
-  - A = the event that a randomly selected executed prisoner is from the Midwest.
-  - B = the event that a randomly selected executed prisoner died by firing squad.
-  - Are events A and B mutually exclusive?  Why or why not?
+    - A = the event that a randomly selected executed prisoner is from the Midwest.
+    - B = the event that a randomly selected executed prisoner died by firing squad.
+    - Are events A and B mutually exclusive?  Why or why not?
   
 7) Consider the events A and B, where
-  - A = the event that a randomly selected executed prisoner is from the Midwest.
-  - B = the event that a randomly selected executed prisoner died by firing squad.
-  - Using the definition of independence established in class, are events A and B independent?  Why or why not?  Is that the end of the story?  Are we convinced one way or the other?
+    - A = the event that a randomly selected executed prisoner is from the Midwest.
+    - B = the event that a randomly selected executed prisoner died by firing squad.
+    - Using the definition of independence established in class, are events A and B independent?  Why or why not?  Is that the end of the story?  Are we convinced one way or the other?
   
 8) Suppose X = the number of victims killed by a prisoner who's received the death penalty.  Construct a probability distribution for X.  Find the mean and variance of X.
 
