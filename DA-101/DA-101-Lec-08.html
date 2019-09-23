@@ -1718,7 +1718,7 @@ summary {
 
 <h1 class="title toc-ignore">DA 101 Lec 08</h1>
 <h4 class="author">Ali Miller</h4>
-<h4 class="date">22 September, 2019</h4>
+<h4 class="date">23 September, 2019</h4>
 
 </div>
 
@@ -1736,20 +1736,96 @@ summary {
 <div id="hyp-tests-and-significance-and-intro" class="section level2">
 <h2>Hyp Tests and Significance: and intro</h2>
 <p><em>[Brief powerpoint in-class, available on Google Drive shared folder.]</em></p>
-<p>In our reading about Breakfast studies, we learned that p-values and hypothesis tests are often misused. A big problem: software like R makeas it super easy to perform the tests, but that doesn’t mean you know what you’re doing!</p>
-<p>A big goal of mine: to help take the “magic” out of hypothesis tests so that students (you!) can use them appropriately and insightfully.</p>
+<p>In our reading about Breakfast studies, we learned that p-values and hypothesis tests are often misused. A big problem: software like R makes it super easy to perform the tests, but that doesn’t mean you know what you’re doing!</p>
+<p>A big goal of mine: to help take the “magic” out of hypothesis tests so that students (you!) can use them appropriately and insight fully.</p>
 </div>
 <div id="case-studies-for-hyp-tests" class="section level2">
 <h2>Case studies for hyp tests</h2>
 <p>Let’s analyze some examples in-depth, using datasets we’re familiar with.</p>
 <div id="iris-dataset" class="section level3">
 <h3>iris dataset</h3>
+<p>Recall iris:</p>
+<pre class="r"><code>iris %&gt;% head</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Sepal.Length"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Sepal.Width"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Petal.Length"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Petal.Width"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Species"],"name":[5],"type":["fctr"],"align":["left"]}],"data":[{"1":"5.1","2":"3.5","3":"1.4","4":"0.2","5":"setosa","_rn_":"1"},{"1":"4.9","2":"3.0","3":"1.4","4":"0.2","5":"setosa","_rn_":"2"},{"1":"4.7","2":"3.2","3":"1.3","4":"0.2","5":"setosa","_rn_":"3"},{"1":"4.6","2":"3.1","3":"1.5","4":"0.2","5":"setosa","_rn_":"4"},{"1":"5.0","2":"3.6","3":"1.4","4":"0.2","5":"setosa","_rn_":"5"},{"1":"5.4","2":"3.9","3":"1.7","4":"0.4","5":"setosa","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Question: is there evidence of a difference in mean sepal length between the setosa and the virginica plants?</p>
+<p>First, we need to subset (filter):</p>
+<pre class="r"><code>#make subsets for each species
+
+setosaData &lt;- iris %&gt;% 
+                filter(Species==&quot;setosa&quot;)
+
+virginicaData &lt;- iris %&gt;% 
+                  filter(Species ==&quot;virginica&quot;)
+
+versicolorData &lt;- iris %&gt;%
+                   filter(Species == &quot;versicolor&quot;)</code></pre>
+<p>We have the subsets, now let’s test!</p>
+<p>The command is called <code>t.test()</code>.</p>
+<pre class="r"><code>#perform a two-t test
+
+t.test(setosaData$Sepal.Length, virginicaData$Sepal.Length)</code></pre>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  setosaData$Sepal.Length and virginicaData$Sepal.Length
+## t = -15.386, df = 76.516, p-value &lt; 2.2e-16
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -1.78676 -1.37724
+## sample estimates:
+## mean of x mean of y 
+##     5.006     6.588</code></pre>
+<p>Let’s interpret this:</p>
+<ul>
+<li>Type of test: 2-samp t test (comparing two population means)</li>
+<li>Two tail test</li>
+<li>H_0: $ _1 = _2$ (I.e., we assume the means are the same for both species) (note: always true for 2-samp t test)</li>
+<li><p>H_a: mu_1 != mu_2</p></li>
+<li><p>t test statistic: summary of the data. t = -15.386. This is a summary of our data, more on this later.</p></li>
+<li><p>our p-value: 2.2e-16 = .00000000000000022 (i.e., almost zero!) Here’s what this means: Assuming that there’s no difference in population mean between setosas and virginicas, there’s a .0000000000000000022 chance of observing a sample difference that’s a big as the one we saw. I.e., our sample is <strong>almost impossible</strong> if the null hyp is true.</p></li>
+<li><p>Since p is so small, it disagrees with the null hyp. We trust our data of course, and thus we REJECT the null hypothesis!</p></li>
+<li><p>Yaaay! We found evidence to support our claim. There’s strong evidence of a difference in mean sepal length between setosa and virginica.</p></li>
+<li><p>The end!</p></li>
+</ul>
 </div>
 <div id="mpg-dataset" class="section level3">
 <h3>mpg dataset</h3>
 </div>
 <div id="garlic-mustard-dataset" class="section level3">
 <h3>garlic mustard dataset</h3>
+<p>In-class challenge: perform a 2-samp t test on the variables you chose for lab 3 to investigate if there’s a difference between north american plants and european.</p>
+<pre class="r"><code>garlicData &lt;- read_csv(&quot;GarlicMustardData.csv&quot;)
+
+
+eurData &lt;- garlicData %&gt;% filter(Region == &quot;Europe&quot;)
+
+naData &lt;- garlicData %&gt;% filter(Region==&quot;NorthAm&quot;)
+
+
+# test for diff in bio1
+
+t.test(eurData$bio1, naData$bio1)</code></pre>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  eurData$bio1 and naData$bio1
+## t = -5.385, df = 399.45, p-value = 1.239e-07
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -1.367986 -0.636284
+## sample estimates:
+## mean of x mean of y 
+##  9.102683 10.104818</code></pre>
+<p>Interpret:</p>
+<p>hypotheses:</p>
+<p>h0: mu_1 = mu_2, i.e., the mean temp in na and eur is the same. ha: mu_1 != mu_2, i.e., there’s a difference in mean temp</p>
+<p>t = -5.385 (more about t stats in the future)</p>
+<p>p = .0000001239</p>
+<p>Since p&lt;.05, we reject the null hypothesis. There’s strong evidence of a difference in mean temp between eur and na (probably not too surprising, but here’s the mathematical evidence).</p>
 </div>
 </div>
 

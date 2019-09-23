@@ -1552,6 +1552,15 @@ window.onload = function() {
   PagedTableDoc.initAll();
 };
 </script>
+<script>$(document).ready(function(){
+    if (typeof $('[data-toggle="tooltip"]').tooltip === 'function') {
+        $('[data-toggle="tooltip"]').tooltip();
+    }
+    if ($('[data-toggle="popover"]').popover === 'function') {
+        $('[data-toggle="popover"]').popover();
+    }
+});
+</script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -1718,7 +1727,7 @@ summary {
 
 <h1 class="title toc-ignore">Math 120 Lec 10-11</h1>
 <h4 class="author">Your Name</h4>
-<h4 class="date">22 September, 2019</h4>
+<h4 class="date">23 September, 2019</h4>
 
 </div>
 
@@ -1737,7 +1746,6 @@ summary {
 </ul></li>
 <li><a href="#checking-independence">Checking Independence</a><ul>
 <li><a href="#example-mpg-drv-and-class">Example: mpg drv and class</a></li>
-<li><a href="#example-death-penalty-data">Example: Death Penalty data</a></li>
 </ul></li>
 </ul>
 </div>
@@ -1751,7 +1759,7 @@ summary {
 <h3>Example Problems (Basics)</h3>
 <p>If a a photo is selected at random, what’s the probability…</p>
 <ol style="list-style-type: lower-alpha">
-<li>… the photo was correctly identified as a fasion photo?</li>
+<li>… the photo was correctly identified as a fashion photo?</li>
 </ol>
 <p>= 197/1822</p>
 <ol start="2" style="list-style-type: lower-alpha">
@@ -1768,20 +1776,15 @@ summary {
 <p>(197+22+112)/1822</p>
 <pre class="r"><code>(197+22+112)/1822</code></pre>
 <pre><code>## [1] 0.1816685</code></pre>
-<p>For scienteists, mathematicians, computer scientist, and everyone else, “or” is “inclusive or”. I.e., could be one, could be the other, could be both.</p>
+<p>For scientists, mathematicians, computer scientist, and everyone else, “or” is “inclusive or”. I.e., could be one, could be the other, could be both.</p>
 </div>
 </div>
 <div id="making-contingency-tables-in-r" class="section level2">
 <h2>Making Contingency Tables in R</h2>
 <p>It’s easy! Just use the <code>table()</code> command!</p>
 <p>Example: mpg data. Two way table for class and drive shaft (drv).</p>
-<pre class="r"><code>mpg %&gt;% head</code></pre>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["manufacturer"],"name":[1],"type":["chr"],"align":["left"]},{"label":["model"],"name":[2],"type":["chr"],"align":["left"]},{"label":["displ"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["year"],"name":[4],"type":["int"],"align":["right"]},{"label":["cyl"],"name":[5],"type":["int"],"align":["right"]},{"label":["trans"],"name":[6],"type":["chr"],"align":["left"]},{"label":["drv"],"name":[7],"type":["chr"],"align":["left"]},{"label":["cty"],"name":[8],"type":["int"],"align":["right"]},{"label":["hwy"],"name":[9],"type":["int"],"align":["right"]},{"label":["fl"],"name":[10],"type":["chr"],"align":["left"]},{"label":["class"],"name":[11],"type":["chr"],"align":["left"]}],"data":[{"1":"audi","2":"a4","3":"1.8","4":"1999","5":"4","6":"auto(l5)","7":"f","8":"18","9":"29","10":"p","11":"compact"},{"1":"audi","2":"a4","3":"1.8","4":"1999","5":"4","6":"manual(m5)","7":"f","8":"21","9":"29","10":"p","11":"compact"},{"1":"audi","2":"a4","3":"2.0","4":"2008","5":"4","6":"manual(m6)","7":"f","8":"20","9":"31","10":"p","11":"compact"},{"1":"audi","2":"a4","3":"2.0","4":"2008","5":"4","6":"auto(av)","7":"f","8":"21","9":"30","10":"p","11":"compact"},{"1":"audi","2":"a4","3":"2.8","4":"1999","5":"6","6":"auto(l5)","7":"f","8":"16","9":"26","10":"p","11":"compact"},{"1":"audi","2":"a4","3":"2.8","4":"1999","5":"6","6":"manual(m5)","7":"f","8":"18","9":"26","10":"p","11":"compact"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
-<pre class="r"><code>table(mpg$class, mpg$drv)</code></pre>
+<pre class="r"><code>#make a table fofr class and drv
+table(mpg$class, mpg$drv)</code></pre>
 <pre><code>##             
 ##               4  f  r
 ##   2seater     0  0  5
@@ -1832,8 +1835,8 @@ summary {
 <p>P(Pickup or FWD) = P(Pickup)+P(FWD)-P(Pickup and FWD) = 33/234 + 106/234 - 0/234</p>
 <pre class="r"><code>33/234   + 106/234 - 0/234</code></pre>
 <pre><code>## [1] 0.5940171</code></pre>
-<p>Challenge: draw venn for disjoint events:</p>
-<p>(see board, two seperate circles.)</p>
+<p>Challenge: draw Venn for disjoint events:</p>
+<p>(see board, two separate circles.)</p>
 </div>
 </div>
 <div id="conditional-probability" class="section level2">
@@ -1848,44 +1851,344 @@ summary {
 </div>
 <div id="independent-events" class="section level2">
 <h2>Independent Events</h2>
+<p>Reading example:</p>
+<p>P(Rept) = .3, P(Green) = .2, P(both) = .1</p>
+<p>Since .3*.2 is not equal to .1, these are not independent events.</p>
+<p>Important considerations:</p>
+<ul>
+<li>this is the easiest independence problem we can do</li>
+<li>independence is a mathematical concept, not based on feelings. To verify independence, math has to happen!</li>
+</ul>
+<p>The idea is what you expect: two events A and B are independent if they don’t affect the likelihood that the other occurs.</p>
+<p>Mathematically:</p>
+<p>P(A|B) = P(A), i.e., doesn’t matter whether B occurred or not. Doesn’t change P(A).</p>
+<p>-or-</p>
+<p>P(B|A) = P(B)</p>
 <div id="the-and-rule-for-independent-events" class="section level3">
 <h3>The “and” rule for independent events</h3>
+<p>If A and B are independent,</p>
+<p>P(A and B) = P(A)*P(B)</p>
+<p>In other words, for independent events, “and” means “times”.</p>
+<p>Example: coin tosses are independent.</p>
+<p>What’s the probability that you get 3 heads in a row?</p>
+<p>Answer: P(H and H and H) = P(H)<em>P(H)</em>P(H) = 1/8 = .125</p>
+<p>We roll two dice. What’s the probability that the first shows a “4” and the second shows an even number?</p>
+<p>P(“4” and even) = P(“4”) * P(“even”) = (1/6)*(3/6) = whatev</p>
 </div>
 </div>
 <div id="checking-independence" class="section level2">
 <h2>Checking Independence</h2>
+<p>You <em>can</em> use the definition, but it’s usually easier to use multiplication rule. If it works, then yes, independent!</p>
 <div id="example-mpg-drv-and-class" class="section level3">
 <h3>Example: mpg drv and class</h3>
-</div>
-<div id="example-death-penalty-data" class="section level3">
-<h3>Example: Death Penalty data</h3>
-<pre class="r"><code>deathData &lt;- read_csv(&quot;death penalty data.csv&quot;)
+<p>First, let’s make a contingency table:</p>
+<pre class="r"><code>#use table() command:
 
-deathData%&gt;% head</code></pre>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["Date"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Name"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Age"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Sex"],"name":[4],"type":["chr"],"align":["left"]},{"label":["Race"],"name":[5],"type":["chr"],"align":["left"]},{"label":["Crime"],"name":[6],"type":["chr"],"align":["left"]},{"label":["Victim Count"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["Victim Sex"],"name":[8],"type":["chr"],"align":["left"]},{"label":["Victim Race"],"name":[9],"type":["chr"],"align":["left"]},{"label":["County"],"name":[10],"type":["chr"],"align":["left"]},{"label":["State"],"name":[11],"type":["chr"],"align":["left"]},{"label":["Region"],"name":[12],"type":["chr"],"align":["left"]},{"label":["Method"],"name":[13],"type":["chr"],"align":["left"]},{"label":["Juvenile"],"name":[14],"type":["chr"],"align":["left"]},{"label":["Volunteer"],"name":[15],"type":["chr"],"align":["left"]},{"label":["Federal"],"name":[16],"type":["chr"],"align":["left"]},{"label":["Foreign National"],"name":[17],"type":["chr"],"align":["left"]}],"data":[{"1":"01/17/1977","2":"Gary Gilmore","3":"36","4":"Male","5":"White","6":"Murder","7":"1","8":"Male","9":"White","10":"Utah","11":"UT","12":"West","13":"Firing Squad","14":"No","15":"Yes","16":"No","17":"No"},{"1":"05/25/1979","2":"John Spenkelink","3":"30","4":"Male","5":"White","6":"Murder","7":"1","8":"Male","9":"White","10":"Leon","11":"FL","12":"South","13":"Electrocution","14":"No","15":"No","16":"No","17":"No"},{"1":"10/22/1979","2":"Jesse Bishop","3":"46","4":"Male","5":"White","6":"Murder","7":"1","8":"Male","9":"White","10":"Clark","11":"NV","12":"West","13":"Gas Chamber","14":"No","15":"Yes","16":"No","17":"No"},{"1":"03/09/1981","2":"Steven Judy","3":"24","4":"Male","5":"White","6":"Murder","7":"4","8":"2 Male, 2 Female","9":"White","10":"Marion","11":"IN","12":"Midwest","13":"Electrocution","14":"No","15":"Yes","16":"No","17":"No"},{"1":"08/10/1982","2":"Frank Coppola","3":"38","4":"Male","5":"White","6":"Murder","7":"1","8":"Male","9":"White","10":"Newport News City","11":"VA","12":"South","13":"Electrocution","14":"No","15":"Yes","16":"No","17":"No"},{"1":"12/07/1982","2":"Charlie Brooks","3":"40","4":"Male","5":"Black","6":"Murder","7":"1","8":"Male","9":"White","10":"Tarrant","11":"TX","12":"South","13":"Lethal Injection","14":"No","15":"No","16":"No","17":"No"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
-<pre class="r"><code>table(deathData$Region, deathData$Method) %&gt;% addmargins()</code></pre>
-<pre><code>##            
-##             Electrocution Firing Squad Gas Chamber Hanging
-##   Midwest               6            0           0       0
-##   Northeast             0            0           0       0
-##   South               152            0           6       1
-##   West                  0            3           5       2
-##   Sum                 158            3          11       3
-##            
-##             Lethal Injection  Sum
-##   Midwest                172  178
-##   Northeast                4    4
-##   South                 1016 1175
-##   West                    75   85
-##   Sum                   1267 1442</code></pre>
-<pre class="r"><code>1175/1442*158/1442</code></pre>
-<pre><code>## [1] 0.08928211</code></pre>
-<pre class="r"><code>152/1442</code></pre>
-<pre><code>## [1] 0.1054092</code></pre>
+table(mpg$drv, mpg$class) %&gt;% addmargins()</code></pre>
+<pre><code>##      
+##       2seater compact midsize minivan pickup subcompact suv Sum
+##   4         0      12       3       0     33          4  51 103
+##   f         0      35      38      11      0         22   0 106
+##   r         5       0       0       0      0          9  11  25
+##   Sum       5      47      41      11     33         35  62 234</code></pre>
+<p>Question: are the events “has 4 wheel drive” and “is subcompact” independent?</p>
+<p>Need some answers first:</p>
+<ul>
+<li><p>P(“4 wheel drive”) = 103/234</p></li>
+<li><p>P(“is subcompact”) = 35/234</p></li>
+<li><p>P( both) = 4/234</p></li>
+</ul>
+<p>Check: if multiplied, do they match the “and”?</p>
+<pre class="r"><code>103/234*35/234</code></pre>
+<pre><code>## [1] 0.06583753</code></pre>
+<pre class="r"><code>4/234</code></pre>
+<pre><code>## [1] 0.01709402</code></pre>
+<p>Don’t match, so <strong>not</strong> independent. I.e., there’s a dependence relation between them.</p>
+<p>In-class challenge: are the events “compact” and “front wheel drive” independent?</p>
+<pre class="r"><code>table(mpg$drv, mpg$class) %&gt;% addmargins() %&gt;% kable %&gt;% kable_styling(bootstrap_options = &quot;striped&quot;, full_width = F)</code></pre>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+2seater
+</th>
+<th style="text-align:right;">
+compact
+</th>
+<th style="text-align:right;">
+midsize
+</th>
+<th style="text-align:right;">
+minivan
+</th>
+<th style="text-align:right;">
+pickup
+</th>
+<th style="text-align:right;">
+subcompact
+</th>
+<th style="text-align:right;">
+suv
+</th>
+<th style="text-align:right;">
+Sum
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+103
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+38
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+106
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+25
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sum
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+47
+</td>
+<td style="text-align:right;">
+41
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+62
+</td>
+<td style="text-align:right;">
+234
+</td>
+</tr>
+</tbody>
+</table>
+<p>P(compact) = 47/234</p>
+<p>P(f) = 106/234</p>
+<p>P(compact and f) = 35/234</p>
+<p>Check independence with multiplication rule:</p>
+<pre class="r"><code>47/234 * 106/234</code></pre>
+<pre><code>## [1] 0.09098546</code></pre>
+<pre class="r"><code>35/234</code></pre>
+<pre><code>## [1] 0.1495726</code></pre>
+<p>Since they don’t match, they’re not independent.</p>
+<p>In-class challenge #2:</p>
+<p>Are the events “has 4 cyl” and “is front wheel drive” independent? Note! You’ll need to make your own table!</p>
+<pre class="r"><code>table(mpg$drv, mpg$cyl) %&gt;% addmargins() %&gt;% kable %&gt;% kable_styling(bootstrap_options = &quot;striped&quot;, full_width = F)</code></pre>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+4
+</th>
+<th style="text-align:right;">
+5
+</th>
+<th style="text-align:right;">
+6
+</th>
+<th style="text-align:right;">
+8
+</th>
+<th style="text-align:right;">
+Sum
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:right;">
+48
+</td>
+<td style="text-align:right;">
+103
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+f
+</td>
+<td style="text-align:right;">
+58
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+43
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+106
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+r
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+25
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sum
+</td>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+79
+</td>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:right;">
+234
+</td>
+</tr>
+</tbody>
+</table>
+<p>P(4 cyl) = 81/234</p>
+<p>P(front) = 106/234</p>
+<p>P(both) = 58/234</p>
+<pre class="r"><code>#check
+
+81/234*106/234</code></pre>
+<pre><code>## [1] 0.1568047</code></pre>
+<pre class="r"><code>58/234</code></pre>
+<pre><code>## [1] 0.2478632</code></pre>
+<p>Answer: nope, not even close. Definitely not independent.</p>
+<p>Question: what if they’re close? Do they have to be “exactly equal”?</p>
+<p>Two answers:</p>
+<ul>
+<li>for right now, they need to be exactly equal. (Quiz 4!)</li>
+<li>We’ll return to this later when we know “hypothesis tests”. In reality, a little bit of wiggle room is of course acceptable.</li>
+</ul>
 </div>
 </div>
 

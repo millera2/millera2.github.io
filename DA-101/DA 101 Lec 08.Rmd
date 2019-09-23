@@ -34,15 +34,73 @@ theme_set(theme_tufte() +
 
 *[Brief powerpoint in-class, available on Google Drive shared folder.]*
 
-In our reading about Breakfast studies, we learned that p-values and hypothesis tests are often misused.  A big problem:  software like R makeas it super easy to perform the tests, but that doesn't mean you know what you're doing!
+In our reading about Breakfast studies, we learned that p-values and hypothesis tests are often misused.  A big problem:  software like R makes it super easy to perform the tests, but that doesn't mean you know what you're doing!
 
-A big goal of mine:  to help take the "magic" out of hypothesis tests so that students (you!) can use them appropriately and insightfully.
+A big goal of mine:  to help take the "magic" out of hypothesis tests so that students (you!) can use them appropriately and insight fully.
 
 ## Case studies for hyp tests
 
 Let's analyze some examples in-depth, using datasets we're familiar with.
 
 ### iris dataset
+
+Recall iris:
+
+```{r}
+iris %>% head
+```
+
+Question:  is there evidence of a difference in mean sepal length between the setosa and the virginica plants?  
+
+First, we need to subset (filter):
+
+```{r}
+#make subsets for each species
+
+setosaData <- iris %>% 
+                filter(Species=="setosa")
+
+virginicaData <- iris %>% 
+                  filter(Species =="virginica")
+
+versicolorData <- iris %>%
+                   filter(Species == "versicolor")
+
+
+```
+
+We have the subsets, now let's test!
+
+The command is called `t.test()`.  
+
+```{r}
+
+#perform a two-t test
+
+t.test(setosaData$Sepal.Length, virginicaData$Sepal.Length)
+
+```
+
+Let's interpret this:
+
+- Type of test:  2-samp t test (comparing two population means)
+- Two tail test
+- H_0: $ \mu_1 = \mu_2$  (I.e., we assume the means are the same for both species) (note: always true for 2-samp t test)
+- H_a:  mu_1 != mu_2
+
+- t test statistic:  summary of the data.  t = -15.386.  This is a summary of our data, more on this later.
+
+- our p-value:  2.2e-16 = .00000000000000022  (i.e., almost zero!)  Here's what this means:  Assuming that there's no difference in population mean between setosas and virginicas, there's a .0000000000000000022 chance of observing a sample difference that's a big as the one we saw.  I.e., our sample is **almost impossible** if the null hyp is true.
+
+- Since p is so small, it disagrees with the null hyp.  We trust our data of course, and thus we REJECT the null hypothesis!  
+
+- Yaaay!  We found evidence to support our claim.  There's strong evidence of a difference in mean sepal length between setosa and virginica.
+
+- The end!
+
+
+
+
 
 
 
@@ -52,4 +110,34 @@ Let's analyze some examples in-depth, using datasets we're familiar with.
 
 ### garlic mustard dataset
 
+In-class challenge:  perform a 2-samp t test on the variables you chose for lab 3 to investigate if there's a difference between north american plants and european.
+
+```{r}
+garlicData <- read_csv("GarlicMustardData.csv")
+
+
+eurData <- garlicData %>% filter(Region == "Europe")
+
+naData <- garlicData %>% filter(Region=="NorthAm")
+
+
+# test for diff in bio1
+
+t.test(eurData$bio1, naData$bio1)
+
+
+```
+
+Interpret:
+
+hypotheses:
+
+h0:  mu_1 = mu_2, i.e., the mean temp in na and eur is the same.
+ha:  mu_1 != mu_2, i.e., there's a difference in mean temp
+
+t = -5.385  (more about t stats in the future)
+
+p = .0000001239
+
+Since p<.05, we reject the null hypothesis.  There's strong evidence of a difference in mean temp between eur and na (probably not too surprising, but here's the mathematical evidence).
 
