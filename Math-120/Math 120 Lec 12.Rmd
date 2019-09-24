@@ -1,0 +1,74 @@
+---
+title: "Math 120 Lec 12"
+author: "Your Name"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: simplex
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+## Discrete Random Variables
+
+
+## Discrete Probability Distributions
+
+
+
+### Simple Example: Rolling a single dice
+
+
+### Medium Example: Sum of two dice
+
+## Expected Value of a discrete distro
+
+## Definition
+
+## Single dice example
+
+## Sum of two dice example
+
+## Variance of a discrete distro
+
+
+### Single dice example
+
+
+
+### Sum of two dice example
+
+
+## Linear Combos of Random Variables
+
+
+## Mean of a linear combo
+
+
+### Example:
+
+## Variance of a linear combo
+
+### Example:
