@@ -1718,18 +1718,43 @@ summary {
 
 <h1 class="title toc-ignore">DA 101 Lec 09</h1>
 <h4 class="author">Ali Miller</h4>
-<h4 class="date">24 September, 2019</h4>
+<h4 class="date">25 September, 2019</h4>
 
 </div>
 
 <div id="TOC">
 <ul>
-<li><a href="#the-central-limit-theorem">The Central Limit Theorem</a></li>
+<li><a href="#the-central-limit-theorem">The Central Limit Theorem</a><ul>
+<li><a href="#dice-experiment">Dice Experiment</a></li>
+</ul></li>
 </ul>
 </div>
 
 <div id="the-central-limit-theorem" class="section level2">
 <h2>The Central Limit Theorem</h2>
+<div id="dice-experiment" class="section level3">
+<h3>Dice Experiment</h3>
+<p>Looking at individual rolls, we see lots of variation. We expect all outcomes to be equal, but of course there’s variation. It’s difficult to say anything smart about individual outcomes.</p>
+<p>But! The sample means <em>are</em> quite predictable. The mean tends towards the center. Thus, when we plot the means, we <em>always</em> get a normal distribution or bell curve.</p>
+<p>The central limit theorem says:</p>
+<ul>
+<li>As n gets large, sample means tend to follow a normal distribution. This works no matter what the data is! No matter what population! S</li>
+<li>Sample means always follow a bell curve, holy cow!</li>
+</ul>
+<p>The CLT is the <strong>whole reason</strong> that statistics is a useful science!</p>
+<p>Otherwise, we’d never know what to expect in our samples! As long as we have large sample sizes, we know what behavior (probability!) our data has.</p>
+<p>This is the reason we can compute p-vals: probabilities are predictable for this reason!</p>
+<p>In hyp tests, we make an assumption (H0) about the center of the bell curve.</p>
+<p>We know for sure that the mean follows a bell curve. But we have to make a big assumption about the middle. Big limitation!</p>
+<p>The p-value is the area under the normal curve that’s past our sample result (i.e., as or more extreme).</p>
+<p>The p-value shows the probability of obtaining a sample result like ours (or more extreme).</p>
+<p>That’s why p gives evidence against the null hypothesis: if the test stat is waaaay away from the null hyp, we trust the data and reject the null hypothesis.</p>
+<p>That’s why p-vals make sense, and really do work, as long as we’re satisfying the CLT:</p>
+<ul>
+<li>large n (depends on context, more later)</li>
+<li>random sample (difficult to get, more later)</li>
+</ul>
+</div>
 </div>
 
 

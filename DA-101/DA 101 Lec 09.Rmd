@@ -32,3 +32,38 @@ theme_set(theme_tufte() +
 
 ## The Central Limit Theorem
 
+### Dice Experiment
+
+Looking at individual rolls, we see lots of variation.  We expect all outcomes to be equal, but of course there's variation.  It's difficult to say anything smart about individual outcomes.
+
+
+But!  The sample means *are* quite predictable.  The mean tends towards the center.  Thus, when we plot the means, we *always* get a normal distribution or bell curve.
+
+The central limit theorem says:
+
+- As n gets large, sample means tend to follow a normal distribution.  This works no matter what the data is!  No matter what population!  S
+- Sample means always follow a bell curve, holy cow!
+
+The CLT is the **whole reason** that statistics is a useful science!
+
+Otherwise, we'd never know what to expect in our samples!  As long as we have large sample sizes, we know what behavior (probability!) our data has.
+
+
+This is the reason we can compute p-vals:  probabilities are predictable for this reason!
+
+In hyp tests, we make an  assumption (H0) about the center of the bell curve.
+
+We know for sure that the mean follows a bell curve.  But we have to make a big assumption about the middle.  Big limitation!
+
+The p-value is the area under the normal curve that's past our sample result (i.e., as or more extreme).
+
+The p-value shows the probability of obtaining a sample result like ours (or more extreme).
+
+That's why p gives evidence against the null hypothesis:  if the test stat is waaaay away from the null hyp, we trust the data and reject the null hypothesis.
+
+That's why p-vals make sense, and really do work, as long as we're satisfying the CLT:
+
+- large n (depends on context, more later)
+- random sample (difficult to get, more later)
+
+
