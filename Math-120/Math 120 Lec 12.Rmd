@@ -128,7 +128,6 @@ P1 = c(1/6, 1/6, 1/6, 1/6, 1/6, 1/6)
 
 
 
-### Medium Example: Sum of two dice
 
 ## Expected Value of a discrete distro
 
@@ -136,7 +135,12 @@ An important quality of a distribution:  the "expected" value, i.e., the thing w
 
 It's a weighted average of all the outcomes of X, weighted by probability.
 
+### Definition
+
 Formula:  E(X) = sum(x*P(x))
+
+
+### Example: single dice
 
 This is super easy to find in R:
 
@@ -152,20 +156,21 @@ sum(X1*P1)
 
 Q:  When you roll a dice, how frequently do you get a 3.5?
 
-Arya's observation:  isn't it like average?
+**Arya's observation**:  isn't it like average?
 
-Prof Miller's reply:  isn't average different every time?
+**Prof Miller's reply**:  isn't average different every time?
 
 Connected to Law of Large numbers:  as sample size increases, observed proporiton gets closer to the true probability.
 
-Here, we're not talking individual outcomes, we're talking about whole samples!  Means!
+Here, we're not talking individual outcomes, we're talking about **whole samples**!  Means!
 
 If we take larger and larger samples of dice rolls, we expect our average to get closer and closer to 3.5.  
 
 ```{r}
+#sample 10000 dice rolls
+
 diceSample <- sample(1:6, 10000, replace = TRUE)
 
-diceSample
 
 mean(diceSample)
 
@@ -186,11 +191,7 @@ sum(X*P)
 
 If we play the card game many times, our average winnings will be close to $3.94.   (And thus, it's probably foolish to pay $5 to play this game.) 
 
-## Definition
 
-## Single dice example
-
-## Sum of two dice example
 
 ## Variance of a discrete distro
 
@@ -198,18 +199,4 @@ If we play the card game many times, our average winnings will be close to $3.94
 ### Single dice example
 
 
-
-### Sum of two dice example
-
-
-## Linear Combos of Random Variables
-
-
-## Mean of a linear combo
-
-
-### Example:
-
-## Variance of a linear combo
-
-### Example:
+## Data Example:  mpg
