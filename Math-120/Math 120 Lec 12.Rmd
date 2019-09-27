@@ -184,9 +184,19 @@ Observation:  large sample size has average that's close to the expected value. 
 X = c(0,5,10,20)
 P = c(26/52, 13/52, 12/52, 1/52)
 
+
+#Expected Value:
 sum(X*P)
 
 ```
+
+What does this mean?  
+
+It **doesn't** mean:
+
+- We're not ever going to get 3.94.  Not as possible outcome of X!
+
+- It doesn't mean that, if we play several times, we'll always get an average of 3.94.
 
 
 If we play the card game many times, our average winnings will be close to $3.94.   (And thus, it's probably foolish to pay $5 to play this game.) 
@@ -195,8 +205,140 @@ If we play the card game many times, our average winnings will be close to $3.94
 
 ## Variance of a discrete distro
 
+We know we won't always get the expected.  But, how far off will be?  What sort of variation will we see?  The measure is called Variance, it's just like standard deviation.
+
+Formula:  Var[X] = sum((X-E(X))^2*P(X))
+
+Idea:  We're finding average distance from the expected value, weighted by the probability it occurs.
 
 ### Single dice example
 
+Recall the dice distro:
 
-## Data Example:  mpg
+```{r}
+X1 = c(1, 2, 3, 4, 5, 6)
+
+P1 = c(1/6, 1/6, 1/6, 1/6, 1/6, 1/6)
+
+#recall:  E[x] = 3.5
+#now, find variance:
+
+sum((X1-3.5)^2*P1)
+
+```
+
+Discuss:
+
+The variance for the dice distro is 2.917.  A more intuitive version is the standard deviation for the distro:
+
+SD[x] = sqrt(Var[x])
+
+```{r}
+sqrt(2.916667)
+```
+
+Our std dev is 1.707.  This means:  our expected value for the dice distro is 3.5.  On average, dice rolls will fall within 1.707825 of this.
+
+3.5 +- 1.707825
+
+Kind of a like a confidence interval.
+
+
+
+### Data Example:  mpg
+
+**Alert**  Lab 3 #8!!!!
+
+```{r}
+mpg %>% head
+```
+
+Let's make a prob distro for cyl.  Just like your lab!
+
+```{r}
+#easy way to get probs/relative frequencies
+
+table(mpg$cyl) %>% prop.table()
+```
+
+Cool!  Here's the distro.  But, what if we want expected value and variance?
+
+```{r}
+#name/store it:
+
+table(mpg$cyl) %>% prop.table() -> P
+
+#still need the x vals.  They're the names:
+
+P %>% names %>% as.numeric -> X
+
+# as.numeric needed to make numbers
+# dont' forget to use -> to store/remember your variable
+
+```
+
+Let's find expected and variance:
+
+```{r}
+#expected value:  sum(X*P)
+
+sum(X*P)
+
+```
+
+```{r}
+#find variance:  sum( (X-E(x))^2 * P(X))
+
+sum((X-5.88889)^2*P)
+
+```
+
+```{r}
+sqrt(2.585945)
+```
+
+Summary: E(x) = 5.88889, Var(X) = 2.585945, STDEV(X) = 1.608087
+
+
+Sophie's question:  In variance, all the units are squared becuase of ^2.  That's hard to visualize/imagine, so std dev is sometimes better.  Stdev has the same units.
+
+Interpretation:  If we sample many cars, we expect an average number of cylinders close to 5.88889.  
+
+We know that not all cars will have 5.8 cyl (that's impossible), but we can say something about the variability.  On average, a car will have within 1.608087 cylinders of the mean 5.888889.  Somewhere in the range:
+
+5.88889 +- 1.608087.
+
+
+### One more gambling example.
+
+The game:  you draw a card from a 52-card deck at random.
+
+If you get a red card, you win $5.  If you get a spade (they're all black), you win $10.  If you get the ace of clubs, you get $20.  Otherwise, nothing.
+
+a)  Find the prob distro.
+
+```{r}
+X2 = c(5,10,20,0)
+P2 = c(26/52, 13/52, 1/52, 12/52)
+
+```
+
+
+b)  Find the expected value and variance and std dev.
+
+```{r}
+#expected:
+
+sum(X2*P2)
+
+#var:
+
+sum((X2-5.384516)^2*P2)
+
+# std dev
+
+sqrt(16.19822)
+```
+
+
+## Linear Combinations

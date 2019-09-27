@@ -1718,7 +1718,7 @@ summary {
 
 <h1 class="title toc-ignore">Math 120 Lec 12</h1>
 <h4 class="author">Your Name</h4>
-<h4 class="date">26 September, 2019</h4>
+<h4 class="date">27 September, 2019</h4>
 
 </div>
 
@@ -1735,8 +1735,10 @@ summary {
 </ul></li>
 <li><a href="#variance-of-a-discrete-distro">Variance of a discrete distro</a><ul>
 <li><a href="#single-dice-example">Single dice example</a></li>
-</ul></li>
 <li><a href="#data-example-mpg">Data Example: mpg</a></li>
+<li><a href="#one-more-gambling-example.">One more gambling example.</a></li>
+</ul></li>
+<li><a href="#linear-combinations">Linear Combinations</a></li>
 </ul>
 </div>
 
@@ -1832,27 +1834,125 @@ diceSample &lt;- sample(1:6, 10000, replace = TRUE)
 
 
 mean(diceSample)</code></pre>
-<pre><code>## [1] 3.5156</code></pre>
+<pre><code>## [1] 3.5077</code></pre>
 <p>Observation: large sample size has average that’s close to the expected value. If n increases, it “generally” gets closer still.</p>
 <div id="a-expected-value" class="section level4">
 <h4>3.30a Expected Value</h4>
 <pre class="r"><code>X = c(0,5,10,20)
 P = c(26/52, 13/52, 12/52, 1/52)
 
+
+#Expected Value:
 sum(X*P)</code></pre>
 <pre><code>## [1] 3.942308</code></pre>
+<p>What does this mean?</p>
+<p>It <strong>doesn’t</strong> mean:</p>
+<ul>
+<li><p>We’re not ever going to get 3.94. Not as possible outcome of X!</p></li>
+<li><p>It doesn’t mean that, if we play several times, we’ll always get an average of 3.94.</p></li>
+</ul>
 <p>If we play the card game many times, our average winnings will be close to $3.94. (And thus, it’s probably foolish to pay $5 to play this game.)</p>
 </div>
 </div>
 </div>
 <div id="variance-of-a-discrete-distro" class="section level2">
 <h2>Variance of a discrete distro</h2>
+<p>We know we won’t always get the expected. But, how far off will be? What sort of variation will we see? The measure is called Variance, it’s just like standard deviation.</p>
+<p>Formula: Var[X] = sum((X-E(X))^2*P(X))</p>
+<p>Idea: We’re finding average distance from the expected value, weighted by the probability it occurs.</p>
 <div id="single-dice-example" class="section level3">
 <h3>Single dice example</h3>
+<p>Recall the dice distro:</p>
+<pre class="r"><code>X1 = c(1, 2, 3, 4, 5, 6)
+
+P1 = c(1/6, 1/6, 1/6, 1/6, 1/6, 1/6)
+
+#recall:  E[x] = 3.5
+#now, find variance:
+
+sum((X1-3.5)^2*P1)</code></pre>
+<pre><code>## [1] 2.916667</code></pre>
+<p>Discuss:</p>
+<p>The variance for the dice distro is 2.917. A more intuitive version is the standard deviation for the distro:</p>
+<p>SD[x] = sqrt(Var[x])</p>
+<pre class="r"><code>sqrt(2.916667)</code></pre>
+<pre><code>## [1] 1.707825</code></pre>
+<p>Our std dev is 1.707. This means: our expected value for the dice distro is 3.5. On average, dice rolls will fall within 1.707825 of this.</p>
+<p>3.5 +- 1.707825</p>
+<p>Kind of a like a confidence interval.</p>
+</div>
+<div id="data-example-mpg" class="section level3">
+<h3>Data Example: mpg</h3>
+<p><strong>Alert</strong> Lab 3 #8!!!!</p>
+<pre class="r"><code>mpg %&gt;% head</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["manufacturer"],"name":[1],"type":["chr"],"align":["left"]},{"label":["model"],"name":[2],"type":["chr"],"align":["left"]},{"label":["displ"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["year"],"name":[4],"type":["int"],"align":["right"]},{"label":["cyl"],"name":[5],"type":["int"],"align":["right"]},{"label":["trans"],"name":[6],"type":["chr"],"align":["left"]},{"label":["drv"],"name":[7],"type":["chr"],"align":["left"]},{"label":["cty"],"name":[8],"type":["int"],"align":["right"]},{"label":["hwy"],"name":[9],"type":["int"],"align":["right"]},{"label":["fl"],"name":[10],"type":["chr"],"align":["left"]},{"label":["class"],"name":[11],"type":["chr"],"align":["left"]}],"data":[{"1":"audi","2":"a4","3":"1.8","4":"1999","5":"4","6":"auto(l5)","7":"f","8":"18","9":"29","10":"p","11":"compact"},{"1":"audi","2":"a4","3":"1.8","4":"1999","5":"4","6":"manual(m5)","7":"f","8":"21","9":"29","10":"p","11":"compact"},{"1":"audi","2":"a4","3":"2.0","4":"2008","5":"4","6":"manual(m6)","7":"f","8":"20","9":"31","10":"p","11":"compact"},{"1":"audi","2":"a4","3":"2.0","4":"2008","5":"4","6":"auto(av)","7":"f","8":"21","9":"30","10":"p","11":"compact"},{"1":"audi","2":"a4","3":"2.8","4":"1999","5":"6","6":"auto(l5)","7":"f","8":"16","9":"26","10":"p","11":"compact"},{"1":"audi","2":"a4","3":"2.8","4":"1999","5":"6","6":"manual(m5)","7":"f","8":"18","9":"26","10":"p","11":"compact"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Let’s make a prob distro for cyl. Just like your lab!</p>
+<pre class="r"><code>#easy way to get probs/relative frequencies
+
+table(mpg$cyl) %&gt;% prop.table()</code></pre>
+<pre><code>## 
+##          4          5          6          8 
+## 0.34615385 0.01709402 0.33760684 0.29914530</code></pre>
+<p>Cool! Here’s the distro. But, what if we want expected value and variance?</p>
+<pre class="r"><code>#name/store it:
+
+table(mpg$cyl) %&gt;% prop.table() -&gt; P
+
+#still need the x vals.  They're the names:
+
+P %&gt;% names %&gt;% as.numeric -&gt; X
+
+# as.numeric needed to make numbers
+# dont' forget to use -&gt; to store/remember your variable</code></pre>
+<p>Let’s find expected and variance:</p>
+<pre class="r"><code>#expected value:  sum(X*P)
+
+sum(X*P)</code></pre>
+<pre><code>## [1] 5.888889</code></pre>
+<pre class="r"><code>#find variance:  sum( (X-E(x))^2 * P(X))
+
+sum((X-5.88889)^2*P)</code></pre>
+<pre><code>## [1] 2.585945</code></pre>
+<pre class="r"><code>sqrt(2.585945)</code></pre>
+<pre><code>## [1] 1.608087</code></pre>
+<p>Summary: E(x) = 5.88889, Var(X) = 2.585945, STDEV(X) = 1.608087</p>
+<p>Sophie’s question: In variance, all the units are squared becuase of ^2. That’s hard to visualize/imagine, so std dev is sometimes better. Stdev has the same units.</p>
+<p>Interpretation: If we sample many cars, we expect an average number of cylinders close to 5.88889.</p>
+<p>We know that not all cars will have 5.8 cyl (that’s impossible), but we can say something about the variability. On average, a car will have within 1.608087 cylinders of the mean 5.888889. Somewhere in the range:</p>
+<p>5.88889 +- 1.608087.</p>
+</div>
+<div id="one-more-gambling-example." class="section level3">
+<h3>One more gambling example.</h3>
+<p>The game: you draw a card from a 52-card deck at random.</p>
+<p>If you get a red card, you win $5. If you get a spade (they’re all black), you win $10. If you get the ace of clubs, you get $20. Otherwise, nothing.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Find the prob distro.</li>
+</ol>
+<pre class="r"><code>X2 = c(5,10,20,0)
+P2 = c(26/52, 13/52, 1/52, 12/52)</code></pre>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Find the expected value and variance and std dev.</li>
+</ol>
+<pre class="r"><code>#expected:
+
+sum(X2*P2)</code></pre>
+<pre><code>## [1] 5.384615</code></pre>
+<pre class="r"><code>#var:
+
+sum((X2-5.384516)^2*P2)</code></pre>
+<pre><code>## [1] 16.19822</code></pre>
+<pre class="r"><code># std dev
+
+sqrt(16.19822)</code></pre>
+<pre><code>## [1] 4.024701</code></pre>
 </div>
 </div>
-<div id="data-example-mpg" class="section level2">
-<h2>Data Example: mpg</h2>
+<div id="linear-combinations" class="section level2">
+<h2>Linear Combinations</h2>
 </div>
 
 
