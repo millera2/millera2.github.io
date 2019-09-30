@@ -1794,8 +1794,16 @@ summary {
 <div id="binom-pdf" class="section level3">
 <h3>binom pdf</h3>
 <p>If X is binomial, n trials, chance p of success:</p>
-<p>P(x) =</p>
-<p>For the first time ever in my class, <strong>you won’t need to use this by hand</strong>!! Instead, know the “story” of the formula: what are the pieces, and what do the mean?</p>
+<p><span class="math display">\[ f(x) = \sum {n \choose x} p^x(1-p)^{(n-x)} \]</span></p>
+<p>where <span class="math display">\[ {n \choose x} = \frac{n!}{(n-x)!x!} \]</span></p>
+<p>This is pronounced out loud as “n choose x”.</p>
+<p>Let’s digest all the pieces:</p>
+<ul>
+<li><span class="math inline">\({n \choose x}\)</span> gives us the total number of ways to get x successes in n trials</li>
+<li><span class="math inline">\(p^x\)</span> tell the probability of having x successes. ( <span class="math inline">\(\overbrace{p\cdot p\cdot p \cdots p}^n\)</span>)</li>
+<li><span class="math inline">\((1-p)^{(n-x)}\)</span> tell the probability of having n-x failures. <span class="math inline">\(\overbrace{(1-p)\cdot (1-p)\cdot (1-p) \cdots (1-p)}^{n-x}\)</span></li>
+</ul>
+<p>For the first time ever in my class, <strong>you won’t need to use this by hand</strong>!! Instead, know the “story” of the formula: what are the pieces, and what do they mean?</p>
 <p>We don’t do it by hand because it’s 2019. Let’s let non-humans do it, i.e. R! It’s easy:</p>
 <pre class="r"><code>#Find P(X=1) with n=3 tosses, p=1/2 chance heads
 
