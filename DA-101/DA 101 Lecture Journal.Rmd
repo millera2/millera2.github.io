@@ -16,6 +16,21 @@ knitr::opts_chunk$set(echo = TRUE)
 *Note: All section numbers come from our text, ["R For Data Science"]("https://r4ds.had.co.nz").  
 
 
+## Monday 9/30
+
+- Wake-up challenge: dplyr
+- CLT Demo with simulations: `sample` and `replicate`
+- Picture that connects the p-val to the null hypothesis
+- Left-tail, right-tail, two-tail
+- Examples:  `mpg` data
+- Error Types
+
+
+## Wednesday 9/25
+
+- Dice Experiment
+- CLT
+
 ## Monday 9/23
 
 - Hyp Tests and Significance: and intro

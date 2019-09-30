@@ -16,9 +16,35 @@ knitr::opts_chunk$set(echo = TRUE)
 *Note: All section numbers come from our text, [Openintro Statistics]("https://www.openintro.org/stat/textbook.php?stat_book=os").  
 
 
-**<big>NOTICE:</big>** The most recent lecture now shows up on the top.  How convenient! 
+## Week 6
 
-## Week 5 (Next Week)
+
+
+### Monday 9/30
+
+- Special Discrete Distribution:  **Binomial Dist**
+- Example: tossing three coins
+- Binomial Random Variables
+- The distribution
+  - pdf
+  - cdf
+- Examples
+  - Sampling DU students
+  - Multiple Choice Exam
+  - Baby Tiger Snakes
+- Mean and variance of binomial
+  - Interpreting examples above
+  
+
+
+## Week 5
+
+### Wednesday 9/26
+- Variance of a discrete distro
+  - Definition
+  - Single dice example
+  - Sum of two dice example
+
 
 ### Monday 9/24
 
@@ -30,15 +56,7 @@ knitr::opts_chunk$set(echo = TRUE)
   - Definition
   - Single dice example
   - Sum of two dice example
-- Variance of a discrete distro
-  - Definition
-  - Single dice example
-  - Sum of two dice example
-- Linear Combos of Random Variables
-  - Mean of a linear combo
-    - Example:  
-  - Variance of a linear combo
-    - Example:
+
 
 
 ## Week 4 (This Week)
