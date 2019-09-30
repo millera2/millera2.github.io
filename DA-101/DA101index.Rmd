@@ -64,9 +64,9 @@ theme_set(                                #this sets the theme for all    #
 
 - Lecture coverage:  Lec 09 and 10
 - Topics:
- - Hyp test basics, meaning of p-value, making conclusions
- - Central Limit Theorem meaning and implications
- - Picture of p-val in normal curve
+  - Hyp test basics, meaning of p-value, making conclusions
+  - Central Limit Theorem meaning and implications
+  - Picture of p-val in normal curve
 
 ## Datasets
 
