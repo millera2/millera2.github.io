@@ -60,6 +60,14 @@ theme_set(                                #this sets the theme for all    #
 - [Lec 00](https://millera2.github.io/DA-101/DA-101-Lec-00.html)
 
 
+## Next Quiz:  Wednesday 10/2
+
+- Lecture coverage:  Lec 09 and 10
+- Topics:
+ - Hyp test basics, meaning of p-value, making conclusions
+ - Central Limit Theorem meaning and implications
+ - Picture of p-val in normal curve
+
 ## Datasets
 
 - [Billboard Top 200](https://millera2.github.io/Data/billboard.csv)

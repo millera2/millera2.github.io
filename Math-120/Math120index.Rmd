@@ -50,15 +50,15 @@ theme_set(                                #this sets the theme for all    #
 - [Lec 01 ](https://millera2.github.io/Math-120/Math-120-Lec-01.html)
 
 
-## Next Quiz: Wed 9/25
+## Next Quiz: Wed 10/02
 
-- Lecture Coverage:  Lec 09, 10, and first half of 11.
-- Topics:  
-  - Probability, 
-  - law of large numbers, 
-  - contingency tables, 
-  - independent events, mutually exclusive events
-  - "or" rule, "and" rule for independent events.
+- Lecture Coverage: Lec 12, 13
+- Topics:
+  - Sampling with(out) replacement, 
+  - discrete probability distros, expected value and variance
+  - Basics of binomial dist 
+    - 4 properties of binomial RVs
+    - difference between pdf and cdf (concept, not math)
 
 ## Labs
 
