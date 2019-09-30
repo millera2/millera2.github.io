@@ -32,15 +32,144 @@ theme_set(theme_tufte() +
 
 ## Wake-up challenge: dplyr
 
+We'll use the built-in `mpg` data.  
+
+```{r}
+mpg %>% head
+```
+
+Your challenge, shgould you choose to accept it (and you will!):
+
+1) Make a new table that shows the average mpg for each class.  (Very similar to part of your lab).  
+
+Which dplyr function?
+
+Not select, since select lets you choose variables:
+
+```{r}
+mpg %>% select(year)
+```
+
+Needed:  `summarise()` !!  But first, `group_by()`
+
+```{r}
+#first, group_by.  Then, summarize avg cty mpg.
+
+mpg %>% group_by(class) %>% 
+        summarise(meanCityMpg = mean(cty))
+```
+
+
+
+2) Add to the existing table the average mpg for each class.
+
+Which function?  `mutate()`!
+
+```{r}
+mpg %>% group_by(class) %>% mutate(meanCtyMpg = mean(cty))
+```
+
+
+
 
 ## CLT Demo with simulations: `sample` and `replicate`
 
+Simulations are awesome!  They let us perform experiments with just our computers.  They can't tell us everything, but they're helpful for investigations.
+
+First, let's look at sample:
+
+```{r}
+#demo of sample() for dice experiment
+
+mySample <- sample(1:6, 100, replace = TRUE)
+
+#let's look:
+
+qplot(mySample, geom="histogram")
+
+
+
+```
+
+Seems reasonable;  we expect 1, 2, 3, 4, 5, 6 to be equal, but we know there's random variation.
+
+Challenge:  plot a histo for a sample of size 5000
+
+```{r}
+mySample2 <- sample(1:6, 5000, replace = TRUE)
+
+qplot(mySample2, geom="histogram")
+```
+
+```{r}
+mySample2 <- sample(1:6, 50000, replace = TRUE)
+
+qplot(mySample2, geom="histogram")
+```
+
+Conclusion:  as sample size increases, the proportions get closer and closer to the expected 1/6.   
+
+**Example with means**
+
+Let's replicate the full experiment:  100 samples of size 34
+
+Use `replicate()`.
+
+```{r}
+
+mySampleMeans <- replicate(100, mean(sample(1:6, 34, replace = TRUE)))
+
+#let's look:
+
+qplot(mySampleMeans, geom="histogram", bins=12)
+
+```
+
+Observation:  even with a relatively low sample size (n=34) and not too many samples (100), we all can see the pattern.  Sample means follow a normal distribution.  Bigger n, closer to normal (bell curve).
+
+Let's bump up:  5000 samples of size 1000
+
+
+```{r}
+mySampleMeans2 <- replicate(5000, mean(sample(1:6, 1000, replace = TRUE)))
+
+#let's look:
+
+qplot(mySampleMeans2, geom="histogram", bins=30)
+```
+
+Woooooah!  For large samples, we see that the means follow a normal/bell curve distribution.  Amazing fact:  THIS ALWAYS HAPPENS!!!  THE CENTRAL LIMIT THEOREM (CLT)!!!!!
+
+No matter what our original population is, even if it's a super weird crazy non-normal population, sample means (with large n) **always** follow a normal dist.
+
+This fact is the reason that we can find p-vals, since sample means are **very predictable**.
 
 ## Picture that connects the p-val to the null hypothesis
+
+Here's how p-vals work:
+
+1)  We make an assumption about the population (H0).  That value is the **center of our bell curve**
+
+p is the probability of observing a sample result as or more extreme than the one we got.
+
+In other words:  We know that the means follow a bell curve (normal).  We must make an assumption about the center (H0), and then, find the area out past our test stat.
+
+TAIL AREA = PVAL!!!!!
+
+If your test stat is waaaaay out in the tails, then our ovbserved data is unlikely according to the null hyp.  We trust our data, so we reject H0.  
 
 
 ## Left-tail, right-tail, two-tail
 
+There are three possibilities for Ha.
+
+H0 is *always* a statement of equality (=)
+
+Ha depends on what we want to show:
+
+- Ha:  mu1 > mu2  (right tail test)
+- Ha:  mu1 < mu2  (left tail test)
+- Ha:  mu1 != mu2
 
 ## Examples:  `mpg` data
 

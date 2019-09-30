@@ -1728,7 +1728,7 @@ summary {
 <li><a href="#example-tossing-three-coins">Example: tossing three coins</a></li>
 <li><a href="#binomial-random-variables">Binomial Random Variables</a></li>
 <li><a href="#the-distribution">The distribution</a><ul>
-<li><a href="#pdf">pdf</a></li>
+<li><a href="#binom-pdf">binom pdf</a></li>
 <li><a href="#cdf">cdf</a></li>
 </ul></li>
 <li><a href="#examples">Examples</a><ul>
@@ -1744,20 +1744,101 @@ summary {
 
 <div id="special-discrete-distribution-binomial-dist" class="section level2">
 <h2>Special Discrete Distribution: <strong>Binomial Dist</strong></h2>
+<p>Goal for next week or so: let’s get to know the most famous probability distros.</p>
+<p>Our first new distro: binomial!</p>
 </div>
 <div id="example-tossing-three-coins" class="section level2">
 <h2>Example: tossing three coins</h2>
+<p>Suppose we flip a coin three times in a row.</p>
+<ol style="list-style-type: lower-alpha">
+<li>What are all possible outcomes? How many?</li>
+</ol>
+<p>There are 8 outcomes.</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>What’s the probability that we observe exactly 1 head?</li>
+</ol>
+<p>Since exactly three of the outcomes have exactly one head, that’s 3/8 = .375.</p>
+<p>Why this example? Notice that each one has equal probability.</p>
+<p>P(HHH) = P(HTH) = P(HHT) = ….. = P(TTT) = 1/8. So, doesn’t it seem kinda wasteful of us to count out all options, when each is the same? Must we do each seperately?</p>
+<p>What if we tossed 5 coins? There’s 32 ways. What if 10 coins? There’s 1024 ways! I don’t wanna list those!</p>
+<p>Fortunately, there’s a shortcut: The binomial dist.</p>
 </div>
 <div id="binomial-random-variables" class="section level2">
 <h2>Binomial Random Variables</h2>
+<p>A discrete RV, X, is “binomial” if it counts the number of success out of a fixed number of trials.</p>
+<p>Think: success is “heads”, # of trials is 3 (in last example).</p>
+<p>Binomial variables must satisfy 4 properties:</p>
+<ul>
+<li>Only two possible outcomes: success and failure.</li>
+<li>Fixed number of trials, n. Decided in advance.<br />
+</li>
+<li>The probability of success is constant, i.e never changes. We call this probability “p”.</li>
+<li>Each trial must be indepndent.</li>
+</ul>
+<p>For our coin example:</p>
+<ul>
+<li>H or T (only two outcomes)</li>
+<li>n = 3</li>
+<li>p = 1/2 (prob of heads is constant)</li>
+<li>coin tosses are independent</li>
+</ul>
 </div>
 <div id="the-distribution" class="section level2">
 <h2>The distribution</h2>
-<div id="pdf" class="section level3">
-<h3>pdf</h3>
+<p>If X is binomial, there’s an easy way to find probailities. (i.e., a special formula).</p>
+<p>Every distribution has two versions:</p>
+<ol style="list-style-type: decimal">
+<li>The “pdf” or “probability density function” is what you guys have learned so far: a list of all possible options, and their probs.</li>
+<li>The “cdf” shows “cumulative” probability. I.e., prob of that value or smaller. Everything the left.</li>
+</ol>
+<div id="binom-pdf" class="section level3">
+<h3>binom pdf</h3>
+<p>If X is binomial, n trials, chance p of success:</p>
+<p>P(x) =</p>
+<p>For the first time ever in my class, <strong>you won’t need to use this by hand</strong>!! Instead, know the “story” of the formula: what are the pieces, and what do the mean?</p>
+<p>We don’t do it by hand because it’s 2019. Let’s let non-humans do it, i.e. R! It’s easy:</p>
+<pre class="r"><code>#Find P(X=1) with n=3 tosses, p=1/2 chance heads
+
+#use the dbinom(x,n,p) function
+
+dbinom(1, 3, 1/2)</code></pre>
+<pre><code>## [1] 0.375</code></pre>
+<p>Yaaaay! It gave the same answer, but so much easier.</p>
+<p>In-class challenge: If we toss a coin 50 times, what’s the chance that exactly 12 of them are heads?</p>
+<pre class="r"><code>#x=12, n=50, p=1/2
+dbinom(12, 50, 1/2)</code></pre>
+<pre><code>## [1] 0.0001078246</code></pre>
+<p>In-class challenge 2:</p>
+<p>If we roll a dice 100 times, what’s the chance we get a “4” exactly 18 times?</p>
+<pre class="r"><code>#n=100     x=18     p=1/6
+
+dbinom(18, 100, 1/6)</code></pre>
+<pre><code>## [1] 0.09706247</code></pre>
+<p>There’s about a 9.7% chance.</p>
 </div>
 <div id="cdf" class="section level3">
 <h3>cdf</h3>
+<p>Question: what if we’re interested in a range of outcomes?</p>
+<p>Example: If we toss a coin 100 times, what’s the probability that we get less than 60 heads?</p>
+<p>The hard way:</p>
+<p>P(X&lt;60) = P(X=0) + P(X=1) + P(X=2) + P(X=3) + … + P(X=58) + P(X=59)</p>
+<p>Oh no! I don’t wanna do all that!</p>
+<p>Cdfs exist to solve this problem.</p>
+<p>F(x) = the probability of observing x <strong>successes or fewer</strong>. Cdfs always tell the “left-side” probabiliy.</p>
+<p>In R: use <code>pbinom()</code>. This is a common pattern: “d” means “density”, and “p” means cumulative probability.</p>
+<p>For individual outcomes, use “d”. For ranges, use “p”.</p>
+<p>Let’s find our prob of less than 60 heads:</p>
+<pre class="r"><code>#n=100, x&lt;60, p = 1/2
+
+pbinom(59, 100, 1/2)</code></pre>
+<pre><code>## [1] 0.971556</code></pre>
+<p>There’s about a 97.1% chance of getting fewer than 60 heads.</p>
+<p>In-class challenge 3:</p>
+<p>What’s the probabilty of getting between 50 and 60 heads (not including 50 and 60)? Still tossing the coin 100 times. Use the cdf, <code>pbinom</code></p>
+<pre class="r"><code>#use cdf for x&lt;60
+
+pbinom(59, 100, 1/2) - pbinom(50 , 100, 1/2)</code></pre>
+<pre><code>## [1] 0.4317614</code></pre>
 </div>
 </div>
 <div id="examples" class="section level2">
