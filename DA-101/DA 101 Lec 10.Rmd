@@ -30,4 +30,22 @@ theme_set(theme_tufte() +
 #------------------------------------------------#
 ```
 
-## 
+## Wake-up challenge: dplyr
+
+
+## CLT Demo with simulations: `sample` and `replicate`
+
+
+## Picture that connects the p-val to the null hypothesis
+
+
+## Left-tail, right-tail, two-tail
+
+
+## Examples:  `mpg` data
+
+
+## Error Types
+
+
+## Power
