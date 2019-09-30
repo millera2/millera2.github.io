@@ -93,7 +93,7 @@ Every distribution has two versions:
 ###  binom pdf
 If X is binomial, n trials, chance p of success:
 
-$$ f(x) = \sum {n \choose x} p^x(1-p)^{(n-x)} $$
+$$ f(x) =  {n \choose x} p^x(1-p)^{(n-x)} $$
 
 where $$ {n \choose x} = \frac{n!}{(n-x)!x!} $$
 
