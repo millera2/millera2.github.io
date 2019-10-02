@@ -6,7 +6,7 @@ output:
   html_document:
     theme: yeti
     toc: true
-    toc_depth: 3
+    toc_depth: 2
 ---
 
 ```{r setup, include=FALSE}
@@ -15,23 +15,35 @@ knitr::opts_chunk$set(echo = TRUE)
 
 *Note: All section numbers come from our text, ["R For Data Science"]("https://r4ds.had.co.nz").  
 
+## Week 5
 
-## Monday 9/30
+### Wednesday 9/31
+
+- Confidence Intervals
+  - The idea
+- Examples:  Interpreting `t.test` results
+- Error Types
+  - alpha
+  - beta
+- Power of a hyp test
+  - Hypothetical Examples
+  
+
+### Monday 9/30
 
 - Wake-up challenge: dplyr
 - CLT Demo with simulations: `sample` and `replicate`
 - Picture that connects the p-val to the null hypothesis
 - Left-tail, right-tail, two-tail
-- Examples:  `mpg` data
-- Error Types
 
+## Week 4
 
-## Wednesday 9/25
+### Wednesday 9/25
 
 - Dice Experiment
 - CLT
 
-## Monday 9/23
+### Monday 9/23
 
 - Hyp Tests and Significance: and intro
 - Case studies for hyp tests:
@@ -40,8 +52,9 @@ knitr::opts_chunk$set(echo = TRUE)
   - garlic mustard dataset
 - Lahman Database: Join Practice
 
+## Week 3
 
-## Wednesday 9/18
+### Wednesday 9/18
 
 - In RStudio:  The wrangled Liberal Arts data from last time.
   - (See Lec 06 for details, or copy/paste from Prof Miller's Scratch Pad)
@@ -50,9 +63,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 
-## Monday 9/16
+### Monday 9/16
 
-#### In-Class Challenge:  Dirty Data
+##### In-Class Challenge:  Dirty Data
 - You'll use the tools we've leanned to clean up a dataset.
   - `gather()` and `spread()`
   - `as.factor()`, `as.Date()`, etc
@@ -62,18 +75,19 @@ knitr::opts_chunk$set(echo = TRUE)
 - Joining tables with `Join`
   - Example:  Lahman Data
 
+## Week 2
 
-## Friday 9/13
+### Friday 9/13
 
 Reading Discussion - Missing Data
 
 
-## Thursday 9/12
+### Thursday 9/12
 
 Begin Lab 2 - Data Collection
 
 
-## Wednesday 9/11
+### Wednesday 9/11
 
  
 - Wake-up Challenge: Tidy up the [Billboard Data](https://millera2.github.io/Data/billboard.csv) using `gather()`
@@ -91,7 +105,7 @@ Begin Lab 2 - Data Collection
    - Joining Tables
      - Example: Lahman baseball scores database
 
-## Monday 9/9
+### Monday 9/9
 
 - Wakeup Challenge
   - Using the built-in `starwars` dataset (be sure to `library(tidyverse)` first), use the `count()` command to tally up gender and eye color (eg, how many starwars females have brown eyes?
@@ -103,12 +117,15 @@ Begin Lab 2 - Data Collection
   - Tidy Data Worksheet
   - `gather()` and `spread()`
      - Ex: gathering `table4a` and `table4b`
+ 
+ 
+## Week 1 
      
-##  Friday 9/6
+###  Friday 9/6
 
 - Reading Response:  What is Big Data?   
 
-## Thursday 9/5
+### Thursday 9/5
 
 - Begin Lab 1.  
   - This Thurs will be our first "real" lab day.  
@@ -116,20 +133,23 @@ Begin Lab 2 - Data Collection
 
 
 
-## Wednesday 9/4
+### Wednesday 9/4
 
 - Read:  ["Section 5.5"](https://r4ds.had.co.nz/transform.html#add-new-variables-with-mutate) in our book, study the examples with `mutate()`
 - `count()`, `mutate()`
 - Babynames data exercise
 
 
-## Monday 9/2
+### Monday 9/2
 
 - Chapter 5:  The six dplyr functions:
   - `filter()`, `select()`, `arrange()`, `mutate()`, `group_by()`, and `summarise()`
 
+
+## Week 0
+
     
-## Friday 8/30
+### Friday 8/30
 
 - 12.2:  Tidy data
 - 5.1: Data Types
@@ -142,7 +162,7 @@ Begin Lab 2 - Data Collection
 
 
 
-## Thursday 8/29
+### Thursday 8/29
 
 - Intro to class, syllabus day
 - Intro to R and RStudio

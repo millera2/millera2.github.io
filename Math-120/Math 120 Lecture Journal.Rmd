@@ -6,7 +6,7 @@ output:
   html_document:
     theme: yeti
     toc: true
-    toc_depth: 3
+    toc_depth: 2
 ---
 
 ```{r setup, include=FALSE}
@@ -16,8 +16,19 @@ knitr::opts_chunk$set(echo = TRUE)
 *Note: All section numbers come from our text, [Openintro Statistics]("https://www.openintro.org/stat/textbook.php?stat_book=os").  
 
 
-## Week 6
+## Week 5
 
+
+### Wednesday 10/02
+
+- Binomial Examples
+  - Sampling DU students
+  - Multiple Choice Exam
+  - Baby Tiger Snakes
+- Mean and variance of binomial
+  - Interpreting examples above
+- New Special Distro: The Poisson Distro
+  - *It'd be rad if it was pronounced "Poison Distro", but it's not.  It's French:  **pwah-sawn** *
 
 
 ### Monday 9/30
@@ -28,16 +39,10 @@ knitr::opts_chunk$set(echo = TRUE)
 - The distribution
   - pdf
   - cdf
-- Examples
-  - Sampling DU students
-  - Multiple Choice Exam
-  - Baby Tiger Snakes
-- Mean and variance of binomial
-  - Interpreting examples above
-  
 
 
-## Week 5
+
+## Week 4
 
 ### Wednesday 9/26
 - Variance of a discrete distro
@@ -59,7 +64,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 
-## Week 4 (This Week)
+## Week 3
 
 ### Friday 9/21
 - TBA
@@ -75,7 +80,7 @@ knitr::opts_chunk$set(echo = TRUE)
   - The "and" rule for independent events
 - Checking Independence
 
-## Wednesday 9/19
+### Wednesday 9/19
 
 
 - Reading Discussion: What is Randomness?
@@ -93,7 +98,7 @@ knitr::opts_chunk$set(echo = TRUE)
 - Examining the effects of outliers 
 - Examples!
 
-## Week 3
+## Week 2
 
 ### Friday 9/13
 
@@ -148,7 +153,7 @@ Lab - Linear Regression
   - Multistage
   - Ex: 1.19, 1.23
  
-## Week 2 
+## Week 1 
     
 ### Friday 9/6
 
@@ -189,7 +194,7 @@ Lab - Linear Regression
   - How to facet by color (`fill= ...`), and what can go wrong.
 
 
-## Week 1
+## Week 0
 
 ### Friday 8/30
 
