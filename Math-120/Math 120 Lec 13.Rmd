@@ -314,7 +314,23 @@ In the long run, we'd exped our guessing student to get about 7.5 questions corr
 30*(1/4)*(1-1/4)
 
 
+# std dev
+
+sqrt(30*(1/4)*(1-1/4))
+
 ```
+
+Here: the variance is 5.625 and the std dev is 2.37.  Note about the units:  units on variance are problems^2, which is hard to think about.
+
+However, the std dev is intuitive:  we exepct in the long run that guessing students will get an average of 7.5 questions correctly (E[X]), on average students will be within 2.37 questions within this range:
+
+7.5+-2.37 are common values for this dist.
+
+
+
+
+
+
 
 
 
