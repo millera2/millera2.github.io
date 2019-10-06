@@ -1,5 +1,5 @@
 ---
-title: "DA 101 Lec 10"
+title: "DA 101 Lec 11"
 author: "Your Name"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
@@ -155,22 +155,11 @@ In type 1, we merely waste money cleaning up water that's already clean.  If you
 
 
 
-## Left-tail, right-tail, two-tail
-
-There are three possibilities for Ha.
-
-H0 is *always* a statement of equality (=)
-
-Ha depends on what we want to show:
-
-- Ha:  mu1 > mu2  (right tail test)
-- Ha:  mu1 < mu2  (left tail test)
-- Ha:  mu1 != mu2
-
-## Examples:  `mpg` data
 
 
-## Error Types
+
+## Examples: 
 
 
-## Power
+
+

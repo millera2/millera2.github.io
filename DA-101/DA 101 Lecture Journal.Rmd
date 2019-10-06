@@ -15,7 +15,22 @@ knitr::opts_chunk$set(echo = TRUE)
 
 *Note: All section numbers come from our text, ["R For Data Science"]("https://r4ds.had.co.nz").  
 
+## Week 6
+
+### Monday 10/7
+
+- Error Types
+  - alpha
+  - beta
+- Power of a hyp test
+- Factors affecting alpha, beta, and power
+  - Sample Size
+  - Significance level
+- Connection btwn Conf Int MOE and Hyp Test alpha
+  - Factors that affect MOE
+
 ## Week 5
+
 
 ### Wednesday 9/31
 
@@ -23,10 +38,7 @@ knitr::opts_chunk$set(echo = TRUE)
   - The idea
 - Examples:  Interpreting `t.test` results
 - Error Types
-  - alpha
-  - beta
-- Power of a hyp test
-  - Hypothetical Examples
+ 
   
 
 ### Monday 9/30
