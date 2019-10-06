@@ -83,7 +83,8 @@ In this section, your scenarios are described.  You should structure your report
 
 3) What strangely warm, dry weather we've had this fall!  In Granville, the wet season spans April through August; during those months, the chance of rain is about 30% on any given day. During September through March, the chance of rain is about 19%.  If we took a random sample of 40 days throughout the year, what's the probability that it rains on at least 10 of them?  
 
-4) At present, about 55% of Denison students are women.  If we sample students at random (say by choosing at random from the Registrar's records), what's the probability that we don't choose a female student until the 6th student that we sample?  
+4) At present, about 55% of Denison students are women.  If we sample students at random (say by choosing at random from the Registrar's records), what's the probability that 6 students sampled until we finally get a female student?  
+
 
 
 ## Deadline and Grading

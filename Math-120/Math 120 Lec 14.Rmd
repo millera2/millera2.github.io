@@ -1,5 +1,5 @@
 ---
-title: "Math 120 Lec 13"
+title: "Math 120 Lec 14"
 author: "Your Name"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
@@ -154,8 +154,75 @@ What's the prob that the stenographer makes more than 3 typos?
 
 P(X>3) = P(X=4)+P(X=5)+P(X=6)+...+P(X=23423423) + ...
 
+```{r}
+# P(X>3) = 1 - P(X<=3)
+
+1 - ppois(3, 1)
+```
+
+Note:  1-blah is required here, since infinite support.
+
+## The last discrete distro:  the Geometric Distro
+
+Many commonalities with binomial:  trials, success and failure, constant prob of success.
+
+BUT, the geometric RV counts something different:  the number of trials needed to get the **first success**.
+
+Consider these two:
+
+1)  We flip a coin 10 times, and count the number of heads.  What's the prob that we get 7 heads?
+
+2) We flip a coin until we get heads.  What's the probability that we have flip 4 times until we get the first head?
+
+Scenario 1 is a binomial distro:  fixed number of trials, constant prob of success, independent, succ/fail.
+
+Scenario 2 is geom: const prob of success, independent, succ/fail.
+
+THE BIGGEST DIFFERENCE between geo and binom is that geometric variables have infinite support.
+
+Geometric variables have no upper bound:  we could be very unlucky and never get a success.
+
+Also, if X is geo, what's the smallest value X can have?  X=1 is smallest!  We need at least one trial to get one success.
+
+Binom:  X= 0, 1, 2, ..., n
+Geo: X = 1, 2, 3, ....
+Pois: X = 0, 1, 2, .......
+
+```{r}
+sample(1:10,1)
+```
+
+Group 3
+
+Out of 2,000  denison students, 75% live out of state. If we take a sample of 50 students, what is the probability that exactly 40 of them are from out of state?
+
+```{r}
+dbinom(40, 50, 3/4)
 
 
+```
+
+**Professor Miller's Commentary:  Yep!**
+
+Group 9
+
+A baseball team is waiting to win their 1st game. What's the probability they have to play 6 games until they get a win?
+```{r}
+sample(1:10,1)
+```
+
+Group 8
+
+```{r}
+dgeom(6, 1/2)
+
+```
+
+**Professor Miller's Commentary**
+
+This is not a correct use of geom: we don't know the probability of success.  Just because there are two outcomes, that doesn't automatically mean that each is equally likely.
+
+Example:  Either it will rain, or it won't.  Those are the only two options, but that doesn't mean there's a 50% chance of either.
 
 
 

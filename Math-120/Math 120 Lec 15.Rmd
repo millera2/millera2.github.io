@@ -1,0 +1,42 @@
+---
+title: "Math 120 Lec 15"
+author: "Your Name"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: simplex
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+## Reading: Name That Distro!
+
+1) According to the most recent figures from the Center for Disease Control (the CDC), 15.5% of adult Americans (age 18 and up) are regular smokers.  If we take a sample of 50 Americans, what's the probability that at least 1/2 but at most 1/4 of them are smokers?
+
+2) According to the RunKeeper app on Prof Miller's smartphone, she'd gone running 58 times in 2019 as of Sept 30.  You can google to find out that this is a time span of 39 weeks.  Assuming that her running habits don't change for the rest of the year, what's the probability that she goes running at least twice this week?
+
+3) What strangely warm, dry weather we've had this fall!  In Granville, the wet season spans April through August; during those months, the chance of rain is about 30% on any given day. During September through March, the chance of rain is about 19%.  If we took a random sample of 40 days throughout the year, what's the probability that it rains on at least 10 of them?  
+
+4) At present, about 55% of Denison students are women.  If we sample students at random (say by choosing at random from the Registrar's records), what's the probability that 6 students sampled until we finally get a female student?  
