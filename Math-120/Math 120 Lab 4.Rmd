@@ -1,5 +1,5 @@
 ---
-title: "Math 120 Lab 03 - Basic Probability"
+title: "Math 120 Lab 03 - Exploring Discrete Probability Distributions"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
   html_document:
@@ -43,52 +43,52 @@ youShouldRenameThis <- read_csv("death penalty data.csv")
 
 ## Introduction
 
-In this lab, we'll be making and interpreting contingency tables based on the death penalty dataset.  Students will demonstrate knowledge of basic probability concepts in the context of a real-world dataset.  
-
-## The dataset
-
-[You can download the data here](https://millera2.github.io/Data/death-penalty-data.csv), although you probably already have it from our work in class.  Most of the variables in the dataset (`death-penalty-data.csv`) have easy-to-understand column names, and thus no codebook is provided.
-
-You're already familiar with this dataset:  it's a list of names and details about all 1,442 Americans who've received the death penalty since the practice was legalized in 1977.  In this lab, you'll be answering some basic probability questions about the dataset.  You'll use the `table()` command quite frequently, so be sure to refer to our lecture notes for good examples.
+In this lab, we'll be using discrete probability distributions to answer questions about real-world scenarios.  As we've seen in lecture, the distributions are easy to use in R.  But, deciding which distributions are appropriate is much more interesting.  
 
 
-## Deliverables
+## Tools and Distros
 
-This lab is a bit more "structured" than others.  You have a list of questions to answer specifically, rather than a big topic to address holistically.  That said, be sure to present all of your work in a polished document that uses clean formatting, tight grammar, and crisp technical writing.  **If your problem refers to a table or distribution, be sure to include that table/distro in the discussion!**
+The distributions we'll use for this lab are:
 
-Your audience this time:  c'est moi, Prof Miller!  Show your dear old math professor everything you've learned about probability so far.  Here are things I'd like you to answer specifically:
+- The Binomial Distribution
+- The Poisson Distribution
+- The Geometric Distribution
 
-1) If an executed prisoner is randomly selected from the data, what's the probability that they died by lethal injection?  
+Note that we haven't discussed the Geometric distribution in class.  One of the goals of this lab is for you to explore the geometric distribution on your own.  You can find everything you need in our book, Open Intro Statistics (4th ed) on page 145-146.  Also, there's a big wide internet out there full of answers; your professor is especially fond of Wikipedia.
 
-2) If three executed prisoners are randomly selected from the data, what's the probability that all three died by lethal injection?  What assumption must you make in order to compute this probability?  Is that a reasonable assumption?
 
-3) If an executed prisoner is randomly selected from the data, what's the probability that they died by lethal injection given that they were executed in the south?  
+This lab presents you with 5 scenarios, each with a question about the data.  For each, you'll need to adress the following:
 
-4) If an executed prisoner is randomly selected from the data, what's the probability that either they're black or that they died in the south?
+- Which distribution (if any!) can be used to answer the question.
+- A discussion of why the properties/requirements of the distribution are satisfied (for example, binomial RVs must satistfy four criteria described in Lec 13).
+- A plot of the distribution.  For the distributions with infinite support (see Lec 14 for a definition of *support*), I leave it up to your good judgement where to stop the graph.  For example, below is a graph of a poisson distribution with lambda = 3.  I chose to stop it at X=12, even though the poisson has infinite support.
 
-5) If an executed prisoner is randomly selected from the data, what's the probability that they're both black and they died by electrocution?
+`qplot(1:12, dpois(1:12, 3), geom="col")`
 
-6) Consider the events A and B, where
-    - A = the event that a randomly selected executed prisoner is from the Midwest.
-    - B = the event that a randomly selected executed prisoner died by firing squad.
-  - Are events A and B mutually exclusive?  Why or why not?
-  
-7) Consider the events A and B, where
-    - A = the event that a randomly selected executed prisoner is from the West.
-    - B = the event that a randomly selected executed prisoner died by firing squad.
-  - Using the definition of independence established in class, are events A and B independent?  Why or why not?  Is that the end of the story?  Are we convinced one way or the other?
-  
-  
-  
-8) Suppose X = the number of victims killed by a prisoner who's received the death penalty.  Construct a probability distribution for X.  Find the mean and variance of X.
+```{r}
+qplot(1:12, dpois(1:12, 3), geom="col", xlab = "x", ylab = "P(x)")
+```
 
-9) Referring to all the probabilities you've computed above: are these theoretical probabilities or relative frequency probabilities?  How does that contextualize the conclusions you've made?  What does the Law of Large Numbers have to say about it all?
+- The probability in question.  Here, you'll use the appropriate pdf or cdf.  Include a brief explanation of how you computed the probability and what it means.
+- A discussion about whether the event in question is "unusual".  The expected value and variance should feature prominently in this discussion.  You may use, as a rule of thumb, that observations which are more than two standard deviations away from the expected value are "unusual".  The graph of the distribution could also be a good reference...
+- If the scenario **doesn't match** any of the probability distributions we've learned (binomial, geometric, or poisson), then write a brief explanation of why not.  
 
+## The Scenarios
+
+In this section, your scenarios are described.  You should structure your report accorgingly.  For each scenario, write a paragraph that addresses the considerations listed above.  As always, use clean formatting, tight grammar, and crisp technical writing.  
+
+1) According to the most recent figures from the Center for Disease Control (the CDC), 15.5% of adult Americans (age 18 and up) are regular smokers.  If we take a sample of 50 Americans, what's the probability that at least 1/2 but at most 1/4 of them are smokers?
+
+2) According to the RunKeeper app on Prof Miller's smartphone, she'd gone running 58 times in 2019 as of Sept 30.  You can google to find out that this is a time span of 39 weeks.  Assuming that her running habits don't change for the rest of the year, what's the probability that she goes running at least twice this week?
+
+3) What strangely warm, dry weather we've had this fall!  In Granville, the wet season spans April through August; during those months, the chance of rain is about 30% on any given day. During September through March, the chance of rain is about 19%.  If we took a random sample of 40 days throughout the year, what's the probability that it rains on at least 10 of them?  
+
+4) At present, about 55% of Denison students are women.  If we sample students at random (say by choosing at random from the Registrar's records), what's the probability that we don't choose a female student until the 6th student that we sample?  
 
 
 ## Deadline and Grading
 
-This lab is due **Sunday, Sept 29th at 11:59pm**.   **I'll charge a 20% late fee per day late.**  
+This lab is due **Monday, Sept 29th at 11:59pm**.   **I'll charge a 20% late fee per day late.**  
 
 I will assign grades on this project ”holistically”, not using a scoring sheet where each item is worth a certain number of points.
 
