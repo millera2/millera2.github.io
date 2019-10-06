@@ -15,9 +15,34 @@ knitr::opts_chunk$set(echo = TRUE)
 
 *Note: All section numbers come from our text, [Openintro Statistics]("https://www.openintro.org/stat/textbook.php?stat_book=os").  
 
+##Week 6
+
+### Monday 10/07
+
+- Reading: Name That Distro!
+- Continuous Distros
+  - Cts vs Discrete
+  - P(X==a)
+  - How cts pdfs and cdfs work
+- The Uniform Distro
+  - Examples
+- The Normal Distro
+  - Properties
+  - Examples
+  
 
 ## Week 5
 
+### Friday 10/04
+
+- Special activity: Name That Distro!
+
+### Thursday 10/03
+
+- Poisson Distro
+  - Properties
+  - Using pdf and cdf
+  - Examples
 
 ### Wednesday 10/02
 
@@ -27,8 +52,6 @@ knitr::opts_chunk$set(echo = TRUE)
   - Baby Tiger Snakes
 - Mean and variance of binomial
   - Interpreting examples above
-- New Special Distro: The Poisson Distro
-  - *It'd be rad if it was pronounced "Poison Distro", but it's not.  It's French:  **pwah-sawn** *
 
 
 ### Monday 9/30
