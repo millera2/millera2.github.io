@@ -144,22 +144,135 @@ Type 2:  We think the water's fine, but actually it's dangerous.
 Here, type 2 sounds much worse!  People would drink dangerous water!  I would feel bad about that, because I have human feelings.  
 
 In type 1, we merely waste money cleaning up water that's already clean.  If you value money more than human life (some humans do), then you'd think a type 1 is worse.
+
+2) Judge at a criminal trial.  We assume innocent by default, but the trial is designed to find evidence of guilt.
+
+
+H0:  Innocent
+Ha:  Guilty
+
+Type I:  We reject H0.  I.e., we reject the claim that they're innocent.  We're supporting the alterate; we think that they're guilty.  In reality, the null hyp is true.  Thus, the defendent is innocent!
+
+All together:  we thought they were guilty, but actually they're innocent.
+
+Type II:  We fail to reject H0.  Not enough evidence to conclude guilty.  In reality, H0 is false, i.e. they're guilty.
+
+All together:  we think they're innocent, when actually they're guilty.  
+
+Which is worse?  Sending an innocent person to jail, or letting a criminal go free?
+
+Prof Miller's take:  I haven't committed any "serious" crimes.  I'd be very upset if went to jail!
+
+On the other hand, maybe the person is super super bad and..... we really, really don't want them to go free.
+
+
+
+
+
+3) Federal funding program.  To qualify, neighborhoods must have mean income less than $15k.
+
+
+H0:  mu = 15000  (note:  H0 always =)
+Ha:  mu < 15000
+
+
+Type I: Reject H0, so yes, we think they get funding.  In actuality, the mean income is 15k or above.
+
+Type II:  We don't think they qualify for funding, but actually the mean income is <15k so they do qualify!
+
+In type I, we waste public funds on people who don't need them.  In type II, people who need help don't get it!
+
+
+
+
+
+
+
+
+4)  Coffee cup is talking to you (?).  Test with audio evidence.
+
+H0:  Your coffee cup is not talking to you.
+Ha:  Your coffee cup is talking to you.
+
+
+Type I error:  We think it's talking to us, but it's not.
+
+Type II:  We don't think it's talking to us, but it is.
+
+Prof Miller: Type II is worse.
+
+
+
         
 ### alpha
+
+For a particular hyp test, alpha is the prob of making a type I error.
+
+Note:  this is the same as the significance level!!!!  Woah!  In other words, WE CHOOSE ALPHA!  We choose the probability of a type I error!
+
+
+
         
 ### beta
+
+Beta is the probabilty of a type II error.
+
+Unfortunately, it's (generally) impossible to know beta.  The problem is this:
+
+If beta, then type II error.  If type II error, null hyp is false!  If null hyp is false, then **we can't find probablities**  (like p-val). 
+
+Even though the math is tough; one fact is clear:  bigger alpha makes beta smaller.  And, smaller alpha makes beta bigger.
+
+So, there's always a balancing act!  We can't eliminate error entirely, but we can tip the scales!
+
+We've seen that sometimes Type I is worse, sometimes Type II is worse.  This depends on your human values and feelings!  If type I is really bad:  choose alpha smaller.  If type II is really bad, choose alpha bigger.
+
+
+
     
 ### Power of a hyp test
         
+The power of a hyp test is the probabilty of correctly rejecting the null hypothesis.  I.e., the prob of reject H0 when H0 really is false.
+
+Recall:  we're hoping to reject H0, since that gives evicence to support our claim!  So, power is the prob of a "successful" hyp test!
+
+Important relationship with power, beta:
+
+      power = 1 - beta
+      
+      beta = 1-power
+      
+They're complements!  That means, there's a price to pay for high power: type I error is more likely too!
+
+
+## Factors affecting alpha, beta, and power
+
+### Sample Size
+
+Bigger n means bigger power!  Thank goodness!  That means, sample size provides a certain control over power.  Of course, larger samples are more expensive, more time consuming, maybe not available at all.
+
+### Significance level
+
+Remember you choose alpha.
+
+Bigger alpha means smaller beta.
+
+Bigger alpha means bigger power.
+
+It's a balance!  You have to chose.
+
+## Connection btwn Conf Int MOE and Hyp Test alpha
+
+
+CIs are centered at the sample result, and the width is the MOE.  But, Confidence level (i.e. 95%) is the opposite of alpha (i.e. alpha = 0.05).
+
+
+If confidence level increses (say, to 99%), what effect does that have on alpha, beta, and power?
 
 
 
 
 
+### Factors that affect MOE
 
-
-## Examples: 
-
-
-
-
+### Connection between CI and Hyp Test Errors
