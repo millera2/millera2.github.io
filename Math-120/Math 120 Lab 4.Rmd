@@ -87,7 +87,7 @@ This lab presents you with 5 scenarios, each with a question about the data.  Fo
 
 
 ```{r}
-qplot(1:12, dpois(1:12, 3), geom="col", xlab = "x", ylab = "P(x)", main="Poisson Dist, lambda = 3")
+qplot(0:11, dpois(0:11, 3), geom="col", xlab = "x", ylab = "P(x)", main="Poisson Dist, lambda = 3")
 ```
   - For continuous distributions, a line graph is more appropriate.  For example, here's a graph of the uniform distribution that ranges between 40 and 60 (just like the example from class):
 ```{r}
@@ -156,4 +156,4 @@ I will assign grades on this project ”holistically”, not using a scoring she
   
   
   
-  
+  Example:  We know that the mean of the binomial distribution is n*p.  Here, n=50 and p = .234, so our expected value is 50*.234 = .....
