@@ -269,10 +269,26 @@ CIs are centered at the sample result, and the width is the MOE.  But, Confidenc
 
 If confidence level increses (say, to 99%), what effect does that have on alpha, beta, and power?
 
+Our new alpha is 1%, i.e. 0.01.  (decreased from 0.05)  Chance of type I goes down.
 
+Beta must go up to balance, i.e., chance of type II is greater.
+
+Smaller alpha also means it's harder to reject H0, i.e., less power!!!
 
 
 
 ### Factors that affect MOE
 
-### Connection between CI and Hyp Test Errors
+Two big ones:
+
+- If sample size increases, then MOE decreases!  Yay!  Math note:  there's an "n" in the denominator for MOE, thus MOE decreases with increasing n.
+
+- If confidence level increases, so does MOE!!!  Bummer!!!  This is backwards from what we want:  high confidence, low margin of error.  But, that confidence isn't free:  the price we pay is margin of error!
+
+Analogy:  If our net is bigger, it's more likely to capture the little creature!  Same with CI:  if the CI is wider, it's more likely to capture the true parameter.
+
+Sample size is our control.  We can't change the tradeoff btwn MOE and confidence, but we can (hopefully) increase sample size in our study.  It's possible to plan ahead.  
+
+
+
+
