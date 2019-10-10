@@ -1,5 +1,5 @@
 ---
-title: "Math 120 Lab 03 - Exploring Discrete Probability Distributions"
+title: "Math 120 Lab 04 - Exploring Probability Distributions"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
   html_document:
