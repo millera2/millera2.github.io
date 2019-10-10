@@ -43,7 +43,7 @@ youShouldRenameThis <- read_csv("death penalty data.csv")
 
 ## Introduction
 
-In this lab, we'll be using discrete probability distributions to answer questions about real-world scenarios.  As we've seen in lecture, the distributions are easy to use in R.  But, deciding which distributions are appropriate is much more interesting.  
+In this lab, we'll be investigating the important probability distributions we've studied so far in calss.  As we've seen in lecture, the distributions are easy to use in R.  But, deciding which distributions are appropriate is much more interesting.  
 
 
 ## Tools and Distros
@@ -53,43 +53,89 @@ The distributions we'll use for this lab are:
 - The Binomial Distribution
 - The Poisson Distribution
 - The Geometric Distribution
+- The Uniform Distribution
+- The Normal Distribution
 
-Note that we haven't discussed the Geometric distribution in class.  One of the goals of this lab is for you to explore the geometric distribution on your own.  You can find everything you need in our book, Open Intro Statistics (4th ed) on page 145-146.  Also, there's a big wide internet out there full of answers; your professor is especially fond of Wikipedia.
+For each distribution, you'll use one of three R functions depending on the circumstance:
 
+ - The pdf.  In R, this is denoted with a `d` prefex.  For example: `dpois()` is the pdf command for the Poisson distribution.
+ - The cdf.  In R, this is denoted with a `p` prefix.  For example, `pnorm()` is the cdf for the normal dist.
+ - Random sampling.  In R, this is dnoted with an `r` prefix, for example `rbinom(50, 10, 0.5)` generates a list of 50 random numbers sampled from a binomial distribution with `n=10` and `p=0.5`.  Practically, you can think of this as the outcome of 10 coin flips, repeated 50 times.
+ 
+ [SKIP FOR NOW] Part II of the lab also investigates data samples.  There, you'll need the following commands: 
+ 
+ - Use the `sample()` command to take a random sample of a dataset.  For example, `sample(mpg$cty, 50, replace=TRUE)` generates a random sample of the `cty` variable in the `mpg` dataset of size `n=50`.
+ - Use the `replicate()` command to repeat any other command in R and store the results in a list.  For example, `replicate(  100, mean( sample(mpg$cty, 50, replace=TRUE) )  )` generates a list of 100 sample means, each computed from a sample of size n=50 from the mpg dataset.
+ - Make a normal quantile plot with `qplot()`.  For example, here is a normal quantile plot for the `cty` data in the `mpg` dataset:
+ 
+
+```{r}
+
+qplot(data=mpg, sample=cty, geom="qq")+geom_qq_line()
+
+```
+
+## Part 1 Intro: Using The Distros
 
 This lab presents you with 5 scenarios, each with a question about the data.  For each, you'll need to adress the following:
 
 - Which distribution (if any!) can be used to answer the question.
 - A discussion of why the properties/requirements of the distribution are satisfied (for example, binomial RVs must satistfy four criteria described in Lec 13).
-- A plot of the distribution.  For the distributions with infinite support (see Lec 14 for a definition of *support*), I leave it up to your good judgement where to stop the graph.  For example, below is a graph of a poisson distribution with lambda = 3.  I chose to stop it at X=12, even though the poisson has infinite support.
+- The expected value, variance, and standard deviation for the distro, and a brief explanation of what they mean.  You might need to consult the book or the internet (like Wikipedia!) for this.
+- A plot of the distribution.  Below are two examples.  
+  - For the distributions with infinite support (see Lec 14 for a definition of *support*), I leave it up to your good judgement where to stop the graph.  For example, below is a graph of a poisson distribution with lambda = 3.  I chose to stop it at X=12, even though the poisson has infinite support.  
 
-`qplot(1:12, dpois(1:12, 3), geom="col")`
 
 ```{r}
-qplot(1:12, dpois(1:12, 3), geom="col", xlab = "x", ylab = "P(x)")
+qplot(1:12, dpois(1:12, 3), geom="col", xlab = "x", ylab = "P(x)", main="Poisson Dist, lambda = 3")
 ```
+  - For continuous distributions, a line graph is more appropriate.  For example, here's a graph of the uniform distribution that ranges between 40 and 60 (just like the example from class):
+```{r}
+X = seq(30, 70, .1)            # make a sequence of x vals for the distro
+Px = dunif(X, 40, 60)          # get the value of the pdf at those points
+
+qplot(X, Px, geom="line", main = "Uniform Distro btwn 40 and 60")
+
+```
+
+
 
 - The probability in question.  Here, you'll use the appropriate pdf or cdf.  Include a brief explanation of how you computed the probability and what it means.
 - A discussion about whether the event in question is "unusual".  The expected value and variance should feature prominently in this discussion.  You may use, as a rule of thumb, that observations which are more than two standard deviations away from the expected value are "unusual".  The graph of the distribution could also be a good reference...
 - If the scenario **doesn't match** any of the probability distributions we've learned (binomial, geometric, or poisson), then write a brief explanation of why not.  
 
-## The Scenarios
+### The Scenarios
 
 In this section, your scenarios are described.  You should structure your report accorgingly.  For each scenario, write a paragraph that addresses the considerations listed above.  As always, use clean formatting, tight grammar, and crisp technical writing.  
 
-1) According to the most recent figures from the Center for Disease Control (the CDC), 15.5% of adult Americans (age 18 and up) are regular smokers.  If we take a sample of 50 Americans, what's the probability that at least 1/2 but at most 1/4 of them are smokers?
+1) A machine that produces a special type of transistor (a component of computers) has a 2% defective rate. The production is considered a random process where each transistor is independent of the others.  You are performing quality control, and investigate the transistors made by the machine until you find a defective one.  What's the probability that you have to look at more than 20 transistors before you find the first defect?
 
-2) According to the RunKeeper app on Prof Miller's smartphone, she'd gone running 58 times in 2019 as of Sept 30.  You can google to find out that this is a time span of 39 weeks.  Assuming that her running habits don't change for the rest of the year, what's the probability that she goes running at least twice this week?
+2) Heights of 10 year olds, regardless of gender, closely follow a normal distribution with mean 55 inches and standard deviation 6 inches.  What is the probability that a randomly chosen 10 year old is between 60 and 65 inches?
 
-3) What strangely warm, dry weather we've had this fall!  In Granville, the wet season spans April through August; during those months, the chance of rain is about 30% on any given day. During September through March, the chance of rain is about 19%.  If we took a random sample of 40 days throughout the year, what's the probability that it rains on at least 10 of them?  
+3) Occasionally an airline will lose a bag. An analysis of customer records at a particular airline reveals that, on average, 2.2 bags are lost each day.  Assuming that this rate is constant, what's the probability that the airline loses at least 7 bags in the next day?
 
-4) At present, about 55% of Denison students are women.  If we sample students at random (say by choosing at random from the Registrar's records), what's the probability that 6 students sampled until we finally get a female student?  
+4) In a videogame, "Green" level prizes are special, rare rewards for defeating an enemy.  The chance of obtaining green level prizes after defeating an enemy is 12% by default, but if you *do* get a green prize, the chance of obtaining another green item is cut in half for 5 minutes.  If you defeat 20 enemies in the game, what's the chance you'll be rewarded with at least two green prizes?
 
+5) In a board game, player actions are determined by a "spinner", similar to the one shown below:
+
+<img src="https://www.ontrack-media.net/math8/m8m5l1image13.jpg" width="200">
+
+  - Suppose the spinner in our game is labelled like a clock, with values ranging from zero (at the top) all the way around to 12 (at the top again).  Any value in between is equally likely, and a scale is provided on the spinner to see.  For example, it's just as likely to get 4.52 as 2.145 as 10.9924.  You need to spin a number bewtween 6 and 7 to win the game on this turn.  What's the probability that happens?
+
+6) Data collected by the Substance Abuse and Mental Health Services Administration (SAMSHA) suggests that 69.7% of 18-20 year olds consumed alcoholic beverages in any given year. We now consider a random sample of fifty 18-20 year olds. Would you be surprised if there were 45 or more people who have consumed alcoholic beverages?
+
+
+
+
+
+## Part II: Sampling and Simulation
+
+To be continued!  
 
 
 ## Deadline and Grading
 
-This lab is due **Monday, Sept 29th at 11:59pm**.   **I'll charge a 20% late fee per day late.**  
+This lab is due **Thurs, Oct 24th at 11:59pm**.   **I'll charge a 20% late fee per day late.**  
 
 I will assign grades on this project ”holistically”, not using a scoring sheet where each item is worth a certain number of points.
 
@@ -106,9 +152,6 @@ I will assign grades on this project ”holistically”, not using a scoring she
   - Are the graphics factually correct? Are they formatted well? Do they give the first visual impression that is supportive of the thesis/story of the report, or do they indicate a different story?
   - Is the report well-written? Is there good organization of ideas? Is the story/thesis communicated clearly? Is the analysis grounded in reasonable use of statistics? Is the paper free of mechanical and grammatical errors?
   - Does the report provide the right context for the target audience? Is the right information provided? Have the right assumptions been made about what the audience knows or does not know?
-  
-  
-  
   
   
   
