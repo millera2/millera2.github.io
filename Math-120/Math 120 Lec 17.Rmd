@@ -1,0 +1,57 @@
+---
+title: "Math 120 Lec xx"
+author: "Your Name"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: simplex
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+## Comparing Normal Distros:  Z-Scores
+
+
+
+
+### ACT/SAT example
+
+The ACT and SAT exams both follow normal distributions, but each has a different center and spread.  The mean score for the ACT is 21 with std dev 6, while the mean score for the SAT is 1100 with std dev 200.
+
+A student named Abby took both exams.  She scored a 28 on the ACT and a 1320 on the SAT.  Which exam did she do better on?  Which score would she prefer to send to schools?
+
+
+## Empirical Rule
+
+## Forwards and Backwards Problems
+  
+### Review: Quantiles
+
+### Examples
+
+## Verifying Normality of data
+
+
+## Normal distributions are -everywhere!-

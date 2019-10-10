@@ -15,7 +15,29 @@ knitr::opts_chunk$set(echo = TRUE)
 
 *Note: All section numbers come from our text, [Openintro Statistics]("https://www.openintro.org/stat/textbook.php?stat_book=os").  
 
-##Week 6
+## Week 6
+
+### Friday 10/11
+
+- Comparing Normal Distros:  Z-Scores
+  - ACT/SAT example
+- Empirical Rule
+- Forwards and Backwards Problems
+  - Review: Quantiles
+  - Examples
+- Verifying Normality of data
+- Normal distributions are -everywhere!-
+
+### Thursday 10/10
+
+- Lab 4 Begins
+
+### Wednesday 10/09
+
+- Important property of cts RVs: endpoints
+- The Normal Distro
+  - Properties
+  - Examples
 
 ### Monday 10/07
 
@@ -26,9 +48,7 @@ knitr::opts_chunk$set(echo = TRUE)
   - How cts pdfs and cdfs work
 - The Uniform Distro
   - Examples
-- The Normal Distro
-  - Properties
-  - Examples
+
   
 
 ## Week 5
