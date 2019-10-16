@@ -65,11 +65,12 @@ theme_set(                                #this sets the theme for all    #
 
 ## Next Quiz:  Wednesday 10/9
 
-Lecture Coverage:  Lec 11
+Lecture Coverage:  Lec 12, 13
 Topics: 
-- Confidence Intervals, 
-- Type I/II errors, 
-- $\alpha$, $\beta$, power.
+- Linear Regression
+- r
+- interpretation of slope and intercept
+- interpreting R^2
 
 ## Datasets
 
