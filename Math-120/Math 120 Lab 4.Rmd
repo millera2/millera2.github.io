@@ -130,7 +130,70 @@ In this section, your scenarios are described.  You should structure your report
 
 ## Part II: Sampling and Simulation
 
-To be continued!  
+Part II of the lab is shorter, but it illustrates a very important concept that we'll use for the rest of the semester.  It's actually really, really cool -- I'm excited for you to understand it!
+
+The idea is simple:  make histograms for **sample means** from many samples of varying sizes and varying populations.  By "many", it should be at least 5,000 samples, but you can use more if you like.
+
+For example, let's consider an old friend:  the "dice distro".  This is a simple population: the numbers 1, 2, 3, 4, 5, 6.  In r, it's easy to list out a sequence of numbers like this:
+
+```{r}
+1:6
+```
+
+
+**In this example**, we'll make a histogram of sample means of samples of **sample size n=8** from **10 samples** the dice population `1:6`.  Your work will be the same, but you'll use different populations, different sample sizes, and at least 5000 samples.  We'll build it up in stages:
+
+1) Take the sample:
+
+```{r}
+sample(1:6, 8, replace=TRUE)
+```
+
+2) find the mean of the above sample:
+
+```{r}
+mean(  sample(1:6, 8, replace=TRUE)  )   #I used extra spaces to help readability
+```
+
+3) Do this 10 times with the replicate command 
+
+```{r}
+mySamples <- replicate(10,                                    # <- 10 samples
+                      mean(  sample(1:6, 8, replace=TRUE)  )  # <- copy/paste
+             )
+```
+
+
+4) Make a histogram of the results.  **You should choose an appropriate bin size, not always `bins=5`**!
+
+```{r}
+qplot(mySamples, geom="histogram", bins=5)
+```
+
+There it is!  The above histogram is what you're trying to get, in varying contexts.
+
+Your goal:  do this for 5000 (or more) samples from the following three populations...
+
+- The Dice Population 1:6
+- The Sepal Lengths from the built-in `iris` dataset.
+- The Poisson distribution with lambda=3 (seen above at the beginning of the lab).  Here, use `rpois(n, lambda)` instead of `sample()`.
+
+... and the following sample sizes:
+
+- `n=1`
+- `n=2`
+- `n=10`
+- `n=30`
+- `n=5000`
+
+That's a total of 15 histograms.  Don't worry, the code is basically the same for all of them.  **Copy/paste your code chunks** and adjust the size of n.  It only takes a couple seconds once you understand the process.
+
+**For each of the three populations**, write a couple of sentence describing the pattern you see.  How do things start out, and what happens as `n` gets large?  For `n=5000`, what feature do you observe in all three populations?  What conclusion do you make?
+
+To summarize Part II:  make the histograms, describe the pattern as n increases.
+
+
+
 
 
 ## Deadline and Grading
