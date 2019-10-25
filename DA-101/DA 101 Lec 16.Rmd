@@ -1,0 +1,149 @@
+---
+title: "DA 101 Lec 15"
+author: "Your Name"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: simplex
+    df_print: paged
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+## Multiple Lin Reg Continued
+
+Single variable (ie what you've done so far):
+
+$$\hat{y} = b_0 + b_1 \cdot x$$
+
+The goal:  use the indep variable x to make predictions about the dependent variable y.
+
+For multiple regression, we still have a linear function, but now many variables:
+
+$$\hat{y} = b_0 + b_1 \cdot x_1 + b_2 \cdot  x_2 + b_3 \cdot  x_3 + ... + b_n \cdot  x_n$$
+
+Why would we do this?  We hope that by adding variables, we increase predictive power.  Many variables ought to have more information than just one, right??
+
+Example: iris.
+
+```{r}
+head(iris)
+```
+
+
+Suppose we're scientists who want to predict the sepal length.  Which variable to use?
+
+In this dataset, we've got 3 options for indpendent variables (doesn't make any sense to use Species, since that's categorical!!*)
+
+How do they perform individually?
+
+```{r}
+summary(lm(iris$Sepal.Length ~ iris$Sepal.Width))
+```
+
+Egh, this isn't a good model.  In fact, it's bad!  R^2 is close to zero; there's almost no explanatory power.
+
+Next:
+
+```{r}
+summary(lm(iris$Sepal.Length ~ iris$Petal.Length))
+```
+
+Ok, much better R^2.  This is our favorite so far.  
+
+One more:
+
+```{r}
+summary(lm(iris$Sepal.Length~iris$Petal.Width))
+```
+
+
+Not quite as good as Petal Length, but decent.
+
+Question:  What if we combine the two?  Let's look:
+
+```{r}
+irisMod <- lm(iris$Sepal.Length ~ iris$Petal.Length + iris$Petal.Width)
+summary(irisMod)
+
+```
+
+Ok, that's better!  What about all 3?
+
+```{r}
+irisMod <- lm(iris$Sepal.Length ~ iris$Sepal.Width + iris$Petal.Length + iris$Petal.Width)
+
+summary(irisMod)
+```
+
+Woah, we've got a lot more predictive power now!  Interesting note:  Sepal Width gave us almost no predictive power (r^2 = .02), but it did contribute greatly to our multi linear model!  Cooool!
+
+
+## Diagnostic Plots
+
+Ok, we can make multi models, but what anaylysis?  How good are they?
+
+The first thing we want to do is look at residuals (just like in the single variable case), but there's a problem:  we have multiple variables!!!  How can we plot the residuals?  We can have 3 different x axes, doesn't make sense!
+
+The solution:  plot the residuals against the fitted values (yhat) instead.  The dimentions match up:  each residual corresponds to exactly one fitted value.  ALso: fitted values are a linear function of the x variables, so thus they're closely related and make a good stand-in.
+
+Our biggest tool:  "autoplot".  It lives in a library called ggfortify.
+
+```{r}
+library(ggfortify)
+
+autoplot(irisMod)
+
+
+```
+
+- Upper Left:  Resids vs Fitted.  This is our multilinear version of the residual plot.  We use fitted values on the x-axis so that we don't worry about multiple independent variables.  Interpret graph just like you did for single: variable:  is there a pattern?
+
+
+-Lower left: very similar to upper.  BUT, here, the yvals are:
+
+    sqrt(  | standardized residuals  | )
+    
+Standardizing means "re-scaling".  Specifically:
+
+standardized value = (x - mean)/std dev
+
+We standardize to get everything on the same scale:  shift by the mean and stretch by the standard deviation.  The result has mean 0 and standard deviation 1.   No matter the original data, all standardized values have the same scale.
+
+Taking absolute value makes all residuals positive.  Doing lets us focus on homoskedasticity:  don't have to worry about positive/negative.  Ideally, we should see a flat trend line here, indicating that yes our data is homosked.
+
+
+- Upper right:  Normal qq plots test normality.  If our data are normally distributed, then the points should fall on the line.  Here: looks great!
+
+- Lower right:  "leverage".  Next time.
+
+### In-class exercise:
+
+Make the best you can with the housing dataset
+
+```{r}
+housingData <- read_csv("House-Sales.csv")
+head(housingData)
+```
+
+Use y = price.  Choose your own variables.  What's r^2?  Diagnostic plot?
