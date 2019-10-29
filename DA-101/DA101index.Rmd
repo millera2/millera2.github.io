@@ -66,14 +66,16 @@ theme_set(                                #this sets the theme for all    #
 - [Lec 00](https://millera2.github.io/DA-101/DA-101-Lec-00.html)
 
 
-## Next Quiz:  Wednesday 10/9
+## Next Quiz:  Wednesday 10/30
 
-Lecture Coverage:  Lec 12, 13
-Topics: 
-- Linear Regression
-- r
-- interpretation of slope and intercept
-- interpreting R^2
+Lecture Coverage:  14, 15, 15
+
+Topics: Residual plots, `cor.test`, diagnostic plots
+
+- Do I know the hypotheses for the cor test, and what it means to reject the null hypothesis?
+- Do I know what to look for in a residual plot? Can I defend a judgement call about particular plots? Do I understand the examples we've seen in class?
+- Do I understand the subplots of the 'autoplot' function? Can I explain what they're showing, and what features are desirable/undesirable?
+
 
 ## Datasets
 
