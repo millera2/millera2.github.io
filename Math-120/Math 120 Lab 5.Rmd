@@ -69,7 +69,7 @@ For your category of interest, perform two analyses:
 
 In short:
 
-- Make a sample for each level of your category of interest (about 6).
+- Make a sample for each level of your category of interest (about 6).  
 - Construct and intepret confidence intervals for political affiliation for each sample.  Check to see which ones worked.
 - Perform a hypothesis test for each sample.  Check to see which ones worked.
 - Present your results in a polished report.
