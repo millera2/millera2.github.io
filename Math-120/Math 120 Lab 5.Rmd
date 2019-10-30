@@ -1,0 +1,100 @@
+---
+title: "Math 120 Lab 5: Inference for Proportions"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: false
+    toc_depth: 3
+    code_folding: show
+    theme: yeti
+    df_print: paged
+  
+---
+
+```{r setup, include=FALSE}
+###########################################################################
+################# DON'T DELETE THIS PART!!!!!##############################
+###########################################################################
+                                                                          #
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)      #
+                                                                          #
+library(tidyverse)           #The tidyverse has all of our data tools     #
+library(ggthemes)            #ggthemes makes our graphs look nicer        #
+                                                                          # 
+theme_set(                                #this sets the theme for all    #
+  theme_tufte() +                         #plots that we make             #
+  theme(text=element_text(family="sans"))                                 #
+  )                                                                       #
+                                                                          #
+                                                                          #
+                                                                          #
+### Below is where you read and store your data.                          #
+                                                                          #
+youShouldRenameThis <- read_csv("death penalty data.csv")
+                                                                          #
+                                                                          #
+                                                                          #
+############# ^ ################################# ^ #######################
+############# | ## DON'T DELETE THIS PART!!!!!### | #######################
+############# | ################################# | #######################
+```
+
+
+
+## The Data 
+
+The dataset for this lab [(download here)](https://millera2.github.io/Data/political-data.csv) contains the responses from 3,906 American users of the "Show of Hands" app for iPhone and Android.  On the app, users answer questions about a variety of socioeconomic questions ranging from gender, income, and political party to more esoteric questions like "Does life have a purpose?" or "Are you left-handed?".  For this lab, you may assume that this dataset represents our entire population in question.
+
+## The Lab
+
+Your goal is to study the distribution of political affiliation for a category that you're interested in.  Available options for this lab are:  Income, Household Status, or Education Level.  You may pick any one of these three to study.  
+
+For your category of interest, perform two analyses:
+
+1) Take a sample from each factor level of size n=50.  
+
+    For example, if you're studying political affiliation across education levels, you'd make a sample of size n=50 from seven categories: "Bachelor's Degree", "High School Diploma", "Current K-12", "Current Undergraduate", "Master's Degree", "Associate's Degree", and "Doctoral Degree".  
+    
+    It's probably best to make subsets of your dataset using the `filter()` command.  For each sample, provide a breakdown of the important summary statistics.  Check Professor Miller's Scratch Pad for example code for finding the proportions.
+
+2) For each sample in step 1, construct a 95% confidence interval of the proportion of respondants affiliated with one political party (you can choose either Democrat or Republicans; it doesn't matter since there's only two options).  Interpret each interval with a short sentence.  
+
+    Which of the confidence intervals in Part 2 were "correct", i.e., which of your intervals successfully captured the true proportion of respondants (all 3,906) who belong to the party you chose?  As one example:  if you chose to study education levels, did your confidence interval for the proportion of Democrats with a Bachelor's degree contain the true proportion for that Are you surprised by this success rate?  
+
+
+
+4) For each sample in step 1, conduct a complete hypothesis test to decide if there's evidence of a difference in proportion between these subgroups and the population as a whole.  Be sure to provide a careful explnation of your hypotheses, p-values, and conclusions for each test.  
+
+    Which of your tests were "correct", i.e., made the correct conclusion about the groups you're studying.  Are you surprised by the success rate of your tests?
+
+In short:
+
+- Make a sample for each level of your category of interest (about 6).
+- Construct and intepret confidence intervals for political affiliation for each sample.  Check to see which ones worked.
+- Perform a hypothesis test for each sample.  Check to see which ones worked.
+- Present your results in a polished report.
+
+
+
+
+## Deadline and Grading
+
+This lab (both .rmd and **polished .html**) is due **Thurs, Nov 7th at 11:59pm**.   **I'll charge a 20% late fee per day late.**  
+
+I will assign grades on this project ”holistically”, not using a scoring sheet where each item is worth a certain number of points.
+
+- **B**: A ”B” project is very well done. It should have sound analysis, use appropriate statistical tools, support analysis with the appropriate graphs and other visual aids, and be a well-written document.
+
+- **C**: A ”C” project is solid, but usually lacking in one of the areas listed above. 
+
+- **D/F**: Projects below a C are severely deficient in the basic criteria or have failed to complete the assignment.
+
+- **A**: An ”A” project is truly above ordinary; it has exceptional qualities that make it stand out distinctly. An ”A” project is not the default grade.
+  - Does the project fulfill the requirements of the assignment?
+  - Does this report have a ”thesis” or ”story” that is the focus? Does the rest of the report support the thesis?
+  - Does the report use the subject matter from this unit appropriately? Are there tools being used in the wrong way? Is there an obvious tool that might have been used but was overlooked?
+  - Are the graphics factually correct? Are they formatted well? Do they give the first visual impression that is supportive of the thesis/story of the report, or do they indicate a different story?
+  - Is the report well-written? Is there good organization of ideas? Is the story/thesis communicated clearly? Is the analysis grounded in reasonable use of statistics? Is the paper free of mechanical and grammatical errors?
+  - Does the report provide the right context for the target audience? Is the right information provided? Have the right assumptions been made about what the audience knows or does not know?
+  
+  
