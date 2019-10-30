@@ -15,7 +15,56 @@ knitr::opts_chunk$set(echo = TRUE)
 
 *Note: All section numbers come from our text, ["R For Data Science"]("https://r4ds.had.co.nz").  
 
+## Week 9
+
+### Monday 10/21
+
+- Reading Discussion: Careers Advice for Data Scientists
+
+
+## Week 8
+
+### Friday
+
+- Exploring multilinear models
+- Diagnostic plots for multilinear models
+
+### Wednesday 10/23
+
+- In-class exercise:  interpreting linear models
+- Introduction to Multilinear Models
+
+### Monday 10/21
+
+- Review of linear models
+- Regression plots
+- `cor.test()`
+
+
+## Week 7 (Fall Break)
+
+### Monday 10/14
+
+- Linear Models coninued
+
+
+
+
+
 ## Week 6
+
+### Friday 10/11
+
+Reading Discussion:  Bias in Data Analytics
+
+
+### Wednesday 10/9
+
+- In-class Activity: Error Types
+- Intro to correlation and linear regression
+  - Meaning of r
+  - Coefficients of linear models
+  - r^2
 
 ### Monday 10/7
 

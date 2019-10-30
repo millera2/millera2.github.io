@@ -58,19 +58,22 @@ theme_set(                                #this sets the theme for all    #
 - [Lec 01 ](https://millera2.github.io/Math-120/Math-120-Lec-01.html)
 
 
-## Next Quiz: Wed 10/02
+## Next Quiz: Wed 10/30
 
-- Lecture Coverage: Lec 12, 13
-- Topics:
-  - Sampling with(out) replacement, 
-  - discrete probability distros, expected value and variance
-  - Basics of binomial dist 
-    - 4 properties of binomial RVs
-    - difference between pdf and cdf (concept, not math)
+**Topics:**  Sampling Distributions and Central Limit Theorem
+
+**Lecture Coverage: ** 19
+
+- What is a sampling distro?  Why do we need them?
+- How did Lab 4, Part II connect to sampling distros?
+- How did we compute one explicitly for the dice distro with n=2?
+- What does the central limit theorem say?
+- What are the center and spread for the distro for $\hat{p}$?
+- How can we use `pnorm()` to compute probabilities for sample results?
 
 ## Labs
 
-- [Lab 4](https://millera2.github.io/Math-120/Math-120-Lab-4.html)
+- [Lab 4](https://millera2.github.io/Math-120/Math-120-Lab-4.html) <small> Also: [Abbreviated Solutions](https://millera2.github.io/Math-120/Math-120-Lab-4-Solutions.html)</small>
 - [Lab 3](https://millera2.github.io/Math-120/Math-120-Lab-3.html) <small> Also: [Abbreviated Solutions](https://millera2.github.io/Math-120/Math-120-Lab-3-Solutions.html)</small>
 - [Lab 2](https://millera2.github.io/Math-120/Math-120-Lab-2.html)
 
