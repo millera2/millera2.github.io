@@ -1,5 +1,5 @@
 ---
-title: "Math 120 Lec 19"
+title: "Math 120 Lec 21"
 author: "Your Name"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
@@ -32,229 +32,130 @@ theme_set(theme_tufte() +
 ```
 
 
-## Samp Dists Continued
 
 
-Last time, we constructed our first sampling dist!  
 
-Idea: we're transitioning away from describing individual outcomes and towards descriptions of entire sample results.
+## Confidence Intervals for p
 
-Specifically, the sampling distro for xbar (aveage) with n=2 taken from the dice population.
+Formula:
 
-Important upshot: now, we can something about how likely certain samples are!  
 
-Ex:If we roll two dice, what's the probability that the AVERAGE xbar is 3.5?  6/36
 
-This is boring, but this technique lets us compute probs for sample results!
+$$ \hat{p} \pm z^* \sqrt{\hat{p}(1-\hat{p})/n} $$
 
-We need sampling dists for more practical scenarios.  They can be very complicated.  But, we actually know a lot about them!
+Idea:  we want to estimate the population proportion p, based on our sample proportion phat.
 
-For PROPORTIONS, here are the imoprtant facts about the sampling dist:
+Another phrasing:  we're estimating parameters using statistics.
 
-1)  Center.  I.e., expected val.  Concept:  if we take a sample, what do we expect the sample proportion to be?
+Note: when a statistician says "estimate", she always means "construct a confidence interval".
 
-mu_phat = p
+### Critical values
 
-Sophie's question:  categorical?
+zstar is the connection to the normal dist -- what's the middle C% of the distro?
 
-Answer:  proportions describe categories.  
+All confidence intervals have the same form:
 
-mu_phat = p
+(point est) +/- (crit val)*(SE)
 
-In english:  we expect our sample proportion to be same as our population proportion!  This is intuitive, but mathematically proveable!
+The point est and the SE, you know right away from the sample.  
+The real work:  finding crit val.  Easy: use `qnorm`
 
-Spread:  for proportions, the "standard error" is:
+Example:  find crit val for 95%:
 
-SE(phat) = sqrt(p*(1-p)/n)
-
-Ok, so we've got math for the center and spread.  
-
-But what about the shape?  What does this distribution actully look like?
-
-Amazing fact!  As long as n is large, the sampling distribution always has a normal shape!!!  No matter what the original population is!
-
-Central Limit Theorem.  Woooooah!
-
-Reminder:  Dice.
+Know: the lower tail has 2.5%.  qnorm!
 
 ```{r}
-replicate(10000, 
-          mean(sample(1:6, 1000, replace = TRUE))) -> mySamps
-
-qplot(mySamps, geom="histogram", bins=30)
+qnorm(.025)
 ```
 
-Recap:  Thanks to the CLT, we know that our samp dists are always normal as long as n is large** (more on "large" later).
-
-Practical example:  Suppose 20% of DU students have black hair.  If we take a sample of 100 DU students, what's the probability that at least 15% of them have black hair?
-
-Observations:
-
-p = pop prop = .2.  (NOte, we only know this because I made it up).
-phat = samp prop = .15
-
-n = 100 (trust me, it's big enough)
-
-In math:  P( phat >= .15 )  ???
-
-We know the dist for phat.
-
-mu = .20
-SE = sqrt(.2*(1-.2)/100)=.04
+Exercise:  what's the crit val for 90%?
 
 ```{r}
-sqrt(.2*(1-.2)/100)
+qnorm(.05)
 ```
 
-We have a normal dist with mean .2 and stdev .04
+Typical rounding: zstar = 1.645
 
-All together:
+Exercise:  what's the crit val for 99%
 
 ```{r}
-1-pnorm(.15, .2, .04)
+qnorm(.005)
 ```
 
-There's an 89.4% chance of getting a SAMPLE RESULT like this!  Cool!
+Typical rounding:  zstar = 2.576
 
-What's the chance that less than 30% of the students in teh sample have black hair?
+Note that 90%, 95%, and 99% are very common confidence levels.  So, you'll see 1.645, 1.96, and 2.576 a lot!
 
-mu = .2, se = .04, phat < .3
+### Examples constructing CIs
 
-In math:  P( phat < .3 )   ???
+Example:  In a sample of 240 giraffes, 86 of them enjoy water skiing.
 
+Based upon this sample, estimate the true proportion of giraffes who enjoy water skiing with 95% confidence.
+
+First, let's make sure we're justified in using normal dist!
+
+Here, easy to see that 
+
+n*phat >10 
+
+and
+
+n*(1-phat)>10
+
+Now, since p hat is normal, find zstar!
 
 ```{r}
-pnorm(.3, .2, .04)
+qnorm(.025)
 ```
 
-
-About 65% of DU students have travelled internationally.  If we take a sample of 150 students, what's the prob that fewer than 50% of them have travelled internationally?
-
-
-mu = .65
-
-se = sqrt(.65*(1-.65)/150)
+zstar = 1.96 (as always for 95%).  Now, plug and chug!
 
 ```{r}
-sqrt(.65*(1-.65)/150)
-```
+# phat +/- zstar*sqrt(phat(1-phat)/n)
 
-
-phat = .5
-
-That's all we need! pnorm!
-
-```{r}
-pnorm(.5, .65, .0389444)
-```
-
-
-
-
-
-
-
-
-
-Example:  About 17% of DU are international students.  If we take a sample of 200 students, what's the probability that at least 20% are international?
-
-Metaquestion:  Why are discussing this?
-
-In the future, we're going to be doing some statistical inference.  Ie, we'll make conclusions based on sample results.  In order to do that, we need to know how likely or unlikely our sample results are.  That's what sampling dists are for.
-
-Wait, this sampling dist must be complicated. There must be -many- possible samples of n=200 from DU students.  How can we know about them all????
-
-The hero of the story:  the CLT.  CLT assures us that, for large samples, the sample distro is very nearly normal.  So, we -can- compute probabilities!!!  Yay!!
-
-This is also why the normal dist is sooooo important: it's in all of our sample results!
-
-
-So, we use pnrom but need the center and spread:
-
-center = mu_phat = .17 (the pop proportion)
-SE(phat) = sqrt(.17*(1-.17)/200)
-
-```{r}
-sqrt(.17*(1-.17)/200)
+86/240 - 1.96*sqrt(86/240*(1-86/240)/240)
 ```
 
 ```{r}
-1-pnorm(.2,.17,.02656125)  #1- for right area
+86/240 + 1.96*sqrt(86/240*(1-86/240)/240)
 ```
 
-There's about a 12.93% chance of obtaining a sample like this.  I.e., not terribly unusual!!
+So, we can be 95% confident that between 29.8% and 41.9% of all giraffes enjoy water skiing.  
 
-Follow-up:  what's the probability that our sample of n=200 has fewer than 12% international students?
+Important note:  the sentence is formulaic, conclusion should always be about POPULATION.
 
-```{r}
-pnorm(.12,.17, .02656125)
-```
+Exercise:  In a sample of 300 DU students, 94 of them play videogames regularly (at least once a week).  Estimate the proportion of DU students who play videogames regularly with 99% confidence.
 
-There's about a 2.9% chance.  Human feelings:  this is an unusual sample!!  What's up???
-
-At the columbus zoo, 52% of all animals are mammals.  If we take a sample of 50 randomly selected animals at the zoo, what's the probability that between 40% and 45% of them are mammals?
-
-n is large, thus normal dist
-
-center = .52
-
-spread = sqrt(.52*(1-.52)/50)
 
 ```{r}
-sqrt(.52*(1-.52)/50)
+#phat: 94/300
+#n : 300
+#zstar:2.576
+
+94/300 - 2.576*sqrt(94/300*(1-94/300)/300)
 ```
 
 ```{r}
-pnorm(.45,.52, .0707)-pnorm(.40,.52, .0707)
+94/300 + 2.576*sqrt(94/300*(1-94/300)/300)
+
 ```
 
-As we'll see, a common  criteria for "unusual" is 05%.  This lines up with the 68-95-99.7 rule:  if an observation is more than 2 std devs away from the mean, we often consider it unusual.  
+We are 99% confident that the between 24.4% and 38.2% of all DU students play videogames at least once a week.
 
-### "Large" samples
+### Margin of error
 
-How large is large enough?
+MOE: it's the stuff after the +/-  
 
-Recall from your lab that even n=2 or n=10 are rather normal-loooking.  To ensure high-precision work, we have standards for how big n needs to be.
+It determines the width of the CI
 
-It depends on context!!  What data?  What statistic?
+Of course, we want MOE to be small!
 
-Here, we've been discussion CATEGORICAL variables.  Your book calls is the "success/failure" criterion.  Our sample needs to have at least 10 success AND 10 failures.  
+Two important considerations:
 
-In the international example:  sample must have at least 10 international students AND 10 domestic students.  
+- Sample size:  if n increases, then MOE decreases.  Yay!  This is what we'd hope for!  It means, we have some control over error. Math: n is in the denominator for MOE.
 
-To check mathematically: need BOTH:
+- Confidence level.  Bigger confidence level means bigger margin of error.  Bummer!!  More confidence comes at a price: more error.  More confidence means bigger zstar means bigger margin of error.  
 
-- n*phat >= 10
-- n*(1-phat) >=10
+Making a CI is like trying to capture a little creature (the paramater) with a net.  My chances of capturing the creature are higher if I have a really big net, rather than small!
 
-Think of the zoo example:  p=.52, n=50.  Were we justified in using a normal dist?
-
-Check:  n*p = .52*50 
-
-```{r}
-.52*50
-```
-So far so good!  Still need:
-
-```{r}
-(1-.52)*50
-```
-
-Also bigger than 10!  We ARE justified in using a normal dist for phat.
-
-
-
-
-
-
-Suppose 99% of people are honest, we plan to administer a lie detector test to find the dishonest folks.  If we take sample of size n=150, is that enough to ensure our samples results follow a normal distribution?
-
-```{r}
-.99*150
-
-(1-.99)*150
-```
-
-Oh no!  We didn't satisfy both requirements!  Can't use normal dist here, n isn't big enough!
-
-Nothing we can do, except take a larger sample.  We can't make successful inference from this population. 
+Students always ask:  why not just use a really, really confidence level?  Confidence comes at a cost: our intervals get really, really big.  Dunno the real value!
