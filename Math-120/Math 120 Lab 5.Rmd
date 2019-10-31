@@ -57,7 +57,7 @@ For your category of interest, perform two analyses:
     
     It's probably best to make subsets of your dataset using the `filter()` command.  For each sample, provide a breakdown of the important summary statistics.  Check Professor Miller's Scratch Pad for example code for finding the proportions.
 
-2) For each sample in step 1, construct both a 50% CI and a 95% of the proportion of respondants affiliated with one political party (you can choose either Democrat or Republicans; it doesn't matter since there's only two options).  Interpret each interval with a short sentence.  
+2) For each sample in step 1, construct both a 50% CI and a 95% of the proportion of respondants affiliated with one political party (you can choose either Democrat or Republicans; it doesn't matter since there's only two options).  Summarize your results with a table, and write a sentence that explains clearly the precise meanings of these intervals.  
 
     Which of the confidence intervals in Part 2 were "correct", i.e., which of your intervals successfully captured the true proportion of respondants (all 3,906) who belong to the party you chose?  As one example:  if you chose to study education levels, did your confidence interval for the proportion of Democrats with a Bachelor's degree contain the true proportion for that Are you surprised by this success rate?  
     
