@@ -1815,6 +1815,42 @@ prop_autol4_4cyl</code></pre>
 </tr>
 </tbody>
 </table>
+<p>How to find proportions in R?</p>
+<p>First, take a sample. Use iris, sample species.</p>
+<pre class="r"><code>irisSample &lt;- sample(iris$Species, 30)
+irisSample</code></pre>
+<pre><code>##  [1] versicolor virginica  setosa     virginica  versicolor setosa    
+##  [7] versicolor virginica  versicolor virginica  setosa     virginica 
+## [13] setosa     versicolor virginica  setosa     virginica  virginica 
+## [19] versicolor setosa     virginica  setosa     virginica  versicolor
+## [25] setosa     virginica  virginica  setosa     versicolor versicolor
+## Levels: setosa versicolor virginica</code></pre>
+<p>Q: how to find the proportion of virginicas?</p>
+<p>A: make R count all the viginicas</p>
+<pre class="r"><code>sum(irisSample == &quot;virginica&quot;)</code></pre>
+<pre><code>## [1] 12</code></pre>
+<p>Neat trick for making tables:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Var 1</th>
+<th>Var 2</th>
+<th>Var 3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>a</td>
+<td>1</td>
+<td>blue</td>
+</tr>
+<tr class="even">
+<td>b</td>
+<td>2</td>
+<td>green</td>
+</tr>
+</tbody>
+</table>
 
 
 

@@ -99,3 +99,48 @@ Present resulsts in a table:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+How to find proportions in R?
+
+First, take a sample.  Use iris, sample species.
+
+```{r}
+irisSample <- sample(iris$Species, 30)
+irisSample
+
+```
+
+Q: how to find the proportion of virginicas?
+
+A: make R count all the viginicas
+
+```{r}
+sum(irisSample == "virginica")
+```
+
+
+Neat trick for making tables:
+
+|Var 1  | Var 2 |  Var 3 |
+|------ | -----|  ----- |
+| a     |  1     | blue  |
+| b     | 2     |  green |
+
+
+
+
+
+
+
