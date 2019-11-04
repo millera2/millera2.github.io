@@ -17,6 +17,19 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Week 9
 
+### Friday 10/25
+
+- Interpreting coefficients in multiple linear regression
+- Interpreting regression on categorical variables
+- The meaning of "dummy encoding" for categorical variables
+
+
+### Wednesday 10/23
+
+- Choosing variables in multiple regression
+- Using ggpairs and ggcorr
+- Using StepAIC
+
 ### Monday 10/21
 
 - Reading Discussion: Careers Advice for Data Scientists

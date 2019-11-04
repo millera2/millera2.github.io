@@ -37,6 +37,8 @@ theme_set(                                #this sets the theme for all    #
 *They look great on your phone, so you can read them anywhere.  Steal my code!  Don't understand something?  Ask me!*
 
 - [Lecture Journal](https://millera2.github.io/Math-120/Math-120-Lecture-Journal.html)
+- [Lec 23](https://millera2.github.io/Math-120/Math-120-Lec-23.html)
+- [Lec 22](https://millera2.github.io/Math-120/Math-120-Lec-22.html)
 - [Lec 21](https://millera2.github.io/Math-120/Math-120-Lec-21.html)
 - [Lec 20](https://millera2.github.io/Math-120/Math-120-Lec-20.html)
 - [Lec 19](https://millera2.github.io/Math-120/Math-120-Lec-19.html)
@@ -58,11 +60,18 @@ theme_set(                                #this sets the theme for all    #
 - [Lec 01 ](https://millera2.github.io/Math-120/Math-120-Lec-01.html)
 
 
-## Next Quiz: Wed 10/30
+## Next Quiz: Wed 11/06
 
-**Topics:**  Sampling Distributions and Central Limit Theorem
+**Topics:**  Confidence Intervals
 
-**Lecture Coverage: ** 19
+- Core concept
+- Critical value
+- Formula
+- Interpreting
+- Meaning of "confidence"
+- Planning ahead for sample size and MOE
+
+**Lecture Coverage: ** 20, 21, 22
 
 - What is a sampling distro?  Why do we need them?
 - How did Lab 4, Part II connect to sampling distros?

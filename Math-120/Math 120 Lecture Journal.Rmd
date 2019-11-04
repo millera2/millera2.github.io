@@ -16,7 +16,32 @@ knitr::opts_chunk$set(echo = TRUE)
 *Note: All section numbers come from our text, [Openintro Statistics]("https://www.openintro.org/stat/textbook.php?stat_book=os").  
 
 
+##  Week 10
+
+### Monday 11/04
+
+- Introduction to hypothesis tests
+- Four steps:
+  1) Hypotheses
+  2) Test statistic
+  3) p-value
+  4) Conclusion
+
+
 ## Week 9
+
+### Friday 11/01
+
+- Meaning of "confidence"
+- Planning ahead for sample size and MOE
+
+### Thursday 10/31
+
+- Practicing CIs on datasets
+
+### Wednesday 10/30
+
+- Lab 5
 
 ### Monday 10/28
 

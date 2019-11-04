@@ -1,0 +1,149 @@
+---
+title: "Math 120 Lec 21"
+author: "Your Name"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: simplex
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+
+
+
+
+
+## Hyp Tests
+
+Hypothesis tests are just like criminal trials.
+
+In a criminal trial, we wonder:  innocent or guilty?
+
+In a hyp test, the NULL HYPOTHSIS (H0) is on trial.  The null hyp is a statement about the population.  The alternate hypothesis is logical opposite.  (Ha).
+
+In a criminal trial, we assume innocent until proven guilty.  In a hypothesis test, we assume H0 is true, until we find evidence that's it's false.
+
+The whole reason we're doing the test is becasue we susppect H0 is false!  I.e., the alt hyp (Ha) is our claim about the population.
+
+In a criminal trial, we have witnesses.  In a hyp test, we have sample data!
+
+In a criminal trial, there are laws and lawers and arguments.  In a hyp test, there's probability!  (p-value)
+
+A p-value is the probability of observing a sample result as or more extreme than the one we got, assuming H0 is true.  The assumption is important: we can't compute probabilities unless we make an assumption about the population!
+
+In a criminal trial, a judge or jury weighs the strength of the evidence.  In a hyp test, we decide if our p-value is SMALL ENOUGH.  
+
+If p is small, it means our sample result is unlikely under H0.  In this case, we REJECT H0, we trust our data!  Small p-val -> reject H0.  Support Ha.
+
+Every hyp tests ends in one of two ways:  if p is small, we reject H0.  If p is large, we fail to reject H0.  
+
+
+Wait, how small is "small"?   Totally up to us!  It's called the "significance level", "alpha".  Generally, we use alpha = .05 by default.  In other words, if our sample has less than 5% chance of occuring, we reject H0.
+
+Example) In Fall 2015, my stats class had 16 women out of 24 students.  Based upon this, I suspect that the gender ratio at DU was higher than 50% female.  Does this sample result support my claim?  Perform a hyp test.  Use alpha=.05.
+
+First, need hyptheses.  Both H0 and Ha.
+
+My claim:  the proportion of female students is >50%.  I assume that this isn't true, and look for evidence to the contrary.
+
+### Step 1
+
+H0: p<= .5  (really, we think p=.5)
+Ha: p > .5  (p is the pop proportion of female students)
+
+### Step 2: Data
+
+In this sample, we saw a phat of 16/24.  
+
+```{r}
+16/24
+```
+
+Certainly, we observed a proportion greater than .5.  But, we know that sample results vary randomly; did we find strong evidence?  Let's find the probability!
+
+### Step 3: P-value
+
+Assuming p=.5, what's the probability that phat is >.6667?
+
+```{r}
+# compute P(phat > .66667) given p=.5
+
+1-pnorm(.666667, .5, sqrt(.5*(1-.5)/24))
+```
+
+In other words, if the gender ratio really is 50%, there's about a 5.12% chance of observing a sample result like we one we got.
+
+Our p-value:  p = .0512.  Close but no cigar!  Our p-val is somewhat small, but not smaller than .05.  This is NOT a small p-value!  
+
+We fail to reject H0.  We failed to find evidence to support our claim.  H0 is getting off free/innocent, couldn't find it guilty!  There's not enough evidence to support our claim that more than 50% of students are female.
+
+This sample result seems within random chance if H0 is true.
+
+## Example 2
+
+After a night of bad luck gambling, we suspect that coin is unfair and gets heads less than half the time.
+
+To test this, we flipped the coin 50 times, and found 20 of them were heads.  Is there evidence to support out claim?  Hyp test!  Alpha = .05
+
+
+### Hypotheses
+
+H0: p = .5   (we assume that there's no effect)
+Ha: p < .5   (p is the pop proportion of heads)
+
+
+### Sample REsult
+
+phat: 20/50
+
+```{r}
+20/50
+```
+
+This is less than 50%.  But, is it extreme enough to conlude about ALL POSSIBLE COIN TOSSES, not just 50 we did?  Is this sample result exteme enough for us to make a conclusion about the population?
+
+### p-value
+
+What's the prob that fair coin flips 20 out of 50 heads?
+### Conclusion
+
+```{r}
+pnorm(.4, .5, sqrt(.5*(1-.5)/50))
+```
+
+
+
+
+
+
+
+
+
+
+
+
+

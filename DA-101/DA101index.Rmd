@@ -47,6 +47,7 @@ theme_set(                                #this sets the theme for all    #
 ## DA 101 Lectures
 
 - [Lecture Journal](https://millera2.github.io/DA-101/DA-101-Lecture-Journal.html)
+- [Lec 18](https://millera2.github.io/DA-101/DA-101-Lec-18.html)
 - [Lec 17](https://millera2.github.io/DA-101/DA-101-Lec-17.html)
 - [Lec 16](https://millera2.github.io/DA-101/DA-101-Lec-16.html)
 - [Lec 15](https://millera2.github.io/DA-101/DA-101-Lec-15.html)
@@ -67,15 +68,17 @@ theme_set(                                #this sets the theme for all    #
 - [Lec 00](https://millera2.github.io/DA-101/DA-101-Lec-00.html)
 
 
-## Next Quiz:  Wednesday 10/30
+## Next Quiz:  Wednesday 11/06
 
-Lecture Coverage:  14, 15, 15
+Lecture Coverage:  17, 18
 
-Topics: Residual plots, `cor.test`, diagnostic plots
+Topics: 
 
-- Do I know the hypotheses for the cor test, and what it means to reject the null hypothesis?
-- Do I know what to look for in a residual plot? Can I defend a judgement call about particular plots? Do I understand the examples we've seen in class?
-- Do I understand the subplots of the 'autoplot' function? Can I explain what they're showing, and what features are desirable/undesirable?
+- Choosing Variables in Linear Regression, 
+- interpreting ggpairs/ggcorr, 
+- StepAIC
+- Interpreting coefficients for multiple linear models vs single linear models
+- Regression on categorical variables and "dummy encoding"
 
 
 ## Datasets

@@ -65,15 +65,11 @@ For your category of interest, perform two analyses:
 
 
 
-4) For each sample in step 1, conduct a complete hypothesis test to decide if there's evidence of a difference in proportion between these subgroups and the population as a whole.  Be sure to provide a careful explnation of your hypotheses, p-values, and conclusions for each test.  
-
-    Which of your tests were "correct", i.e., made the correct conclusion about the groups you're studying.  Are you surprised by the success rate of your tests?
 
 In short:
 
 - Make a sample for each level of your category of interest (about 6).  
-- Construct and intepret 50% CIs and 95% CIs for political affiliation for each sample.  Check to see which ones worked.
-- Perform a hypothesis test for each sample.  Check to see which ones worked.
+- Construct and intepret 50% CIs and 95% CIs for political affiliation for each sample.  Check to see which ones worked.  
 - Present your results in a polished report.
 
 
