@@ -1,0 +1,148 @@
+---
+title: "Math 120 Lec 24"
+author: "Ali Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: simplex
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+
+
+
+## Hyp Tests (Continued)
+
+
+CIs and Hyp Tests are our two big tools for "inference"
+
+CIs are used for estimates.  What is it?
+
+Hyp Tests are used for answering questions.  Is our support for our claim?
+
+
+### Four key steps of hyp tests
+
+#### 1) Hypotheses
+
+Two competing hyps:
+
+H0:  the null hyp.  This is the assumption we make about the population.  It's ALWAYS a statement of equality about a pop parameter.
+
+Ex:  H0:  p = .5  (note that p is the pop proportion)
+
+It's needed to compute p-val!  We can't find probabilities unless we make an assumption about pop.  That's H0.
+
+Ha: the alt hyp.  The alt hyp is our claim about the population.  It's what we think is "up".  It's the reason we're doing the test.  We hope to support it!  
+
+The alt hyp is always a statement of INEQUALITY.  <  >  !=
+
+Example:  Ha:  p < .5
+
+The alt hyp is the logical opposite of the null hyp.  Only one can be true!
+
+#### 2) Test statistic
+
+In short: a summary of our data.  
+
+Example:  phat
+
+Almost always, expressed as a z score.  How about for phat?
+
+#####
+
+z = (phat - p)/sqrt(p(1-p)/n)
+
+#####
+
+#### 3) p-val
+
+The p-val is the probability of observing a sample that's as (or more) extreme than the one we got, assuming H0 is true.
+
+In short, to find:  pnorm.  Find tail area past the test stat.
+
+#### 4) Conclusion
+
+If our p-val is small, then H0 is saying that our data is unlikely.  But of course we trust our data, not the hypothesis!
+
+So, if p is small, we reject H0.  We have evidence to support Ha.
+
+(Remember, "small" means "alpha", alpha = .05 by default)
+
+If p is large (p>alpha), then we FAIL TO REJECT H0.  We didn't find the evidence we're looking for to support Ha.  We have sad feelings, our paper doesn't get published, try again!
+
+
+#### Example: 5.32 p205
+
+Do we have evidence that more than 8% of children are nearsighted.
+
+phat = 21/194
+
+```{r}
+21/194
+```
+
+The sample result IS BIGGER than 8%.  Is this result extreme enough to convince us that the population proportion really is greater than 8%?  How likely is this sample? What human feeligns do we have?
+
+1) **Hypotheses**
+
+    H0:  p = .08
+    
+    Ha:  p > .08
+
+2) **Test stat**
+
+    phat = 21/194
+
+```{r}
+# find zscore.  note: center = p, se = sqrt(blaahblahs;as)
+
+
+# idea:  (phat - p)/sqrt(p*(1-p)/n)
+
+(21/194 - .08)/sqrt(.08*(1-.08)/194)
+
+
+```
+
+  (Human feelings:  Not an unusual score!)
+
+3) **p-val**
+
+```{r}
+1-pnorm(1.450243)
+```
+
+    Note:  this is a "right-tail" test.  You can tell from Ha.
+
+4) **Conclusion**
+
+    Is p small?  Is p<alpha?  Is p < .05?
+
+    No!  p is large!  We didn't find strong evidence against H0.  The sample results doesn't seem unlikely under H0.  We fail to reject H0!
+
+    We didn't find the evidence we're looking for to suggest that more than 8% of children are nearsighted.  Nobody publishes our result.  We are sad and dejected.  
