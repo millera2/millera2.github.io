@@ -61,7 +61,7 @@ For your category of interest, perform two analyses:
 
     Which of the confidence intervals in Part 2 were "correct", i.e., which of your intervals successfully captured the true proportion of respondants (all 3,906) who belong to the party you chose?  As one example:  if you chose to study education levels, did your confidence interval for the proportion of Democrats with a Bachelor's degree contain the true proportion for that Are you surprised by this success rate?  
     
-    How do the 50% intervals compare with the 90% intervals?  Are you surprised?
+    How do the 50% intervals compare with the 95% intervals?  Are you surprised?
 
 
 
