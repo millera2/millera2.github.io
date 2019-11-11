@@ -16,7 +16,33 @@ knitr::opts_chunk$set(echo = TRUE)
 *Note: All section numbers come from our text, [Openintro Statistics]("https://www.openintro.org/stat/textbook.php?stat_book=os").  
 
 
+## Week 11
+
+### Monday 11/11
+
+- Left tail, right tail, and two-sided tests
+- Computing p-vals for two-sided tests
+
+
 ##  Week 10
+
+### Fri 11/08
+
+- Prof Miller talked about canyons for a while.  
+  - Something something self reliance, something something Bloom's taxonomy
+- Example of hyp test
+- Connection between hyp tests and confidence intervals
+- Making conclusions in hyp tests based on confidence intervals
+
+### Thurs 11/07
+
+- Lab 5
+
+### Wed 11/06
+
+- Looking at the 4 steps in detail
+- Examples of hyp tests.
+
 
 ### Monday 11/04
 

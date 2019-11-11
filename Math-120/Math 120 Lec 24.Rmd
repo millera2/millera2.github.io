@@ -150,9 +150,4 @@ The sample result IS BIGGER than 8%.  Is this result extreme enough to convince 
     
     
     
-    
-    
-    
-| var 1 |  var 2 | var 2 |
-|-----  |  ----- | ---   |
-| thing1 | thing2 | thing 3|
+ 
