@@ -47,6 +47,7 @@ theme_set(                                #this sets the theme for all    #
 ## DA 101 Lectures
 
 - [Lecture Journal](https://millera2.github.io/DA-101/DA-101-Lecture-Journal.html)
+- [Lec 19](https://millera2.github.io/DA-101/DA-101-Lec-19.html)
 - [Lec 18](https://millera2.github.io/DA-101/DA-101-Lec-18.html)
 - [Lec 17](https://millera2.github.io/DA-101/DA-101-Lec-17.html)
 - [Lec 16](https://millera2.github.io/DA-101/DA-101-Lec-16.html)

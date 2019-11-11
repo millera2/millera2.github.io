@@ -27,10 +27,14 @@ library(ggthemes)
 theme_set(theme_tufte() +                                     
   theme(text=element_text(family="sans")))  
 
+set.seed(1)
+
+
 #------------------------------------------------#
 ```
 
 
+## Intro
 
 
 Take samples of transmission type from each category of "cyl" in the mpg data, and compute CIs for the proportion of cars with "auto(l4)" transmissions:
@@ -116,31 +120,500 @@ How to find proportions in R?
 
 First, take a sample.  Use iris, sample species.
 
-```{r}
-irisSample <- sample(iris$Species, 30)
-irisSample
-
-```
 
 Q: how to find the proportion of virginicas?
 
 A: make R count all the viginicas
 
+
+
+
+## Making CI 40%
+
 ```{r}
-sum(irisSample == "virginica")
+irisSample <- sample(iris$Species, 30)
+phat <- sum(irisSample == "virginica")/30
+zstar <- qnorm(.3)
+
+
+```
+
+### Lower Bound
+
+```{r}
+phat + zstar*sqrt(phat*(1-phat)/30)
+```
+
+### Upper Bound
+
+```{r}
+phat - zstar*sqrt(phat*(1-phat)/30)
 ```
 
 
-Neat trick for making tables:
+## Making CI 40%
 
-|Var 1  | Var 2 |  Var 3 |
-|------ | -----|  ----- |
-| a     |  1     | blue  |
-| b     | 2     |  green |
-
-
+```{r}
+irisSample <- sample(iris$Species, 30)
+phat <- sum(irisSample == "virginica")/30
+zstar <- qnorm(.3)
 
 
+```
+
+### Lower Bound
+
+```{r}
+phat + zstar*sqrt(phat*(1-phat)/30)
+```
+
+### Upper Bound
+
+```{r}
+phat - zstar*sqrt(phat*(1-phat)/30)
+```
 
 
+## Making CI 40%
 
+```{r}
+irisSample <- sample(iris$Species, 30)
+phat <- sum(irisSample == "virginica")/30
+zstar <- qnorm(.3)
+
+
+```
+
+### Lower Bound
+
+```{r}
+phat + zstar*sqrt(phat*(1-phat)/30)
+```
+
+### Upper Bound
+
+```{r}
+phat - zstar*sqrt(phat*(1-phat)/30)
+```
+
+
+## Making CI 40%
+
+```{r}
+irisSample <- sample(iris$Species, 30)
+phat <- sum(irisSample == "virginica")/30
+zstar <- qnorm(.3)
+
+
+```
+
+### Lower Bound
+
+```{r}
+phat + zstar*sqrt(phat*(1-phat)/30)
+```
+
+### Upper Bound
+
+```{r}
+phat - zstar*sqrt(phat*(1-phat)/30)
+```
+
+
+## Making CI 40%
+
+```{r}
+irisSample <- sample(iris$Species, 30)
+phat <- sum(irisSample == "virginica")/30
+zstar <- qnorm(.3)
+
+
+```
+
+### Lower Bound
+
+```{r}
+phat + zstar*sqrt(phat*(1-phat)/30)
+```
+
+### Upper Bound
+
+```{r}
+phat - zstar*sqrt(phat*(1-phat)/30)
+```
+
+
+## Making CI 40%
+
+```{r}
+irisSample <- sample(iris$Species, 30)
+phat <- sum(irisSample == "virginica")/30
+zstar <- qnorm(.3)
+
+
+```
+
+### Lower Bound
+
+```{r}
+phat + zstar*sqrt(phat*(1-phat)/30)
+```
+
+### Upper Bound
+
+```{r}
+phat - zstar*sqrt(phat*(1-phat)/30)
+```
+
+
+## Making CI 40%
+
+```{r}
+irisSample <- sample(iris$Species, 30)
+phat <- sum(irisSample == "virginica")/30
+zstar <- qnorm(.3)
+
+
+```
+
+### Lower Bound
+
+```{r}
+phat + zstar*sqrt(phat*(1-phat)/30)
+```
+
+### Upper Bound
+
+```{r}
+phat - zstar*sqrt(phat*(1-phat)/30)
+```
+
+
+## Making CI 40%
+
+```{r}
+irisSample <- sample(iris$Species, 30)
+phat <- sum(irisSample == "virginica")/30
+zstar <- qnorm(.3)
+
+
+```
+
+### Lower Bound
+
+```{r}
+phat + zstar*sqrt(phat*(1-phat)/30)
+```
+
+### Upper Bound
+
+```{r}
+phat - zstar*sqrt(phat*(1-phat)/30)
+```
+
+
+## Making CI 40%
+
+```{r}
+irisSample <- sample(iris$Species, 30)
+phat <- sum(irisSample == "virginica")/30
+zstar <- qnorm(.3)
+
+
+```
+
+### Lower Bound
+
+```{r}
+phat + zstar*sqrt(phat*(1-phat)/30)
+```
+
+### Upper Bound
+
+```{r}
+phat - zstar*sqrt(phat*(1-phat)/30)
+```
+
+
+## Making CI 40%
+
+```{r}
+irisSample <- sample(iris$Species, 30)
+phat <- sum(irisSample == "virginica")/30
+zstar <- qnorm(.3)
+
+
+```
+
+### Lower Bound
+
+```{r}
+phat + zstar*sqrt(phat*(1-phat)/30)
+```
+
+### Upper Bound
+
+```{r}
+phat - zstar*sqrt(phat*(1-phat)/30)
+```
+
+
+## Making CI 40%
+
+```{r}
+irisSample <- sample(iris$Species, 30)
+phat <- sum(irisSample == "virginica")/30
+zstar <- qnorm(.3)
+
+
+```
+
+### Lower Bound
+
+```{r}
+phat + zstar*sqrt(phat*(1-phat)/30)
+```
+
+### Upper Bound
+
+```{r}
+phat - zstar*sqrt(phat*(1-phat)/30)
+```
+
+
+## Making CI 40%
+
+```{r}
+irisSample <- sample(iris$Species, 30)
+phat <- sum(irisSample == "virginica")/30
+zstar <- qnorm(.3)
+
+
+```
+
+### Lower Bound
+
+```{r}
+phat + zstar*sqrt(phat*(1-phat)/30)
+```
+
+### Upper Bound
+
+```{r}
+phat - zstar*sqrt(phat*(1-phat)/30)
+```
+
+
+## Making CI 40%
+
+```{r}
+irisSample <- sample(iris$Species, 30)
+phat <- sum(irisSample == "virginica")/30
+zstar <- qnorm(.3)
+
+
+```
+
+### Lower Bound
+
+```{r}
+phat + zstar*sqrt(phat*(1-phat)/30)
+```
+
+### Upper Bound
+
+```{r}
+phat - zstar*sqrt(phat*(1-phat)/30)
+```
+
+## Making CI 40%
+
+```{r}
+irisSample <- sample(iris$Species, 30)
+phat <- sum(irisSample == "virginica")/30
+zstar <- qnorm(.3)
+
+
+```
+
+### Lower Bound
+
+```{r}
+phat + zstar*sqrt(phat*(1-phat)/30)
+```
+
+### Upper Bound
+
+```{r}
+phat - zstar*sqrt(phat*(1-phat)/30)
+```
+
+
+## Making CI 40%
+
+```{r}
+irisSample <- sample(iris$Species, 30)
+phat <- sum(irisSample == "virginica")/30
+zstar <- qnorm(.3)
+
+
+```
+
+### Lower Bound
+
+```{r}
+phat + zstar*sqrt(phat*(1-phat)/30)
+```
+
+### Upper Bound
+
+```{r}
+phat - zstar*sqrt(phat*(1-phat)/30)
+```
+
+
+## Making CI 40%
+
+```{r}
+irisSample <- sample(iris$Species, 30)
+phat <- sum(irisSample == "virginica")/30
+zstar <- qnorm(.3)
+
+
+```
+
+### Lower Bound
+
+```{r}
+phat + zstar*sqrt(phat*(1-phat)/30)
+```
+
+### Upper Bound
+
+```{r}
+phat - zstar*sqrt(phat*(1-phat)/30)
+```
+
+
+## Making CI 40%
+
+```{r}
+irisSample <- sample(iris$Species, 30)
+phat <- sum(irisSample == "virginica")/30
+zstar <- qnorm(.3)
+
+
+```
+
+### Lower Bound
+
+```{r}
+phat + zstar*sqrt(phat*(1-phat)/30)
+```
+
+### Upper Bound
+
+```{r}
+phat - zstar*sqrt(phat*(1-phat)/30)
+```
+
+
+## Making CI 40%
+
+```{r}
+irisSample <- sample(iris$Species, 30)
+phat <- sum(irisSample == "virginica")/30
+zstar <- qnorm(.3)
+
+
+```
+
+### Lower Bound
+
+```{r}
+phat + zstar*sqrt(phat*(1-phat)/30)
+```
+
+### Upper Bound
+
+```{r}
+phat - zstar*sqrt(phat*(1-phat)/30)
+```
+
+
+## Making CI 40%
+
+```{r}
+irisSample <- sample(iris$Species, 30)
+phat <- sum(irisSample == "virginica")/30
+zstar <- qnorm(.3)
+
+
+```
+
+### Lower Bound
+
+```{r}
+phat + zstar*sqrt(phat*(1-phat)/30)
+```
+
+### Upper Bound
+
+```{r}
+phat - zstar*sqrt(phat*(1-phat)/30)
+```
+
+
+## Making CI 40%
+
+```{r}
+irisSample <- sample(iris$Species, 30)
+phat <- sum(irisSample == "virginica")/30
+zstar <- qnorm(.3)
+
+
+```
+
+### Lower Bound
+
+```{r}
+phat + zstar*sqrt(phat*(1-phat)/30)
+```
+
+### Upper Bound
+
+```{r}
+phat - zstar*sqrt(phat*(1-phat)/30)
+```
+
+
+## Making CI 40%
+
+```{r}
+set.seed(2)
+
+sample(iris$Species, 30)
+
+
+```
+
+### Lower Bound
+
+```{r}
+phat + zstar*sqrt(phat*(1-phat)/30)
+```
+
+### Upper Bound
+
+```{r}
+phat - zstar*sqrt(phat*(1-phat)/30)
+```
+
+
+| group|   p  |  50% CI  |  95% CI |
+| ---- | -----| -------- |  -----  |
+| dogs | .3   |  (.25,.4)| (.3,.34) |
+|cats  |  .24 | (.12,.28)| (.21, .7)|
+|giraffes | .87| (.34,.89)|(.82, .99)|
+| monkeys| .65 | (.32, .4)|(.72, .8)|
+| lions | .66 | (.12, .56)| (.34, .88)|

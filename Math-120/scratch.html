@@ -1743,11 +1743,102 @@ summary {
 
 <h1 class="title toc-ignore">Math 120 Lab 5 Example Code</h1>
 <h4 class="author">Your Name</h4>
-<h4 class="date">31 October, 2019</h4>
+<h4 class="date">07 November, 2019</h4>
 
 </div>
 
+<div id="TOC">
+<ul>
+<li><a href="#intro">Intro</a></li>
+<li><a href="#making-ci-40">Making CI 40%</a><ul>
+<li><a href="#lower-bound">Lower Bound</a></li>
+<li><a href="#upper-bound">Upper Bound</a></li>
+</ul></li>
+<li><a href="#making-ci-40-1">Making CI 40%</a><ul>
+<li><a href="#lower-bound-1">Lower Bound</a></li>
+<li><a href="#upper-bound-1">Upper Bound</a></li>
+</ul></li>
+<li><a href="#making-ci-40-2">Making CI 40%</a><ul>
+<li><a href="#lower-bound-2">Lower Bound</a></li>
+<li><a href="#upper-bound-2">Upper Bound</a></li>
+</ul></li>
+<li><a href="#making-ci-40-3">Making CI 40%</a><ul>
+<li><a href="#lower-bound-3">Lower Bound</a></li>
+<li><a href="#upper-bound-3">Upper Bound</a></li>
+</ul></li>
+<li><a href="#making-ci-40-4">Making CI 40%</a><ul>
+<li><a href="#lower-bound-4">Lower Bound</a></li>
+<li><a href="#upper-bound-4">Upper Bound</a></li>
+</ul></li>
+<li><a href="#making-ci-40-5">Making CI 40%</a><ul>
+<li><a href="#lower-bound-5">Lower Bound</a></li>
+<li><a href="#upper-bound-5">Upper Bound</a></li>
+</ul></li>
+<li><a href="#making-ci-40-6">Making CI 40%</a><ul>
+<li><a href="#lower-bound-6">Lower Bound</a></li>
+<li><a href="#upper-bound-6">Upper Bound</a></li>
+</ul></li>
+<li><a href="#making-ci-40-7">Making CI 40%</a><ul>
+<li><a href="#lower-bound-7">Lower Bound</a></li>
+<li><a href="#upper-bound-7">Upper Bound</a></li>
+</ul></li>
+<li><a href="#making-ci-40-8">Making CI 40%</a><ul>
+<li><a href="#lower-bound-8">Lower Bound</a></li>
+<li><a href="#upper-bound-8">Upper Bound</a></li>
+</ul></li>
+<li><a href="#making-ci-40-9">Making CI 40%</a><ul>
+<li><a href="#lower-bound-9">Lower Bound</a></li>
+<li><a href="#upper-bound-9">Upper Bound</a></li>
+</ul></li>
+<li><a href="#making-ci-40-10">Making CI 40%</a><ul>
+<li><a href="#lower-bound-10">Lower Bound</a></li>
+<li><a href="#upper-bound-10">Upper Bound</a></li>
+</ul></li>
+<li><a href="#making-ci-40-11">Making CI 40%</a><ul>
+<li><a href="#lower-bound-11">Lower Bound</a></li>
+<li><a href="#upper-bound-11">Upper Bound</a></li>
+</ul></li>
+<li><a href="#making-ci-40-12">Making CI 40%</a><ul>
+<li><a href="#lower-bound-12">Lower Bound</a></li>
+<li><a href="#upper-bound-12">Upper Bound</a></li>
+</ul></li>
+<li><a href="#making-ci-40-13">Making CI 40%</a><ul>
+<li><a href="#lower-bound-13">Lower Bound</a></li>
+<li><a href="#upper-bound-13">Upper Bound</a></li>
+</ul></li>
+<li><a href="#making-ci-40-14">Making CI 40%</a><ul>
+<li><a href="#lower-bound-14">Lower Bound</a></li>
+<li><a href="#upper-bound-14">Upper Bound</a></li>
+</ul></li>
+<li><a href="#making-ci-40-15">Making CI 40%</a><ul>
+<li><a href="#lower-bound-15">Lower Bound</a></li>
+<li><a href="#upper-bound-15">Upper Bound</a></li>
+</ul></li>
+<li><a href="#making-ci-40-16">Making CI 40%</a><ul>
+<li><a href="#lower-bound-16">Lower Bound</a></li>
+<li><a href="#upper-bound-16">Upper Bound</a></li>
+</ul></li>
+<li><a href="#making-ci-40-17">Making CI 40%</a><ul>
+<li><a href="#lower-bound-17">Lower Bound</a></li>
+<li><a href="#upper-bound-17">Upper Bound</a></li>
+</ul></li>
+<li><a href="#making-ci-40-18">Making CI 40%</a><ul>
+<li><a href="#lower-bound-18">Lower Bound</a></li>
+<li><a href="#upper-bound-18">Upper Bound</a></li>
+</ul></li>
+<li><a href="#making-ci-40-19">Making CI 40%</a><ul>
+<li><a href="#lower-bound-19">Lower Bound</a></li>
+<li><a href="#upper-bound-19">Upper Bound</a></li>
+</ul></li>
+<li><a href="#making-ci-40-20">Making CI 40%</a><ul>
+<li><a href="#lower-bound-20">Lower Bound</a></li>
+<li><a href="#upper-bound-20">Upper Bound</a></li>
+</ul></li>
+</ul>
+</div>
 
+<div id="intro" class="section level2">
+<h2>Intro</h2>
 <p>Take samples of transmission type from each category of “cyl” in the mpg data, and compute CIs for the proportion of cars with “auto(l4)” transmissions:</p>
 <pre class="r"><code># Filter the data
 
@@ -1775,15 +1866,15 @@ prop_autol4_4cyl</code></pre>
 <pre class="r"><code># similarly for 6cyl and 8 cyl (not shown here)</code></pre>
 <p>Compute 95% CIs</p>
 <pre class="r"><code>phat_4cyl - 1.96*sqrt(phat_4cyl*(1-phat_4cyl)/30)</code></pre>
-<pre><code>## [1] 0.05686184</code></pre>
+<pre><code>## [1] 0.1360146</code></pre>
 <pre class="r"><code>phat_4cyl + 1.96*sqrt(phat_4cyl*(1-phat_4cyl)/30)</code></pre>
-<pre><code>## [1] 0.3431382</code></pre>
+<pre><code>## [1] 0.4639854</code></pre>
 <pre class="r"><code>#similarly for 6cyl and 8cyl (not shown here)</code></pre>
 <p>Compute 99% CIs</p>
 <pre class="r"><code>phat_4cyl - 2.576*sqrt(phat_4cyl*(1-phat_4cyl)/30)</code></pre>
-<pre><code>## [1] 0.01187556</code></pre>
+<pre><code>## [1] 0.08447638</code></pre>
 <pre class="r"><code>phat_4cyl + 2.576*sqrt(phat_4cyl*(1-phat_4cyl)/30)</code></pre>
-<pre><code>## [1] 0.3881244</code></pre>
+<pre><code>## [1] 0.5155236</code></pre>
 <p>Present resulsts in a table:</p>
 <table>
 <thead>
@@ -1817,40 +1908,393 @@ prop_autol4_4cyl</code></pre>
 </table>
 <p>How to find proportions in R?</p>
 <p>First, take a sample. Use iris, sample species.</p>
-<pre class="r"><code>irisSample &lt;- sample(iris$Species, 30)
-irisSample</code></pre>
-<pre><code>##  [1] versicolor virginica  setosa     virginica  versicolor setosa    
-##  [7] versicolor virginica  versicolor virginica  setosa     virginica 
-## [13] setosa     versicolor virginica  setosa     virginica  virginica 
-## [19] versicolor setosa     virginica  setosa     virginica  versicolor
-## [25] setosa     virginica  virginica  setosa     versicolor versicolor
-## Levels: setosa versicolor virginica</code></pre>
 <p>Q: how to find the proportion of virginicas?</p>
 <p>A: make R count all the viginicas</p>
-<pre class="r"><code>sum(irisSample == &quot;virginica&quot;)</code></pre>
-<pre><code>## [1] 12</code></pre>
-<p>Neat trick for making tables:</p>
+</div>
+<div id="making-ci-40" class="section level2">
+<h2>Making CI 40%</h2>
+<pre class="r"><code>irisSample &lt;- sample(iris$Species, 30)
+phat &lt;- sum(irisSample == &quot;virginica&quot;)/30
+zstar &lt;- qnorm(.3)</code></pre>
+<div id="lower-bound" class="section level3">
+<h3>Lower Bound</h3>
+<pre class="r"><code>phat + zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.224328</code></pre>
+</div>
+<div id="upper-bound" class="section level3">
+<h3>Upper Bound</h3>
+<pre class="r"><code>phat - zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.3090054</code></pre>
+</div>
+</div>
+<div id="making-ci-40-1" class="section level2">
+<h2>Making CI 40%</h2>
+<pre class="r"><code>irisSample &lt;- sample(iris$Species, 30)
+phat &lt;- sum(irisSample == &quot;virginica&quot;)/30
+zstar &lt;- qnorm(.3)</code></pre>
+<div id="lower-bound-1" class="section level3">
+<h3>Lower Bound</h3>
+<pre class="r"><code>phat + zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.2882001</code></pre>
+</div>
+<div id="upper-bound-1" class="section level3">
+<h3>Upper Bound</h3>
+<pre class="r"><code>phat - zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.3784665</code></pre>
+</div>
+</div>
+<div id="making-ci-40-2" class="section level2">
+<h2>Making CI 40%</h2>
+<pre class="r"><code>irisSample &lt;- sample(iris$Species, 30)
+phat &lt;- sum(irisSample == &quot;virginica&quot;)/30
+zstar &lt;- qnorm(.3)</code></pre>
+<div id="lower-bound-2" class="section level3">
+<h3>Lower Bound</h3>
+<pre class="r"><code>phat + zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.2882001</code></pre>
+</div>
+<div id="upper-bound-2" class="section level3">
+<h3>Upper Bound</h3>
+<pre class="r"><code>phat - zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.3784665</code></pre>
+</div>
+</div>
+<div id="making-ci-40-3" class="section level2">
+<h2>Making CI 40%</h2>
+<pre class="r"><code>irisSample &lt;- sample(iris$Species, 30)
+phat &lt;- sum(irisSample == &quot;virginica&quot;)/30
+zstar &lt;- qnorm(.3)</code></pre>
+<div id="lower-bound-3" class="section level3">
+<h3>Lower Bound</h3>
+<pre class="r"><code>phat + zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.2882001</code></pre>
+</div>
+<div id="upper-bound-3" class="section level3">
+<h3>Upper Bound</h3>
+<pre class="r"><code>phat - zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.3784665</code></pre>
+</div>
+</div>
+<div id="making-ci-40-4" class="section level2">
+<h2>Making CI 40%</h2>
+<pre class="r"><code>irisSample &lt;- sample(iris$Species, 30)
+phat &lt;- sum(irisSample == &quot;virginica&quot;)/30
+zstar &lt;- qnorm(.3)</code></pre>
+<div id="lower-bound-4" class="section level3">
+<h3>Lower Bound</h3>
+<pre class="r"><code>phat + zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.3205291</code></pre>
+</div>
+<div id="upper-bound-4" class="section level3">
+<h3>Upper Bound</h3>
+<pre class="r"><code>phat - zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.4128042</code></pre>
+</div>
+</div>
+<div id="making-ci-40-5" class="section level2">
+<h2>Making CI 40%</h2>
+<pre class="r"><code>irisSample &lt;- sample(iris$Species, 30)
+phat &lt;- sum(irisSample == &quot;virginica&quot;)/30
+zstar &lt;- qnorm(.3)</code></pre>
+<div id="lower-bound-5" class="section level3">
+<h3>Lower Bound</h3>
+<pre class="r"><code>phat + zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.2561255</code></pre>
+</div>
+<div id="upper-bound-5" class="section level3">
+<h3>Upper Bound</h3>
+<pre class="r"><code>phat - zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.3438745</code></pre>
+</div>
+</div>
+<div id="making-ci-40-6" class="section level2">
+<h2>Making CI 40%</h2>
+<pre class="r"><code>irisSample &lt;- sample(iris$Species, 30)
+phat &lt;- sum(irisSample == &quot;virginica&quot;)/30
+zstar &lt;- qnorm(.3)</code></pre>
+<div id="lower-bound-6" class="section level3">
+<h3>Lower Bound</h3>
+<pre class="r"><code>phat + zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.192839</code></pre>
+</div>
+<div id="upper-bound-6" class="section level3">
+<h3>Upper Bound</h3>
+<pre class="r"><code>phat - zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.2738277</code></pre>
+</div>
+</div>
+<div id="making-ci-40-7" class="section level2">
+<h2>Making CI 40%</h2>
+<pre class="r"><code>irisSample &lt;- sample(iris$Species, 30)
+phat &lt;- sum(irisSample == &quot;virginica&quot;)/30
+zstar &lt;- qnorm(.3)</code></pre>
+<div id="lower-bound-7" class="section level3">
+<h3>Lower Bound</h3>
+<pre class="r"><code>phat + zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.2561255</code></pre>
+</div>
+<div id="upper-bound-7" class="section level3">
+<h3>Upper Bound</h3>
+<pre class="r"><code>phat - zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.3438745</code></pre>
+</div>
+</div>
+<div id="making-ci-40-8" class="section level2">
+<h2>Making CI 40%</h2>
+<pre class="r"><code>irisSample &lt;- sample(iris$Species, 30)
+phat &lt;- sum(irisSample == &quot;virginica&quot;)/30
+zstar &lt;- qnorm(.3)</code></pre>
+<div id="lower-bound-8" class="section level3">
+<h3>Lower Bound</h3>
+<pre class="r"><code>phat + zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.3205291</code></pre>
+</div>
+<div id="upper-bound-8" class="section level3">
+<h3>Upper Bound</h3>
+<pre class="r"><code>phat - zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.4128042</code></pre>
+</div>
+</div>
+<div id="making-ci-40-9" class="section level2">
+<h2>Making CI 40%</h2>
+<pre class="r"><code>irisSample &lt;- sample(iris$Species, 30)
+phat &lt;- sum(irisSample == &quot;virginica&quot;)/30
+zstar &lt;- qnorm(.3)</code></pre>
+<div id="lower-bound-9" class="section level3">
+<h3>Lower Bound</h3>
+<pre class="r"><code>phat + zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.2561255</code></pre>
+</div>
+<div id="upper-bound-9" class="section level3">
+<h3>Upper Bound</h3>
+<pre class="r"><code>phat - zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.3438745</code></pre>
+</div>
+</div>
+<div id="making-ci-40-10" class="section level2">
+<h2>Making CI 40%</h2>
+<pre class="r"><code>irisSample &lt;- sample(iris$Species, 30)
+phat &lt;- sum(irisSample == &quot;virginica&quot;)/30
+zstar &lt;- qnorm(.3)</code></pre>
+<div id="lower-bound-10" class="section level3">
+<h3>Lower Bound</h3>
+<pre class="r"><code>phat + zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.3205291</code></pre>
+</div>
+<div id="upper-bound-10" class="section level3">
+<h3>Upper Bound</h3>
+<pre class="r"><code>phat - zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.4128042</code></pre>
+</div>
+</div>
+<div id="making-ci-40-11" class="section level2">
+<h2>Making CI 40%</h2>
+<pre class="r"><code>irisSample &lt;- sample(iris$Species, 30)
+phat &lt;- sum(irisSample == &quot;virginica&quot;)/30
+zstar &lt;- qnorm(.3)</code></pre>
+<div id="lower-bound-11" class="section level3">
+<h3>Lower Bound</h3>
+<pre class="r"><code>phat + zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.224328</code></pre>
+</div>
+<div id="upper-bound-11" class="section level3">
+<h3>Upper Bound</h3>
+<pre class="r"><code>phat - zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.3090054</code></pre>
+</div>
+</div>
+<div id="making-ci-40-12" class="section level2">
+<h2>Making CI 40%</h2>
+<pre class="r"><code>irisSample &lt;- sample(iris$Species, 30)
+phat &lt;- sum(irisSample == &quot;virginica&quot;)/30
+zstar &lt;- qnorm(.3)</code></pre>
+<div id="lower-bound-12" class="section level3">
+<h3>Lower Bound</h3>
+<pre class="r"><code>phat + zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.224328</code></pre>
+</div>
+<div id="upper-bound-12" class="section level3">
+<h3>Upper Bound</h3>
+<pre class="r"><code>phat - zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.3090054</code></pre>
+</div>
+</div>
+<div id="making-ci-40-13" class="section level2">
+<h2>Making CI 40%</h2>
+<pre class="r"><code>irisSample &lt;- sample(iris$Species, 30)
+phat &lt;- sum(irisSample == &quot;virginica&quot;)/30
+zstar &lt;- qnorm(.3)</code></pre>
+<div id="lower-bound-13" class="section level3">
+<h3>Lower Bound</h3>
+<pre class="r"><code>phat + zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.2882001</code></pre>
+</div>
+<div id="upper-bound-13" class="section level3">
+<h3>Upper Bound</h3>
+<pre class="r"><code>phat - zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.3784665</code></pre>
+</div>
+</div>
+<div id="making-ci-40-14" class="section level2">
+<h2>Making CI 40%</h2>
+<pre class="r"><code>irisSample &lt;- sample(iris$Species, 30)
+phat &lt;- sum(irisSample == &quot;virginica&quot;)/30
+zstar &lt;- qnorm(.3)</code></pre>
+<div id="lower-bound-14" class="section level3">
+<h3>Lower Bound</h3>
+<pre class="r"><code>phat + zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.2561255</code></pre>
+</div>
+<div id="upper-bound-14" class="section level3">
+<h3>Upper Bound</h3>
+<pre class="r"><code>phat - zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.3438745</code></pre>
+</div>
+</div>
+<div id="making-ci-40-15" class="section level2">
+<h2>Making CI 40%</h2>
+<pre class="r"><code>irisSample &lt;- sample(iris$Species, 30)
+phat &lt;- sum(irisSample == &quot;virginica&quot;)/30
+zstar &lt;- qnorm(.3)</code></pre>
+<div id="lower-bound-15" class="section level3">
+<h3>Lower Bound</h3>
+<pre class="r"><code>phat + zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.3530962</code></pre>
+</div>
+<div id="upper-bound-15" class="section level3">
+<h3>Upper Bound</h3>
+<pre class="r"><code>phat - zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.4469038</code></pre>
+</div>
+</div>
+<div id="making-ci-40-16" class="section level2">
+<h2>Making CI 40%</h2>
+<pre class="r"><code>irisSample &lt;- sample(iris$Species, 30)
+phat &lt;- sum(irisSample == &quot;virginica&quot;)/30
+zstar &lt;- qnorm(.3)</code></pre>
+<div id="lower-bound-16" class="section level3">
+<h3>Lower Bound</h3>
+<pre class="r"><code>phat + zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.192839</code></pre>
+</div>
+<div id="upper-bound-16" class="section level3">
+<h3>Upper Bound</h3>
+<pre class="r"><code>phat - zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.2738277</code></pre>
+</div>
+</div>
+<div id="making-ci-40-17" class="section level2">
+<h2>Making CI 40%</h2>
+<pre class="r"><code>irisSample &lt;- sample(iris$Species, 30)
+phat &lt;- sum(irisSample == &quot;virginica&quot;)/30
+zstar &lt;- qnorm(.3)</code></pre>
+<div id="lower-bound-17" class="section level3">
+<h3>Lower Bound</h3>
+<pre class="r"><code>phat + zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.2882001</code></pre>
+</div>
+<div id="upper-bound-17" class="section level3">
+<h3>Upper Bound</h3>
+<pre class="r"><code>phat - zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.3784665</code></pre>
+</div>
+</div>
+<div id="making-ci-40-18" class="section level2">
+<h2>Making CI 40%</h2>
+<pre class="r"><code>irisSample &lt;- sample(iris$Species, 30)
+phat &lt;- sum(irisSample == &quot;virginica&quot;)/30
+zstar &lt;- qnorm(.3)</code></pre>
+<div id="lower-bound-18" class="section level3">
+<h3>Lower Bound</h3>
+<pre class="r"><code>phat + zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.2882001</code></pre>
+</div>
+<div id="upper-bound-18" class="section level3">
+<h3>Upper Bound</h3>
+<pre class="r"><code>phat - zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.3784665</code></pre>
+</div>
+</div>
+<div id="making-ci-40-19" class="section level2">
+<h2>Making CI 40%</h2>
+<pre class="r"><code>irisSample &lt;- sample(iris$Species, 30)
+phat &lt;- sum(irisSample == &quot;virginica&quot;)/30
+zstar &lt;- qnorm(.3)</code></pre>
+<div id="lower-bound-19" class="section level3">
+<h3>Lower Bound</h3>
+<pre class="r"><code>phat + zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.2882001</code></pre>
+</div>
+<div id="upper-bound-19" class="section level3">
+<h3>Upper Bound</h3>
+<pre class="r"><code>phat - zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.3784665</code></pre>
+</div>
+</div>
+<div id="making-ci-40-20" class="section level2">
+<h2>Making CI 40%</h2>
+<pre class="r"><code>set.seed(2)
+
+sample(iris$Species, 30)</code></pre>
+<pre><code>##  [1] setosa     virginica  versicolor setosa     virginica  virginica 
+##  [7] setosa     virginica  versicolor versicolor virginica  setosa    
+## [13] virginica  virginica  versicolor virginica  virginica  setosa    
+## [19] versicolor setosa     versicolor setosa     virginica  setosa    
+## [25] setosa     versicolor virginica  virginica  virginica  setosa    
+## Levels: setosa versicolor virginica</code></pre>
+<div id="lower-bound-20" class="section level3">
+<h3>Lower Bound</h3>
+<pre class="r"><code>phat + zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.2882001</code></pre>
+</div>
+<div id="upper-bound-20" class="section level3">
+<h3>Upper Bound</h3>
+<pre class="r"><code>phat - zstar*sqrt(phat*(1-phat)/30)</code></pre>
+<pre><code>## [1] 0.3784665</code></pre>
 <table>
 <thead>
 <tr class="header">
-<th>Var 1</th>
-<th>Var 2</th>
-<th>Var 3</th>
+<th>group</th>
+<th>p</th>
+<th>50% CI</th>
+<th>95% CI</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>a</td>
-<td>1</td>
-<td>blue</td>
+<td>dogs</td>
+<td>.3</td>
+<td>(.25,.4)</td>
+<td>(.3,.34)</td>
 </tr>
 <tr class="even">
-<td>b</td>
-<td>2</td>
-<td>green</td>
+<td>cats</td>
+<td>.24</td>
+<td>(.12,.28)</td>
+<td>(.21, .7)</td>
+</tr>
+<tr class="odd">
+<td>giraffes</td>
+<td>.87</td>
+<td>(.34,.89)</td>
+<td>(.82, .99)</td>
+</tr>
+<tr class="even">
+<td>monkeys</td>
+<td>.65</td>
+<td>(.32, .4)</td>
+<td>(.72, .8)</td>
+</tr>
+<tr class="odd">
+<td>lions</td>
+<td>.66</td>
+<td>(.12, .56)</td>
+<td>(.34, .88)</td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
 
 
 
