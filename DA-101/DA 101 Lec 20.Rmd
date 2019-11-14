@@ -1,0 +1,149 @@
+---
+title: "DA 101 Lec 19"
+author: "Your Name"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: simplex
+    df_print: paged
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+## Hyp tests for categorical data
+
+Our tests so far, like t test and cor test are about numerical data.
+
+T tests are about means (xbar), and cor tests are about correlation coeffs (r).  
+
+What if we want to study a categorical variable?  Ex:  hair color, year in school, nationality, political party, etc.  You can't find the "average" of a category, so what then?
+
+What summary stat would you use for categories?  Count/freq is an obvious one, but it also has an obvious limitation:  we need to know count relative to sample size:  percent!!! I.e., "proportion".
+
+### Hyp test for proprtions
+
+Recall, CLT:  tells us that our sample statistic follow normal distributions as long as n is large.  (More on that later).   For t-test, we need n at least 30  (made up, but useful!). 
+
+All hyp tests follow the same four basic steps:  
+
+- hypotheses
+- test stat
+- p-val
+- conclusion
+
+Here, our hypotheses are about proportions.  We need a test stat, I.e., a z-score (standard score).  
+
+Recall:  z = (obs - expected)/(std dev)
+
+For numerical data:  z = (xbar - mu)/sigma
+
+For sample proportions, phat, the CLT tells us the expected proportion is p, the population proportion.
+
+The std dev for phat is sqrt(p(1-p)/n)
+
+We need the center and spread to use the normal dist.
+
+Example:  Prof Miller suspects that more than half of residents in Columbus are registered Democrats.  (note:  proportion 1/2)  To test this, she takes a sample 100 voters in columbus, and finds that 59 of them are Dem.  Has she found statistically significant evicence to support her claim?
+
+1)  Hypotheses
+
+My claim:  the proprtion of dem is greater than 1/2
+
+H0:  p=1/2  (always a statement of = about pop)
+Ha:  p>1/2
+
+2) Observed:  phat = 59/100
+   Expected:  p = 1/2
+   Std Dev:   sqrt((1/2)*(1-1/2)/100)
+   
+   To the z score!
+   
+```{r}
+# (obs - exp)/std dev
+
+(59/100-1/2)/sqrt(1/2*(1-1/2)/100)
+
+```
+   
+Test stat:  z = 1.8.
+
+3)  P-value.  The p-val is the probability of obvserving a sample proportion that's as big or bigger than the one we got (59/100), assuming that the null hypothesis is true (p= 1/2).
+
+
+ClT says this follows a normal dist.  R (and every other software ever) has a built-in normal calculator:  `pnorm`:
+
+```{r}
+pnorm(1.8)
+```
+
+The above is the area to the left of z=1.8, but we need tail area.  
+```{r}
+#  p = 1-.964
+
+1-.964
+
+```
+
+4)  Since p<.05, we reject H0.  There's strong evidence to suggest that the proportion of Dem voters in columbus really is greater than 1/2.  
+
+
+
+Your turn!
+
+To pass a change to the faculty handbook, a 2/3 majority is needed.  Prof Miller has a change she'd like to propose, but she wants to make sure that it's supported beforehand.  To investigate, she takes a sample of 60 faculty members, and finds that 44 of them support her proposal.
+
+Is there statistically significant evidence to support her claim?
+
+H0:  p=2/3
+Ha:  p>2/3
+
+z = (phat - p)/sqrt(p*(1-p)/n)
+
+```{r}
+(44/60 - 2/3)/sqrt(2/3*(1-2/3)/60)
+```
+
+Use pnorm for p-val:
+
+```{r}
+1-pnorm(1.095445)
+```
+
+
+
+
+
+```{r}
+(44/60-2/3)/sqrt((2/3)*(1-2/3)/60)
+
+1-pnorm(1.0945)
+```
+
+
+
+
+
+
+
+
