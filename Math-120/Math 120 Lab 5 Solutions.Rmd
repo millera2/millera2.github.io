@@ -203,7 +203,7 @@ We can make some interesting observations about the meaning of "success rate" he
 
 Without exception, the margin of error is greater for the 95% intervals, i.e., they're "wider".  This makes sense:  in order to feel more confident that we're capturing the true proportion, we need to cast a wider net!
 
-Another important observation is that the success of our CIs is strongly influenced by the particular sample proportion we find.  Even though each sample was of the same size $n=50$, some values for $\hat{p}$ are quite close to the true $p$, while others are quite a bit different.  Let this be a lesson:  your sample could be "good" (a close approximation to the population) or not, but *you have know way of knowing!*  We're "cheating" here by sampling from a known population, but generally we have know way of knowing whether or not our methods are successful.  Keep this in mind always when interpreting statistical results.
+Another important observation is that the success of our CIs is strongly influenced by the particular sample proportion we find.  Even though each sample was of the same size $n=50$, some values for $\hat{p}$ are quite close to the true $p$, while others are quite a bit different.  Let this be a lesson:  your sample could be "good" (a close approximation to the population) or not, but *you have no way of knowing!*  We're "cheating" here by sampling from a known population, but generally we have no way of knowing whether or not our methods are successful.  Keep this in mind always when interpreting statistical results.
 
 ## Grading
 
