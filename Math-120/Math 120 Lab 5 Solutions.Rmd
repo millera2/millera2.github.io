@@ -45,7 +45,7 @@ politicalData <- read_csv("../Data/political-data.csv")#
 ## Intro
 
 
-For my analysis, I picked income level.  One might wonder:  is there a relationship between income level and political affiliation?  Of course there are many dimensions that relationship might take; this lab will only investigate the proportions we observe in sample results.  Looking to the future, we'll add to our toolbox for answering, "is there a relationship between these variables?"  
+Lab 5 is an investigation into political party affiliation in the Show of Hands survey app.  For my analysis, I picked "income level" as the metric along which I'd study political affiliation.  One might wonder:  is there a relationship between income level and political affiliation?  Of course there are many dimensions that relationship might take; this lab will only investigate the proportions we observe in sample results.  Looking to the future, we'll add to our toolbox for answering, "is there a relationship between these variables?"  
 
 The major goals in this lab are to see confidence intervals in action, to compare the results from multiple samples, and to analyze the relationship between confidence level and margin of error for CIs.  It's a sneaky way to do an analysis:  if we consider our data as the entire "population", we can make interesting observations about how the samples behave and get a feel for how successful the method is in general.
 
