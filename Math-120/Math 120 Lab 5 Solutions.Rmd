@@ -121,7 +121,7 @@ under25phat      <- sum(under25sample     =="Democrat")/50
 
 ## Constructing the CIs
 
-We know, from the Central Limit Theorem, that sample statistics like $\bar{x}$ and $\hat{p}$ follow a normal distribution.  That fact is surprising and complex, but the idea of a confidence interval is simple:  find the range of the middle $C\%$ of the sampling distribution for our particular sample result. The formula only involves three terms:  $\hat{p}$,  $z^*$, and $n$.  
+We know from the Central Limit Theorem that sample statistics like $\bar{x}$ and $\hat{p}$ follow a normal distribution.  That fact is surprising and complex, but the idea of a confidence interval is simple:  find the range of the middle $C\%$ of the sampling distribution for our particular sample result. The formula only involves three terms:  $\hat{p}$,  $z^*$, and $n$.  
 $$\hat{p} \pm z^* \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$$
 We've got our sample info $\hat{p}$ and $n$; now we need critical values $z^*$ to find the range of the middle 50% and 95% of our sampling distributions.  We find these cutoffs with `qnorm`, a function that uses the normal distribution "backwards" to give us z-scores that correspond to a particular area under the curve.  
 
