@@ -194,7 +194,7 @@ The results are summarized in the table below:
 
 ## Observations and Conclusion
 
-Each of the 14 intervals above estimates the true population proportion of Democrats for their respective income categories.  Each of them is a statement about a *population*. For example, we're 50% confident that the proportion of Democrats in the income category *less than 25k* is between 43.2% and 52.7%.  Note that this specific example isn't a "successful" internal, since the true proportion of Dems was 52.9%.  Close, but no cigar!
+Each of the 12 intervals above estimates the true population proportion of Democrats for their respective income categories.  Each of them is a statement about a *population*. For example, we're 50% confident that the proportion of Democrats in the income category *less than 25k* is between 43.2% and 52.7%.  Note that this specific example isn't a "successful" internal, since the true proportion of Dems was 52.9%.  Close, but no cigar!
 
 We can make some interesting observations about the meaning of "success rate" here based on these results.  (Btw, as you can see in the code, I set my random number generator seed to "1" with `set.seed(1)`.  We'd see different results if we set the seed elsewhere; such is the nature of random samples!) For the 50% CIs, we see that 2 out of the 7 intervals were "correct" (although it's worth noting that some of these "failures" are quite borderline and very nearly capture the population parameter.)  For the 95% intervals, all 7 were successful.  This demonstrates two important properties of confidence intervals:
 
