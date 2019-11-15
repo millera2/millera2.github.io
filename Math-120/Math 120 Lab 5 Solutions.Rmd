@@ -183,7 +183,7 @@ over150_upper_95      <- over150phat +      z_95*sqrt(over150phat*(1-over150phat
 
 The results are summarized in the table below:
 
-| Category | sample $\hat{p}$ |   True p           |          50% CI                                   | 50% Success? |                 95% CI                |    95% Success? |
+| Category | sample $\hat{p}$ |   True $p$           |          50% CI                                   | 50% Success? |                 95% CI                |    95% Success? |
 | ---      |  :----: |    :---:            |          :-----:                                    |  :----:        |                :-----:                     |  :---:         |
 |  <25k    | `r under25phat`  |  `r under25prop`     | (`r under25_lower_50`, `r under25_upper_50`) |     No           | (`r under25_lower_95`, `r under25_upper_95`) |       Yes |
 | 25k<50k  | `r btwn25to50phat`  | `r btwn25to50prop`  | (`r btwn25to50_lower_50`, `r btwn25to50_upper_50`) | No         | (`r btwn25to50_lower_95`, `r btwn25to50_upper_95`) | Yes |
