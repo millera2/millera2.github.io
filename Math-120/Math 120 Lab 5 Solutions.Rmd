@@ -82,7 +82,7 @@ under25     <- politicalData %>% filter(Income == "under $25,000")
 
 Now that we've got the subsets, let's find the proportion per party in each one.  This will be the "true proportion" that we'll used to judge the effectiveness of our sample size by later. A proportion is simply a ratio: the number in our category ($x$) of interest divided by the total ($n$).  In math:
 $$\hat{p}=\frac{x}{n}$$
-In the code below, notice how my naming convention makes it perfectly clear what all of these things are; you don't have to be a statistician or a computer programmer to understand what they mean.  Note that I am not specifically endorsing any particular party by using "Democrat".  I *am* a queer vegetarian Marxist utopian liberal arts math professor, but all humans are warmly welcom in my classroom.  ;D
+In the code below, notice how my naming convention makes it perfectly clear what all of these things are; you don't have to be a statistician or a computer programmer to understand what they mean.  Note that I am not specifically endorsing any particular party by using "Democrat".  I *am* a queer vegetarian Marxist utopian liberal arts math professor, but all humans are warmly welcome in my classroom.  ;D
 
 ```{r}
 over150prop      <- sum(over150$Party     =="Democrat")/nrow(over150)
