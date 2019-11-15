@@ -6,7 +6,7 @@ output:
     toc: true
     toc_depth: 3
     code_folding: show
-    theme: yeti
+    theme: cerulean
     df_print: paged
   
 ---
