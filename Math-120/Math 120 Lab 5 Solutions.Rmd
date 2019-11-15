@@ -95,7 +95,7 @@ under25prop      <- sum(under25$Party     =="Democrat")/nrow(under25)
 ```
 
 
-Now that we know what's going on with the "populations" (the scare quotes here indicate that these aren't *reall* populations), let's take our samples and find sample proportions for each.  I'll stick with Democrats to be consistent.  Again, notice that my spacing and naming really help readability!
+Now that we know what's going on with the "populations" (the scare quotes here indicate that these aren't *real* populations), let's take our samples and find sample proportions for each.  I'll stick with Democrats to be consistent.  Again, notice that my spacing and naming really help readability!
 
 ```{r}
 

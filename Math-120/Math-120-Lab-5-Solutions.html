@@ -1784,7 +1784,7 @@ btwn100to150prop &lt;- sum(btwn100to150$Party==&quot;Democrat&quot;)/nrow(btwn10
 btwn50to75prop   &lt;- sum(btwn50to75$Party  ==&quot;Democrat&quot;)/nrow(btwn50to75)
 btwn25to50prop   &lt;- sum(btwn25to50$Party  ==&quot;Democrat&quot;)/nrow(btwn25to50)
 under25prop      &lt;- sum(under25$Party     ==&quot;Democrat&quot;)/nrow(under25)</code></pre>
-<p>Now that we know what’s going on with the “populations” (the scare quotes here indicate that these aren’t <em>reall</em> populations), let’s take our samples and find sample proportions for each. I’ll stick with Democrats to be consistent. Again, notice that my spacing and naming really help readability!</p>
+<p>Now that we know what’s going on with the “populations” (the scare quotes here indicate that these aren’t <em>real</em> populations), let’s take our samples and find sample proportions for each. I’ll stick with Democrats to be consistent. Again, notice that my spacing and naming really help readability!</p>
 <pre class="r"><code>over150sample      &lt;- sample(over150$Party,      50)
 btwn75to10sample   &lt;- sample(btwn75to100$Party,  50)
 btwn100to150sample &lt;- sample(btwn100to150$Party, 50)
