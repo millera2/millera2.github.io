@@ -47,6 +47,7 @@ theme_set(                                #this sets the theme for all    #
 ## DA 101 Lectures
 
 - [Lecture Journal](https://millera2.github.io/DA-101/DA-101-Lecture-Journal.html)
+- [Lec 20](https://millera2.github.io/DA-101/DA-101-Lec-20.html)
 - [Lec 19](https://millera2.github.io/DA-101/DA-101-Lec-19.html)
 - [Lec 18](https://millera2.github.io/DA-101/DA-101-Lec-18.html)
 - [Lec 17](https://millera2.github.io/DA-101/DA-101-Lec-17.html)
@@ -69,17 +70,17 @@ theme_set(                                #this sets the theme for all    #
 - [Lec 00](https://millera2.github.io/DA-101/DA-101-Lec-00.html)
 
 
-## Next Quiz:  Wednesday 11/06
+## Next Quiz:  Wednesday 11/20
 
-Lecture Coverage:  17, 18
+Lecture Coverage:  20
 
-Topics: 
+Topics: Hyp test for categorical variables
 
-- Choosing Variables in Linear Regression, 
-- interpreting ggpairs/ggcorr, 
-- StepAIC
-- Interpreting coefficients for multiple linear models vs single linear models
-- Regression on categorical variables and "dummy encoding"
+- Choosing and understanding hypotheses
+- Computing test stat (you don't need to memorize the formula, but do understand idea)
+- Computing p-val (know how to use `pnorm`)
+- Know/memorize the meaning of p-val
+- Understand how to interpret conclusions of tests for categorial variables
 
 
 ## Datasets

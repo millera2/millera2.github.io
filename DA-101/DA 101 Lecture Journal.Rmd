@@ -15,6 +15,52 @@ knitr::opts_chunk$set(echo = TRUE)
 
 *Note: All section numbers come from our text, ["R For Data Science"]("https://r4ds.had.co.nz").  
 
+
+## Week 12
+
+### Monday 11/18
+
+- Final project proposals
+
+
+## Week 11
+
+### Friday 11/15
+
+- 2-prop z tests
+  - comparing two proportions
+- Applications with the `mpg` dataset
+
+### Wednesday 11/13
+
+- Categorical inference: 1-prop z tests
+  - understanding the p-val
+  - understanding the hypotheses
+  - correctly concluding and interpreting
+
+## Monday 11/11
+
+- Reading Discussion: "Dirty Dozen" p-value misunderstandings
+
+## Week 10
+
+### Friday 11/08
+
+- regular expressions
+- ggmap annotations
+  - text, rectangles, arrows
+
+### Wednesday 11/06
+
+- ggmap
+  - heat maps
+  - geom_point
+
+### Monday 11/04
+
+- Reading Discussion
+
+
 ## Week 9
 
 ### Friday 10/25
