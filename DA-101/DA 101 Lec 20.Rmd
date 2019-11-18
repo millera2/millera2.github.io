@@ -142,8 +142,134 @@ Use pnorm for p-val:
 
 
 
+## More about Categorical Inference (Fri)
 
 
+Last time:  Z test for p  (population proportion)
+
+I.e., does our sample provide statistically significant evidence to support our claim?
+
+For a practical example, let's look at the mpg dataset:
+
+```{r}
+head(mpg)
+```
 
 
+Here, let's investigate "class".  What are the classes in this dataset, ie, what are the "levels" of the class variable?
 
+Let's use `unique`:
+
+```{r}
+unique(mpg$class)
+```
+
+
+According to literature distributed by GM, 20% of cars sold are midsize cars.  But, we suspect that actually fewer than 20% are midsize.
+
+Question:  according to our data (assuming that mpg dataset is a random sample of cars sold in the US), what proportion of cars were midsize?
+
+```{r}
+mpg$class
+```
+
+Q: how can we count up the number of midsize?
+
+A: we check equality, and sum.
+
+```{r}
+sum(mpg$class == "midsize")
+```
+
+```{r}
+count(mpg)
+nrow(mpg)
+```
+
+What prop are midsize?
+
+```{r}
+41/234
+```
+
+In this sample, certainly the proportion is less than 20% (our claim that we're investigating).  But how convincing is this really?  We know this is just a sample!  Not the whole population?  How strong is this evidence?
+
+CLT saves the day, we know the probability distro!  So let's find out how likely this is!  To the hyp test!
+
+Our claim:  the proportion of midsize is less than 20%
+
+H0: p = .2   (needed to find p-val!  used in z-score and p-val)
+Ha: p < .2   (our claim, also our notion of "extreme"; here, extreme means "small")
+
+test stat:
+
+```{r}
+#  z = (phat - p)/sqrt(p(1-p)/n)
+
+(41/234 - .2)/sqrt(.2*(1-.2)/234)
+
+```
+
+p-val:  Here our p-val is the probabity of ovbserving a sample proportion that's 41/234 or smaller, assuming that the true proportion is 0.2.
+
+We find it with pnorm:
+
+```{r}
+pnorm(-0.94789)
+```
+
+Conclusion:  since our p-val is >.05, we fail to reject H0.  We did not find the evidence we're looking for to support our claim that the the proportion of midsize cars is less than 20%.
+
+### 2 samp z tests for p
+
+What if we want to compare two different groups?  Example, for mpg, what if we to compare midsize and compact cars?  Is there evidence of a difference in proportion?  Let think of midsize as population 1 and compact cars as population 2.  Is there evidence of a difference in the proprtions sold?  
+
+Is p1 != p2 ??
+
+(Note, this is very similar to your 2-t tests for means from different populations)
+
+The test works the same as all hyp tests:  
+
+1) hyps
+2) test stat
+3) p-val
+4) conclusion
+
+The only difference here is our test stat:  we need to compare the difference between the two proportions!
+
+The test stat here is:
+
+z =  (phat1 - phat2)/sqrt(phat1(1-phat1)/n1 + phat2(1-phat2)/n2)
+
+We already know that phat1 = 41/234 (proportion of midsize).
+
+Need: proportion of compacts.
+
+```{r}
+sum(mpg$class == "compact")
+```
+
+So, phat2 = 47/234
+
+The test:
+
+H0: p1=p2
+Ha: p1 != p2
+
+```{r}
+phat1 <- 41/234
+phat2 <- 47/234
+n1 <- 234
+n2 <- 234
+
+(phat1 - phat2)/sqrt(phat1*(1-phat1)/n1 + phat2*(1-phat2)/n2)
+
+```
+
+p-val:  Our p-val is the probability of observing a difference in sample proportion, phat1-phat2, as big or bigger that what we observed, assuming that the difference in population proportion is zero.
+
+```{r}
+pnorm(-.71)
+```
+
+Here, there's a 23.8% chance of observing a difference as big or bigger than the one we got.  I.e., the null hyp seems quite reasonable.  We fail to reject H0, and thus we didn't find the evidence we're looking for to suggest that there's a difference in the proportion of midsize and compact cars.  

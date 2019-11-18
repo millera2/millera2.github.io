@@ -1,0 +1,344 @@
+---
+title: "Math 120 Lec 28"
+author: "Ali Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: simplex
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+
+
+
+
+
+## Errors in Hyp Tests
+
+There are two kinds.  Since mathematicians are clever, their names are:
+
+- Type I Error  (False Positive)  It's when we reject H0 (positive), but we shouldn't have because H0 is true! (false positive)
+
+- Type II Error (False Neg)  It's when we fail to reject H0 (negative), but we should have because H0 is false!!
+
+The interesting part is what these mean practically.  
+
+Example:  recall the problem about the faculty handbook.  I wanted to show that there's support for my proposal.
+
+H0:  p = 2/3
+Ha:  p > 2/3
+
+What do the error types mean?
+
+Type I:  I think that more than 2/3 of faculty support me, when in fact that's not the case.  I might be setting myself up for failure if I propose the change during the faculty meeting.
+
+
+Type II:  I don't think I have enough support for the proposal, when in fact there is more than 2/3 support.  I might miss an opportunity to pass my successful proposal!
+
+## Error Worksheet
+
+#### #2  Criminal trial:
+
+H0:  innocent
+Ha:  guilty
+
+Type I:  We think they're guilty, but actually they're innocent.  An innocent person goes to jail.
+Type II: We think they're innocent, but actually they're guilty.  An guilty person  goes free!
+
+Prof Miller:  I think type I is worse, I wouldn't want an innocent person (me!) to be punished.
+
+Could argue:  what if the criminal in question is super dangerous?
+
+
+#### #1  Water levels
+
+H0: mu = .8
+Ha: mu > .8  (preview for future)
+
+Type I:  We think the water is dangerous, but actually it's safe.
+Type II: We think the water is safe, but actually it's dangerous.
+
+Prof Miller thinks that type II is worse, because then people would drink dangerous water!
+
+In type I, we merely waste money cleaning water that's already safe.
+
+
+
+
+## Errors in Hyp Tests, Concluded
+
+We saw last time, sometimes Type I is worse, sometimes Type II is worse.
+
+Of course, in real life, there's no way to know if we're making an error or not!  So why talk about it?
+
+We can still tip the scales:  we make one more likely than the other.
+
+### Probabilities for error:  alpha, beta, and power
+
+Alpha is the probability of a type I error.  Note that this is the same alpha we use for concluding hyp tests, "significance level"!
+
+Why does this make sense?  If we make a type I error, that means H0 was true.  Since our p-val is computed assuming H0 is true, that means in this scenario our p-val is a "correct" probability for our sample result!  Since we reject H0 of p<alpha, that's our chance of Type I error!
+
+Moral 1:  alpha = prob of type I error
+Moral 2: Since we, the investigators, choose alpha ourselves before the test is conducted, that means **we choose how likely a type I error is**!
+
+Reasonable Q:  If control alpha, why not just make it super super small???
+A: beta!
+
+
+Beta is the probability of a Type II error.  Bad news:  beta is hard to find.  If making a type II error, then H0 is false.  Uh-oh, then we don't know what the populatin parameter is!
+
+H0:  p = .5  (example)
+
+We don't have enough info to compute probability.  BUT, beta and alpha have a predictable relationshp: inverse!
+
+Ie, if alpha gets bigger, beta gets smaller.  If alpha gets smaller, beta gets bigger!
+
+That's why do don't just pick a teeny tiny alpha: it'd make beta really, really big!  Depending on the scenario, this could be bad.  Humans could get hurt!
+
+Remember the EPA water safety example:
+
+H0:  mu = .8
+Ha:  mu > .8
+
+In type II error, we fail to reject H0, and thus people drink dangerous water!  In this situation, an investigator (you!) might want to use a larger alpha than normal!
+
+In summary: when performing a hyp test, think carefully about the consequences of type I and type II errors.  This could influence your design of the test!
+
+### power
+
+The power of a hyp test is the probability of successfully rejecting the H0, when H0 is false.  It's the prob of a successful hyp test, we are happy and our paper gets published and people pat us on the back.  Yaay!
+
+Just like beta, power is hard to compute directly since in this scenario H0 is false and we don't know the pop parameter to compute probabilities.
+
+BUT, power and beta have a relationship:  the're complements!
+
+    power = 1-beta     and      beta = 1-power
+    
+If we want high power, we want high alpha!
+
+One way to see: bigger alpha -> smaller beta -> bigger power
+
+Another way:  if alpha gets bigger, we're more likely to reject H0 (more likely that p is "small"), so that means it's more likely for us to correctly reject H0 -- power!
+
+## Ch 6 - Inference for 2 proportions
+
+So far, our hyp tests have answered questions about a single popuplation:
+
+Will more than 2/3 of a faculty support Prof Miller's idea?
+Do more than 1/2 of students ID as democrat?
+
+What if we wanted to compare TWO different groups?  What if we wonder:  is there a difference in proportion between two categories?
+
+Example:  At denison, in a sample of 80 students, 32 had brown hair.
+          At OSU, in a sample of 120 students, 51 of them had brown hair.
+          
+Q:  is there evidence that the proportion of students with brown hair is different at the two schools?  Remember, the sample data is clear.  We're wondering about the population.
+
+Our sample proportions: 
+
+phat1 = 32/80
+phat2 = 51/120
+
+```{r}
+32/80
+51/120
+```
+
+Clearly the samples differ, but does that provide strong evidence about the population?
+
+The population parameter in question:  p1 - p2 (the differnece in proportion)
+
+
+## Warm-Up Question
+
+An investigator wonders if more than half of the animals at the zoo are mammals.  She takes a random sample, runs a hyp test, and finds a p-val of .043.  
+
+If, in fact, 55% of the animals at the zoo are mammals, what error, if any, did the test make?
+
+H0: p=.5
+Ha: p>.5
+
+We rejected H0 (since p<.05), and H0 was false (since it's not true that p =.5), thus no error!
+
+
+Example 2
+Prof Miller wonders if she has enough support for her proposal to the faculty handbook.  Recall, she needs more than 2/3 support.  She investigates with a sample, and estimates the proprtion of faculty who support her to (.632, .698).
+
+If, in fact, 69% of faculty support her, what error (if any) did her test make?
+
+H0: p = .666667
+Ha: p>.666667
+
+We fail to reject, since the H0 value is in the CI. The H0 is false (since in fact p=.69).  This is a type II error:  we failed to reject h0, but we should have since it's false!
+
+## 2 proportions
+
+Goal:  do inference (i.e. CI and hyp test) for TWO proportions.  Specifically: is there evidence of a difference?  Idea:  comparing two populations with two samples!
+
+### CIs for two props
+
+All CIs have this form:
+
+(point estimate) +/- (crit val)(std error)
+
+For one p:
+
+phat +/- zstar*sqrt(blah blah blah)
+
+Same thing for two props:  just need two sample results:
+
+point estimate = phat1 - phat2
+std error = sqrt(phat1(1-phat1)/n1 + phat2(1-phat2)/n2)
+
+All together, to estimate the difference in proprtions with CI:
+
+phat1 - phat2 +/- zstar*sqrt(blah blah blah)
+
+### Example:  Party
+
+In a sample of 65 DU students, 45 of them were Democrats.  In a sample of 80 OSU students, 39 of them were Democrats.
+
+Estimate the difference in proportion of Democrats between the two schools.
+
+phat1 = 45/65,    n1 = 65
+phat2 = 39/80,    n2 = 80
+
+(note: doesn't matter which is which, but be consistent!)
+
+CI:
+
+```{r}
+#lower 
+
+45/65 - 39/80 - 1.96*sqrt(45/65*(1-45/65)/65 + 39/80*(1-39/80)/80)
+
+#upper 
+45/65 - 39/80 + 1.96*sqrt(45/65*(1-45/65)/65 + 39/80*(1-39/80)/80)
+
+
+```
+ 
+We are 95% confident that the difference in prop of democrats (p1-p2) is between 4.8% and 36.2%
+
+      4.8% < p1-p2 < 36.2%
+      
+p1 = population prop of democrats at denison
+p2 = population prop of democrats at OSU
+
+Since we're pretty confident that the difference is positive, we conclude that there's a higher prop of democrats at DU.
+
+### Example: Zoo
+
+In a random sample from the Columbus zoo, 67 of 193 animals were mammals.  In a random sample from the San Diego zoo, 101 out of 250 animals were mammals.  Estimate the difference in proportion of mammals at the two zoos.
+
+```{r}
+phat1 <- 67/193
+phat2 <- 101/250
+n1 <- 193
+n2 <- 250
+
+phat1 - phat2 - 1.96*sqrt(phat1*(1-phat1)/n1+phat2*(1-phat2)/n2)
+phat1 - phat2 + 1.96*sqrt(phat1*(1-phat1)/n1+phat2*(1-phat2)/n2)
+
+```
+
+Note, it's possible that p1-p2=0!  I.e., possible that there's no differe, that the props are the same!  Didn't find strong evidece of a diff.
+
+## Hyp tests for 2 p  (2-prop z interval)
+
+For two populations, the H0 is ALWAYS THE SAME:
+
+H0:  p1 - p2 = 0  (assume no difference)
+
+Alt hyp depends on claim:  <, >, or !=
+
+Also can write:
+
+H0: p1 = p2
+
+Test stat has the same format:
+
+z = (obs - exp)/(std err)
+
+Nuance:  In h0, we assume p1=p2.  Then, both samples have the same expectation!  So, let's combine them into a "pooled estimate":
+
+p_pool = (successes in sample 1 + success in sample 2)/(n1+n2)
+
+
+Idea: combine both together into one big sample!
+
+### Example: Zoo
+
+In a random sample from the Columbus zoo, 67 of 193 animals were mammals.  In a random sample from the San Diego zoo, 101 out of 250 animals were mammals.  Estimate the difference in proportion of mammals at the two zoos.
+
+
+p_pooled = (67+101)/(193+250)
+
+```{r}
+(67+101)/(193+250)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

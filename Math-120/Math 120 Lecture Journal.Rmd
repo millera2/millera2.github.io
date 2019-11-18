@@ -15,10 +15,39 @@ knitr::opts_chunk$set(echo = TRUE)
 
 *Note: All section numbers come from our text, [Openintro Statistics]("https://www.openintro.org/stat/textbook.php?stat_book=os").  
 
+## Week 12
+
+#### Monday 11/18
+
+- CIs for two proportions
+  - constructing (formula)
+  - interpreting
+- Hyp test for two proportions
+  - pooled estimate
+
 
 ## Week 11
 
-### Monday 11/11
+#### Fri 11/15
+
+- Influencing error
+  - meaning of $\alpha$, $\beta$, and power
+  - relationships between $\alpha$, $\beta$, and power
+- Intro to 2-prop tests and intervals
+
+#### Thu 11/14
+
+- Lab 6 
+
+#### Wed 11/13
+
+- Errors in Hypothesis testing
+  - Type I (false positive)
+  - Type II (false negative)
+- Consequences of Error 
+  - Worksheet on error types
+
+#### Monday 11/11
 
 - Left tail, right tail, and two-sided tests
 - Computing p-vals for two-sided tests
@@ -26,7 +55,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ##  Week 10
 
-### Fri 11/08
+#### Fri 11/08
 
 - Prof Miller talked about canyons for a while.  
   - Something something self reliance, something something Bloom's taxonomy
@@ -34,17 +63,17 @@ knitr::opts_chunk$set(echo = TRUE)
 - Connection between hyp tests and confidence intervals
 - Making conclusions in hyp tests based on confidence intervals
 
-### Thurs 11/07
+#### Thurs 11/07
 
 - Lab 5
 
-### Wed 11/06
+#### Wed 11/06
 
 - Looking at the 4 steps in detail
 - Examples of hyp tests.
 
 
-### Monday 11/04
+#### Monday 11/04
 
 - Introduction to hypothesis tests
 - Four steps:
@@ -56,20 +85,20 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Week 9
 
-### Friday 11/01
+#### Friday 11/01
 
 - Meaning of "confidence"
 - Planning ahead for sample size and MOE
 
-### Thursday 10/31
+#### Thursday 10/31
 
 - Practicing CIs on datasets
 
-### Wednesday 10/30
+#### Wednesday 10/30
 
 - Lab 5
 
-### Monday 10/28
+#### Monday 10/28
 
 - Intro to confidence intervals 
   - Basic idea (normal distro centered around point estimate)
@@ -79,19 +108,19 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Week 8
 
-### Friday 10/25
+#### Friday 10/25
 
 - Practice problems with samplign distributions
   - Using `pnorm` to find probabilities for sample results.
 
-### Thursday 10/24
+#### Thursday 10/24
 
 - Sampling Distributions Continued
   - Distribution for $\hat{p}$
   - center, spread for $\hat{p}$
   - Success/failure condition (deciding if $n$ is "large enough")
 
-### Wednesday 10/23
+#### Wednesday 10/23
 
 - Normal Dist review
   - `pnorm()`
@@ -99,7 +128,7 @@ knitr::opts_chunk$set(echo = TRUE)
   - Example:  Sampling distro for $\bar{x}$ with $n=2$ from Dice Distro
   
 
-### Monday 10/21
+#### Monday 10/21
 
 - Lab 4
 
@@ -107,13 +136,13 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Week 7 (Fall Break)
 
 
-### Monday 10/14
+#### Monday 10/14
 - Pracitce with `pnorm`
 
 
 ## Week 6
 
-### Friday 10/11
+#### Friday 10/11
 
 - Comparing Normal Distros:  Z-Scores
   - ACT/SAT example
@@ -121,18 +150,18 @@ knitr::opts_chunk$set(echo = TRUE)
 - Verifying Normality of data
 - Normal distributions are -everywhere!-
 
-### Thursday 10/10
+#### Thursday 10/10
 
 - Lab 4 Begins
 
-### Wednesday 10/09
+#### Wednesday 10/09
 
 - Important property of cts RVs: endpoints
 - The Normal Distro
   - Properties
   - Examples
 
-### Monday 10/07
+#### Monday 10/07
 
 - Reading: Name That Distro!
 - Continuous Distros
@@ -146,18 +175,18 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Week 5
 
-### Friday 10/04
+#### Friday 10/04
 
 - Special activity: Name That Distro!
 
-### Thursday 10/03
+#### Thursday 10/03
 
 - Poisson Distro
   - Properties
   - Using pdf and cdf
   - Examples
 
-### Wednesday 10/02
+#### Wednesday 10/02
 
 - Binomial Examples
   - Sampling DU students
@@ -167,7 +196,7 @@ knitr::opts_chunk$set(echo = TRUE)
   - Interpreting examples above
 
 
-### Monday 9/30
+#### Monday 9/30
 
 - Special Discrete Distribution:  **Binomial Dist**
 - Example: tossing three coins
@@ -180,23 +209,23 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Week 4
 
-### Friday 9/27
+#### Friday 9/27
 - Variance of a discrete distro
   - Definition
   - Single dice example
   - Sum of two dice example
 
-### Thurs 9/26
+#### Thurs 9/26
 - Expected Value of a discrete distro
   - Definition
   - Single dice example
   - Sum of two dice example
 
-### Wednedsay 9/25
+#### Wednedsay 9/25
 
 - Lab 3
 
-### Monday 9/23
+#### Monday 9/23
 
 - Discrete Random Variables
 - Discrete Probability Distributions
@@ -208,10 +237,10 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Week 3
 
-### Friday 9/21
+#### Friday 9/21
 - Lab
 
-### Thursday 9/20
+#### Thursday 9/20
 
 - Understanding Contingency (Two-Way) Tables
 - Making Contingency Tables in R
@@ -222,7 +251,7 @@ knitr::opts_chunk$set(echo = TRUE)
   - The "and" rule for independent events
 - Checking Independence
 
-### Wednesday 9/19
+#### Wednesday 9/19
 
 
 - Reading Discussion: What is Randomness?
@@ -234,7 +263,7 @@ knitr::opts_chunk$set(echo = TRUE)
   - In-class Demo: Gambling!!!
 
 
-### Monday 9/16
+#### Monday 9/16
 
 - Interpreting residualal plots (continued)
 - Examining the effects of outliers 
@@ -242,11 +271,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Week 2
 
-### Friday 9/13
+#### Friday 9/13
 
 Lab - Linear Regression
 
-### Thursday 9/12
+#### Thursday 9/12
 
 - Least Squares Equation
   - The equation
@@ -262,7 +291,7 @@ Lab - Linear Regression
 - Effects of Outliers
 
   
-### Wednesday 9/11
+#### Wednesday 9/11
 
 - Reading Discussion: Linear Regression
 - Intro to Correlation and Linear Regression
@@ -276,7 +305,7 @@ Lab - Linear Regression
   
 
  
-### Monday 9/9
+#### Monday 9/9
 
 - Reading Discussion: Sampling Strategies
 - Sampling 
@@ -297,7 +326,7 @@ Lab - Linear Regression
  
 ## Week 1 
     
-### Friday 9/6
+#### Friday 9/6
 
 - Reading discussion:  how did lab go?  Thoughts? Questions? Insights?
 - Box Plots and Scatterplots In-Depth
@@ -307,14 +336,14 @@ Lab - Linear Regression
   
     
     
-### Thursday 9/5
+#### Thursday 9/5
 
 - Lab day!  Still begin with reading discussion.
 - You'll have the whole hour to work.
 - **Start your lab before class**, so that you can get help!
 
 
-### Wednesday 9/4
+#### Wednesday 9/4
 - Textbook:  Chapter 2
 - Imporant numerical summaries of data (statistics):
   - mean, median (measures of **center**)
@@ -325,7 +354,7 @@ Lab - Linear Regression
   - Understanding **shape**, **center**, and **spread**.
   
 
-### Monday 9/2
+#### Monday 9/2
 
 - Reading Discussion:  Lab 1
   - Understand the codebook?
@@ -338,7 +367,7 @@ Lab - Linear Regression
 
 ## Week 0
 
-### Friday 8/30
+#### Friday 8/30
 
 - Reading Discussion: Data Types 
   - Continuous, Discrete, Ordinal, Nominal
@@ -352,6 +381,6 @@ Lab - Linear Regression
    
    
    
-### Thursday 8/29
+#### Thursday 8/29
 
 - Intro to class, syllabus day

@@ -37,6 +37,7 @@ theme_set(                                #this sets the theme for all    #
 *They look great on your phone, so you can read them anywhere.  Steal my code!  Don't understand something?  Ask me!*
 
 - [Lecture Journal](https://millera2.github.io/Math-120/Math-120-Lecture-Journal.html)
+- [Lec 28](https://millera2.github.io/Math-120/Math-120-Lec-28.html)
 - [Lec 27](https://millera2.github.io/Math-120/Math-120-Lec-27.html)
 - [Lec 26](https://millera2.github.io/Math-120/Math-120-Lec-26.html)
 - [Lec 25](https://millera2.github.io/Math-120/Math-120-Lec-25.html)
@@ -64,21 +65,21 @@ theme_set(                                #this sets the theme for all    #
 - [Lec 01 ](https://millera2.github.io/Math-120/Math-120-Lec-01.html)
 
 
-## Next Quiz: Wed 11/13
+## Next Quiz: Wed 11/20
 
-**Topics:**  Hyp Tests
+**Topics:**  Two-tail tests, errors in hyp tests
 
-**Lecture Coverage: ** 23-26 (they're each pretty short)
+**Lecture Coverage: ** 27, 28
 
-- What's a hyp test?  What do we use them for?
-- How to hyp tests compare with CIs as a tool for inference?
-- What are the four key steps of a hyp test?
-- How to the hypotheses work?  H0?  Ha?
-- How is a test stat computed?
-- How is a p-val computed?
-- How do we make conclusions in a hyp test?
-- What's the significance level of a test?
-- What's the difference between a left-tail test, right-tail test, and two-tail test?
+Questions:
+
+- Why are two-tailed tests called two-tailed tests?
+- How are p-vals computed for two-tail tests?
+- What's the meaning of Type I/Type II error?
+- Given a description of a test and info about the real-world population, decide if a type I or type II error was made.  See warm-up questions from Monday.
+- What are the practical implications of error types?  See Error Worksheet for examples.
+- If alpha or beta or power increases, what effect does that have on the other two?
+- If one error type is worse, how does that affect your choice of alpha?  When should you make alpha bigger?  When smaller?
 
 ## Labs
 
