@@ -84,7 +84,7 @@ Questions:
 ## Labs
 
 - [Lab 6](https://millera2.github.io/Math-120/Math-120-Lab-6.html)
-- [Lab 5](https://millera2.github.io/Math-120/Math-120-Lab-5.html)
+- [Lab 5](https://millera2.github.io/Math-120/Math-120-Lab-5.html) <small> Also: [Abbreviated Solutions](https://millera2.github.io/Math-120/Math-120-Lab-5-Solutions.html)</small>
 - [Lab 4](https://millera2.github.io/Math-120/Math-120-Lab-4.html) <small> Also: [Abbreviated Solutions](https://millera2.github.io/Math-120/Math-120-Lab-4-Solutions.html)</small>
 - [Lab 3](https://millera2.github.io/Math-120/Math-120-Lab-3.html) <small> Also: [Abbreviated Solutions](https://millera2.github.io/Math-120/Math-120-Lab-3-Solutions.html)</small>
 - [Lab 2](https://millera2.github.io/Math-120/Math-120-Lab-2.html)
