@@ -383,7 +383,7 @@ This is hard!  Ex, in lab:  is your data truly an SRS?  Was every member of the 
 
 Two tail tests alway have a bigger p-vals (x2).  Bigger p-vals mean less rejecting.  In other words, it's harder to get a "significant" result 2-tail test, harder to reject!
 
-SHould we use 1-tail or two tail?
+Should we use 1-tail or two tail?
 
 Short answer:  always use two tail.  (Unless you have very, very strong evidence for left or right).  Using a 1-tail test is kinda "cheating", since p-vals are always smaller.  In some sense, this "more honest".  
 
