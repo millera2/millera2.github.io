@@ -1,5 +1,5 @@
 ---
-title: "Math 120 Lec 21"
+title: "Math 120 Lec 22"
 author: "Your Name"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
@@ -133,7 +133,7 @@ Idea:  solve MOE backwards for n!
 
 Since MOE = zstar*sqrt(p(1-p)/n), we get
 
-n = p(1-p)*(zstar/MOE)^2
+$$n = p(1-p)\left(\frac{z^*}{MOE}\right)^2$$
 
 In this example, our estimate for p is .57, our zstar is 1.96, and desired MOE is 1%, .01.  Plug and chug:
 
