@@ -131,7 +131,8 @@ Example:  In 2015, the gender ratio at DU was 57% female.  A researcher wonders,
 
 Idea:  solve MOE backwards for n!
 
-Since MOE = zstar*sqrt(p(1-p)/n), we get
+Since $$MOE = z^*\sqrt{\frac{p(1-p)}{n}},$$ 
+we get
 
 $$n = p(1-p)\left(\frac{z^*}{MOE}\right)^2$$
 
