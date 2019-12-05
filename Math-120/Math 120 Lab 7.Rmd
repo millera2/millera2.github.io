@@ -1,0 +1,86 @@
+---
+title: "Math 120 Lab 7: Inference on Two Means"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: false
+    toc_depth: 3
+    code_folding: show
+    theme: yeti
+    df_print: paged
+  
+---
+
+```{r setup, include=FALSE}
+###########################################################################
+################# DON'T DELETE THIS PART!!!!!##############################
+###########################################################################
+                                                                          #
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)      #
+                                                                          #
+library(tidyverse)           #The tidyverse has all of our data tools     #
+library(ggthemes)            #ggthemes makes our graphs look nicer        #
+                                                                          # 
+theme_set(                                #this sets the theme for all    #
+  theme_tufte() +                         #plots that we make             #
+  theme(text=element_text(family="sans"))                                 #
+  )                                                                       #
+                                                                          #
+                                                                          #
+                                                                          #
+### Below is where you read and store your data.                          #
+                                                                          #
+youShouldRenameThis <- read_csv("death penalty data.csv")
+                                                                          #
+                                                                          #
+                                                                          #
+############# ^ ################################# ^ #######################
+############# | ## DON'T DELETE THIS PART!!!!!### | #######################
+############# | ################################# | #######################
+```
+
+
+
+
+## The Lab
+
+Using **any dataset from the course** (but not one of the built-in datasets in R), compare means of a variable for two groups using both a 2-samp t test and a 2-samp t confidence interval.  
+
+As an example, one could compare the mean sepal length for setosa iris vs versicolor irises in the `iris` dataset.  Or, one could compare mean mpg for pickups vs suvs in the `mpg` dataset (but to be clear, for this lab you need to use an external dataset, so those specific examples would be inappropriate).
+
+You can use any dataset from class (like the CIRP data or the housing data, as examples), *and you may also use publicly available datasets* from the internet (as long as you link the dataset in your report).
+
+Your grade will depend on:
+
+- Picking an interesting comparison, and explaining why you picked it.
+- Performing a complete hyp test for two means and explaining all relevant details (conditions for use, steps involved, interpretations, and conclusions).
+- Constructing a CI for two means and explaining all relevant details.
+- Your conclusions from your analysis.
+- A thoughtful demonstration of these two tools, what they mean, how they're used, and why we use them.
+
+Your report should be a cleanly formatted technical essay, with introduction and conclusion.  Be creative, have fun, and use these statistical tools to tell a good story!
+
+
+
+
+## Deadline and Grading
+
+This lab (both .rmd and **polished .html**) is due **Sunday, Dec 15th at 11:59pm**.   **I'll charge a 20% late fee per day late.**  
+
+I will assign grades on this project ”holistically”, not using a scoring sheet where each item is worth a certain number of points.
+
+- **B**: A ”B” project is very well done. It should have sound analysis, use appropriate statistical tools, support analysis with the appropriate graphs and other visual aids, and be a well-written document.
+
+- **C**: A ”C” project is solid, but usually lacking in one of the areas listed above. 
+
+- **D/F**: Projects below a C are severely deficient in the basic criteria or have failed to complete the assignment.
+
+- **A**: An ”A” project is truly above ordinary; it has exceptional qualities that make it stand out distinctly. An ”A” project is not the default grade.
+  - Does the project fulfill the requirements of the assignment?
+  - Does this report have a ”thesis” or ”story” that is the focus? Does the rest of the report support the thesis?
+  - Does the report use the subject matter from this unit appropriately? Are there tools being used in the wrong way? Is there an obvious tool that might have been used but was overlooked?
+  - Are the graphics factually correct? Are they formatted well? Do they give the first visual impression that is supportive of the thesis/story of the report, or do they indicate a different story?
+  - Is the report well-written? Is there good organization of ideas? Is the story/thesis communicated clearly? Is the analysis grounded in reasonable use of statistics? Is the paper free of mechanical and grammatical errors?
+  - Does the report provide the right context for the target audience? Is the right information provided? Have the right assumptions been made about what the audience knows or does not know?
+  
+  
