@@ -33,9 +33,6 @@ theme_set(theme_tufte() +
 
 
 
-
-
-
 ## Last Topic:  t Tests
 
 
