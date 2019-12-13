@@ -1920,6 +1920,10 @@ qt(.025, 149)</code></pre>
 <div id="comparing-two-means-mu1---mu2" class="section level2">
 <h2>Comparing two means: mu1 - mu2</h2>
 <p>What if we have two groups that we want to compare means? Everything is the same, but now we need expected value and std error fot mu1-mu2 (instead of just a single mu).</p>
+<p>For hyp tets, the test stat is:</p>
+<p><span class="math display">\[t = \frac{\bar{x_1}-\bar{x_2}}{\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}}\]</span> The formula for the df is complicated. If workign by hand, you can just use the smaller of <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span>. If using the <code>t.test</code> function in r, you can see the exact df.</p>
+<p>For CIs, the formula for the interval is</p>
+<p><span class="math display">\[\bar{x_1}-\bar{x_2}\pm t^*\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}\]</span></p>
 </div>
 <div id="example-1" class="section level2">
 <h2>Example</h2>
@@ -1935,6 +1939,7 @@ qt(.025, 149)</code></pre>
 <p>p-val: use pt as always. For df by hand: just use the smaller of the two. here: df = 23</p>
 <pre class="r"><code>pt(-2.568,23)*2</code></pre>
 <pre><code>## [1] 0.017196</code></pre>
+<p>Since our p-val is less than .05, we reject H0. There’s evidence of a difference in mean.</p>
 </div>
 
 

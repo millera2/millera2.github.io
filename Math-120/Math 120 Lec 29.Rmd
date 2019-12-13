@@ -291,6 +291,15 @@ t.test(iris$Petal.Length)
 
 What if we have two groups that we want to compare means?  Everything is the same, but now we need expected value and std error fot mu1-mu2  (instead of just a single mu).
 
+For hyp tets, the test stat is:
+
+$$t = \frac{\bar{x_1}-\bar{x_2}}{\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}}$$
+The formula for the df is complicated.  If workign by hand, you can just use the smaller of $n_1$ and $n_2$.  If using the `t.test` function in r, you can see the exact df.
+
+For CIs, the formula for the interval is 
+
+$$\bar{x_1}-\bar{x_2}\pm t^*\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}$$
+
 ## Example
 
 In Spring 2018, Prof Miller taught two sections of Math 120.  On exam 1, the first class had a mean score of 78 with std dev 6 while the second class had a mean score of 82 with std dev 5.  The first class had 24 students, and the second had 27 students.
@@ -316,3 +325,4 @@ p-val:  use pt as always.  For df by hand: just use the smaller of the two.  her
 pt(-2.568,23)*2
 ```
 
+Since our p-val is less than .05, we reject H0.  There's evidence of a difference in mean.
