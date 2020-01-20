@@ -1,0 +1,142 @@
+---
+title: "DA 101 Lec 21"
+author: "Your Name"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: simplex
+    df_print: paged
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+## Chi Square Goodness of Fit Test
+
+So far, we've seen hyp tests for one and two proportions.  We can answer question like:
+
+Is there evidence that more than half in the population belong to a category?
+
+Is there evidence of a difference in proprtion between two populations?
+
+
+Chi square goodness of fit test expands this conversation:  what if we want to know about an entire distribution for all categories, not just one in particular?
+
+Example:  The M&M manufacturer (Mars Co) claims a specific distribution for the colors of M&Ms.  If we take a particular bag as a sample, is there evidence that the distribution doesn't conform?  Many categories: 
+
+- blue
+- brown
+- yellow
+- orange
+- green
+
+### Classic example:  Baby Toys
+
+An investigator wonders:  do babies show a preference for a certain color of toy?  The experiment:  100 babies are presented with 4 identical toys that only differ in color:
+
+- blue
+- yellow
+- green
+- red
+
+We record which toy they reach for first (indicating their preference).  Results:
+
+- 21 choose blue
+- 15 choose yellow
+- 34 choose red
+- 30 choose green 
+
+
+Clearly, the results deviate a bit from our expectation (25 each).  Is this deviation big enough/extreme enough to conclude, with statistical significance, that the proportions differ for each color.
+
+
+#### Hypotheses
+
+H0:  p_blue = .25, p_yellow=.25, p_green = .25, p_red = .25
+Ha:  at least one of the above differs
+
+
+#### Test Stat
+
+chisq = sum( (O-E)^2/E )  [Note: similar to std dev]
+
+stdev = sum ( (x - xbar)^2 )/(n-1)
+
+Here:
+
+chisq = (21-25)^2/25 + (15-25)^2/25+(34-25)^2/25+(30-25)^2/25
+
+```{r}
+(21-25)^2/25 + (15-25)^2/25+(34-25)^2/25+(30-25)^2/25
+```
+
+#### p-val
+
+The chi square test stat doesn't follow a normal dist!  (Std dev must always be positive).  It has its own dist:  chi square dist!  It's like a distro for std dev.
+
+In r: pchisq
+
+```{r}
+1-pchisq(8.88, 4-1)  # df = categories - 1
+```
+
+Note:  1- is for right tail, since cdfs always give left
+
+Here, small p-val means reject H0, there's strong evidence that babies exhibit some color preference (i.e. not all proprtions are equal).
+
+### Death Penalty Data
+
+Read it:
+
+```{r}
+deathData <- read_csv("death penalty data.csv")
+head(deathData)
+```
+
+
+Q: Race is a variable.  What's up?
+
+```{r}
+deathData %>% ggplot(aes(Race))+geom_bar()
+```
+
+Q:  does this distro follow the race demographics of the USA, -or-, is there evidence that the proportion of people receiving the death penalty differs from the national demographics.
+
+According to the internet:  66% of americans are white, 13% are black, 5% are asian, 0.5% are NA, and 15% are latino, and .5% other.
+
+Observed totals:
+
+```{r}
+table(deathData$Race)
+```
+
+```{r}
+# store it:
+# asian, black, latino, na, other, white
+totals <- c(6, 495, 120, 16, 2, 803)
+
+props <- c(.05, .13, .15, .005, .005, .66)
+
+chisq.test(totals, p = props)
+```
+

@@ -36,60 +36,19 @@ theme_set(                                #this sets the theme for all    #
 ## Math 120 Lecture Notes
 *They look great on your phone, so you can read them anywhere.  Steal my code!  Don't understand something?  Ask me!*
 
-- [Lecture Journal](https://millera2.github.io/Math-120/Math-120-Lecture-Journal.html)
-- [Lec 29](https://millera2.github.io/Math-120/Math-120-Lec-29.html)
-- [Lec 28](https://millera2.github.io/Math-120/Math-120-Lec-28.html)
-- [Lec 27](https://millera2.github.io/Math-120/Math-120-Lec-27.html)
-- [Lec 26](https://millera2.github.io/Math-120/Math-120-Lec-26.html)
-- [Lec 25](https://millera2.github.io/Math-120/Math-120-Lec-25.html)
-- [Lec 24](https://millera2.github.io/Math-120/Math-120-Lec-24.html)
-- [Lec 23](https://millera2.github.io/Math-120/Math-120-Lec-23.html)
-- [Lec 22](https://millera2.github.io/Math-120/Math-120-Lec-22.html)
-- [Lec 21](https://millera2.github.io/Math-120/Math-120-Lec-21.html)
-- [Lec 20](https://millera2.github.io/Math-120/Math-120-Lec-20.html)
-- [Lec 19](https://millera2.github.io/Math-120/Math-120-Lec-19.html)
-- [Lec 18](https://millera2.github.io/Math-120/Math-120-Lec-18.html)
-- [Lec 17](https://millera2.github.io/Math-120/Math-120-Lec-17.html)
-- [Lec 16](https://millera2.github.io/Math-120/Math-120-Lec-16.html)
-- [Lec 15](https://millera2.github.io/Math-120/Math-120-Lec-15.html)
-- [Lec 14](https://millera2.github.io/Math-120/Math-120-Lec-14.html)
-- [Lec 13](https://millera2.github.io/Math-120/Math-120-Lec-13.html)
-- [Lec 12](https://millera2.github.io/Math-120/Math-120-Lec-12.html)
-- [Lec 10 - 11](https://millera2.github.io/Math-120/Math-120-Lec-10.html)
-- [Lec 09](https://millera2.github.io/Math-120/Math-120-Lec-09.html)
-- [Lec 08](https://millera2.github.io/Math-120/Math-120-Lec-08.html)
-- [Lec 06 - 07](https://millera2.github.io/Math-120/Math-120-Lec-07.html)
-- [Lec 05](https://millera2.github.io/Math-120/Math-120-Lec-05.html)
-- [Lec 04](https://millera2.github.io/Math-120/Math-120-Lec-04.html)
-- [Lec 03 ](https://millera2.github.io/Math-120/Math-120-Lec-03.html)
-- [Lec 02 ](https://millera2.github.io/Math-120/Math-120-Lec-02.html)
-- [Lec 01 ](https://millera2.github.io/Math-120/Math-120-Lec-01.html)
+
+- [Week 01](https://millera2.github.io/Math-120/Math-120-Lec-01.html)
 
 
-## Next Quiz: Wed 11/20
+## Next Quiz: Wed 1/30
 
-**Topics:**  Two-tail tests, errors in hyp tests
+Each wednesday, we'll have a quiz that follows from the material of the previous week.  They'll be a mix of multiple-choice and short-answer questions.
 
-**Lecture Coverage: ** 27, 28
 
-Questions:
-
-- Why are two-tailed tests called two-tailed tests?
-- How are p-vals computed for two-tail tests?
-- What's the meaning of Type I/Type II error?
-- Given a description of a test and info about the real-world population, decide if a type I or type II error was made.  See warm-up questions from Monday.
-- What are the practical implications of error types?  See Error Worksheet for examples.
-- If alpha or beta or power increases, what effect does that have on the other two?
-- If one error type is worse, how does that affect your choice of alpha?  When should you make alpha bigger?  When smaller?
 
 ## Labs
 
-- [Lab 7](https://millera2.github.io/Math-120/Math-120-Lab-7.html)
-- [Lab 6](https://millera2.github.io/Math-120/Math-120-Lab-6.html) <small> Also: [Abbreviated Solutions](https://millera2.github.io/Math-120/Math-120-Lab-6-Solutions.html)</small>
-- [Lab 5](https://millera2.github.io/Math-120/Math-120-Lab-5.html) <small> Also: [Abbreviated Solutions](https://millera2.github.io/Math-120/Math-120-Lab-5-Solutions.html)</small>
-- [Lab 4](https://millera2.github.io/Math-120/Math-120-Lab-4.html) <small> Also: [Abbreviated Solutions](https://millera2.github.io/Math-120/Math-120-Lab-4-Solutions.html)</small>
-- [Lab 3](https://millera2.github.io/Math-120/Math-120-Lab-3.html) <small> Also: [Abbreviated Solutions](https://millera2.github.io/Math-120/Math-120-Lab-3-Solutions.html)</small>
-- [Lab 2](https://millera2.github.io/Math-120/Math-120-Lab-2.html)
+TBA
 
 ## Datasets
 
@@ -103,15 +62,13 @@ Questions:
 
 ## Helpful Files
 
-- [RStudio Starter File](https://drive.google.com/file/d/11BeqynZbBAKSgezmbSkNVZTcK_05EuEY/view?usp=sharing)
-  - *(Start all of your labs and lectures with this.  Forget to* Save As*? Just download it again!)*
 
-- [Prof Miller's Scratchpad](https://docs.google.com/document/d/1oSEe98j0aBPkbYyuubEn5ON4mjph3uOzIbeskYLC0y0/edit?usp=sharing)
+- [Prof Miller's Scratchpad](https://drive.google.com/open?id=1XBCoVrgdWfMXgKteISLOznyBqGwzmnguSJis-axbxVI)
   - *(Here's where I can share code with you in-class)*
 
 ## Google Drive Links
 
-- [Math 120 Shared Folder on Google](https://drive.google.com/drive/folders/1SaRW5G78k-eVFIENuAk0qzmJFHd7SRPa?usp=sharing)
+- [Math 120 Shared Folder on Google](https://drive.google.com/open?id=1BjjdXm2h03ecn7qyPiHsbmW4gZEGqte7)
   - *(Look here for Reading Assignments and Labs)*
 
 ## Texbook Links
@@ -123,13 +80,4 @@ Questions:
 
 ## TA Hours
 
-You can find Allen in Shepardson Hall, Second Floor Study Room.  
-
-Allen's email: primac_a1@denison.edu
-
-- Mondays at 6-7pm
-- Tues at 2:30pm-4:30pm
-- Wed at 3-4pm
-- Thurs 2-3pm
-
-
+TBA

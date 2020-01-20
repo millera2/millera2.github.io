@@ -1,0 +1,138 @@
+---
+title: "Lab 1 Worksheet"
+author: "[Your Name Here!]"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: yeti
+    df_print: paged
+  
+---
+
+```{r setup, include=FALSE}
+###########################################################################
+################# DON'T DELETE THIS PART!!!!!##############################
+###########################################################################
+                                                                          #
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)      #
+                                                                          #
+library(tidyverse)           #The tidyverse has all of our data tools     #
+library(ggthemes)            #ggthemes makes our graphs look nicer        #
+                                                                          # 
+theme_set(                                #this sets the theme for all    #
+  theme_tufte() +                         #plots that we make             #
+  theme(text=element_text(family="sans"))+                                #
+  theme(axis.text.x = element_text(angle=-90))                            #
+  )                                                                       #
+                                                                          #
+                                                                          #
+                                                                          #
+### Below is where you read and store your data.                          #
+                                                                          #
+#youShouldRenameThis <- read_csv("death penalty data.csv")
+                                                                          #
+                                                                          #
+                                                                          #
+############# ^ ################################# ^ #######################
+############# | ## DON'T DELETE THIS PART!!!!!### | #######################
+############# | ################################# | #######################
+```
+
+DA 101 Lab 1: Garlic mustard
+**This is the worksheet for the lab, worth 5% of your total course grade, with the parts to hand in as completed. Please hand it (the .html) in on Notebowl, along with your R code file (the .Rmd) before Wed 11:59pm next week. **
+
+**While it is OK to talk through problems with a friend and to attend office hours to ask the Teaching Assistant for advice, your work should be your own, your answers should be reached based on your own understanding, and this assignment is meant to be completed individually. **
+
+
+1) Paste both of your ggplot histograms (Europe & North America) below. Add a title to your graph, or include a caption so it is obvious which one is which. 
+
+
+
+
+
+
+
+
+
+
+2) What do your histograms tell you about Garlic Mustard and the EICA hypothesis? How confident are you in your response? 
+
+
+
+
+
+
+
+3) Please write your command to calculate the mean height of plants in North America 
+
+
+
+
+
+
+
+4) What happened? Why do you think this happened? (2 points)
+
+
+
+
+
+
+
+5) What are the mean Adult Heights for each region? (2 points)
+
+- Europe:
+
+- North America :
+
+
+6) So, do the histograms and means support EICA's predictions about plant height?  Why or why not? 
+
+
+
+
+
+
+
+7) Are there other variables of the plant in this dataset besides height that might measure plant size or  plant health? Why or why not? If you think there are measures that represent these things, please list them below. If not, what would you measure instead? 
+
+
+
+
+
+
+8) Please write your command to plot the relationship between annual precipitation (hint: look at the bioclim variables) and average adult plant height and paste the plot below. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+9) Does there look like there is a relationship?  If so, does it make sense to you?  Why or why not? 
+
+
+
+
+
+
+10) Paste your finished boxplot into the worksheet and the code you used to create it. Please include a few sentences describing what your dependent and independent variables are, and if you think the plot suggests that there are differences or not. Why? 
+
+
+
+
+
+
+
+**Be sure to upload your work (both .rmd and .html) to Notebowl by the due date.**
+
+

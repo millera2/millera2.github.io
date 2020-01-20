@@ -1,0 +1,294 @@
+---
+title: "DA 101 Lec 11"
+author: "Your Name"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: simplex
+    df_print: paged
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+
+## Confidence Intervals
+
+CIs are methods of statistical inference, just hyp test.
+
+Wait, what's inference?  It's making an educated guess, i.e., basing our prediction on evidence and reason.  
+
+Statistical inference is the process of making conclusions about our populations, based on the sample data we take (and using probability).
+
+There are two main types:  hyp tests **ask a question** about a population.  Is the mean bigger?  Is there a difference?  Etc...  We've seen these.
+
+CIs are the other type of inference:  we use them for making an **estimate**.  Generally, "estimate" and "make a confidence interval" are synonymous.
+
+
+### The idea
+
+According to CLT, sample stats (like the mean) always follow normal distributions (for large samples).  In hyp tests, we center our bell curve on the null hypothesis (out assumption).
+
+CIs are the other way around:  we center our bell curve around our ** sample result**.
+
+In short, CIs give us a reasonable range of values for the population based on our sample data and probability.
+
+NOTE:  CIs and Hyp Tests always give the same conclusion!!  I.e., a 95% CI is equivalent to a hyp test with alpha = .05.  More on this later.
+
+
+### Examples: `mpg`, `iris`
+
+First, let's do a confidence interval for one mean.  Our goal:  estimate the mean Sepal Length of the iris flowers.
+
+```{r}
+iris %>% head
+
+qplot(iris$Sepal.Length)
+```
+
+In R, CIs are made automatically by 't.test()' command.
+
+```{r}
+t.test(iris$Sepal.Length)
+```
+
+(Note:  Ha:  mu !=0.  Since there's only one variable, R assumes 0 by default.)
+
+The important part:  The CI.  Here, (5.7097, 5.9769).    What does this mean?  This:
+
+We are 95% confident that the true population mean Sepal Length for the iris flowers is between 5.7097 and 5.9769.
+
+The upshot:  we now have an estimate for the whole population!
+
+Explicitly, the sample mean is:
+
+```{r}
+mean(iris$Sepal.Length)
+```
+
+The CI we found is centered around this point estimate.
+
+Jon's question:  Let's compare species (2-samp CI)
+
+```{r}
+iris %>% filter(Species == "virginica") -> virginicaData
+iris %>% filter(Species == "setosa") -> setosaData
+```
+
+Let's do t.test/CI in sepal length for these two groups:
+
+```{r}
+t.test(setosaData$Sepal.Length, virginicaData$Sepal.Length)
+```
+
+We're 95% confident that the difference in mean sepal length between the species is between -1.786 and -1.377.  Based on this interval, it is very unlikely that the difference is zero.  In other words, we conclude that there is strong evidence of a difference.  Note:  agrees with the p-val!!
+
+Further:  since the difference must be negative, we suspect that the second one must be larger (i.e virginicas have longer sepal length).
+
+
+### Connection to Hyp Tests
+    
+Hyp tests and CIs always give the same result.  Here's how it works:
+
+If the H0 value is contained in the CI, then we fail reject H0.  It seems reasonable!
+
+In the sepal length example, the null hyp:  mu1-mu2=0.  The CI was (-1.79, -1.38).  Since zero is not contained in the CI, we reject H0.  There's strong evidence of a difference.  The end.
+
+## Error Types
+
+Our tools (CIs and hyp tests) are based on data and math, but that doesn't mean that we always get the correct result.  Maybe, due to random chance or a bad sample or some other issue, the conclusion of the test could be wrong.
+
+It's very, very important for us to consider what that might mean.  There are two possibilities:
+
+Type I error (a false positive).  "Positive result" means we reject H0, because that supports our claim!  Type I error is when we reject H0, but in fact the null hyp was true!  We were wrong!
+
+(Note:  in real life, it's almost impossible to know the truth).
+
+Type II error (a false negative):  we fail to reject H0, but we should have becasue H0 is false.
+
+
+
+
+### Hypothetical Examples (Worksheet)
+
+1) EPA enforcement: we wonder if concentrations of Toxin A are above the safe level of 0.8 g/ml.  
+
+$$H_0:\mu = .8$$ 
+
+$$H_a: \mu > .8$$
+
+Type 1:  We think the water is dangerous, but in fact it's not.
+
+Type 2:  We think the water's fine, but actually it's dangerous.
+
+Here, type 2 sounds much worse!  People would drink dangerous water!  I would feel bad about that, because I have human feelings.  
+
+In type 1, we merely waste money cleaning up water that's already clean.  If you value money more than human life (some humans do), then you'd think a type 1 is worse.
+
+2) Judge at a criminal trial.  We assume innocent by default, but the trial is designed to find evidence of guilt.
+
+
+H0:  Innocent
+Ha:  Guilty
+
+Type I:  We reject H0.  I.e., we reject the claim that they're innocent.  We're supporting the alterate; we think that they're guilty.  In reality, the null hyp is true.  Thus, the defendent is innocent!
+
+All together:  we thought they were guilty, but actually they're innocent.
+
+Type II:  We fail to reject H0.  Not enough evidence to conclude guilty.  In reality, H0 is false, i.e. they're guilty.
+
+All together:  we think they're innocent, when actually they're guilty.  
+
+Which is worse?  Sending an innocent person to jail, or letting a criminal go free?
+
+Prof Miller's take:  I haven't committed any "serious" crimes.  I'd be very upset if went to jail!
+
+On the other hand, maybe the person is super super bad and..... we really, really don't want them to go free.
+
+
+
+
+
+3) Federal funding program.  To qualify, neighborhoods must have mean income less than $15k.
+
+
+H0:  mu = 15000  (note:  H0 always =)
+Ha:  mu < 15000
+
+
+Type I: Reject H0, so yes, we think they get funding.  In actuality, the mean income is 15k or above.
+
+Type II:  We don't think they qualify for funding, but actually the mean income is <15k so they do qualify!
+
+In type I, we waste public funds on people who don't need them.  In type II, people who need help don't get it!
+
+
+
+
+
+
+
+
+4)  Coffee cup is talking to you (?).  Test with audio evidence.
+
+H0:  Your coffee cup is not talking to you.
+Ha:  Your coffee cup is talking to you.
+
+
+Type I error:  We think it's talking to us, but it's not.
+
+Type II:  We don't think it's talking to us, but it is.
+
+Prof Miller: Type II is worse.
+
+
+
+        
+### alpha
+
+For a particular hyp test, alpha is the prob of making a type I error.
+
+Note:  this is the same as the significance level!!!!  Woah!  In other words, WE CHOOSE ALPHA!  We choose the probability of a type I error!
+
+
+
+        
+### beta
+
+Beta is the probabilty of a type II error.
+
+Unfortunately, it's (generally) impossible to know beta.  The problem is this:
+
+If beta, then type II error.  If type II error, null hyp is false!  If null hyp is false, then **we can't find probablities**  (like p-val). 
+
+Even though the math is tough; one fact is clear:  bigger alpha makes beta smaller.  And, smaller alpha makes beta bigger.
+
+So, there's always a balancing act!  We can't eliminate error entirely, but we can tip the scales!
+
+We've seen that sometimes Type I is worse, sometimes Type II is worse.  This depends on your human values and feelings!  If type I is really bad:  choose alpha smaller.  If type II is really bad, choose alpha bigger.
+
+
+
+    
+### Power of a hyp test
+        
+The power of a hyp test is the probabilty of correctly rejecting the null hypothesis.  I.e., the prob of reject H0 when H0 really is false.
+
+Recall:  we're hoping to reject H0, since that gives evicence to support our claim!  So, power is the prob of a "successful" hyp test!
+
+Important relationship with power, beta:
+
+      power = 1 - beta
+      
+      beta = 1-power
+      
+They're complements!  That means, there's a price to pay for high power: type I error is more likely too!
+
+
+## Factors affecting alpha, beta, and power
+
+### Sample Size
+
+Bigger n means bigger power!  Thank goodness!  That means, sample size provides a certain control over power.  Of course, larger samples are more expensive, more time consuming, maybe not available at all.
+
+### Significance level
+
+Remember you choose alpha.
+
+Bigger alpha means smaller beta.
+
+Bigger alpha means bigger power.
+
+It's a balance!  You have to chose.
+
+## Connection btwn Conf Int MOE and Hyp Test alpha
+
+
+CIs are centered at the sample result, and the width is the MOE.  But, Confidence level (i.e. 95%) is the opposite of alpha (i.e. alpha = 0.05).
+
+
+If confidence level increses (say, to 99%), what effect does that have on alpha, beta, and power?
+
+Our new alpha is 1%, i.e. 0.01.  (decreased from 0.05)  Chance of type I goes down.
+
+Beta must go up to balance, i.e., chance of type II is greater.
+
+Smaller alpha also means it's harder to reject H0, i.e., less power!!!
+
+
+
+### Factors that affect MOE
+
+Two big ones:
+
+- If sample size increases, then MOE decreases!  Yay!  Math note:  there's an "n" in the denominator for MOE, thus MOE decreases with increasing n.
+
+- If confidence level increases, so does MOE!!!  Bummer!!!  This is backwards from what we want:  high confidence, low margin of error.  But, that confidence isn't free:  the price we pay is margin of error!
+
+Analogy:  If our net is bigger, it's more likely to capture the little creature!  Same with CI:  if the CI is wider, it's more likely to capture the true parameter.
+
+Sample size is our control.  We can't change the tradeoff btwn MOE and confidence, but we can (hopefully) increase sample size in our study.  It's possible to plan ahead.  
+
+
+
+

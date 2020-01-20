@@ -1,0 +1,207 @@
+---
+title: "DA 101 Lec 02"
+author: "Ali Miller"
+date: "9/02/2019"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: simplex
+    df_print: paged
+  
+---
+
+```{r setup, include=FALSE}
+###########################################################################
+################# DON'T DELETE THIS PART!!!!!##############################
+###########################################################################
+                                                                          #
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)      #
+                                                                          #
+library(tidyverse)           #The tidyverse has all of our data tools     #
+library(ggthemes)            #ggthemes makes our graphs look nicer        #
+                                                                          # 
+theme_set(                                #this sets the theme for all    #
+  theme_tufte() +                         #plots that we make             #
+  theme(text=element_text(family="sans"))                                 #
+  )                                                                       #
+                                                                          #
+                                                                          #
+                                                                          #
+### Below is where you read and store your data.                          #
+                                                                          #
+deathPenaltyData <- read_csv("death penalty data.csv")
+                                                                          #
+                                                                          #
+                                                                          #
+############# ^ ################################# ^ #######################
+############# | ## DON'T DELETE THIS PART!!!!!### | #######################
+############# | ################################# | #######################
+```
+
+## Wakeup Challenge
+
+Star wars with yellow eyes:
+
+```{r}
+
+starwars %>% filter(eye_color == "yellow") %>% nrow()
+
+
+
+```
+
+
+## Back to death penalty
+
+Basic plots:  age, sex, race
+
+```{r}
+
+
+qplot(
+      deathPenaltyData$Age,
+      xlab = "Age",
+      ylab = "Count",
+      main = "Age of executed prisoners"
+      )
+
+
+qplot(Sex, data=deathPenaltyData,
+      xlab="Sex",
+      ylab="Count",
+      main = "Sex of executed prisoners")
+
+
+```
+
+Question:  what percent of executed prisoners are women?
+
+Answer:  filter and nrow!
+
+```{r}
+
+#how many in whole data set?
+
+nrow(deathPenaltyData)
+
+
+head(deathPenaltyData)
+
+deathPenaltyData %>% filter(Sex == "Female") %>% nrow
+
+
+#find the percent
+16/1442
+
+```
+
+Wow!  Of the 1442 people who've received the death penalty, only 16 of them (1.1%) were women!
+
+
+
+## Using select()
+
+Select lets us choose which variables we want:
+
+```{r}
+
+deathPenaltyData %>% head()
+
+deathPenaltyData %>% select(Date, Age, Sex, Race, State, Method, `Victim Count`)
+
+#We picked our variables, but don't forget to save them with <-   !!!
+
+deathPenaltyData %>% 
+  select(Date, Age, Sex, Race, State, Method, `Victim Count`) ->
+  myDeathPenaltyData
+
+#Did it work?  Does myDeath..as;dlfja have the right stuff?
+
+#Let's look with the head() commmand:  it shows you the first 6 rows
+
+myDeathPenaltyData %>% head()
+
+#is there other stuff head() can do?  Use the help() command!
+
+help("head")
+
+
+```
+
+
+
+## Summarise and Group_by
+
+These let us "collapse" data along a variable.  Let me show you!
+
+```{r}
+
+
+#Find total victim count in each state
+
+#i.e., group by state, then summarise by total:
+
+myDeathPenaltyData %>% group_by(State) %>% 
+                       summarise(totalVictimCount = sum(`Victim Count`))
+
+# what about average victim count?  Use mean() instead of sum()
+
+myDeathPenaltyData %>% group_by(State) %>%
+                       summarise(avgVictimCount = mean(`Victim Count`), totalVictimCount = sum(`Victim Count`))
+
+
+```
+
+
+Useful shortcut:  "count" means both group_by and summarise with total:
+
+```{r}
+
+myDeathPenaltyData %>% count(Race, State)
+
+
+
+
+
+```
+
+
+## Faceting Graphs
+
+Often, we want break up our visual summaries by group.  Ex:
+
+```{r}
+
+
+qplot(myDeathPenaltyData$State)
+
+#Ok, what about by race?
+
+qplot(data=myDeathPenaltyData, State, fill=Race)
+
+
+
+```
+
+The above technique (using fill=Race) is called "faceting".  It breaks up our visuals by some categorical variable.
+
+Q:  would it make sense to facet by the variable:  Age?
+
+```{r}
+
+qplot(data=myDeathPenaltyData, State, fill=Age)
+
+```
+
+It doesn't make sense to facet on quantitative variables!!!!  Need categorical, and hopefully, not too many categories!
+
+
+
+
+
+
+
+
+

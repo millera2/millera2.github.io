@@ -1,0 +1,147 @@
+---
+title: "DA 101 Lec 15"
+author: "Your Name"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: simplex
+    df_print: paged
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+## Multiple Lin Reg Continued
+
+
+Let's do an example with the housing dataset.  Quetion:  is there such a thing as "too many variables"?
+
+Short answer:  yes!
+
+- Philosophically, we prefer the simplest model.  
+- In some cases, adding variables can actually cause r^2 to DECREASE!  Oh no!  
+- Using too many variables can cause "overfitting".  Picture on the board:
+- Overfitted data can very accurately predict the data in our dataset, BUT that doesn't mean it's showing us the true relationship.  Overfitted models are worse, not better!
+
+
+So, how to choose which variables make it into our model?  As always in DA, your human judgement is required.  There's one one "best way" to choose. 
+
+Let's look at some tools:
+
+### Covariates
+
+In general, if two variables are highly correlated, we'd prefer not to have both of them in our model.  If tightly related, we don't get new information from adding them. Generally best to  pick one!
+
+One useful tool:  ggpairs.
+
+```{r}
+library(GGally)
+```
+
+We can use ggpairs to see the relationships between all variables:
+
+```{r}
+houseData <- read_csv("House-Sales.csv")
+
+houseData %>% ggcorr
+```
+
+Observation:  It looks like bathrooms and sqft_living have a strong correlation.  I might want to consider -not- using both of them in the model together!
+
+GGcorr is nice for a quick look, but not much detail.  Ggpairs gives us details about the distro for each variable.
+
+One caveat:  ggpairs isn't smart enough to rule out categorical variable!  We don't want those!
+
+An easy way to get rid of them is with the "keep" function:
+
+```{r}
+
+library(purrr)
+
+iris %>% keep(is.numeric) %>% ggpairs
+```
+
+We're seeing a scatterplot of all combinations of variables.  On the diagonal, we see density distributions for the varables themselves.
+
+
+Here, if I were making a model with the iris data, I'd consider not using both  Petal.Length and Petal.Width since they have such a strong correlation.  
+
+
+### Step AIC
+
+Step AIC is an algorithm that decides which are the best variables to use in a model.
+
+It works step-by-step:  adding one variable at at time to see if it improves R^2.
+
+Example: let's make a linera model with all the numerical variables in housing data to predict price:
+
+```{r}
+head(houseData)
+```
+
+
+```{r}
+## alert:  cool trick here! the . means "all other vars"
+
+houseMod <- lm(price ~ ., data=keep(houseData, is.numeric))
+
+summary(houseMod)
+
+```
+
+Note:  for multilinear models, look at the ADJUSTED r^2, not multiple r^2.  "Adjusted" accounts for the number of variables used.  It's always smaller.
+
+Let's use step AIC to decide which to keep!  There's too many!
+
+```{r}
+library(MASS)
+
+stepMod <- stepAIC(houseMod, direction = "both")
+
+```
+
+Easiest summary:  look at the "ANOVA" variable:
+
+```{r}
+stepMod$anova
+```
+
+Woah, what happened here?  StepAIC took our model (houeMod) and experimented step-by-step removing and adding variables, and looking at the adjusted R^2 every time.
+
+The initial model is the one that we made, with all the variables.
+
+The final model is the one that stepAIC thinks is the best.  Specifically, it thinks we shouldn't use sqft_basement and improvements.  Let's look at this model!
+
+```{r}
+finalMod <- lm(price ~ id + bedrooms + bathrooms + sqft_living + sqft_lot + 
+    floors + waterfront + view + sqft_above + yr_built + yr_renovated + 
+    zipcode + lat + long + sqft_living15 + sqft_lot15, data = houseData)
+
+summary(finalMod)
+
+```
+
+In this example, stepAIC dropped two variable, and the adjusted r^2 didn't change.  Still an improvement!  We have same predictive power, but fewer variables (ie simpler model).
+
+It would have been very time-consuming to analyze all possible combinations of variables by hand:  there's 18 of em!  How would we know which to drop?
+
+Note: stepAIC isn't magic.  Just because it concludes the best model, you still need human judgment!  Do you agree with the model?  Dip stepAIC leave out important variables?  You need to know what's going with the context!

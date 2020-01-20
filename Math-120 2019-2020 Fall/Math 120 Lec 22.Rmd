@@ -1,0 +1,152 @@
+---
+title: "Math 120 Lec 22"
+author: "Your Name"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: simplex
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+
+
+
+## The Meaning of "Confidence"
+
+When we say "95% confident", what does that mean?  
+
+Example:  let's estimate the proportion of 4cyl cars in the mpg dataset with automatic transmission.  Specifically, "auto(l5)":
+
+```{r}
+mpg %>% head
+```
+
+Let's do it for the whole dataset.
+
+Q:  How many 4 cyl cars have auto(l5) transmission?
+
+First, we need to filter out the 4cyl:
+
+```{r}
+mpg %>% filter(cyl == 4) -> fourCyl
+head(fourCyl)
+```
+
+Next quetion:  what proportion of them have automatic transmission?
+
+Let's count!
+
+```{r}
+sum(fourCyl$trans == "auto(l5)")  #count up auto(l5) trans
+```
+
+How many total?
+
+```{r}
+nrow(fourCyl)
+```
+
+
+Proportion:  6/81
+
+```{r}
+6/81
+```
+
+What if we take a sample, contsturct a CI based on that?
+
+```{r}
+sample(fourCyl$trans, 30) -> fourCylSample
+```
+
+Based on this sample, estimate the proportion of cars with auto:
+
+```{r}
+sum(fourCylSample == "auto(l5)")
+```
+
+Since n=30, our phat:
+
+```{r}
+4/30
+```
+
+So, there's error.  BUT, will a confidence interval work?  Let's try!  How about 95%:
+
+```{r}
+phat <- 0/30
+n <- 30
+
+#lower bound:
+
+phat - 1.96*sqrt(phat*(1-phat)/n)
+phat + 1.96*sqrt(phat*(1-phat)/n)
+
+
+
+```
+
+Our population proportion was 7.4% with auto.  Did our CI work?
+
+Interpretation:  We are 95% confident that the true proportion of 4cyl cars with auto(l5) transmission is between 1.1% and 25.5%.
+
+Since the true proportion was 7.4%, and that lies within the confidence interval, our confidence interval was successful!
+
+In real-world scenarios, there's no way to know.  That's what the confidence is for:  confidence level is the "success rate" of this method.  If we take many samples, and contstruct CIs from all of them, about 95% will be successful, i.e., contain the true paramater.  
+
+Not every sample will generate a "successful" CI.  That's what confidence level is all about, it tells us the success rate of our method for making CIs.
+
+One last note about confidence:  95% DOES NOT MEAN that there's a 95% chance that p is in our specific interval!
+
+
+## Planning ahead for Margin of Error
+
+You know that increasing n decreases MOE.  We can use to plan in advance!  What if there's a specific magin of error that we want?  How big would n have to be in order to guarantee that MOE?
+
+Example:  In 2015, the gender ratio at DU was 57% female.  A researcher wonders, how has the proportion of female students changed?  She wishes to construct a 95% CI with MOE no greater than 1%.  How big must n be in order to guarantee this?
+
+Idea:  solve MOE backwards for n!
+
+Since $$MOE = z^*\sqrt{\frac{p(1-p)}{n}},$$ 
+we get
+
+$$n = p(1-p)\left(\frac{z^*}{MOE}\right)^2$$
+
+In this example, our estimate for p is .57, our zstar is 1.96, and desired MOE is 1%, .01.  Plug and chug:
+
+```{r}
+.57*(1-.57)*(1.96/.01)^2
+```
+
+We'd need to sample 9,416 DU students!  Not possible!  Our goal of 1% MOE is unreasonable! What about 10% MOE?
+
+```{r}
+.57*(1-.57)*(1.96/.10)^2
+
+```
+
+Need 95 students, more reasonable!  We can use this to plan our study!

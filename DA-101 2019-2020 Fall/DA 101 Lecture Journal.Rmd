@@ -1,0 +1,294 @@
+---
+title: "DA 101 Lecture Journal"
+author: "Ali Miller"
+date: "8/30/2019"
+output: 
+  html_document:
+    theme: yeti
+    toc: true
+    toc_depth: 2
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+*Note: All section numbers come from our text, ["R For Data Science"]("https://r4ds.had.co.nz").  
+
+
+## Week 12
+
+### Monday 11/18
+
+- Final project proposals
+
+
+## Week 11
+
+### Friday 11/15
+
+- 2-prop z tests
+  - comparing two proportions
+- Applications with the `mpg` dataset
+
+### Wednesday 11/13
+
+- Categorical inference: 1-prop z tests
+  - understanding the p-val
+  - understanding the hypotheses
+  - correctly concluding and interpreting
+
+## Monday 11/11
+
+- Reading Discussion: "Dirty Dozen" p-value misunderstandings
+
+## Week 10
+
+### Friday 11/08
+
+- regular expressions
+- ggmap annotations
+  - text, rectangles, arrows
+
+### Wednesday 11/06
+
+- ggmap
+  - heat maps
+  - geom_point
+
+### Monday 11/04
+
+- Reading Discussion
+
+
+## Week 9
+
+### Friday 10/25
+
+- Interpreting coefficients in multiple linear regression
+- Interpreting regression on categorical variables
+- The meaning of "dummy encoding" for categorical variables
+
+
+### Wednesday 10/23
+
+- Choosing variables in multiple regression
+- Using ggpairs and ggcorr
+- Using StepAIC
+
+### Monday 10/21
+
+- Reading Discussion: Careers Advice for Data Scientists
+
+
+## Week 8
+
+### Friday
+
+- Exploring multilinear models
+- Diagnostic plots for multilinear models
+
+### Wednesday 10/23
+
+- In-class exercise:  interpreting linear models
+- Introduction to Multilinear Models
+
+### Monday 10/21
+
+- Review of linear models
+- Regression plots
+- `cor.test()`
+
+
+## Week 7 (Fall Break)
+
+### Monday 10/14
+
+- Linear Models coninued
+
+
+
+
+
+## Week 6
+
+### Friday 10/11
+
+Reading Discussion:  Bias in Data Analytics
+
+
+### Wednesday 10/9
+
+- In-class Activity: Error Types
+- Intro to correlation and linear regression
+  - Meaning of r
+  - Coefficients of linear models
+  - r^2
+
+### Monday 10/7
+
+- Error Types
+  - alpha
+  - beta
+- Power of a hyp test
+- Factors affecting alpha, beta, and power
+  - Sample Size
+  - Significance level
+- Connection btwn Conf Int MOE and Hyp Test alpha
+  - Factors that affect MOE
+
+## Week 5
+
+
+### Wednesday 9/31
+
+- Confidence Intervals
+  - The idea
+- Examples:  Interpreting `t.test` results
+- Error Types
+ 
+  
+
+### Monday 9/30
+
+- Wake-up challenge: dplyr
+- CLT Demo with simulations: `sample` and `replicate`
+- Picture that connects the p-val to the null hypothesis
+- Left-tail, right-tail, two-tail
+
+## Week 4
+
+### Wednesday 9/25
+
+- Dice Experiment
+- CLT
+
+### Monday 9/23
+
+- Hyp Tests and Significance: and intro
+- Case studies for hyp tests:
+  - iris dataset
+  - mpg dataset
+  - garlic mustard dataset
+- Lahman Database: Join Practice
+
+## Week 3
+
+### Wednesday 9/18
+
+- In RStudio:  The wrangled Liberal Arts data from last time.
+  - (See Lec 06 for details, or copy/paste from Prof Miller's Scratch Pad)
+- Joins: the idea
+- Using dplyr functions on the wrangled Liberal Arts Data
+
+
+
+### Monday 9/16
+
+##### In-Class Challenge:  Dirty Data
+- You'll use the tools we've leanned to clean up a dataset.
+  - `gather()` and `spread()`
+  - `as.factor()`, `as.Date()`, etc
+  - `colnames()`
+  - `setnames()`  $\leftarrow$ (this one is new, can you figure it out?)
+- Neat `format()` tricks for `Date`
+- Joining tables with `Join`
+  - Example:  Lahman Data
+
+## Week 2
+
+### Friday 9/13
+
+Reading Discussion - Missing Data
+
+
+### Thursday 9/12
+
+Begin Lab 2 - Data Collection
+
+
+### Wednesday 9/11
+
+ 
+- Wake-up Challenge: Tidy up the [Billboard Data](https://millera2.github.io/Data/billboard.csv) using `gather()`
+- Ex: spreading `table2`
+- Data Wrangling
+   - Understanding `class`
+   - Setting data types:  
+     - `as.factor`, 
+     - Example: [(unclean) CIRP data](https://millera2.github.io/Data/CIRP2014Data.csv) , HSGPA by SEX
+     - `as.numeric`, `as.double`, `as.integer`
+     - `as.Date`
+     - Example: [Lobbyist Data](https://millera2.github.io/Data/lobbyist-data-gifts.csv)
+   - Renaming factor levels with `recode`
+     - Example: [(unclean) CIRP data](https://millera2.github.io/Data/CIRP2014Data.csv)
+   - Joining Tables
+     - Example: Lahman baseball scores database
+
+### Monday 9/9
+
+- Wakeup Challenge
+  - Using the built-in `starwars` dataset (be sure to `library(tidyverse)` first), use the `count()` command to tally up gender and eye color (eg, how many starwars females have brown eyes?
+  - Use `group_by()` and `mutate` to find out the percentage of each eye color within each gender (eg, what percent of female characters have black eyes?)
+- Tidy Data, Revisited
+  - Meaning of [Tidy Data](https://r4ds.had.co.nz/tidy-data.html) 
+  - Example:  [Dr. Supp's Data](https://ndownloader.figshare.com/files/2252083)
+     -  How to Make it Tidy?
+  - Tidy Data Worksheet
+  - `gather()` and `spread()`
+     - Ex: gathering `table4a` and `table4b`
+ 
+ 
+## Week 1 
+     
+###  Friday 9/6
+
+- Reading Response:  What is Big Data?   
+
+### Thursday 9/5
+
+- Begin Lab 1.  
+  - This Thurs will be our first "real" lab day.  
+  - You'll have the whole period to work on your project.
+
+
+
+### Wednesday 9/4
+
+- Read:  ["Section 5.5"](https://r4ds.had.co.nz/transform.html#add-new-variables-with-mutate) in our book, study the examples with `mutate()`
+- `count()`, `mutate()`
+- Babynames data exercise
+
+
+### Monday 9/2
+
+- Chapter 5:  The six dplyr functions:
+  - `filter()`, `select()`, `arrange()`, `mutate()`, `group_by()`, and `summarise()`
+
+
+## Week 0
+
+    
+### Friday 8/30
+
+- 12.2:  Tidy data
+- 5.1: Data Types
+- 4.2: Coding basics
+  - Dataframe, class(), $
+  - Assigmnent:  <-
+  - Functions
+- 5.2:  dplyr (the mighty six) *[ctd next time]*
+
+
+
+
+### Thursday 8/29
+
+- Intro to class, syllabus day
+- Intro to R and RStudio
+
+
+
+
+     
+  

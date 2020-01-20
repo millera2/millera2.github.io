@@ -1,0 +1,225 @@
+---
+title: "DA 101 Lec 05"
+author: "Ali Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: simplex
+    df_print: paged
+  
+---
+
+```{r setup, include=FALSE}
+###########################################################################
+################# DON'T DELETE THIS PART!!!!!##############################
+###########################################################################
+                                                                          #
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)      #
+                                                                          #
+library(tidyverse)           #The tidyverse has all of our data tools     #
+library(ggthemes)            #ggthemes makes our graphs look nicer        #
+                                                                          # 
+theme_set(                                #this sets the theme for all    #
+  theme_tufte() +                         #plots that we make             #
+  theme(text=element_text(family="sans"))                                 #
+  )                                                                       #
+                                                                          #
+                                                                          #
+                                                                          #
+### Below is where you read and store your data.                          #
+                                                                          #
+#youShouldRenameThis <- read_csv("death penalty data.csv")
+                                                                          #
+                                                                          #
+                                                                          #
+############# ^ ################################# ^ #######################
+############# | ## DON'T DELETE THIS PART!!!!!### | #######################
+############# | ################################# | #######################
+```
+
+## Wake-up Challenge: Tidy up the Billboard Data using gather()
+
+
+```{r}
+billboard <- read_csv("billboard.csv")
+
+
+billboard %>% head
+
+
+billboard %>% gather(x1st.week, x2nd.week, x3rd.week, x4th.week, key = "week", value="rank")
+
+
+```
+
+
+
+
+#### Ex: spreading table2
+
+See text, page chapter 12.
+
+## Data Wrangling
+
+
+When loading with read_csv, the command will try to *guess* what data types.
+
+```{r}
+death <- read_csv("death penalty data.csv")
+
+death %>% head
+```
+
+
+
+### Understanding class
+
+```{r}
+class(death$Age)
+```
+
+We see that R understands that Age is numeric.  
+
+Note, it didn't understand the date!  We'd have to teach it what the date format is!
+
+Whenever you load into R (read_csv), always check what data types you have!  Things can go wrong!
+
+
+### Setting data types:
+
+It's often useful for us to manually set data types in R.  Here are a few examples where it's needed.
+
+### as.factor,
+
+This function changes data type to "factor", which is what we use for categorical variables.
+
+#### Example: (unclean) CIRP data , HSGPA by SEX
+
+
+```{r}
+cirpData <- read_csv("CIRP2014Data.csv")
+
+
+cirpData %>% head
+```
+
+
+Example:  graph HSGPA by SEX
+
+```{r}
+
+ggplot(cirpData, aes(HSGPA, fill=SEX)) + geom_bar()
+
+```
+
+Note, the fill didn't work?  Why not?  R thinks that gender is numerical! 1 and 2!
+
+Fix:
+
+```{r}
+
+# as.factor turns it into a factor!
+
+ggplot(cirpData, aes(HSGPA, fill= as.factor(SEX) )) + geom_bar()
+
+cirpData %>% head
+
+# permanently change SEX type:
+
+as.factor(cirpData$SEX) -> cirpData$SEX
+
+## equal to this:
+
+cirpData$SEX <- as.factor(cirpData$SEX)
+
+
+class(cirpData$SEX)
+
+
+
+```
+
+Question:  we've got 1s and 2s for gender, but this doesn't make much sense.  How to fix?
+
+Answer:  `recode()`.  See below!
+
+
+
+
+
+### as.numeric, as.double, as.integer
+
+We can change lots of data types, see above!  These are the least commonly used, since R is good at identifying numbers.
+
+
+### as.Date
+
+Dates are important!  But, R almost never guesses the right format.
+
+#### Example: Lobbyist Data
+
+Read the data:
+
+```{r}
+lobbyData <- read_csv("lobbyist-data-gifts.csv")
+
+
+lobbyData %>% head
+
+#question:  did R get teh date right?
+
+class(lobbyData$PERIOD_START)
+
+#hmm, maybe doesn't know.  let's use as.Date:
+
+lobbyData$PERIOD_START %>% as.Date(format = "%Y-%m-%d" ) %>% head
+
+
+#it worked!  But don't forget to save:
+
+lobbyData$PERIOD_START %>% 
+  as.Date(format = "%Y-%m-%d" ) -> 
+  lobbyData$PERIOD_START
+
+#below works equally well:
+
+lobbyData$PERIOD_START <- 
+  lobbyData$PERIOD_START %>% 
+  as.Date(format = "%Y-%m-%d" )
+
+
+lobbyData %>% head
+
+```
+
+
+
+### Renaming factor levels with recode
+
+The `recode()` function in dplyr let's us adjust our factor levels.  The "levels" are the possible options for the category; for example in the CIRP data, the levels for SEX are "male" and "female".
+
+#### Example: (unclean) CIRP data
+
+```{r}
+cirpData %>% head
+
+#pipe it into recode
+
+cirpData$SEX %>% recode(`1`= "Male", `2`="Female") ->
+  cirpData$SEX
+
+#Now, labels in graph are fixed:
+
+cirpData %>% ggplot(aes(HSGPA, fill=SEX))+geom_bar()
+
+```
+
+
+## Joining Tables
+
+
+
+### Example: Lahman baseball scores database

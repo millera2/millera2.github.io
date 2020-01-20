@@ -1,0 +1,302 @@
+---
+title: "Math 120 Lec 10-11"
+author: "Your Name"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: simplex
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes) 
+library(kableExtra)
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+## Understanding Contingency (Two-Way) Tables
+
+Why two-way tables?  They're great for humans!
+
+The let us compare two categorical variables.
+
+Ex: reading discussion data.
+
+### Example Problems (Basics)
+
+If a a photo is selected at random, what's the probability...
+
+a) ... the photo was correctly identified as a fashion photo?
+
+= 197/1822
+
+
+b)  ... the photo is a fashion photo?
+
+=309/1822
+
+c)  ... computer thought it was a fashion photo?
+
+219/1822
+
+
+d) ... it's a fashion photo -or- the computer thought it was a fashion photo.
+
+
+(197+22+112)/1822
+
+
+```{r}
+(197+22+112)/1822
+```
+
+For scientists, mathematicians, computer scientist, and everyone else, "or" is "inclusive or".  I.e., could be one, could be the other, could be both.
+
+## Making Contingency Tables in R
+
+It's easy!  Just use the `table()` command!
+
+Example:  mpg data.  Two way table for class and drive shaft (drv).
+
+```{r}
+#make a table fofr class and drv
+table(mpg$class, mpg$drv)
+```
+
+Btw, it's also easy to get sums/total
+
+
+```{r}
+table(mpg$class, mpg$drv) %>% addmargins()
+```
+
+
+
+## Mutually Exclusive/Disjoint Events
+
+The mean what you think they do:  it's impossible to be in both events!
+
+I.e., the number of outcomes in both event A and event B is zero!
+
+One more way:  The probability P(A and B) = 0.
+
+Ex:  Are the events "is a pickup" and "has front wheel drive" mutually exclusive?
+
+Answer:  since there are 0 pickups with front wheel drive, they **are** mutually exclusive/disjoint.
+
+### The "or" rule for mutually exclusive events
+
+
+If A, B are disjoint, then:
+
+$$  P(A or B) = P(A) + P(B) - P(A and B)        $$
+
+Note:  since A, B are disjoint, the "and" prob is zero!  Thus,
+
+$$  P(A \cup B) = P(A)+P(B)   $$
+
+Use this on the car example:  what's the probability that a randomly selected car is either a pickup -or- has front wheel drive?  We already know they're mutually exclusive.  Use the rule!
+
+```{r}
+table(mpg$class, mpg$drv) %>% addmargins()
+```
+
+P(Pickup or FWD) = P(Pickup)+P(FWD)-P(Pickup and FWD)
+                 = 33/234   + 106/234 - 0/234
+
+```{r}
+33/234   + 106/234 - 0/234
+```
+                 
+                 
+Challenge:  draw Venn for disjoint events:
+
+(see board, two separate circles.)
+
+## Conditional Probability
+
+Conditional:  we know that some other event has happened.
+
+P(A | B) = "the probability that A happens, given that B has occurred"
+
+The given condition comes after the bar.
+
+P(Rains | Cloudy outside) = Probability of rain, given that we see it's cloudy outside.
+
+For the formula P(A|B), we know B happened, care about A:
+
+
+P(A|B) =  P(A and B) / P(B)
+
+that's it!  "And" on the top, "Given" on the bottom.
+
+
+## Independent Events
+
+Reading example:
+
+P(Rept) = .3, P(Green) = .2, P(both) = .1
+
+Since .3*.2 is not equal to .1, these are not independent events.
+
+Important considerations:
+
+- this is the easiest independence problem we can do
+- independence is a mathematical concept, not based on feelings.  To verify independence, math has to happen!
+
+The idea is what you expect:  two events A and B are independent if they don't affect the likelihood that the other occurs.
+
+Mathematically:
+
+P(A|B) = P(A), i.e., doesn't matter whether B occurred or not.  Doesn't change P(A).
+
+-or-
+
+P(B|A) = P(B)
+
+
+
+### The "and" rule for independent events
+
+If A and B are independent,
+
+P(A and B) = P(A)*P(B)
+
+In other words, for independent events, "and" means "times".
+
+Example:  coin tosses are independent.
+
+What's the probability that you get 3 heads in a row?
+
+Answer:  P(H and H and H) = P(H)*P(H)*P(H) = 1/8 = .125
+
+We roll two dice.  What's the probability that the first shows a "4" and the second shows an even number?
+
+P("4" and even) = P("4") * P("even")
+                = (1/6)*(3/6) = whatev
+                
+            
+
+
+## Checking Independence
+
+You *can* use the definition, but it's usually easier to use multiplication rule.  If it works, then yes, independent!
+
+
+
+
+### Example:  mpg drv and class
+
+First, let's make a contingency table:
+
+```{r}
+#use table() command:
+
+table(mpg$drv, mpg$class) %>% addmargins()
+
+
+
+```
+
+Question:  are the events "has 4 wheel drive" and "is subcompact" independent?
+
+Need some answers first:
+
+- P("4 wheel drive") = 103/234
+
+- P("is subcompact") = 35/234
+
+- P( both) = 4/234
+
+Check: if multiplied, do they match the "and"?
+
+```{r}
+103/234*35/234
+
+4/234
+
+```
+
+Don't match, so **not** independent.  I.e., there's a dependence relation between them.  
+
+In-class challenge: are the events "compact" and "front wheel drive" independent?
+
+
+```{r}
+table(mpg$drv, mpg$class) %>% addmargins() %>% kable %>% kable_styling(bootstrap_options = "striped", full_width = F)
+```
+
+P(compact) = 47/234
+
+P(f) = 106/234
+
+P(compact and f) = 35/234
+
+Check independence with multiplication rule:
+
+```{r}
+47/234 * 106/234
+
+35/234
+```
+
+Since they don't match, they're not independent.  
+
+
+In-class challenge #2:
+
+Are the events "has 4 cyl" and "is front wheel drive" independent?   Note!  You'll need to make your own table!
+
+```{r}
+
+table(mpg$drv, mpg$cyl) %>% addmargins() %>% kable %>% kable_styling(bootstrap_options = "striped", full_width = F)
+```
+
+
+P(4 cyl) = 81/234
+
+P(front) = 106/234
+
+P(both) = 58/234
+
+```{r}
+#check
+
+81/234*106/234
+
+58/234
+
+
+```
+
+Answer:  nope, not even close.  Definitely not independent. 
+
+Question:  what if they're close?  Do they have to be "exactly equal"?
+
+Two answers: 
+
+- for right now, they need to be exactly equal. (Quiz 4!)
+- We'll return to this later when we know "hypothesis tests".  In reality, a little bit of wiggle room is of course acceptable.
+
+
+
+
+

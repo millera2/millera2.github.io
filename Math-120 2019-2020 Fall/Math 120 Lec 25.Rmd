@@ -1,0 +1,114 @@
+---
+title: "Math 120 Lec 25"
+author: "Ali Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: simplex
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+
+
+
+
+
+## Hyp Tests
+
+If DU faculty want to change the faculty handbook, they need a "supermajority", 2/3 vote or more.
+
+Prof Miller wants to gauge support for her proposal. She takes a sample of 50 faculty members, and finds 38 of them support her.
+
+```{r}
+38/50
+```
+
+Of course, that doesn't mean that 76% of all faculty support her.  Is there statistically significant evidence that a supermajority (>2/3) support her?  Conduct a hyp test.
+
+### 1 Hypotheses
+
+H0:   p=2/3  (we'll use this for p-val)
+Ha:   p>2/3  (right tail test)
+
+### 2 test stat
+
+phat = 38/50
+
+```{r}
+
+(38/50-2/3)/sqrt(2/3*(1-2/3)/50)
+
+
+phat <- 38/50
+p <- 2/3
+n <- 50
+
+
+(phat-p)/sqrt(p*(1-p)/n)
+
+
+```
+
+### 3 p-val
+
+```{r}
+1-pnorm(1.4)
+```
+
+### 4 conclusion
+
+Since p>.05, we fail to reject H0.
+
+We didn't find strong evidence that the proportion who support Prof Miller is greater than 2/3.
+
+Follow-up question:  based on the sample result phat = 38/50, construct a 95% CI for p.
+
+```{r}
+phat <- 38/50
+n <- 50
+zstar <- 1.96
+
+#lower bound
+
+phat - zstar*sqrt(phat*(1-phat)/n)
+phat + zstar*sqrt(phat*(1-phat)/n)
+
+
+
+```
+
+We estimate the proportion of faculty who support Prof Miller between (64.2%, 87.8%).
+
+Based upon this, is there evidence against H0?  Is there evidence to support Ha?
+
+H0:  p = .667,   Ha:  p > .667
+
+Based upon the CI, the H0 seems totally reasonable!  Certainly, we'd fail to reject, same conclusion from our p-val.  
+
+Hyp Tests and CIs are connected in this way:  if the H0 value is contained in the CI, we fail to reject the H0.  Note, that alpha and confidence level must match!!  C=95%, alpha = .05
+
+(Btw, that means our default conf level and default significance level are actually the same!)  As long as they match, CIs and p-vals will -always- give the same result!  You can conduct every hyp test with a CI!!

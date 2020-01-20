@@ -1,0 +1,195 @@
+---
+title: "Math 120 Lec 05"
+author: "Ali Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 4
+    code_folding: show
+    theme: simplex
+  
+---
+
+```{r setup, include=FALSE}
+###########################################################################
+################# DON'T DELETE THIS PART!!!!!##############################
+###########################################################################
+                                                                          #
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)      #
+                                                                          #
+library(tidyverse)           #The tidyverse has all of our data tools     #
+library(ggthemes)            #ggthemes makes our graphs look nicer        #
+                                                                          # 
+theme_set(                                #this sets the theme for all    #
+  theme_tufte() +                         #plots that we make             #
+  theme(text=element_text(family="sans"))                                 #
+  )                                                                       #
+                                                                          #
+                                                                          #
+                                                                          #
+### Below is where you read and store your data.                          #
+                                                                          #
+#youShouldRenameThis <- read_csv("death penalty data.csv")
+                                                                          #
+                                                                          #
+                                                                          #
+############# ^ ################################# ^ #######################
+############# | ## DON'T DELETE THIS PART!!!!!### | #######################
+############# | ################################# | #######################
+```
+
+##  Reading Discussion: Sampling Strategies
+
+Can you imagine/invent a scenario?
+
+## Sampling 
+
+### Populations, Samples, and Inference
+
+- **Population**:  All individuals of interest. (Too big!)
+- **Sample**:  A subset that we can actually work with.
+- **Statistical Inference**:  The process of making conclusions about populations, given the results of our sample data.
+
+
+Note: a "statistic" is a numerical summary of a sample.  A "parameter" is a numerical summary of the population.
+
+We hope to say something smart about parameters **based on** statistics.
+
+Examples of statistics:
+
+- mean
+- median
+- stdev
+- iqr
+- mode
+- proportion
+
+### Robust Statistics
+
+A statistic is **robust** if it's not not affected by skew/outliers.
+
+
+
+
+#### Example: `mpg` displacement
+
+
+```{r}
+
+mpg %>% head
+
+qplot(displ, data=mpg, bins=8)
+
+```
+
+Observation: clear right skew.  Question:  how does this affect the "center"?  Let's look!
+
+```{r}
+
+mean(mpg$displ)
+median(mpg$displ)
+
+
+```
+
+Commentary:  we see here that the mean is not robust.  It's being affected by the right skew of the distr.  
+
+(Note:  mean always gets pulled with skew, but median isn't affected)
+
+Another example:  iqr and stddev.  
+
+IQR:  range of middle 50%, doesn't care about extremes
+Stdev:  average distance from the mean, gets messed up by outliers
+
+
+
+
+### Observational Studies vs Experiments
+
+**Key difference**: In an experiment, we *apply a treatment*.
+
+- Think: 
+  - A survey is an *observational study*
+  - A medical trial is an *experiment*.
+  
+Important note:  observational studies can never establish **causation**, only **correlation**
+
+Remember:   **correlation does not imply causation**.
+
+
+   
+
+#### Ex: 1.22ab
+
+Observational study, we didn't apply a treatment.
+
+Explanatory variable:  stress
+
+Response variable:  muscle cramps
+
+Confounding variables: coffee and sleep make it hard to see if stress is really the important factor.
+
+
+
+## Sampling Problems
+
+We need to be sure our sample is "good"!
+
+### "Representative" or not?
+
+In order to be useful, we need some assurance that the sample is "similar to" the population.  
+
+In mathese:  Hope our statistics are close to the true population parameter.
+
+
+###  Bias, Nonresponse Bias, and Confounding Variables
+
+- **Sample Bias**:  Some indivuals ("cases") more likely to be observed.
+- **Nonresponse Bias**:  Some individuals excluded from sample selection process.
+- **Confounding Variables**:  Other variables that might affect response variable.
+
+#### Ex:  1,22c, 1.24 and 1.26
+
+1.24:  Phone book could introduce non-response bias; not everyone is listed.  They'd never be sampled!
+
+
+1.26:
+
+- Nonresponse bias:  families with zero children are never sampled.
+- Sample bias:  families with many children are more likely to be sampled!
+
+Could bias measure of "family size" to be bigger!
+
+
+## Sampling Strategies
+
+### Simple Random Sample (SRS)
+
+- Every member of the population is equally likely to be sampled.
+- Best kind!
+
+### Stratified
+
+- Break into similar "strata", SRS within each strata.
+- Ensure all groups represented.
+- Example strata: gender, age, income, education, etc.
+
+### Clustered
+
+- Break into "clusters", randomly select which clusters used, sample everyone in chosen clusters.
+- Useful for sample over large geographic area
+- Example clusters: city block, county
+
+### Multistage
+
+- First cluster, then SRS within selected clusters.  Nice, but expensive.
+
+### Ex: 1.19, 1.23
+
+1.19:  The groups are obviously the lab sections.
+
+Makes sense to do stratified sample:  we suspect that the lab sections have something in common.
+
+Clustering doesn't make sense here:  we'd be leaving out a lab section(s) entirely if they weren't our chosen clusters.
+

@@ -1,0 +1,63 @@
+---
+title: "DA 101 Lab 2 Teams"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: false
+    toc_depth: 3
+    theme: simplex
+    df_print: paged
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+### Team 1
+
+- Andrew Bolin
+- Monique
+- Garrett
+- Catherine
+
+### Team 2
+
+- Shivika
+- Amanda
+- Claire
+- Soyoung
+
+### Team 3
+
+- Jake
+- Patrick
+- Aditi
+- My
+
+### Team 4
+
+- Kevin
+- David
+- Jeff
+
+
+### Team 5
+
+- Jon
+- Shuying
+- Cole

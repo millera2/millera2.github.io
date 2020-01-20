@@ -1,0 +1,139 @@
+---
+title: "Math 120 Lec 26"
+author: "Ali Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: simplex
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+
+
+
+
+
+
+
+## Left Tail, Right Tail, and Two Tail
+
+Left tail tests:  test for "less than", so Ha:  <
+
+Right tail tests: test for "greater than", so Ha:  >
+
+Two tail test:  test for "not equals", so Ha:  !=
+
+Problem:  in two tail test, p-val is area of -both- tails.  BUT, we only have one test statistic!  
+
+Answer:  fortunately, both tails are the same since normal is symmetric!  So, don't have to worry about which side our test stat is on.  Just find the tail area, and double it!  (Btw, this means 2-tail tests always have bigger p-vals.)
+
+When to do two-tail?  Testing for "different" or "change".  
+
+Example 1)  Historically, 82% of DU students have been from out-of-state.    A professor suspects/wonders that this proportion has changed.
+
+To investigate, she takes a sample of 75 studnets, and finds that 60 of them are out-of-state.  Is there evidence to support her claim?  Test with alpha=.05
+
+Note:
+
+```{r}
+60/75
+```
+
+1) Hypos
+
+H0:  p = .82,  Ha:  p != .82  (two tail!!!)
+
+2) test stat
+
+```{r}
+# z = (phat - p)/sqrt(p(1-p)/n)
+
+(60/75 - .82)/sqrt(.82*(1-.82)/75)
+
+```
+
+3)  P-val
+
+```{r}
+pnorm(-.451)*2    #since 2-tail
+```
+
+
+
+4)  Conclusion
+
+Since p>>.05, fail to reject H0.  We did not find strong evidence that the proportion of out-of-state students differs from 82%
+
+
+
+Example 2)  In 2015, the gender ratio at DU was 57% female.  Prof Miller wonders if that ratio has changed.  She takes a sample of 80 DU students, and finds that 41 of them are female.  Did she find evidence to support her claim?  Test at alpha=.05 sig level.
+
+1)  H0: p = .57, 
+Ha: p != .57  (two tail!!!)
+
+2)  test stat
+
+```{r}
+(41/80-.57)/sqrt(.57*(1-.57)/80)
+```
+
+3) p- val
+
+```{r}
+pnorm(-1.038822)*2    #2-tail
+```
+
+4)  Conc.  Since p>.05, we fail to reject H0.  We didn't find strong evidence that the gender ratio differs from .57.
+
+
+
+Example 3)  About 18% of DU students are international students.  But, she wonders if that figure has changed from last year.  
+
+To test, she takes a sample of 150 DU students, and finds  49 of them are international.  Test with alpha=.05
+
+1)  Hypotheses
+
+H0: p = .18
+Ha: p != .18
+
+2)  test stat
+
+```{r}
+(49/150 - .18)/sqrt(.18*(1-.18)/150)
+```
+
+3) p-val
+
+```{r}
+(1-pnorm(4.675563))*2
+```
+
+p = .00000293
+
+4)  Conclusion
+
+Since p << .05, we reject H0.  We've found strong evidence that the proportion of international students differs from .18.

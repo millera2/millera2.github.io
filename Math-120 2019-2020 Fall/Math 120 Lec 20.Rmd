@@ -1,0 +1,208 @@
+---
+title: "Math 120 Lec 20"
+author: "Your Name"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: simplex
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+## Practice Problem
+
+About 82% of DU students are from out-of-state.  If we take a sample of 100 students, what's the probability that at least 90% of them are from out-of-state?
+
+A few notes:  population is all DU students, we're taking a random sample of 100 students.  We're interested in the proportion of students who are from out-of-state.  
+
+Here:  p = .82
+Considering:  phat>.9
+
+What distro does phat have?  Normal!  How do you know?
+
+Check the "success-fail" condition:  need both 10 success and 10 failures.  I.e., np>10 -and- n(1-p)>10.
+
+Here:  n*p=100*.9 = 90
+Also:  n(1-p) = 100*(1-.9)=10
+
+Which to use, p or phat?  If you have p, it's best to use it.  Generally, you never will!  In that case, use phat.  
+
+Generally, they both give same results.  here with p:
+
+100*.82 = 82
+100 * (1-.82) = 18
+
+Still good, all at least 10.
+
+This means that n is "large" enough for the CLT to kick in:  we know phat has a normal dist.
+
+Ok, we know we're using pnorm.  What are the center and spread for the normal?
+
+mu_phat = p = .82
+se(phat) = sqrt(p*(1-p)/n) = sqrt(.82*(1-.82)/100)
+
+```{r}
+sqrt(.82*(1-.82)/100)
+```
+
+Use pnorm to find P(phat>.9)
+
+```{r}
+1-pnorm(.9, .82, .03841875)
+```
+
+There's about a 1.8% chance of obtaining a sample result like this.  Sounds pretty unlikely!  ...
+
+## Confidence Intervals
+
+(Note: I'm following the book closely.  This is all 5.2)
+
+Remember our big goal:  statistical inference is the process of making conclusions about the population based upon the sample result we obtained.  
+
+So far, our conversation about sampling dists has been backwards:  how in the world would we know what the population proportion is?????  The whole reason we conduct samples is because we -don't- know what's going on with the pop, and we want to find out.
+
+Today's technique:  Confidence Intervals, or CIs.
+
+The idea is simple: the result from out sample is just a starting point, "point estimate".  For categorical data, phat is our point estimate.  We know its distribution:
+
+mu = p
+se = sqrt(p(1-p)/n)
+shape is normal
+
+Picture (on board): Confidence intervals show the middle C% (i.e. 95%, 99%, etc) of the normal distribution for our point estimate.  C = Confidence Level
+
+Big question:  how do we find the low and high bounds for this?  
+
+Answer:  We use z-scores backwards!
+
+Algebra:
+
+low:  phat - zstar * SE(phat)
+high: phat + zstar * SE(phat)
+
+Where zstar ("critical value") marks off the middle c% of the standard normal dist.  
+
+For 95%, we need cutoffs for lower .025 and upper .025
+
+The function in R:  qnorm.  qnorm is backwards normal.
+
+```{r}
+qnorm(.025)
+```
+
+```{r}
+pnorm(-1.959964)
+```
+
+With cdf, we input a cutoff and get an area/prob.
+
+With qnorm, it's backwards:  we input an area and get a cutoff.
+
+Upper cutoff:
+
+```{r}
+qnorm(.975)
+```
+
+This is the "critical value" for 95% confidence:  zstar = 1.96.
+
+Let's stick it all together for the CI:
+
+low = phat - zstar*SE(phat)
+    = phat - zstar*(sqrt(p*(1-p)/n))
+    
+upper = phat + zstar*SE(phat)
+      = phat + zstar*sqrt(p(1-p)/n)
+      
+Example:  13 of you are women.  There are 22 students present.  Based upon this sample result, estimate the proportion of DU students who are female with a 95% confidence interval.
+
+n = 22
+phat = 13/22
+se(phat) = sqrt(13/22*(1-13/22)/22)
+zstar = 1.96
+
+Low bound for CI:
+
+```{r}
+13/22-1.96*sqrt(13/22*(1-13/22)/22)
+```
+
+Upper:
+```{r}
+13/22+1.96*sqrt(13/22*(1-13/22)/22)
+```
+
+
+Based upon this sample result, we're 95% confident that the true proportion of female DU students is between 38.54% and 79.63%.  
+
+Katie's question:  why bad?
+
+
+
+Answer: huge range!! what's the real value??
+
+Example:  Suppose in a sample of 200 DU students, 143 of them are from out-of-state.
+
+Compute the 95% CI for the true proportion of DU students who are from out of state.
+
+phat = 143/200
+n = 200
+zstar = 1.96
+
+Low bound:
+
+```{r}
+143/200-1.96*sqrt(143/200*(1-143/200)/200)
+```
+Upper bound:
+```{r}
+143/200+1.96*sqrt(143/200*(1-143/200)/200)
+
+```
+
+Conclusion:  we can be 95% confident that the true proportion of DU students from out-of-state is between 65.2% and 77.8%.  
+
+What about 99% confidence?
+
+zstar:
+
+```{r}
+qnorm(.005)
+```
+
+zstar: 2.576
+
+99% CI for p:
+
+```{r}
+143/200-2.576*sqrt(143/200*(1-143/200)/200)
+```
+```{r}
+143/200+2.576*sqrt(143/200*(1-143/200)/200)
+```
+
+We can be 99% confidenct that the true proportion of DU students from out-of-state is between 63.3% and 79.7%.  
+
+Wed quiz:  Lec 19 (no CIs)

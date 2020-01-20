@@ -1,0 +1,135 @@
+
+---
+title: "Math 120 Fall 2019 Homepage"
+date: "Updated: `r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    theme: yeti
+
+      
+  
+---
+
+```{r setup, include=FALSE}
+
+                                                                          #
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)      #
+                                                                          #
+library(tidyverse)           #The tidyverse has all of our data tools     #
+library(ggthemes)            #ggthemes makes our graphs look nicer        #
+                                                                          # 
+theme_set(                                #this sets the theme for all    #
+  theme_tufte() +                         #plots that we make             #
+  theme(text=element_text(family="sans")) + 
+  theme(axis.text.x = element_text(angle=-90))                            #
+  )                                                                       #
+                                                                          #
+                                                                          #
+                                                                          #
+
+```
+
+
+
+## Math 120 Lecture Notes
+*They look great on your phone, so you can read them anywhere.  Steal my code!  Don't understand something?  Ask me!*
+
+- [Lecture Journal](https://millera2.github.io/Math-120/Math-120-Lecture-Journal.html)
+- [Lec 29](https://millera2.github.io/Math-120/Math-120-Lec-29.html)
+- [Lec 28](https://millera2.github.io/Math-120/Math-120-Lec-28.html)
+- [Lec 27](https://millera2.github.io/Math-120/Math-120-Lec-27.html)
+- [Lec 26](https://millera2.github.io/Math-120/Math-120-Lec-26.html)
+- [Lec 25](https://millera2.github.io/Math-120/Math-120-Lec-25.html)
+- [Lec 24](https://millera2.github.io/Math-120/Math-120-Lec-24.html)
+- [Lec 23](https://millera2.github.io/Math-120/Math-120-Lec-23.html)
+- [Lec 22](https://millera2.github.io/Math-120/Math-120-Lec-22.html)
+- [Lec 21](https://millera2.github.io/Math-120/Math-120-Lec-21.html)
+- [Lec 20](https://millera2.github.io/Math-120/Math-120-Lec-20.html)
+- [Lec 19](https://millera2.github.io/Math-120/Math-120-Lec-19.html)
+- [Lec 18](https://millera2.github.io/Math-120/Math-120-Lec-18.html)
+- [Lec 17](https://millera2.github.io/Math-120/Math-120-Lec-17.html)
+- [Lec 16](https://millera2.github.io/Math-120/Math-120-Lec-16.html)
+- [Lec 15](https://millera2.github.io/Math-120/Math-120-Lec-15.html)
+- [Lec 14](https://millera2.github.io/Math-120/Math-120-Lec-14.html)
+- [Lec 13](https://millera2.github.io/Math-120/Math-120-Lec-13.html)
+- [Lec 12](https://millera2.github.io/Math-120/Math-120-Lec-12.html)
+- [Lec 10 - 11](https://millera2.github.io/Math-120/Math-120-Lec-10.html)
+- [Lec 09](https://millera2.github.io/Math-120/Math-120-Lec-09.html)
+- [Lec 08](https://millera2.github.io/Math-120/Math-120-Lec-08.html)
+- [Lec 06 - 07](https://millera2.github.io/Math-120/Math-120-Lec-07.html)
+- [Lec 05](https://millera2.github.io/Math-120/Math-120-Lec-05.html)
+- [Lec 04](https://millera2.github.io/Math-120/Math-120-Lec-04.html)
+- [Lec 03 ](https://millera2.github.io/Math-120/Math-120-Lec-03.html)
+- [Lec 02 ](https://millera2.github.io/Math-120/Math-120-Lec-02.html)
+- [Lec 01 ](https://millera2.github.io/Math-120/Math-120-Lec-01.html)
+
+
+## Next Quiz: Wed 11/20
+
+**Topics:**  Two-tail tests, errors in hyp tests
+
+**Lecture Coverage: ** 27, 28
+
+Questions:
+
+- Why are two-tailed tests called two-tailed tests?
+- How are p-vals computed for two-tail tests?
+- What's the meaning of Type I/Type II error?
+- Given a description of a test and info about the real-world population, decide if a type I or type II error was made.  See warm-up questions from Monday.
+- What are the practical implications of error types?  See Error Worksheet for examples.
+- If alpha or beta or power increases, what effect does that have on the other two?
+- If one error type is worse, how does that affect your choice of alpha?  When should you make alpha bigger?  When smaller?
+
+## Labs
+
+- [Lab 7](https://millera2.github.io/Math-120/Math-120-Lab-7.html)
+- [Lab 6](https://millera2.github.io/Math-120/Math-120-Lab-6.html) <small> Also: [Abbreviated Solutions](https://millera2.github.io/Math-120/Math-120-Lab-6-Solutions.html)</small>
+- [Lab 5](https://millera2.github.io/Math-120/Math-120-Lab-5.html) <small> Also: [Abbreviated Solutions](https://millera2.github.io/Math-120/Math-120-Lab-5-Solutions.html)</small>
+- [Lab 4](https://millera2.github.io/Math-120/Math-120-Lab-4.html) <small> Also: [Abbreviated Solutions](https://millera2.github.io/Math-120/Math-120-Lab-4-Solutions.html)</small>
+- [Lab 3](https://millera2.github.io/Math-120/Math-120-Lab-3.html) <small> Also: [Abbreviated Solutions](https://millera2.github.io/Math-120/Math-120-Lab-3-Solutions.html)</small>
+- [Lab 2](https://millera2.github.io/Math-120/Math-120-Lab-2.html)
+
+## Datasets
+
+
+- [Baby Names](https://drive.google.com/file/d/1W5baem_xOJ9SVlaD_QHnXNdfA9dtBXaS/view?usp=sharing)
+  - *Counts of **all** American first names since 18-something.*
+- [Death Penalty](https://millera2.github.io/Data/death-penalty-data.csv)
+  - *Records of every American who's received capital punishment.*
+- [CIRP DATASET](https://drive.google.com/file/d/1-FxOfb3-Hm8DPKSpkqlHGZ91154xMW4s/view?usp=sharing)
+  - *DU Freshmen Survey Data from 2014.  Not public data.*
+
+## Helpful Files
+
+- [RStudio Starter File](https://drive.google.com/file/d/11BeqynZbBAKSgezmbSkNVZTcK_05EuEY/view?usp=sharing)
+  - *(Start all of your labs and lectures with this.  Forget to* Save As*? Just download it again!)*
+
+- [Prof Miller's Scratchpad](https://docs.google.com/document/d/1oSEe98j0aBPkbYyuubEn5ON4mjph3uOzIbeskYLC0y0/edit?usp=sharing)
+  - *(Here's where I can share code with you in-class)*
+
+## Google Drive Links
+
+- [Math 120 Shared Folder on Google](https://drive.google.com/drive/folders/1SaRW5G78k-eVFIENuAk0qzmJFHd7SRPa?usp=sharing)
+  - *(Look here for Reading Assignments and Labs)*
+
+## Texbook Links
+
+- [Math 120 Textbook](https://www.openintro.org/stat/textbook.php?stat_book=os)
+  - *OpenIntro Statistics* is an excellent, free introduction to modern statistical analysis.
+- [DA 101 Texbook](https://r4ds.had.co.nz)
+  - *R For Data Science* is a concise, approachable introduction to to topic with many good code examples to play with.
+
+## TA Hours
+
+You can find Allen in Shepardson Hall, Second Floor Study Room.  
+
+Allen's email: primac_a1@denison.edu
+
+- Mondays at 6-7pm
+- Tues at 2:30pm-4:30pm
+- Wed at 3-4pm
+- Thurs 2-3pm
+
+

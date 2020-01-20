@@ -1,0 +1,161 @@
+---
+title: "Math 120 Lec 21"
+author: "Your Name"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: simplex
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+
+
+
+## Confidence Intervals for p
+
+Formula:
+
+
+
+$$ \hat{p} \pm z^* \sqrt{\hat{p}(1-\hat{p})/n} $$
+
+Idea:  we want to estimate the population proportion p, based on our sample proportion phat.
+
+Another phrasing:  we're estimating parameters using statistics.
+
+Note: when a statistician says "estimate", she always means "construct a confidence interval".
+
+### Critical values
+
+zstar is the connection to the normal dist -- what's the middle C% of the distro?
+
+All confidence intervals have the same form:
+
+(point est) +/- (crit val)*(SE)
+
+The point est and the SE, you know right away from the sample.  
+The real work:  finding crit val.  Easy: use `qnorm`
+
+Example:  find crit val for 95%:
+
+Know: the lower tail has 2.5%.  qnorm!
+
+```{r}
+qnorm(.025)
+```
+
+Exercise:  what's the crit val for 90%?
+
+```{r}
+qnorm(.05)
+```
+
+Typical rounding: zstar = 1.645
+
+Exercise:  what's the crit val for 99%
+
+```{r}
+qnorm(.005)
+```
+
+Typical rounding:  zstar = 2.576
+
+Note that 90%, 95%, and 99% are very common confidence levels.  So, you'll see 1.645, 1.96, and 2.576 a lot!
+
+### Examples constructing CIs
+
+Example:  In a sample of 240 giraffes, 86 of them enjoy water skiing.
+
+Based upon this sample, estimate the true proportion of giraffes who enjoy water skiing with 95% confidence.
+
+First, let's make sure we're justified in using normal dist!
+
+Here, easy to see that 
+
+n*phat >10 
+
+and
+
+n*(1-phat)>10
+
+Now, since p hat is normal, find zstar!
+
+```{r}
+qnorm(.025)
+```
+
+zstar = 1.96 (as always for 95%).  Now, plug and chug!
+
+```{r}
+# phat +/- zstar*sqrt(phat(1-phat)/n)
+
+86/240 - 1.96*sqrt(86/240*(1-86/240)/240)
+```
+
+```{r}
+86/240 + 1.96*sqrt(86/240*(1-86/240)/240)
+```
+
+So, we can be 95% confident that between 29.8% and 41.9% of all giraffes enjoy water skiing.  
+
+Important note:  the sentence is formulaic, conclusion should always be about POPULATION.
+
+Exercise:  In a sample of 300 DU students, 94 of them play videogames regularly (at least once a week).  Estimate the proportion of DU students who play videogames regularly with 99% confidence.
+
+
+```{r}
+#phat: 94/300
+#n : 300
+#zstar:2.576
+
+94/300 - 2.576*sqrt(94/300*(1-94/300)/300)
+```
+
+```{r}
+94/300 + 2.576*sqrt(94/300*(1-94/300)/300)
+
+```
+
+We are 99% confident that the between 24.4% and 38.2% of all DU students play videogames at least once a week.
+
+### Margin of error
+
+MOE: it's the stuff after the +/-  
+
+It determines the width of the CI
+
+Of course, we want MOE to be small!
+
+Two important considerations:
+
+- Sample size:  if n increases, then MOE decreases.  Yay!  This is what we'd hope for!  It means, we have some control over error. Math: n is in the denominator for MOE.
+
+- Confidence level.  Bigger confidence level means bigger margin of error.  Bummer!!  More confidence comes at a price: more error.  More confidence means bigger zstar means bigger margin of error.  
+
+Making a CI is like trying to capture a little creature (the paramater) with a net.  My chances of capturing the creature are higher if I have a really big net, rather than small!
+
+Students always ask:  why not just use a really, really confidence level?  Confidence comes at a cost: our intervals get really, really big.  Dunno the real value!

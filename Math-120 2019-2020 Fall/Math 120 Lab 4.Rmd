@@ -1,0 +1,222 @@
+---
+title: "Math 120 Lab 04 - Exploring Probability Distributions"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: false
+    toc_depth: 3
+    code_folding: show
+    theme: yeti
+    df_print: paged
+  
+---
+
+```{r setup, include=FALSE}
+###########################################################################
+################# DON'T DELETE THIS PART!!!!!##############################
+###########################################################################
+                                                                          #
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)      #
+                                                                          #
+library(tidyverse)           #The tidyverse has all of our data tools     #
+library(ggthemes)            #ggthemes makes our graphs look nicer        #
+                                                                          # 
+theme_set(                                #this sets the theme for all    #
+  theme_tufte() +                         #plots that we make             #
+  theme(text=element_text(family="sans"))                                 #
+  )                                                                       #
+                                                                          #
+                                                                          #
+                                                                          #
+### Below is where you read and store your data.                          #
+                                                                          #
+youShouldRenameThis <- read_csv("death penalty data.csv")
+                                                                          #
+                                                                          #
+                                                                          #
+############# ^ ################################# ^ #######################
+############# | ## DON'T DELETE THIS PART!!!!!### | #######################
+############# | ################################# | #######################
+```
+
+
+
+## Introduction
+
+In this lab, we'll be investigating the important probability distributions we've studied so far in calss.  As we've seen in lecture, the distributions are easy to use in R.  But, deciding which distributions are appropriate is much more interesting.  
+
+
+## Tools and Distros
+
+The distributions we'll use for this lab are:
+
+- The Binomial Distribution
+- The Poisson Distribution
+- The Geometric Distribution
+- The Uniform Distribution
+- The Normal Distribution
+
+For each distribution, you'll use one of three R functions depending on the circumstance:
+
+ - The pdf.  In R, this is denoted with a `d` prefex.  For example: `dpois()` is the pdf command for the Poisson distribution.
+ - The cdf.  In R, this is denoted with a `p` prefix.  For example, `pnorm()` is the cdf for the normal dist.
+ - Random sampling.  In R, this is dnoted with an `r` prefix, for example `rbinom(50, 10, 0.5)` generates a list of 50 random numbers sampled from a binomial distribution with `n=10` and `p=0.5`.  Practically, you can think of this as the outcome of 10 coin flips, repeated 50 times.
+ 
+ [SKIP FOR NOW] Part II of the lab also investigates data samples.  There, you'll need the following commands: 
+ 
+ - Use the `sample()` command to take a random sample of a dataset.  For example, `sample(mpg$cty, 50, replace=TRUE)` generates a random sample of the `cty` variable in the `mpg` dataset of size `n=50`.
+ - Use the `replicate()` command to repeat any other command in R and store the results in a list.  For example, `replicate(  100, mean( sample(mpg$cty, 50, replace=TRUE) )  )` generates a list of 100 sample means, each computed from a sample of size n=50 from the mpg dataset.
+ - Make a normal quantile plot with `qplot()`.  For example, here is a normal quantile plot for the `cty` data in the `mpg` dataset:
+ 
+
+```{r}
+
+qplot(data=mpg, sample=cty, geom="qq")+geom_qq_line()
+
+```
+
+## Part 1 Intro: Using The Distros
+
+This lab presents you with 5 scenarios, each with a question about the data.  For each, you'll need to adress the following:
+
+- Which distribution (if any!) can be used to answer the question.
+- A discussion of why the properties/requirements of the distribution are satisfied (for example, binomial RVs must satistfy four criteria described in Lec 13).
+- The expected value, variance, and standard deviation for the distro, and a brief explanation of what they mean.  You might need to consult the book or the internet (like Wikipedia!) for this.
+- A plot of the distribution.  Below are two examples.  
+  - For the distributions with infinite support (see Lec 14 for a definition of *support*), I leave it up to your good judgement where to stop the graph.  For example, below is a graph of a poisson distribution with lambda = 3.  I chose to stop it at X=12, even though the poisson has infinite support.  
+
+
+```{r}
+qplot(0:11, dpois(0:11, 3), geom="col", xlab = "x", ylab = "P(x)", main="Poisson Dist, lambda = 3")
+```
+  - For continuous distributions, a line graph is more appropriate.  For example, here's a graph of the uniform distribution that ranges between 40 and 60 (just like the example from class):
+```{r}
+X = seq(30, 70, .1)            # make a sequence of x vals for the distro
+Px = dunif(X, 40, 60)          # get the value of the pdf at those points
+
+qplot(X, Px, geom="line", main = "Uniform Distro btwn 40 and 60")
+
+```
+
+
+
+- The probability in question.  Here, you'll use the appropriate pdf or cdf.  Include a brief explanation of how you computed the probability and what it means.
+- A discussion about whether the event in question is "unusual".  The expected value and variance should feature prominently in this discussion.  You may use, as a rule of thumb, that observations which are more than two standard deviations away from the expected value are "unusual".  The graph of the distribution could also be a good reference...
+- If the scenario **doesn't match** any of the probability distributions we've learned (binomial, geometric, or poisson), then write a brief explanation of why not.  
+
+### The Scenarios
+
+In this section, your scenarios are described.  You should structure your report accorgingly.  For each scenario, write a paragraph that addresses the considerations listed above.  As always, use clean formatting, tight grammar, and crisp technical writing.  
+
+1) A machine that produces a special type of transistor (a component of computers) has a 2% defective rate. The production is considered a random process where each transistor is independent of the others.  You are performing quality control, and investigate the transistors made by the machine until you find a defective one.  What's the probability that you have to look at more than 20 transistors before you find the first defect?
+
+2) Heights of 10 year olds, regardless of gender, closely follow a normal distribution with mean 55 inches and standard deviation 6 inches.  What is the probability that a randomly chosen 10 year old is between 60 and 65 inches?
+
+3) Occasionally an airline will lose a bag. An analysis of customer records at a particular airline reveals that, on average, 2.2 bags are lost each day.  Assuming that this rate is constant, what's the probability that the airline loses at least 7 bags in the next day?
+
+4) In a videogame, "Green" level prizes are special, rare rewards for defeating an enemy.  The chance of obtaining green level prizes after defeating an enemy is 12% by default, but if you *do* get a green prize, the chance of obtaining another green item is cut in half for 5 minutes.  If you defeat 20 enemies in the game, what's the chance you'll be rewarded with at least two green prizes?
+
+5) In a board game, player actions are determined by a "spinner", similar to the one shown below:
+
+<img src="https://www.ontrack-media.net/math8/m8m5l1image13.jpg" width="200">
+
+  - Suppose the spinner in our game is labelled like a clock, with values ranging from zero (at the top) all the way around to 12 (at the top again).  Any value in between is equally likely, and a scale is provided on the spinner to see.  For example, it's just as likely to get 4.52 as 2.145 as 10.9924.  You need to spin a number bewtween 6 and 7 to win the game on this turn.  What's the probability that happens?
+
+6) Data collected by the Substance Abuse and Mental Health Services Administration (SAMSHA) suggests that 69.7% of 18-20 year olds consumed alcoholic beverages in any given year. We now consider a random sample of fifty 18-20 year olds. Would you be surprised if there were 45 or more people who have consumed alcoholic beverages?
+
+
+
+
+
+## Part II: Sampling and Simulation
+
+Part II of the lab is shorter, but it illustrates a very important concept that we'll use for the rest of the semester.  It's actually really, really cool -- I'm excited for you to understand it!
+
+The idea is simple:  make histograms for **sample means** from many samples of varying sizes and varying populations.  By "many", it should be at least 5,000 samples, but you can use more if you like.
+
+For example, let's consider an old friend:  the "dice distro".  This is a simple population: the numbers 1, 2, 3, 4, 5, 6.  In r, it's easy to list out a sequence of numbers like this:
+
+```{r}
+1:6
+```
+
+
+**In this example**, we'll make a histogram of sample means of samples of **sample size n=8** from **10 samples** the dice population `1:6`.  Your work will be the same, but you'll use different populations, different sample sizes, and at least 5000 samples.  We'll build it up in stages:
+
+1) Take the sample:
+
+```{r}
+sample(1:6, 8, replace=TRUE)
+```
+
+2) find the mean of the above sample:
+
+```{r}
+mean(  sample(1:6, 8, replace=TRUE)  )   #I used extra spaces to help readability
+```
+
+3) Do this 10 times with the replicate command 
+
+```{r}
+mySamples <- replicate(10,                                    # <- 10 samples
+                      mean(  sample(1:6, 8, replace=TRUE)  )  # <- copy/paste
+             )
+```
+
+
+4) Make a histogram of the results.  **You should choose an appropriate bin size, not always `bins=5`**!
+
+```{r}
+qplot(mySamples, geom="histogram", bins=5)
+```
+
+There it is!  The above histogram is what you're trying to get, in varying contexts.
+
+Your goal:  do this for 5000 (or more) samples from the following three populations...
+
+- The Dice Population 1:6
+- The Sepal Lengths from the built-in `iris` dataset.
+- The Poisson distribution with lambda=3 (seen above at the beginning of the lab).  Here, use `rpois(n, lambda)` instead of `sample()`.
+
+... and the following sample sizes:
+
+- `n=1`
+- `n=2`
+- `n=10`
+- `n=30`
+- `n=5000`
+
+That's a total of 15 histograms.  Don't worry, the code is basically the same for all of them.  **Copy/paste your code chunks** and adjust the size of n.  It only takes a couple seconds once you understand the process.
+
+**For each of the three populations**, write a couple of sentence describing the pattern you see.  How do things start out, and what happens as `n` gets large?  For `n=5000`, what feature do you observe in all three populations?  What conclusion do you make?
+
+To summarize Part II:  make the histograms, describe the pattern as n increases.
+
+
+
+
+
+## Deadline and Grading
+
+This lab is due **Thurs, Oct 24th at 11:59pm**.   **I'll charge a 20% late fee per day late.**  
+
+I will assign grades on this project ”holistically”, not using a scoring sheet where each item is worth a certain number of points.
+
+- **B**: A ”B” project is very well done. It should have sound analysis, use appropriate statistical tools, support analysis with the appropriate graphs and other visual aids, and be a well-written document.
+
+- **C**: A ”C” project is solid, but usually lacking in one of the areas listed above. 
+
+- **D/F**: Projects below a C are severely deficient in the basic criteria or have failed to complete the assignment.
+
+- **A**: An ”A” project is truly above ordinary; it has exceptional qualities that make it stand out distinctly. An ”A” project is not the default grade.
+  - Does the project fulfill the requirements of the assignment?
+  - Does this report have a ”thesis” or ”story” that is the focus? Does the rest of the report support the thesis?
+  - Does the report use the subject matter from this unit appropriately? Are there tools being used in the wrong way? Is there an obvious tool that might have been used but was overlooked?
+  - Are the graphics factually correct? Are they formatted well? Do they give the first visual impression that is supportive of the thesis/story of the report, or do they indicate a different story?
+  - Is the report well-written? Is there good organization of ideas? Is the story/thesis communicated clearly? Is the analysis grounded in reasonable use of statistics? Is the paper free of mechanical and grammatical errors?
+  - Does the report provide the right context for the target audience? Is the right information provided? Have the right assumptions been made about what the audience knows or does not know?
+  
+  
+  
+  
+  Example:  We know that the mean of the binomial distribution is n*p.  Here, n=50 and p = .234, so our expected value is 50*.234 = .....

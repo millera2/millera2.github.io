@@ -1,0 +1,56 @@
+---
+title: "Math 120 Week 01"
+author: "Prof Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: simplex
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+
+
+
+
+
+
+
+
+
+## I write most of our notes in RStudio
+
+This will be posted online in its entirety.  I'll update it in the afternoon after each class period.
+
+Don't worry about taking word-for-word notes.  You're not a stenographer!  Instead, summarize your thoughts and reactions to help you study later.
+
+I'll also use the board for notes sometimes. 
+
+
+
+
+
+
