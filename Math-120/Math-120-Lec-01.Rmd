@@ -79,7 +79,7 @@ Quantitative data can be discrete or continuous.
 
 **Discrete**:  Whole units.  Countable!!!!!  Ex:  number of siblings.  Can't have 3.65 siblings.  Messy.  
 
-**Continuous**:  Can take any value on the real line.  Usually, these are phyiscal measurements:  height, length, duration, volume, etc etc.  Infinite decimals.   Example, height:  someone could be 5'6",  someone could 5'7", and there are an infinite number or possibilities between.  
+**Continuous**:  Can take any value on the real line.  Usually, these are physical measurements:  height, length, duration, volume, etc etc.  Infinite decimals.   Example, height:  someone could be 5'6",  someone could 5'7", and there are an infinite number or possibilities between.  
 
 Categorical data can also be divided into two kinds:
 
@@ -97,15 +97,15 @@ Categorical data can also be divided into two kinds:
 
 ## Notes about `mpg` data
 
-- "Year" is ordinal.  Even though they're numbers, just a label.  Like month or day of the week.  It is a little blury!  In some sense, simialar to discrete.  
+- "Year" is ordinal.  Even though they're numbers, just a label.  Like month or day of the week.  It is a little blurry!  In some sense, similar to discrete.  
 
 - Note for `cty` and `hwy`:  Decide discrete vs continuous by what they *are*, not how we rounded.  These are **continuous**!
 
 ## What do we say about data?
 
-Always first:  visualize!!!  Warning:  the options for visualization depend on the type data!
+Always first:  visualize!!!  Warning:  the options for visualization depend on the type of data!
 
-## Quantitative visualzation:  histograms
+## Quantitative visualization:  histograms
 
 Example:  let's make a histo of the hwy variable from the `mpg` dataset.
 
