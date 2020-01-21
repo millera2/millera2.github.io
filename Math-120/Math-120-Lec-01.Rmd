@@ -35,22 +35,91 @@ theme_set(theme_tufte() +
 
 
 
-
-
-
-
-
-
+ 
+ 
+# Tuesday 
+ 
 ## I write most of our notes in RStudio
 
 This will be posted online in its entirety.  I'll update it in the afternoon after each class period.
 
 Don't worry about taking word-for-word notes.  You're not a stenographer!  Instead, summarize your thoughts and reactions to help you study later.
 
-I'll also use the board for notes sometimes. 
+I'll also use the board for notes sometimes. **Be sure to incorporate boardwork into your written notes!!**
 
 
+## Goals for Tuesday:
 
+- What is a dataset?
+- What do we want to say about data?
 
+Example:  the built-in `mpg` dataset.  It's about cars.
 
+```{r}
+head(mpg)
+```
 
+Generally, we'll always work with "tidy" data.  A tidy dataset is a grid/matrix/rectangle/table of data that satisfies:
+
+- Every row is an "observation" or "case".  In mpg: each case is a specific car!  
+- Every column is a variable, i.e. a specific quality of our observations.
+- Each cell contains exactly one measurement
+
+Even if we have tidy data, it's still hard (sometimes) to understand what it means!
+
+Answer:  metadata.  Metadata is "data about data".  It explains cases, variables, and units.  
+
+## Types of data
+
+Different kinds of data require different tools to analyze!  Gotta know!  
+
+BIG DIVIDE:  number or not.  Each can be subdivided.
+
+Quantitative data can be discrete or continuous.  
+
+**Discrete**:  Whole units.  Countable!!!!!  Ex:  number of siblings.  Can't have 3.65 siblings.  Messy.  
+
+**Continuous**:  Can take any value on the real line.  Usually, these are phyiscal measurements:  height, length, duration, volume, etc etc.  Infinite decimals.   Example, height:  someone could be 5'6",  someone could 5'7", and there are an infinite number or possibilities between.  
+
+Categorical data can also be divided into two kinds:
+
+**Nominal**:  No natural ordering.  Ex:  hair color, nationality.  
+
+**Ordinal**:  There is a natural, intrinsic ordering.  
+
+- Age:  it counts something.  Probably discrete, not ordinal.
+
+- Year in school:  fresh, soph, jun, sen.  Natural order. 
+
+- Clothing size:  S, M, L, XL  Natural order. 
+
+- Month of the year:  Jan, Feb, March..... natural order. ordinal.  
+
+## Notes about `mpg` data
+
+- "Year" is ordinal.  Even though they're numbers, just a label.  Like month or day of the week.  It is a little blury!  In some sense, simialar to discrete.  
+
+- Note for `cty` and `hwy`:  Decide discrete vs continuous by what they *are*, not how we rounded.  These are **continuous**!
+
+## What do we say about data?
+
+Always first:  visualize!!!  Warning:  the options for visualization depend on the type data!
+
+## Quantitative visualzation:  histograms
+
+Example:  let's make a histo of the hwy variable from the `mpg` dataset.
+
+```{r}
+
+#note:  $ choooses variable
+
+hist( mpg$hwy )
+
+```
+
+Observations:
+
+- Bimodal.  Two groups:  one less efficient, one more.  
+- Right skew (right tail).  I.e., most cars have relatively low mpg, and only a few have very high mpg.
+- What's "normal"?  Looks like 25ish is a normal mpg.
+- Spread?  Variability?  All are btwn 10mpg and 45mpg.  Most are between 15 and 35mpg.  
