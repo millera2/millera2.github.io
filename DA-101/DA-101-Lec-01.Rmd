@@ -51,3 +51,223 @@ Don't worry about taking word-for-word notes.  You're not a stenographer!  Inste
 
 I'll also use the board for notes sometimes.  Be prepared to take pen-and-paper notes!  Boardwork is just as important as the material here.
 
+
+## Goals for Wednesday
+
+- What's a dataset?
+- What do we want to say about data?
+
+I like to look at examples first.  Here's one: the mpg dataset.
+
+```{r}
+library(ggplot2)
+
+head(mpg)
+
+```
+
+The above is an example of a "tidy" dataset.  This is the format we always want for our analysis.  We might need to do some work to tidy up our data -- more on that later.
+
+A matrix/table of data is "tidy" if:
+
+- Every row needs to correspond to a specific observation or "case".  In mpg:  each row represents measurements of a specific car.  In your garlic mustard data, the cases are:  a specific plant for each row.  
+- Each column must be a specific variable, i.e., a quality of the observation/case/thingie.  
+- Each cell in the table must contain exactly one value.
+
+Even if our data is tidy, that doesn't mean we understand what it is!  
+
+The answer:  METADATA!  Metadata is data about data. Metadata includes descriptions of cases, variables, and units.   
+
+The built-in data in R is all googleable.  
+
+```{r}
+gmd <- read.csv("GarlicMustardData.csv")
+head(gmd)
+```
+
+
+## What types of data?
+
+We always want to know what type of data, because that determines the tools that we use!
+
+Broadly speaking, there are two types:  numbers (quantitive) and not (categorical).  
+
+Quantitative data can be divided into to kinds:
+
+-Discrete: Can be separated into "whole units".  WHole numbers.  Countable!!  Ex:  the number of students in this class is discrete.  You can't have 15.34 students.  That'd be messy!  
+
+-Continuous:  Can take any value on the real line.  Examples:  Long/Lat, Height, Volume of gas in a tank. Generally, these are physical measurements of the world/universe: length, duration, density, volume, etc. 
+
+Categorical data can also be broken down:
+
+-Nominal:  no intrisic order.  Example: hair color, nationality.
+
+-Ordinal: does have a natural/intrisic order.  Example:  class rank, food chain (?), human development stages, calendar year/month/day of week.  
+
+# Notes about mpg dataset
+
+- Year is a little fuzzy.  Probably, it's ordinal.  Butimnes, these seem similar to discrete.  
+
+- Hwy, cty are continuous even though they're rounded.  Make the call based on what it *is*, not how we round.  
+
+
+# Goals for friday:
+
+- Visualizing data
+- Describing distributions with summary statistics
+
+Always visualize first!  Your human eyeballs can detect meaningful patterns. 
+
+## Visualizing quantitative data with histograms
+
+Example: iris dataset.
+
+```{r}
+head(iris)
+```
+
+Make a histogram of Sepal Length
+
+```{r}
+library(dplyr)
+library(ggplot2)
+
+ggplot(iris, aes(Sepal.Length))+geom_histogram()
+```
+
+Important caveat about histograms:  the bins are arbitrary!  I.e. up to you!
+
+
+```{r}
+ggplot(iris, aes(Sepal.Length))+geom_histogram(bins=3)
+```
+Probably not enough resolution to see patters.
+
+
+
+```{r}
+ggplot(iris, aes(Sepal.Length))+geom_histogram(bins=5)
+
+```
+Feelings:  the commmone sepal length is about 5.5.  There's right skew, i.e. a tail on the right.  There are iris flowers with large sepal length, but they're rarer than the short ones.
+
+```{r}
+ggplot(iris, aes(Sepal.Length))+geom_histogram(bins=20)
+
+```
+WIth more bins, we can a "bimodal" feature.  Looks like there's two different groups.  Maybe species accounts for this?  More investigations!  
+
+Example:  200 bins
+
+```{r}
+ggplot(iris, aes(Sepal.Length))+geom_histogram(bins=200)
+
+```
+Maybe too many!  Hard to detect a pattern.
+
+Moral of the story:  your good judgement is required!  Play around, experiment, to show patterns in your data.  
+
+## Another visualization for quantitative data:  boxplots
+
+Example:  Boxplot of Sepal Length
+
+```{r}
+ggplot(iris, aes(x=Species, y=Sepal.Length))+geom_boxplot()
+```
+
+What's being shown?  The middle line is the median.  The box goes between Q1 and Q3 (the quartiles).  The "whiskers" go to the biggest and smallest values that AREN'T outliers.  If there are outliers, they get a point.  I.e., the box shows the middle 50% of the data.
+
+It's hard to compare differnet histograms on the same axis, since they overlap!  Boxplots are great for this:  here, we see differences in the Sepal Length distro for the different species.
+
+Example:  in the mpg dataset
+
+```{r}
+head(mpg)
+```
+
+Make a boxplot comparing hwy fuel efficiency by class?
+
+
+
+```{r}
+ggplot(mpg, aes(x=class, y=hwy))+geom_boxplot()
+```
+
+Observsations:  Subcompacts have high "center" or "normal" mpg, but there's also a lot of spread (it's box is wider!).  There's more variability in this class:  some of them are rather inefficient.  
+
+There are several outliers in the SUV category, maybe it's possible to find a fuel efficient suv!  
+
+Think about "center" and "spread".  What's normal? (Center)  How much variability (spread).  
+
+Example:  make a boxplot that compares cty mpg across different displacment (displ)?  
+
+```{r}
+ggplot(mpg, aes(x=displ, y=cty))+geom_boxplot()
+```
+
+
+```{r}
+unique(mpg$displ)
+```
+
+Ah!  Doesn't make sense to categorize by a continuous variable!  
+
+Another issue:  data type!
+
+```{r}
+head(mpg)
+```
+
+Oftentimes, errors arise when data has the wrong format.  Here, R thingks that displ is a "double" type.  Double is continuous.  We could force it to consider it a category!
+
+```{r}
+ggplot(mpg, aes(x=as.factor(displ), y=cty))+geom_boxplot()
+```
+
+Even though we can force R to think categoricall, still doesn't make much sense!  Probably, this isn't a useful visualization.
+
+## Visualizing relationships between variables (quantitative)
+
+Scatterplots!  A scatterplot is an (x,y) plot of all data points for two variables.
+
+Example: compare Sepal.Length and Sepal.Width
+```{r}
+ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width))+geom_point()
+```
+Wait a second: is the really no relationship?  This looks like a blob.
+
+Idea:  maybe species affects the relationship?  Fortunately, there's an easy way to check.  Color!
+
+```{r}
+ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, color=Species))+geom_point()
+
+```
+
+Conclusion:  It does seem like there's a relationship, but there a counfounding variable!  (Species)
+
+Idea:  filter by species
+
+```{r}
+#setosa data
+
+# don't forget to store variables!  
+
+setosaData <- filter(iris, Species == "setosa")
+
+#make scatterplot
+
+ggplot(setosaData, aes(x=Sepal.Length, y=Sepal.Width))+geom_point()
+```
+
+This technique is called "subgroup analysis".  
+
+Another option:  facet wrapping! 
+
+```{r}
+ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, color=Species))+
+  geom_point()+
+  facet_wrap(~Species)
+```
+
+
+
