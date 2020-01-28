@@ -124,6 +124,12 @@ Observations:
 - What's "normal"?  Looks like 25ish is a normal mpg.
 - Spread?  Variability?  All are btwn 10mpg and 45mpg.  Most are between 15 and 35mpg.  
 
+# Wednesday
+
+## Goals for Wednesday
+
+- Properties of histograms and boxplots
+- Visualizing relationships with scatterplots and stacked barplots
 
 
 Important caveat about historgrams:  the number of bins/breaks is up to you!  Changing the breaks can really change the shape of the histo!
