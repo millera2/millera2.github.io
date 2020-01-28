@@ -1,0 +1,153 @@
+---
+title: "Math 120 Week 01"
+author: "Prof Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: cerulean
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+
+
+
+
+
+
+
+
+
+
+## Tuesday
+
+Goals:
+
+- Center, Shape, and Spread for Quantitative Variables
+- Outliers, boxplots
+
+Measures of center:  tell what's "normal".  
+
+Definition:  a measure is *robust* if it's not strongly affected by outliers/skew.
+
+Example: median is robust (not affected by outliers), but mean is *NOT* robust.  Example: 1, 1, 1, 1, 1, 19.  
+
+## Shape of a distribution
+
+Common shapes:
+
+- Symmetric.  Evenly distributed on either side of the middle.
+- Left skew (left tail)
+- Right skew (right tail)
+
+### Exercise:  What shape?
+
+Based on the following, what shape does the variable have and how do the mean and median compare?
+
+1)  Variable:  Exam scores in a large class for an easy exam.  Shape:  left skew, most students scored well, only a few scored poorly.  We'd expect the mean score to lower than the median.  
+
+2)  Variable:  salaries in a large corporation.  Strong right skew!  Most employees earn a "normal" amount, a select few earn much more.  Ex:  In 2018, revealed that the CEO of Activision earned 300x the average salary!  The mean salary will be a lot larger, could skew our perception of wealth in the corporation.
+
+3)  Variable:  height of adult men in the US.  Symmetric dist!  Most people have "average" height, only a few are exceptionally tall or short.  We'd expect that the mean and median are similar.
+
+4)  Variable:  heights of all adults in the US, men and women.  Shape:   bimodal.  Still fairly symmetric, since 50/50 gender.  
+
+## Measures of Spread (quantitative variable)
+
+I.e., how much variability?  How far away do we expect observations to be from the center?
+
+Three big measures:
+
+1) Range:  max - min
+
+Example:  range of sepal lengths:
+
+```{r}
+summary(iris$Sepal.Length)
+```
+
+Range:  3.6cm.  Advantage:  easy!  Big disadvantage:  super, duper, extra not robust!!!  Even one outlier wrecks the range.  
+
+2) Standard deviation.  The "deviation" for an observation is just it's distance from the mean:  x - xbar.  For std deviation, we find all deviations for all observations, and (roughly) take their average.  Std dev = average distance from the center. 
+
+Formula:
+
+$$s=\sqrt{\sum\frac{(x-\bar{x})^2}{n-1}}$$
+
+3) Interquartile Range = The distance between the quartiles Q1 and Q3.  Note:  Q1 is the median of the lower half.  Q3 is the median of the upper half). IQR gives us the range/spread of the middle 50% of the data.  
+
+Interesting note:  all three of these are totally different approaches, but they're all reasonable ways to measure spread.  
+
+Q:  Which of the three measures of spread is "robust"?  Only the IQR, since it's determined by the middle stuff.  Outliers have no effect.  
+
+## Outliers
+
+Outliers are "unusual" measurements!  Couple of different methods for determining.  Here's ours:  
+
+We'll define an outlier to be any measurement that's more than 1.5 IQRs away from Q1 or Q3.
+
+Low cutoff:  Q1 - 1.5*IQR
+high cutoff: Q3 + 1.5*IQR
+
+## Boxplots
+
+Boxplots visualize the IQR.  Super useful for comparing multiple quant. variables, since it's easy to have multiple boxplots on the same axes.
+
+Example:  Iris dataset
+
+```{r}
+boxplot(iris$Sepal.Length)
+```
+
+
+Comparing all variables:
+```{r}
+boxplot(iris)
+```
+
+Comparing by species:
+```{r}
+boxplot(data=iris, Sepal.Length~Species)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

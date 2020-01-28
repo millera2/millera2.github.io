@@ -159,3 +159,7 @@ ggplot(iris, aes(Sepal.Length))+
 
 unique(GarlicMustardData$Region)
 
+data <- iris
+plot.new()
+plot(data$Sepal.Length, data$Sepal.Width, col=data$Species)
+legend(6,4.3,unique(data$Species), col=1:3, pch=20)
