@@ -1,5 +1,5 @@
 ---
-title: "Math 120 Lab 02 - Linear Regression"
+title: "Math 120 Lab 02 - Describing Data"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
   html_document:
