@@ -102,7 +102,7 @@ Turn in a well-written Google Doc report with answers to the above six questions
 
 ## Deadline and Grading
 
-This lab is due **Thursday, Feb 06 at 11:59pm**.   **I'll charge a 20% late fee per day late.**  
+This lab is due **Thursday, Feb 06 at 11:59pm** on Notebowl.   **I'll charge a 20% late fee per day late.**  
 
 I will assign grades on this project ”holistically”, not using a scoring sheet where each item is worth a certain number of points.
 
