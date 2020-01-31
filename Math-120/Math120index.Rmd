@@ -49,7 +49,7 @@ Each wednesday, we'll have a quiz that follows from the material of the previous
 
 ## Labs
 
-[Lab 1](https://millera2.github.io/Math-120/Math-120-Lab-01.html)
+[Lab 1](https://millera2.github.io/Math-120/Math-120-Lab-1.html)
 
 ## Datasets
 
