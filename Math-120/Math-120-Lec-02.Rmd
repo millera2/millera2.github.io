@@ -139,6 +139,147 @@ boxplot(data=iris, Sepal.Length~Species)
 
 
 
+# Wednesday
+
+## Goals
+
+- Weird Plots
+- Empirical Rule
+- Meaning of "Statistical Inference"
+
+## Weird plots
+
+We've seen some "typical" plots.  Example, iris data:
+
+```{r}
+boxplot(data=iris, Sepal.Length~Species)
+```
+
+Observations:  Q1 for versicolor about 5.7ish.  
+
+Q:  which species has the highest center?  Virginica!
+
+Q:  which species has the smallest spread? Setosa sepal lengths have least variability.  
+
+Q:  Outliers?  Looks like virginica has one low outlier.  
+
+## Weird example: Cirp Survey Data
+
+Take a look:
+
+```{r}
+cirpData <- read.csv("CIRP_DATA_2014_CLEAN.csv")
+head(cirpData)
+
+```
+
+Note:  totally need metadata.  
+
+Q:  what about english?  How much english have DU students had?
+
+```{r}
+boxplot(cirpData$YRSTUDY1)
+```
+
+Analysis:  almost everyone responded 6, i.e., the vast majority of incoming DU students took 4 years of english in HS.  Q1 = M = Q3 = 6.
+
+
+# Another weird example:  scatterplot
+
+Q: Is there a relationship between RATE01 (academic ability) and RATE03 (competitiveness).  
+
+```{r}
+qplot(cirpData$RATE01, cirpData$RATE03)
+```
+
+Woah!  weird!  What's going on?  Discrete data often doesn't work well with scatterplots.  Can't tell how many points!
+
+Neat trick:  jitter.  "Jittering" means adding a small amount of random noise.
+
+```{r}
+qplot(cirpData$RATE01, cirpData$RATE03)+geom_jitter()
+
+```
+Ah!  Now we can see a roughly positive pattern.  
+
+Moral of the story:  think carefully about any visualition you do.  What's it mean?
+
+```{r}
+qplot(iris$Sepal.Length, iris$Sepal.Width)
+```
+
+
+Example:  Exam scores
+
+66, 67, 71, 71, 74, 76, 76, 78, 80, 99
+
+Check for outliers, make a boxplot, describe shape.
+
+IQR: 7, Q1 = 71, Q3 = 78
+
+Low cutoff:  
+
+
+```{r}
+71 - 1.5*7
+```
+
+High cutoff:  
+
+```{r}
+78+1.5*7
+```
+
+Note:  99 is an outlier!
+
+Warning for boxplot:  draw axis first!
+
+Shape:  aside from outlier, there's a little left skew.
+
+```{r}
+boxplot(c(66, 67, 71, 71, 74, 76, 76, 78, 80, 99), horizontal = TRUE)
+
+```
+
+```{r}
+boxplot(iris)
+```
+
+## Empirical Rule and Z scores
+
+We know about outliers, but what about everything else?  Common question:  how "unusual" is a measurement in our data?
+
+Major tool:  z scores (standard scores).  
+
+Z scores measure the distance from a point to the mean, in units of standard deviation!  I.e., how many standard deviations above or below the mean are you?
+
+Example:  Adult women in the US have mean height 64" with std dev 2.4"  (true).  Prof miller 75".  Compute her z score!
+
+```{r}
+(75-64)/2.4
+```
+
+Note about rounding:  three decimals is enough.
+
+Why is this useful?  It lets us compare elements of different datasets!  It accounts for the center and spread of the respective distributions.
+
+Example:  Exam scores.  On ACT, the mean score for test takers is 24, std dev 3.  On SAT, the mean score is 680, with std dev 40.
+
+If Alex got a 28 on the ACT, and Beth got 720 on the SAT, who scored better?
+
+Z scores!
+
+Alex:
+
+```{r}
+(28- 24)/3
+```
+
+Beth:
+
+```{r}
+(720-680)/40
+```
 
 
 
@@ -150,6 +291,134 @@ boxplot(data=iris, Sepal.Length~Species)
 
 
 
+
+
+
+
+
+
+
+
+# Wednesday
+
+## Weird plots!
+
+Example: boxplot.  Consider the CIRP survey data, which contains survey responses from incoming DU freshmen.  
+
+```{r}
+
+cirpData <- read.csv("CIRP_DATA_2014_CLEAN.csv")
+head(cirpData)
+
+```
+
+Note: incomprehensible without metadata.  
+
+Q:  what can we say about the number of years DU students have had of English?  
+
+A:  boxplot!
+
+Remember, example, iris data:
+
+```{r}
+boxplot(iris)
+boxplot(data=iris, Sepal.Length~Species)
+```
+Q:  what's Q1 for versicolor?  A: 5.6ish.  
+
+Q:  of the three species, which has the highest center? The typical Sepal Length for virginica is the greatest!
+
+Q:  Which of the three has the smallest spread? A: setosa has less variability.
+
+Example: English in CIRP DATA
+
+```{r}
+boxplot(cirpData$YRSTUDY1)
+```
+
+Woah!  What's up?  Almost all students chose "6" on the survey, i.e. took 4 years of english.  Evereone else was an outlier.
+
+## Relationships between variables
+
+Q: Is there a relationship between RATE01 (academic ability) and RATE03 (competitiveness).  Look at scatterplot.
+
+```{r}
+qplot(data=cirpData, x=RATE01, y=RATE03)
+```
+
+Woah!  What's going on?  Discrete data:  can't tell how many students are in each category!
+
+Neat trick:  jitter.  "Jitter" is a small amount of random noise added to data.
+
+```{r}
+qplot(data=cirpData, x=RATE01, y=RATE03)+geom_jitter()
+
+```
+
+Jitter helps us see density for discrete variables.
+
+Moral of the story:  sometimes visualizations are weird/unexpected.  Think carefully about what they're telling you. 
+
+```{r}
+boxplot(iris)
+```
+
+## Outlier Practice 
+
+Example:  exam scores.  Consider these student scores:
+
+66, 67, 71, 71, 74, 76, 76, 78, 80, 99
+
+Check for outliers, and make a boxplot.  What shape does the distro have?
+
+Q1 = 71, Q3 = 78, IQR = 7
+
+Low cutoff:
+```{r}
+71 - 1.5*7
+```
+
+Ignoring the outlier, we have left skew.
+
+```{r}
+boxplot(c(66, 67, 71, 71, 74, 76, 76, 78, 80, 99
+), horizontal = TRUE)
+```
+
+
+High cutoff:
+
+```{r}
+78 + 1.5*7
+```
+
+There is an an outlier:  99
+
+Warning for boxplot: draw axis/number line first!
+
+## How "unusual" is our data?  Z-scores 
+
+For an observation (x), the z-score is the number of standard deviations above (or below) the mean.  I.e., it tells how far x is from the mean, in units of standard deviations.  
+
+Z scores are useful for comparing different data sets.
+
+Example:  Exam scores.  On the ACT, the average score is 24 with std dev 3.  On the the SAT, the average score is 680 with std dev 40.
+
+If Alex scores 28 on the ACT, and Beth scores 720 on the SAT, who scored better?
+
+A: compute z scores!
+
+For Alex:
+
+```{r}
+(28-24)/3
+```
+
+Beth:
+
+```{r}
+(720-680)/40
+```
 
 
 
