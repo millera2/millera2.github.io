@@ -41,6 +41,9 @@ theme_set(theme_tufte() +
 
 # Monday
 
+
+## Example (Z Scores)
+
 On average, giraffes are 18' tall with std dev 2'.  Elephants have mean height 10' with std dev 0.8'.
 
 If a particular giraffe is 16.5', and a specific elephant is 9.3' tall, which is taller relative to their species?
@@ -105,7 +108,7 @@ Hard way:  add all to the right of z=3
 
 Smart way:  1 - .15 = 99.85% of men are 77.1" tall or below.
 
-## Conclusion
+## Conclusions about Emprical Rule
 
 Empirical rule lets us make predictions about where we expect data to lie (only in a normal dist).  
 

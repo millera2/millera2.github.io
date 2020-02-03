@@ -1713,9 +1713,10 @@ summary {
 <div id="TOC">
 <ul>
 <li><a href="#monday">Monday</a><ul>
+<li><a href="#example-z-scores">Example (Z Scores)</a></li>
 <li><a href="#empirical-rule-68-95-99.7-rule">Empirical Rule (68-95-99.7 Rule)</a></li>
 <li><a href="#emprical-example">Emprical Example</a></li>
-<li><a href="#conclusion">Conclusion</a></li>
+<li><a href="#conclusions-about-emprical-rule">Conclusions about Emprical Rule</a></li>
 <li><a href="#descriptive-statistics">Descriptive statistics</a></li>
 <li><a href="#sampling-strategies">4 Sampling Strategies</a></li>
 </ul></li>
@@ -1724,6 +1725,8 @@ summary {
 
 <div id="monday" class="section level1">
 <h1>Monday</h1>
+<div id="example-z-scores" class="section level2">
+<h2>Example (Z Scores)</h2>
 <p>On average, giraffes are 18’ tall with std dev 2’. Elephants have mean height 10’ with std dev 0.8’.</p>
 <p>If a particular giraffe is 16.5’, and a specific elephant is 9.3’ tall, which is taller relative to their species?</p>
 <p>Answer: z scores!! Recall: a z score for a particular obs is the distance between the observation and the mean, measured in std devs. I.e., how many std devs above/below the mean are you?</p>
@@ -1734,6 +1737,7 @@ summary {
 <pre class="r"><code>(9.3-10)/.8</code></pre>
 <pre><code>## [1] -0.875</code></pre>
 <p>Both are below the mean (negative z score), but giraffe had bigger z score. Thus it’s taller.</p>
+</div>
 <div id="empirical-rule-68-95-99.7-rule" class="section level2">
 <h2>Empirical Rule (68-95-99.7 Rule)</h2>
 <p><strong>IF</strong> our data follows a roughly symmetric, bell-shaped unimodal distribution (normal distribution):</p>
@@ -1762,8 +1766,8 @@ summary {
 <p>.15+2.35+13.5+34+34+13.5+2.35 = something</p>
 <p>Smart way: 1 - .15 = 99.85% of men are 77.1&quot; tall or below.</p>
 </div>
-<div id="conclusion" class="section level2">
-<h2>Conclusion</h2>
+<div id="conclusions-about-emprical-rule" class="section level2">
+<h2>Conclusions about Emprical Rule</h2>
 <p>Empirical rule lets us make predictions about where we expect data to lie (only in a normal dist).</p>
 <p>Empricial rule lets you have feelings about z scores! We know how common/uncommon a particular measurement is!</p>
 <p>If z score between -2 and 2, that’s pretty common (middle 95%). Z bigger than 2 is “unusual”, and z bigger than 3 is crazy! Only 0.15% of the population that range!</p>
