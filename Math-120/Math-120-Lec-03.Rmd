@@ -75,7 +75,7 @@ Both are below the mean (negative z score), but giraffe had bigger z score.  Thu
 
 The empirical rule is a "heuristic"  for predicting "where" we expect data to be.  In what ranges?
 
-## Emprical Example
+## Empirical Example
 
 Human height follows a normal dist.  For men, the mean is 69" and the std dev is 2.7".  About what percent of men are between 66.3" and 74.4"?  
 
@@ -108,11 +108,11 @@ Hard way:  add all to the right of z=3
 
 Smart way:  1 - .15 = 99.85% of men are 77.1" tall or below.
 
-## Conclusions about Emprical Rule
+## Conclusions about Empirical Rule
 
 Empirical rule lets us make predictions about where we expect data to lie (only in a normal dist).  
 
-Empricial rule lets you have feelings about z scores!  We know how common/uncommon a particular measurement is!
+Empirical rule lets you have feelings about z scores!  We know how common/uncommon a particular measurement is!
 
 If z score between -2 and 2, that's pretty common (middle 95%).  Z bigger than 2 is "unusual", and z bigger than 3 is crazy! Only 0.15% of the population that range!
 
@@ -120,11 +120,11 @@ If z score between -2 and 2, that's pretty common (middle 95%).  Z bigger than 2
 
 We just spent two weeks learning "descriptive statistics".  I.e., what is data, what kinds of data, how do we view data, and what do we say about data?
 
-Q:  What if I want to know the average systolic blood pressure of **all** 18-22 yo americans?  
+Q:  What if I want to know the average systolic blood pressure of **all** 18-22 yo Americans?  
 
 Problem:  it's impractical/impossible to track down all gazillion 18-22 year olds and administer a sphygmomanometer.  Finite time, money, resources.  
 
-In reality, we're forced to work with samples.  We hope they're representive, i.e., the sample statistic is the similar to the population parameter.  We have to balance these two "levels" of our data:
+In reality, we're forced to work with samples.  We hope they're Representative, i.e., the sample statistic is the similar to the population parameter.  We have to balance these two "levels" of our data:
 
 A **statistic** is a numerical summary of a sample.  I.e., the things we have.
 
@@ -138,15 +138,15 @@ For each, there's a population version.  A **parameter** is a numerical summary 
 Examples:
 - pop mean is mu
 - population std dev is sigma
-- population proprtion is "p" (unusual latin instead of greek)
+- population proportion is "p" (unusual Latin instead of Greek)
 
-We'll never know these parameters, but we hope to say something smart about them based on our statistis (i.e. our sample data).  This process is called **statistical inference**:  making conclusions about population parameters based on sample statistics.
+We'll never know these parameters, but we hope to say something smart about them based on our statistics (i.e. our sample data).  This process is called **statistical inference**:  making conclusions about population parameters based on sample statistics.
 
 ## 4 Sampling Strategies
 
 (Note:  reading in 1.3 of your text)
 
-Note:  the population in question is up to YOU to determine!  Ex:  all americans, all university studetns, all men.  
+Note:  the population in question is up to YOU to determine!  Ex:  all Americans, all university students, all men, all 18-22 year olds, etc.  
 
 1) Simple Random Sample (SRS).  This is the best one!  In an SRS, all members of the population are equally likely to be chosen.  We need a list (in some order) of every member of the population, then use a random number generator to select our sample.  Usually pretty hard to do!
 
