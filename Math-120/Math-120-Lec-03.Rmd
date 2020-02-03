@@ -1,0 +1,168 @@
+---
+title: "Math 120 Week 02"
+author: "Prof Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: cerulean
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+
+
+
+
+
+
+
+# Monday
+
+On average, giraffes are 18' tall with std dev 2'.  Elephants have mean height 10' with std dev 0.8'.
+
+If a particular giraffe is 16.5', and a specific elephant is 9.3' tall, which is taller relative to their species?
+
+Answer:  z scores!!  Recall:  a z score for a particular obs is the distance between the observation and the mean, measured in std devs.  I.e., how many std devs above/below the mean are you?  
+
+Giraffe:
+
+```{r}
+(16.5-18)/2
+```
+
+Elephant:
+
+```{r}
+(9.3-10)/.8
+```
+
+
+Both are below the mean (negative z score), but giraffe had bigger z score.  Thus it's taller.
+
+## Empirical Rule (68-95-99.7 Rule)
+
+**IF** our data follows a roughly symmetric, bell-shaped unimodal distribution (normal distribution):
+
+- 68% of the data lies within +/- 1 std dev of the mean (z score btwn -1 and 1).
+- 95% of the data lies within +/- 2 std dev of the mean (z score btwn -2 and 2).
+- 99.7 of the data lies within +/- 3 std dev of the mean (z btwn -3 and 3).
+
+The empirical rule is a "heuristic"  for predicting "where" we expect data to be.  In what ranges?
+
+## Emprical Example
+
+Human height follows a normal dist.  For men, the mean is 69" and the std dev is 2.7".  About what percent of men are between 66.3" and 74.4"?  
+
+Z scores!
+
+```{r}
+(66.3-69)/2.7
+```
+
+```{r}
+(74.4-69)/2.7
+```
+
+```{r}
+34+34+13.5
+```
+
+About 81.5% of men have height in that range.
+
+About what percent of men are 77.1" tall or less?
+
+```{r}
+(77.1-69)/2.7
+```
+
+
+Hard way:  add all to the right of z=3
+
+.15+2.35+13.5+34+34+13.5+2.35 = something
+
+Smart way:  1 - .15 = 99.85% of men are 77.1" tall or below.
+
+## Conclusion
+
+Empirical rule lets us make predictions about where we expect data to lie (only in a normal dist).  
+
+Empricial rule lets you have feelings about z scores!  We know how common/uncommon a particular measurement is!
+
+If z score between -2 and 2, that's pretty common (middle 95%).  Z bigger than 2 is "unusual", and z bigger than 3 is crazy! Only 0.15% of the population that range!
+
+## Descriptive statistics
+
+We just spent two weeks learning "descriptive statistics".  I.e., what is data, what kinds of data, how do we view data, and what do we say about data?
+
+Q:  What if I want to know the average systolic blood pressure of **all** 18-22 yo americans?  
+
+Problem:  it's impractical/impossible to track down all gazillion 18-22 year olds and administer a sphygmomanometer.  Finite time, money, resources.  
+
+In reality, we're forced to work with samples.  We hope they're representive, i.e., the sample statistic is the similar to the population parameter.  We have to balance these two "levels" of our data:
+
+A **statistic** is a numerical summary of a sample.  I.e., the things we have.
+
+Examples:  
+- sample mean is xbar.
+- sample std dev is "s"
+- sample proportion is "phat"
+
+For each, there's a population version.  A **parameter** is a numerical summary of a population.  We hope to know these, but never will!  Big problem, since sample data is often limited!
+
+Examples:
+- pop mean is mu
+- population std dev is sigma
+- population proprtion is "p" (unusual latin instead of greek)
+
+We'll never know these parameters, but we hope to say something smart about them based on our statistis (i.e. our sample data).  This process is called **statistical inference**:  making conclusions about population parameters based on sample statistics.
+
+## 4 Sampling Strategies
+
+(Note:  reading in 1.3 of your text)
+
+Note:  the population in question is up to YOU to determine!  Ex:  all americans, all university studetns, all men.  
+
+1) Simple Random Sample (SRS).  This is the best one!  In an SRS, all members of the population are equally likely to be chosen.  We need a list (in some order) of every member of the population, then use a random number generator to select our sample.  Usually pretty hard to do!
+
+2) Convenience sample.  Worst kind!  Just sample whoever or whatever is convenient!  Sadly, quite common.  No reason to assume that a convenience sample is representative.  
+
+3) Stratified sample.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
