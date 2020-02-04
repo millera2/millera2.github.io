@@ -225,6 +225,16 @@ R tells us the strength and direction of a linear relationship.
 
 
 
+```{r}
+head(mpg)
+
+counts <- table(mpg$drv, mpg$class)
+
+counts
+
+barplot(counts, beside=T, legend=T)
+
+```
 
 
 

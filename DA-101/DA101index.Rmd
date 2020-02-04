@@ -47,6 +47,8 @@ theme_set(                                #this sets the theme for all    #
 ## DA 101 Lecture Notes
 
 - [Week 01](https://millera2.github.io/DA-101/DA-101-Lec-01.html)
+- [Week 02](https://millera2.github.io/DA-101/DA-101-Lec-02.html)
+- [Week 03](https://millera2.github.io/DA-101/DA-101-Lec-03.html)
 
 
 

@@ -1,0 +1,240 @@
+---
+title: "DA 101 Week 3"
+author: "Prof Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: cerulean
+    df_print: paged
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+
+
+## Cool example:  Death Penalty Data
+
+First, download and load the csv.
+
+```{r}
+deathData <- read.csv("death penalty data.csv")
+head(deathData)
+```
+
+About the data:  the death penalty was illegal for decades after the civil war.  A supreme cour case in the 70s (1977) legalized it again.  This data is a list of everyone who's received the death penalty since then.
+
+Q:  What about race?  
+
+Idea:  histogram
+
+Can't do histo, not numeric!
+
+Scatterplot doesn't make sense, that's for two numerical variables.
+
+
+
+```{r}
+#ggplot(deathData, aes(x=Race))+geom_histogram()
+```
+SInce we're working with categorical data, need a barplot!
+
+```{r}
+ggplot(deathData, aes(Race, fill=Race))+geom_bar()
+```
+
+Woah!  Does this match up with US demographics?  I think not!  Follow-up question:  
+- what are the demographics of the us
+- what prorortions are we actually seeing here
+- is there a statistically significant difference from population?
+- are particular groups disproportionately receiving the death penalty?
+
+Technique:  prop tables
+
+They're easy in R:  use table()
+
+```{r}
+table(deathData$Race) %>% prop.table()
+```
+
+
+
+
+
+
+
+# Monday
+
+## More examples with death penalty
+
+```{r}
+
+deathData <- read.csv("death penalty data.csv")
+head(deathData)
+
+```
+
+```{r}
+library(dplyr)
+library(ggplot2)
+
+ggplot(deathData, aes(Race))+geom_bar()
+```
+
+
+WHat about a visual that shows a comparison/examination of the relationship of Race and Method (of execution)?
+
+Let's use a stacked barplot.  Set "fill" in aes()
+
+
+```{r}
+ggplot(deathData, aes(Race, fill=Method))+geom_bar(position=position_dodge())
+```
+
+## Example:  State
+
+Use a visual to show -where- executions are occuring.
+
+Idea:  use a barplot for the (categorical) State variable!
+
+```{r}
+ggplot(deathData, aes(State))+geom_bar()
+```
+
+Woah!  TX, what's up?  So many more exectutions!
+
+Moreover, seems like there's just a handful of places where the death penalty is used.
+
+Q:  What if I want to study those states where death penalty is most common?  I could use a filter!
+
+Let's try these states:  AL, FL, GA, MO, OK, TX, VA
+
+How can get a dataset with just these states?  Filter!  We can add many conditions with "or":  |
+
+```{r}
+highStates <- filter(deathData, State == "AL" | State == "FL"
+                                | State ==  "GA"
+                                | State == "MO"
+                                | State == "OK"
+                                | State == "TX"
+                                | State == "VA")
+
+head(highStates)
+
+## did it work?  check with "unique"
+
+unique(highStates$State)
+
+
+```
+
+
+We've got it narrowed down.  Let's study those states.  Q:  Method.  In those states, what methods are used?
+
+```{r}
+ggplot(highStates, aes(Method))+geom_bar()
+```
+
+In these states, where capitol punishmen is used the most, we see that electrocution and Lethal Injection are the only methods used. 
+
+What about Race in those states?  Let's compare both Race and State.  
+
+```{r}
+ggplot(highStates, aes(State, fill=Race))+geom_bar(position="fill")
+```
+
+Notice here, we can compare ratios/percentages directly!  
+
+Interesting observation:  why are so many (relatively) asian americans receiving the death penalty in OK???  Is there a story there?
+
+## Example: WHen???
+
+Q:  Can we plot time trends in the death penalty?
+
+```{r}
+head(deathData)
+```
+
+Idea:  barplot?
+
+```{r}
+ggplot(deathData, aes(Date))+geom_bar()
+```
+
+Bad plot.  Basically:  too many dates, and most only have one execution.  
+
+Problem:  we want the YEAR, not the individual day.  This is an example of "data wrangling".  Our dates aren't in the right format.
+
+```{r}
+head(deathData)
+```
+
+Problem:  see "<fctr>"?  R thinks the dates are "categorical" variables!  We want numbers.  
+
+R has built-in date functions.  Use:  as.Date()
+
+Problem:  we need to teach it the format.  
+
+
+```{r}
+as.Date(deathData$Date, "%m/%d/%Y")
+
+## We actually want to save this.  Be careful!  Don't destroy your data!  Make a copy.
+
+myDeathData <- deathData  #backup
+
+myDeathData$Date <- as.Date(deathData$Date, "%m/%d/%Y")
+
+head(myDeathData)
+
+# one more step:  format for just the year
+
+myDeathData$Date <-  format(myDeathData$Date, "%Y")
+
+head(myDeathData)
+
+ggplot(myDeathData, aes(Date))+geom_bar()
+
+```
+
+## Here is a cool example table
+
+| Var 1 | Var 2 | Var 3|
+| ----- | ------|------|
+| thing 1|thing2|thing3|
+
+Example:  mean of iris sepal length
+
+```{r}
+mean(iris$Sepal.Length)
+```
+
+Instead, you can include it in text.  Use `backticks`  Example: the mean sepal length of iris data is `r mean(iris$Sepal.Length)`
+
+
+
+
+
+
+
+

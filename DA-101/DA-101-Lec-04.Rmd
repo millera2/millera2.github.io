@@ -1,0 +1,64 @@
+---
+title: "DA 101 Week 2"
+author: "Prof Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: cerulean
+    df_print: paged
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+
+# Neat Rmd tricks
+## This one is smaller
+### Smaller still
+##### This is the smallest
+
+
+More tricks: lists
+
+- thing 1
+- thing 2
+- thing 3
+
+1) first thing
+2) second thing
+4) fourth thing
+
+
+Example:  iris sepal length
+
+```{r}
+ggplot(iris, aes(Sepal.Length, fill=Species))+geom_histogram()
+  
+```
+
+
+
+Inline example:
+
+The mean sepal length is `r mean(iris$Sepal.Length)`
+

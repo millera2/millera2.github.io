@@ -1,5 +1,5 @@
 ---
-title: "DA 101 Week 1"
+title: "DA 101 Week 2"
 author: "Your Name"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
