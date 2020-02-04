@@ -148,11 +148,76 @@ We'll never know these parameters, but we hope to say something smart about them
 
 Note:  the population in question is up to YOU to determine!  Ex:  all Americans, all university students, all men, all 18-22 year olds, etc.  
 
-1) Simple Random Sample (SRS).  This is the best one!  In an SRS, all members of the population are equally likely to be chosen.  We need a list (in some order) of every member of the population, then use a random number generator to select our sample.  Usually pretty hard to do!
+1) Simple Random Sample (SRS).  This is the best one!  In an SRS, all members of the population are equally likely to be chosen.  Kinda tough!  We need a list (in some order) of every member of the population, then use a random number generator to select our sample.  Usually pretty hard to do!
 
 2) Convenience sample.  Worst kind!  Just sample whoever or whatever is convenient!  Sadly, quite common.  No reason to assume that a convenience sample is representative.  
 
-3) Stratified sample.  
+3) Stratified sample.  Divide and conquer:  break population into strata (groups with commonalities, i.e. gender, age group, income level, education attainment, etc), then do SRS of each one!  Advantage:  get representation from large, diverse populations even with small samples.
+
+4) Cluster sample.  Break population into clusters, randomly select clusters (SRS of the clusters), then sample all individuals in the cluster.  Frequently used over large geographic areas.
+
+Note:  see pictures in text on p26, 28
+
+# Tuesday
+
+## Exercise 1.19 (p30)
+
+- SRS:  Might not  get coverage of all sections.  (bad!)
+- Strata are the sections!  Guarantees representation! (good!)
+- If sections are cluster, we only choose a sample of them. Some sections get skipped entirely!  (bad)
+
+## Example 1.15 (p28)
+
+- It's hard to get around the densely tropical jungle.  In SRS and Stratified, we're likely to go to many villages.  Here, clusters are more efficient.  Clusters generally are geographic units, ex, city block, village, county.  
+
+
+
+## Correlation and Linear Regression
+
+Recall, scatterplots compare two quant variables.  It's an x-y plot.  
+
+Example:  displacement (engine size) vs hwy mpg:
+
+```{r}
+plot(mpg$displ, mpg$hwy)
+```
+
+Here, looks like as displ gets bigger, fuel efficiency gets smaller.  We want to study this relationship, specifially LINEAR relationships.
+
+## Important qualities of linear relationship
+
+1) Strength.  How close to the "best fit" line are the points?  Above, we see a moderately strong relationsip.
+
+2) Direction.  Up or down?  Pos or neg?  If positive relationship, both variables increase together.  If negative, as x increases, y decreases.  Above, we see a negative relationship.  
+
+## Linear correlation coefficient
+
+We need an objective measure of the "strength" of a linear relationship.  It's called the linear correlation coefficient, "r".  (Not the same as R, our software).
+
+R tells us the strength and direction of a linear relationship.
+
+## Properties of R
+
+- CLose to 1 means strong pos rel
+- Close to -1 means strong neg rel
+- Close to 0 means no/weak linear relationship (Warning!  Could still be a nonlinear relationship!  Think:  smiley face.)
+- R doesn't depend on units (forunate!)  I.e, could switch from lbs to kg, or F to C, or mi to km, doesn't change r!  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
