@@ -1,6 +1,6 @@
 
 ---
-title: "DA 101 Fall 2019 Homepage"
+title: "DA 101 Spring 2020 Homepage"
 author: Ali Miller
 date: "Updated: `r format(Sys.time(), '%d %B, %Y')`"
 output: 
@@ -76,6 +76,9 @@ theme_set(                                #this sets the theme for all    #
 
 ## TA Hours
 
-TBA
+Tim's Hours (in Burton Morgan DA Lab, 3rd Floor)
+
+- Sunday 2-6pm
+- Monday 6-8pm
 
 
