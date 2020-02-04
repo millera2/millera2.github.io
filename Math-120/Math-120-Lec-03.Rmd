@@ -201,7 +201,7 @@ R tells us the strength and direction of a linear relationship.
 - CLose to 1 means strong pos rel
 - Close to -1 means strong neg rel
 - Close to 0 means no/weak linear relationship (Warning!  Could still be a nonlinear relationship!  Think:  smiley face.)
-- R doesn't depend on units (forunate!)  I.e, could switch from lbs to kg, or F to C, or mi to km, doesn't change r!  
+- R doesn't depend on units (forunate!)  I.e, could switch from lbs to kg, or F to C, or mi to km, doesn't change r! 
 
 
 
@@ -224,17 +224,6 @@ R tells us the strength and direction of a linear relationship.
 
 
 
-
-```{r}
-head(mpg)
-
-counts <- table(mpg$drv, mpg$class)
-
-counts
-
-barplot(counts, beside=T, legend=T)
-
-```
 
 
 

@@ -215,26 +215,9 @@ head(myDeathData)
 
 ggplot(myDeathData, aes(Date))+geom_bar()
 
+myDeathData %>% group_by(Date) %>% summarise(Total = n())
+
 ```
-
-## Here is a cool example table
-
-| Var 1 | Var 2 | Var 3|
-| ----- | ------|------|
-| thing 1|thing2|thing3|
-
-Example:  mean of iris sepal length
-
-```{r}
-mean(iris$Sepal.Length)
-```
-
-Instead, you can include it in text.  Use `backticks`  Example: the mean sepal length of iris data is `r mean(iris$Sepal.Length)`
-
-
-
-
-
 
 
 
