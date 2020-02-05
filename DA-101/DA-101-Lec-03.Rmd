@@ -215,9 +215,199 @@ head(myDeathData)
 
 ggplot(myDeathData, aes(Date))+geom_bar()
 
-myDeathData %>% group_by(Date) %>% summarise(Total = n())
+
+```
+
+This is better!  But, to show trends over time, a line graph is always better.
+
+```{r}
+# this doesn't work:
+# ggplot(myDeathData, aes(Date))+geom_line()
+```
+Uh-oh!  Line graphs need both x and y, i.e., we need to compute the totals for each year!
+
+```{r}
+head(myDeathData)
+```
+
+We need some more tools to count up all the cases.  First..
+
+## Pipes
+
+Pipes are a feature of dplyr.  Look like this:  %>% 
+
+
+Pipes let us chain together commands.  Simple examples:
+
+```{r}
+## mean iris sepal length
+
+mean(iris$Sepal.Length)
+
+## here's with pipes:
+
+iris$Sepal.Length %>% mean
+
+## same thing!
+
+iris$Sepal.Length %>% summary
+
+```
+
+This is super useful for chaining together many commands!  Also useful because it works in the same order that you "think" about the operations.
+
+Example:  take iris data, filter all sepal lengths less than 5cm, filter only setosa species, then plot histogram
+```{r}
+
+iris %>% 
+  filter(Sepal.Length < 5) %>% 
+  filter(Species == "setosa") %>%
+  ggplot(aes(Sepal.Length))+
+  geom_histogram()+
+  labs(x="test")+
+  labs(y="ylabl")
+
+iris$Sepal.Length %>% mean
 
 ```
 
 
+Example: Star Wars Data
+
+```{r}
+head(starwars)
+```
+
+Use pipes to answer:
+
+- Make a list of all humans who are female
+
+```{r}
+starwars %>% filter(species == "Human") %>% filter(gender == "female")
+```
+
+- Make a list of all female humans with brown eyes
+
+```{r}
+starwars %>% 
+  filter(species == "Human") %>% 
+  filter(gender == "female") %>%
+  filter(eye_color == "brown")
+
+```
+
+- Make a list of all female humans with brown eyes, hist of their height
+
+```{r}
+starwars %>% 
+  filter(species == "Human") %>% 
+  filter(gender == "female") %>%
+  filter(eye_color == "brown") %>%
+  ggplot(aes(height))+geom_histogram()
+```
+
+## Super useful dplyr feature:  group_by()
+
+Often, we want to summarize by groups.  Ex:  in the iris dataset, find the mean Sepal Length for each species.  Use group_by and summarise:
+
+```{r}
+
+iris %>% group_by(Species) %>% summarise(MeanSepal = mean(Sepal.Length))
+
+```
+
+In summarise, you can use almost any function and add as many as you like:
+
+```{r}
+iris %>% 
+  group_by(Species) %>% 
+  summarise(MeanSepal = mean(Sepal.Length), 
+            StdevSepal = sd(Sepal.Length),
+            MeanPetal = mean(Petal.Length),
+            StdevPetal = sd(Petal.Length))
+
+```
+
+Ex:  Garlic Mustard
+
+```{r}
+gmdata <- read.csv("GarlicMustardData.csv")
+
+head(gmdata)
+```
+
+Ex:  use group_by and summarize to find mean lat and lon for each region.
+
+```{r}
+gmdata %>% 
+  group_by(Region) %>%
+  summarise(meanLat = mean(Latitude),
+            meanLon = mean(Longitude))
+```
+
+Ex:  Make a table with mean age of convicts who received death penalty by race.
+
+```{r}
+deathData %>% 
+  group_by(Race) %>%
+  summarise(MeanAge = mean(Age))
+```
+
+You can group by multiple variables!  Ex:  race and method.
+
+```{r}
+deathData %>% 
+  group_by(Race, Method) %>%
+  summarise(MeanAge = mean(Age))
+```
+
+## An important group_by/summarize function: n()
+
+The n() function counts how many cases.  Useful for seeing how many!
+
+Ex:  Let's make a table with counts by method:
+
+```{r}
+deathData %>% 
+  group_by(Method, Region) %>% 
+  summarise(Total = n() )
+```
+
+
+## Line graph for death penalty
+
+First, wrangle the date
+
+```{r}
+head(deathData)
+as.Date(deathData$Date, "%m/%d/%Y")
+
+## make a backup!!!!  if you do it wrong, you wreck your data!
+
+deathDataBackup <- deathData
+
+#over-write the date
+
+deathDataBackup$Date <- as.Date(deathData$Date, "%m/%d/%Y")
+
+head(deathDataBackup)
+
+# cool!  need year.  use format()
+
+format(deathDataBackup$Date, "%Y")
+
+# now overwrite
+
+deathDataBackup$Date <- format(deathDataBackup$Date, "%Y")
+
+head(deathDataBackup)
+
+
+#Cool, got the year.  Let's a make a table with the counts n() for each year
+
+deathDataBackup %>% 
+  group_by(Date) %>% 
+  summarise(Total = n()) %>%
+  ggplot(aes(x=Date, y=Total, group=1))+geom_line()
+```
 
