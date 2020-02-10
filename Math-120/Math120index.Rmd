@@ -40,6 +40,7 @@ theme_set(                                #this sets the theme for all    #
 - [Week 01](https://millera2.github.io/Math-120/Math-120-Lec-01.html)
 - [Week 02](https://millera2.github.io/Math-120/Math-120-Lec-02.html)
 - [Week 03](https://millera2.github.io/Math-120/Math-120-Lec-03.html)
+- [Week 04](https://millera2.github.io/Math-120/Math-120-Lec-04.html)
 
 
 
