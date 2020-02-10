@@ -52,6 +52,8 @@ Each wednesday, we'll have a quiz that follows from the material of the previous
 ## Labs
 
 [Lab 1](https://millera2.github.io/Math-120/Math-120-Lab-1.html)
+[Lab 2](https://millera2.github.io/Math-120/Math-120-Lab-2.html)
+
 
 ## Datasets
 

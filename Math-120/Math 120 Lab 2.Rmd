@@ -30,6 +30,7 @@ theme_set(                                #this sets the theme for all    #
                                                                           #
 ### Below is where you read and store your data.                          #
                                                                           #
+youShouldRenameThis <- read_csv("death penalty data.csv")
                                                                           #
                                                                           #
                                                                           #
@@ -83,26 +84,32 @@ You guys have already had some experience exploring datasets.  This time, you'll
 
 **Your ultimate goal** is to find the best linear model to predict sale price.  Which variable gives us the best predictions?  Which one gives us the best model?
 
-You should try many different explanatory variables.  Maybe the year the house was built?  Maybe the square footage of the lot?  Maybe the number of floors, or bathrooms have the biggest impact?  **It's up to you to decide!**  The only way you'll know what's best is by **trying out different models** and looking at your results.  Use the tools you've learned about in class to inform your decision!
+You should try many different explnatory variables.  Maybe the year the house was built?  Maybe the square footage of the lot?  Maybe the number of floors, or bathrooms have the biggest impact?  **It's up to you to decide!**  The only way you'll know what's best is by **trying out different models** and looking at your results.  Use the tools you've learned about in class to inform your decision!
 
 ## Deliverables
 
-You'll turn in a 500 word-count report in pdf form and your .R script to **Notebowl**.  **Do not email me your report.** (You can "Save-As" pdf in either Google Docs or Word.  I strongly recommend Google Docs!)
+The format is the same as last time:  turn in your .Rmd and .html files.  500 word count limit.  I think that 500 will feel very short; **be judicious about including only the most important info!**
+
+In this one, you'll almost certainly need more than 2 graphs.  Let's say, **no more than 6 graphs**.  
 
 Your report should include:
 
 - Relevant observations about the distribution for sale price.
-- The equation for your final model. 
+- The equation for your final model.  Ask how to make it look pretty like this:  
+
+$$\hat{y}=b_1 x+b_0$$
+
 - A clear explanation of the coefficients.
 - A thorough analysis of the residuals.
 - A discussion about $r$, $r^2$, and what they mean.
 - A discussion about possible outliers/influential values.
 - A brief discussion of one other model you tried, and why your final model is the best.
 
+Your target audience is someone who's in the housing markets matter the most when determining value in this market?
 
 ## Deadline and Grading
 
-This lab is due **Thurs, Feb 20th at 4:59pm**.    **I'll charge a 20% late fee per day late.**  
+This lab is due **Friday, Sept 20th at 4:59pm**.  Your client needs to make a decision soon, so the deadline is critical here.  **I'll charge a 20% late fee per day late.**  
 
 I will assign grades on this project ”holistically”, not using a scoring sheet where each item is worth a certain number of points.
 
@@ -114,7 +121,8 @@ I will assign grades on this project ”holistically”, not using a scoring she
 
 - **A**: An ”A” project is truly above ordinary; it has exceptional qualities that make it stand out distinctly. An ”A” project is not the default grade.
   - Does the project fulfill the requirements of the assignment?
+  - Does this report have a ”thesis” or ”story” that is the focus? Does the rest of the report support the thesis?
   - Does the report use the subject matter from this unit appropriately? Are there tools being used in the wrong way? Is there an obvious tool that might have been used but was overlooked?
   - Are the graphics factually correct? Are they formatted well? Do they give the first visual impression that is supportive of the thesis/story of the report, or do they indicate a different story?
-  - Is the report well-written? Is there good organization of ideas? Is the story/thesis communicated clearly? Is the analysis grounded in reasonable use of statistics? Is the paper free of mechanical and grammatical errors?
-  
+  - Is the report well-written? Is there good organization of ideas? Is the story/thesis communicated clearly? Is the analysis grounded in reasonable use of statis- tics? Is the paper free of mechanical and grammatical errors?
+  - Does the report provide the right context for the target audience? Is the right information provided? Have the right assumptions been made about what the audience knows or does not know?

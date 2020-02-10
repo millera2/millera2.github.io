@@ -1,0 +1,519 @@
+---
+title: "Math 120 Week 03"
+author: "Prof Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: cerulean
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+
+
+
+
+
+
+
+# Monday
+
+
+## Example (Z Scores)
+
+On average, giraffes are 18' tall with std dev 2'.  Elephants have mean height 10' with std dev 0.8'.
+
+If a particular giraffe is 16.5', and a specific elephant is 9.3' tall, which is taller relative to their species?
+
+Answer:  z scores!!  Recall:  a z score for a particular obs is the distance between the observation and the mean, measured in std devs.  I.e., how many std devs above/below the mean are you?  
+
+Giraffe:
+
+```{r}
+(16.5-18)/2
+```
+
+Elephant:
+
+```{r}
+(9.3-10)/.8
+```
+
+
+Both are below the mean (negative z score), but giraffe had bigger z score.  Thus it's taller.
+
+## Empirical Rule (68-95-99.7 Rule)
+
+**IF** our data follows a roughly symmetric, bell-shaped unimodal distribution (normal distribution):
+
+- 68% of the data lies within +/- 1 std dev of the mean (z score btwn -1 and 1).
+- 95% of the data lies within +/- 2 std dev of the mean (z score btwn -2 and 2).
+- 99.7 of the data lies within +/- 3 std dev of the mean (z btwn -3 and 3).
+
+The empirical rule is a "heuristic"  for predicting "where" we expect data to be.  In what ranges?
+
+## Empirical Example
+
+Human height follows a normal dist.  For men, the mean is 69" and the std dev is 2.7".  About what percent of men are between 66.3" and 74.4"?  
+
+Z scores!
+
+```{r}
+(66.3-69)/2.7
+```
+
+```{r}
+(74.4-69)/2.7
+```
+
+```{r}
+34+34+13.5
+```
+
+About 81.5% of men have height in that range.
+
+About what percent of men are 77.1" tall or less?
+
+```{r}
+(77.1-69)/2.7
+```
+
+
+Hard way:  add all to the right of z=3
+
+.15+2.35+13.5+34+34+13.5+2.35 = something
+
+Smart way:  1 - .15 = 99.85% of men are 77.1" tall or below.
+
+## Conclusions about Empirical Rule
+
+Empirical rule lets us make predictions about where we expect data to lie (only in a normal dist).  
+
+Empirical rule lets you have feelings about z scores!  We know how common/uncommon a particular measurement is!
+
+If z score between -2 and 2, that's pretty common (middle 95%).  Z bigger than 2 is "unusual", and z bigger than 3 is crazy! Only 0.15% of the population that range!
+
+## Descriptive statistics
+
+We just spent two weeks learning "descriptive statistics".  I.e., what is data, what kinds of data, how do we view data, and what do we say about data?
+
+Q:  What if I want to know the average systolic blood pressure of **all** 18-22 yo Americans?  
+
+Problem:  it's impractical/impossible to track down all gazillion 18-22 year olds and administer a sphygmomanometer.  Finite time, money, resources.  
+
+In reality, we're forced to work with samples.  We hope they're Representative, i.e., the sample statistic is the similar to the population parameter.  We have to balance these two "levels" of our data:
+
+A **statistic** is a numerical summary of a sample.  I.e., the things we have.
+
+Examples:  
+- sample mean is xbar.
+- sample std dev is "s"
+- sample proportion is "phat"
+
+For each, there's a population version.  A **parameter** is a numerical summary of a population.  We hope to know these, but never will!  Big problem, since sample data is often limited!
+
+Examples:
+- pop mean is mu
+- population std dev is sigma
+- population proportion is "p" (unusual Latin instead of Greek)
+
+We'll never know these parameters, but we hope to say something smart about them based on our statistics (i.e. our sample data).  This process is called **statistical inference**:  making conclusions about population parameters based on sample statistics.
+
+## 4 Sampling Strategies
+
+(Note:  reading in 1.3 of your text)
+
+Note:  the population in question is up to YOU to determine!  Ex:  all Americans, all university students, all men, all 18-22 year olds, etc.  
+
+1) Simple Random Sample (SRS).  This is the best one!  In an SRS, all members of the population are equally likely to be chosen.  Kinda tough!  We need a list (in some order) of every member of the population, then use a random number generator to select our sample.  Usually pretty hard to do!
+
+2) Convenience sample.  Worst kind!  Just sample whoever or whatever is convenient!  Sadly, quite common.  No reason to assume that a convenience sample is representative.  
+
+3) Stratified sample.  Divide and conquer:  break population into strata (groups with commonalities, i.e. gender, age group, income level, education attainment, etc), then do SRS of each one!  Advantage:  get representation from large, diverse populations even with small samples.
+
+4) Cluster sample.  Break population into clusters, randomly select clusters (SRS of the clusters), then sample all individuals in the cluster.  Frequently used over large geographic areas.
+
+Note:  see pictures in text on p26, 28
+
+# Tuesday
+
+## Exercise 1.19 (p30)
+
+- SRS:  Might not  get coverage of all sections.  (bad!)
+- Strata are the sections!  Guarantees representation! (good!)
+- If sections are cluster, we only choose a sample of them. Some sections get skipped entirely!  (bad)
+
+## Example 1.15 (p28)
+
+- It's hard to get around the densely tropical jungle.  In SRS and Stratified, we're likely to go to many villages.  Here, clusters are more efficient.  Clusters generally are geographic units, ex, city block, village, county.  
+
+
+
+## Correlation and Linear Regression
+
+Recall, scatterplots compare two quant variables.  It's an x-y plot.  
+
+Example:  displacement (engine size) vs hwy mpg:
+
+```{r}
+plot(mpg$displ, mpg$hwy)
+```
+
+Here, looks like as displ gets bigger, fuel efficiency gets smaller.  We want to study this relationship, specifially LINEAR relationships.
+
+## Important qualities of linear relationship
+
+1) Strength.  How close to the "best fit" line are the points?  Above, we see a moderately strong relationsip.
+
+2) Direction.  Up or down?  Pos or neg?  If positive relationship, both variables increase together.  If negative, as x increases, y decreases.  Above, we see a negative relationship.  
+
+## Linear correlation coefficient
+
+We need an objective measure of the "strength" of a linear relationship.  It's called the linear correlation coefficient, "r".  (Not the same as R, our software).
+
+R tells us the strength and direction of a linear relationship.
+
+## Properties of R
+
+- CLose to 1 means strong pos rel
+- Close to -1 means strong neg rel
+- Close to 0 means no/weak linear relationship (Warning!  Could still be a nonlinear relationship!  Think:  smiley face.)
+- R doesn't depend on units (forunate!)  I.e, could switch from lbs to kg, or F to C, or mi to km, doesn't change r! 
+- Doesn't matter which is x, which is y
+
+
+# Wednesday  
+
+Reminder: sometimes we see strong linear patterns in scatterplots:
+
+```{r}
+plot(mpg$cty, mpg$hwy)
+```
+
+Seems to be a strong, positive, linear relationship between cty mpg and hwy mpg. Makes sense!  If we knew one, we ought to know the other reasonably well.  
+
+Ex:  displ vs hwy
+
+```{r}
+plot(mpg$displ, mpg$hwy)
+```
+
+Moderate, negative, lin rel.  Not as strong, but still engine size tells me about fuel efficiency.
+
+Note, not always a relationship!
+
+```{r}
+plot(iris$Sepal.Length, iris$Sepal.Width)
+```
+
+
+Not a strong relationship (r close to zero).  
+
+The linear correlation coefficient, r, measures strenght AND direction of a lin rel.  
+
+Easy in r:  cor() 
+
+```{r}
+cor(iris$Sepal.Length, iris$Sepal.Width)
+```
+
+R is small, doesn't seem like there's a linear relationship.  
+
+# Best-Fit line
+
+When there is a strong linear relationship, we can imagine a line that comes close to all the points.  What is it?  
+
+The "best fit" line is the one the miminizes the square of the residuals, i.e., the vertical distances from the points to the line.
+
+Btw:  we use square residuals to make all the distances positive.  Otherwise, they'd cancel eachother out!  Similar to std dev.  
+
+Fortunate fact:  there's exactly one line that does the "best" job, i.e., minimizes square residuals.  
+
+Proving that is hard.  Finding the equation is easy!
+
+ANy line equation requires two pieces:  slope and intercept.  In stats, b0 is intercept, b1 is slope, so:
+
+yhat = b0 + b1*x
+
+Just find slope and intercept (in that order), and you're done!
+
+Slope:  b1 = r*s_y/s_x
+
+Two interesting notes:
+
+- s_y/s_x is kinda like change in y over change in x.  Makes sense!
+- the slope is scaled by the correlation coefficient.  Ie., strong relationship, bigger slope!
+
+Once you've got the slope, a neat fact helps you find the intercept:  the least squares line ALWAYS touches the point (xbar,ybar)
+
+Put it together, algebra algebra:
+
+b0 = ybar - b1*xbar
+
+## Example: compute equation
+
+Suppose for a dataset, r = 1/2,  xbar = 1, ybar = 2, s_x = 3, s_y = 6  
+
+Example in R:  displ vs hwy
+
+```{r}
+plot(mpg$displ, mpg$hwy)
+```
+
+Find all summary stats:  r, xbar, ybar, sy, sx:
+
+```{r}
+r <- cor(mpg$displ, mpg$hwy)
+```
+
+```{r}
+xbar <- mean(mpg$displ)
+```
+
+```{r}
+ybar <- mean(mpg$hwy)
+```
+
+```{r}
+sx <- sd(mpg$displ)
+```
+
+```{r}
+sy <- sd(mpg$hwy)
+```
+
+Slope:
+
+```{r}
+r*sy/sx
+```
+
+intercept:
+
+```{r}
+ybar - (-3.530589)*xbar
+```
+
+All together:  yhat = 35.69765 - 3.530589x
+
+
+## Predictions with best fit line
+
+Based upon our linear model, what would we predict the hwy fuel efficiency of a car with engine displacment of 3.5 L?
+
+To predict:  plug in!
+
+x = 3.5
+
+```{r}
+39.69765 - 3.530589*3.5
+```
+
+We'd predict it to have a hwy mpg of 27.34.
+
+
+
+3
+======================
+======================
+
+======================
+
+=======================
+====================
+
+
+R tells us the strength and direction of a linear relationship.
+
+## Properties of R
+
+- CLose to 1 means strong pos rel
+- Close to -1 means strong neg rel
+- Close to 0 means no/weak linear relationship (Warning!  Could still be a nonlinear relationship!  Think:  smiley face.)
+- R doesn't depend on units (forunate!)  I.e, could switch from lbs to kg, or F to C, or mi to km, doesn't change r! 
+
+
+
+
+
+
+
+# Wednesday
+
+We've seen, sometimes there are patterns in scatterplots.  Here in 120, we study linear patterns.  Ex:  mpg
+
+```{r}
+plot(mpg$cty, mpg$hwy)
+```
+
+Ah!  Looks like a strong, positive, linear relationship.  Makes sense, if a car is more efficient in the city, I'd expect more effient on hwy.  If we know one, we ought to be able to guess the other!  Predictions!
+
+Linear correlation coefficient r measures STRENGTH and DIRECTION of a linear relationship.
+
+Easy to find r in R:
+
+```{r}
+cor(mpg$cty, mpg$hwy)
+```
+
+Another example:  displ vs hwy
+
+```{r}
+plot(mpg$displ, mpg$hwy)
+```
+
+Looks like a moderate neg lin rel.  Makes sense, bigger engines are less efficient.  What about r?
+
+```{r}
+cor(mpg$displ, mpg$hwy)
+```
+
+
+Sometimes there's nothing:
+
+```{r}
+plot(iris$Sepal.Length, iris$Sepal.Width)
+```
+
+Doesn't seem to be a relationship.  Expect r~0. 
+
+```{r}
+cor(iris$Sepal.Length, iris$Sepal.Width)
+```
+
+
+## Best fit line
+
+Idea: in some data, seems like a line could get close to all the points.  Could tell us about the relationship!  Could let us predict!
+
+What is it?  How do we get it?  
+
+Idea:  find the equation of the line that minimizes square residuals, i.e., square vertical distances between the points and the line.
+
+Btw:  square is necessary, because otherwise the pos and neg resids cancel eachother out.  The average residual is zero!  Square prevents this.  Similar to std dev.
+
+Good news:  turns out there's exactly one line that does the *best* job.  I.e., the best fit line is unique!  Relief, don't have to worry about multiple models!
+
+## Equation of the line
+
+To find any line equation, just need two things:  slope and intercept.
+
+yhat = b0 + b1*x
+
+b0 = y-int
+
+b1 = slope
+
+Slope:
+
+b1 = r*sy/sx
+
+Interesting notes:
+
+- sy/sx is similar to change in y over change in x
+- strong relationship means bigger r means steeper slope! x has a bigger effect on y!  If weak relationship, r is close to zero, and thus so is slope.
+
+To find intercept, we use a neat fact:  the best fit line always touches the point (xbar, ybar).  Cool!  Makes sense!  Using this, and a little algebra:
+
+b0 = ybar - b1*xbar
+
+All together:
+
+yhat = b0 + b1*xbar.
+
+First, find b1, then b0.  Done!
+
+## Example:  
+
+Suppose in a dataset with x and y variables, we have:
+
+r = 1/2, xbar = 2, ybar = 3, sx=4, sy=8
+
+Find the equation of this best fit line.
+
+## Example in R
+
+Find equation relating displ and hwy mpg.  Need summary stats.
+
+r:
+
+```{r}
+r <- cor(mpg$displ, mpg$hwy)
+r
+```
+xbar
+```{r}
+xbar <- mean(mpg$displ)
+ybar <- mean(mpg$hwy)
+sx <- sd(mpg$displ)
+sy <- sd(mpg$hwy)
+
+```
+
+Find slope:
+
+```{r}
+
+# b1 = r*sy/sx
+
+b1 <- r*sy/sx
+b1
+```
+Intercept:
+```{r}
+b0 <- ybar-b1*xbar
+b0
+```
+
+All together:  yhat = 35.69765 - 3.530589x
+
+Let's look!
+
+
+
+
+## Making predictions
+
+Easy - plug in x!
+
+Example: what would we expect the hwy mpg of a car with an engine size of 3.5L to be?  
+
+Plug in x= 3.5!
+
+```{r}
+35.69765 - 3.530589*3.5
+```
+
+
+
+
+
+
+
+
+
+
+
