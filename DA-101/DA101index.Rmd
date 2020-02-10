@@ -59,6 +59,7 @@ theme_set(                                #this sets the theme for all    #
 - [Baby Names](https://drive.google.com/file/d/1W5baem_xOJ9SVlaD_QHnXNdfA9dtBXaS/view?usp=sharing)
 - [Death Penalty](https://millera2.github.io/Data/death-penalty-data.csv)
 - [CIRP DATASET](https://drive.google.com/file/d/1-FxOfb3-Hm8DPKSpkqlHGZ91154xMW4s/view?usp=sharing)
+- [Lobbyist Data Chicago](https://millera2.github.io/DA-101/lobbyist-data-gifts.csv)
 
 ## Helpful Files
 
