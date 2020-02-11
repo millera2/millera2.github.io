@@ -1,5 +1,5 @@
 ---
-title: "DA 101 Week 2"
+title: "DA 101 Week 4"
 author: "Prof Miller"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
@@ -52,7 +52,8 @@ More tricks: lists
 Example:  iris sepal length
 
 ```{r}
-ggplot(iris, aes(Sepal.Length, fill=Species))+geom_histogram()
+ggplot(iris, aes(Sepal.Length, fill=Species))+
+  geom_histogram()
   
 ```
 
@@ -61,4 +62,119 @@ ggplot(iris, aes(Sepal.Length, fill=Species))+geom_histogram()
 Inline example:
 
 The mean sepal length is `r mean(iris$Sepal.Length)`
+
+
+```{r}
+head(iris)
+
+summary(iris$Sepal.Length)
+```
+
+```{r}
+filter(iris, Sepal.Length >4.8 & Species == "setosa")
+```
+
+
+Here is a graph is iris sepal length
+
+
+```{r}
+ggplot(iris, aes(Sepal.Length))+geom_histogram()
+```
+
+
+Down here, here are some things I thought about the histogram.  
+
+
+
+
+
+# Monday
+
+```{r}
+lobbydata <- read.csv("lobbyist-data-gifts.csv")
+head(lobbydata)
+
+# as.Date(lobbydata$CREATED_DATE, "%Y-%m-%d")
+
+# make backup
+
+lobbyBackup <- lobbydata
+
+
+lobbydata$CREATED_DATE <- as.Date(lobbydata$CREATED_DATE, "%Y-%m-%d")
+
+head(lobbydata)
+
+## line plot by day
+
+lobbydata %>% group_by(CREATED_DATE) %>% 
+  summarise(Total = n()) %>%
+  ggplot(aes(x=CREATED_DATE, y=Total))+geom_line()
+
+## plot donations by year and month for clearer trend
+
+head(lobbydata)
+
+#change format of date to year-month
+
+format(lobbydata$CREATED_DATE, "%Y-%m")
+
+lobbydata$CREATED_DATE <- format(lobbydata$CREATED_DATE, "%Y-%m")
+
+head(lobbydata)
+
+lobbydata %>% group_by(CREATED_DATE) %>% 
+  summarise(Total = n()) %>%
+  ggplot(aes(x=CREATED_DATE, y=Total, group=1)) + geom_line() +
+  theme(axis.text.x = element_text(angle=-90))
+
+
+# by year
+
+# format(lobbydata$CREATED_DATE, "%Y")
+
+head(lobbydata)
+
+# as.Date(lobbydata$CREATED_DATE, "%Y-%m")
+
+#not sure why this isn't working!  Backup to the rescue!
+
+lobbydata <- lobbyBackup
+
+
+head(lobbydata)
+
+lobbydata$CREATED_DATE <- as.Date(lobbydata$CREATED_DATE, "%Y-%m-%d")
+
+lobbydata$CREATED_DATE <- format(lobbydata$CREATED_DATE, "%Y")
+
+head(lobbydata)
+
+lobbydata %>% group_by(CREATED_DATE) %>%
+  summarise(Total = n()) %>%
+  ggplot(aes(x=CREATED_DATE, y=Total, group=1))+geom_line()
+
+# Example:  compare departments
+
+lobbydata %>% group_by(CREATED_DATE, DEPARTMENT) %>%
+  summarise(Total = n()) %>%
+  ggplot(aes(x=CREATED_DATE, y=Total, group=DEPARTMENT, color=DEPARTMENT))+
+  geom_line()+theme(legend.position = "none")
+
+
+head(lobbydata)
+
+
+
+```
+
+## In-class challenge:  
+
+Make a line graph that shows trends in donations (based on the CREATED_DATE variable) just like the one we did for the death penalty.
+
+
+
+
+
 

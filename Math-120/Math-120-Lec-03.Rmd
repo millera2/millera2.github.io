@@ -206,13 +206,55 @@ R tells us the strength and direction of a linear relationship.
 
 
 
+# Wednesday
 
+## Finding the equation for the least squares line
 
+Idea: the best fit line is the one that minimizes the square residuals, i.e. the square vertical distance between the points and the line.
 
+Fortunately, there's always only one line that accomplishes this!  
 
+Like all lines, there are two parts:  slope and intercept.
 
+In high school, you learned 
 
+- y = mx + b
 
+Here, we use different letters for the slope and intercept, but the meaning is the same:
+
+- yhat = b0 + b1x
+
+where
+
+- b0 = y-intercept
+- b1 = slope
+
+They're easy to find:
+
+1)  Find the slope.  The equation is
+
+$$b_1 = r\cdot \frac{s_y}{s_x}$$
+
+Two notes:
+
+- Similar to change in y over change in x.  Makes sense!
+- Stronger correlation means steeper slope!  I.e., stronger correlation means that x has a more dramatic effect on y.
+
+2) Find intercept.  We use the **very cool fact** that the least-squares line always touches the point $(\bar{x}, \bar{y})$ :
+
+$$ b_0 = \bar{y} - b_1 \cdot \bar{x} $$
+
+## Example
+
+Suppose xbar = 1, ybar = 2, sx = 3,  sy = 6, and r = 1/2.  
+
+Then, the equation of the line:
+
+b1 = (1/2)*6/3 = 1
+
+b0 = 2 - 1*1 = 1
+
+Thus yhat = 1 + x
 
 
 

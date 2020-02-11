@@ -1706,7 +1706,7 @@ summary {
 
 <h1 class="title toc-ignore">Math 120 Week 03</h1>
 <h4 class="author">Prof Miller</h4>
-<h4 class="date">10 February, 2020</h4>
+<h4 class="date">11 February, 2020</h4>
 
 </div>
 
@@ -1727,6 +1727,10 @@ summary {
 <li><a href="#important-qualities-of-linear-relationship">Important qualities of linear relationship</a></li>
 <li><a href="#linear-correlation-coefficient">Linear correlation coefficient</a></li>
 <li><a href="#properties-of-r">Properties of R</a></li>
+</ul></li>
+<li><a href="#wednesday">Wednesday</a><ul>
+<li><a href="#finding-the-equation-for-the-least-squares-line">Finding the equation for the least squares line</a></li>
+<li><a href="#example">Example</a></li>
 </ul></li>
 </ul>
 </div>
@@ -1850,6 +1854,50 @@ summary {
 <li>Close to 0 means no/weak linear relationship (Warning! Could still be a nonlinear relationship! Think: smiley face.)</li>
 <li>R doesn’t depend on units (forunate!) I.e, could switch from lbs to kg, or F to C, or mi to km, doesn’t change r!</li>
 </ul>
+</div>
+</div>
+<div id="wednesday" class="section level1">
+<h1>Wednesday</h1>
+<div id="finding-the-equation-for-the-least-squares-line" class="section level2">
+<h2>Finding the equation for the least squares line</h2>
+<p>Idea: the best fit line is the one that minimizes the square residuals, i.e. the square vertical distance between the points and the line.</p>
+<p>Fortunately, there’s always only one line that accomplishes this!</p>
+<p>Like all lines, there are two parts: slope and intercept.</p>
+<p>In high school, you learned</p>
+<ul>
+<li>y = mx + b</li>
+</ul>
+<p>Here, we use different letters for the slope and intercept, but the meaning is the same:</p>
+<ul>
+<li>yhat = b0 + b1x</li>
+</ul>
+<p>where</p>
+<ul>
+<li>b0 = y-intercept</li>
+<li>b1 = slope</li>
+</ul>
+<p>They’re easy to find:</p>
+<ol style="list-style-type: decimal">
+<li>Find the slope. The equation is</li>
+</ol>
+<p><span class="math display">\[b_1 = r\cdot \frac{s_y}{s_x}\]</span></p>
+<p>Two notes:</p>
+<ul>
+<li>Similar to change in y over change in x. Makes sense!</li>
+<li>Stronger correlation means steeper slope! I.e., stronger correlation means that x has a more dramatic effect on y.</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Find intercept. We use the <strong>very cool fact</strong> that the least-squares line always touches the point <span class="math inline">\((\bar{x}, \bar{y})\)</span> :</li>
+</ol>
+<p><span class="math display">\[ b_0 = \bar{y} - b_1 \cdot \bar{x} \]</span></p>
+</div>
+<div id="example" class="section level2">
+<h2>Example</h2>
+<p>Suppose xbar = 1, ybar = 2, sx = 3, sy = 6, and r = 1/2.</p>
+<p>Then, the equation of the line:</p>
+<p>b1 = (1/2)*6/3 = 1</p>
+<p>b0 = 2 - 1*1 = 1</p>
+<p>Thus yhat = 1 + x</p>
 </div>
 </div>
 

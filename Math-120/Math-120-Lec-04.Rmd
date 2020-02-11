@@ -195,6 +195,308 @@ Most important observation:  is there a "pattern" or not?
 If there *is* a pattern, ie if errors are predictable, it suggests we ought to be able to find a better model (quadratic, logistic, exponential, etc...).
 
 
+-----------------------------------
+----------------------------
+
+
+
+
+--------------------
+
+
+
+
+# Tuesay
+
+## Warm-up example 1 (finding equation)
+
+Suppose we have data on 50 men, and we wish to predict their weight based upon their height.  
+
+We find:
+
+mean height = 69.4"
+mean weight = 174 lbs
+
+sd height = 3.2"
+sd weight = 8.7 lbs
+
+r = 0.86
+
+Find the equation for the least squares line.  
+
+First:  slope.   
+
+```{r}
+b1 <- .86*8.7/3.2
+b1
+```
+
+Next:  int
+
+```{r}
+174 - 2.338*69.4
+```
+
+Full equation:  yhat = 11.743 + 2.338x
+
+
+## Warm-up 2  
+
+Based upon the above model, predict the weight for a man who is 65".  
+
+Plug in x=65
+
+```{r}
+11.743 + 2.338*65
+```
+
+## Warm-up 3
+
+Interpret the the coefficients of the model above.
+
+Slope:  For each additional inch taller a man is, we expect his weight to increase by 2.338 lbs.  
+
+Int:  If  a man is 0 in tall, we expect him to weigh 11.743 lbs.  Extrapolation!  
+
+
+## Warm-up 4
+
+If the man in part 3 above actually weighed 181 lbs, what's the residual for his measurment?
+
+Resid = obs - expected
+      =  y - yhat
+      
+```{r}
+181 - 163.713
+```
+      
+Ie our model under-approximated his weight by 17.287 lbs.  
+
+## Interpeting residual plots
+
+Recall, analyzing residuals is an important tool in evaulating how good a linear model is.
+
+Recall, a residual plot has 
+
+x = original x data
+y = residuals
+
+```{r}
+irisModel <- lm(data=iris, Petal.Width~Petal.Length)
+
+plot(iris$Petal.Length, irisModel$residuals)
+
+```
+
+** Most important thing **:  Do you see a "pattern"?  
+
+If there is a pattern, it suggests that our errors are predictable!  We ought to be able to predict them, i.e., there ought to be a better model than linear.  Linear model not the best!
+
+If no pattern, then lin model is probably as good as it gets.
+
+Good resid:  most are close to zero, even dispersion on both sides, no form or pattern.  Blob!  Densest at y=0.  Called:  homoskedastic.  
+
+Q:  What kinds of "patterns" might we see?  
+
+A:  Two main kinds
+
+1) Curve/line/polynomial
+
+Example:  mpg
+
+```{r}
+plot(mpg$displ, mpg$hwy)
+cor(mpg$displ, mpg$hwy)
+
+```
+
+Note: looks like curvy pattern.  let's look at resids
+
+```{r}
+mpgModel <- lm(data=mpg, hwy~displ)
+#plot resids
+plot(mpg$displ, mpgModel$residuals)
+```
+
+Woah!  Even though r is rather strong (-.76), looks like there might be a better model.  
+
+2)  Heteroskedasticity.  Variance not even across the range.  Bad!  Lin model is failing in places.
+
+
+
+## Outliers and Influential Values
+
+Outliers can strongly affect our model.  But, sometimes they have little effect!
+
+- Sometimes, an outlier can strongly increase correl coeff r!  I.e., even though there really isn't a lin rel, the outlier might make it seem like there is!  
+
+- Sometimes, an outlier can strongly decrease r.  I.e., even though there's a strong relationship, the outlier might make it seem otherwise!
+
+- Sometimes, outliers have little effect on the model!
+
+See notes for examples.
+
+Because of this, it's *vital* to look at the scatterplot.  Ie the coeff r alone is not enough!  No way to know how the outlier affects the scatterplot unless you look at it.
+
+Since it's easy in software to run scatterplot, probably best to do both:  with and without outlier.  Did it have an effect?  Check!
+
+
+
+
+
+
+```{r}
+sd(mpg$displ)
+
+cor(mpg$displ, mpg$hwy)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+-----------------------------
+
+-----------------------
+
+
+------=-----
+
+
+
+
+
+# Tuesday 
+
+## warm up 1
+
+We a dataset taken from measurements of 50 men, and we wish to predict their weight based upon their height.
+
+Summary stats:
+
+mean height: 69.4"
+mean weight: 179.2 lbs
+
+sd height: 3.1"
+sd weight: 9.4 lbs
+
+Correl coff r = 0.821
+
+Find the equation for the regression line.
+
+
+1st, slope:
+```{r}
+0.821*9.4/3.1
+```
+
+2nd, y-int:
+
+```{r}
+179.2 - 2.489*69.4
+```
+
+yhat = 6.463+2.489x
+
+## warm up 2
+
+Interpret the coefficients of the model in part 1 above.
+
+If a man's height increases by 1 in, then we expect/predict his weight to increase 2.489 lbs.
+
+If a man is zero inches tall, we predict his weight to be 6.463lbs.  Extrapolation!  
+
+## Warm-up 3
+
+Based upon the above model, what would you predict the weight of a man who's 65" tall to be?
+
+Plug in x = 65!
+
+```{r}
+6.463 + 2.489*65
+```
+
+## warm-up 4
+
+Suppose Mike is 65" and weighs 181 lbs.  What was the residual for this observation?
+
+resis = obs - exp
+      = y - yhat
+      = 181 - 168.248
+      
+```{r}
+181 - 168.248
+```
+      
+Ie we under-approximated by 12.752 lbs.  
+
+## Interpreting Residuals
+
+Resids tell us a lot about how good/bad  appropriate/inappropriate a linear model is.
+
+Main tool:  resid plot
+
+x = original x data
+y = residuals
+
+**Most important observation in resid plot: **  Is there a "pattern"?
+
+If there is a pattern in resid plot, then our errors are predictable!  In that case, we ought to be able to do better!  Ie, pattern in resids means that linear model isn't the best.
+
+Two main types of "patterns":
+
+- Line/curve.  If so, we're systematically over/under approximating in certain ranges.
+- Heteroskeastic resids have change magnitute over the range.  The lin model is failing on one side of the range.
+
+**Good residuals**  Homoskedastic (i.e. even disprsion across the range), more dense toward y=0 (most are small)..
+
+## Example:  good resids
+
+Data:  mpg cty vs hwy
+
+```{r}
+plot(mpg$cty, mpg$hwy)
+#resids
+mpgModel <- lm(data=mpg, hwy~cty)
+plot(mpg$cty, mpgModel$residuals)
+```
+
+## Example:  bad resids
+
+Data:  mpg displ vs hwy
+
+```{r}
+plot(mpg$displ, mpg$hwy)
+# resids
+
+mpgModel2 <- lm(data=mpg, hwy~displ)
+plot(mpg$displ, mpgModel2$residuals)
+```
+Curve pattern suggests that linear model isn't the best.  
+
+## Outliers
+
+Q:  if scatterplot has an outlier, what affect does that have on the  model?
+A:  it depends!
+
+- Sometimes, outliers strengthen r!!  I.e., there really isn't a relationship, but the outlier might make it seem like there is.
+- Sometimes, outlier weaken r!  Ie they make it seem like there isn't a lin rel, when really there is.
+- Sometimes, outliers have little/no effect on the linear model!
+
+Because of this, probably best to run the model both ways:  with and without outliers.  Only your human eyeballs can tell if outliers are having an effect!
+
+
+
+
+
+
 
 
 

@@ -44,7 +44,7 @@ theme_set(                                #this sets the theme for all    #
 
 
 
-## Next Quiz: Wed 2/5
+## Next Quiz: Wed 2/12
 
 Each wednesday, we'll have a quiz that follows from the material of the previous week.  They'll be a mix of multiple-choice and short-answer questions.
 
