@@ -102,7 +102,7 @@ Your report should include:
 
 ## Deadline and Grading
 
-This lab is due **Thurs, Feb 20th at 4:59pm**.    **I'll charge a 20% late fee per day late.**  
+This lab is due **Thurs, Feb 20th at 11:59pm**.    **I'll charge a 20% late fee per day late.**  
 
 I will assign grades on this project ”holistically”, not using a scoring sheet where each item is worth a certain number of points.
 
