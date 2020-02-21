@@ -1,5 +1,5 @@
 ---
-title: "Math 120 Week 04"
+title: "Math 120 Week 05"
 author: "Prof Miller"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
@@ -130,7 +130,7 @@ Our goal:  get to know three of the most important ones.
 
 Binomial dist, geometric dist, and poisson.
 
-# Binomial Dist
+## Binomial Dist
 
 Example:  A quiz has 5 multiple choice questions with answer a, b, c, d.
 
@@ -165,8 +165,6 @@ The binomial has two parts:
 
 
 
-
--------------------------------
 
 
 
@@ -412,9 +410,6 @@ Let's assume that she doesn't get tired, 30% for each.
 
 
 
-------
-----
-
 
 
 
@@ -425,7 +420,7 @@ Let's assume that she doesn't get tired, 30% for each.
 Continuing our tour of probability distributions.  Next...
 
 
-# Geometric Dist
+## Geometric Dist
 
 The geo dist involves similar circumstances to the binomial:
 
@@ -592,6 +587,67 @@ If X is poisson, it has the following dist:
 
 
 
+# Friday
+
+## Solving Poisson Problems
+
+
+
+- Japan began recording earthquake data in 1884.  In the 136 years since then, the Tokyo area has experienced 5 of the "strongest" category earthquakes.  What's the probability that at least one such earthquake will occur next year?
+
+Find lambda:
+
+```{r}
+5/136
+```
+
+
+```{r}
+1-(5/136)^0*exp(-5/136)/1
+```
+
+There's a 3.6% chance of an earthquake in the next year.
+
+## Mix-up
+
+Japan began recording earthquake data in 1884.  In the 136 years since then, the Tokyo area has experienced 5 of the "strongest" category earthquakes.  What's the probability that at least one such earthquake will occur next *two years*?
+
+Same, but with lambda = 2*5/136 ...
+
+```{r}
+1-(2*5/136)^0*exp(-2*5/136)/1
+```
+
+A Poisson random variable counts the number of occurances of an event over a unit of time or space.  
+
+
+## Probability functions in r:
+
+- dbinom(x, n, p)
+- dgeom(x, p)
+- dpois(x, lambda)
+
+## Example:  eartquakes
+
+We saw lambda = 5/136, finding P(X=0).  So,
+
+```{r}
+1-dpois(0, 5/136)
+```
+
+## Important note:  dgeom
+
+In book/class: x = total number of trials until first success
+In r, dgeom:  x = number of failures, i.e., #trial -1
+
+Example:  What's the probability we have to roll a dice 10 times until we find the first 6?  
+
+Total trials = 10
+Numbeber of failures = 9
+
+```{r}
+dgeom(9, 1/6)
+```
 
 
 
@@ -601,17 +657,64 @@ If X is poisson, it has the following dist:
 
 
 
+# Friday
+
+## Solving Poisson Problems
 
 
 
+- Japan began recording earthquake data in 1884.  In the 136 years since then, the Tokyo area has experienced 5 of the "strongest" category earthquakes.  What's the probability that at least one such earthquake will occur next year?
+
+
+Here, X~pois, it counts the number of earthquakes per year year.
+
+```{r}
+1-(5/136)^0*exp(-5/136)/1
+```
+
+About a 3.6% chance of strongest category quake.
+
+## Mix-up
+
+
+Japan began recording earthquake data in 1884.  In the 136 years since then, the Tokyo area has experienced 5 of the "strongest" category earthquakes.  What's the probability that at least one such earthquake will occur next five years?
+
+
+Only diff:  lambda has changed:  lambda = 5*5/136 = 25/136
+
+
+```{r}
+1-(5*5/136)^0*exp(-5*5/136)/1
+```
 
 
 
+## Built-in R probability functions
 
+Three:
 
+dbinom(x, n, p)
+dgeom(x, p)
+dpois(x, lambda)
 
+Example:  first quake example
 
+1 - P(X=0),  lambda = 5/136
 
+```{r}
+1- dpois(0, 5/136)
+```
 
+WARNING:  dgeom works a little different
 
+In class/book:  x = total number of trials
+In R:           x = number of failures before the first success
+
+Example:  What's the probability we have to roll a dice 10 times before we get the first six?
+
+10 rolls -> 9 failures, last is success
+
+```{r}
+dgeom(9,1/6)
+```
 
