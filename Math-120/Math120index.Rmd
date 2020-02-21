@@ -58,8 +58,18 @@ theme_set(                                #this sets the theme for all    #
   - Measures of center (and the meaning/idea for each)
   - Measures of spread (and the meaning/idea for each)
   - How shape affects summary statistics (skew)
+  - Which statistics are robust?
   - All about outliers (both concepts and math)
   - The Empirical Rule
+- Statistical Inference
+  - What is statistical inference?
+  - What's the difference between statistics and parameters?
+  - What statistics have we discussed, and what are their corresponding parameters?
+- Sampling Strategies
+  - SRS
+  - Stratified
+  - Cluster
+  - Convenience
 - Correlation and Linear Regression
   - Understanding scatterplots
     - Form, strength, and direction of relationships
@@ -93,6 +103,28 @@ theme_set(                                #this sets the theme for all    #
   - "Mutually Exclusive" and "Independent"
     - Idea behind them
     - Verifying mathematically
+
+## Exam I Reading and Practice Problems
+
+- Sec 1.2 Data Basics (Exercises start on on p 19)
+  - 1.3c, 1.5c, 1.9
+- Sec 1.4 Sampling Strategies (Exercises start on on p 29)
+  - 1.17, 1.19, 1.23, 1.27
+- Sec 2.1 Summary Statistics and Visuals (Exercises start on on p56)
+  - 2.5, 2.9, 2.11b, 2.12, 2.13, 2.15, 2.16, 
+- Sec 8.1 Correlation(Exercises start on on p 312)
+  - 8.7
+- Sec 8.2 Linear Regression (Exercises start on p325)
+  - 8.19, **8.23**, 8.25, 8.21d and 8.22d (interpreting residual plots only)
+- Sec 8.3 Ourliwea in Lin Reg (Exercises start on p330)
+  - 8.27 (I'll ask:  does the outlier increase, decrease, or not change the correlation?)
+- Sec 4.2 Geometric Dist (Exercises start on p148)
+  - 4.13a
+- Sec 4.3 Binomial Dist (Exercises start on p156)
+  - 4.17, 4.21
+- Sec 4.5 Poisson Dist 
+  - 4.33ab
+
 
 
 ## Labs

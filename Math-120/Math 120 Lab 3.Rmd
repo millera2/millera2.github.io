@@ -70,10 +70,13 @@ Note that I've given you the numerical answers for each one so you can check you
   - **Answer:**  69.881%
 
 
+
 3) In one particular quest in the game, the player must compete a "battle arena" challenge:  you must defeat exactly 8 enemies in a row.  Enemies in this fight have a 42% chance of dropping a health pack when they're defeated.  What's the probability that at least 6 of the 8 enemies drop a health pack?
 
 
   - **Answer:** 6.337%
+ 
+
 
 4) The game world has a simulated day-night cycle with weather, including rain.  The chance of rain varies from location to location from 5% to 17%.  What's the probability that two of the next ten days are rainy?
 
