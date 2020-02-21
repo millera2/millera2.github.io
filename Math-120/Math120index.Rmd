@@ -44,16 +44,62 @@ theme_set(                                #this sets the theme for all    #
 
 
 
-## Next Quiz: Wed 2/12
 
-Each wednesday, we'll have a quiz that follows from the material of the previous week.  They'll be a mix of multiple-choice and short-answer questions.
+## Exam I Topics
 
+- What is data?
+  - Tidy Data
+  - Observations/cases
+  - Variable Types
+- Visualizing data
+  - Appropriate visuals for each type
+  - Understanding and interpreting data visualizations
+- Summary Statistics
+  - Measures of center (and the meaning/idea for each)
+  - Measures of spread (and the meaning/idea for each)
+  - How shape affects summary statistics (skew)
+  - All about outliers (both concepts and math)
+  - The Empirical Rule
+- Correlation and Linear Regression
+  - Understanding scatterplots
+    - Form, strength, and direction of relationships
+  - The correlation coefficient, *r*
+    - Matching r with a scatterplot
+    - properties of r
+      - doesn't depend on units
+      - $-1\leq r \leq 1$ always
+      - doesn't matter which is $x$, which is $y$
+  - The meaning of the regression line
+    - How is it found? What makes it the "best fit"?
+    - What does it do, what's it for?
+    - Matters a lot which is $x$, which is $y$
+    - Making predictions (math)
+  - Interpreting coefficients
+    - meaning of slope
+    - meaning of intercept
+  - Residuals
+    - What they mean (conceptually and visually)
+    - How to compute (math)
+    - Interpreting residual plots
+  - Effects of outliers
+  - Interpreting coefficient of determination, r^2
+- Probability
+  - Two notions of probability
+  - Law of large numbers
+  - Meaning of "probability distribution"
+  - Recognizing and using "famous" distributions:
+    - Binomial, Geometric, and Poisson
+  - Probabilities from a contingency table
+  - "Mutually Exclusive" and "Independent"
+    - Idea behind them
+    - Verifying mathematically
 
 
 ## Labs
 
 - [Lab 1](https://millera2.github.io/Math-120/Math-120-Lab-1.html) 
 - [Lab 2](https://millera2.github.io/Math-120/Math-120-Lab-2.html)
+- [Lab 3](https://millera2.github.io/Math-120/Math-120-Lab-3.html)
 
 
 ## Datasets

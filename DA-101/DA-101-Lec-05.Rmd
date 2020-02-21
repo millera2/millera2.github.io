@@ -32,382 +32,264 @@ theme_set(theme_tufte() +
 
 
 
-
-## Cool example:  Death Penalty Data
-
-First, download and load the csv.
-
-```{r}
-deathData <- read.csv("death penalty data.csv")
-head(deathData)
-```
-
-About the data:  the death penalty was illegal for decades after the civil war.  A supreme cour case in the 70s (1977) legalized it again.  This data is a list of everyone who's received the death penalty since then.
-
-Q:  What about race?  
-
-Idea:  histogram
-
-Can't do histo, not numeric!
-
-Scatterplot doesn't make sense, that's for two numerical variables.
-
-
-
-```{r}
-#ggplot(deathData, aes(x=Race))+geom_histogram()
-```
-SInce we're working with categorical data, need a barplot!
-
-```{r}
-ggplot(deathData, aes(Race, fill=Race))+geom_bar()
-```
-
-Woah!  Does this match up with US demographics?  I think not!  Follow-up question:  
-- what are the demographics of the us
-- what prorortions are we actually seeing here
-- is there a statistically significant difference from population?
-- are particular groups disproportionately receiving the death penalty?
-
-Technique:  prop tables
-
-They're easy in R:  use table()
-
-```{r}
-table(deathData$Race) %>% prop.table()
-```
-
-
-
-
-
-
-
 # Monday
 
-## More examples with death penalty
+## Hypothesis Tests
+
+Remember, all have 4 parts:
+
+- Hypotheses:
+
+  - Null hypothesis:  H0.  The assumption we make.
+  - Alt hypotheses:  Ha.  The thing we're trying to prove.  
+  
+- Test stat.  Summary of our actual data.  I.e., what we observed!
+
+- p-value.  Most important part!  A p val is the probability of observing a sample result that's as (or more) extreme than the one we got, assuming the H0 is true. P-vals work because of the central limit theorem:  as long as sample size is big, sample stats like mean and prortion follow a normal dist.
+
+NOTE:  small p-vals provide evidence AGAINST H0.  If p-val is small, then our sample data is unlikely according to H0.  We trust our data, and reject H0!
+
+- Conclusion.  If p-val is "small enough", we reject H0 and find evidence to support Ha.  Yay!  This is what we hoped for!
+
+Q:  How small is "small enough"?  The cut-off is called the "significance level".  Symbol:  alpha.  Most common:  alpha = .05.  I.e., if our test stat is smaller than .05, we reject H0.  Otherwise, if p > .05, we fail to reject.
+
+NOTE:  the choice of alpha is totally arbitrary!  It's up to you!  alpha = .05 is common, but not divine or necessary.  
+
+NOTE:  In labs, always use alpha = .05.  But, DO mention that you're doing this.  
+
+## Statstical Inference - stats vs parameters
+
+Statistical inference is the process of making conclusions about a population based upon sample data.
+
+THE REAL PROBLEM:  we only ever have sample data!!  BUT, we want to conclusions about populations!  Even the best samples are sometimes unrepresentative.
+
+Sample data is just a slice of the real thing.  Statistical inference is the process of making mathemtically-supported conclusions based on available info.  
+
+Every quality of data has two versions:
+
+A **statistic** is a summary of sample data.  Exmamples:  
+
+- sample mean = xbar
+- sample std dev = s_x
+- sample proportion = phat
+
+A **parameter** is a summary of the whole population.  Examples:
+
+- pop mean = mu
+- pop std dev = sigma
+- pop proportion = p
+
+We only every have the stats.  But we hope to say something smart about these parameters!
+
+## 2-t tests
+
+2-t tests are used to answer the following question:  is there a difference in mean between two groups?
+
+Parameter:  mu1 - mu2
+
+## Example:  mpg dataset
+
+Is there evidence of a difference in cty fuel efficiency between pickups and suvs?
+
+1)  Hypotheses
+
+H0:  mu1 - mu2 = 0 (I.e., no difference in mpg)
+Ha:  mu1 - mu2 != 0 (I.e., there's a difference)
+
+2) Tests stat.
+
+First, filter into two groups.
 
 ```{r}
+head(mpg)
+unique(mpg$class)
 
-deathData <- read.csv("death penalty data.csv")
-head(deathData)
+pickups <- filter(mpg, class == "pickup")
+
+suvs <- filter(mpg, class == "suv")
+
+t.test(pickups$cty, suvs$cty)
 
 ```
 
-```{r}
-library(dplyr)
-library(ggplot2)
+Actual difference:  xbar1 - xbar2 = -0.5
 
-ggplot(deathData, aes(Race))+geom_bar()
-```
+Q:  is that difference big enough to conclude that the populations are different?
 
+Test sta:  t = -1.0626
 
-WHat about a visual that shows a comparison/examination of the relationship of Race and Method (of execution)?
+3) p-value = 0.2914.  Here:  IF it's true that there's no difference in mean mpg between suvs and pickups, then the probability of observing a difference in sample mean that's -.5 mpg (or larger) is 29.14%.
 
-Let's use a stacked barplot.  Set "fill" in aes()
+4)  Since our p-value is larger than .05, we fail to reject H0.  Our sample data seems to agree with the null hypothesis.  We didn't find evidence of a difference at the population level.  This result is NOT statistically significant.
 
+## Confidence Intervals
 
-```{r}
-ggplot(deathData, aes(Race, fill=Method))+geom_bar(position=position_dodge())
-```
+In a hyp test, you start with a question about a parameter and answer with sample data.
 
-## Example:  State
+In a CI, we start with our sample result, and make an estimate about the population parameter.
 
-Use a visual to show -where- executions are occuring.
-
-Idea:  use a barplot for the (categorical) State variable!
+Both are shown in the t.test() command:
 
 ```{r}
-ggplot(deathData, aes(State))+geom_bar()
-```
-
-Woah!  TX, what's up?  So many more exectutions!
-
-Moreover, seems like there's just a handful of places where the death penalty is used.
-
-Q:  What if I want to study those states where death penalty is most common?  I could use a filter!
-
-Let's try these states:  AL, FL, GA, MO, OK, TX, VA
-
-How can get a dataset with just these states?  Filter!  We can add many conditions with "or":  |
-
-```{r}
-highStates <- filter(deathData, State == "AL" | State == "FL"
-                                | State ==  "GA"
-                                | State == "MO"
-                                | State == "OK"
-                                | State == "TX"
-                                | State == "VA")
-
-head(highStates)
-
-## did it work?  check with "unique"
-
-unique(highStates$State)
-
+t.test(pickups$cty, suvs$cty)
 
 ```
 
+In the mpg example, the CI means this:  using the CLT, we are 95% confidewnc that the true differene in mean (mu1-mu2) is between -1.437 and 0.437.
 
-We've got it narrowed down.  Let's study those states.  Q:  Method.  In those states, what methods are used?
-
-```{r}
-ggplot(highStates, aes(Method))+geom_bar()
-```
-
-In these states, where capitol punishmen is used the most, we see that electrocution and Lethal Injection are the only methods used. 
-
-What about Race in those states?  Let's compare both Race and State.  
+NOTE:  hyp tests and CIs will ALWAYS give you the same conclusion about the null hypothesis.  If the H0 value is inside the CI, then we fail to reject.
 
 ```{r}
-ggplot(highStates, aes(State, fill=Race))+geom_bar(position="fill")
+unique(mpg$class)
 ```
 
-Notice here, we can compare ratios/percentages directly!  
+## Example
 
-Interesting observation:  why are so many (relatively) asian americans receiving the death penalty in OK???  Is there a story there?
-
-## Example: WHen???
-
-Q:  Can we plot time trends in the death penalty?
-
-```{r}
-head(deathData)
-```
-
-Idea:  barplot?
-
-```{r}
-ggplot(deathData, aes(Date))+geom_bar()
-```
-
-Bad plot.  Basically:  too many dates, and most only have one execution.  
-
-Problem:  we want the YEAR, not the individual day.  This is an example of "data wrangling".  Our dates aren't in the right format.
-
-```{r}
-head(deathData)
-```
-
-Problem:  see "<fctr>"?  R thinks the dates are "categorical" variables!  We want numbers.  
-
-R has built-in date functions.  Use:  as.Date()
-
-Problem:  we need to teach it the format.  
+Using only the 95% CI, decide if there's evidence of a differene in hwy mpg between compacts and 2seaters.
 
 
 ```{r}
-as.Date(deathData$Date, "%m/%d/%Y")
+compacts <- filter(mpg, class=="compact")
+twoSeaters <- filter(mpg, class=="2seater")
 
-## We actually want to save this.  Be careful!  Don't destroy your data!  Make a copy.
-
-myDeathData <- deathData  #backup
-
-myDeathData$Date <- as.Date(deathData$Date, "%m/%d/%Y")
-
-head(myDeathData)
-
-# one more step:  format for just the year
-
-myDeathData$Date <-  format(myDeathData$Date, "%Y")
-
-head(myDeathData)
-
-ggplot(myDeathData, aes(Date))+geom_bar()
-
+t.test(compacts$hwy, twoSeaters$hwy)
 
 ```
 
-This is better!  But, to show trends over time, a line graph is always better.
+We are 95% confident that the true difference in mpg between compacts and 2seaters is between 1.77mpg and 5.23mpg.  We have strong evidence of a differencein hwy fuel efficiencty between the two groups.
 
-```{r}
-# this doesn't work:
-# ggplot(myDeathData, aes(Date))+geom_line()
-```
-Uh-oh!  Line graphs need both x and y, i.e., we need to compute the totals for each year!
 
-```{r}
-head(myDeathData)
-```
 
-We need some more tools to count up all the cases.  First..
 
-## Pipes
 
-Pipes are a feature of dplyr.  Look like this:  %>% 
 
+# Wednesday
 
-Pipes let us chain together commands.  Simple examples:
+## Errors in hypothesis testing.
 
-```{r}
-## mean iris sepal length
+Idea:  these tools fail sometimes!
 
-mean(iris$Sepal.Length)
+Hyp tests can get it wrong!  Confidence intervals can fail!  What then?
 
-## here's with pipes:
+Every hyp test ends in one of two ways:
 
-iris$Sepal.Length %>% mean
+- p < alpha, we reject H0.  This gives evidence to support Ha. (alpha = .05 ususally)
+- p > alpha, we fail to reject H0.  We didnt' find evidence to support Ha. Bummer!  THINK:  The Ha is our claim that we're trying to support!
 
-## same thing!
+Of course, since these inference tools are based on samples, and sample vary randomly, sometimes our conclusions will be incorrect!
 
-iris$Sepal.Length %>% summary
+- Type I error:  we reject the H0, but we shouldn't have because H0 is TRUE!
+- Type II error:  we fail to reject the H0, but we should have because H0 is FALSE!
 
-```
+Also called:  false positive, false negative respectively.  
 
-This is super useful for chaining together many commands!  Also useful because it works in the same order that you "think" about the operations.
+We'll never know for sure, BUT we can know something about the likelihood of these errors!
 
-Example:  take iris data, filter all sepal lengths less than 5cm, filter only setosa species, then plot histogram
-```{r}
+Also: consider the consequences!
 
-iris %>% 
-  filter(Sepal.Length < 5) %>% 
-  filter(Species == "setosa") %>%
-  ggplot(aes(Sepal.Length))+
-  geom_histogram()+
-  labs(x="test")+
-  labs(y="ylabl")
+## Example 1:  Water Quality
 
-iris$Sepal.Length %>% mean
+An EPA enforcement office wonders if the local water supply contains too much of Toxin A.  The safe level is 0.8 g/ml.  
 
-```
+1) What are the hypotheses of the test she'll do?
 
+H0:  mean level = 0.8
+Ha:  mean level > 0.8
 
-Example: Star Wars Data
 
-```{r}
-head(starwars)
-```
+2) What does Type 1 error mean in this case?
 
-Use pipes to answer:
+We think that the water is dangers, when actually it's safe.
 
-- Make a list of all humans who are female
+3) What does Type 2 error mean in this case?
 
-```{r}
-starwars %>% filter(species == "Human") %>% filter(gender == "female")
-```
+We failed to reject H0.  There's not strong evidence that mean level > 0.8.  We conclude that the water is safe, when actually it's dangerous.
 
-- Make a list of all female humans with brown eyes
+If we make type I, we might waste money cleaning safe water.  
+If we make type II, then people would drink dangerous water!
 
-```{r}
-starwars %>% 
-  filter(species == "Human") %>% 
-  filter(gender == "female") %>%
-  filter(eye_color == "brown")
+Seems like Type II is worse!
 
-```
+## Example 2
 
-- Make a list of all female humans with brown eyes, hist of their height
+Think of a hyp test as a criminal trial:
 
-```{r}
-starwars %>% 
-  filter(species == "Human") %>% 
-  filter(gender == "female") %>%
-  filter(eye_color == "brown") %>%
-  ggplot(aes(height))+geom_histogram()
-```
+H0:  Defendent is innocent
+Ha:  Defendent is guilty
 
-## Super useful dplyr feature:  group_by()
+1)  What does type I error mean?
 
-Often, we want to summarize by groups.  Ex:  in the iris dataset, find the mean Sepal Length for each species.  Use group_by and summarise:
+We think they're guilty, but actually they're innocent!
 
-```{r}
+2)  What does type II error mean?
 
-iris %>% group_by(Species) %>% summarise(MeanSepal = mean(Sepal.Length))
+Fail to reject H0, no strong evidence of guilt.  We conclude they're innocent.  Acutally, they're guilty!
 
-```
+3) Which do you think is worse?
 
-In summarise, you can use almost any function and add as many as you like:
+Here, seems like type I is worse.  Don't want to punish innocent people!  (Room for debate). 
 
-```{r}
-iris %>% 
-  group_by(Species) %>% 
-  summarise(MeanSepal = mean(Sepal.Length), 
-            StdevSepal = sd(Sepal.Length),
-            MeanPetal = mean(Petal.Length),
-            StdevPetal = sd(Petal.Length))
 
-```
+## Moral of the story:  It Depends!
 
-Ex:  Garlic Mustard
+It's not always the case that Type I is worse or Type II is worse.  
 
-```{r}
-gmdata <- read.csv("GarlicMustardData.csv")
+We can't eliminate the chance of error.  BUT, we can tip the scales to make Type I or Type II more likely than the other.
 
-head(gmdata)
-```
+## alpha, beta, and power
 
-Ex:  use group_by and summarize to find mean lat and lon for each region.
+We know something about how likely these errors are.
 
-```{r}
-gmdata %>% 
-  group_by(Region) %>%
-  summarise(meanLat = mean(Latitude),
-            meanLon = mean(Longitude))
-```
+1) The probabilty of a type I error is alpha.  THE alpha!  Two important facts:
+ - Usually, there's a 5% chance of type I error!
+ - Since alpha is arbitrary, YOU can choose the prob of type I error!
+ 
+Ie, if a type I error is really, really bad, then we could use a smaller alpha!  I.e., alpha = .01.  
 
-Ex:  Make a table with mean age of convicts who received death penalty by race.
+THINK:  In a criminal trial, we say there can't be a "shadow of a doubt".  
 
-```{r}
-deathData %>% 
-  group_by(Race) %>%
-  summarise(MeanAge = mean(Age))
-```
+2) The probability of type II error is beta.  Unfortunately, we can never directly compute beta.  BECAUSE, if type II, H0 is false, and we DON'T know the true population parameter (mu, mu1-mu2, etc). Thus, can't do probability computations.
 
-You can group by multiple variables!  Ex:  race and method.
+HOWEVER, alpha and beta have a predictable relationship:  they're inverses.
 
-```{r}
-deathData %>% 
-  group_by(Race, Method) %>%
-  summarise(MeanAge = mean(Age))
-```
+- If alpha increases, then beta decreases
+- If alpha decreases, then beta increases
 
-## An important group_by/summarize function: n()
+So, if a type II error is really really bad, then we choose alpha to be larger.
 
-The n() function counts how many cases.  Useful for seeing how many!
+To keep our test "honest", it's critical to decide on alpha BEFORE conducting the test.  
+"p hacking":  Fiddling with the test to get a significant result.  
 
-Ex:  Let's make a table with counts by method:
+Ex: Conduct the test, get p = 0.055, decide to use alpha =.06.  
 
-```{r}
-deathData %>% 
-  group_by(Method, Region) %>% 
-  summarise(Total = n() )
-```
+3) Power.  Power is the probability of rejecting H0 when H0 is false.  I.e., success!  This what we hope for!
 
+Power and beta have an important relationship:
 
-## Line graph for death penalty
+  power = 1 - beta
+  beta = 1 - power
+  
+They're compliments!
 
-First, wrangle the date
+Q: if alpha increases, what happens to power?  
 
-```{r}
-head(deathData)
-as.Date(deathData$Date, "%m/%d/%Y")
+A:  Bigger alpha means we reject more.  Power is when we reject, thus bigger alpha means bigger power!
 
-## make a backup!!!!  if you do it wrong, you wreck your data!
+SO, in some sense, big alpha is good!  But it comes at a price:  greater chance of false positive!
 
-deathDataBackup <- deathData
+Or, power = 1-beta.  If alpha gets bigger, beta smaller, thus 1-beta gets bigger.  
 
-#over-write the date
+## Important factors affecting all three
 
-deathDataBackup$Date <- as.Date(deathData$Date, "%m/%d/%Y")
+1)  Sample size.  Generally, sample size is "good".  Does everything you hope for:
+- bigger n decreases *both* alpha and beta.  It increases power.
 
-head(deathDataBackup)
+2) The distance between the null hyp value and the "true" population parameter.  If this gap is bigger, the test has more power.
 
-# cool!  need year.  use format()
 
-format(deathDataBackup$Date, "%Y")
 
-# now overwrite
 
-deathDataBackup$Date <- format(deathDataBackup$Date, "%Y")
 
-head(deathDataBackup)
 
 
-#Cool, got the year.  Let's a make a table with the counts n() for each year
-
-deathDataBackup %>% 
-  group_by(Date) %>% 
-  summarise(Total = n()) %>%
-  ggplot(aes(x=Date, y=Total, group=1))+geom_line()
-```
 
