@@ -1706,7 +1706,7 @@ summary {
 
 <h1 class="title toc-ignore">Math 120 Week 05</h1>
 <h4 class="author">Prof Miller</h4>
-<h4 class="date">21 February, 2020</h4>
+<h4 class="date">25 February, 2020</h4>
 
 </div>
 
@@ -1773,6 +1773,27 @@ summary {
 <li><a href="#mix-up-1">Mix-up</a></li>
 <li><a href="#built-in-r-probability-functions">Built-in R probability functions</a></li>
 </ul></li>
+<li><a href="#monday-2">Monday</a><ul>
+<li><a href="#probability-from-two-way-contingency-tables">Probability from Two-Way (Contingency) Tables</a></li>
+<li><a href="#first-silly-example-on-board">First: silly example on board</a></li>
+<li><a href="#example-10">Example</a></li>
+</ul></li>
+<li><a href="#conditional-probability">Conditional Probability</a><ul>
+<li><a href="#example-dice-1">Example: dice</a></li>
+<li><a href="#independence">Independence</a></li>
+<li><a href="#example-11">Example</a></li>
+<li><a href="#example-12">Example</a></li>
+</ul></li>
+<li><a href="#monday-3">Monday</a><ul>
+<li><a href="#imporatnt-probability-words-and-or-not">Imporatnt probability words: and, or, not</a></li>
+<li><a href="#probability-from-tables">Probability from tables</a></li>
+<li><a href="#conditional-probabaility">Conditional Probabaility</a></li>
+<li><a href="#checking-for-independence">Checking for Independence</a></li>
+<li><a href="#example-animals">Example: animals</a></li>
+<li><a href="#example-death-penalty">Example: death penalty</a></li>
+<li><a href="#example-1-1">Example 1</a></li>
+<li><a href="#example-1-2">Example 1</a></li>
+</ul></li>
 </ul>
 </div>
 
@@ -1816,13 +1837,13 @@ summary {
 <p>I.e., if I flip a coin 10000 times, nearly 5000 of them should be heads.</p>
 <pre class="r"><code>sample(1:6, 10, replace = T) %&gt;% table %&gt;% prop.table()</code></pre>
 <pre><code>## .
-##   1   2   3   4   6 
-## 0.4 0.1 0.2 0.1 0.2</code></pre>
+##   1   2   3   4   5   6 
+## 0.1 0.2 0.1 0.1 0.2 0.3</code></pre>
 <p>Moral: with small n (n=10), our observed proportions differer from 1/6</p>
 <pre class="r"><code>sample(1:6, 10000, replace = T) %&gt;% table %&gt;% prop.table()</code></pre>
 <pre><code>## .
 ##      1      2      3      4      5      6 
-## 0.1640 0.1743 0.1665 0.1649 0.1696 0.1607</code></pre>
+## 0.1746 0.1644 0.1619 0.1678 0.1665 0.1648</code></pre>
 <p>The law of large numbers is a relief! It means we don’t have to care too much, as long as we have big sample sizes!</p>
 </div>
 <div id="probability-distributions" class="section level2">
@@ -2233,6 +2254,157 @@ summary {
 <p>10 rolls -&gt; 9 failures, last is success</p>
 <pre class="r"><code>dgeom(9,1/6)</code></pre>
 <pre><code>## [1] 0.03230112</code></pre>
+</div>
+</div>
+<div id="monday-2" class="section level1">
+<h1>Monday</h1>
+<div id="probability-from-two-way-contingency-tables" class="section level2">
+<h2>Probability from Two-Way (Contingency) Tables</h2>
+<p>Example:</p>
+<pre class="r"><code>table(mpg$cyl, mpg$drv) %&gt;% addmargins()</code></pre>
+<pre><code>##      
+##         4   f   r Sum
+##   4    23  58   0  81
+##   5     0   4   0   4
+##   6    32  43   4  79
+##   8    48   1  21  70
+##   Sum 103 106  25 234</code></pre>
+</div>
+<div id="first-silly-example-on-board" class="section level2">
+<h2>First: silly example on board</h2>
+<p>Important words: and, or , not</p>
+</div>
+<div id="example-10" class="section level2">
+<h2>Example</h2>
+<p>Based on mpg data, what’s the probability that a car has 4 cyl or rear wheel drive?</p>
+</div>
+</div>
+<div id="conditional-probability" class="section level1">
+<h1>Conditional Probability</h1>
+<p>Sometimes, knowing whether or not one event has occured affect another.</p>
+<p>Ex: if it’s cloudy, there’s a higher chance of rain.</p>
+<p>This is called “conditional” probability. Symbol:</p>
+<p>P(A | B) = “probability of A, given B”</p>
+<p>The thing after the vertical bar is the “given condition”.</p>
+<div id="example-dice-1" class="section level2">
+<h2>Example: dice</h2>
+<p>What’s the probability of rolling a 2, given that a prime number was rolled?</p>
+</div>
+<div id="independence" class="section level2">
+<h2>Independence</h2>
+<p>Idea: two events are independent if the outcome of one doesn’t affect the likelihood of the other.</p>
+<p>Mathematically, there a few ways to check.</p>
+<p>We can verify that events A and B are independent if any of the following hold:</p>
+<ol style="list-style-type: decimal">
+<li>P(A|B) = P(A) (Doesn’t matter if B happened, A unaffected)</li>
+<li>P(B|A) = P(B) (Other way around)</li>
+<li>P(A and B) = P(A)*P(B) (easy to check!)</li>
+</ol>
+</div>
+<div id="example-11" class="section level2">
+<h2>Example</h2>
+<p>Based on the animal table, are the events G = is a giraffe and R = is a republican independent? Or, is there some kind of dependence relation?</p>
+<p>P(G) = 30/100 P(R) = 40/100 P(G and R) = 10/100</p>
+<p>Since .3*.4 is not the same as .1, no! Not independent!</p>
+</div>
+<div id="example-12" class="section level2">
+<h2>Example</h2>
+<pre class="r"><code>table(mpg$cyl, mpg$drv) %&gt;% addmargins()</code></pre>
+<pre><code>##      
+##         4   f   r Sum
+##   4    23  58   0  81
+##   5     0   4   0   4
+##   6    32  43   4  79
+##   8    48   1  21  70
+##   Sum 103 106  25 234</code></pre>
+<p>Are the events 4 = 4 cyl and f = front wheel drive independent?</p>
+<p>Q: does P(4)*P(f) =? P(4 and f)</p>
+<pre class="r"><code>81/234*106/234</code></pre>
+<pre><code>## [1] 0.1568047</code></pre>
+<pre class="r"><code>58/234</code></pre>
+<pre><code>## [1] 0.2478632</code></pre>
+</div>
+</div>
+<div id="monday-3" class="section level1">
+<h1>Monday</h1>
+<div id="imporatnt-probability-words-and-or-not" class="section level2">
+<h2>Imporatnt probability words: and, or, not</h2>
+</div>
+<div id="probability-from-tables" class="section level2">
+<h2>Probability from tables</h2>
+<p>“Two way” tables or “contingency” tables compare levels for TWO categorical variables.</p>
+<pre class="r"><code>death &lt;- read_csv(&quot;death penalty data.csv&quot;)
+
+table(death$Method, death$Region) %&gt;% addmargins()</code></pre>
+<pre><code>##                   
+##                    Midwest Northeast South West  Sum
+##   Electrocution          6         0   152    0  158
+##   Firing Squad           0         0     0    3    3
+##   Gas Chamber            0         0     6    5   11
+##   Hanging                0         0     1    2    3
+##   Lethal Injection     172         4  1016   75 1267
+##   Sum                  178         4  1175   85 1442</code></pre>
+</div>
+<div id="conditional-probabaility" class="section level2">
+<h2>Conditional Probabaility</h2>
+<p>Idea: sometimes, knowing that one event has occurred affect the likelihood of another.</p>
+<p>Ex: If it’s cloudy, then there’s a higher chance of rain.</p>
+<p>We call this a “dependence” relationship.</p>
+<p>If no relationship, we call them “independent”.</p>
+<p>To find: use “conditional” probability.</p>
+<p>Symbol:</p>
+<p>P(A | B) = “probability that A happens, given that we know B happened”</p>
+<p>Ex) Dice. What’s the probability that we roll an even number, given that we roll a number greater than 2?</p>
+</div>
+<div id="checking-for-independence" class="section level2">
+<h2>Checking for Independence</h2>
+<p>Q: are two events “independent”? Are A, B indep?</p>
+<p>Three ways to check:</p>
+<ol style="list-style-type: decimal">
+<li>P(A|B) = P(A) (I.e., B doesn’t affect A)</li>
+<li>P(B|A) = P(B) (other way around)</li>
+<li>P(A and B) = P(A)*P(B) (usually easiest)</li>
+</ol>
+<p>If any one of these three holds, then so do the others, and we say A, B are <strong>independent</strong>.</p>
+</div>
+<div id="example-animals" class="section level2">
+<h2>Example: animals</h2>
+<p>Are the events G = giraffe and R = republican independent?</p>
+<p>Need 3 pieces of info:</p>
+<p>P(G)= .3 P(R)= .4 P(G and R)= .1</p>
+<p>Since .3*.4 is NOT equal to .1, we’ve found that the events are NOT independent. I.e. there’s some dependence relation between being a giraffe and being republican.</p>
+</div>
+<div id="example-death-penalty" class="section level2">
+<h2>Example: death penalty</h2>
+<pre class="r"><code>table(death$Method, death$Region) %&gt;% addmargins()</code></pre>
+<pre><code>##                   
+##                    Midwest Northeast South West  Sum
+##   Electrocution          6         0   152    0  158
+##   Firing Squad           0         0     0    3    3
+##   Gas Chamber            0         0     6    5   11
+##   Hanging                0         0     1    2    3
+##   Lethal Injection     172         4  1016   75 1267
+##   Sum                  178         4  1175   85 1442</code></pre>
+<p>Q: are the events L = lethal injection and S = from the south indpendent?</p>
+<p>P(L) = 1267/1442 P(S) = 1175/1442 P(L and S) = 1016/1442</p>
+<pre class="r"><code>1267/1442*1175/1442</code></pre>
+<pre><code>## [1] 0.7159521</code></pre>
+<pre class="r"><code>1016/1442</code></pre>
+<pre><code>## [1] 0.704577</code></pre>
+<p>Close, but not quite. These are NOT independent events.</p>
+</div>
+<div id="example-1-1" class="section level2">
+<h2>Example 1</h2>
+<p>At a fast food restarurant, on average, 25 customers come through the drive-thru every hour.</p>
+<p>WHat’s the probability that at least 3 customers come in the next hour?</p>
+<p>lamba = 25/1</p>
+</div>
+<div id="example-1-2" class="section level2">
+<h2>Example 1</h2>
+<p>At a fast food restarurant, on average, 25 customers come through the drive-thru every hour.</p>
+<p>WHat’s the probability that at least 3 customers come in the next half hour?</p>
+<p>all the same, but</p>
+<p>lamba = 25/2</p>
 </div>
 </div>
 
