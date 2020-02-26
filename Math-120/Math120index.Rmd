@@ -126,7 +126,7 @@ theme_set(                                #this sets the theme for all    #
 - Sec 4.5 Poisson Dist 
   - 4.33ab
 - Sec 3.2 Table Probabilities, Conditional Probability (p109)
-  - 3.15 (parts b and e)
+  - 3.15 (parts b,c,d, e)
  
   
 
