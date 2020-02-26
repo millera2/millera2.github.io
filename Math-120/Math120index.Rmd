@@ -100,8 +100,9 @@ theme_set(                                #this sets the theme for all    #
   - Recognizing and using "famous" distributions:
     - Binomial, Geometric, and Poisson
   - Probabilities from a contingency table
-  - "Mutually Exclusive" and "Independent"
-    - Idea behind them
+    - And, Or, Not, Given
+  - "Independent"
+    - Idea behind it
     - Verifying mathematically
 
 ## Exam I Reading and Practice Problems
@@ -116,7 +117,7 @@ theme_set(                                #this sets the theme for all    #
   - 8.7
 - Sec 8.2 Linear Regression (Exercises start on p325)
   - 8.19, **8.23**, 8.25, 8.21d and 8.22d (interpreting residual plots only)
-- Sec 8.3 Ourliwea in Lin Reg (Exercises start on p330)
+- Sec 8.3 Outliers in Lin Reg (Exercises start on p330)
   - 8.27 (I'll ask:  does the outlier increase, decrease, or not change the correlation?)
 - Sec 4.2 Geometric Dist (Exercises start on p148)
   - 4.13a
@@ -124,6 +125,10 @@ theme_set(                                #this sets the theme for all    #
   - 4.17, 4.21
 - Sec 4.5 Poisson Dist 
   - 4.33ab
+- Sec 3.2 Table Probabilities, Conditional Probability (p109)
+  - 3.15 (parts b and e)
+ 
+  
 
 
 
