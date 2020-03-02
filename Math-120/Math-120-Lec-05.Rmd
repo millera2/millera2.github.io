@@ -916,4 +916,172 @@ all the same, but
 lamba = 25/2
 
 
+```{r}
+#yhat
+
+6.463+2.489*69
+```
+resid:  y - yhat
+
+```{r}
+145-178.204
+```
+
+
+Slope: 2.489
+
+If a man's height increases by 1 inch, we'd predict his weight to increase by 2.489 lbs.
+
+
+r^2:  67.4%
+
+Of all the variation we see in men's weights, about 67.4% is due to the relationship between weight and height.  
+
+
+
+
+
+Ex) Giraffes.  Adult male giraffe height follows a normal dist with mean 18' and std dev 1.5'.  
+
+Approximately what percent of giraffes are between 13.5' and 21'?
+
+
+Hold on.  What's a z score?
+
+Idea:  different distros have different centers and spread.  So, we can't directly compare.  Example:  ACT and SAT.  Totally different scales!  
+
+Z scores account for both center and spread:  for a measurement x, the z score is the distance from mean measured in std deviations.
+
+Z = # of std devs away from the mean
+
+(Note:  std dev ~ avd distance from the mean.  That's how it measures spread!)
+
+Percent of giraffes:
+
+```{r}
+2.35+13.5+34+34+13.5
+```
+
+
+## Distro examples
+
+About 82% of DU students are from out-of-state.  
+
+1)  What's the the probability we have to sample 10 students before we find the first out-of-state student?
+
+2)  What's the probability that, if we take a sample of 10 students, at least 7 of them are out-of-state?
+
+ What's the probability that, if we take a sample of 10 students, less than 7 of them are out-of-state?
+ 
+ P(X<7) = 1-P(X=7)-P(X=8)-P(x=9)+P(X=10)
+
+3)  If we keep sampling students until we find the first out-of-state student, what's the prob that we have to sample at least 4 students?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+.821^2
+```
+
+In general:  r^2 is the percent of variation in y variable that's becauase of/attributable to the lin relationship between x and y.
+
+About 67.4% of the variation in weight is due to the relationship between height and weight.
+
+
+
+
+
+## Exam review:
+
+### Question:  requirements for poisson
+
+If X is poisson, x counts the number of occurrances (successes) over a fixed interval of space/time  (a day, a year, two hours, sq meter).  
+Requirements:
+
+- Lambda is constant, i.e., fixed rate of occurences over time
+- The probability of occurrences is proportional to the length of time/space.  I.e., longer time should generally mean more occurances.  Or, more space should mean more occurrences.  
+
+### Question:  calculate R?
+
+You never will.  Do it in software
+
+### Meaning of "least squares" line
+
+Zillion names:
+
+least squares
+regression
+best fit
+trend line 
+
+All the same, there really is one unique "best" line.  THe least squares line is the one that minimizes the square residuals.
+
+Q:  why minimize square resids? why not just resids?
+
+A:  some are pos, some are neg.  The avg residual is always zero!  Boring!  Square to make all positive, i.e. minimize "total" error.
+
+Q:  What's the meaning of standard deviation?
+
+A: Std dev is "average distance" from the mean.
+
+
+
+
+## Example:  8.23
+
+a)  slope
+
+```{r}
+.636*113/99
+```
+
+intercept:
+
+```{r}
+129-.726*108
+```
+
+
+```{r}
+0.636^2
+```
+
+
+Example)
+
+About 82% are out of state.
+
+If we take a sample of 10 students, what's the probability that at least 8 of them are out-of-state?
+
+
+
+
+
+
+
+
+
+Example
+
+At a fast food restaurant, customers come to the drive through at an average of 15 customers per hour.
+
+What's the probability that at least 4 come in the next hour?
 

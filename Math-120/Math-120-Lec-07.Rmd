@@ -1,17 +1,17 @@
 ---
-title: "Math 120 Week 06"
+title: "Math 120 Week 05"
 author: "Prof Miller"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
+  pdf_document:
+    toc: yes
+    toc_depth: '3'
   html_document:
     code_folding: show
     df_print: paged
     theme: cerulean
     toc: yes
     toc_depth: 3
-  pdf_document:
-    toc: yes
-    toc_depth: '3'
 ---
 
 ```{r setup, include=FALSE}
@@ -31,6 +31,7 @@ theme_set(theme_tufte() +
 
 #------------------------------------------------#
 ```
+
 
 
 
@@ -407,10 +408,6 @@ The middle 95% of the data lies between z=-1.96 and z=+1.96
 Quiz on wed:  uniform dist, basic z-table stuff
 
 Look at 4.1 exercise
-
-
-
-
 
 
 
