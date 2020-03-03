@@ -1,0 +1,1067 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Math 120 Week 05},
+            pdfauthor={Prof Miller},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{Math 120 Week 05}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{Prof Miller}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{03 March, 2020}
+
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+\hypertarget{friday-after-the-exam}{%
+\section{Friday (After the Exam)}\label{friday-after-the-exam}}
+
+\hypertarget{continuous-distros}{%
+\subsection{Continuous distros}\label{continuous-distros}}
+
+Continuous distros are kinda weird!
+
+Let's do an easy example: uniform distro. I.e., the ``flat line''
+distro.
+
+Example: the amount of time that students spend on an exam follows a
+uniform distribution that ranges between 40min and 60min.
+
+Note: this is continuous, since time take could be any real number (not
+just discrete values). Ex: could take 48.2146324 min.
+
+For all continuous distros, probability is found by calculating area
+under the ``curve''.\\
+Important fact: since total probability always 100\%, total area is
+always 1. SO, if your uniform distro ranges from a to b, the height is
+always 1/(b-a).
+
+Finding probabilities for the unif is easy: just rectangles!
+
+Ex 1: with the exam distro above, what's the probability that a student
+spends between 45 and 55 minutes on the exam?
+
+Answer: Area of rectangle! The base is 10, the height is 1/20:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{10}\OperatorTok{*}\DecValTok{1}\OperatorTok{/}\DecValTok{20}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.5
+\end{verbatim}
+
+There's a 50\% chance a student spends between 45 and 55 min.
+
+Ex 2: What's the probability that a student spends more than 53 minutes
+on the exam?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\OperatorTok{/}\DecValTok{20}\OperatorTok{*}\DecValTok{7}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.35
+\end{verbatim}
+
+A: there's a 35\% chance.
+
+Ex 3: Same exam distro. What's the probability that student spends
+exactly 50.0000000000000\ldots{} minutes on the exam?
+
+A: zero! woooah! weird dude!
+
+Ex 3: Same example. WHat's the prob that the student spends exactly
+47.0000000\ldots{} min?
+
+Still zero!
+
+Moral of the story:
+
+\begin{itemize}
+\tightlist
+\item
+  If x is continuous, the probability that X=any \# is always zero!!! If
+  width = 0, no area, so no probability!
+\item
+  For continuous distros, it only makes sense to think about ranges of
+  values for X
+\end{itemize}
+
+Ex: the mean height for women the us is 64" tall. What's the probability
+that a random woman EXACTLY 64.00000000" tall?
+
+Zero!
+
+Ex) Exam distro. Which is bigger:
+
+P(X\textgreater{}50)
+
+or
+
+P(X\textgreater{}=50)
+
+?
+
+A: they're the same! P(X=50)=0, doesn't change the
+area/region/probability!
+
+Moral of the story: for continuous distros,
+
+P(X \textless{}= blah) == P(X\textless{} blah)
+
+same for \textgreater{}, etc etc. I.e., doesn't matter if we include the
+endpoint. Big difference from discrete distros!
+
+\hypertarget{normal-distro}{%
+\subsection{Normal distro}\label{normal-distro}}
+
+The normal distro (bell curve distribution) is also a continuous distro,
+and super super common in real life.
+
+You already know basics of normal probabilities from the empirical rule!
+BUT, we're going to expand that to include ANY z-score, not just +-1,
++-2, +-3.
+
+Normal distros work just like any continuous distro: probability = area
+under the curve (picture on board/notes)
+
+Bad news: the function for the normal distribution is nasty, and there's
+NO WAY to find areas by hand (outside of the empirical rule). We always
+need help. Two ways:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\tightlist
+\item
+  Table! I.e., a piece of paper with normal probabilities on it!
+\item
+  Use software (R, excel, Minitab, etc etc)
+\end{enumerate}
+
+\hypertarget{using-the-z-table}{%
+\subsection{Using the Z table}\label{using-the-z-table}}
+
+The ``Z'' distro has a special meaning: it's the normal distro with mean
+= 0, std dev =1.
+
+I.e., it's the z-score distribution!
+
+Examples. Compute:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\tightlist
+\item
+  P(Z \textless{} -1.23) = .1093
+\end{enumerate}
+
+Important note: the areas on the Z tables are always ``to the
+left''/``below''
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  P(Z \textgreater{} -1.23) = 1 - P(Z\textless{} - 1.23) = 1-.1093
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\FloatTok{-.1093}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.8907
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  P( -1.05 \textless{} Z \textless{} -0.03 )
+\end{enumerate}
+
+\hypertarget{friday}{%
+\section{Friday}\label{friday}}
+
+\hypertarget{continuous-distros-1}{%
+\subsection{Continuous Distros}\label{continuous-distros-1}}
+
+Continuous are weird!
+
+First, let's think about the ``uniform'' distribution (i.e.~the ``flat
+line'' distro). It's the easiest continuous distro, but teaces all the
+important concepts.
+
+\hypertarget{example-exam-times}{%
+\subsection{Example: Exam times}\label{example-exam-times}}
+
+Suppose that X=the amount of time that student spend on an exam, and
+that X has a uniform distribution that ranges from 40min to 60min.
+Picture on board.
+
+For all continuous distros (including unif), probability correponds to
+the area under the ``curve''.
+
+Important property: since total probability is always 100\%, that means
+total area under probability curve is alway 1.
+
+Because our uniform dist is a rectangle, we always know it's height. If
+it ranges from a to b (here, a=40, b=60), then the height of the
+line/curve is always 1/(b-a).
+
+Compute the following:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\tightlist
+\item
+  P( 45 \textless{} X \textless{} 55) = 1/20*10
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\OperatorTok{/}\DecValTok{20}\OperatorTok{*}\DecValTok{10}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.5
+\end{verbatim}
+
+There's a 50\% chance the student takes that long.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  What's the prob that a student takes more than 53 min?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{7}\OperatorTok{*}\DecValTok{1}\OperatorTok{/}\DecValTok{20}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.35
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  What's the prob that a student takes EXACTLY 50.000000000\ldots{} min?
+\end{enumerate}
+
+A: zero! Woah, weird!!!
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  P(X == 47.0000\ldots{}..)
+\end{enumerate}
+
+A: ALso zero! Woah!
+
+In fact, for ANY contintinuous distribution:
+
+\begin{itemize}
+\tightlist
+\item
+  P(X == any number) = 0 always. ANy continuous X, any number.\\
+\item
+  For continuous variables, it only makes sense to talk about RANGES of
+  values for X.
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Same exam distro. Which is bigger:
+\end{enumerate}
+
+P(X \textgreater{} 50)
+
+or
+
+P(X \textgreater{}= 50)
+
+?
+
+THEY'RE EQUAL!
+
+Moral: for continuous distros, doesn't matter if we include the
+endpoint.
+
+P(X\textless{} 50) == P(X \textless{}= 50)
+
+This is in contrast to discrete distros like binomial, geometric,
+poisson. For those, it matters a bunch if you include the endpoint!
+
+\hypertarget{normal-distro-1}{%
+\subsection{Normal Distro}\label{normal-distro-1}}
+
+The normal distro (ie the bell curve) is the most useful continuous
+distribution. Pops up everywhere!
+
+Recall, you already know the empirical rule, so you already know the
+basics of normal probabilities. BUT, only works for z = 0, +-1, +-2,
++-3.
+
+Normal dist works just like any other continuous distro: it has a
+function (pdf, probability density function), and we find probabilities
+by calculating area under the function.
+
+Bad news: the function (pdf) for the normal distro is nasty. It's
+impossible to calculate areas by hand. We always need help! Two main
+ways:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\tightlist
+\item
+  Probability tables. I.e., dead tree. Z table.
+\item
+  Software. (R, Excel, Minitab, SASS)
+\end{enumerate}
+
+\hypertarget{using-the-z-table-1}{%
+\subsection{Using the z table}\label{using-the-z-table-1}}
+
+WARNING: There are several different ways to construct a z table. Use
+our book!
+
+Q: Why the ``Z'' table?
+
+A: There are lots of different normal distribution with different center
+and spread.
+
+The Z distro is the ``STANDARD NORMAL'' distro: mean = 0, std dev = 1.
+
+The table always shows area to the LEFT.
+
+Examples. Compute:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\item
+  P(Z \textless{} -1.23) = 0.1093. There's a 10.93\% chance that
+  Z\textless{}-1.23
+\item
+  P(Z \textgreater{} -1.23) = 1 - 0.1093 = .8907
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\FloatTok{-0.1093}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.8907
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  P( -1.74 \textless{} Z \textless{} -0.19 ) = P(Z \textless{} -.19) -
+  P(Z \textless{} -1.74) = .4247 - .0409
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FloatTok{.4247} \OperatorTok{-}\StringTok{ }\FloatTok{.0409}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.3838
+\end{verbatim}
+
+\hypertarget{monday}{%
+\section{Monday}\label{monday}}
+
+\hypertarget{warm-ups}{%
+\subsection{Warm-ups}\label{warm-ups}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\tightlist
+\item
+  At a bus stop, the amount of time that travellers must wait ranges
+  uniformly between 5 and 15 minutes.
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  What's the probability that a traveller must wait less than (or equal
+  to) 8 min?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{3}\OperatorTok{*}\DecValTok{1}\OperatorTok{/}\DecValTok{10}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.3
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  What's the probability that a traveller must wait between 10 and 13
+  min?
+\end{enumerate}
+
+Same area, same probability! 30\%.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  What's the prob that they wait exactly 11 min?
+\end{enumerate}
+
+Cts, so prob = 0.
+
+\hypertarget{z-table-practice}{%
+\subsection{Z table practice}\label{z-table-practice}}
+
+Suppose Z has a std normal dist (note: z always means standard normal,
+mean=0 and std dev =1). Compute:
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  P(Z \textless{} 1.52) = .9357
+\item
+  P(Z \textgreater{} -0.44) = 1-.3300 = 0.6700
+\item
+  P( -0.19 \textless{} Z \textless{} 3.01) = P(Z \textless{} 3.01) - P(Z
+  \textless{} -0.19) = .9987 - .4247
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FloatTok{.9987-.4247}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.574
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{3}
+\item
+  P(Z \textless{} -4.3) = approx 0!
+\item
+  P(Z \textless{} 5.1) = approx 1!
+\end{enumerate}
+
+\hypertarget{z-table-backwards}{%
+\subsection{Z table backwards}\label{z-table-backwards}}
+
+So far: I give you Z, you tell me area.
+
+BUT, what if we know an area/probability and we want correponding
+z-score cutoff?
+
+Ex: How big must Z be in order to be in the top 10\% of the distro?
+(i.e., the 90th percentile)
+
+Idea: find the area (as close as possible) to 90\%. Remember, table
+always shows left area!
+
+Closest area: .8997, z score is 1.28.
+
+Example: How big must a z score be in order to be in the top 25\% (i.e.,
+75th percentile) ?
+
+z = 0.67
+
+Forwards: start with z score, find area. Backwards: start with
+area/probability, find z score
+
+\hypertarget{special-type-middle}{%
+\subsection{Special type: middle \%}\label{special-type-middle}}
+
+Ex: what are the z cutoff for the middle 50\% of the z distro?
+
+A: Between z=-.67 and z=+.67 lies the middle 50\% of the z distro
+
+Ex:what are the z cutoff for the middle 95\% of the z distro?
+
+The middle 95\% of the data lies between z=-1.96 and z=+1.96
+
+Note: this is a more precise version of the emprical rule!
+
+Quiz on wed: quiz and z table basics (forwards and backwards)
+
+\hypertarget{monday-1}{%
+\section{Monday}\label{monday-1}}
+
+\hypertarget{warm-up}{%
+\subsection{Warm-up}\label{warm-up}}
+
+Example) At a bus stop, commuters wait between 5 and 15 minutes,
+following a uniform distribution. What't the probability\ldots{}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  A commuter must wait less than (or equal to) 8 min?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{3}\OperatorTok{*}\DecValTok{1}\OperatorTok{/}\DecValTok{10}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.3
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Must wait between 10 and 13 min?
+\end{enumerate}
+
+Same! Still a rectangle of width three, same region, same area, same
+prob!
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Exactly 11 min?
+\end{enumerate}
+
+0! FOr any cts dist, P(X=exactly some number) = 0
+
+\hypertarget{z-table-practice-1}{%
+\subsection{Z table practice}\label{z-table-practice-1}}
+
+Suppose that Z has a standard normal dist (Note: in stats, z ALWAYS
+means standard normal distribution, mean of zero and std dev of 1),
+compute:
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  P(Z \textless{} 1.83) = .9664
+\item
+  P(Z \textgreater{} -0.41) = 1 - .3409 = .6591
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\FloatTok{-.3409}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.6591
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  P( -0.25 \textless{} Z \textless{} 3.12) = P(Z \textless{} 3.12) - P(Z
+  \textless{} -0.25) = .5978
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FloatTok{.9991} \OperatorTok{-}\StringTok{ }\FloatTok{.4013}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.5978
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{3}
+\item
+  P(Z \textless{} -4.21) \textasciitilde{} 0 (\textasciitilde{} =
+  approx)
+\item
+  P(Z \textless{} 5.30) \textasciitilde{} 1
+\end{enumerate}
+
+\hypertarget{z-table-backwards-1}{%
+\subsection{Z table: backwards}\label{z-table-backwards-1}}
+
+So far: I tell you Z, you tell me prob/area
+
+Now, backwards: I tell you area/prob, you tell me z score cutoff
+
+Example) How large must a z score be in order to be in the top 10\% of
+the distro (90th percentile)?
+
+Note: table always shows area to the left, so we use 90\% or 0.90.
+
+Idea: Find the closest area to 0.90, then get z score
+
+Closest area: .8997 -\textgreater{} z = 1.28
+
+Example) How large must a z score be to be in the top 20\% of the data
+(i.e.~80th percentile).
+
+Closest area: 0.7995. Z score = 0.84
+
+\hypertarget{middle}{%
+\subsection{Middle \%}\label{middle}}
+
+Example: find the zscores that mark off the middle 60\% of the data.
+
+Between z=-.84 and z=+.84 is the middle 60\% of the data.
+
+Example: find the z scores that mark off the middle 95\% of the data.
+
+The middle 95\% of the data lies between z=-1.96 and z=+1.96
+
+Quiz on wed: uniform dist, basic z-table stuff
+
+Look at 4.1 exercise
+
+\hypertarget{tuesday}{%
+\section{Tuesday}\label{tuesday}}
+
+\hypertarget{using-the-z-table-in-practical-real-world-scenarios}{%
+\subsection{Using the z table in practical real-world
+scenarios}\label{using-the-z-table-in-practical-real-world-scenarios}}
+
+In the real world, there are lots of different normal dists.
+SPecifically, different centers and spread! Example: human height.
+
+To use the z table (std normal, mean=0, stdev = 1) in these scenarios,
+we need to do a little extra work.
+
+\hypertarget{forwards}{%
+\subsection{Forwards}\label{forwards}}
+
+Remember: forwards means we start with a value, need to find a
+probability/area.
+
+For real-world data, we need to find z scores on our own! Exactly the
+same as before.
+
+Formula:
+
+z = (x-mu)/sigma = (x-xbar)/s
+
+So, first get z, then use table. Bam!
+
+Example) Height for adult men (20-29) in the US follows a normal dist
+with mean = 69" and std dev = 2.7".
+
+What's the prob that a randomly selected man is less than 6' tall? (72")
+
+First: z score. x = 72. mu = 69, sigma = 2.7
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(}\DecValTok{72-69}\NormalTok{)}\OperatorTok{/}\FloatTok{2.7}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.111111
+\end{verbatim}
+
+So, P(X\textless{}72) = P(Z \textless{} 1.11) = .8665
+
+There's about an 86.65\% chance that a rando man is less than 6' tall.
+
+Example) Height for adult women follows a normal dist with mean = 64"
+and std dev = 2.4``. What's the probility that a rando woman is between
+5'6'' (66``) and 5'8'' (68").
+
+z-scores:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(}\DecValTok{68-64}\NormalTok{)}\OperatorTok{/}\FloatTok{2.4}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.666667
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(}\DecValTok{66-64}\NormalTok{)}\OperatorTok{/}\FloatTok{2.4}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.8333333
+\end{verbatim}
+
+P( 0.83 \textless{} Z \textless{} 1.67) = P(Z\textless{}1.67) - P(Z
+\textless{} 0.83)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FloatTok{.9525-.7967}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.1558
+\end{verbatim}
+
+There's a 15.58\% chance that rando woman is between 5'6" and 5'8".
+
+\hypertarget{backwards}{%
+\subsection{Backwards}\label{backwards}}
+
+Remember: backwards means we start with prob/area, find
+cutoff/value/measurement/obs.
+
+Example) How tall must a woman be in order to be in the top 5\% of
+womens' heights?
+
+First: look for area in table, find z-score.
+
+Note: if two z-scores are equally good, just spilt them. Ie. average.
+
+Here: z=1.64 and z=1.65 are equally close, use z=1.645.
+
+Got z, what's x?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FloatTok{1.645}\OperatorTok{*}\FloatTok{2.4}\OperatorTok{+}\DecValTok{64}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 67.948
+\end{verbatim}
+
+She'd have to be 5'7.948``. I.e., 67.948''.
+
+Note, since z = (x-mu)/sigma,
+
+x = z*sigma+mu
+
+Example) How tall must a rando man be in order to be in the top 15\% of
+mens' heights? Recall, mean = 69, sigma = 2.7.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FloatTok{1.04}\OperatorTok{*}\FloatTok{2.7}\OperatorTok{+}\DecValTok{69}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 71.808
+\end{verbatim}
+
+He'd have to be 71.8" tall in order to be in the top 15\%.
+
+\hypertarget{sampling-distro}{%
+\subsection{Sampling distro}\label{sampling-distro}}
+
+Suppose I roll a dice a bunch of times, and make a histogram of the
+resulsts.
+
+What shape would the histo have? Expect a flat line.
+
+Dice rolling activity
+
+Take turns rolling the dice. Every student rolls 50 times. While one
+student rolls, the other records.
+
+\hypertarget{tues}{%
+\subsection{Tues}\label{tues}}
+
+\hypertarget{z-table-for-real-world-scenarios}{%
+\subsection{Z table for real-world
+scenarios}\label{z-table-for-real-world-scenarios}}
+
+There are lots of normal dists out there (different centers and
+spreads), but the z table only shows STANDARD normal (mean=0, stdev=1).
+
+To use z table, we first need to convert to standard normal.
+
+This is easy: z-scores!
+
+\hypertarget{forwards-problems}{%
+\subsection{Forwards problems}\label{forwards-problems}}
+
+Recall, forwards: start with a value/observation, find prob/area.
+
+For real-world data, same thing, just find z-scores first!
+
+Example) Height for men in the US (20-29) follows a normal dist with
+mean = 69" and stdev = 2.7``. What's the prob that a randomly selected
+man is less than 6' tall (72'')?
+
+X = 72, mu = 69, sigma = 2.7
+
+First, z score:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(}\DecValTok{72-69}\NormalTok{)}\OperatorTok{/}\FloatTok{2.7}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.111111
+\end{verbatim}
+
+P(X\textless{}72) = P(Z\textless{}1.11) = 0.8665
+
+There's about an 86.65\% chance a rando man is less than 72".
+
+Example) Height for women in the US follows a normal dist with mean 64"
+and stddev = 2.4``. What's the prob that a rando woman is between 5'6''
+(66``) and 5'8'' (68")?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(}\DecValTok{68-64}\NormalTok{)}\OperatorTok{/}\FloatTok{2.4}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.666667
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(}\DecValTok{66-64}\NormalTok{)}\OperatorTok{/}\FloatTok{2.4}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.8333333
+\end{verbatim}
+
+P(66 \textless{} X \textless{} 68) = P( 0.83 \textless{} Z \textless{}
+1.67) = P(Z\textless{}1.67) - P(Z\textless{}0.83) =
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FloatTok{.9525-.7967}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.1558
+\end{verbatim}
+
+There's about a 15.58\% chance that rando woman is between 5'6" and
+5'8".
+
+\hypertarget{backwards-1}{%
+\subsection{Backwards}\label{backwards-1}}
+
+Backwards: start with prob/area, find a measurement/observation/cutoff/x
+
+Example: IQ follows a normal dist with mean 100 and std dev 15. How high
+must one's IQ be in order to be in the top 5\% of IQs?
+
+Note: if two z-scores are equally good, split the difference. Ie
+average.
+
+Here, z=1.64 and z=1.65 are equally good, use z = 1.645.
+
+THus, X:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FloatTok{1.645}\OperatorTok{*}\DecValTok{15}\OperatorTok{+}\DecValTok{100}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 124.675
+\end{verbatim}
+
+One's IQ would have to be at least 124.675 in order to make it to the
+top 5\%.
+
+Here, we plugged into zscore formula.
+
+Solve backwards:
+
+x = z*sigma + mu
+
+Example) Men's heights. Mean = 69. Sigma = 2.7. How tall must rando man
+be in order to be in the top 15\% of men's heights?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FloatTok{1.04}\OperatorTok{*}\FloatTok{2.7}\OperatorTok{+}\DecValTok{69}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 71.808
+\end{verbatim}
+
+He'd have to be at least 71.808" tall to be in the top 15\% of heights.
+
+
+\end{document}

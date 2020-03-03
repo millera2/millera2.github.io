@@ -1,17 +1,17 @@
 ---
-title: "Math 120 Week 05"
+title: "Math 120 Week 07"
 author: "Prof Miller"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
-  pdf_document:
-    toc: yes
-    toc_depth: '3'
   html_document:
     code_folding: show
     df_print: paged
     theme: cerulean
     toc: yes
     toc_depth: 3
+  pdf_document:
+    toc: yes
+    toc_depth: '3'
 ---
 
 ```{r setup, include=FALSE}
@@ -408,6 +408,207 @@ The middle 95% of the data lies between z=-1.96 and z=+1.96
 Quiz on wed:  uniform dist, basic z-table stuff
 
 Look at 4.1 exercise
+
+
+# Tuesday
+
+## Using the z table in practical real-world scenarios
+
+In the real world, there are lots of different normal dists.  SPecifically, different centers and spread!  Example:  human height.
+
+To use the z table (std normal, mean=0, stdev = 1) in these scenarios, we need to do a little extra work.
+
+## Forwards
+
+Remember:  forwards means we start with a value, need to find a probability/area.
+
+For real-world data, we need to find z scores on our own!  Exactly the same as before.
+
+Formula:
+
+z = (x-mu)/sigma  = (x-xbar)/s
+
+So, first get z, then use table.  Bam!
+
+Example)  Height for adult men (20-29) in the US follows a normal dist with mean = 69" and std dev = 2.7".
+
+What's the prob that a randomly selected man is less than 6' tall?  (72")
+
+First:  z score.  x = 72.  mu = 69, sigma = 2.7
+
+```{r}
+
+(72-69)/2.7
+
+```
+
+So, P(X<72) = P(Z < 1.11) = .8665
+
+There's about an 86.65% chance that a rando man is less than 6' tall.
+
+Example)  Height for adult women follows a normal dist with mean = 64" and std dev = 2.4".  What's the probility that a rando woman is between 5'6" (66") and 5'8" (68").  
+
+z-scores:
+
+```{r}
+(68-64)/2.4
+```
+
+```{r}
+(66-64)/2.4
+```
+
+P( 0.83 < Z < 1.67) = P(Z<1.67) - P(Z < 0.83)
+
+```{r}
+.9525-.7967
+```
+
+
+There's a 15.58% chance that rando woman is between 5'6" and 5'8".  
+
+## Backwards
+
+Remember:  backwards means we start with prob/area, find cutoff/value/measurement/obs.
+
+Example)  How tall must a woman be in order to be in the top 5% of womens' heights?
+
+First:  look for area in table, find z-score.
+
+Note:  if two z-scores are equally good, just spilt them.  Ie. average.
+
+Here:  z=1.64 and z=1.65 are equally close, use z=1.645.  
+
+Got z, what's x?
+
+```{r}
+1.645*2.4+64
+```
+
+She'd have to be 5'7.948".  I.e., 67.948".  
+
+Note, since z = (x-mu)/sigma,
+
+x = z*sigma+mu
+
+Example)  How tall must a rando man be in order to be in the top 15% of mens' heights?
+Recall, mean = 69, sigma = 2.7.  
+
+```{r}
+1.04*2.7+69
+```
+
+He'd have to be 71.8" tall in order to be in the top 15%.  
+
+## Sampling distro
+
+Suppose I roll a dice a bunch of times, and make a histogram of the resulsts.
+
+What shape would the histo have?  Expect a flat line.
+
+Dice rolling activity
+
+Take turns rolling the dice.  Every student rolls 50 times.  While one student rolls, the other records.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Tuesday
+
+## Z table for real-world scenarios
+
+There are lots of normal dists out there (different centers and spreads), but the z table only shows STANDARD normal (mean=0, stdev=1).
+
+To use z table, we first need to convert to standard normal.
+
+This is easy:  z-scores!
+
+## Forwards problems
+
+Recall, forwards:  start with a value/observation, find prob/area.
+
+For real-world data, same thing, just find z-scores first!
+
+Example)  Height for men in the US (20-29) follows a normal dist with mean = 69" and stdev = 2.7".  What's the prob that a randomly selected man is less than 6' tall (72")?
+
+X = 72, mu = 69, sigma = 2.7
+
+First, z score:
+
+```{r}
+(72-69)/2.7
+```
+
+P(X<72) = P(Z<1.11) = 0.8665
+
+There's about an 86.65% chance a rando man is less than 72".  
+
+Example)  Height for women in the US follows a normal dist with mean 64" and stddev = 2.4".  What's the prob that a rando woman is between 5'6" (66") and 5'8" (68")?
+
+```{r}
+(68-64)/2.4
+```
+
+```{r}
+(66-64)/2.4
+```
+
+
+P(66 < X < 68) = P( 0.83 < Z < 1.67) = P(Z<1.67) - P(Z<0.83) = 
+
+```{r}
+.9525-.7967
+```
+
+There's about a 15.58% chance that rando woman is between 5'6" and 5'8".
+
+## Backwards
+
+Backwards:  start with prob/area, find a measurement/observation/cutoff/x
+
+Example:  IQ follows a normal dist with mean 100 and std dev 15.  How high must one's IQ be in order to be in the top 5% of IQs?
+
+Note:  if two z-scores are equally good, split the difference.  Ie average.
+
+Here, z=1.64 and z=1.65 are equally good, use z = 1.645.
+
+THus, X:
+
+```{r}
+1.645*15+100
+```
+
+One's IQ would have to be at least 124.675 in order to make it to the top 5%.  
+
+Here, we plugged into zscore formula.
+
+Solve backwards:
+
+x = z*sigma + mu
+
+
+Example)  Men's heights.  Mean = 69.  Sigma = 2.7.  How tall must rando man be in order to be in the top 15% of men's heights?
+
+```{r}
+1.04*2.7+69
+```
+
+He'd have to be at least 71.808" tall to be in the top 15% of heights.
+
+
+
+
 
 
 
