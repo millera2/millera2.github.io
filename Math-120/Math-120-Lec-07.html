@@ -1712,29 +1712,6 @@ summary {
 
 <div id="TOC">
 <ul>
-<li><a href="#friday-after-the-exam">Friday (After the Exam)</a><ul>
-<li><a href="#continuous-distros">Continuous distros</a></li>
-<li><a href="#normal-distro">Normal distro</a></li>
-<li><a href="#using-the-z-table">Using the Z table</a></li>
-</ul></li>
-<li><a href="#friday">Friday</a><ul>
-<li><a href="#continuous-distros-1">Continuous Distros</a></li>
-<li><a href="#example-exam-times">Example: Exam times</a></li>
-<li><a href="#normal-distro-1">Normal Distro</a></li>
-<li><a href="#using-the-z-table-1">Using the z table</a></li>
-</ul></li>
-<li><a href="#monday">Monday</a><ul>
-<li><a href="#warm-ups">Warm-ups</a></li>
-<li><a href="#z-table-practice">Z table practice</a></li>
-<li><a href="#z-table-backwards">Z table backwards</a></li>
-<li><a href="#special-type-middle">Special type: middle %</a></li>
-</ul></li>
-<li><a href="#monday-1">Monday</a><ul>
-<li><a href="#warm-up">Warm-up</a></li>
-<li><a href="#z-table-practice-1">Z table practice</a></li>
-<li><a href="#z-table-backwards-1">Z table: backwards</a></li>
-<li><a href="#middle">Middle %</a></li>
-</ul></li>
 <li><a href="#tuesday">Tuesday</a><ul>
 <li><a href="#using-the-z-table-in-practical-real-world-scenarios">Using the z table in practical real-world scenarios</a></li>
 <li><a href="#forwards">Forwards</a></li>
@@ -1745,299 +1722,19 @@ summary {
 <li><a href="#z-table-for-real-world-scenarios">Z table for real-world scenarios</a></li>
 <li><a href="#forwards-problems">Forwards problems</a></li>
 <li><a href="#backwards-1">Backwards</a></li>
+<li><a href="#results-from-class-dice-activity">Results from Class Dice Activity</a></li>
 </ul></li>
 <li><a href="#wednesday">Wednesday</a><ul>
 <li><a href="#sampling-distributions">Sampling Distributions</a></li>
+<li><a href="#important-observations-about-samp-dists">Important Observations about Samp dists</a></li>
 </ul></li>
 <li><a href="#wednesday-1">Wednesday</a><ul>
 <li><a href="#sampling-distributions-1">Sampling Distributions</a></li>
-<li><a href="#important-observations-about-samp-dists">Important Observations about Samp dists</a></li>
-</ul></li>
-<li><a href="#wednesday-2">Wednesday</a><ul>
-<li><a href="#sampling-distributions-2">Sampling Distributions</a></li>
 <li><a href="#central-limit-theorem">Central Limit Theorem</a></li>
-</ul></li>
-<li><a href="#monday-2">Monday</a><ul>
-<li><a href="#warm-up-normal-dist-in-real-life">Warm-up: Normal dist in real life</a></li>
-<li><a href="#sampling-dist-for-xbar">Sampling Dist for xbar</a></li>
-</ul></li>
-<li><a href="#monday-3">Monday</a><ul>
-<li><a href="#warm-up-normal-dist-in-real-scenarios">Warm-up: Normal dist in real scenarios</a></li>
-<li><a href="#sampling-distribution-for-xbar">Sampling Distribution for xbar</a></li>
 </ul></li>
 </ul>
 </div>
 
-<div id="friday-after-the-exam" class="section level1">
-<h1>Friday (After the Exam)</h1>
-<div id="continuous-distros" class="section level2">
-<h2>Continuous distros</h2>
-<p>Continuous distros are kinda weird!</p>
-<p>Let’s do an easy example: uniform distro. I.e., the “flat line” distro.</p>
-<p>Example: the amount of time that students spend on an exam follows a uniform distribution that ranges between 40min and 60min.</p>
-<p>Note: this is continuous, since time take could be any real number (not just discrete values). Ex: could take 48.2146324 min.</p>
-<p>For all continuous distros, probability is found by calculating area under the “curve”.<br />
-Important fact: since total probability always 100%, total area is always 1. SO, if your uniform distro ranges from a to b, the height is always 1/(b-a).</p>
-<p>Finding probabilities for the unif is easy: just rectangles!</p>
-<p>Ex 1: with the exam distro above, what’s the probability that a student spends between 45 and 55 minutes on the exam?</p>
-<p>Answer: Area of rectangle! The base is 10, the height is 1/20:</p>
-<pre class="r"><code>10*1/20</code></pre>
-<pre><code>## [1] 0.5</code></pre>
-<p>There’s a 50% chance a student spends between 45 and 55 min.</p>
-<p>Ex 2: What’s the probability that a student spends more than 53 minutes on the exam?</p>
-<pre class="r"><code>1/20*7</code></pre>
-<pre><code>## [1] 0.35</code></pre>
-<p>A: there’s a 35% chance.</p>
-<p>Ex 3: Same exam distro. What’s the probability that student spends exactly 50.0000000000000… minutes on the exam?</p>
-<p>A: zero! woooah! weird dude!</p>
-<p>Ex 3: Same example. WHat’s the prob that the student spends exactly 47.0000000… min?</p>
-<p>Still zero!</p>
-<p>Moral of the story:</p>
-<ul>
-<li>If x is continuous, the probability that X=any # is always zero!!! If width = 0, no area, so no probability!</li>
-<li>For continuous distros, it only makes sense to think about ranges of values for X</li>
-</ul>
-<p>Ex: the mean height for women the us is 64&quot; tall. What’s the probability that a random woman EXACTLY 64.00000000&quot; tall?</p>
-<p>Zero!</p>
-<p>Ex) Exam distro. Which is bigger:</p>
-<p>P(X&gt;50)</p>
-<p>or</p>
-<p>P(X&gt;=50)</p>
-<p>?</p>
-<p>A: they’re the same! P(X=50)=0, doesn’t change the area/region/probability!</p>
-<p>Moral of the story: for continuous distros,</p>
-<p>P(X &lt;= blah) == P(X&lt; blah)</p>
-<p>same for &gt;, etc etc. I.e., doesn’t matter if we include the endpoint. Big difference from discrete distros!</p>
-</div>
-<div id="normal-distro" class="section level2">
-<h2>Normal distro</h2>
-<p>The normal distro (bell curve distribution) is also a continuous distro, and super super common in real life.</p>
-<p>You already know basics of normal probabilities from the empirical rule! BUT, we’re going to expand that to include ANY z-score, not just +-1, +-2, +-3.</p>
-<p>Normal distros work just like any continuous distro: probability = area under the curve (picture on board/notes)</p>
-<p>Bad news: the function for the normal distribution is nasty, and there’s NO WAY to find areas by hand (outside of the empirical rule). We always need help. Two ways:</p>
-<ol style="list-style-type: decimal">
-<li>Table! I.e., a piece of paper with normal probabilities on it!</li>
-<li>Use software (R, excel, Minitab, etc etc)</li>
-</ol>
-</div>
-<div id="using-the-z-table" class="section level2">
-<h2>Using the Z table</h2>
-<p>The “Z” distro has a special meaning: it’s the normal distro with mean = 0, std dev =1.</p>
-<p>I.e., it’s the z-score distribution!</p>
-<p>Examples. Compute:</p>
-<ol style="list-style-type: decimal">
-<li>P(Z &lt; -1.23) = .1093</li>
-</ol>
-<p>Important note: the areas on the Z tables are always “to the left”/“below”</p>
-<ol start="2" style="list-style-type: decimal">
-<li>P(Z &gt; -1.23) = 1 - P(Z&lt; - 1.23) = 1-.1093</li>
-</ol>
-<pre class="r"><code>1-.1093</code></pre>
-<pre><code>## [1] 0.8907</code></pre>
-<ol start="3" style="list-style-type: decimal">
-<li>P( -1.05 &lt; Z &lt; -0.03 )</li>
-</ol>
-</div>
-</div>
-<div id="friday" class="section level1">
-<h1>Friday</h1>
-<div id="continuous-distros-1" class="section level2">
-<h2>Continuous Distros</h2>
-<p>Continuous are weird!</p>
-<p>First, let’s think about the “uniform” distribution (i.e. the “flat line” distro). It’s the easiest continuous distro, but teaces all the important concepts.</p>
-</div>
-<div id="example-exam-times" class="section level2">
-<h2>Example: Exam times</h2>
-<p>Suppose that X=the amount of time that student spend on an exam, and that X has a uniform distribution that ranges from 40min to 60min. Picture on board.</p>
-<p>For all continuous distros (including unif), probability correponds to the area under the “curve”.</p>
-<p>Important property: since total probability is always 100%, that means total area under probability curve is alway 1.</p>
-<p>Because our uniform dist is a rectangle, we always know it’s height. If it ranges from a to b (here, a=40, b=60), then the height of the line/curve is always 1/(b-a).</p>
-<p>Compute the following:</p>
-<ol style="list-style-type: decimal">
-<li>P( 45 &lt; X &lt; 55) = 1/20*10</li>
-</ol>
-<pre class="r"><code>1/20*10</code></pre>
-<pre><code>## [1] 0.5</code></pre>
-<p>There’s a 50% chance the student takes that long.</p>
-<ol start="2" style="list-style-type: decimal">
-<li>What’s the prob that a student takes more than 53 min?</li>
-</ol>
-<pre class="r"><code>7*1/20</code></pre>
-<pre><code>## [1] 0.35</code></pre>
-<ol start="3" style="list-style-type: decimal">
-<li>What’s the prob that a student takes EXACTLY 50.000000000… min?</li>
-</ol>
-<p>A: zero! Woah, weird!!!</p>
-<ol start="4" style="list-style-type: decimal">
-<li>P(X == 47.0000…..)</li>
-</ol>
-<p>A: ALso zero! Woah!</p>
-<p>In fact, for ANY contintinuous distribution:</p>
-<ul>
-<li>P(X == any number) = 0 always. ANy continuous X, any number.<br />
-</li>
-<li>For continuous variables, it only makes sense to talk about RANGES of values for X.</li>
-</ul>
-<ol start="5" style="list-style-type: decimal">
-<li>Same exam distro. Which is bigger:</li>
-</ol>
-<p>P(X &gt; 50)</p>
-<p>or</p>
-<p>P(X &gt;= 50)</p>
-<p>?</p>
-<p>THEY’RE EQUAL!</p>
-<p>Moral: for continuous distros, doesn’t matter if we include the endpoint.</p>
-<p>P(X&lt; 50) == P(X &lt;= 50)</p>
-<p>This is in contrast to discrete distros like binomial, geometric, poisson. For those, it matters a bunch if you include the endpoint!</p>
-</div>
-<div id="normal-distro-1" class="section level2">
-<h2>Normal Distro</h2>
-<p>The normal distro (ie the bell curve) is the most useful continuous distribution. Pops up everywhere!</p>
-<p>Recall, you already know the empirical rule, so you already know the basics of normal probabilities. BUT, only works for z = 0, +-1, +-2, +-3.</p>
-<p>Normal dist works just like any other continuous distro: it has a function (pdf, probability density function), and we find probabilities by calculating area under the function.</p>
-<p>Bad news: the function (pdf) for the normal distro is nasty. It’s impossible to calculate areas by hand. We always need help! Two main ways:</p>
-<ol style="list-style-type: decimal">
-<li>Probability tables. I.e., dead tree. Z table.</li>
-<li>Software. (R, Excel, Minitab, SASS)</li>
-</ol>
-</div>
-<div id="using-the-z-table-1" class="section level2">
-<h2>Using the z table</h2>
-<p>WARNING: There are several different ways to construct a z table. Use our book!</p>
-<p>Q: Why the “Z” table?</p>
-<p>A: There are lots of different normal distribution with different center and spread.</p>
-<p>The Z distro is the “STANDARD NORMAL” distro: mean = 0, std dev = 1.</p>
-<p>The table always shows area to the LEFT.</p>
-<p>Examples. Compute:</p>
-<ol style="list-style-type: decimal">
-<li><p>P(Z &lt; -1.23) = 0.1093. There’s a 10.93% chance that Z&lt;-1.23</p></li>
-<li><p>P(Z &gt; -1.23) = 1 - 0.1093 = .8907</p></li>
-</ol>
-<pre class="r"><code>1-0.1093</code></pre>
-<pre><code>## [1] 0.8907</code></pre>
-<ol start="3" style="list-style-type: decimal">
-<li>P( -1.74 &lt; Z &lt; -0.19 ) = P(Z &lt; -.19) - P(Z &lt; -1.74) = .4247 - .0409</li>
-</ol>
-<pre class="r"><code>.4247 - .0409</code></pre>
-<pre><code>## [1] 0.3838</code></pre>
-</div>
-</div>
-<div id="monday" class="section level1">
-<h1>Monday</h1>
-<div id="warm-ups" class="section level2">
-<h2>Warm-ups</h2>
-<ol style="list-style-type: decimal">
-<li>At a bus stop, the amount of time that travellers must wait ranges uniformly between 5 and 15 minutes.</li>
-</ol>
-<ol style="list-style-type: lower-alpha">
-<li>What’s the probability that a traveller must wait less than (or equal to) 8 min?</li>
-</ol>
-<pre class="r"><code>3*1/10</code></pre>
-<pre><code>## [1] 0.3</code></pre>
-<ol start="2" style="list-style-type: lower-alpha">
-<li>What’s the probability that a traveller must wait between 10 and 13 min?</li>
-</ol>
-<p>Same area, same probability! 30%.</p>
-<ol start="3" style="list-style-type: lower-alpha">
-<li>What’s the prob that they wait exactly 11 min?</li>
-</ol>
-<p>Cts, so prob = 0.</p>
-</div>
-<div id="z-table-practice" class="section level2">
-<h2>Z table practice</h2>
-<p>Suppose Z has a std normal dist (note: z always means standard normal, mean=0 and std dev =1). Compute:</p>
-<ol style="list-style-type: lower-alpha">
-<li><p>P(Z &lt; 1.52) = .9357</p></li>
-<li><p>P(Z &gt; -0.44) = 1-.3300 = 0.6700</p></li>
-<li><p>P( -0.19 &lt; Z &lt; 3.01) = P(Z &lt; 3.01) - P(Z &lt; -0.19) = .9987 - .4247</p></li>
-</ol>
-<pre class="r"><code>.9987-.4247</code></pre>
-<pre><code>## [1] 0.574</code></pre>
-<ol start="4" style="list-style-type: lower-alpha">
-<li><p>P(Z &lt; -4.3) = approx 0!</p></li>
-<li><p>P(Z &lt; 5.1) = approx 1!</p></li>
-</ol>
-</div>
-<div id="z-table-backwards" class="section level2">
-<h2>Z table backwards</h2>
-<p>So far: I give you Z, you tell me area.</p>
-<p>BUT, what if we know an area/probability and we want correponding z-score cutoff?</p>
-<p>Ex: How big must Z be in order to be in the top 10% of the distro? (i.e., the 90th percentile)</p>
-<p>Idea: find the area (as close as possible) to 90%. Remember, table always shows left area!</p>
-<p>Closest area: .8997, z score is 1.28.</p>
-<p>Example: How big must a z score be in order to be in the top 25% (i.e., 75th percentile) ?</p>
-<p>z = 0.67</p>
-<p>Forwards: start with z score, find area. Backwards: start with area/probability, find z score</p>
-</div>
-<div id="special-type-middle" class="section level2">
-<h2>Special type: middle %</h2>
-<p>Ex: what are the z cutoff for the middle 50% of the z distro?</p>
-<p>A: Between z=-.67 and z=+.67 lies the middle 50% of the z distro</p>
-<p>Ex:what are the z cutoff for the middle 95% of the z distro?</p>
-<p>The middle 95% of the data lies between z=-1.96 and z=+1.96</p>
-<p>Note: this is a more precise version of the emprical rule!</p>
-<p>Quiz on wed: quiz and z table basics (forwards and backwards)</p>
-</div>
-</div>
-<div id="monday-1" class="section level1">
-<h1>Monday</h1>
-<div id="warm-up" class="section level2">
-<h2>Warm-up</h2>
-<p>Example) At a bus stop, commuters wait between 5 and 15 minutes, following a uniform distribution. What’t the probability…</p>
-<ol style="list-style-type: lower-alpha">
-<li>A commuter must wait less than (or equal to) 8 min?</li>
-</ol>
-<pre class="r"><code>3*1/10</code></pre>
-<pre><code>## [1] 0.3</code></pre>
-<ol start="2" style="list-style-type: lower-alpha">
-<li>Must wait between 10 and 13 min?</li>
-</ol>
-<p>Same! Still a rectangle of width three, same region, same area, same prob!</p>
-<ol start="3" style="list-style-type: lower-alpha">
-<li>Exactly 11 min?</li>
-</ol>
-<p>0! FOr any cts dist, P(X=exactly some number) = 0</p>
-</div>
-<div id="z-table-practice-1" class="section level2">
-<h2>Z table practice</h2>
-<p>Suppose that Z has a standard normal dist (Note: in stats, z ALWAYS means standard normal distribution, mean of zero and std dev of 1), compute:</p>
-<ol style="list-style-type: lower-alpha">
-<li><p>P(Z &lt; 1.83) = .9664</p></li>
-<li><p>P(Z &gt; -0.41) = 1 - .3409 = .6591</p></li>
-</ol>
-<pre class="r"><code>1-.3409</code></pre>
-<pre><code>## [1] 0.6591</code></pre>
-<ol start="3" style="list-style-type: lower-alpha">
-<li>P( -0.25 &lt; Z &lt; 3.12) = P(Z &lt; 3.12) - P(Z &lt; -0.25) = .5978</li>
-</ol>
-<pre class="r"><code>.9991 - .4013</code></pre>
-<pre><code>## [1] 0.5978</code></pre>
-<ol start="4" style="list-style-type: lower-alpha">
-<li><p>P(Z &lt; -4.21) ~ 0 (~ = approx)</p></li>
-<li><p>P(Z &lt; 5.30) ~ 1</p></li>
-</ol>
-</div>
-<div id="z-table-backwards-1" class="section level2">
-<h2>Z table: backwards</h2>
-<p>So far: I tell you Z, you tell me prob/area</p>
-<p>Now, backwards: I tell you area/prob, you tell me z score cutoff</p>
-<p>Example) How large must a z score be in order to be in the top 10% of the distro (90th percentile)?</p>
-<p>Note: table always shows area to the left, so we use 90% or 0.90.</p>
-<p>Idea: Find the closest area to 0.90, then get z score</p>
-<p>Closest area: .8997 -&gt; z = 1.28</p>
-<p>Example) How large must a z score be to be in the top 20% of the data (i.e. 80th percentile).</p>
-<p>Closest area: 0.7995. Z score = 0.84</p>
-</div>
-<div id="middle" class="section level2">
-<h2>Middle %</h2>
-<p>Example: find the zscores that mark off the middle 60% of the data.</p>
-<p>Between z=-.84 and z=+.84 is the middle 60% of the data.</p>
-<p>Example: find the z scores that mark off the middle 95% of the data.</p>
-<p>The middle 95% of the data lies between z=-1.96 and z=+1.96</p>
-<p>Quiz on wed: uniform dist, basic z-table stuff</p>
-<p>Look at 4.1 exercise</p>
-</div>
-</div>
 <div id="tuesday" class="section level1">
 <h1>Tuesday</h1>
 <div id="using-the-z-table-in-practical-real-world-scenarios" class="section level2">
@@ -2143,11 +1840,8 @@ Important fact: since total probability always 100%, total area is always 1. SO,
 <pre><code>## [1] 71.808</code></pre>
 <p>He’d have to be at least 71.808&quot; tall to be in the top 15% of heights.</p>
 </div>
-</div>
-<div id="wednesday" class="section level1">
-<h1>Wednesday</h1>
-<div id="sampling-distributions" class="section level2">
-<h2>Sampling Distributions</h2>
+<div id="results-from-class-dice-activity" class="section level2">
+<h2>Results from Class Dice Activity</h2>
 <pre class="r"><code>sec1 &lt;- c(3.58,
 3.36,
 3.56,
@@ -2203,9 +1897,9 @@ hist(sec2)</code></pre>
 ##   3.034   3.373   3.475   3.526   3.737   3.932</code></pre>
 </div>
 </div>
-<div id="wednesday-1" class="section level1">
+<div id="wednesday" class="section level1">
 <h1>Wednesday</h1>
-<div id="sampling-distributions-1" class="section level2">
+<div id="sampling-distributions" class="section level2">
 <h2>Sampling Distributions</h2>
 <p>A sampling distribution is just a probability distribution, for a sample statistic!</p>
 <p>Instead of describing individuals, sampling dists talk about entire sample results.</p>
@@ -2233,9 +1927,9 @@ hist(sec2)</code></pre>
 <p>Need to know: what’s the mean? Mu? What’s the std dev? Sigma? FOR XBAR.</p>
 </div>
 </div>
-<div id="wednesday-2" class="section level1">
+<div id="wednesday-1" class="section level1">
 <h1>Wednesday</h1>
-<div id="sampling-distributions-2" class="section level2">
+<div id="sampling-distributions-1" class="section level2">
 <h2>Sampling Distributions</h2>
 <p>A sampling distribution is a probability distribution for a sample statistic.</p>
 <p>Instead of describing individuals, samp dists describe whole sample results.</p>
@@ -2308,158 +2002,13 @@ mySpecialSample</code></pre>
 summary(mySampleResults)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   3.283   3.462   3.499   3.500   3.535   3.685</code></pre>
-</div>
-</div>
-<div id="monday-2" class="section level1">
-<h1>Monday</h1>
-<div id="warm-up-normal-dist-in-real-life" class="section level2">
-<h2>Warm-up: Normal dist in real life</h2>
-<ol style="list-style-type: decimal">
-<li>Height for adult men in the US follows a normal dist with mean 69&quot; and stdev 2.7&quot;. What’s the probability that a randomly selected man is:</li>
-</ol>
-<ol style="list-style-type: lower-alpha">
-<li>Taller than 66&quot;?</li>
-</ol>
-<pre class="r"><code>(66-69)/2.7</code></pre>
-<pre><code>## [1] -1.111111</code></pre>
-<pre class="r"><code>1-.1335</code></pre>
-<pre><code>## [1] 0.8665</code></pre>
-<p>There’s about an 86.65% chance of this.</p>
-<ol start="2" style="list-style-type: lower-alpha">
-<li>Between 68&quot; and 72&quot;?</li>
-</ol>
-<p>z-scores:</p>
-<pre class="r"><code>(68-69)/2.7</code></pre>
-<pre><code>## [1] -0.3703704</code></pre>
-<pre class="r"><code>(72-69)/2.7</code></pre>
-<pre><code>## [1] 1.111111</code></pre>
-<p>P( -.37 &lt; Z &lt; 1.11) = P(Z&lt;1.11) - P(Z&lt; -0.37)</p>
-<pre class="r"><code>.8665 - .3557</code></pre>
-<pre><code>## [1] 0.5108</code></pre>
-<ol start="2" style="list-style-type: decimal">
-<li>Height for adult women in the US follows a normal dist with mean 64&quot; and stdev 2.4“. What’s the probability that a rando woman is 75” or taller?</li>
-</ol>
-<pre class="r"><code>(75-64)/2.4</code></pre>
-<pre><code>## [1] 4.583333</code></pre>
-<p>Off the table on the right, P(X&gt;75) is approx zero!!</p>
-<ol start="3" style="list-style-type: decimal">
-<li>IQ follows a normal dist with mean 100, std dev 15. How high must one’s IQ be in order to be in the top 10% of all IQs?</li>
-</ol>
-<p>From table: z = 1.28 (90% below)</p>
-<pre class="r"><code>1.28*15+100</code></pre>
-<pre><code>## [1] 119.2</code></pre>
-<p>One’s IQ would have to be at least 119.2 in order to be in the top 10%.</p>
-</div>
-<div id="sampling-dist-for-xbar" class="section level2">
-<h2>Sampling Dist for xbar</h2>
-<p>Recall: a sampling distribution is probability distro for a sample statistic (like xbar or phat).</p>
-<p>First, we’ll talk about the samp distro for xbar, sample means. I.e., answer the question: what’s the probability of obtaining a sample mean like the one we got?</p>
-<p>Key properties:</p>
-<ol style="list-style-type: decimal">
-<li><p>The mean of the mean is the mean. The expected outcome for our sample mean is the same as the population mean we’re sampling from. Taking samples doesn’t change the center of the distro!</p></li>
-<li><p>sigma_xbar = sigma_x / sqrt(n). What does this mean? Increasing sample size (n) will DECREASE the spread of the sampling distro.</p></li>
-<li><p>If the original pop is normal (think: human height), then xbar has a normal dist also, no matter what sample size. Even n=2, perfectly normal. If X is normnal, so is Xbar.</p></li>
-<li><p>(CLT) If n is “large” (n&gt;=30), then xbar has a normal dist NO MATTER WHAT the original distro for X is. Wooooah!</p></li>
-</ol>
-<p>Since #1 and #2 tell us center and spread, we can find z-scores! Ie, can use the z-table!!</p>
-<p>Example) Suppose we take a sample of 50 adult men (recall that mean height for men is 69&quot; and std dev is 2.7“). What’s the probability that their mean height is at least 69.4”?</p>
-<p>Note: we’re not asking about a partiular man. We’re asking a sample!!</p>
-<p>We know:</p>
-<p>mean for xbar: 69&quot;, same as mean for X</p>
-<p>stdev for xbar: 2.7/sqrt(50)</p>
-<pre class="r"><code>2.7/sqrt(50)</code></pre>
-<pre><code>## [1] 0.3818377</code></pre>
-<p>Need P(xbar &gt; 69.4)</p>
-<p>z-score:</p>
-<pre class="r"><code>(69.4-69)/(2.7/sqrt(50))</code></pre>
-<pre><code>## [1] 1.047566</code></pre>
-<pre class="r"><code>1-.8351</code></pre>
-<pre><code>## [1] 0.1649</code></pre>
-<p>There’s about a 16.49&quot; chance that the sample mean height is at least 69.4&quot;.</p>
-<p>Example) IQ follows a normal dist with mean 100, stdev 15. If we take a sample of 10 people, what’s the probability that their mean IQ is less than 90?</p>
-<p>P(xbar &lt; 90)</p>
-<p>mean for xbar: 100 (doesn’t change) stdev for xbar: 15/sqrt(10) (does change!)</p>
-<p>z:</p>
-<pre class="r"><code>(90-100)/(15/sqrt(10))</code></pre>
-<pre><code>## [1] -2.108185</code></pre>
-<p>There’s about a 1.46% chance of such a small sample mean!</p>
-</div>
-</div>
-<div id="monday-3" class="section level1">
-<h1>Monday</h1>
-<div id="warm-up-normal-dist-in-real-scenarios" class="section level2">
-<h2>Warm-up: Normal dist in real scenarios</h2>
-<ol style="list-style-type: decimal">
-<li>Height for adult men follows a normal dist with mean 69&quot; and std dev 2.7&quot;. What’s the probability that a randomly selected man is…</li>
-</ol>
-<ol style="list-style-type: lower-alpha">
-<li>taller than 66&quot;?</li>
-</ol>
-<pre class="r"><code>(66 - 69)/2.7</code></pre>
-<pre><code>## [1] -1.111111</code></pre>
-<pre class="r"><code>1-.1335</code></pre>
-<pre><code>## [1] 0.8665</code></pre>
-<p>There’s about an 86.65% chance he’s taller than 66&quot;.</p>
-<ol start="2" style="list-style-type: lower-alpha">
-<li>between 68 and 72&quot;?</li>
-</ol>
-<pre class="r"><code>(68-69)/2.7</code></pre>
-<pre><code>## [1] -0.3703704</code></pre>
-<pre class="r"><code>(72-69)/2.7</code></pre>
-<pre><code>## [1] 1.111111</code></pre>
-<p>Big - small:</p>
-<pre class="r"><code>.8665 - .3557</code></pre>
-<pre><code>## [1] 0.5108</code></pre>
-<p>There’s about a 51.08% chance he’s in that range.</p>
-<ol start="2" style="list-style-type: decimal">
-<li>Height for women: normal, mean = 64“, stdev = 2.4. What’s the probability that a rando woman is 75” or taller?</li>
-</ol>
-<pre class="r"><code>(75-64)/2.4</code></pre>
-<pre><code>## [1] 4.583333</code></pre>
-<p>Off the table! Prob(z&gt;4.58) is approx zero!</p>
-<ol start="3" style="list-style-type: decimal">
-<li>IQ follows a normal dist with mean 100, stdev 15. How high would your iq have to be in order to be in the top 1% of IQ?</li>
-</ol>
-<p>From table: z = 2.33</p>
-<pre class="r"><code>2.33*15 + 100</code></pre>
-<pre><code>## [1] 134.95</code></pre>
-<p>One’s iq would have to be at least 134.95.</p>
-</div>
-<div id="sampling-distribution-for-xbar" class="section level2">
-<h2>Sampling Distribution for xbar</h2>
-<p>Recall, a <strong>sampling distribution</strong> is a probability distribution for a sample statistic.</p>
-<p>Instead of describing individuals (X), samp dists describe sample results!</p>
-<p>Two main ones: samp dist for xbar for phat. WE’ll do xbar (sample mean) first!</p>
-<p>Key properties of samp dist for xbar:</p>
-<ol style="list-style-type: decimal">
-<li><p>The mean of the mean is the mean. Our expectation for sample mean xbar is the same as our expectation of the population. Center doesn’t change!</p></li>
-<li><p>sigma_xbar = sigma_x/sqrt(n) The spread of the sampling dist gets smaller as n increases!</p></li>
-<li><p>If X is normal, so is xbar. I.e., if we’re sampling from a normal pop (think: human height), then xbar will follow a normal dist for any sample size (even small n).</p></li>
-<li><p>Central Limit Theorem: If n is large enough (n&gt;=30), then xbar has a normal dist NO MATTER WHAT the original pop distro is!!!</p></li>
-</ol>
-<p>Fortunately, using this is easy.</p>
-<p>Example) Suppose we take a sample of 50 men. What’s the probability that their mean height is at least 69.4&quot;?</p>
-<p>(Remember, mean height = 69, stdev = 2.7)</p>
-<p>Need a z score. We know xbar has a normal dist (since X is normal and n is big).</p>
-<p>Mean xbar = same as original pop, 69&quot;</p>
-<p>Stdev xbar = original sigma/sqrt(n). Here: 2.7/sqrt(50)</p>
-<pre class="r"><code>(69.4-69)/(2.7/sqrt(50))</code></pre>
-<pre><code>## [1] 1.047566</code></pre>
-<p>P(xbar &gt; 69.4) = P(Z &gt; 1.05) = 1-.8531</p>
-<pre class="r"><code>1-.8531</code></pre>
-<pre><code>## [1] 0.1469</code></pre>
-<p>There’s about a 14.69% chance of such a sample.</p>
-<p>Example) IQ: normal, mean IQ = 100, stdev IQ = 15.</p>
-<p>If we take a sample of 10 people, what’s the prob that their mean IQ is less than 90?</p>
-<p>n=10</p>
-<p>mu_xbar = 100</p>
-<p>sigma_xbar = 15/sqrt(10)</p>
-<p>z score:</p>
-<pre class="r"><code>(90 - 100)/(15/sqrt(10))</code></pre>
-<pre><code>## [1] -2.108185</code></pre>
-<p>z=-2.11</p>
-<p>1.74% chance of such a sample result.</p>
-<p>QUiz: normal dist, CLT</p>
+<pre class="r"><code>barplot(
+  table(
+    sample(0:1, 1000, replace=T)
+  ),
+  names=c(&quot;female&quot;, &quot;male&quot;)
+)</code></pre>
+<p><img src="data:image/png;base64,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" width="672" /></p>
 </div>
 </div>
 
