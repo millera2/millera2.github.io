@@ -43,13 +43,16 @@ theme_set(                                #this sets the theme for all    #
 - [Week 04](https://millera2.github.io/Math-120/Math-120-Lec-04.html)
 - [Week 05](https://millera2.github.io/Math-120/Math-120-Lec-05.html)
 - [Week 06](https://millera2.github.io/Math-120/Math-120-Lec-06.html)
+- [Week 07](https://millera2.github.io/Math-120/Math-120-Lec-07.html)
 
 
-## Next Quiz:  Wed March 04
+## Next Quiz:  Wed March 11
 
-Topics:  Uniform dist, z table forwards and backwards
+Lecture:  Week 7
 
-Practice problem: 4.1 (p 142)
+Topics:  Z table for real-world scenarios (forwards and backwards), meaning of CLT
+
+Practice problem: 4.3f, 4.5 (p142)
 
 
 ## Labs
