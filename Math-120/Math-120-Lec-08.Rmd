@@ -1,5 +1,5 @@
 ---
-title: "Math 120 Week 07"
+title: "Math 120 Week 08"
 author: "Prof Miller"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
@@ -276,6 +276,147 @@ z=-2.11
 QUiz:  normal dist, CLT
 
 
+
+
+
+
+# Wednesday
+
+
+Recently, we've been talking about sampling dists.
+
+So far:  distro for xbar.  That means, quantitative data.  What's the probability of a particular sample -average-??
+
+For categorical data, we need to talk about proportions!
+
+Sample:  phat
+
+Example:  what proportion of my class has black hair? 
+
+Population:  p
+
+Important question:  what's the probability of observing a sample proportion like the one we got????
+
+We'll need the ** samp dist for phat** to answer!
+
+## Key properties of distro for phat
+
+For xbar:  mu_xbar = mu_x.  sigma_xbar = sigma_x/sqrt(n)
+
+1) Center?  mu_phat = p.  In our samples, we expect (ie center) our sample proportions to close to our population proportion.
+
+2) Spread?  sigma_phat = sqrt(  p*(1-p)/n    )
+
+
+3)  Shape?  CLT works for proportions:  as long as n is "sufficiently large", then phat follows a normal dist, no matter what the original population.
+
+Here, for phat, "big enough" means this:
+
+n*p >= 10
+n*(1-p) >= 10
+
+Both must be true!  We need at least 10 IN the category (think: black hair) and also 10 that aren't (think:  not black hair).
+
+Called the "success/failure" criterion.
+
+## Example:  samp dist for phat
+
+Suppose that 30% of all denison students have black hair.  If we take a sample of size n=50, what's the probability that at least half of them have black hair?
+
+p = .3
+
+Q:  What's P( phat >= .5)  (note:  half = 50% = .5)
+
+Still need a zscore.  
+
+Observed:  phat = .5
+
+Expected:  p = .3
+
+Stdev:  sqrt(.3*(1-.3)/50)
+
+z = (obs - exp)/stdev
+
+```{r}
+(.5 - .3)/sqrt(.3*(1-.3)/50)
+```
+z=3.09
+```{r}
+pnorm(3.09)
+```
+```{r}
+1-.9990
+```
+Such a sample would be very unlikely.
+
+
+
+
+# Wednesday
+
+Remember, you have to manually un-mute to hear me.
+
+Recently:  sampling dists.  Specifically:  samp dist for xbar.
+
+Xbar is used for quantitative data.
+
+If talking about categorical data, we'll need to use proportions.  
+
+Think:  what proportion of you have black hair?
+
+Want to know:  how likely is a particular sample proportion?
+
+For propotions:
+
+population proportion:  p
+
+sample proportion:  phat
+
+We'll need a distribution for phat.
+
+
+## Key properties of samp dist for phat
+
+1) Center:  mu_phat = p.  We expect our sample proportion to be close to pop proportion.
+
+2) Spread:  sigma_phat = sqrt( p*(1-p)/n )
+
+3)  CLT:  as long as n is suffiently large, sample proportion phat follows a normal distribution.
+
+For proportions, "large enough" means:
+
+1)  n*p >= 10
+2)  n*(1-p) > 10
+
+Need both.  Our notion of "large" depends on what p (proportion) is.  There's no single "n" that's big enough.  Think of it this way:  we need at least 10 that ARE in the category, and 10 that AREN'T in the category.
+
+Called:  "success/failure" criterion.  
+
+## Example:  hair color
+
+Suppose 30% of DU have black hair.  If we take samples of size n=50, what's the probability that at least half of students in the sample have black hair?
+
+p = .3
+
+Q:  P(phat > .5)  NOte:  "half" is 50% = .5
+
+observed: .5
+
+expected:  .3
+
+stdev:  sqrt( .3 * (1-.3)/50 )
+
+zscore:
+```{r}
+(.5-.3)/sqrt( .3 * (1-.3)/50 )
+```
+```{r}
+pnorm(3.09)
+```
+```{r}
+1-.9990
+```
+Such a sample is very unlikely.
 
 
 

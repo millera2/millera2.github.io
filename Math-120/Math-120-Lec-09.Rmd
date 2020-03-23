@@ -1,0 +1,255 @@
+---
+title: "Math 120 Week 09"
+author: "Prof Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  html_document:
+    code_folding: show
+    df_print: paged
+    theme: cerulean
+    toc: yes
+    toc_depth: 3
+  pdf_document:
+    toc: yes
+    toc_depth: '3'
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+
+
+
+
+
+
+# Week 9 - Vid 1
+
+
+Remember, you can pause the video at any time!
+
+Pause frequently to think, take notes, and **practice**.
+
+Pre-Reading Assignment:  Week 8 Lecture Notes
+
+
+Secret Video Question Answer:  Purple
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Review of Sampling Distributions
+
+Remember, sampling distributions are probability distributions for sample statistics.  We focus on two samp dists:
+
+- Samp dist for xbar (sample mean for quantitative data)
+- Samp dist for phat (samp proportion for categorical data)
+
+Samp dists let us answer a key question:  
+
+- **How likely is the sample result that we observed?**
+
+
+
+
+
+
+
+
+## Center and Spread for Samp Dists
+
+For xbar:
+
+- mu_xbar = mu  (expect sample mean to be close to population mean)
+- sigma_xbar = sigma/sqrt(n)  (spread decreases as n increases)
+
+For phat:
+
+- mu_phat = p  (expect sample proportion to be close to population proportion)
+- sigma_phat = sqrt[  p*(1-p)/n  ]  (spread decreases as n increases)
+
+
+
+
+
+
+
+
+## Shape for Samp Dists
+
+Fortunately, the Central Limit Theorem tells us that samp dists always follow a **normal** distribution, as long as our sample size is **big enough**.
+
+- For xbar, we need n at least 30
+- For phat, we need both np and n(1-p) at least 10
+
+
+
+
+
+
+
+
+
+
+## Example for xbar (forwards)
+
+Suppose that the mean resting heart rate of DU students is 66.1 bpm, with standard deviaiton 6.2.
+
+If we take a sample of 45 students, what's the probability that their mean blood pressure is more than 68 bpm?
+
+mu = 66.1,   sigma = 6.2  (population info)
+
+Q: P(xbar > 68)
+
+Think:  xbar = 68, n=45
+
+Note:  since n>=30, we know that xbar follows a normal dist (CLT).  Can use the z table!
+
+zscore = (obs - exp)/stdev
+
+obs = xbar (sample result) = 68
+exp = mu (population mean) = 66.1
+stdev = 6.2/sqrt(45)
+
+```{r}
+(68 - 66.1)/(6.2/sqrt(45))
+```
+
+Here, z = 2.05574 = 2.06
+
+Remember:  Q:  P(xbar > 68) = P( z > 2.06)
+
+Note:  pnorm is same as Z table
+```{r}
+pnorm(2.06)
+```
+
+Table:  .9803
+
+Remember, "greater than", so "1-prob"
+```{r}
+1-.9803
+```
+
+There's about a 1.97% chance of observing a sample where mean blood pressure is greater than 68bpm.  
+
+
+
+
+
+
+
+
+
+
+
+## Example for xbar (backwards)
+
+Suppose that the mean resting heart rate of DU students is 66.1 bpm, with standard deviaiton 6.2.
+
+If we take a sample of size 100, in what range of values would we expect the middle 95% of such sample means to lie?
+
+mu = 66.1, sigma = 6.2
+
+n = 100
+
+First:  use area to find z-score.  
+
+If middle area is 95%, each tail area is 2.5% (.025).  Half of 5%!
+
+In the z table, find the closest value to .025.  This is exactly in the table, 
+
+z = -1.96.  Use both:  +-1.96.  
+
+Remember z score formula for xbar:
+
+
+z = (xbar - mu)/(sigma/sqrt(n))
+
+Solve for xbar:  
+
+xbar = z*(sigma/sqrt(n)) + mu
+
+z = +-1.96 (use both)
+sigma = 6.2
+n = 100
+mu = 66.1
+
+Now, find xbar:
+
+```{r}
+-1.96*(6.2/sqrt(100))+66.1
+```
+```{r}
+1.96*(6.2/sqrt(100))+66.1
+```
+
+95% of the time we take a sample of size n=100, we'll find a sample mean between 64.8848 bpm and 67.3512 bpm.  
+
+
+
+
+
+
+
+
+
+
+
+## Example for phat (forwards)
+
+About 51% of all DU student are female.  
+
+If we take a sample of 100 DU students, what's the probability that at least half of them are female?
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Example for phat (backwards)
+
+About 51% of DU students are female.
+
+If we take samples of size 100, in what range would the middle 99% of sample proportions lie?  
+
+
+
+
+
+
+
+

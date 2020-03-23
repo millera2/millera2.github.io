@@ -52,7 +52,8 @@ theme_set(                                #this sets the theme for all    #
 - [Week 04](https://millera2.github.io/DA-101/DA-101-Lec-04.html)
 - [Week 05](https://millera2.github.io/DA-101/DA-101-Lec-05.html)
 - [Week 06](https://millera2.github.io/DA-101/DA-101-Lec-06.html)
-- [Week 07](https://millera2.github.io/DA-101/DA-101-Lec-07.html)
+- [Week 07-8](https://millera2.github.io/DA-101/DA-101-Lec-07.html)
+- [Week 09](https://millera2.github.io/DA-101/DA-101-Lec-09.html)
 
 
 
