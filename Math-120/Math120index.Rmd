@@ -61,13 +61,16 @@ Quiz 8 will be about the Week 09 material.
 
 ## Reading Assignments
 
+For best results, do the reading **before** watching the related video.  
+
 - Week 9
   - Vid 1: Review Week 8 Notes
   - Vid 2: Textbook, $\S$ 5.1
   - Vid 3: Textbook, $\S$ 5.2
 
+## Helpful Links and Info:
 
-## Labs
+### Labs
 
 - [Lab 1](https://millera2.github.io/Math-120/Math-120-Lab-1.html) 
 - [Lab 2](https://millera2.github.io/Math-120/Math-120-Lab-2.html)
@@ -75,7 +78,7 @@ Quiz 8 will be about the Week 09 material.
 - [Lab 4](https://docs.google.com/document/d/1xdKXIp7lV4ENWbBN0O6a_j0t_RemX23Guv0CEG4XFSE/edit?usp=sharing)
 
 
-## Datasets
+### Datasets
 
 
 - [Baby Names](https://drive.google.com/file/d/1W5baem_xOJ9SVlaD_QHnXNdfA9dtBXaS/view?usp=sharing)
@@ -85,30 +88,29 @@ Quiz 8 will be about the Week 09 material.
 - [CIRP DATASET](https://drive.google.com/file/d/1-FxOfb3-Hm8DPKSpkqlHGZ91154xMW4s/view?usp=sharing)
   - *DU Freshmen Survey Data from 2014.  Not public data.*
 
-## Helpful Files
+### Helpful Files
 
 
 - [Prof Miller's Scratchpad](https://drive.google.com/open?id=1XBCoVrgdWfMXgKteISLOznyBqGwzmnguSJis-axbxVI)
   - *(Here's where I can share code with you in-class)*
 
-## Google Drive Links
+### Google Drive Links
 
 - [Math 120 Shared Folder on Google](https://drive.google.com/open?id=1BjjdXm2h03ecn7qyPiHsbmW4gZEGqte7)
   - *(Look here for Reading Assignments and Labs)*
 
-## Texbook Links
+### Texbook Links
 
 - [Math 120 Textbook](https://www.openintro.org/stat/textbook.php?stat_book=os)
   - *OpenIntro Statistics* is an excellent, free introduction to modern statistical analysis.
 - [DA 101 Texbook](https://r4ds.had.co.nz)
   - *R For Data Science* is a concise, approachable introduction to to topic with many good code examples to play with.
 
-## Office Hours (Olin 214)
+### Office Hours (Google Hangouts)
 
-Monday 1-4pm
-Tuesday 10:30-11:30am
+MWF 10am-12pm, or by appointment
 
-## TA Hours
+### TA Hours
 
 Our TA's name is **Thu**.  She's very knowledgable about both stats and code -- she can help you!
 
@@ -122,7 +124,7 @@ You can find her in the Library (Atrium floor, computer area) at these times:
 
 
 
-## Exam I Topics
+### Exam I Topics
 
 - What is data?
   - Tidy Data
@@ -182,7 +184,7 @@ You can find her in the Library (Atrium floor, computer area) at these times:
     - Idea behind it
     - Verifying mathematically
 
-## Exam I Reading and Practice Problems
+### Exam I Reading and Practice Problems
 
 - Sec 1.2 Data Basics (Exercises start on on p 19)
   - 1.3c, 1.5c, 1.9
