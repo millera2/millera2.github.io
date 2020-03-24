@@ -32,6 +32,11 @@ theme_set(                                #this sets the theme for all    #
 ```
 
 
+## Video Lectures
+
+These are all on my [Youtube Channel](https://www.youtube.com/playlist?list=PLyeasqQur_f3JmC9dyJqcxB5SSW1i3RG_)
+
+The work I do in those vids, as always, is still availabe on this site below.  **The video lectures start at Week 09**, the first week after spring break.
 
 ## Math 120 Lecture Notes
 *They look great on your phone, so you can read them anywhere.  Steal my code!  Don't understand something?  Ask me!*
