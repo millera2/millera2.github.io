@@ -228,9 +228,49 @@ About 51% of all DU student are female.
 
 If we take a sample of 100 DU students, what's the probability that at least half of them are female?
 
+Note:  about probability of a sample result.  Use samp dist!
 
+p = .51 (population proportion female)
+n = 100
 
+P( phat  > .5 )   [i.e. sample prop is at least half]
 
+Q:  does phat have a normal dist?  Is our sample big enough?  
+
+A:  Check, need np > 10 and n(1-p) > 10
+
+```{r}
+100*.51
+100*(1-.51)
+```
+Yes!  Both are bigger than 10.  CLT says phat is normal!
+
+z = (obs - exp)/stdev
+
+obs:  phat = .5
+exp:  p = .51
+stdev: sqrt(.5*(1-.5)/100)
+
+Note:  use p (pop prop) in stdev, not phat!
+```{r}
+(.5 - .51)/sqrt(.51*(1-.51)/100)
+```
+
+z = -.20 
+
+In table, P(Z< -.20) = .4207
+
+```{r}
+pnorm(-.2)
+```
+
+"At least" means "bigger than", so do 1-prob
+
+```{r}
+1-.4207
+```
+
+There's about a 57.93% chance that a sample of 100 DU students is comprised of at least half female students.  Feelings:  this is a very common result.
 
 
 
@@ -246,10 +286,29 @@ About 51% of DU students are female.
 
 If we take samples of size 100, in what range would the middle 99% of sample proportions lie?  
 
+Note:  given area (middle 99%), need to find value (sample proportion).  Backwards!
 
+If middle 99%, each of the two tails has 0.5% , .005.  Find the closest to .005 in table, get z score.  
 
+Table tells us: z = -2.575.  Use both +- for the two bounds.  
 
+For phat,
 
+z = (phat - p)/sqrt(p*(1-p)/n)
 
+phat = z*sqrt(p(1-p)/n)+p  (backwards z score for phat)
+
+Lower bound:
+```{r}
+-2.575*sqrt(.51*(1-.51)/100)+.51
+```
+
+Upper bound:
+
+```{r}
+2.575*sqrt(.51*(1-.51)/100)+.51
+```
+
+99% of the time, the sample proportion of female students would be between 38.12% and 63.87%.  
 
 
