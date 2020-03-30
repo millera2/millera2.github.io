@@ -152,7 +152,11 @@ There's one problem:  since we're trying to make an estimate for p, that means w
 
 Suppose we find a sample proportion phat from a random sample of size n.  If n is large enough to satisfy the CLT ( np>10 and n(1-p)>10 ), we can estimate that:
 
-  phat - z sqrt( p(1-p)/n )  <  p  <  phat + z sqrt( p(1-p)/n )  
+  phat - z sqrt( phat(1-phat)/n )  <  p  <  phat + z sqrt( phat(1-phat)/n )  
+  
+In pretty typesetting:
+
+$$ \hat{p}-z\cdot \sqrt{\frac{\hat{p}(1-\hat{p})}{n}} < p < \hat{p}+z\cdot \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$$
 
 In other words, we conclude that the population proportion is betwen those two bounds.
 

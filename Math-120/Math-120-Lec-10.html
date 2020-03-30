@@ -1772,7 +1772,9 @@ summary {
 <div id="formula-for-ci-for-p" class="section level2">
 <h2>Formula for CI for p</h2>
 <p>Suppose we find a sample proportion phat from a random sample of size n. If n is large enough to satisfy the CLT ( np&gt;10 and n(1-p)&gt;10 ), we can estimate that:</p>
-<p>phat - z sqrt( p(1-p)/n ) &lt; p &lt; phat + z sqrt( p(1-p)/n )</p>
+<p>phat - z sqrt( phat(1-phat)/n ) &lt; p &lt; phat + z sqrt( phat(1-phat)/n )</p>
+<p>In pretty typesetting:</p>
+<p><span class="math display">\[ \hat{p}-z\cdot \sqrt{\frac{\hat{p}(1-\hat{p})}{n}} &lt; p &lt; \hat{p}+z\cdot \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}\]</span></p>
 <p>In other words, we conclude that the population proportion is betwen those two bounds.</p>
 <p>This is almost identical to the backwards problems we did last week!</p>
 <p>Picture:</p>
