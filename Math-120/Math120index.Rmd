@@ -51,13 +51,15 @@ The work I do in those vids, as always, is still availabe on this site below.  *
 - [Week 07](https://millera2.github.io/Math-120/Math-120-Lec-07.html)
 - [Week 08](https://millera2.github.io/Math-120/Math-120-Lec-08.html)
 - [Week 09](https://millera2.github.io/Math-120/Math-120-Lec-09.html)
+- [Week 10](https://millera2.github.io/Math-120/Math-120-Lec-10.html)
+
 
 
 
 
 ## Next Quiz
 
-Quiz 8 will be about the Week 09 material.  
+Quiz on 4/3 over week 10 material. 
 
 ## Reading Assignments
 
@@ -66,7 +68,9 @@ For best results, do the reading **before** watching the related video.
 - Week 9
   - Vid 1: Review Week 8 Notes
   - Vid 2: Textbook, $\S$ 5.1
-  - Vid 3: Textbook, $\S$ 5.2
+- Week 10
+  - Vid 1: Textbook, $\S$ 5.2
+
 
 ## Helpful Links and Info:
 

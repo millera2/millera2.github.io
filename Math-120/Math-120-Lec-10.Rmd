@@ -1,0 +1,267 @@
+---
+title: "Math 120 Week 09"
+author: "Prof Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  html_document:
+    code_folding: show
+    df_print: paged
+    theme: cerulean
+    toc: yes
+    toc_depth: 3
+  pdf_document:
+    toc: yes
+    toc_depth: '3'
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+
+
+# Week 10 - Vid 1
+
+**Pre-reading Assignment: Texbook Section 5.2**
+
+Now that we know about sampling distributions, we're ready to deploy the most useful statistial tools:
+
+- Confidence Intervals, and 
+- Hypothesis Tests
+
+Both of these are example of **Statistical Inference**:  making mathematically-supported conclusions about a population based on sample statistics.
+
+We'll talk about confidence intervals first.  
+
+
+
+
+
+
+
+
+
+
+
+
+## Confidence Intervals - The Idea
+
+Remember, a **statistic** is a numerical summary of a sample.  We've thought about many in this class so far, but the two we'll focus on now are:
+
+- phat, the sample proportion (categorical data)
+- xbar, the sample mean (quantitative data)
+
+In this video, we'll focus on phat.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+As we've seen, statistics vary randomly just as samples vary randomly.  Imagine we're wondering about the proportion of DU students who are international students.
+
+- Population:  DU students
+- Variable: Whether or not the student is international
+- Type:  categorical
+- Statistic: phat, sample proportion
+
+Different random samples will always give us different sample proportions.  Makes sense -- they contain different students!
+
+But, what can we say about the **population**?  Remember, a **parameter** is a summary of a population.  Here, we're wondering about **p**, the population proportion of DU students who are international.
+
+The big idea is this:  since we know what the distribution for phat is, we can use that to estimate what p must have been.
+
+These are **BACKWARDS** problems -- we're looking for a range of reasonable values for p!
+
+To put it another way, Confidence Intervals let us **estimate**  p based upon phat!
+
+Let's look at the formula.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Confidence Intervals for population proportion, p
+
+We learned previously that the z-score for proportions looks like this:
+
+(+/-) z = (phat - p)/sqrt(p*(1-p)/n)
+
+Remember from our practice in backward problems that we use both the + and - z-score to get the upper and lower bounds.  If you don't understand what I mean, PAUSE THE VIDEO AND REVIEW BACKWARDS PROBLEMS FOR PHAT!
+
+With a little algebra, this formula can be re-arranged to solve for p, the population proportion.  It looks like this:
+
+p = phat  +/-  z*sqrt( p(1-p)/n )
+
+where:
+
+- phat = sample proportion
+- z = cutoffs for middle C%  (ie middle 95%, middle 99%, or anything else we want)
+- n = sample size
+
+There's one problem:  since we're trying to make an estimate for p, that means we don't have everything we need on the right side of the equation.  So, we do the next best thing and use phat, the sample proportion, instead.  As long as the CLT is satisfied (how big does n have to be?), then this is ok.
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Formula for CI for p
+
+Suppose we find a sample proportion phat from a random sample of size n.  If n is large enough to satisfy the CLT ( np>10 and n(1-p)>10 ), we can estimate that:
+
+  phat - z sqrt( p(1-p)/n )  <  p  <  phat + z sqrt( p(1-p)/n )  
+
+In other words, we conclude that the population proportion is betwen those two bounds.
+
+This is almost identical to the backwards problems we did last week!
+
+Picture:   
+
+                  (---------------- phat ----------------)
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Example 1
+
+Suppose we take a random sample of 100 DU students, and find that 55 of them are female.  
+
+Based upon this, estimate the proportion of all DU students who are female with 95% confidence.
+
+Note:  estimate == conf int
+
+Q:  is n big enough for CLT?
+
+np > 10, and n(1-p) > 10, i.e., need 10 in the category and 10 not in the category
+
+Here:  yes!  55 women (bigger than 10), and  45 not women (bigger than 10).
+
+phat = 55/100 = .55
+n = 100
+
+Need z:  what are the cutoffs for the middle 95% of normal dist?  Look at table:
+
+If 95% in the middle, then 2.5% for each tail.  Look for .025.  Here:
+
+"critical" z score = 1.96.  Note:  z score for CI is called "critical value"
+
+z = 1.96
+
+Formula:  phat +/- z*sqrt(phat(1-phat)/n)
+
+First, lower bound:
+
+```{r}
+.55 - 1.96*sqrt(.55*(1-.55)/100)
+```
+
+Find upper bound:
+
+```{r}
+.55 + 1.96*sqrt(.55*(1-.55)/100)
+```
+
+We are 95% confident that the true proportion of DU students who are female is between 45.2% and 64.6%.
+
+
+
+
+
+
+
+
+
+
+
+
+## Example 2
+
+Suppose we take a random sample of 60 DU students, and find that 16 of them watched "Love Is Blind", the reality dating show on Netflix.  
+
+Estimate the proportion of all DU students who watch Love Is Blind with 90% confidence. 
+
+Info:
+
+- n is big enough, since >10 successes and >10 failures
+- phat = 16/60
+
+Critical value, z:  need cutoffs for the middle 90% of normal dist.
+
+If 90% in the middle, each tail has 5%.  Find .005 in the table: use z = 1.645  (split the difference). 
+
+Formula:  phat +/- z*sqrt(blah blah)
+
+Low bound:  
+
+```{r}
+16/60 - 1.645*sqrt(16/60*(1-16/60)/60)
+```
+
+Upper bound:
+
+```{r}
+16/60 + 1.645*sqrt(16/60*(1-16/60)/60)
+```
+
+Based upon this sample, we are 90% confident that the true proportion of DU students who watch Love is Blind is between 17.3% and 36.1%.  
+
+
+
+
+
+
+
+
+
