@@ -1,5 +1,5 @@
 ---
-title: "Math 120 Week 09"
+title: "Math 120 Week 10"
 author: "Prof Miller"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
@@ -256,7 +256,6 @@ Upper bound:
 ```
 
 Based upon this sample, we are 90% confident that the true proportion of DU students who watch Love is Blind is between 17.3% and 36.1%.  
-
 
 
 
