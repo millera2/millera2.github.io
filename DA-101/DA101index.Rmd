@@ -79,11 +79,11 @@ theme_set(                                #this sets the theme for all    #
 
 - [DA 101 Texbook](https://r4ds.had.co.nz)
 
+## My Virtual Office Hours
+
+MWF 10am-12pm on Google Hangouts
+
 ## TA Hours
 
-Tim's Hours (in Burton Morgan DA Lab, 3rd Floor)
-
-- Sunday 2-6pm
-- Monday 6-8pm
 
 
