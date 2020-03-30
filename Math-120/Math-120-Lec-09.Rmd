@@ -221,7 +221,6 @@ Now, find xbar:
 
 
 
-
 ## Example for phat (forwards)
 
 About 51% of all DU student are female.  

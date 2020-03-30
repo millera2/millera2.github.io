@@ -498,6 +498,90 @@ Warning:  keep() is super cool, but be careful!  Large datasets can slow it down
 
 On lab:  keep() will definitely slow your computer to a halt for a long, long time!  Instead, probably better to experiment with a subset of variables.  
 
+## StepAIC
+
+Another cool way to decide what variables to use.
+
+Idea:  StepAIC tests out differt combinations of variables.  It checks to see which combo of variables gives you the strongest model (adjusted R^2)
+
+First:  install the library.  MASS
+
+Note:  if you're using r.denison.edu, then this already installed.  
+
+For most of you, you'll need to install it.  
+
+Here's how to use it.
+
+```{r}
+library(MASS)
+
+# example: lin model to predict sepal length, based on others
+```
+
+
+```{r}
+
+irisModel <- lm(data=iris, Sepal.Length~Petal.Length+Petal.Width+Sepal.Width)
+
+summary(irisModel)
+
+
+stepModel <- stepAIC(irisModel, direction = "both")
+
+
+
+```
+
+Note about "both".  There are two directions.  "Forwards" means that StepAIC with only a single variable, and it experiments adding variable by variable until it gets the best model.
+
+"Backwards" means that StepAIC starts with ALL the variables, and takes them away one by one to see if the model improves.
+
+If "both", then it does both and picks the best one.  Of course, always do both.  
+
+To see the result:  look at the "ANOVA" variable.
+
+```{r}
+stepModel$anova
+```
+
+Here:  StepAIC decided to keep -all- the variables.  Sometimes, for more complex models, it might decide to drop one.
+
+## Complicated example:  housing data
+
+```{r}
+houseData <- read_csv("House-Sales.csv")
+head(houseData)
+
+library(purrr)
+houseModel <- lm(data = keep(houseData, is.numeric), price~.)
+
+summary(houseModel)
+```
+
+Two cool things:  
+
+- "keep" gets all the numeric variables.  
+- the "." uses all other variables.  convenient!
+
+Warning!  Don't do this on your lab!  The dataset is too big!  ALso, there are many NA variables!!  Experiment with small numbers of variables.  Start small!  Just pick one or two, then add.
+
+Let's try stepAIC.
+
+```{r}
+stepModel <- stepAIC(houseModel, direction="both")
+```
+
+```{r}
+stepModel$anova
+```
+
+As always, use your good judgement when deciding what variables to include!  Do they make sense?  Is it reasonable to include them?  What story might they tell?
+
+These "soft" qualifiers are just as important as the "hard" ones.
+
+In lab, explain:  why did you choose your variables?  WHat's the story?  Dont't just look at the numbers, think about the story.
+
+
 
 
 
