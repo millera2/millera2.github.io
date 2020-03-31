@@ -1706,7 +1706,7 @@ summary {
 
 <h1 class="title toc-ignore">Math 120 Week 10</h1>
 <h4 class="author">Prof Miller</h4>
-<h4 class="date">30 March, 2020</h4>
+<h4 class="date">31 March, 2020</h4>
 
 </div>
 
@@ -1718,6 +1718,13 @@ summary {
 <li><a href="#formula-for-ci-for-p">Formula for CI for p</a></li>
 <li><a href="#example-1">Example 1</a></li>
 <li><a href="#example-2">Example 2</a></li>
+</ul></li>
+<li><a href="#vid-2">Vid 2</a><ul>
+<li><a href="#important-parts-of-cis">Important parts of CIs</a></li>
+<li><a href="#margin-of-error">Margin of Error</a></li>
+<li><a href="#factors-that-affect-the-moe">Factors that affect the MOE</a></li>
+<li><a href="#planning-for-moe">Planning for MOE</a></li>
+<li><a href="#example-1-1">Example 1</a></li>
 </ul></li>
 </ul>
 </div>
@@ -1821,6 +1828,68 @@ summary {
 <pre class="r"><code>16/60 + 1.645*sqrt(16/60*(1-16/60)/60)</code></pre>
 <pre><code>## [1] 0.3605796</code></pre>
 <p>Based upon this sample, we are 90% confident that the true proportion of DU students who watch Love is Blind is between 17.3% and 36.1%.</p>
+</div>
+</div>
+<div id="vid-2" class="section level1">
+<h1>Vid 2</h1>
+<div id="important-parts-of-cis" class="section level2">
+<h2>Important parts of CIs</h2>
+<p>Note: “CI” always means “Confidence Interval”.</p>
+<p>Confidence Intervals are our first tool for statistical inference: we use them to estimate population paramaters (like mu and p) based on sample statistics (like xbar and phat).</p>
+<p>Last time, we learned the CI for p:</p>
+<pre><code>            phat +/- z*sqrt(phat(1-phat)/n)</code></pre>
+<p>We’ll see many CIs in this class, and they all have the same form:</p>
+<pre><code>          (point estimate) +/- (critical value)*(standard error)
+          </code></pre>
+<p>Let’s think about each of these:</p>
+<ul>
+<li><p>The point estimate is a single number that approximates the population parameter. For proportions, we use phat, the sample proportion. <strong>The point estimate is always the middle of the CI!</strong></p></li>
+<li>The critical value is the z score. This determines how wide our confidence interval is going to be. It’s based upon the <strong>confidence level</strong>, C. For example, if we want to be 95% confident, then we need the z score for the middle 95% of the normal curve.
+<ul>
+<li>Since confidence values of 90%, 95%, and 99% are very common, you’ll frequently see their corresponding critical values of z=1.645, z=1.96, and z=2.575. You should know how to find these yourself! Backwards z table!</li>
+</ul></li>
+<li><p>The standard error is the stanard deviation of the sampling distribution. For phat, that’s sqrt(phat(1-phat)/n). We’ll see other examples in the future!</p></li>
+</ul>
+</div>
+<div id="margin-of-error" class="section level2">
+<h2>Margin of Error</h2>
+<p>MOE means exactly what you think: how far “off” might our estimate be?</p>
+<p>Mathematially, it’s everything after the +/- in the confidence interval. For phat, that’s:</p>
+<p>MOE = z*sqrt(phat(1-phat)/n)</p>
+<p>Of course, we always hope that the MOE will be <strong>small</strong>, so that we have a precise estimate of the population parameter!</p>
+<p>We have some control over this…</p>
+</div>
+<div id="factors-that-affect-the-moe" class="section level2">
+<h2>Factors that affect the MOE</h2>
+<p>There are two major factors:</p>
+<ol style="list-style-type: decimal">
+<li>Sample size. If sample size goes up, MOE goes down. Look at the formula again:</li>
+</ol>
+<p>MOE = z*sqrt(phat(1-phat)/n)</p>
+<p>Since we’re <strong>dividing by n</strong>, bigger n means smaller MOE! Yay! This is good!</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Confidence level. This one is kind of a bummer. In order to be more confident, we need to include a wider range of values. That means our critical values have to be bigger. But, that means BIGGER MOE!</li>
+</ol>
+<p>In short: being more confident means having a larger margin of error. Bummer!!!</p>
+</div>
+<div id="planning-for-moe" class="section level2">
+<h2>Planning for MOE</h2>
+<p>Since it’s possible to control sample sizes, we can (hopefully) engineer our studies to provide a desired margin of error.</p>
+<p>Think like this: If I want an estimate that’s very accurate, how big would my sample size have to be?</p>
+<p>This is a pretty easy question to answer: just solve for n in the MOE formula!</p>
+<p>Remember, MOE = z*sqrt(phat(1-phat)/n)</p>
+<p>After a little algebra, we have</p>
+<p>n = phat(1-phat)*(z/MOE)^2</p>
+<p>If we have a prior estimate for phat, use that. If not, use phat = .5 as a “worst case scenario”. It turns out that .5 will give you the largest possible MOE.</p>
+<p>CALCULUS NOTE: Did you take calculus? Remember “optimization” problems? Well, phat = .5 is the solution to the question “what value produces the maximum margin of error?” Conclusion: calculus is why we have nice things. ;D</p>
+</div>
+<div id="example-1-1" class="section level2">
+<h2>Example 1</h2>
+<p>In a previous study of student tv viewing habits, we approximated the proportion of DU students who watch Love Is Blind to be 26.7% with a margin of error of 9.4%. <small>(You might wanna review that example to make sure you believe me. I’m eating Fruit Loops right now, maybe I messed up? ;D)</small>.</p>
+<pre class="r"><code>16/60</code></pre>
+<pre><code>## [1] 0.2666667</code></pre>
+<pre class="r"><code>1.645*sqrt(16/60*(1-16/60)/60)</code></pre>
+<pre><code>## [1] 0.09391292</code></pre>
 </div>
 </div>
 
