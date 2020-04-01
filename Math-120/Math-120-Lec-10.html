@@ -1706,7 +1706,7 @@ summary {
 
 <h1 class="title toc-ignore">Math 120 Week 10</h1>
 <h4 class="author">Prof Miller</h4>
-<h4 class="date">31 March, 2020</h4>
+<h4 class="date">01 April, 2020</h4>
 
 </div>
 
@@ -1725,6 +1725,19 @@ summary {
 <li><a href="#factors-that-affect-the-moe">Factors that affect the MOE</a></li>
 <li><a href="#planning-for-moe">Planning for MOE</a></li>
 <li><a href="#example-1-1">Example 1</a></li>
+<li><a href="#example-2-1">Example 2</a></li>
+</ul></li>
+<li><a href="#week-10---vid-3">Week 10 - Vid 3</a><ul>
+<li><a href="#cis-for-mu">CIs for mu</a></li>
+<li><a href="#ci-for-mu---the-formula">CI for mu - The Formula</a></li>
+<li><a href="#the-problem-with-means">The problem with means</a></li>
+<li><a href="#the-price-we-pay-the-t-distribution">The Price We Pay: The “t” Distribution</a></li>
+<li><a href="#using-the-t-distribution">Using the t distribution</a></li>
+<li><a href="#example-1-2">Example 1</a></li>
+<li><a href="#example-2-2">Example 2</a></li>
+<li><a href="#back-to-cis---the-real-ci-for-mu">Back to CIs - The REAL CI for mu</a></li>
+<li><a href="#requirements-for-cis">Requirements for CIs</a></li>
+<li><a href="#example-3">Example 3</a></li>
 </ul></li>
 </ul>
 </div>
@@ -1881,15 +1894,148 @@ summary {
 <p>After a little algebra, we have</p>
 <p>n = phat(1-phat)*(z/MOE)^2</p>
 <p>If we have a prior estimate for phat, use that. If not, use phat = .5 as a “worst case scenario”. It turns out that .5 will give you the largest possible MOE.</p>
+<p>Then, n = .5*(1-.5)(z/MOE)^2</p>
 <p>CALCULUS NOTE: Did you take calculus? Remember “optimization” problems? Well, phat = .5 is the solution to the question “what value produces the maximum margin of error?” Conclusion: calculus is why we have nice things. ;D</p>
 </div>
 <div id="example-1-1" class="section level2">
 <h2>Example 1</h2>
 <p>In a previous study of student tv viewing habits, we approximated the proportion of DU students who watch Love Is Blind to be 26.7% with a margin of error of 9.4%. <small>(You might wanna review that example to make sure you believe me. I’m eating Fruit Loops right now, maybe I messed up? ;D)</small>.</p>
-<pre class="r"><code>16/60</code></pre>
-<pre><code>## [1] 0.2666667</code></pre>
-<pre class="r"><code>1.645*sqrt(16/60*(1-16/60)/60)</code></pre>
-<pre><code>## [1] 0.09391292</code></pre>
+<p>Suppose that we wish to conduct a new study, where we hope to estimate the proportion of DU students who watch Love Is Blind with margin of error no greater than 5%. Use the same 90% confidence. How large must our sample be?</p>
+<p>n = phat(1-phat)(z/MOE)^2</p>
+<p>Have a prior estimate: 26.7% (16/60).</p>
+<p>Since 90% confident, z = 1.645</p>
+<p>MOE desired: 5%</p>
+<p>Let’s find n:</p>
+<pre class="r"><code>.267*(1-.267)*(1.645/.05)^2</code></pre>
+<pre><code>## [1] 211.8395</code></pre>
+<p>Need n = 212. In order to obtain a margin of error no greater than 5%, we’d need to sample 212 students.</p>
+</div>
+<div id="example-2-1" class="section level2">
+<h2>Example 2</h2>
+<p>Suppose we wish to estimate the proportion of DU students who are vegetatian. There is no prior information available. We’d like our estimate to be accurate to within 1%, with confidence level of 95% How many students must we sample?</p>
+<p>We hope to construct a 95% CI with MOE no greater than 1%. How many students? What’s n?</p>
+<p>Since no prior estimate, use phat = .5. Worst case scenario.</p>
+<p>Formula: n = phat(1-phat)(z/MOE)^2</p>
+<p>phat = .5 (no prior) z = 1.96 (confidence 95%) MOE = .01</p>
+<pre class="r"><code>.5*(1-.5)*(1.96/.01)^2</code></pre>
+<pre><code>## [1] 9604</code></pre>
+<p>Uh oh! Moral of the story: too greedy! Can’t have such a small MOE! Try again!</p>
+</div>
+</div>
+<div id="week-10---vid-3" class="section level1">
+<h1>Week 10 - Vid 3</h1>
+<div id="cis-for-mu" class="section level2">
+<h2>CIs for mu</h2>
+<p>In the first two videos this week, we investigated the meaning and application of confidence intervals for categorical data.</p>
+<p>Today, we’ll continus that discussion in a new context: quantitative data.</p>
+<p>Remember,</p>
+<ul>
+<li><p>We summarize <strong>categorical</strong> data with the sample proportion <strong>phat</strong>. We use it as an approximation to <strong>p</strong>, the population proportion (the thing we’re hoping to learn about).</p></li>
+<li><p>We summarize <strong>quantitative</strong> data with with the sample mean <strong>xbar</strong>. We use it as an approximation to <strong>mu</strong>, the population mean (the thing we hope to learn about).</p></li>
+</ul>
+<p>We know from the CLT that the distributions for both xbar and phat is normal for large sample sizes. So, we can use xbar to estimate mu just like we did with phat and p.</p>
+</div>
+<div id="ci-for-mu---the-formula" class="section level2">
+<h2>CI for mu - The Formula</h2>
+<p>Remember, all CIs have the following structure:</p>
+<pre><code>   (point estimate) +/- (critical value)*(standard error)
+   </code></pre>
+<p>That’s still true for means! But, in this context:</p>
+<ul>
+<li>The point estimate is <strong>xbar</strong>, the sample mean.</li>
+<li>The critical value is the same as before: the bounds for the middle 90/95/99/whatever%</li>
+<li>The standard error is sigma/sqrt(n)</li>
+</ul>
+<p>If that formula for the standard error looks unfamiliar, you should stop and review Week 8’s notes. This is what you used in the denoninator of your z-scores there!</p>
+<p>So, putting it all together, we can make an approximation for mu, the population mean, with this formula:</p>
+<pre><code>xbar +/- z*sigma/sqrt(n)</code></pre>
+<p><strong>There’s a problem here, however!! This is not the final formula!</strong></p>
+</div>
+<div id="the-problem-with-means" class="section level2">
+<h2>The problem with means</h2>
+<p>So, why can’t we just use the above formula and call it a day?</p>
+<p>Here’s the rub: if we don’t know the population mean (mu), then why in the world would we know the population standard deviation (sigma)???</p>
+<p>We totes wouldn’t! That’s the point: we’re doing this because we DON’T know the population parameters!! In real life, Prof Miller can’t just magic up the true values.</p>
+<p>So, what’s the solution?</p>
+<p>The solutions: we’ll use the <strong>sample standard deviation</strong> instead.</p>
+<p>I.e., use s instead of sigma. After all, s is easy to compute. For example from the iris dataset:</p>
+<pre class="r"><code>sd(iris$Sepal.Length)</code></pre>
+<pre><code>## [1] 0.8280661</code></pre>
+<p>However, s is bound to have error. So, <strong>there’s a price we pay</strong>….</p>
+</div>
+<div id="the-price-we-pay-the-t-distribution" class="section level2">
+<h2>The Price We Pay: The “t” Distribution</h2>
+<p>Using “s” from the sample, instead of “sigma” from the population is, in short, <strong>not as good</strong>.</p>
+<p>It turns out, this little “cheat” actually <strong>changes the shape of the sampling distribution</strong>.</p>
+<p>In short: we can’t use the Z table for these problems. Oh, no!</p>
+<p>The good news is: it’s still possible to know the shape of the resulting distribution based on s instead of sigma.</p>
+<p>In fact, we call it the “t” distribution. Check it out in the back of your book!</p>
+<p>In practice, when performing statistical inference for means (including CIs for mu), <strong>we use the t distribution to find critical values instead of the z distribution</strong>.</p>
+<p>It’s not a big deal: it’s just a different table (or, in software, a different computer function)</p>
+</div>
+<div id="using-the-t-distribution" class="section level2">
+<h2>Using the t distribution</h2>
+<p>Before we can do neat tricks like make Confidence Intervals, we need to learn how to read the t table. It’s a little diffferent from the z table!</p>
+<p>To the human eye, the t dist and the z dist look very, very similar:</p>
+<ul>
+<li>both are bell-shaped</li>
+<li>both are symmetric</li>
+<li>both centered at zero</li>
+</ul>
+<p>However, the t dist has two important differences:</p>
+<ul>
+<li>it’s tails are thicker; they have more area.</li>
+<li>the shape of t depends on the sample size (called degrees of freedom; df = n-1).</li>
+</ul>
+<p>Since the t dist depends on sample size (whereas the normal dist doesn’t!), the t table has to be re-arranged to accomodate this.</p>
+<p>I think it’s easiest to learn by example, so let’s practice some easy ones together.</p>
+</div>
+<div id="example-1-2" class="section level2">
+<h2>Example 1</h2>
+<p>If our sample size is n=34, what are the cutoffs for the middle 95% of the t distribution?</p>
+<p>Here, df = n - 1 = 34 -1 = 33. Df = 33.</p>
+<p>Tail area: one-tail area = 2.5%, two-tail = 5%</p>
+<p>Cutoffs: -2.03, +2.03. Ie, the middle 95% of the t dist (df = 33) is between t=-2.03 and t=+2.03.</p>
+</div>
+<div id="example-2-2" class="section level2">
+<h2>Example 2</h2>
+<p>If our sample size is n=22, what are the cutoffs for the middle 98% of the t distribution?</p>
+<p>Df = 22 -1 = 21.</p>
+<p>One-tail area: 1%, Two-tail area: 2%</p>
+<p>Cutoffs: t = +/- 2.52</p>
+</div>
+<div id="back-to-cis---the-real-ci-for-mu" class="section level2">
+<h2>Back to CIs - The REAL CI for mu</h2>
+<p>Now that we know how to use the t distribution, we can finally put all the pieces together, we can finally use it to construct CIs for mu:</p>
+<pre><code>xbar +/- t*s/sqrt(n)</code></pre>
+<p>Phew! That’s it! Once you get the hang of it, they’re easy to make.</p>
+</div>
+<div id="requirements-for-cis" class="section level2">
+<h2>Requirements for CIs</h2>
+<p>In order for any of this to work, we need to know that xbar is following a normal distribution. Remember, there are two ways:</p>
+<ul>
+<li>If the data (X) follows a normal dist, then the sample mean (xbar) will also</li>
+<li>If the sample size is “large enough” (n&gt;=30), then xbar is normal no matter what</li>
+</ul>
+<p><strong>Either one of these is enough</strong>, but we <strong>need at least one</strong>! In other words: if your sample size is small, and your data doesn’t follow a normal distribution, then <strong>you can’t construct CIs for mu!!</strong> The CI is -not- guaranteed to contain the true population parameter, mu!</p>
+<p>I’ll be sure to talk through this in each example. (And, if I ever forget, then you should earn your student stars by asking me in office hours!)</p>
+<p>Let’s put it all to work!</p>
+</div>
+<div id="example-3" class="section level2">
+<h2>Example 3</h2>
+<p>Suppose we wish to estimate the mean resting heartrate of DU students. We take a sample of 55 DU students, and find a mean resting heart rate of 64.3 bpm, std dev 5.8 bpm.</p>
+<p>Constuct a 99% CI to estimate the true population mean bpm for students.</p>
+<p>xbar = 64.3 s = 5.8 n = 55 -&gt; df = 54</p>
+<p>Critical value: one-tail area = .5%. t = 2.68.</p>
+<p>Plug and chug:</p>
+<p>xbar +/- t*s/sqrt(n)</p>
+<p>Lower bound:</p>
+<pre class="r"><code>64.3 - 2.68*5.8/sqrt(55)</code></pre>
+<pre><code>## [1] 62.20405</code></pre>
+<p>Upper bound:</p>
+<pre class="r"><code>64.3 + 2.68*5.8/sqrt(55)</code></pre>
+<pre><code>## [1] 66.39595</code></pre>
+<p>We are 99% confident that the true mean heart rate of DU students is between 62.204 bmp and 66.396.</p>
 </div>
 </div>
 
