@@ -135,6 +135,7 @@ Note:  phat = 16/24
 1)  Hypotheses.  
 
 H0: p = .50  (Assume by default that there's not an imbalance)
+
 Ha: p > .50  (Think:  proportion of female students is greater than 50%)
 
 2)  Test stat.  Think:  z score!
@@ -142,8 +143,11 @@ Ha: p > .50  (Think:  proportion of female students is greater than 50%)
 z = (obs-exp)/stdev
 
 obs:  phat = 16/24
+
 exp:  p = .5
+
 stdev:  sqrt(.5*(1-.5)/24)
+
 
 ```{r}
 (16/24 - .5)/sqrt(.5*(1-.5)/24)
