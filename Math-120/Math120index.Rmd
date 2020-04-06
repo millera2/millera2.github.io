@@ -52,6 +52,7 @@ The work I do in those vids, as always, is still availabe on this site below.  *
 - [Week 08](https://millera2.github.io/Math-120/Math-120-Lec-08.html)
 - [Week 09](https://millera2.github.io/Math-120/Math-120-Lec-09.html)
 - [Week 10](https://millera2.github.io/Math-120/Math-120-Lec-10.html)
+- [Week 11](https://millera2.github.io/Math-120/Math-120-Lec-11.html)
 
 
 
@@ -59,7 +60,7 @@ The work I do in those vids, as always, is still availabe on this site below.  *
 
 ## Next Quiz
 
-Quiz on 4/3 over week 10 material. 
+Quiz on 4/10 over week 11 material. 
 
 ## Reading Assignments
 
@@ -72,6 +73,8 @@ For best results, do the reading **before** watching the related video.
   - Vid 1: Textbook $\S$ 5.2
   - Vid 2: Textbook $\S$ 5.2 (specifically, p 212) 
   - Vid 3: Textbook $\S$ 7.1
+- Week 11
+  - Vid 1: Textbook $\S$ 6.1
 
 
 ## Helpful Links and Info:
@@ -114,7 +117,7 @@ For best results, do the reading **before** watching the related video.
 
 ### Office Hours (Google Hangouts)
 
-MWF 10am-12pm, or by appointment
+Wed, Thurs, Fri: 9am-11am, or by appointment
 
 ### TA Hours
 

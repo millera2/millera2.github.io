@@ -1,0 +1,211 @@
+---
+title: "Math 120 Lec 23"
+author: "Your Name"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: cerulean
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+
+
+
+
+
+## Hyp Tests
+
+Last week, we focused on Confidence Intervals.  CIs were the first tool for statistical inference we've learned in this class:  they let us **estimate** a population parameter based upon a sample result.
+
+This week, we'll be learning the other major tool for statistical inference:  **hypothesis tests**, or "hyp tests" for short.  Hyp tests are formalized procedures for **asking questions** about a population parameter.
+
+**There's a lot to take in at first**, but just like CIs, **all hyp tests have the same structure.**  Once you get that down, you understand how all hyp tests work.
+
+These might seem intimidating at first, but hang in there!  With a little practice, they're really not too tough.
+
+I think the easisest way to understand hyp tests is to compare them to modern **criminal trials**.  Let's dive in!
+
+
+
+
+
+
+
+## Hyp tests are criminal trials
+
+
+Hypothesis tests are just like criminal trials.  The two are philosophically identical procedures.  We'll break the process down into four parts:
+
+1) In a criminal trial, we wonder:  innocent or guilty?
+
+In a hyp test, the NULL HYPOTHSIS (H0) is on trial.  The null hyp is a statement about the population.  The alternate hypothesis is logical opposite.  (Ha).
+
+In a criminal trial, we assume innocent until proven guilty.  In a hypothesis test, we assume H0 is true, until we find evidence that's it's false.
+
+The whole reason we're doing the test is becasue we suspect H0 is false!  I.e., the alt hyp (Ha) is our claim about the population.
+
+
+
+
+
+
+
+
+
+
+
+
+
+2) In a criminal trial, we have witnesses.  In a hyp test, we have sample data!  We'll use special statistics, called "test statistics", to summarize the evidence.
+
+
+3)  In a criminal trial, there are laws and lawers and arguments.  In a hyp test, there's probability!  (p-value)
+
+A p-value is the probability of observing a sample result as or more extreme than the one we got, assuming H0 is true.  The assumption is important: we can't compute probabilities unless we make an assumption about the population!
+
+Finding p-vals are identical to the **forwards problems** for sampling distributions that we practiced in Week 8 (the first post-apocalypse week).
+
+
+
+
+
+
+
+
+
+
+
+
+4) In a criminal trial, a judge or jury weighs the strength of the evidence.  In a hyp test, we decide if our p-value is SMALL ENOUGH.  
+
+If p is small, it means our sample result is unlikely under H0.  In this case, we REJECT H0, we trust our data!  Small p-val -> reject H0.  Support Ha.
+
+Every hyp tests ends in one of two ways:  if p is small, we reject H0.  If p is large, we fail to reject H0.  
+
+Wait, how small is "small"?   Totally up to us!  It's called the "significance level", "alpha".  Generally, we use alpha = .05 by default.  In other words, if our sample has less than 5% chance of occuring, we reject H0.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Example 1:  Hyp test for proportion
+
+In Fall 2015, my stats class had 16 women out of 24 students.  Based upon this, I suspect that the gender ratio at DU was higher than 50% female.  Does this sample result support my claim?  Perform a hyp test.  Use alpha=.05.
+
+
+Note:  phat = 16/24
+
+
+1)  Hypotheses.  
+
+H0: p = .50  (Assume by default that there's not an imbalance)
+Ha: p > .50  (Think:  proportion of female students is greater than 50%)
+
+2)  Test stat.  Think:  z score!
+
+z = (obs-exp)/stdev
+
+obs:  phat = 16/24
+exp:  p = .5
+stdev:  sqrt(.5*(1-.5)/24)
+
+```{r}
+(16/24 - .5)/sqrt(.5*(1-.5)/24)
+```
+
+3)  p-val:  Probability of getting a sample result as or more extreme, assuming that p = .5.
+
+P(Z>1.63) = 1-.9484
+
+```{r}
+1-.9484
+```
+
+Here, p = .0516.  
+
+4)  Remember, if p is small (p<.05), then reject H0.  Otherwise, if p>.05, we fail to reject H0.
+
+Here it's close, but still .0516>.05, so we fail to reject the H0. 
+
+We didn't find strong evidence to suggest that the proportion of female students at DU is greater than 50%.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Example 2:  Hyp test for proportion
+
+After a night of bad luck gambling, we suspect that dice is unfair.  Specifically, we think it rolls a 1 more frequently than it should (1/6 of the time).
+
+To test this, we rolled the dice 100 times, and found that 25 of them were 1s.
+
+Does this provide evidence that the proportion of "1" rolls is higher than expected?
+
+
+1)  H0:  p = 1/6, Ha: p > 1/6
+
+2) test stat
+
+```{r}
+(25/100-1/6)/sqrt(1/6*(1-1/6)/100)
+```
+
+3) p-val:
+
+Look up on table,
+```{r}
+pnorm(2.24)
+```
+
+Thus p = 1-.9875
+
+```{r}
+1-.9875
+```
+
+4)  Since p<.05, reject H0.  There's strong evidence that the proportion of "1"s rolled with the dice is greater than 1/6.
