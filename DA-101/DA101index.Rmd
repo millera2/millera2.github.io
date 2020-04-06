@@ -82,7 +82,7 @@ theme_set(                                #this sets the theme for all    #
 
 ## My Virtual Office Hours
 
-MWF 10am-12pm on Google Hangouts
+Wed/Thur/Fri 9am-11am on Google Hangouts
 
 ## TA Hours
 
