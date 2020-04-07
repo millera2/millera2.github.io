@@ -74,7 +74,8 @@ For best results, do the reading **before** watching the related video.
   - Vid 2: Textbook $\S$ 5.2 (specifically, p 212) 
   - Vid 3: Textbook $\S$ 7.1
 - Week 11
-  - Vid 1: Textbook $\S$ 6.1
+  - Vid 1: Textbook $\S$ 5.3
+  - Vid 2: Textbook $\S$ 6.1
 
 
 ## Helpful Links and Info:
