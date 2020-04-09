@@ -1,6 +1,6 @@
 
 ---
-title: "Math 120 Fall 2019 Homepage"
+title: "Math 120 Spring 2020 Homepage"
 date: "Updated: `r format(Sys.time(), '%d %B, %Y')`"
 output: 
   html_document:
