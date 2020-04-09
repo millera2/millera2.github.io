@@ -456,6 +456,33 @@ Thus, p = 1-.9265 = **0.0735**
 
     We didn't find the evidence we're looking for to suggest that more than 8% of children are nearsighted.  Nobody publishes our result.  We are sad and dejected.  
     
-    
-    
-    
+
+# Quiz 8 Solutions
+
+Note:  question order is random for all students.  Make sure you're checking the right solutions.
+
+1)  CI for proportion
+
+```{r}
+45/120 - 1.96*sqrt(45/120*(1-45/120)/120)
+45/120 + 1.96*sqrt(45/120*(1-45/120)/120)
+
+```
+
+2) Sample size for proportion
+
+```{r}
+(45/120)*(1-45/120)*(1.645/.01)^2
+
+
+```
+
+3) CI for mean
+
+```{r}
+64.2 - 2.4*5.1/sqrt(50)
+64.2 + 2.4*5.1/sqrt(50)
+
+```
+
+4)  Increasing confidence increases MOE.  Bummer!

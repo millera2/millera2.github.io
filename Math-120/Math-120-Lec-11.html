@@ -1706,7 +1706,7 @@ summary {
 
 <h1 class="title toc-ignore">Math 120 Week 11</h1>
 <h4 class="author">Prof. Miller</h4>
-<h4 class="date">07 April, 2020</h4>
+<h4 class="date">09 April, 2020</h4>
 
 </div>
 
@@ -1728,6 +1728,7 @@ summary {
 </ul></li>
 <li><a href="#example-5.32-p205-slight-modification">Example: 5.32 p205 (slight modification)</a></li>
 </ul></li>
+<li><a href="#quiz-8-solutions">Quiz 8 Solutions</a></li>
 </ul>
 </div>
 
@@ -1915,6 +1916,32 @@ summary {
 <p>We didn’t find the evidence we’re looking for to suggest that more than 8% of children are nearsighted. Nobody publishes our result. We are sad and dejected.</p></li>
 </ol>
 </div>
+</div>
+<div id="quiz-8-solutions" class="section level1">
+<h1>Quiz 8 Solutions</h1>
+<p>Note: question order is random for all students. Make sure you’re checking the right solutions.</p>
+<ol style="list-style-type: decimal">
+<li>CI for proportion</li>
+</ol>
+<pre class="r"><code>45/120 - 1.96*sqrt(45/120*(1-45/120)/120)</code></pre>
+<pre><code>## [1] 0.2883794</code></pre>
+<pre class="r"><code>45/120 + 1.96*sqrt(45/120*(1-45/120)/120)</code></pre>
+<pre><code>## [1] 0.4616206</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Sample size for proportion</li>
+</ol>
+<pre class="r"><code>(45/120)*(1-45/120)*(1.645/.01)^2</code></pre>
+<pre><code>## [1] 6342.246</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>CI for mean</li>
+</ol>
+<pre class="r"><code>64.2 - 2.4*5.1/sqrt(50)</code></pre>
+<pre><code>## [1] 62.469</code></pre>
+<pre class="r"><code>64.2 + 2.4*5.1/sqrt(50)</code></pre>
+<pre><code>## [1] 65.931</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Increasing confidence increases MOE. Bummer!</li>
+</ol>
 </div>
 
 
