@@ -1,0 +1,151 @@
+---
+title: "DA 101 Week 7-8"
+author: "Prof Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: cerulean
+    df_print: paged
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)
+library(pander)
+library(ggfortify)
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+## The Data 
+
+Recall the `iris` dataset with measurements about 150 iris flowers:
+
+```{r}
+iris
+```
+
+The reader will recall that `Species`, a categorical variable, has three levels:  *setosa*, *versicolor*, and *virginica*.  We consider two models for predicting `Sepal.Length` (chosen only because it's conveniently the first variable in the data frame).
+
+## First Model: Predicting With a Categorical Variable
+
+Here's a model predicting `Sepal.Length` based only upon a single categorical variable: `Species`.  What does the model do?  Simple: it predicts the mean for each species!  Take a look at the model coefficients:
+
+<center>
+
+```{r}
+speciesMod <- lm(data=iris, 
+                 Sepal.Length~Species)
+
+pander(summary(speciesMod)) 
+
+
+```
+
+</center> 
+Note a seeming deficiency in the model: only *versicolor* and *virginica* have coefficients.  What happened to *setosa*?  
+
+In our "dummy variable" model, one level of the category is absorbed into the intercept as a baseline (here, *setosa* is our baseline, chosen only by alphabetical order).  Other levels (in this case *versicolor* and *virginica*) are expressed in binary (which is to say either $x =$ 0 or $x =$ 1) relative to the baseline.  
+
+Specifically: the mean for *setosa* `Sepal.Length` is 5.006cm, and since the coefficient for *versicolor* is 0.9300 we know that the mean `Sepal.Length` for *versicolor* irises is 0.9300cm larger than than the mean for *setosas*: 5.9306cm.  A similar adjustment is made for *virginica* irises, which have a mean `Sepal.Length`of 6.588cm
+
+All together, the model:
+
+$$\hat{y}=5.006+0.930 x_1 + 1.582 x_2$$
+Here, $x_1$ is a binary "dummy variable" that indicates versicolor irises and $x_2$ is a binary variable that indicates virginica plants.
+
+Those are the coefficients of the model, but what does it look like?
+
+```{r}
+
+iris %>% ggplot(aes(Sepal.Width, Sepal.Length, color=Species))+
+  geom_point()+
+  geom_abline(intercept = c(5.0060, 5.0060+.9300, 5.0060+1.5820),
+              slope=0, color=c("red", "green3", "blue"))
+
+```
+
+The picture is clear: regressing on a categorical variable simply predicts the mean for each category!
+
+
+## Regressing on Two Variables: Categorical and Quantitative
+
+Ok, what if we use an additional quantitative variable?  For example, what if we predict `Sepal.Length` based on both `Species` and `Sepal.Length`?
+
+<center>
+
+```{r}
+speciesAndSepalWidthMod <- lm(data=iris,
+                              Sepal.Length~Sepal.Width+Species)
+
+summary(speciesAndSepalWidthMod) %>% pander(justify="center")
+```
+
+</center>
+
+Observe that `Sepal.Width` is a numerical variable, and its coefficient is a slope.  All other coefficients merely affect the intercept.  Take a look:
+
+```{r}
+qplot(data=iris, 
+      x=Sepal.Width, y=Sepal.Length, 
+      color=Species)+
+  geom_abline(intercept = c(2.2514,2.2514+1.4587,2.2514+1.9486),
+              slope=.8036, color=c("red", "green3", "blue"))
+
+```
+
+## Using Multiple Variables
+
+Just for fun, we consider a model for `Sepal.Length` using every other variable in the `iris` data frame.
+
+
+<center>
+```{r}
+finalModel <- lm(data=iris, Sepal.Length~.)
+summary(finalModel) %>% pander
+```
+</center>
+
+Here, our model is 
+
+$$ \hat{y} = 2.171 - 0.7236x_1 -1.023x_2+0.4959x_3+0.8292x_4-0.3152x_5 $$
+where $x_1$ and $x_2$ are dummy variables for *versicolor* and *virginica*, and $x_3$, $x_4$, and $x_5$ are the quantitative measurements for `Sepal.Width`, `Petal.Length`, and  `Petal.Width`.
+
+Since a four-dimensional visualization of the model is inconvenient, we defer to a diagnostic plot:
+
+```{r}
+autoplot(finalModel)
+
+```
+
+We see that 86.27% of the total variation in `Sepal.Length` can be explained by the relationship with the other variables `Sepal.Width`, `Petal.Length`, `Petal.Width`, and `Species`. 
+
+Observe that our residuals don't exhibit any "bad behavior", in particular:
+
+- No polynomial pattern is detected in the residual plot at upper left
+- Residuals seem fairly homoskedastic per the scale-location plot at lower left
+- Normality of residuals is observed at upper right
+- The high-leverage observations tend to have small residuals, as seen at lower right.
+
+
+
+
+
+
+
