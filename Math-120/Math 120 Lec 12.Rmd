@@ -1,0 +1,255 @@
+---
+title: "Math 120 Week 12"
+author: "Prof. Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: cerulean
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+
+
+
+
+
+
+
+
+
+
+# Week 12 Vid 1
+
+## Hyp Tests for mu (population mean)
+
+Last week, we learned about hypothesis tests.  A hyp test is a formal procedure for asking a question about a population parameter.
+
+All of the tests we did then were about categorical data.  In other words, the tests asked questions about population **proportions**.
+
+This week, we'll explore hypothesis tests for quantitative data.  That means, we'll be asking questions about population **means**, mu.
+
+Let's dive in with an example.
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Example 1
+
+The height for adult men ages 20-29 in the US is 69".  However, a researcher suspects that male students at DU have a higher average height than the general population.
+
+To investigate this, he takes a sample of 40 men at DU and finds their average height to be 70.2" with std dev 3.4".
+
+Does this sample data provide evidence to support the researcher's suspicion?
+
+
+
+Before we begin, a few observations:
+- We're asking a question about a population:  is the mean height (mu) for male DU students higher than 69"?
+- We have sample data, and we see that the sample mean is in fact larger than 69"
+- However, we know that this is just a sample.  Does it provide strong evidence that the whole **population** mean is larger than 69?  That's what the hyp test is designed to show.
+- The alternate hypothesis is always stated in the question.  Here:  Ha: mu > 69.  That means we know what the null hypothesis has to be also.
+
+
+Let's perform the test:
+
+1)  Hypotheses
+
+H0: mu = 69
+Ha: mu > 69
+
+2) test stat = (obs - exp)/stdev
+
+obs: xbar = 70.2
+exp: mu = 69   [Note:  expectation always comes from H0]
+stdev: s/sqrt(n) = 3.4/sqrt(40)   [Note:  only have sample std dev, s.  So, use t-table, not z table]
+
+```{r}
+(70.2 - 69)/(3.4/sqrt(40))
+```
+
+t = 2.23
+
+3) p-val = "tail area"
+
+Note:  use t-table for means.  (Use z-table for proportions).  
+
+Here, df = n-1 = 40-1 = 39.  Df = 39.  
+
+From table, we see .01 < p-value < .025
+
+4)  Conclusion
+
+Since alpha not stated, use alpha = .05.  Q:  is our p-val smaller than alpha?  A: yes!
+
+Here:  p-val < .025, so p-val < alpha.  Ie, our p-val is small!
+
+Thus we reject H0.  There's strong evidence that the true mean height of men at DU is greater than 69".  
+
+
+
+
+
+
+
+
+
+## Left-tail / Right-tail / Two-tail tests
+
+Remember the definition of p-value:
+
+p-val = The probability of observing a sample result that's as (or more) extreme than the one we got, assuming H0 is true.  Right now, we're going to focus on one part:  "as (or more) extreme".
+
+What makes a sample result "extreme"?  Well, that depends on what we're trying to show.  In other words, it depends on the **alternate hypothesis**, Ha.  Remember, there are only three options for Ha:  either > (greater than), < (less than), or != (not equal to)
+
+If we think the parameter (mu/p/whatever) is **smaller**, then Ha has to have "<".  Thus, our notion of "extreme" here is **smaller than**.  This is called a "left-tail" test, because the tail area is literally on the left-side of the curve.
+
+If we think the paramater (mu/p/whatever) is **larger**, then Ha has to have ">".  Thus, our notion of "extreme" here is **larger than**.  This is a "right-tail" test.
+
+The third kind is new for us in this class:  not equal.  In this case, we don't necessarily think "bigger" or "smaller"... it could be either!  That means, our tail area comes from **both sides**!
+
+There's a good picture here:  https://www.fromthegenesis.com/wp-content/uploads/2018/06/Types-of-Hypothesis-Tests.jpg
+
+
+
+
+
+
+
+
+
+Since the normal curve (and t curve) are symmetric on both sides, it's easy to get this area:  just multiply by two.  (Think:  there are two tails, so p = 2*tail area.)
+
+If you're looking at the t-table, both 1-tail and 2-tail areas are shown (althought that's kinda unneccesary, since you literally just multiply by 2 to find 2-tail area).
+
+Remember, you can always tell what kind of test it is from the Ha:
+
+- If Ha has "<", then "left-tail" (i.e., one-tail)
+- If Ha has ">", then "right-tail" (i.e., one-tail)
+- If Ha has "!=", then "two tail"
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Example 2
+
+The mean IQ for the general population is 100 (the test is designed and tweaked to maintain this).  
+
+Suppose a researcher suspects that professional musicians have a different mean IQ than the general population.  To investigate, she administers an IQ test to 55 randomly-selected professional musicians.  From this, a mean IQ of 103.2 with stdev 9.2 is calculated.  
+
+Does this sample provide evidence to support her suspicion?
+
+
+1) Hypotheses
+
+- H0:  mu  = 100
+- Ha:  mu != 100
+
+2) Test Stat
+
+t = (xbar - mu)/(s/sqrt(n))
+
+```{r}
+(103.2 - 100)/(9.2/sqrt(55))
+```
+
+t = 2.58
+
+
+3) p-val (two tail)
+
+Df = 55 - 1 =54
+
+Note:  use df=50 since 54 isn't on the table.
+
+From the t table, .01 < p < .02
+
+```{r}
+2*(1-pt(2.58, 54))
+```
+
+
+
+4) Conclusion
+
+Since p < .05, we reject H0.  There's strong evidence that mean IQ of professional musicians differs from 100.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Example 3
+
+A biologist suspects that the sex ratio of a species of Tiger Snake differs from 50/50.  To test this, they examine 100 tiger snake embryos, and find that 59 of them are male.  Does this provide evidence to support the biologists claim?
+
+1) Hypotheses
+
+
+2) Test Stat
+
+
+3) P-val
+
+
+4) Conclusion
+
+
+
+
+
+
+
+
+
+
+
