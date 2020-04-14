@@ -353,7 +353,49 @@ What would Type I and Type II errors mean, *practically*, in this example?
  You may wish to write down the hypotheses of the test first.
 
 
+## Quiz 9 Solutions
 
+### 1) 
 
+In order to pass a resolution to the faculty handbook, Prof Miller requires the support of 66% of the faculty (i.e., they will vote in favor of her proposition).
 
+Before Prof Miller puts it up to a vote, she wants to take an informal survey of faculty to see if she has the support she needs.  She polls 80 faculty members, and finds that 58 of them support her.  
+
+Does this data suggest that she'll find the support (more than 66%) that she needs among the entire faculty?  Conduct a complete hypothesis test, clearly showing all steps as practiced in class.
+
+**Solution**
+
+1)
+
+H0: p = .66
+Ha: p > .66
+
+2) 
+
+```{r}
+(58/80-.66)/sqrt(.66*(1-.66)/80)
+```
+
+3) 
+
+```{r}
+1-pnorm(1.23)
+```
+From table, p = 0.1093
+
+4) Since p>.05, we fail to reject H0.  There's not enough evidence to support Prof Miller's hope that more than 2/3 of faculty support her.
+
+### 2)
+
+Which of the following is a valid null hypotheses (H0) for a hypothesis test?
+
+Since the null hypothesis is a statement of equality about a population parameter, the only valid H0 is:
+
+H0: p = .65
+
+### 3)
+
+If p is small, it follows that:
+
+The null hypothesis and the data disagree.  This is because, assuming the null hypothesis is true, it's very unlikely to get a sample data result like the one we did.  We trust the data, not the hypothesis.
 

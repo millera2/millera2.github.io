@@ -1725,6 +1725,11 @@ summary {
 <li><a href="#criminal-trial">Criminal trial</a></li>
 <li><a href="#epa-violation">EPA Violation</a></li>
 </ul></li>
+<li><a href="#quiz-9-solutions">Quiz 9 Solutions</a><ul>
+<li><a href="#section">1)</a></li>
+<li><a href="#section-1">2)</a></li>
+<li><a href="#section-2">3)</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </div>
@@ -1906,6 +1911,45 @@ summary {
 <p>A particular toxic chemical, which we’ll call Toxin X, is sometimes present in small amounts in drinking water. The safe upper limit for Toxin X concentrations is 0.8 g/L; higher concentrations would endanger the community.</p>
 <p>An EPA enforcement officer wonders whether the mean levels of Toxin X are too high (higher than 0.8 g/L) in a local well water supply. To test her suspicion, she takes water samples from various sources around the community and finds their average concentration of Toxin X.</p>
 <p>What would Type I and Type II errors mean, <em>practically</em>, in this example? You may wish to write down the hypotheses of the test first.</p>
+</div>
+</div>
+<div id="quiz-9-solutions" class="section level2">
+<h2>Quiz 9 Solutions</h2>
+<div id="section" class="section level3">
+<h3>1)</h3>
+<p>In order to pass a resolution to the faculty handbook, Prof Miller requires the support of 66% of the faculty (i.e., they will vote in favor of her proposition).</p>
+<p>Before Prof Miller puts it up to a vote, she wants to take an informal survey of faculty to see if she has the support she needs. She polls 80 faculty members, and finds that 58 of them support her.</p>
+<p>Does this data suggest that she’ll find the support (more than 66%) that she needs among the entire faculty? Conduct a complete hypothesis test, clearly showing all steps as practiced in class.</p>
+<p><strong>Solution</strong></p>
+<ol style="list-style-type: decimal">
+<li></li>
+</ol>
+<p>H0: p = .66 Ha: p &gt; .66</p>
+<ol start="2" style="list-style-type: decimal">
+<li></li>
+</ol>
+<pre class="r"><code>(58/80-.66)/sqrt(.66*(1-.66)/80)</code></pre>
+<pre><code>## [1] 1.227289</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li></li>
+</ol>
+<pre class="r"><code>1-pnorm(1.23)</code></pre>
+<pre><code>## [1] 0.1093486</code></pre>
+<p>From table, p = 0.1093</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Since p&gt;.05, we fail to reject H0. There’s not enough evidence to support Prof Miller’s hope that more than 2/3 of faculty support her.</li>
+</ol>
+</div>
+<div id="section-1" class="section level3">
+<h3>2)</h3>
+<p>Which of the following is a valid null hypotheses (H0) for a hypothesis test?</p>
+<p>Since the null hypothesis is a statement of equality about a population parameter, the only valid H0 is:</p>
+<p>H0: p = .65</p>
+</div>
+<div id="section-2" class="section level3">
+<h3>3)</h3>
+<p>If p is small, it follows that:</p>
+<p>The null hypothesis and the data disagree. This is because, assuming the null hypothesis is true, it’s very unlikely to get a sample data result like the one we did. We trust the data, not the hypothesis.</p>
 </div>
 </div>
 </div>
