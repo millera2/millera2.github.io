@@ -335,14 +335,24 @@ Type II:  Fail to reject H0, but H0 is false.  In other words, I don't think tha
 
 ### Criminal trial
 
-H0:  innocent
-Ha:  guilty
+Consider the example of a criminal trial.  Remember, in this context:
+
+H0:  The defendant innocent
+Ha:  The defendant is guilty
+
+What would Type I and Type II errors mean, *practically*, in this example?
 
 
 ### EPA Violation
 
-H0: mu = .8
-Ha: mu > .8  (preview for future)
+A particular toxic chemical, which we'll call Toxin X, is sometimes present in small amounts in drinking water.  The safe upper limit for Toxin X concentrations is 0.8 g/L; higher concentrations would endanger the community.  
+
+An EPA enforcement officer wonders whether the mean levels of Toxin X are too high (higher than 0.8 g/L) in a local well water supply.  To test her suspicion, she takes water samples from various sources around the community and finds their average concentration of Toxin X.
+
+What would Type I and Type II errors mean, *practically*, in this example?
+ You may wish to write down the hypotheses of the test first.
+
+
 
 
 
