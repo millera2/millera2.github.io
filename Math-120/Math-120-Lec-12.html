@@ -1706,7 +1706,7 @@ summary {
 
 <h1 class="title toc-ignore">Math 120 Week 12</h1>
 <h4 class="author">Prof. Miller</h4>
-<h4 class="date">13 April, 2020</h4>
+<h4 class="date">14 April, 2020</h4>
 
 </div>
 
@@ -1717,7 +1717,14 @@ summary {
 <li><a href="#example-1">Example 1</a></li>
 <li><a href="#left-tail-right-tail-two-tail-tests">Left-tail / Right-tail / Two-tail tests</a></li>
 <li><a href="#example-2">Example 2</a></li>
+</ul></li>
+<li><a href="#week-12-vid-2">Week 12 Vid 2</a><ul>
 <li><a href="#example-3">Example 3</a></li>
+<li><a href="#errors-in-hyp-tests">Errors in Hyp Tests</a></li>
+<li><a href="#error-practice-examples">Error Practice Examples</a><ul>
+<li><a href="#criminal-trial">Criminal trial</a></li>
+<li><a href="#epa-violation">EPA Violation</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </div>
@@ -1812,15 +1819,90 @@ summary {
 </ol>
 <p>Since p &lt; .05, we reject H0. There’s strong evidence that mean IQ of professional musicians differs from 100.</p>
 </div>
+</div>
+<div id="week-12-vid-2" class="section level1">
+<h1>Week 12 Vid 2</h1>
 <div id="example-3" class="section level2">
 <h2>Example 3</h2>
 <p>A biologist suspects that the sex ratio of a species of Tiger Snake differs from 50/50. To test this, they examine 100 tiger snake embryos, and find that 59 of them are male. Does this provide evidence to support the biologists claim?</p>
 <ol style="list-style-type: decimal">
-<li><p>Hypotheses</p></li>
-<li><p>Test Stat</p></li>
-<li><p>P-val</p></li>
-<li><p>Conclusion</p></li>
+<li>Hypotheses</li>
 </ol>
+<p>H0: p = .5 Ha: p != .5</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Test Stat</li>
+</ol>
+<p>obs: phat = 59/100 exp: p = .5 stdev: sqrt(.5*(1-.5)/100)</p>
+<pre class="r"><code>(59/100 - .5)/sqrt(.5*(1-.5)/100)</code></pre>
+<pre><code>## [1] 1.8</code></pre>
+<p>Picture:</p>
+<pre><code>                      -0-               1.8 -------------- )   
+                      </code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>P-val</li>
+</ol>
+<p>Here, we have a right tail since test stat is postive. Tail area:</p>
+<pre class="r"><code>#tail area:
+
+1-0.9641</code></pre>
+<pre><code>## [1] 0.0359</code></pre>
+<p>That’s not quite the end. Remember: this is a two tail test. No problem, multiply by 2:</p>
+<pre class="r"><code>2*.0359</code></pre>
+<pre><code>## [1] 0.0718</code></pre>
+<p>Our p-val is 0.0718.</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Conclusion</li>
+</ol>
+<p>Since p-val &gt; 0.0718, we fail to reject H0. We didn’t find the evidene we’re looking for to support the Ha that the proportion of male snakes differs from 50%.</p>
+</div>
+<div id="errors-in-hyp-tests" class="section level2">
+<h2>Errors in Hyp Tests</h2>
+<p>Hypothesis tests are a formal procedure for asking questions about a population parameter. But, since they’re based on imperfect information (random sample data), they’re not guaranteed to work. We have to prepare for the possibility that, in fact, the conclusion of the test is an <strong>error</strong>.</p>
+<p>There are two kinds. Since mathematicians are clever, their names are:</p>
+<ul>
+<li><p>Type I Error (False Positive) It’s when we reject H0 (positive), but we shouldn’t have because H0 is true! (false positive)</p></li>
+<li><p>Type II Error (False Neg) It’s when we fail to reject H0 (negative), but we should have because H0 is false!!</p></li>
+</ul>
+<p>The following table is an easy way to remember:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Test Conclusion  Truth in Reality</th>
+<th>H0 True</th>
+<th>H0 False</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Reject H0</td>
+<td>Type I</td>
+<td>Correct</td>
+</tr>
+<tr class="even">
+<td>Fail to reject H0</td>
+<td>Correct</td>
+<td>Type II</td>
+</tr>
+</tbody>
+</table>
+<p>The interesting part is what these mean practically.</p>
+<p>Example: Recall a recent example about proposing a change to the faculty handbook: in order for Prof Miller’s proposal to be accepted, at least 2/3 of the faculty will have to vote in her favor.</p>
+<p>Before she makes the proposal in a meeting, Prof Miller wants to take an informal survey to see if there’s popular support for her idea. If we conducted a hypothesis test, we’d have the following hypotheses.</p>
+<p>H0: p = 2/3 Ha: p &gt; 2/3</p>
+<p>What do the error types mean in this scenario?</p>
+<p>Type I: Reject H0, but H0 is true. In other words, I think that I have more than 2/3 support, but actually that’s not true. Practically, I’d risk introducing my idea when actually there isn’t enough support.</p>
+<p>Type II: Fail to reject H0, but H0 is false. In other words, I don’t think that I have more than 2/3 support, but actually I <em>do</em> have enough support. Practically, I might miss an opportunity to introduce a successful proposition.</p>
+</div>
+<div id="error-practice-examples" class="section level2">
+<h2>Error Practice Examples</h2>
+<div id="criminal-trial" class="section level3">
+<h3>Criminal trial</h3>
+<p>H0: innocent Ha: guilty</p>
+</div>
+<div id="epa-violation" class="section level3">
+<h3>EPA Violation</h3>
+<p>H0: mu = .8 Ha: mu &gt; .8 (preview for future)</p>
+</div>
 </div>
 </div>
 

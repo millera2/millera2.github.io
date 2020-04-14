@@ -222,11 +222,7 @@ Since p < .05, we reject H0.  There's strong evidence that mean IQ of profession
 
 
 
-
-
-
-
-
+# Week 12 Vid 2
 
 ## Example 3
 
@@ -234,21 +230,119 @@ A biologist suspects that the sex ratio of a species of Tiger Snake differs from
 
 1) Hypotheses
 
+H0: p  = .5
+Ha: p != .5
 
 2) Test Stat
 
+obs: phat = 59/100
+exp: p = .5
+stdev: sqrt(.5*(1-.5)/100)
 
+```{r}
+(59/100 - .5)/sqrt(.5*(1-.5)/100)
+```
+
+Picture:
+
+                          -0-               1.8 -------------- )   
+                          
 3) P-val
+
+Here, we have a right tail since test stat is postive.  Tail area:
+
+```{r}
+#tail area:
+
+1-0.9641
+```
+
+That's not quite the end.  Remember:  this is a two tail test. No problem, multiply by 2:
+
+```{r}
+2*.0359
+```
+
+Our p-val is 0.0718.  
+
+
 
 
 4) Conclusion
 
+Since p-val > 0.0718, we fail to reject H0.  We didn't find the evidene we're looking for to support the Ha that the proportion of male snakes differs from 50%.
 
 
 
 
 
 
+
+
+
+
+## Errors in Hyp Tests
+
+Hypothesis tests are a formal procedure for asking questions about a population parameter.  But, since they're based on imperfect information (random sample data), they're not guaranteed to work.  We have to prepare for the possibility that, in fact, the conclusion of the test is an **error**. 
+
+There are two kinds.  Since mathematicians are clever, their names are:
+
+- Type I Error  (False Positive)  It's when we reject H0 (positive), but we shouldn't have because H0 is true! (false positive)
+
+- Type II Error (False Neg)  It's when we fail to reject H0 (negative), but we should have because H0 is false!!
+
+
+
+
+
+
+
+
+The following table is an easy way to remember:
+
+| Test Conclusion \ Truth in Reality | H0 True | H0 False |
+| ---------------------------------- | ------- | -------- |
+|         Reject H0                  |  Type I |  Correct |
+|     Fail to reject H0              | Correct | Type II  |
+
+The interesting part is what these mean practically.  
+
+
+
+
+
+
+
+
+
+Example:  Recall a recent example about proposing a change to the faculty handbook: in order for Prof Miller's proposal to be accepted, at least 2/3 of the faculty will have to vote in her favor.
+
+Before she makes the proposal in a meeting, Prof Miller wants to take an informal survey to see if there's popular support for her idea.  If we conducted a hypothesis test, we'd have the following hypotheses.
+
+H0:  p = 2/3
+Ha:  p > 2/3
+
+What do the error types mean in this scenario?
+
+Type I:  Reject H0, but H0 is true.  In other words, I think that I have more than 2/3 support, but actually that's not true.  Practically, I'd risk introducing my idea when actually there isn't enough support.
+
+Type II:  Fail to reject H0, but H0 is false.  In other words, I don't think that I have more than 2/3 support, but actually I *do* have enough support.  Practically, I might miss an opportunity to introduce a successful proposition.
+
+
+
+
+## Error Practice Examples
+
+### Criminal trial
+
+H0:  innocent
+Ha:  guilty
+
+
+### EPA Violation
+
+H0: mu = .8
+Ha: mu > .8  (preview for future)
 
 
 
