@@ -300,7 +300,7 @@ There are two kinds.  Since mathematicians are clever, their names are:
 
 The following table is an easy way to remember:
 
-| Test Conclusion \ Truth in Reality | H0 True | H0 False |
+| Test Conclusion \\ Truth in Reality | H0 True | H0 False |
 | ---------------------------------- | ------- | -------- |
 |         Reject H0                  |  Type I |  Correct |
 |     Fail to reject H0              | Correct | Type II  |
