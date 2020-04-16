@@ -353,6 +353,40 @@ What would Type I and Type II errors mean, *practically*, in this example?
  You may wish to write down the hypotheses of the test first.
 
 
+
+## Solutions to Error Practice Examples
+
+Wait!  Stop!  Have you tried to reason them out for yourself?  Go back!  If you just read the solutions, you won't actually learn anything.
+
+These are really interesting to think through!
+
+![](http://www.buildingalibrary.com/wp-content/uploads/2012/04/mon010.jpg "There's a Monster at the End of This Book.  Classic!")
+
+Ok, **promise** you've already thought about them?  Then here goes:
+
+### Criminal trial solution
+
+- Type 1:  We think that the defendant is guilty, but actually they're innocent.  Practically, we'd risk putting an innocent person in jail!
+- Type 2: We think that the defendant is innocent, but actually they're guilty.  Practically, we'd risk letting a criminal go free.
+
+Both of these have interesting ethical consequences!  By requiring proof "beyond a shadow of a doubt", modern legal systems are (in theory) attempting to -avoid- a Type I error.  
+
+### EPA solution
+
+First, think about the hypotheses:
+
+H0: mu = 0.8
+Ha: mu > 0.8
+
+- Type I:  We think the water is dangerous (mu > 0.8), but actually it's safe.  Practically, we risk wasting resources on an unneccesary cleanup operation.
+
+- Type II:  We think the water is safe, when actually it's dangerous.  Practically, we risk allowing people to drink dangerous water!!
+
+Again, there are interesting ethical considerations here.  Personally, I think that a type II error would be much worse here.  However, corporate logic doesn't always agree.  If you were the EPA officer in question, how would this affect **your** interpretation of the test?
+
+
+
+
 ## Quiz 9 Solutions
 
 ### 1) 
