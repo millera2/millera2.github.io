@@ -54,6 +54,7 @@ The work I do in those vids, as always, is still availabe on this site below.  *
 - [Week 10](https://millera2.github.io/Math-120/Math-120-Lec-10.html)
 - [Week 11](https://millera2.github.io/Math-120/Math-120-Lec-11.html)
 - [Week 12](https://millera2.github.io/Math-120/Math-120-Lec-12.html)
+- [Week 13](https://millera2.github.io/Math-120/Math-120-Lec-13.html)
 
 
 
@@ -80,6 +81,8 @@ For best results, do the reading **before** watching the related video.
   - Vid 2: Textbook $\S$ 6.1
 - Week 12
   - Vid 1: Textbook $\S$ 7.1 (specifically, p257-258)
+- Week 13
+  - Vid 1: Textbook $\S$ 7.3
 
 
 ## Helpful Links and Info:

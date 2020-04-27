@@ -1,0 +1,384 @@
+---
+title: "Math 120 Week 12"
+author: "Prof. Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: cerulean
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+
+
+
+
+
+
+
+
+
+
+# Week 13 Vid 1
+
+## Final topic: Hyp test and CIs for two means
+
+We're ready to cover the two **most important tools in this course**: hyp tests and confidence intervals for **two means**.
+
+This will be very similar to the work we did already for 1 mean (i.e., tests and CIs for mu).  The new twist:  now, instead of estimating (confidence interval) or asking questions about (hypothesis test) one mean from one population, we'll be **comparing two different populations**.
+
+If you only take one thing with you from this course, **this is it!**.  We're ending on a bang!  Woohoo!
+
+
+
+
+
+
+
+
+
+
+
+
+
+## The basics
+
+First, let's remember what we already know.  The new techniques are very similar.
+
+If we're talking about a quantitative variable for a population, then
+
+    point estimate for mu = xbar
+
+Remember, point estimates are a single numerical approximation of a parameter.  Above, we're restating the familiar:  we use xbar (the sample average) as our point estimate for mu (the population mean).  
+
+We need to know the standard error (variability/spread/width) for this estimate too.
+
+    standard error for xbar = s/sqrt(n)
+    
+Where "s" is the standard deviation of the sample, and n is the sample size.  This is the what we used in our CIs and hyp tests for mu.
+
+Ok, what if we have **two** samples from two different populations....?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+If we have two populations, then we want to talk about the **difference** between them.  
+
+For all of these examples, you can imagine a medical trial:  if there's a control group (who didn't receive the new drug) and a test group (who did receive the new drug), then we want to see if there's a meaninfgul difference.  Think of these as population 1 and population 2.
+
+Each population must have its own population mean (we call these mu1 and m2), and thus the thing we care about is
+
+    mu1 - mu2
+    
+In order to do CIs and hyp tests, we need a point estimate and a standard error, just like before.  Here:
+
+    point estimate for mu1 - mu2 = xbar1 - xbar2
+
+Makes sense!  To estimate the difference between the populations, we'll use the differnce between the **sample means** xbar1 and xbar2.
+
+The standard error is shown below: (check page 267 of book for pretty typeset)
+
+    std error for xbar1-xbar2 = sqrt(s1^2/n1 + s2^2/n2)
+    
+These simple building blocks are all we need to do Hyp Tests and CIs.  Let's take a look!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Hyp Tests for 2 means
+
+This hyp tests answers a very important (and frequently-asked) question:  **is there evidence of a difference** between the two groups??
+
+These hyp tests have the same 4 steps as any others:
+
+1) Hypotheses
+2) Test Stat
+3) P-val
+4) Conclusion
+
+
+
+
+
+
+
+
+
+### Hypotheses for 2 means
+
+In -all- hyp tests for two means, the **null hyp is always the same**:
+
+H0:  mu1 - mu2 = 0
+
+In other words, we **always** assume that there's **no difference** between the two populations.This part of the test is easier!
+
+For the alternate hypothesis, there are three possibilities:
+
+- Ha:  mu1-mu2  < 0    (left tail)
+- Ha:  mu1-mu2  > 0    (right tail)
+- Ha:  mu1-mu2 != 0    (two tail)
+
+This depends on our "claim" or "suspicion" about the population.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Test Statistic for 2 means
+
+Our test stat has the same form as all the others:
+
+    test stat = (observed - expected)/(standard error)
+
+Here, 
+
+observed = xbar1 - xbar 2 (the actual difference in sample means)
+expected = mu1 - mu2 = 0 (we always assume no difference for the population means)
+std error = sqrt(s1^2/n1 + s2^2/n2)
+
+All together, that's:
+
+t = (xbar1 - xbar2)/sqrt(s1^2/n1 + s2^2/n2)
+
+Looks nasty, but it's really not too bad to type out.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###  p-val for 2 means
+
+In short:  use the t-table **exactly as before**.  
+
+There is a problem, though:  what's our degrees of freedom?  After all, there are -two- samples, with -two- sample sizes.  Which one do we use?
+
+There's a fairly complicated formula for finding the exact df.  Here, we'll take a simpler approach:  **use the smaller of the two** to find df.  
+
+For example, if sample 1 has n1 = 34, while sample 2 has n2 = 43, then use df = 34-1 = 33.
+
+
+## Conclusion
+
+Same as always!  If p<.05, we reject H0 and find evidence to support our claim.  If p>.05, we fail to reject H0 and don't have enough evidence to support our claim.
+
+Ok, let's try one out!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Example 1: Hyp Test for 2 means
+
+A hungry math professor wonders:  does Pizza Hut have a different average delivery time than Donatos?
+
+To test this, she records data about her many pizza orders.  
+
+Over the 35 times she ordered at Pizza Hut, the average delivery time was 24.3 minutes, std dev 4.1 minutes.
+
+Over the 28 times she ordered at Donatos, the average delivery time was 26.3 minutes, std dev of 5.8 minutes.
+
+Is there statistically significant evidence to suggest that Pizza Hut delivery times differ from Donatos?
+
+Let's do the test!
+
+### Collecting info
+
+Since there's a lot of info in the problem, I reccommend that studetns take a moment to collect it all.  Here, let's have Pizza Hut be sample 1, and Donatos is sample 2.  That means:
+
+n1 = 35, xbar1 = 24.3, and s1 = 4.1
+
+n2 = 28, xbar2 = 26.3, and s2 = 5.8
+
+This makes it easier to run the test.
+
+### The test
+
+1) H0: mu1-mu2 = 0,    Ha: mu1-mu2 != 0 (two tail!)
+
+2) Using the formula for the test statistic (see above):
+
+```{r}
+(24.3 - 26.3)/sqrt(4.1^2/35 + 5.8^2/28)
+```
+
+Look up 1.54 in the t table.  
+
+3)  P-val
+
+Use df = 28 - 1 = 27.  (Used the smaller sample size.)
+
+Thus:  .1 < p-val <.2
+
+
+4) Conclusion:  
+
+Here, p>.05 (remember, alpha = .05 is our "default" significance level), so we fail to reject H0.
+There's not enough evidence to conclude that there's a differnce in mean delivery times between the two pizza chains.
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Confidence intervals for 2 means
+
+Ok, let's finish off with a confidence interval.  CIs for two means **estimate the difference in mean** between the two populations.  How different are they?  What are the possibilities?
+
+We've seen that all CIs have the following format:
+
+(point estimate) +/- (critical value)*(standard error)
+
+Using the info for 2 means, that gives us:
+
+(xbar1 - xbar2) +/- t*sqrt(s1^2/n1 + s2^2/n2)
+
+Here, the t critical value is exactly the same as it was before.  No problem!
+
+Let's do an example with the same data from the pizza delivery test.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Example 2:  CI for two means
+
+Over the 35 times she ordered at Pizza Hut, the average delivery time was 24.3 minutes, std dev 4.1 minutes.
+
+Over the 28 times she ordered at Donatos, the average delivery time was 26.3 minutes, std dev of 5.8 minutes.
+
+Let's **estimate the difference in mean delivery time** between Pizza Hut and Donatos with a 95% confidence interval.
+
+The only piece of info we don't have is the **critical value**, t.  Since the CI continas the middle 95%, that means our tail areas are 2.5% each.  Thus, look up .025 (one tail) or .05 (two tail) in the t table.  
+
+Our df here is 27 (just like for the test).  Thus,
+
+t = 2.05
+
+n1 = 35, xbar1 = 24.3, and s1 = 4.1
+
+n2 = 28, xbar2 = 26.3, and s2 = 5.8
+
+Plug and chug:
+
+Lower:
+```{r}
+(24.3 - 26.3) - 2.05*sqrt(4.1^2/35 + 5.8^2/28)
+```
+
+Upper:
+```{r}
+(24.3 - 26.3) + 2.05*sqrt(4.1^2/35 + 5.8^2/28)
+```
+
+We're 95% confident that the true difference in mean delivery time is between -4.7 minutes and 0.7 minutes.
+
+Think about it this way:  notice that it's possible that the difference in mean delivery time is zero!
+
+         (-----------------------------)
+  mu1-mu2 = -4.7                  mu1-mu2 = 0.7
+
+I.e., it's possible that there's -NO- difference!  This agrees with our hyp test, where we failed to reject the H0: mu1-mu2 = 0.  The confidence interval says the same thing:  it's possible that the difference is zero!
+
+
+
+
