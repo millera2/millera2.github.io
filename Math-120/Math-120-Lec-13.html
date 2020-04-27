@@ -1727,6 +1727,12 @@ summary {
 </ul></li>
 <li><a href="#confidence-intervals-for-2-means">Confidence intervals for 2 means</a></li>
 <li><a href="#example-2-ci-for-two-means">Example 2: CI for two means</a></li>
+<li><a href="#quiz-10-solutions">Quiz 10 Solutions</a><ul>
+<li><a href="#hypotheses">Hypotheses</a></li>
+<li><a href="#test-stat">Test stat</a></li>
+<li><a href="#p-val">p-val</a></li>
+<li><a href="#conclusion-1">Conclusion</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </div>
@@ -1873,6 +1879,32 @@ summary {
 <pre><code>     (-----------------------------)</code></pre>
 <p>mu1-mu2 = -4.7 mu1-mu2 = 0.7</p>
 <p>I.e., it’s possible that there’s -NO- difference! This agrees with our hyp test, where we failed to reject the H0: mu1-mu2 = 0. The confidence interval says the same thing: it’s possible that the difference is zero!</p>
+</div>
+<div id="quiz-10-solutions" class="section level2">
+<h2>Quiz 10 Solutions</h2>
+<p>According to studies performed in the 1950s, about 10.5% (i.e., 0.105) of all Americans are diabetic.</p>
+<p>A medical researcher suspects that modern proportions differ from this historical value. To investigate, she takes a random sample of 320 Americans and finds that 45 of the 320 participants are diabetic.</p>
+<p>Does this sample data support her suspicion? Perform a complete hypothesis test. <strong>Show all 4 steps for full credit</strong></p>
+<div id="hypotheses" class="section level3">
+<h3>Hypotheses</h3>
+<p>H0: p = .105 Ha: p != .105</p>
+</div>
+<div id="test-stat" class="section level3">
+<h3>Test stat</h3>
+<pre class="r"><code>(45/320 - .105)/sqrt(.105*(1-.105)/320)</code></pre>
+<pre><code>## [1] 2.078853</code></pre>
+</div>
+<div id="p-val" class="section level3">
+<h3>p-val</h3>
+<p>Look up in z-table, tail area = .0188</p>
+<p>Since 2-tailed test,p-val = 2*.0188</p>
+<pre class="r"><code>2*.0188</code></pre>
+<pre><code>## [1] 0.0376</code></pre>
+</div>
+<div id="conclusion-1" class="section level3">
+<h3>Conclusion</h3>
+<p>Since p&lt;.05, we reject H0. There’s no evidence that the modern proportion of diabetics differs from the 1950s proportion of 10.5%.</p>
+</div>
 </div>
 </div>
 

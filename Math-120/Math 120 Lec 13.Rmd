@@ -380,5 +380,35 @@ Think about it this way:  notice that it's possible that the difference in mean 
 I.e., it's possible that there's -NO- difference!  This agrees with our hyp test, where we failed to reject the H0: mu1-mu2 = 0.  The confidence interval says the same thing:  it's possible that the difference is zero!
 
 
+## Quiz 10 Solutions
 
+According to studies performed in the 1950s, about 10.5% (i.e., 0.105) of all Americans are diabetic.
 
+A medical researcher suspects that modern proportions differ from this historical value.  To investigate, she takes a random sample of 320 Americans and finds that 45 of the 320 participants are diabetic.
+
+Does this sample data support her suspicion?  Perform a complete hypothesis test.  **Show all 4 steps for full credit**
+
+### Hypotheses
+
+H0:  p = .105
+Ha:  p != .105
+
+### Test stat
+
+```{r}
+(45/320 - .105)/sqrt(.105*(1-.105)/320)
+```
+
+### p-val
+
+Look up in z-table, tail area = .0188
+
+Since 2-tailed test,p-val = 2*.0188 
+
+```{r}
+2*.0188
+```
+
+### Conclusion
+
+Since p<.05, we reject H0.  There's no evidence that the modern proportion of diabetics differs from the 1950s proportion of 10.5%.
