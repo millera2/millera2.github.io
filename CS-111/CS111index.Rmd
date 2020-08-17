@@ -77,7 +77,7 @@ Wanna check out a dataset referenced in lecture or HW?  Here they are!  I'll add
 
 for Reading Assignments and Labs)*
 
-
+[Math 120 Fall 2020 Syllabus (Miller)](https://millera2.github.io/CS-120/CS-111-Fall2020-Miller.pdf)
 
 ### Office Hours (Google Hangouts)
 

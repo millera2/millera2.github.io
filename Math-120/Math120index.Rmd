@@ -79,12 +79,16 @@ for Reading Assignments and Labs)*
 
 - [Math 120 Textbook](https://www.openintro.org/stat/textbook.php?stat_book=os)
   - *OpenIntro Statistics* is an excellent, free introduction to modern statistical analysis.
+  
+## Syllabus
 
-### Office Hours (Google Hangouts)
+[Math 120 Fall 2020 Syllabus (Miller)](https://millera2.github.io/Math-120/Math-120-Fall2020-Miller.pdf)
+
+## Office Hours (Google Hangouts)
 
 *TBA*
 
-### TA Hours
+## TA Hours
 
 *TBA*
 
