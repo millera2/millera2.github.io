@@ -61,6 +61,21 @@ Wanna know what's going on?  Read this stuff!
 Due 8/19: Textbook 1.1 and 1.2 (p1-10)
 
 
+
+  
+## Syllabus
+
+[Math 120 Fall 2020 Syllabus (Miller)](https://millera2.github.io/CS-111/CS-111-Fall2020-Miller.pdf)
+
+### Office Hours (Google Hangouts)
+
+*TBA*
+
+### TA Hours
+
+*TBA*
+
+
 ## Helpful Links and Info:
 
 
@@ -77,20 +92,5 @@ Wanna check out a dataset referenced in lecture or HW?  Here they are!  I'll add
   - *DU Freshmen Survey Data from 2014.  Not public data.*
 
 for Reading Assignments and Labs)*
-
-  
-## Syllabus
-
-[Math 120 Fall 2020 Syllabus (Miller)](https://millera2.github.io/CS-111/CS-111-Fall2020-Miller.pdf)
-
-### Office Hours (Google Hangouts)
-
-*TBA*
-
-### TA Hours
-
-*TBA*
-
-
 
 

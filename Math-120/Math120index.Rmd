@@ -60,6 +60,19 @@ Due 8/19:  Textbook Ch 1.2 (p12-18)
 Check here for HW details!
 
 
+
+## Syllabus
+
+[Math 120 Fall 2020 Syllabus (Miller)](https://millera2.github.io/Math-120/Math-120-Fall2020-Miller.pdf)
+
+## Office Hours (Google Hangouts)
+
+*TBA*
+
+## TA Hours
+
+*TBA*
+
 ## Helpful Links and Info:
 
 
@@ -82,18 +95,5 @@ for Reading Assignments and Labs)*
 - [Math 120 Textbook](https://www.openintro.org/stat/textbook.php?stat_book=os)
   - *OpenIntro Statistics* is an excellent, free introduction to modern statistical analysis.
   
-## Syllabus
-
-[Math 120 Fall 2020 Syllabus (Miller)](https://millera2.github.io/Math-120/Math-120-Fall2020-Miller.pdf)
-
-## Office Hours (Google Hangouts)
-
-*TBA*
-
-## TA Hours
-
-*TBA*
-
-
 
 
