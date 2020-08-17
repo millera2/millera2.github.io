@@ -80,7 +80,7 @@ for Reading Assignments and Labs)*
   
 ## Syllabus
 
-[Math 120 Fall 2020 Syllabus (Miller)](https://millera2.github.io/CS-120/CS-111-Fall2020-Miller.pdf)
+[Math 120 Fall 2020 Syllabus (Miller)](https://millera2.github.io/CS-111/CS-111-Fall2020-Miller.pdf)
 
 ### Office Hours (Google Hangouts)
 
