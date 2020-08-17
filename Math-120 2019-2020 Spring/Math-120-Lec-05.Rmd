@@ -1,0 +1,1087 @@
+---
+title: "Math 120 Week 05"
+author: "Prof Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: cerulean
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+
+
+
+
+
+
+
+
+# Monday
+
+## Probability
+
+
+Textbook alert:  following Ch 3 very closely!
+
+Goal:  answer the question "how likely?"
+
+Answer:  probability.
+
+Key vocab: chance event.  A chance event is any scenario in which at least two or unknown outcomes can occur.
+
+Example:  Flipping a coin.  Two oucomes:  heads or tails.
+
+Example:  Rolling a dice.  Six outcomes: 1, 2, 3, 4, 5, 6.  
+
+## Two notions of probability
+
+1)  The "classical" probability or "true" probability is the fraction of times we'd observe a particular outcome after seeing infinitlely many results of the chance event.  
+
+Example 1: We roll a dice.  What's the probability of rolling a 6?  A:  1/6.  Six possible outcomes, only one 6,  all equally likely.  Thus, P(6) = 1/6
+
+Ex 2:  We roll a dice.  What's the probability of seeing an even number or a prime numbrer?  Possibilities:  2, 3, 4, 5, 6.  Prob: 5/6.
+
+Ex 3:  We roll a dice.  What's the probability of seeing a number that's even AND prime?  Only one outcome out of six, thus probability is 1/6.  
+
+Ex 4: What's the probability of of rolling a number that's not prime?  Three out of six are not prime, thus probability is 3/6.
+
+BIG PROBLEM:  Most of the time, we won't know all possible possible options!
+
+SOLUTION:  Relative frequency probability.
+
+2) The relative frequency probability of an event is the number of times we observed it (X), divided by the total number (n).   Ie, probability based on sample data.
+
+Example:  In the mpg dataset, what's the probability that a randomly selected car is an suv?
+
+```{r}
+table(mpg$class) %>% addmargins()
+```
+
+We observed 62 suvs out of 234 cars total.  Relative frequency probability:  62/234.
+
+BIG PROBLEM:  Relative frequency depend on chance, and don't always match up with true probaties.
+
+I.e., if I flip a coin 10 times, I don't get 5 heads every single time.
+
+FORTUNATE ANSWER:  THE LAW OF LARGE NUMBERS
+
+As the number of repetitions of a chance event increases (n increases), relative frequency probability tends to get closer and closer to the true probability.  
+
+I.e., if I flip a coin 10000 times, nearly 5000 of them should be heads.  
+
+
+```{r}
+sample(1:6, 10, replace = T) %>% table %>% prop.table()
+
+
+```
+
+Moral:  with small n (n=10), our observed proportions differer from 1/6
+
+```{r}
+sample(1:6, 10000, replace = T) %>% table %>% prop.table()
+
+```
+
+
+The law of large numbers is a relief!  It means we don't have to care too much, as long as we have big sample sizes!
+
+## Probability Distributions
+
+A probability dist is a list of all possible outcomes for X (our random variable), along with their probabilies.  Usually presented as a table.
+
+## Example:  Dice distro
+
+## Example:  
+
+Flip two coins.  X = the number of heads.  Construct a probability distro for X.
+
+## Example:  
+
+Flip three coins.  X = the number of heads.  Construct a probability distro for X.
+
+## Important probability distributions
+
+Our goal:  get to know three of the most important ones.
+
+Binomial dist, geometric dist, and poisson.
+
+## Binomial Dist
+
+Example:  A quiz has 5 multiple choice questions with answer a, b, c, d.
+
+
+If a student guesses at random, what's the probability that she gets exactly 4 correct?
+
+Suppose, CCCCI
+
+(1/4)*(1/4)*(1/4)*(1/4)*(3/4)
+
+
+```{r}
+
+(1/4)*(1/4)*(1/4)*(1/4)*(3/4)
+```
+
+There are 5 such outcomes, and each has the same probability!
+
+All together, the probability is 5*.002929688 = 
+
+```{r}
+5*.002929688
+```
+
+This is an example of a binomial probability!  We're counting the number of successes out a total number of trials!
+
+The binomial has two parts:
+
+1) The number of ways to get our success (above, that was 5)
+2) The probability of each (they're always the same!)
+
+
+
+
+
+
+
+# Monday
+
+Recall, statistical inference is the process of making conclusions about populations based on sample data.  
+
+To do this, we need to know:  how "likely" is our sample data?
+
+Probability is the mathematical tool we'll use to answer that question.  Gives us context about our data, and what it might say about the population.
+
+## The basics
+
+NOTE:  Following closely from Ch 3 in the book.
+
+Def:  A "random process" or a "chance event" is any scenario that could unfold in two or more unknown outcomes.
+
+Example:  Flipping a coin is a random process.  There are two outcomes:  heads/tails.  No way to know in advance.  
+
+Example:  Rolling a dice.  There are six outcomes:  1, 2, 3, 4, 5, 6.
+
+NOTE:  The set of all possible outcomes is called the "sample space", S.
+
+Def:  The probability of an outcome of a chance event is the ratio of times that we'd observe it if we could conduce an infinite number of trials of the chance event.
+
+WEIRD!
+
+Sometimes we can compute this.
+
+Ex 1)  We roll a dice.  What's the probability we get a 4?  There are six equally likely outcomes, and only one of them is a 4.  
+
+Ex 2)  Suppose we roll a dice.  What's the probability that the number is even or prime?  There are 5 numbers that are prime or even (2, 3, 4, 5, 6).  THus:   5/6
+
+Ex 3) Roll a dice.  What's the probability that the number is prime AND even?  Only one number is both prime and even:  2.  Thus, 1/6.
+
+Ex 4)  We roll two dice.  What's the probability that both of them are 1? 1/6*1/6 = 1/36.
+
+
+Another definition of probability:  Relative Frequency.
+
+Two notions of probability:
+
+1)  "True" probability.  Defined above.
+2)  Relative Frequency probability.  It's the ratio of times we observe an outcome after repeating the chance event n times.
+
+Example:  Suppose Jack flips a coin 100 times.  He observes 55 heads.  The relative frequency probability is 55/100.
+
+## Problems with both!
+
+Generally, we can't know true probabilities because we can't repeat an experiment an infinite number of times.  
+
+Also, relative frequencies don't always match the true probability!  Ex:  don't always get 50% heads when filpping a coin.
+
+## Answer:  Law of Large numbers
+
+The Law of Large Numbers states that as the number of repetitions (n) of our chance increases, the observed relative frequency get closer and closer to the true probability.
+
+p_n -> p
+
+This is great news!  It means, as long as our samples are big enough, both notions of probability are the same (or at least close).
+
+## Example:  mpg
+
+What's the probability that a randomly selected car is an suv?
+
+```{r}
+table(mpg$class) %>% addmargins()
+```
+
+62 suvs, 234 cars total, thus rel frequency is 62/234.  
+
+##  Probability Distributions
+
+A probability distribition has two things:
+
+1) A list of all possible outcomes
+2) Their associated probabilities.
+
+Data distributions tell us about what happened.  Probablity distributions tell us what we expect.
+
+## Example:  Dice
+
+We roll a single dice.  X is the number shown.  Construct a distro for X.
+
+## Example: Two coins
+
+Two coins are flipped, and X = the number of heads.  Construct a distro for X.
+
+## Example:  Three coins
+
+Three coins are flipped, and X = the number of heads.  Construct a distro for X.
+
+## Meet the Distros!  
+
+Let's take a tour of the most important probability distros.
+
+If you recognize a scenario that follows one, you'll be able to use it right away!
+
+These all have built-in R commands.
+
+
+## Binomial Distribution
+
+A random variable X is "binomial" if it counts the number of "successes" out of a fixed number of trials (n).
+
+Example:  Suppose we flip a coin 4 times.  What's the probability that we get exactly 3 heads?
+
+To compute binomial probabilities, we need exactly two things:
+
+1) How many ways are there to get that number of successes
+2) What's the probability of each.
+
+In the the example above, there are 4 ways to get exactly 3 heads.  Each has probability 1/2*1/2*1/2*1/2
+
+All together:
+
+```{r}
+4*(1/2*1/2*1/2*1/2)
+```
+
+
+
+
+
+```{r}
+-.766*5.955/1.292
+```
+
+```{r}
+23.440+3.531*3.472
+```
+
+yhat = 35.670 - 3.531x
+
+
+
+
+
+
+
+
+
+
+
+
+# Tuesday
+
+## Binomial Dist
+
+
+A random event / chance event is "binomial" if:
+
+- Only two possible outcomes.  "Success" and "Failure"
+- There are a fixed number of "trials" or repetitions of the chance event (n).
+- The probability of success for each trials (p) must be constant.  Same for each.
+- All trials must be independent.  (Can't affect eachother)
+
+If the above are satisfied, and X counts the number of successes out of n trials, then we can find the probability of x:
+
+Pieces of the formula:
+
+n!/(x!(n-x)!) = "n choose x" = The number of ways to get x successes out of n trials.
+
+
+## Example: Multiple Choice Quiz
+
+A multiple choice exam has 10 questions, each with 4 options: a, b, c, d.  A student taking the exam hasn't studied, and must guess at random. 
+
+What's the probability that she gets exactly 8 questions correct?  
+
+First:  note that this is biniomial!
+
+- Two outcomes:  correct or incorrect
+- Fixed number of trials.  n=10
+- Prob success is constant, p = 1/4
+- Since guessing, all independent
+
+```{r}
+45*(1/4)^8*(3/4)^2
+```
+
+If guessing, there's a 0.04% chance of getting 8 right out of 10.  
+
+##  Example:  free-throws
+
+Prof Miller, despite being tall, is not very good at basketball.  Her free-throw average is 30% success.  If she shoots 7 free throws in a row, what's the chance she makes fewer than 3?
+
+Note:  assume that she doesn't get tired, same 30% chance for each.  
+
+
+
+
+
+
+
+
+
+
+# Tuesday
+
+## Binomial Dist
+
+A chance event/random event is "binomial" if:
+
+- Only two possible outcomes.  "Success" and "Failure"
+- The event is repeated a fixed number of "trials", n.
+- On each trial, the probability of success (p) is constant (same for each trial)
+- each trial is independent, i.e., don't affect eachother.
+
+If X counts the number of success out of the n trials, then X has the following probability dist:
+
+NOTE:  n!/(x!(n-x)!) = nCx = "n choose x" = the number of ways to choose x objects out of n.
+
+Here:  the number of ways to get x successes out of n trials.
+
+## Example:  Multiple Choice Quiz
+
+A multiple choice exam has 10 questions, each with 4 options: a, b, c, d.  
+
+A student hasn't studied, and must guess at random on each question.  What's the probability that the student gets exactly 8 questions correct?
+
+- Only two outcomes for each question:  correct or incorrect.
+- Fixed number of trials:  n=10 questions
+- Prob of success is constant:  p = 1/4
+- Since guessing, all are indpendent.
+
+X counts the number of correct questions out of 10, thus binomial!
+
+```{r}
+45*(1/4)^8*(3/4)^2
+```
+
+
+There's about a 0.04% chance of guessing 8 correct out of 10.
+
+## Example:  Free Throws
+
+Despite being very tall, Prof Miller isn't very good at basketball.  Her free-throw success rate is 30%.
+
+If she shoots 7 free-throws in a row, what's the chance she makes fewer than 3?
+
+Let's assume that she doesn't get tired, 30% for each.
+
+
+
+
+
+
+
+
+# Wednesday
+
+Continuing our tour of probability distributions.  Next...
+
+
+## Geometric Dist
+
+The geo dist involves similar circumstances to the binomial:
+
+- Only two possible outcomes, success or failure
+- Constant probability of success
+- All trials independent
+
+The difference:  wheres binomial variable count the number of success in a fixed number of trials, the geometic distri
+
+
+the geo dist counts the number of trials needed until the FIRST SUCCESS.
+
+## Example:
+
+The probability of rolling a die and getting "6" is 1/6.  What's the probability that we have to roll twice to get the fist "6"?
+
+```{r}
+(5/6)*(1/6)
+```
+
+
+## Example
+
+What's the probability we have to roll the dice 4 times until we get a 6?
+
+```{r}
+(5/6)*(5/6)*(5/6)*(1/6)
+```
+
+```{r}
+(5/6)^3*(1/6)
+```
+
+
+Geometric random variable count the number of trials until the first success.
+
+
+## Example
+
+About 21% of DU students are STEM majors.  If we're interviewing DU students, what's the prob that we have to talk to 10 students until we find the first STEM major?
+
+```{r}
+(.79)^9*.21
+```
+
+About a 2.5% chance.  
+
+## Example
+
+At Denison, about 55% of students are female.  What's the probability that we have to interview more than 2 students until we find the first female student?
+
+INTERESTING NOTE!  Geometric variables can take an INFINITE NUMBER of possible options.
+
+Here, could have X=3, 4, 5, 6, 7, ......... a zillion.
+
+Solution:  1-P(not greater than 2)
+
+```{r}
+1-(.45)^1*.55 - (.45)^0*.55
+```
+
+There's a 20.25% chance that we have to interview more than 2 randomly selected DU students until we get the first female student.
+
+## Poisson Dist
+
+A Poisson random variable counts the number of occurances of an even over a unit of time or space.
+
+Examples:
+
+- On an average weekend night, the Chiotle in Heath, Oh serves 123 diners per night.  What's the probability that this Friday, over 150 customers come to Chipotle?
+
+- Japan began recording earthquake data in 1884.  In the 135 years since then, the Tokyo region has experienced 5 earthquakes of the "strongest" category.  What's the probability that at least 1 will occur next year?
+
+- At an archeological dig site of 25 square meters, 534 fragments were found at random across the site.  In 1 particular square meter, what's the probability that 20 to 22 fragments are found?  
+
+Thes are all examples of Poisson processes.  They assume that the "rate" (lambda) of occurences is constant over time/space.  
+
+If X is the number of occurances, then the distro is this:
+
+
+
+
+# Wednesday
+
+Continuing our tour of probability distributions...
+
+## Geometric Dist
+
+## Example
+
+You know that the probability of rolling a "4" 1/6.  What's the probability that we have roll twice to get the first "4"?
+
+```{r}
+(5/6)*(1/6)
+```
+
+## Example
+
+WHat's the probability you have to roll the dice 5 times until you get the first 4?
+
+```{r}
+(5/6)*(5/6)*(5/6)*(5/6)*(1/6)
+
+(5/6)^4*(1/6)
+```
+
+About an 8% chance.
+
+## Geo Dist
+
+A geometric random variable counts the number of trials until the first success.
+
+Assumptions/requirements:
+
+- Only 2 outcomes:  success and fail
+- Const prob of success (p)
+- All trials to be independent
+
+Biggest difference from binomial:  no fixed number of trials (n).  In this case, X has the distro:
+
+## Example
+
+At DU, about 21% of students are STEM majors.  What's the probability that we have to interview 10 randomly selected students until we find the first STEM major?
+
+p = .21, X = 10
+
+```{r}
+(1-.21)^9*(.21)
+```
+
+About a 2.5% chance.
+
+## Example
+
+About 21% of students are STEM majors.  What's the probability we have to randomly interview more than 2 students before we find our first STEM major?
+
+Woah, problem!  X = 3, 4, 5, 6, 7, ..... Infinitely many options!
+
+Instead:  1 - P(not more than 2)
+
+Woah, can't have X=0!  In geometric, need at least 1 success.  Interesting contrast from binomial!
+
+```{r}
+1-(1-.21)^(2-1)*.21-(1-.21)^(1-1)*(.21)
+```
+
+
+There's a 62.4% chance that we'll need more than 2 students until first STEM.
+
+## Poisson Dist
+
+Here are examples of Poisson problems:
+
+- On an average weekend night at Chipotle in Heath, Oh, 123 customers are served.  What's the probability that on THIS friday, over 150 customers come to Chipotle.
+
+- Japan began recording earthquake data in 1884.  Since then, the Tokyo area has experienced 5 of the "strongest" category earthquakes.  What's the probability that at least one such earthquake will occur next year?
+
+- At an archeological dig site of 25 sq meters, a total of 534 fragments were fountd scattered at random.  In a particular 1 sq meter section, what's the probability that 20 to 22 fragments will be found?
+
+A Poisson random variable counts the number of occurances of an event over a unit of time or space.  
+
+If X is poisson, it has the following dist:
+
+
+
+
+# Friday
+
+## Solving Poisson Problems
+
+
+
+- Japan began recording earthquake data in 1884.  In the 136 years since then, the Tokyo area has experienced 5 of the "strongest" category earthquakes.  What's the probability that at least one such earthquake will occur next year?
+
+Find lambda:
+
+```{r}
+5/136
+```
+
+
+```{r}
+1-(5/136)^0*exp(-5/136)/1
+```
+
+There's a 3.6% chance of an earthquake in the next year.
+
+## Mix-up
+
+Japan began recording earthquake data in 1884.  In the 136 years since then, the Tokyo area has experienced 5 of the "strongest" category earthquakes.  What's the probability that at least one such earthquake will occur next *two years*?
+
+Same, but with lambda = 2*5/136 ...
+
+```{r}
+1-(2*5/136)^0*exp(-2*5/136)/1
+```
+
+A Poisson random variable counts the number of occurances of an event over a unit of time or space.  
+
+
+## Probability functions in r:
+
+- dbinom(x, n, p)
+- dgeom(x, p)
+- dpois(x, lambda)
+
+## Example:  eartquakes
+
+We saw lambda = 5/136, finding P(X=0).  So,
+
+```{r}
+1-dpois(0, 5/136)
+```
+
+## Important note:  dgeom
+
+In book/class: x = total number of trials until first success
+In r, dgeom:  x = number of failures, i.e., #trial -1
+
+Example:  What's the probability we have to roll a dice 10 times until we find the first 6?  
+
+Total trials = 10
+Numbeber of failures = 9
+
+```{r}
+dgeom(9, 1/6)
+```
+
+
+
+
+
+
+
+
+
+# Friday
+
+## Solving Poisson Problems
+
+
+
+- Japan began recording earthquake data in 1884.  In the 136 years since then, the Tokyo area has experienced 5 of the "strongest" category earthquakes.  What's the probability that at least one such earthquake will occur next year?
+
+
+Here, X~pois, it counts the number of earthquakes per year year.
+
+```{r}
+1-(5/136)^0*exp(-5/136)/1
+```
+
+About a 3.6% chance of strongest category quake.
+
+## Mix-up
+
+
+Japan began recording earthquake data in 1884.  In the 136 years since then, the Tokyo area has experienced 5 of the "strongest" category earthquakes.  What's the probability that at least one such earthquake will occur next five years?
+
+
+Only diff:  lambda has changed:  lambda = 5*5/136 = 25/136
+
+
+```{r}
+1-(5*5/136)^0*exp(-5*5/136)/1
+```
+
+
+
+## Built-in R probability functions
+
+Three:
+
+dbinom(x, n, p)
+dgeom(x, p)
+dpois(x, lambda)
+
+Example:  first quake example
+
+1 - P(X=0),  lambda = 5/136
+
+```{r}
+1- dpois(0, 5/136)
+```
+
+WARNING:  dgeom works a little different
+
+In class/book:  x = total number of trials
+In R:           x = number of failures before the first success
+
+Example:  What's the probability we have to roll a dice 10 times before we get the first six?
+
+10 rolls -> 9 failures, last is success
+
+```{r}
+dgeom(9,1/6)
+```
+
+
+
+
+
+# Monday
+
+## Probability from Two-Way (Contingency) Tables
+
+Example:
+
+```{r}
+table(mpg$cyl, mpg$drv) %>% addmargins()
+```
+
+
+## First:  silly example on board
+
+Important words:  and, or , not
+
+## Example
+
+Based on mpg data, what's the probability that a car has 4 cyl or rear wheel drive?
+
+# Conditional Probability
+
+Sometimes, knowing whether or not one event has occured affect another.
+
+Ex:  if it's cloudy, there's a higher chance of rain.
+
+This is called "conditional" probability.  Symbol:
+
+P(A | B) = "probability of A, given B"
+
+The thing after the vertical bar is the "given condition".
+
+## Example:  dice
+
+What's the probability of rolling a 2, given that a prime number was rolled?
+
+## Independence
+
+Idea:  two events are independent if the outcome of one doesn't affect the likelihood of the other.
+
+Mathematically, there a few ways to check.
+
+We can verify that events A and B are independent if any of the following hold:
+
+1) P(A|B) = P(A)   (Doesn't matter if B happened, A unaffected)
+2) P(B|A) = P(B)  (Other way around)
+3) P(A and B) = P(A)*P(B)  (easy to check!)
+
+## Example
+
+Based on the animal table, are the events G = is a giraffe and R = is a republican independent?  Or, is there some kind of dependence relation?
+
+P(G) = 30/100
+P(R) = 40/100
+P(G and R) = 10/100
+
+Since .3*.4 is not the same as .1, no!  Not independent!
+
+
+
+
+## Example
+
+
+```{r}
+table(mpg$cyl, mpg$drv) %>% addmargins()
+```
+
+Are the events 4 = 4 cyl and f = front wheel drive independent?
+
+Q:  does P(4)*P(f) =? P(4 and f)
+
+```{r}
+81/234*106/234
+```
+
+```{r}
+58/234
+```
+
+
+
+# Monday
+
+## Imporatnt probability words:  and, or, not
+
+
+
+
+## Probability from tables
+
+
+"Two way" tables or "contingency" tables compare levels for TWO categorical variables.
+
+```{r}
+death <- read_csv("death penalty data.csv")
+
+table(death$Method, death$Region) %>% addmargins()
+```
+
+## Conditional Probabaility
+
+Idea:  sometimes, knowing that one event has occurred affect the likelihood of another.
+
+Ex:  If it's cloudy, then there's a higher chance of rain.
+
+We call this a "dependence" relationship.  
+
+If no relationship, we call them "independent".
+
+To find:  use "conditional" probability.
+
+Symbol:  
+
+P(A | B)  = "probability that A happens, given that we know B happened"
+
+Ex)  Dice.  What's the probability that we roll an even number, given that we roll a number greater than 2?
+
+## Checking for Independence
+
+Q:  are two events "independent"?  Are A, B indep?  
+
+Three ways to check:
+
+1) P(A|B) = P(A)  (I.e., B doesn't affect A)
+2) P(B|A) = P(B)  (other way around)
+3) P(A and B) = P(A)*P(B) (usually easiest)
+
+If any one of these three holds, then so do the others, and we say A, B are **independent**.
+
+## Example: animals
+
+Are the events G = giraffe and R = republican independent?
+
+Need 3 pieces of info:
+
+P(G)= .3
+P(R)= .4
+P(G and R)= .1
+
+Since .3*.4 is NOT equal to .1, we've found that the events are NOT independent.  I.e. there's some dependence relation between being a giraffe and being republican.
+
+## Example:  death penalty
+```{r}
+table(death$Method, death$Region) %>% addmargins()
+
+```
+
+Q:  are the events L = lethal injection and S = from the south indpendent?
+
+P(L) = 1267/1442
+P(S) = 1175/1442
+P(L and S) = 1016/1442
+
+```{r}
+1267/1442*1175/1442
+```
+
+```{r}
+1016/1442
+```
+
+Close, but not quite.  These are NOT independent events.
+
+
+
+
+
+
+
+
+
+
+
+## Example 1
+
+At a fast food restarurant, on average, 25 customers come through the drive-thru every hour.
+
+WHat's the probability that at least 3 customers come in the next hour?
+
+lamba = 25/1
+
+
+
+## Example 1
+
+At a fast food restarurant, on average, 25 customers come through the drive-thru every hour.
+
+WHat's the probability that at least 3 customers come in the next half hour?
+
+all the same, but 
+
+lamba = 25/2
+
+
+```{r}
+#yhat
+
+6.463+2.489*69
+```
+resid:  y - yhat
+
+```{r}
+145-178.204
+```
+
+
+Slope: 2.489
+
+If a man's height increases by 1 inch, we'd predict his weight to increase by 2.489 lbs.
+
+
+r^2:  67.4%
+
+Of all the variation we see in men's weights, about 67.4% is due to the relationship between weight and height.  
+
+
+
+
+
+Ex) Giraffes.  Adult male giraffe height follows a normal dist with mean 18' and std dev 1.5'.  
+
+Approximately what percent of giraffes are between 13.5' and 21'?
+
+
+Hold on.  What's a z score?
+
+Idea:  different distros have different centers and spread.  So, we can't directly compare.  Example:  ACT and SAT.  Totally different scales!  
+
+Z scores account for both center and spread:  for a measurement x, the z score is the distance from mean measured in std deviations.
+
+Z = # of std devs away from the mean
+
+(Note:  std dev ~ avd distance from the mean.  That's how it measures spread!)
+
+Percent of giraffes:
+
+```{r}
+2.35+13.5+34+34+13.5
+```
+
+
+## Distro examples
+
+About 82% of DU students are from out-of-state.  
+
+1)  What's the the probability we have to sample 10 students before we find the first out-of-state student?
+
+2)  What's the probability that, if we take a sample of 10 students, at least 7 of them are out-of-state?
+
+ What's the probability that, if we take a sample of 10 students, less than 7 of them are out-of-state?
+ 
+ P(X<7) = 1-P(X=7)-P(X=8)-P(x=9)+P(X=10)
+
+3)  If we keep sampling students until we find the first out-of-state student, what's the prob that we have to sample at least 4 students?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+.821^2
+```
+
+In general:  r^2 is the percent of variation in y variable that's becauase of/attributable to the lin relationship between x and y.
+
+About 67.4% of the variation in weight is due to the relationship between height and weight.
+
+
+
+
+
+## Exam review:
+
+### Question:  requirements for poisson
+
+If X is poisson, x counts the number of occurrances (successes) over a fixed interval of space/time  (a day, a year, two hours, sq meter).  
+Requirements:
+
+- Lambda is constant, i.e., fixed rate of occurences over time
+- The probability of occurrences is proportional to the length of time/space.  I.e., longer time should generally mean more occurances.  Or, more space should mean more occurrences.  
+
+### Question:  calculate R?
+
+You never will.  Do it in software
+
+### Meaning of "least squares" line
+
+Zillion names:
+
+least squares
+regression
+best fit
+trend line 
+
+All the same, there really is one unique "best" line.  THe least squares line is the one that minimizes the square residuals.
+
+Q:  why minimize square resids? why not just resids?
+
+A:  some are pos, some are neg.  The avg residual is always zero!  Boring!  Square to make all positive, i.e. minimize "total" error.
+
+Q:  What's the meaning of standard deviation?
+
+A: Std dev is "average distance" from the mean.
+
+
+
+
+## Example:  8.23
+
+a)  slope
+
+```{r}
+.636*113/99
+```
+
+intercept:
+
+```{r}
+129-.726*108
+```
+
+
+```{r}
+0.636^2
+```
+
+
+Example)
+
+About 82% are out of state.
+
+If we take a sample of 10 students, what's the probability that at least 8 of them are out-of-state?
+
+
+
+
+
+
+
+
+
+Example
+
+At a fast food restaurant, customers come to the drive through at an average of 15 customers per hour.
+
+What's the probability that at least 4 come in the next hour?
+

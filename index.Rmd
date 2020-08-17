@@ -45,7 +45,7 @@ theme_set(                                #this sets the theme for all    #
 ## Course Links 
 
 - [Math 120](https://millera2.github.io/Math-120/Math120index.html)
-- [DA 101](https://millera2.github.io/DA-101/DA101index.html)
+- [CS 111](https://millera2.github.io/CS-111/CS111index.html)
 
 <br><br><br><br><br>
 

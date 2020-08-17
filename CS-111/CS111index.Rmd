@@ -1,0 +1,92 @@
+
+---
+title: "CS 111 Fall 2020 Homepage"
+date: "Updated: `r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    theme: yeti
+
+      
+  
+---
+
+```{r setup, include=FALSE}
+
+                                                                          #
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)      #
+                                                                          #
+library(tidyverse)           #The tidyverse has all of our data tools     #
+library(ggthemes)            #ggthemes makes our graphs look nicer        #
+                                                                          # 
+theme_set(                                #this sets the theme for all    #
+  theme_tufte() +                         #plots that we make             #
+  theme(text=element_text(family="sans")) + 
+  theme(axis.text.x = element_text(angle=-90))                            #
+  )                                                                       #
+                                                                          #
+                                                                          #
+                                                                          #
+
+```
+
+
+## Video Lectures
+
+These are all on my [Youtube Channel](https://www.youtube.com/playlist?list=PLyeasqQur_f0KonXm4hj99X9eFZlOVDbF)
+
+The work I do in those vids is availabe on this site below.  
+
+Currently, we haven't had any lectures.  Check back soon!
+
+## CS 111 Lecture Notes
+*They look great on your phone, so you can read them anywhere.  Steal my code!  Don't understand something?  Ask me!*
+
+
+
+## Next Quiz
+
+Info for the next quiz will be posted here.  Check frequently!
+
+
+## HW Assignments
+
+Check here for HW details!
+
+## Reading Assignments
+
+Wanna know what's going on?  Read this stuff!
+
+
+
+## Helpful Links and Info:
+
+
+
+### Datasets
+
+Wanna check out a dataset referenced in lecture or HW?  Here they are!  I'll add more as the semester progresses. 
+
+- [Baby Names](https://drive.google.com/file/d/1W5baem_xOJ9SVlaD_QHnXNdfA9dtBXaS/view?usp=sharing)
+  - *Counts of **all** American first names since 18-something.*
+- [Death Penalty](https://millera2.github.io/Data/death-penalty-data.csv)
+  - *Records of every American who's received capital punishment.*
+- [CIRP DATASET](https://drive.google.com/file/d/1-FxOfb3-Hm8DPKSpkqlHGZ91154xMW4s/view?usp=sharing)
+  - *DU Freshmen Survey Data from 2014.  Not public data.*
+
+for Reading Assignments and Labs)*
+
+
+
+### Office Hours (Google Hangouts)
+
+*TBA*
+
+### TA Hours
+
+*TBA*
+
+
+
+

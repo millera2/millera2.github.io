@@ -1,0 +1,119 @@
+---
+title: "Math 120 Lab 1 - Describing Data"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: false
+    toc_depth: 3
+    code_folding: show
+    theme: yeti
+    df_print: paged
+  
+---
+
+```{r setup, include=FALSE}
+###########################################################################
+################# DON'T DELETE THIS PART!!!!!##############################
+###########################################################################
+                                                                          #
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)      #
+                                                                          #
+library(tidyverse)           #The tidyverse has all of our data tools     #
+library(ggthemes)            #ggthemes makes our graphs look nicer        #
+                                                                          # 
+theme_set(                                #this sets the theme for all    #
+  theme_tufte() +                         #plots that we make             #
+  theme(text=element_text(family="sans"))                                 #
+  )                                                                       #
+                                                                          #
+                                                                          #
+                                                                          #
+### Below is where you read and store your data.                          #
+                                                                          #
+youShouldRenameThis <- read_csv("death penalty data.csv")
+                                                                          #
+                                                                          #
+                                                                          #
+############# ^ ################################# ^ #######################
+############# | ## DON'T DELETE THIS PART!!!!!### | #######################
+############# | ################################# | #######################
+```
+
+
+
+## Introduction
+
+In this lab, we'll be analyazing the Death Penalty dataset.  It contains records of every person who's received the death penalty in the United States since it was re-legalized as a result of the 1976 Supreme Court case *Gregg vs Georgia*.  
+
+Your goal is to perform a few cursory analyses to investigate how the death penalty is administered in the US, and to whom.  You'll be using techniques from lecture in a novel context with real-world data.
+
+
+
+## The dataset
+
+[Right click and Save-As to download the data here.](https://millera2.github.io/Data/death-penalty-data.csv) 
+
+Once downloaded, DO NOT OPEN IN EXCEL.
+
+DO NOT OPEN IN EXCEL.
+
+Should you open the data in Excel?
+
+NO, DO NOT OPEN THE DATA IN EXCEL.  Instead:
+
+In RStudio, set you "Working Directory" (by clicking on the "Session" menu at the top) to whatever your downloads folder is (usually "Downloads" by default).
+
+Then, use the read.csv() to load the data.  Below is an example; **do not copy-paste**!
+
+```{r}
+deathData <- read.csv("death-penalty-data.csv")
+```
+
+
+## The Lab
+
+This first lab is simple.  Answer the following questions about the dataset.  You will certainly have forgotton some of the commands.  Don't ask Prof Miller; **ask Google!**  That's how computer programmers learn new code!
+
+Make sure any visualizations you include in your report have good labels (axis labels, titles, legends if necessary).
+
+A good resource:  [Quick-R](https://www.statmethods.net/graphs/bar.html) has excellent, easy tutorials for making graphs with R.  You can also review our class notes online.
+
+## Questions for This Lab
+
+1)  How many variables are in the dataset?  Which of them are quantitative?  Are any of them continuous?
+
+2) What type of variable is the `Race` variable?  Investigate this variable with appropriate summary statistics and one visualization.  What practical conclusions do you draw from this?
+
+3) What type of variable is the `Sex` variable?  Investigate this variable with appropriate summary statistics and one visualization.  What practical conclusions do you draw from this?
+
+4)  What type of variable is the `Age` variable?  Investigate this variable.  
+- Carefully describe the center and spread of the distribution using summary statistics.  
+- Make two **different** visualaztions for this data. (You only know two that work; what are they?)
+- How would you describe the shape of the distribution?  Based upon this, what summary statistics seem most appropriate?
+- What are the cutoffs for outliers in this data?  Are there any?
+
+5) Investigate the relationship between `Race` and `Method` of execution using an appropriate visualization.  What trends can you observe from this visual?
+
+6) Investigate the relationship between `Age` and `Victim.Count`.  Is there evidence of an interesting relationship here?
+
+## Deliverables
+
+Turn in a well-written Google Doc report with answers to the above six questions and also the .R script file with all of the code you used on Notebowl.
+
+## Deadline and Grading
+
+This lab is due **Thursday, Feb 06 at 11:59pm** on Notebowl.   **I'll charge a 20% late fee per day late.**  
+
+I will assign grades on this project ”holistically”, not using a scoring sheet where each item is worth a certain number of points.
+
+- **B**: A ”B” project is very well done. It should have sound analysis, use appropriate statistical tools, support analysis with the appropriate graphs and other visual aids, and be a well-written document.
+
+- **C**: A ”C” project is solid, but usually lacking in one of the areas listed above. 
+
+- **D/F**: Projects below a C are severely deficient in the basic criteria or have failed to complete the assignment.
+
+- **A**: An ”A” project is truly above ordinary; it has exceptional qualities that make it stand out distinctly. An ”A” project is not the default grade.
+  - Does the project fulfill the requirements of the assignment?
+  - Does the report use the subject matter from this unit appropriately? Are there tools being used in the wrong way? Is there an obvious tool that might have been used but was overlooked?
+  - Are the graphics factually correct? Are they formatted well? Do they give the first visual impression that is supportive of the thesis/story of the report, or do they indicate a different story?
+  - Is the report well-written? Is there good organization of ideas? Is the analysis grounded in reasonable use of statistics? Is the paper free of mechanical and grammatical errors?

@@ -1,0 +1,592 @@
+---
+title: "DA 101 Week 7-8"
+author: "Prof Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: cerulean
+    df_print: paged
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+
+# Monday
+
+## Linear regression warm-up
+
+```{r}
+houseData <- read_csv("House-Sales.csv")
+head(houseData)
+nrow(houseData)
+```
+
+Exercise:  use linear models to predict price based upon various factors.
+
+For each group, you'll have a particular factor/variable.  Using this:
+
+1)  Make a linear model.
+2)  State the equation of the linear model
+3) Carefully interpet the coefficients of the model.
+4) Carefully interpret R^2, the coefficient of determination
+5) Analyze the residuals.
+
+Team 1:  Bedrooms
+
+```{r}
+model <- lm(data=houseData, price~bedrooms)
+qplot(houseData$bedrooms, houseData$price)
+summary(model)
+```
+
+SLope: for each additional bedroom a house has, we expect it's price to increase by $121,790.
+
+R^2:  About 9.5% of the variation in price is due to the relationship between price and # of bedrooms.  
+
+Team 2:  Bathrooms
+
+```{r}
+qplot(houseData$bathrooms, houseData$price)
+summary(lm(data=houseData, price~bathrooms))
+```
+SLope: for each additional bathroom a house has, we expect/predict it's price to increase by $250,485.
+
+R^2:  About 27.6% of variation in price is due to relationship between price and # of bathrooms.  
+Team 3:  Sqft Living
+
+```{r}
+qplot(houseData$sqft_living, houseData$price)
+sqftModel <- lm(data=houseData, price~sqft_living)
+summary(sqftModel)
+qplot(houseData$sqft_living, sqftModel$residuals)
+```
+Residuals:  highly heteroskedastic!!  Kidna bad!  Makes sense though, the model does a good job for "normal" sized houses on the left, but not for the very unusual (huge) on the right!
+
+```{r}
+qplot(sqftModel$residuals, geom="histogram")
+boxplot(sqftModel$residuals, horizontal=TRUE)
+```
+Also, quite a bit of right skew in the residuals.  Some of these predictions have high error!  Kinda bad! 
+
+Slope:  for every additional sqft, we expect the price to increase by $280.807.
+
+R^2:  About 49.29% of the variation in price is because of the lin rel between price and sqft_living.  
+
+
+
+Team 4:  FLoors
+
+```{r}
+qplot(houseData$floors, houseData$price)+geom_smooth(method="lm")+geom_jitter()
+
+summary(lm(data=houseData, price~floors))
+```
+
+
+Team 5:  Year Built
+
+```{r}
+qplot(houseData$yr_built, houseData$price)+geom_smooth(method="lm")
+
+summary(lm(data=houseData, price~yr_built))
+```
+Intersting observation:  one might wonder, are older houses or newer houses worth more in this market?  Seems like no!  Only about 0.2% of the variation in price is because of the year it was built.  
+
+
+
+
+# Wednesday
+
+## Hyp tests for lin reg:  for rho
+
+All hyp tests investigate a question about a population parameter.
+
+Examples:  1 t tests talk about a mean for a single quantitative variable.
+
+2 t tests compare means for two quantitative variables.
+
+Today, cor tests:  cor tests answer questions about the *correlation coefficient* between two (or more) quantitative variables.
+
+Sample correlation coefficient:  r.   You know this one.  Remember though, r is a description of our sample data.  Calculated from our dataset.
+
+Our real goal is to say something smart about the population.  r varies randomly, but what about the population correlation?  What is it?
+
+Population correlation coefficient:  rho.  We want to use the sample correlation, r, to say something smart about the population correlation, rho.
+
+Hypotheses are always the same:
+
+H0:  rho = 0  (assume by default that there's no linear relationship)
+
+Remember,  we have to make an assumption to compute p-vals.  That's what H0 is for.
+
+Ha:  rho != 0  (looking for evidence that there is some kind of linear relationship)
+
+
+Test stat:  it's  a t test stat (you'll t = blah when doing cor tests).  We don't use it too much, but it's used to get p.
+
+For cor tests, p = probability of observing a sample correlation as strong or stronger than the one we got, assuming that there's no correlation.
+
+If p is small, that means our result is unlikely according to H0.  Here, we reject H0.  We've found evidence of a linear relationship.
+
+If p is large, then our sample data and H0 agree, more or less.  We fail to reject H0.  There's not strong evidence of a linear relationship.
+
+HUGE CAVEAT:  Null hyp says rho=0.  When we reject, we're finding evidence of SOME linear relationship, not neccessarily a STRONG relationship!
+
+Because of this, the confidence interval is also super important for gauging "effect size":  what range of values might our rho (pop correlation) take?
+
+
+## Performing cor tests in R
+
+Command:  cor.test()
+
+Also:  see p-val in lm()
+
+
+Example:  iris Sepal Length as a function of Sepal Width
+
+```{r}
+# In cor.test:  x comes first, y second
+
+cor.test(iris$Sepal.Width, iris$Sepal.Length)
+```
+
+Interpretation:
+
+H0:  rho=0  (always)  Ie, true correlation = 0
+Ha:  rho!=0  (always)  Ie, true correlation !=0
+
+Tests stat:  t = -1.4403  (we don't really use this, used to get p-val)
+df:  df = n-2.  I.e., it's basically sample size.  Here:  150 iris plants
+
+p-val:  Assuming that there's no correlation, there's about a 15.19% chance of observing a sample correlation as strong ours (-0.1176).  Not terribly unlikely!
+
+Here, p >.05, so we fail to reject H0.  There's not strong evidence to suggest a linear relationship between Sepal Length and Sepal Width.
+
+95 percent confidence interval:
+ -0.27269325  0.04351158
+ 
+We're 95% confident that the true correlation, rho, is between -0.27 and .043.  Seems like it could be 0!  THus, not strong evidence of a relationship.
+
+Wonder:  ok, we failed to reject.  Agree with our intuition?
+
+Look:
+
+```{r}
+qplot(iris$Sepal.Width, iris$Sepal.Length)
+```
+
+In lm:
+
+```{r}
+summary(lm(data=iris, Sepal.Length~Sepal.Width))
+```
+
+Example: Is there evidence of a relationship between petal length and petal width?
+
+x = petal length
+y = petal width
+
+Perform a test, interpret p-val and conclusion
+
+```{r}
+cor.test(iris$Petal.Length, iris$Petal.Width)
+```
+
+Interpret p-val:  If there's no correlation, then there's a teeny tiny chance of seeing a sample correlation as strong as ours (r=.963).  Since p is small, we reject H0, there is strong (strong!) evidence of a linear relationship.
+
+CI:  0.95 < rho < .97   Looks strong!
+
+Look:
+
+```{r}
+qplot(iris$Petal.Length, iris$Petal.Width)
+```
+
+
+
+
+## Warning about lab
+
+Big sample sizes tend to make smaller p-vals.  You'll get significant results everywhere!  Still important to consider R^2, slope, residuals, etc when looking relationship.
+
+## Multivariable Regression
+
+Same idea:  use a line to explore relatioship.  Difference:  multiple variables/dimensions!  
+
+Equation has same form:
+
+one variable:  yhat = b0 + b1*x
+
+muliple variables:  yhat = b0 + b1*x1 + b2*x2 + b3*x3 +..... bn*xn
+
+for n variables.  Up to you!
+
+The equation the line works the same way:  the least square line (best fit line) minimizes the residuals (errors).
+
+Making them in R is super easy:
+
+Example:  housing data.
+
+```{r}
+head(houseData)
+```
+
+1)  Predict price from bedrooms
+
+```{r}
+summary(lm(data=houseData, price~bathrooms))
+```
+
+Bedrooms alone account for about 9.5% of the variation in price.
+
+2)  How about bedrooms AND bathrooms!
+
+```{r}
+multiModel <- lm(data=houseData, price~bedrooms+bathrooms)
+summary(multiModel)
+```
+
+
+Here, our r^2 is bigger than either variable seperately!  By combining info from both variables, we get smaller residuals i.e. better predictions!  Cool!
+
+```{r}
+colnames(houseData)
+```
+
+```{r}
+multiModel <- 
+  lm(data=houseData, price~bedrooms+bathrooms+sqft_living+improvements+floors)
+summary(multiModel)
+```
+
+
+
+
+# Friday
+
+Bedroomz??!
+
+Let's compare to a single variable model:
+
+```{r}
+summary(lm(data=houseData, price~bedrooms))
+```
+
+This makes more sense:  of course we'd expect price to increase with more bedrooms, not decrease!
+
+This demonstrates a weakness of multivariable models:  the coefficients often don't make sense!  Idea:  since we're balanacing many variables, the coeffs get "distorted". 
+
+SO, when to use them?
+
+- If you really want the best predictions possible for specific input, then multi models are your best bet, because they have bigger r^2 and smaller resids (in general). 
+
+- If you're more interested in the nature of the relationship between the variables, then single-variable models are better, because the coefficients actually mean something and tell you about the relationship.
+
+Usually, we'll do both!
+
+## Analyzing resids for multi models
+
+Example:  make a model to predict petal length based upon sepal length and sepal width.
+
+Look at the residuals (residual plot).
+
+```{r}
+irisModel <- lm(data=iris, Petal.Length~Sepal.Length+Sepal.Width)
+summary(irisModel)
+```
+
+Note about R^2:  for multiple models, look at "adjusted" R^2.  
+
+
+For resid plot, there's a problem!  We have multiple x variables.  Here:  x1 = Sepal length, x2 = Sepal width.  Which to use????
+
+X axis has to be somethething, so what?
+
+Solution:  use the the predicted values instead (i.e., the yhat values on the line).  There's only one prediction on the line for any combo of x variables, so this makes sense.
+
+x-axis:  yhat values
+y-axis:  residuals
+
+Easy way to this:  autoplot.
+
+```{r}
+library(ggfortify)
+autoplot(irisModel)
+```
+
+Observations:
+
+Upper left:  the "residual plot".  Uses x=fitted values (yhat)
+
+Upper right: Normal plot.  In a normal quantile plot, the residuals should fall pretty close to the line.  Deviations from the line show deviations from a normal distribution.
+
+
+
+
+```{r}
+hist(sample(1:6, 100, replace = T),
+     breaks=c(.5,1.5,2.5,3.5,4.5,5.5,6.5))
+
+set.seed(1)
+```
+
+
+
+
+
+
+```{r}
+hist(
+  replicate(
+    10000,
+    mean(
+      sample(1:6, 1000,replace=T))
+  )
+)
+```
+
+
+
+
+
+
+
+# Monday
+
+## Warm-up
+
+```{r}
+head(mpg)
+```
+
+Exercise:  make a model to predict hwy mpg based upon year, cyl, displ.
+
+Look at the residual plot.
+
+Remember, for multi models, we can't use original x data for residual plot (like normal), because there are many x variables!
+
+Instead:  x-axis points are the "predicted"/"fitted" values, ie yhat.
+
+```{r}
+mpgModel <- lm(data=mpg, hwy~year+cyl+displ)
+summary(mpgModel)
+```
+
+Here, adjusted r^2 is 61.22% (always use adjusted for multi models).  Here, about 61.22% of variation in hwy mpg is due to the rel between hwy mpg and year, cyl, and displ.
+
+Resids:  use autoplot
+
+Remember:  library is ggfortify
+
+```{r}
+library(ggfortify)
+autoplot(mpgModel)
+```
+
+Interpretations:
+
+Upper left is the "classic" residual plot.  Maybe a slight curve pattern?  I.e., maybe a little heteroskedastic?  
+
+Upper right: normal quantile plot.  Ideally, we hope our points are close the line ie linear.  On the right, seems like a bit of a deviation from normality.  Mabye a few high-residual points?  Skew right?
+
+Lower left:  "standardized" resids.  Same upper left, but using standard scores instead.  
+
+std score:  z = (obs - expected)/stddev
+
+Standard scores always have mean 0, std dev.    This plot gives another way to see heteroskedasticity.  We hope these resids are nearly linear, close to zero.
+
+Lower right:  "leverage" is a measure of how much a particular observation affects a linear model.  Idea:  
+
+- x-axis shows influence (leverage) of each point on the model
+- y-axis show residual, i.e. error for an observation.
+
+We hope that points with high leverage have small residuals!!! I.e., cone shape.  Skinny on the left.   Above, looks pretty bad!  Point Number 28 has both high leverage AND high residual!  Uh-oh!  We might want to consider filtering that point out.  
+
+## Which variables to choose?
+
+Occam's razor:  simple explanations are the best!  If there are multiple competing explnations, let's pick the simplest one!  
+
+Want the same when making multivariable models!  If a 10-variable model doesn't have better predictive power than a 4-variable model, then totally use the smaller model!
+
+When adding variables to a multi linear model, eventually r^2 doesn't really increase.  At this point, more variables are bad!
+
+So, which variables SHOULD we use in our model?  When should we cut them out!
+
+Guideline #1:  Build models that make sense!  Does it seem reasonable that your x-vars could explain your y-variable?  Don't get stuck chasing r^2!!  
+
+Guideline #2:  If two x-variables are highly correlated, might not want to use both!  IF two variables are highly correlated, we don't get new info in our model by using both.  Cut one out!
+
+WARNING:  If many variables, can be time-consuming to find correlation for all!  Here are two neat tricks for quickly investigating.
+
+Note:  download GGally
+
+
+
+
+```{r}
+library(GGally)
+```
+
+First cool command:  ggcorr()
+
+Example:  iris
+
+```{r}
+iris %>% ggcorr
+```
+
+Observations:
+
+Since Petal Length and Petal Width are highly correlated, we might not want to use both as x-vars in a linear model.  They're both giving the same info!
+
+OTOH, Sepal length and Sepal width are NOT highly correlated.  Could be a good idea to use both as x-vars in my model.  Each contributes new info!
+
+```{r}
+head(houseData)
+
+houseData %>% ggcorr
+```
+
+Second cool command:  ggpairs
+
+```{r}
+iris %>% ggpairs
+```
+
+Note that ggpairs is too stupid to kick out the categorical vars!!  Species shouldn't be here!
+
+Could use "select":
+
+```{r}
+iris %>% select(Sepal.Width, Sepal.Length, Petal.Width, Petal.Length) %>% ggpairs
+```
+
+Even faster:  use the "keep()" command in the library "purrr"
+
+```{r}
+library(purrr)
+
+iris %>% keep(is.numeric) %>% ggpairs()
+
+head(houseData)
+
+houseData %>% keep(is.numeric) %>% ggpairs()
+```
+
+Warning:  keep() is super cool, but be careful!  Large datasets can slow it down too much!
+
+On lab:  keep() will definitely slow your computer to a halt for a long, long time!  Instead, probably better to experiment with a subset of variables.  
+
+## StepAIC
+
+Another cool way to decide what variables to use.
+
+Idea:  StepAIC tests out differt combinations of variables.  It checks to see which combo of variables gives you the strongest model (adjusted R^2)
+
+First:  install the library.  MASS
+
+Note:  if you're using r.denison.edu, then this already installed.  
+
+For most of you, you'll need to install it.  
+
+Here's how to use it.
+
+```{r}
+library(MASS)
+
+# example: lin model to predict sepal length, based on others
+```
+
+
+```{r}
+
+irisModel <- lm(data=iris, Sepal.Length~Petal.Length+Petal.Width+Sepal.Width)
+
+summary(irisModel)
+
+
+stepModel <- stepAIC(irisModel, direction = "both")
+
+
+
+```
+
+Note about "both".  There are two directions.  "Forwards" means that StepAIC with only a single variable, and it experiments adding variable by variable until it gets the best model.
+
+"Backwards" means that StepAIC starts with ALL the variables, and takes them away one by one to see if the model improves.
+
+If "both", then it does both and picks the best one.  Of course, always do both.  
+
+To see the result:  look at the "ANOVA" variable.
+
+```{r}
+stepModel$anova
+```
+
+Here:  StepAIC decided to keep -all- the variables.  Sometimes, for more complex models, it might decide to drop one.
+
+## Complicated example:  housing data
+
+```{r}
+houseData <- read_csv("House-Sales.csv")
+head(houseData)
+
+library(purrr)
+houseModel <- lm(data = keep(houseData, is.numeric), price~.)
+
+summary(houseModel)
+```
+
+Two cool things:  
+
+- "keep" gets all the numeric variables.  
+- the "." uses all other variables.  convenient!
+
+Warning!  Don't do this on your lab!  The dataset is too big!  ALso, there are many NA variables!!  Experiment with small numbers of variables.  Start small!  Just pick one or two, then add.
+
+Let's try stepAIC.
+
+```{r}
+stepModel <- stepAIC(houseModel, direction="both")
+```
+
+```{r}
+stepModel$anova
+```
+
+As always, use your good judgement when deciding what variables to include!  Do they make sense?  Is it reasonable to include them?  What story might they tell?
+
+These "soft" qualifiers are just as important as the "hard" ones.
+
+In lab, explain:  why did you choose your variables?  WHat's the story?  Dont't just look at the numbers, think about the story.
+
+
+
+
+
+
+
+
+
+

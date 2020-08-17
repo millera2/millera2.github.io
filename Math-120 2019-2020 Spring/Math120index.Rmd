@@ -1,0 +1,227 @@
+
+---
+title: "Math 120 Spring 2020 Homepage"
+date: "Updated: `r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    theme: yeti
+
+      
+  
+---
+
+```{r setup, include=FALSE}
+
+                                                                          #
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)      #
+                                                                          #
+library(tidyverse)           #The tidyverse has all of our data tools     #
+library(ggthemes)            #ggthemes makes our graphs look nicer        #
+                                                                          # 
+theme_set(                                #this sets the theme for all    #
+  theme_tufte() +                         #plots that we make             #
+  theme(text=element_text(family="sans")) + 
+  theme(axis.text.x = element_text(angle=-90))                            #
+  )                                                                       #
+                                                                          #
+                                                                          #
+                                                                          #
+
+```
+
+
+## Video Lectures
+
+These are all on my [Youtube Channel](https://www.youtube.com/playlist?list=PLyeasqQur_f3JmC9dyJqcxB5SSW1i3RG_)
+
+The work I do in those vids, as always, is still availabe on this site below.  **The video lectures start at Week 09**, the first week after spring break.
+
+## Math 120 Lecture Notes
+*They look great on your phone, so you can read them anywhere.  Steal my code!  Don't understand something?  Ask me!*
+
+
+- [Week 01](https://millera2.github.io/Math-120/Math-120-Lec-01.html)
+- [Week 02](https://millera2.github.io/Math-120/Math-120-Lec-02.html)
+- [Week 03](https://millera2.github.io/Math-120/Math-120-Lec-03.html)
+- [Week 04](https://millera2.github.io/Math-120/Math-120-Lec-04.html)
+- [Week 05](https://millera2.github.io/Math-120/Math-120-Lec-05.html)
+- [Week 06](https://millera2.github.io/Math-120/Math-120-Lec-06.html)
+- [Week 07](https://millera2.github.io/Math-120/Math-120-Lec-07.html)
+- [Week 08](https://millera2.github.io/Math-120/Math-120-Lec-08.html)
+- [Week 09](https://millera2.github.io/Math-120/Math-120-Lec-09.html)
+- [Week 10](https://millera2.github.io/Math-120/Math-120-Lec-10.html)
+- [Week 11](https://millera2.github.io/Math-120/Math-120-Lec-11.html)
+- [Week 12](https://millera2.github.io/Math-120/Math-120-Lec-12.html)
+- [Week 13](https://millera2.github.io/Math-120/Math-120-Lec-13.html)
+
+
+
+
+
+
+## Next Quiz
+
+Quiz on 4/10 over week 11 material. 
+
+## Reading Assignments
+
+For best results, do the reading **before** watching the related video.  
+
+- Week 9
+  - Vid 1: Review Week 8 Notes
+  - Vid 2: Textbook, $\S$ 5.1
+- Week 10
+  - Vid 1: Textbook $\S$ 5.2
+  - Vid 2: Textbook $\S$ 5.2 (specifically, p 212) 
+  - Vid 3: Textbook $\S$ 7.1
+- Week 11
+  - Vid 1: Textbook $\S$ 5.3
+  - Vid 2: Textbook $\S$ 6.1
+- Week 12
+  - Vid 1: Textbook $\S$ 7.1 (specifically, p257-258)
+- Week 13
+  - Vid 1: Textbook $\S$ 7.3
+
+
+## Helpful Links and Info:
+
+### Labs
+
+- [Lab 1](https://millera2.github.io/Math-120/Math-120-Lab-1.html) 
+- [Lab 2](https://millera2.github.io/Math-120/Math-120-Lab-2.html)
+- [Lab 3](https://millera2.github.io/Math-120/Math-120-Lab-3.html) **Solutions added**
+- [Lab 4](https://docs.google.com/document/d/1xdKXIp7lV4ENWbBN0O6a_j0t_RemX23Guv0CEG4XFSE/edit?usp=sharing)
+
+
+### Datasets
+
+
+- [Baby Names](https://drive.google.com/file/d/1W5baem_xOJ9SVlaD_QHnXNdfA9dtBXaS/view?usp=sharing)
+  - *Counts of **all** American first names since 18-something.*
+- [Death Penalty](https://millera2.github.io/Data/death-penalty-data.csv)
+  - *Records of every American who's received capital punishment.*
+- [CIRP DATASET](https://drive.google.com/file/d/1-FxOfb3-Hm8DPKSpkqlHGZ91154xMW4s/view?usp=sharing)
+  - *DU Freshmen Survey Data from 2014.  Not public data.*
+
+### Helpful Files
+
+
+- [Prof Miller's Scratchpad](https://drive.google.com/open?id=1XBCoVrgdWfMXgKteISLOznyBqGwzmnguSJis-axbxVI)
+  - *(Here's where I can share code with you in-class)*
+
+### Google Drive Links
+
+- [Math 120 Shared Folder on Google](https://drive.google.com/open?id=1BjjdXm2h03ecn7qyPiHsbmW4gZEGqte7)
+  - *(Look here for Reading Assignments and Labs)*
+
+### Texbook Links
+
+- [Math 120 Textbook](https://www.openintro.org/stat/textbook.php?stat_book=os)
+  - *OpenIntro Statistics* is an excellent, free introduction to modern statistical analysis.
+- [DA 101 Texbook](https://r4ds.had.co.nz)
+  - *R For Data Science* is a concise, approachable introduction to to topic with many good code examples to play with.
+
+### Office Hours (Google Hangouts)
+
+Wed, Thurs, Fri: 9am-11am, or by appointment
+
+### TA Hours
+
+Our TA's name is **Thu**.  She's very knowledgable about both stats and code -- she can help you!
+
+You can find her in the Library (Atrium floor, computer area) at these times:
+
+- Monday 7-8:30pm
+- Wednesday 7-8:30pm
+- Saturday 3-5pm
+
+
+
+
+
+### Exam I Topics
+
+- What is data?
+  - Tidy Data
+  - Observations/cases
+  - Variable Types
+- Visualizing data
+  - Appropriate visuals for each type
+  - Understanding and interpreting data visualizations
+- Summary Statistics
+  - Measures of center (and the meaning/idea for each)
+  - Measures of spread (and the meaning/idea for each)
+  - How shape affects summary statistics (skew)
+  - Which statistics are robust?
+  - All about outliers (both concepts and math)
+  - The Empirical Rule
+- Statistical Inference
+  - What is statistical inference?
+  - What's the difference between statistics and parameters?
+  - What statistics have we discussed, and what are their corresponding parameters?
+- Sampling Strategies
+  - SRS
+  - Stratified
+  - Cluster
+  - Convenience
+- Correlation and Linear Regression
+  - Understanding scatterplots
+    - Form, strength, and direction of relationships
+  - The correlation coefficient, *r*
+    - Matching r with a scatterplot
+    - properties of r
+      - doesn't depend on units
+      - $-1\leq r \leq 1$ always
+      - doesn't matter which is $x$, which is $y$
+  - The meaning of the regression line
+    - How is it found? What makes it the "best fit"?
+    - What does it do, what's it for?
+    - Matters a lot which is $x$, which is $y$
+    - Making predictions (math)
+  - Interpreting coefficients
+    - meaning of slope
+    - meaning of intercept
+  - Residuals
+    - What they mean (conceptually and visually)
+    - How to compute (math)
+    - Interpreting residual plots
+  - Effects of outliers
+  - Interpreting coefficient of determination, r^2
+- Probability
+  - Two notions of probability
+  - Law of large numbers
+  - Meaning of "probability distribution"
+  - Recognizing and using "famous" distributions:
+    - Binomial, Geometric, and Poisson
+  - Probabilities from a contingency table
+    - And, Or, Not, Given
+  - "Independent"
+    - Idea behind it
+    - Verifying mathematically
+
+### Exam I Reading and Practice Problems
+
+- Sec 1.2 Data Basics (Exercises start on on p 19)
+  - 1.3c, 1.5c, 1.9
+- Sec 1.4 Sampling Strategies (Exercises start on on p 29)
+  - 1.17, 1.19, 1.23, 1.27
+- Sec 2.1 Summary Statistics and Visuals (Exercises start on on p56)
+  - 2.5, 2.9, 2.11b, 2.12, 2.13, 2.15, 2.16, 
+- Sec 8.1 Correlation(Exercises start on on p 312)
+  - 8.7
+- Sec 8.2 Linear Regression (Exercises start on p325)
+  - 8.19, **8.23**, 8.25, 8.21d and 8.22d (interpreting residual plots only)
+- Sec 8.3 Outliers in Lin Reg (Exercises start on p330)
+  - 8.27 (I'll ask:  does the outlier increase, decrease, or not change the correlation?)
+- Sec 4.2 Geometric Dist (Exercises start on p148)
+  - 4.13a
+- Sec 4.3 Binomial Dist (Exercises start on p156)
+  - 4.17, 4.21
+- Sec 4.5 Poisson Dist 
+  - 4.33ab
+- Sec 3.2 Table Probabilities, Conditional Probability (p109)
+  - 3.15 (parts b,c,d, e)
+ 
+  

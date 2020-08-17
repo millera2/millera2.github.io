@@ -1,0 +1,295 @@
+---
+title: "DA 101 Week 5"
+author: "Prof Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: cerulean
+    df_print: paged
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+
+# Monday
+
+## Hypothesis Tests
+
+Remember, all have 4 parts:
+
+- Hypotheses:
+
+  - Null hypothesis:  H0.  The assumption we make.
+  - Alt hypotheses:  Ha.  The thing we're trying to prove.  
+  
+- Test stat.  Summary of our actual data.  I.e., what we observed!
+
+- p-value.  Most important part!  A p val is the probability of observing a sample result that's as (or more) extreme than the one we got, assuming the H0 is true. P-vals work because of the central limit theorem:  as long as sample size is big, sample stats like mean and prortion follow a normal dist.
+
+NOTE:  small p-vals provide evidence AGAINST H0.  If p-val is small, then our sample data is unlikely according to H0.  We trust our data, and reject H0!
+
+- Conclusion.  If p-val is "small enough", we reject H0 and find evidence to support Ha.  Yay!  This is what we hoped for!
+
+Q:  How small is "small enough"?  The cut-off is called the "significance level".  Symbol:  alpha.  Most common:  alpha = .05.  I.e., if our test stat is smaller than .05, we reject H0.  Otherwise, if p > .05, we fail to reject.
+
+NOTE:  the choice of alpha is totally arbitrary!  It's up to you!  alpha = .05 is common, but not divine or necessary.  
+
+NOTE:  In labs, always use alpha = .05.  But, DO mention that you're doing this.  
+
+## Statstical Inference - stats vs parameters
+
+Statistical inference is the process of making conclusions about a population based upon sample data.
+
+THE REAL PROBLEM:  we only ever have sample data!!  BUT, we want to conclusions about populations!  Even the best samples are sometimes unrepresentative.
+
+Sample data is just a slice of the real thing.  Statistical inference is the process of making mathemtically-supported conclusions based on available info.  
+
+Every quality of data has two versions:
+
+A **statistic** is a summary of sample data.  Exmamples:  
+
+- sample mean = xbar
+- sample std dev = s_x
+- sample proportion = phat
+
+A **parameter** is a summary of the whole population.  Examples:
+
+- pop mean = mu
+- pop std dev = sigma
+- pop proportion = p
+
+We only every have the stats.  But we hope to say something smart about these parameters!
+
+## 2-t tests
+
+2-t tests are used to answer the following question:  is there a difference in mean between two groups?
+
+Parameter:  mu1 - mu2
+
+## Example:  mpg dataset
+
+Is there evidence of a difference in cty fuel efficiency between pickups and suvs?
+
+1)  Hypotheses
+
+H0:  mu1 - mu2 = 0 (I.e., no difference in mpg)
+Ha:  mu1 - mu2 != 0 (I.e., there's a difference)
+
+2) Tests stat.
+
+First, filter into two groups.
+
+```{r}
+head(mpg)
+unique(mpg$class)
+
+pickups <- filter(mpg, class == "pickup")
+
+suvs <- filter(mpg, class == "suv")
+
+t.test(pickups$cty, suvs$cty)
+
+```
+
+Actual difference:  xbar1 - xbar2 = -0.5
+
+Q:  is that difference big enough to conclude that the populations are different?
+
+Test sta:  t = -1.0626
+
+3) p-value = 0.2914.  Here:  IF it's true that there's no difference in mean mpg between suvs and pickups, then the probability of observing a difference in sample mean that's -.5 mpg (or larger) is 29.14%.
+
+4)  Since our p-value is larger than .05, we fail to reject H0.  Our sample data seems to agree with the null hypothesis.  We didn't find evidence of a difference at the population level.  This result is NOT statistically significant.
+
+## Confidence Intervals
+
+In a hyp test, you start with a question about a parameter and answer with sample data.
+
+In a CI, we start with our sample result, and make an estimate about the population parameter.
+
+Both are shown in the t.test() command:
+
+```{r}
+t.test(pickups$cty, suvs$cty)
+
+```
+
+In the mpg example, the CI means this:  using the CLT, we are 95% confidewnc that the true differene in mean (mu1-mu2) is between -1.437 and 0.437.
+
+NOTE:  hyp tests and CIs will ALWAYS give you the same conclusion about the null hypothesis.  If the H0 value is inside the CI, then we fail to reject.
+
+```{r}
+unique(mpg$class)
+```
+
+## Example
+
+Using only the 95% CI, decide if there's evidence of a differene in hwy mpg between compacts and 2seaters.
+
+
+```{r}
+compacts <- filter(mpg, class=="compact")
+twoSeaters <- filter(mpg, class=="2seater")
+
+t.test(compacts$hwy, twoSeaters$hwy)
+
+```
+
+We are 95% confident that the true difference in mpg between compacts and 2seaters is between 1.77mpg and 5.23mpg.  We have strong evidence of a differencein hwy fuel efficiencty between the two groups.
+
+
+
+
+
+
+# Wednesday
+
+## Errors in hypothesis testing.
+
+Idea:  these tools fail sometimes!
+
+Hyp tests can get it wrong!  Confidence intervals can fail!  What then?
+
+Every hyp test ends in one of two ways:
+
+- p < alpha, we reject H0.  This gives evidence to support Ha. (alpha = .05 ususally)
+- p > alpha, we fail to reject H0.  We didnt' find evidence to support Ha. Bummer!  THINK:  The Ha is our claim that we're trying to support!
+
+Of course, since these inference tools are based on samples, and sample vary randomly, sometimes our conclusions will be incorrect!
+
+- Type I error:  we reject the H0, but we shouldn't have because H0 is TRUE!
+- Type II error:  we fail to reject the H0, but we should have because H0 is FALSE!
+
+Also called:  false positive, false negative respectively.  
+
+We'll never know for sure, BUT we can know something about the likelihood of these errors!
+
+Also: consider the consequences!
+
+## Example 1:  Water Quality
+
+An EPA enforcement office wonders if the local water supply contains too much of Toxin A.  The safe level is 0.8 g/ml.  
+
+1) What are the hypotheses of the test she'll do?
+
+H0:  mean level = 0.8
+Ha:  mean level > 0.8
+
+
+2) What does Type 1 error mean in this case?
+
+We think that the water is dangers, when actually it's safe.
+
+3) What does Type 2 error mean in this case?
+
+We failed to reject H0.  There's not strong evidence that mean level > 0.8.  We conclude that the water is safe, when actually it's dangerous.
+
+If we make type I, we might waste money cleaning safe water.  
+If we make type II, then people would drink dangerous water!
+
+Seems like Type II is worse!
+
+## Example 2
+
+Think of a hyp test as a criminal trial:
+
+H0:  Defendent is innocent
+Ha:  Defendent is guilty
+
+1)  What does type I error mean?
+
+We think they're guilty, but actually they're innocent!
+
+2)  What does type II error mean?
+
+Fail to reject H0, no strong evidence of guilt.  We conclude they're innocent.  Acutally, they're guilty!
+
+3) Which do you think is worse?
+
+Here, seems like type I is worse.  Don't want to punish innocent people!  (Room for debate). 
+
+
+## Moral of the story:  It Depends!
+
+It's not always the case that Type I is worse or Type II is worse.  
+
+We can't eliminate the chance of error.  BUT, we can tip the scales to make Type I or Type II more likely than the other.
+
+## alpha, beta, and power
+
+We know something about how likely these errors are.
+
+1) The probabilty of a type I error is alpha.  THE alpha!  Two important facts:
+ - Usually, there's a 5% chance of type I error!
+ - Since alpha is arbitrary, YOU can choose the prob of type I error!
+ 
+Ie, if a type I error is really, really bad, then we could use a smaller alpha!  I.e., alpha = .01.  
+
+THINK:  In a criminal trial, we say there can't be a "shadow of a doubt".  
+
+2) The probability of type II error is beta.  Unfortunately, we can never directly compute beta.  BECAUSE, if type II, H0 is false, and we DON'T know the true population parameter (mu, mu1-mu2, etc). Thus, can't do probability computations.
+
+HOWEVER, alpha and beta have a predictable relationship:  they're inverses.
+
+- If alpha increases, then beta decreases
+- If alpha decreases, then beta increases
+
+So, if a type II error is really really bad, then we choose alpha to be larger.
+
+To keep our test "honest", it's critical to decide on alpha BEFORE conducting the test.  
+"p hacking":  Fiddling with the test to get a significant result.  
+
+Ex: Conduct the test, get p = 0.055, decide to use alpha =.06.  
+
+3) Power.  Power is the probability of rejecting H0 when H0 is false.  I.e., success!  This what we hope for!
+
+Power and beta have an important relationship:
+
+  power = 1 - beta
+  beta = 1 - power
+  
+They're compliments!
+
+Q: if alpha increases, what happens to power?  
+
+A:  Bigger alpha means we reject more.  Power is when we reject, thus bigger alpha means bigger power!
+
+SO, in some sense, big alpha is good!  But it comes at a price:  greater chance of false positive!
+
+Or, power = 1-beta.  If alpha gets bigger, beta smaller, thus 1-beta gets bigger.  
+
+## Important factors affecting all three
+
+1)  Sample size.  Generally, sample size is "good".  Does everything you hope for:
+- bigger n decreases *both* alpha and beta.  It increases power.
+
+2) The distance between the null hyp value and the "true" population parameter.  If this gap is bigger, the test has more power.
+
+
+
+
+
+
+
+

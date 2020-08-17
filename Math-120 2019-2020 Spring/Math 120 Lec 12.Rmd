@@ -1,0 +1,435 @@
+---
+title: "Math 120 Week 12"
+author: "Prof. Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: cerulean
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+
+
+
+
+
+
+
+
+
+
+# Week 12 Vid 1
+
+## Hyp Tests for mu (population mean)
+
+Last week, we learned about hypothesis tests.  A hyp test is a formal procedure for asking a question about a population parameter.
+
+All of the tests we did then were about categorical data.  In other words, the tests asked questions about population **proportions**.
+
+This week, we'll explore hypothesis tests for quantitative data.  That means, we'll be asking questions about population **means**, mu.
+
+Let's dive in with an example.
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Example 1
+
+The height for adult men ages 20-29 in the US is 69".  However, a researcher suspects that male students at DU have a higher average height than the general population.
+
+To investigate this, he takes a sample of 40 men at DU and finds their average height to be 70.2" with std dev 3.4".
+
+Does this sample data provide evidence to support the researcher's suspicion?
+
+
+
+Before we begin, a few observations:
+- We're asking a question about a population:  is the mean height (mu) for male DU students higher than 69"?
+- We have sample data, and we see that the sample mean is in fact larger than 69"
+- However, we know that this is just a sample.  Does it provide strong evidence that the whole **population** mean is larger than 69?  That's what the hyp test is designed to show.
+- The alternate hypothesis is always stated in the question.  Here:  Ha: mu > 69.  That means we know what the null hypothesis has to be also.
+
+
+Let's perform the test:
+
+1)  Hypotheses
+
+H0: mu = 69
+Ha: mu > 69
+
+2) test stat = (obs - exp)/stdev
+
+obs: xbar = 70.2
+exp: mu = 69   [Note:  expectation always comes from H0]
+stdev: s/sqrt(n) = 3.4/sqrt(40)   [Note:  only have sample std dev, s.  So, use t-table, not z table]
+
+```{r}
+(70.2 - 69)/(3.4/sqrt(40))
+```
+
+t = 2.23
+
+3) p-val = "tail area"
+
+Note:  use t-table for means.  (Use z-table for proportions).  
+
+Here, df = n-1 = 40-1 = 39.  Df = 39.  
+
+From table, we see .01 < p-value < .025
+
+4)  Conclusion
+
+Since alpha not stated, use alpha = .05.  Q:  is our p-val smaller than alpha?  A: yes!
+
+Here:  p-val < .025, so p-val < alpha.  Ie, our p-val is small!
+
+Thus we reject H0.  There's strong evidence that the true mean height of men at DU is greater than 69".  
+
+
+
+
+
+
+
+
+
+## Left-tail / Right-tail / Two-tail tests
+
+Remember the definition of p-value:
+
+p-val = The probability of observing a sample result that's as (or more) extreme than the one we got, assuming H0 is true.  Right now, we're going to focus on one part:  "as (or more) extreme".
+
+What makes a sample result "extreme"?  Well, that depends on what we're trying to show.  In other words, it depends on the **alternate hypothesis**, Ha.  Remember, there are only three options for Ha:  either > (greater than), < (less than), or != (not equal to)
+
+If we think the parameter (mu/p/whatever) is **smaller**, then Ha has to have "<".  Thus, our notion of "extreme" here is **smaller than**.  This is called a "left-tail" test, because the tail area is literally on the left-side of the curve.
+
+If we think the paramater (mu/p/whatever) is **larger**, then Ha has to have ">".  Thus, our notion of "extreme" here is **larger than**.  This is a "right-tail" test.
+
+The third kind is new for us in this class:  not equal.  In this case, we don't necessarily think "bigger" or "smaller"... it could be either!  That means, our tail area comes from **both sides**!
+
+There's a good picture here:  https://www.fromthegenesis.com/wp-content/uploads/2018/06/Types-of-Hypothesis-Tests.jpg
+
+
+
+
+
+
+
+
+
+Since the normal curve (and t curve) are symmetric on both sides, it's easy to get this area:  just multiply by two.  (Think:  there are two tails, so p = 2*tail area.)
+
+If you're looking at the t-table, both 1-tail and 2-tail areas are shown (althought that's kinda unneccesary, since you literally just multiply by 2 to find 2-tail area).
+
+Remember, you can always tell what kind of test it is from the Ha:
+
+- If Ha has "<", then "left-tail" (i.e., one-tail)
+- If Ha has ">", then "right-tail" (i.e., one-tail)
+- If Ha has "!=", then "two tail"
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Example 2
+
+The mean IQ for the general population is 100 (the test is designed and tweaked to maintain this).  
+
+Suppose a researcher suspects that professional musicians have a different mean IQ than the general population.  To investigate, she administers an IQ test to 55 randomly-selected professional musicians.  From this, a mean IQ of 103.2 with stdev 9.2 is calculated.  
+
+Does this sample provide evidence to support her suspicion?
+
+
+1) Hypotheses
+
+- H0:  mu  = 100
+- Ha:  mu != 100
+
+2) Test Stat
+
+t = (xbar - mu)/(s/sqrt(n))
+
+```{r}
+(103.2 - 100)/(9.2/sqrt(55))
+```
+
+t = 2.58
+
+
+3) p-val (two tail)
+
+Df = 55 - 1 =54
+
+Note:  use df=50 since 54 isn't on the table.
+
+From the t table, .01 < p < .02
+
+```{r}
+2*(1-pt(2.58, 54))
+```
+
+
+
+4) Conclusion
+
+Since p < .05, we reject H0.  There's strong evidence that mean IQ of professional musicians differs from 100.
+
+
+
+
+
+
+
+
+# Week 12 Vid 2
+
+## Example 3
+
+A biologist suspects that the sex ratio of a species of Tiger Snake differs from 50/50.  To test this, they examine 100 tiger snake embryos, and find that 59 of them are male.  Does this provide evidence to support the biologists claim?
+
+1) Hypotheses
+
+H0: p  = .5
+Ha: p != .5
+
+2) Test Stat
+
+obs: phat = 59/100
+exp: p = .5
+stdev: sqrt(.5*(1-.5)/100)
+
+```{r}
+(59/100 - .5)/sqrt(.5*(1-.5)/100)
+```
+
+Picture:
+
+                          -0-               1.8 -------------- )   
+                          
+3) P-val
+
+Here, we have a right tail since test stat is postive.  Tail area:
+
+```{r}
+#tail area:
+
+1-0.9641
+```
+
+That's not quite the end.  Remember:  this is a two tail test. No problem, multiply by 2:
+
+```{r}
+2*.0359
+```
+
+Our p-val is 0.0718.  
+
+
+
+
+4) Conclusion
+
+Since p-val > 0.0718, we fail to reject H0.  We didn't find the evidene we're looking for to support the Ha that the proportion of male snakes differs from 50%.
+
+
+
+
+
+
+
+
+
+
+## Errors in Hyp Tests
+
+Hypothesis tests are a formal procedure for asking questions about a population parameter.  But, since they're based on imperfect information (random sample data), they're not guaranteed to work.  We have to prepare for the possibility that, in fact, the conclusion of the test is an **error**. 
+
+There are two kinds.  Since mathematicians are clever, their names are:
+
+- Type I Error  (False Positive)  It's when we reject H0 (positive), but we shouldn't have because H0 is true! (false positive)
+
+- Type II Error (False Neg)  It's when we fail to reject H0 (negative), but we should have because H0 is false!!
+
+
+
+
+
+
+
+
+The following table is an easy way to remember:
+
+| Test Conclusion \\ Truth in Reality | H0 True | H0 False |
+| ---------------------------------- | ------- | -------- |
+|         Reject H0                  |  Type I |  Correct |
+|     Fail to reject H0              | Correct | Type II  |
+
+The interesting part is what these mean practically.  
+
+
+
+
+
+
+
+
+
+Example:  Recall a recent example about proposing a change to the faculty handbook: in order for Prof Miller's proposal to be accepted, at least 2/3 of the faculty will have to vote in her favor.
+
+Before she makes the proposal in a meeting, Prof Miller wants to take an informal survey to see if there's popular support for her idea.  If we conducted a hypothesis test, we'd have the following hypotheses.
+
+H0:  p = 2/3
+Ha:  p > 2/3
+
+What do the error types mean in this scenario?
+
+Type I:  Reject H0, but H0 is true.  In other words, I think that I have more than 2/3 support, but actually that's not true.  Practically, I'd risk introducing my idea when actually there isn't enough support.
+
+Type II:  Fail to reject H0, but H0 is false.  In other words, I don't think that I have more than 2/3 support, but actually I *do* have enough support.  Practically, I might miss an opportunity to introduce a successful proposition.
+
+
+
+
+## Error Practice Examples
+
+### Criminal trial
+
+Consider the example of a criminal trial.  Remember, in this context:
+
+H0:  The defendant innocent
+Ha:  The defendant is guilty
+
+What would Type I and Type II errors mean, *practically*, in this example?
+
+
+### EPA Violation
+
+A particular toxic chemical, which we'll call Toxin X, is sometimes present in small amounts in drinking water.  The safe upper limit for Toxin X concentrations is 0.8 g/L; higher concentrations would endanger the community.  
+
+An EPA enforcement officer wonders whether the mean levels of Toxin X are too high (higher than 0.8 g/L) in a local well water supply.  To test her suspicion, she takes water samples from various sources around the community and finds their average concentration of Toxin X.
+
+What would Type I and Type II errors mean, *practically*, in this example?
+ You may wish to write down the hypotheses of the test first.
+
+
+
+## Solutions to Error Practice Examples
+
+Wait!  Stop!  Have you tried to reason them out for yourself?  Go back!  If you just read the solutions, you won't actually learn anything.
+
+These are really interesting to think through!
+
+![](http://www.buildingalibrary.com/wp-content/uploads/2012/04/mon010.jpg "There's a Monster at the End of This Book.  Classic!")
+
+Ok, **promise** you've already thought about them?  Then here goes:
+
+### Criminal trial solution
+
+- Type 1:  We think that the defendant is guilty, but actually they're innocent.  Practically, we'd risk putting an innocent person in jail!
+- Type 2: We think that the defendant is innocent, but actually they're guilty.  Practically, we'd risk letting a criminal go free.
+
+Both of these have interesting ethical consequences!  By requiring proof "beyond a shadow of a doubt", modern legal systems are (in theory) attempting to -avoid- a Type I error.  
+
+### EPA solution
+
+First, think about the hypotheses:
+
+H0: mu = 0.8
+Ha: mu > 0.8
+
+- Type I:  We think the water is dangerous (mu > 0.8), but actually it's safe.  Practically, we risk wasting resources on an unneccesary cleanup operation.
+
+- Type II:  We think the water is safe, when actually it's dangerous.  Practically, we risk allowing people to drink dangerous water!!
+
+Again, there are interesting ethical considerations here.  Personally, I think that a type II error would be much worse here.  However, corporate logic doesn't always agree.  If you were the EPA officer in question, how would this affect **your** interpretation of the test?
+
+
+
+
+## Quiz 9 Solutions
+
+### 1) 
+
+In order to pass a resolution to the faculty handbook, Prof Miller requires the support of 66% of the faculty (i.e., they will vote in favor of her proposition).
+
+Before Prof Miller puts it up to a vote, she wants to take an informal survey of faculty to see if she has the support she needs.  She polls 80 faculty members, and finds that 58 of them support her.  
+
+Does this data suggest that she'll find the support (more than 66%) that she needs among the entire faculty?  Conduct a complete hypothesis test, clearly showing all steps as practiced in class.
+
+**Solution**
+
+1)
+
+H0: p = .66
+Ha: p > .66
+
+2) 
+
+```{r}
+(58/80-.66)/sqrt(.66*(1-.66)/80)
+```
+
+3) 
+
+```{r}
+1-pnorm(1.23)
+```
+From table, p = 0.1093
+
+4) Since p>.05, we fail to reject H0.  There's not enough evidence to support Prof Miller's hope that more than 2/3 of faculty support her.
+
+### 2)
+
+Which of the following is a valid null hypotheses (H0) for a hypothesis test?
+
+Since the null hypothesis is a statement of equality about a population parameter, the only valid H0 is:
+
+H0: p = .65
+
+### 3)
+
+If p is small, it follows that:
+
+The null hypothesis and the data disagree.  This is because, assuming the null hypothesis is true, it's very unlikely to get a sample data result like the one we did.  We trust the data, not the hypothesis.
+

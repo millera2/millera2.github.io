@@ -1,0 +1,358 @@
+---
+title: "DA 101 Week 4"
+author: "Prof Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: cerulean
+    df_print: paged
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+
+# Neat Rmd tricks
+## This one is smaller
+### Smaller still
+##### This is the smallest
+
+
+More tricks: lists
+
+- thing 1
+- thing 2
+- thing 3
+
+1) first thing
+2) second thing
+4) fourth thing
+
+
+Example:  iris sepal length
+
+```{r}
+ggplot(iris, aes(Sepal.Length, fill=Species))+
+  geom_histogram()
+  
+```
+
+
+
+Inline example:
+
+The mean sepal length is `r mean(iris$Sepal.Length)`
+
+
+```{r}
+head(iris)
+
+summary(iris$Sepal.Length)
+```
+
+```{r}
+filter(iris, Sepal.Length >4.8 & Species == "setosa")
+```
+
+
+Here is a graph is iris sepal length
+
+
+```{r}
+ggplot(iris, aes(Sepal.Length))+geom_histogram()
+```
+
+
+Down here, here are some things I thought about the histogram.  
+
+
+
+
+
+# Monday
+
+```{r}
+lobbydata <- read.csv("lobbyist-data-gifts.csv")
+head(lobbydata)
+
+# as.Date(lobbydata$CREATED_DATE, "%Y-%m-%d")
+
+# make backup
+
+lobbyBackup <- lobbydata
+
+
+lobbydata$CREATED_DATE <- as.Date(lobbydata$CREATED_DATE, "%Y-%m-%d")
+
+head(lobbydata)
+
+## line plot by day
+
+lobbydata %>% group_by(CREATED_DATE) %>% 
+  summarise(Total = n()) %>%
+  ggplot(aes(x=CREATED_DATE, y=Total))+geom_line()
+
+## plot donations by year and month for clearer trend
+
+head(lobbydata)
+
+#change format of date to year-month
+
+format(lobbydata$CREATED_DATE, "%Y-%m")
+
+lobbydata$CREATED_DATE <- format(lobbydata$CREATED_DATE, "%Y-%m")
+
+head(lobbydata)
+
+lobbydata %>% group_by(CREATED_DATE) %>% 
+  summarise(Total = n()) %>%
+  ggplot(aes(x=CREATED_DATE, y=Total, group=1)) + geom_line() +
+  theme(axis.text.x = element_text(angle=-90))
+
+
+# by year
+
+# format(lobbydata$CREATED_DATE, "%Y")
+
+head(lobbydata)
+
+# as.Date(lobbydata$CREATED_DATE, "%Y-%m")
+
+#not sure why this isn't working!  Backup to the rescue!
+
+lobbydata <- lobbyBackup
+
+
+head(lobbydata)
+
+lobbydata$CREATED_DATE <- as.Date(lobbydata$CREATED_DATE, "%Y-%m-%d")
+
+lobbydata$CREATED_DATE <- format(lobbydata$CREATED_DATE, "%Y")
+
+head(lobbydata)
+
+lobbydata %>% group_by(CREATED_DATE) %>%
+  summarise(Total = n()) %>%
+  ggplot(aes(x=CREATED_DATE, y=Total, group=1))+geom_line()
+
+# Example:  compare departments
+
+lobbydata %>% group_by(CREATED_DATE, DEPARTMENT) %>%
+  summarise(Total = n()) %>%
+  ggplot(aes(x=CREATED_DATE, y=Total, group=DEPARTMENT, color=DEPARTMENT))+
+  geom_line()+theme(legend.position = "none")
+
+
+head(lobbydata)
+
+
+
+```
+
+## In-class challenge:  
+
+Make a line graph that shows trends in donations (based on the CREATED_DATE variable) just like the one we did for the death penalty.
+
+```{r}
+34+13.5
+```
+
+
+
+## Simulation
+
+Let's simulate 5000 dice rolls.
+
+Possibilities:  1, 2, 3, 4, 5, 6
+
+Btw, you can make "ranges" in R with ":"
+
+```{r}
+1:10
+
+55:78
+
+# the sample() command does what you think
+
+diceSample <- sample(1:6, 10000, replace=T)
+
+qplot(diceSample, bins=6)
+```
+
+
+An interesting trend emerges when we think of sample *means*.  Instead of looking at individual dice rolls, let's take sample MEANS, sample size n=2 first.  
+
+Use the repicate() command:
+
+```{r}
+mean( sample(1:6, 2, replace = T) )
+```
+
+Replicate 5000 times:
+
+```{r}
+diceMean2 <- replicate(5000, mean( sample(1:6, 2, replace = T) ))
+qplot(diceMean2, bins=6)
+
+```
+
+Try the same simulation of sample means, n=5 and n=30
+
+
+n= 5
+
+```{r}
+diceMean2 <- replicate(5000, mean( sample(1:6, 5, replace = T) ))
+qplot(diceMean2, bins=10)
+
+```
+
+
+n=30
+
+```{r}
+diceMean2 <- replicate(5000, mean( sample(1:6, 30, replace = T) ))
+qplot(diceMean2, bins=15)
+```
+
+
+n=100
+```{r}
+diceMean2 <- replicate(10000, mean( sample(1:6, 100, replace = T) ))
+qplot(diceMean2, bins=20)
+```
+
+**Amazing fact**:  this alwyas happens no matter what distribution we're starting with!
+
+Here, started with a uniform dist when n=1.  
+
+As sample size increased (n increased), sample means had a dist that's closer and closer to a normal distribution.
+
+## Weird example: iris
+
+```{r}
+qplot(iris$Petal.Length)
+```
+
+Let's try samples of iris:
+
+```{r}
+myIrisData <- 
+  replicate(5000, 
+            mean(sample(iris$Petal.Length, 1, replace = T)))
+
+
+qplot(myIrisData)
+```
+
+
+```{r}
+myIrisData <- 
+  replicate(5000, 
+            mean(sample(iris$Petal.Length, 30, replace = T)))
+
+
+qplot(myIrisData, bins=20)
+
+
+```
+
+Woah!  This amazing fact is called the Central Limit Theorem:  no matter what we're sampling from, sample means (for large n) **always** follow a normal distribution!  
+
+Because of this, we can compute probabilities for our specific results!
+
+## Back to hyp tests
+
+The CLT is *why* hyp tests work.  Here's what they are.
+
+They're exactly like a criminial trial for your data!!
+
+Criminal trials (and hyp tests) have 4 parts:
+
+1) We wonder:  innocent or guilty.  We must assume by default that're innocent.  BUT, we're doing the trial because we think they're guilty!
+
+2) Decide based on evidence, witness testimony.  (i.e, our sample data!)
+
+3) Evaluate how strong the evidence is!  (probability)
+
+4)  Make a decision:  if evedence is strong, then convict guilty!  Otherwise, fail to convict.  No evidence of a crime.
+
+
+**Hyp tests have the same structure **
+
+1)  Hypotheses.  We're investigating a formal, mathematical question about a population.  Two competing hypotheses:
+
+Null Hypothesis  (H0)  What we assume to be true  (innocent)
+Alt Hypothesis (Ha)  What we hope to prove is true (guilty, we hope!)
+
+The null hyp is always a statement of equality. (Ex:  mean height = 69")
+
+
+The alt hyp is always a statement of inequality (Ex: we think mean height > 69)
+
+2) Test statistic. It's a single-number summary of the data.  Depends on the test.  R will compute this for you.
+
+3) p-value.  A p-val is a the probability of observing a sample result that's as (or more) extreme than the one we got, assuming H0 is true.  ONLY WORKS BECAUSE OF CLT!!!!
+
+4) Conclusion.  If p is small (generally <.05), we reject H0.
+
+Think:  if p is small, then our actual sample result is very, very unlikely according to H0.  Since we trust our observations more than our hypothesis, we reject the hypothesis.  Guilty (yay, that's what we hoped!)
+
+If p is larege, then our sample result agrees (not unlikley) with H0.  We fail to reject H0.  Innocent! (bummer, our suspicion was incorrect).
+
+## Example:  iris
+
+Suppose we wonder there's a difference in mean sepal length between setosa and versicolor plants
+
+```{r}
+iris %>% group_by(Species) %>% summarise(meanSepLength = mean(Sepal.Length))
+```
+
+Q:  is it just by chance that the means are different?  After all, only n=150.
+
+For test, first need filters:
+
+```{r}
+setosaData <- iris %>% filter(Species == "setosa")
+versicolorData <- iris %>% filter(Species == "versicolor")
+
+head(versicolorData)
+
+# test
+
+t.test(setosaData$Sepal.Length, versicolorData$Sepal.Length)
+
+```
+
+How did the test work?
+
+H0:  mean setosa sepal = mean versicolor sepal
+Ha: mean setosa sepal != mean versicolor
+
+t = -10.521
+
+p ~ 0.  Here, p = the probability of observing a sample difference of at least 0.93, assuming that the population mean difference is zero.  
+
+If the H0 were true, there's almost zero chance of seeing a sample result like the one we got.
+
+Since we DID see this sample result, we reject H0.  There's strong evidence of a difference in mean sepal length between the species.

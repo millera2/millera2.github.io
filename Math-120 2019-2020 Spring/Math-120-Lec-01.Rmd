@@ -1,0 +1,285 @@
+---
+title: "Math 120 Week 01"
+author: "Prof Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: cerulean
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+
+
+
+ 
+ 
+# Tuesday 
+ 
+## I write most of our notes in RStudio
+
+This will be posted online in its entirety.  I'll update it in the afternoon after each class period.
+
+Don't worry about taking word-for-word notes.  You're not a stenographer!  Instead, summarize your thoughts and reactions to help you study later.
+
+I'll also use the board for notes sometimes. **Be sure to incorporate boardwork into your written notes!!**
+
+
+## Goals for Tuesday:
+
+- What is a dataset?
+- What do we want to say about data?
+
+Example:  the built-in `mpg` dataset.  It's about cars.
+
+```{r}
+head(mpg)
+```
+
+Generally, we'll always work with "tidy" data.  A tidy dataset is a grid/matrix/rectangle/table of data that satisfies:
+
+- Every row is an "observation" or "case".  In mpg: each case is a specific car!  
+- Every column is a variable, i.e. a specific quality of our observations.
+- Each cell contains exactly one measurement
+
+Even if we have tidy data, it's still hard (sometimes) to understand what it means!
+
+Answer:  metadata.  Metadata is "data about data".  It explains cases, variables, and units.  
+
+## Types of data
+
+Different kinds of data require different tools to analyze!  Gotta know!  
+
+BIG DIVIDE:  number or not.  Each can be subdivided.
+
+Quantitative data can be discrete or continuous.  
+
+**Discrete**:  Whole units.  Countable!!!!!  Ex:  number of siblings.  Can't have 3.65 siblings.  Messy.  
+
+**Continuous**:  Can take any value on the real line.  Usually, these are physical measurements:  height, length, duration, volume, etc etc.  Infinite decimals.   Example, height:  someone could be 5'6",  someone could 5'7", and there are an infinite number or possibilities between.  
+
+Categorical data can also be divided into two kinds:
+
+**Nominal**:  No natural ordering.  Ex:  hair color, nationality.  
+
+**Ordinal**:  There is a natural, intrinsic ordering.  
+
+- Age:  it counts something.  Probably discrete, not ordinal.
+
+- Year in school:  fresh, soph, jun, sen.  Natural order. 
+
+- Clothing size:  S, M, L, XL  Natural order. 
+
+- Month of the year:  Jan, Feb, March..... natural order. ordinal.  
+
+## Notes about `mpg` data
+
+- "Year" is ordinal.  Even though they're numbers, just a label.  Like month or day of the week.  It is a little blurry!  In some sense, similar to discrete.  
+
+- Note for `cty` and `hwy`:  Decide discrete vs continuous by what they *are*, not how we rounded.  These are **continuous**!
+
+## What do we say about data?
+
+Always first:  visualize!!!  Warning:  the options for visualization depend on the type of data!
+
+## Quantitative visualization:  histograms
+
+Example:  let's make a histo of the hwy variable from the `mpg` dataset.
+
+```{r}
+
+#note:  $ choooses variable
+
+hist( mpg$hwy )
+
+```
+
+Observations:
+
+- Bimodal.  Two groups:  one less efficient, one more.  
+- Right skew (right tail).  I.e., most cars have relatively low mpg, and only a few have very high mpg.
+- What's "normal"?  Looks like 25ish is a normal mpg.
+- Spread?  Variability?  All are btwn 10mpg and 45mpg.  Most are between 15 and 35mpg.  
+
+# Wednesday
+
+## Goals for Wednesday
+
+- Properties of histograms and boxplots
+- Visualizing relationships with scatterplots and stacked barplots
+
+
+Important caveat about historgrams:  the number of bins/breaks is up to you!  Changing the breaks can really change the shape of the histo!
+
+Example: 15 breaks
+
+```{r}
+hist( mpg$hwy, breaks=15)
+```
+
+Human feelings:  we can see bimodal more clearly.  Maybe outliers?  Generally, more info, good.
+
+Example:  breaks = 4
+
+```{r}
+hist(mpg$hwy,breaks = 4)
+```
+
+Feelings:  we get different info about the shape.  Lose info about bimodal feature.  (Bad!)  Do get an overall feel of shape (good).  
+
+Example:  200 breaks
+
+```{r}
+hist(mpg$hwy, breaks=200)
+```
+
+Here, we're really seeing each specific outcome.  Probably too much!  
+Moral of the story:  there's no right number.  Play around!  Use the breaks that best show your pattern.  
+
+
+
+
+####
+
+
+
+
+
+
+## Visulalizing Categorical Data
+
+Main tool:  barplot.  Like a histo, but for categorical data.
+
+Example: take a look at class (suv, pickup, etc)
+
+First: table
+
+```{r}
+table(mpg$class)
+```
+
+Visualize with a barplot:
+
+```{r}
+barplot( table( mpg$class))
+```
+
+We can compare the proportions of each easily with a barplot.  
+
+Note:  some classes were not recorded (second to last).
+
+Warning:  It doesn't make sense to talk about shape or center or spread for categorical variables!
+
+Also, there's no notion of "breaks" or "bins", a barplot has a completety determined x-axis: one bar for each "level" of the category. 
+
+## Relationships between quantitative variables
+
+First, quantitative data:  use "scatterplot".  It's an x-y plot of all pairs of points from two variables.
+
+Example:  is there a relationship between hwy and cty mpg?
+
+In r, the command is "plot".  
+
+```{r}
+plot( mpg$hwy, mpg$cty )
+```
+
+Human feelings:  strong relationship!  As hwy fuel efficiency increases, so does cty.  Seems like predict one from the other!  Positive relationship.  
+
+Example: x= displacement vs y= cty mpg.  
+
+```{r}
+plot( mpg$displ, mpg$cty)
+```
+
+Human feelings:  we see a predictable drop in fuel efficiency as displacement increasea.  Mabye not quite a linear a relationship as hwy vs cty.  
+
+## Visualizing relationship with categorical data
+
+Kinda tougher.  Main tool:  contingency tables and stacked barplots.
+
+Easy in R.  Example:  Let's compare drive type (drv) with class. 
+
+```{r}
+table(mpg$drv, mpg$class)
+```
+
+Let's visualize with a stacked barplot:
+
+```{r}
+# Note:  <- stores a variable
+
+counts <- table(mpg$drv, mpg$class) 
+
+barplot(counts, beside = TRUE)
+
+```
+
+You can choose the order
+
+```{r}
+counts2 <- table(mpg$class, mpg$drv)
+barplot(counts2, beside = TRUE)
+```
+
+
+## Summary Statistics
+
+The math part. For quantitative variables.
+
+Three important things:
+
+- Center: what's normal in a dataset?
+  - Mean, median and mode.
+  
+WHat do they "mean"?  The story of the formula.  Also interesting: there isn't a "best" one.  
+
+Mean:  Sum up, divide by the total #.  **Meaning:  mean gives the balancing point for the data.**  Doesn't always tell you what' normal!
+
+Median: **the middle.** In datasets with skew, the median can be a better measure of "normal".  
+  
+- Spread
+- Shape
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
