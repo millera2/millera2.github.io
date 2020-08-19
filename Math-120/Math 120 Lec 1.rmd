@@ -1,0 +1,369 @@
+---
+title: "Math 120 Lec 01"
+author: "Ali Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: yeti
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+# Math 120 Week 1
+
+## Wednesday Aug 19
+
+Allright, introductions are over -- let's do some math!
+
+The program I'm using to write these notes is called RStudio.  It uses the programming language "R".  You **don't** need to know how to use either of these for this class, but you'll acclimate to it as the semester goes on.  If you want to learn more about R, feel free to talk to me about it in office hours!  
+
+The main reason I like to use RStudio is that it lets me perform computations just as easily as typing.  Check this out:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Woah!  Neat right?  Whenever you see anything in the grey box, that's a statistical operation or computation.  Think:  grey box == math stuff.
+
+Keep in mind, I'll be posting these notes on my website:  millera2.github.io .  Definitely **do** take notes!  But, don't worry about writing every word.  
+
+Ready?  Let's do this!
+
+
+
+
+
+
+
+
+
+
+
+
+## Data -- What is it?
+
+Statistics is the mathematical science of analyzing data.  But, we should ask an important question --
+
+What is data?
+
+There are a lot of important details here.  But fist, let's gather some data of our own.
+
+To the internet!  Check your email!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Rectangular Data
+
+The dataset we collected above was an example of a specific kind of dataset -- **rectangular** or **tabular** data.  Data Analytics people call it "Tidy" data, but that's silly.  ;D  Here, we'll call it a rectangular dataset.
+
+What are the key features?
+
+1)  Each row is:
+2)  Each column is:
+3)  Each individual entry is:
+
+Datasets like this one are the starting point for our analysis as statisticians.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Types of Variables
+
+You all entered data about four different variables:
+
+1) # Siblings
+2) Year in School
+3) Hair Color
+4) Height
+
+I picked these stratigically to illustrate the different types of data that we see in the wild.  
+
+First, we can categorize all data in two ways:
+
+- 
+- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+For both kinds, we can make important distinctions:
+
+Numerical/Quantitative Data can be either:
+
+- 
+  - Examples:
+- 
+  - Examples:
+  
+Categorical Data can be either
+
+- 
+  - Examples:
+- 
+  - Examples:
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+Understanding what kind of data you're using is **absolutely critical** in any statistical analysis!  We need different tools to analyze different types of data!
+
+Example:  What's the "average hair color" of students in this class?
+
+Example:  What percent of students in this class are 65.237 inches tall?
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Metadata
+
+In order to use any dataset effectively, we need documentation about what it's rows (observations) and columns (variables) actually describe.
+
+This document is called the "metadata" for the dataset.  Metadata literally means, "data about data".
+
+Usually, these documents don't have a specific format.  Instead, they're inteded for human use -- i.e., **you** have to read them and understand what they mean.
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Example: MPG Data
+
+One of the example datasets that we'll look at in class is a historical dataset called "mpg".  The first few rows are shown below.  Can you guess what the data is about?
+
+```{r}
+head(mpg)
+```
+
+
+
+
+
+
+
+
+
+
+
+Let's take a look at the metadata together.  If you're reading later on, [here is the link](https://ggplot2.tidyverse.org/reference/mpg.html).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Exercise - MPG dataset
+
+What kind of data is each of the variables in the mpg dataset?
+
+- manufacturer:
+- model:      
+- displ:      
+- year:        
+- cyl:         
+- trans:      
+- drv:         
+- cty:         
+- hwy:        
+- fl:         
+- class:      
+
+
+
+
+
+
+
+
+
+
+## Summary Statistics For Quantitative Data
+
+We humans can only remember a handful of numbers at a time.  So, it's impossible for us to make smart conclusions simply by reading a dataset.
+
+We need to summarize it somehow!
+
+As we saw above, the tools we use depends on the type of data we have.  Let's talk about quantitative variables first.
+
+
+
+
+
+
+
+
+
+
+
+
+### Distributions
+
+For any variable, the "distribution" simply means the list of observations for that variable.  Since we're talking about quantitative/numerical variables now, let's think about the distributions for # of siblings and height.
+
+There are three major things we want to say about quantitative distributions:
+
+1) Center of the distribution:  what's normal?
+2) Spread of the distribution:  how variable are the observations?
+3) Shape of the distribution: where are the observations concentrated?
+
+
+
+
+
+
+
+
+
+
+
+
+#### Measures of Center
+
+You guys already know these:
+
+- 
+- 
+- 
+
+
+Note that these are all different!  Depending on the data, they can give you dramatically different results!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**Example**
+
+Suppose a dataset has the following measurements:
+
+1, 1, 1, 1, 1, 19
+
+What are the mean, median, and mode of this dataset?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
