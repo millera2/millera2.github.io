@@ -1743,22 +1743,22 @@ summary {
 
 <h1 class="title toc-ignore">Math 120 Lec 01</h1>
 <h4 class="author">Ali Miller</h4>
-<h4 class="date">18 August, 2020</h4>
+<h4 class="date">19 August, 2020</h4>
 
 </div>
 
 <div id="TOC">
 <ul>
 <li><a href="#math-120-week-1">Math 120 Week 1</a><ul>
-<li><a href="#wednesday-aug-19">Wednesday Aug 19</a></li>
+<li><a href="#wednesday-aug-19">Wednesday Aug 19</a><ul>
 <li><a href="#data-what-is-it">Data – What is it?</a></li>
 <li><a href="#rectangular-data">Rectangular Data</a></li>
 <li><a href="#types-of-variables">Types of Variables</a></li>
-<li><a href="#metadata">Metadata</a><ul>
+<li><a href="#metadata">Metadata</a></li>
 <li><a href="#example-mpg-data">Example: MPG Data</a></li>
-<li><a href="#exercise---mpg-dataset">Exercise - MPG dataset</a></li>
 </ul></li>
-<li><a href="#summary-statistics-for-quantitative-data">Summary Statistics For Quantitative Data</a><ul>
+<li><a href="#friday-aug-21">Friday Aug 21</a><ul>
+<li><a href="#summary-statistics-for-quantitative-data">Summary Statistics For Quantitative Data</a></li>
 <li><a href="#distributions">Distributions</a></li>
 </ul></li>
 </ul></li>
@@ -1769,36 +1769,44 @@ summary {
 <h1>Math 120 Week 1</h1>
 <div id="wednesday-aug-19" class="section level2">
 <h2>Wednesday Aug 19</h2>
-<p>Allright, introductions are over – let’s do some math!</p>
+<p>Alright, introductions are over – let’s do some math!</p>
 <p>The program I’m using to write these notes is called RStudio. It uses the programming language “R”. You <strong>don’t</strong> need to know how to use either of these for this class, but you’ll acclimate to it as the semester goes on. If you want to learn more about R, feel free to talk to me about it in office hours!</p>
 <p>The main reason I like to use RStudio is that it lets me perform computations just as easily as typing. Check this out:</p>
+<pre class="r"><code>1+1</code></pre>
+<pre><code>## [1] 2</code></pre>
+<p>Also, it lets me work directly with datasets. Here’s an example of the famous “iris” dataset that we’ll see in HW later:</p>
+<pre class="r"><code>head(iris)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Sepal.Length"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Sepal.Width"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Petal.Length"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Petal.Width"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Species"],"name":[5],"type":["fctr"],"align":["left"]}],"data":[{"1":"5.1","2":"3.5","3":"1.4","4":"0.2","5":"setosa","_rn_":"1"},{"1":"4.9","2":"3.0","3":"1.4","4":"0.2","5":"setosa","_rn_":"2"},{"1":"4.7","2":"3.2","3":"1.3","4":"0.2","5":"setosa","_rn_":"3"},{"1":"4.6","2":"3.1","3":"1.5","4":"0.2","5":"setosa","_rn_":"4"},{"1":"5.0","2":"3.6","3":"1.4","4":"0.2","5":"setosa","_rn_":"5"},{"1":"5.4","2":"3.9","3":"1.7","4":"0.4","5":"setosa","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 <p>Woah! Neat right? Whenever you see anything in the grey box, that’s a statistical operation or computation. Think: grey box == math stuff.</p>
 <p>Keep in mind, I’ll be posting these notes on my website: millera2.github.io . Definitely <strong>do</strong> take notes! But, don’t worry about writing every word.</p>
 <p>Ready? Let’s do this!</p>
-</div>
-<div id="data-what-is-it" class="section level2">
-<h2>Data – What is it?</h2>
+<div id="data-what-is-it" class="section level3">
+<h3>Data – What is it?</h3>
 <p>Statistics is the mathematical science of analyzing data. But, we should ask an important question –</p>
 <p>What is data?</p>
 <p>There are a lot of important details here. But fist, let’s gather some data of our own.</p>
 <p>To the internet! Check your email!</p>
 </div>
-<div id="rectangular-data" class="section level2">
-<h2>Rectangular Data</h2>
+<div id="rectangular-data" class="section level3">
+<h3>Rectangular Data</h3>
 <p>The dataset we collected above was an example of a specific kind of dataset – <strong>rectangular</strong> or <strong>tabular</strong> data. Data Analytics people call it “Tidy” data, but that’s silly. ;D Here, we’ll call it a rectangular dataset.</p>
 <p>What are the key features?</p>
 <ol style="list-style-type: decimal">
-<li>Each row is:</li>
-<li>Each column is:</li>
-<li>Each individual entry is:</li>
+<li>Each row is: an observation, i.e., an individual in the data</li>
+<li>Each column is:a variable, i.e. a specific quality of the observations</li>
+<li>Each individual entry is: a cell, i.e., a specific value for an individual observation.</li>
 </ol>
 <p>Datasets like this one are the starting point for our analysis as statisticians.</p>
 </div>
-<div id="types-of-variables" class="section level2">
-<h2>Types of Variables</h2>
+<div id="types-of-variables" class="section level3">
+<h3>Types of Variables</h3>
 <p>You all entered data about four different variables:</p>
 <ol style="list-style-type: decimal">
-<li><h1 id="siblings">Siblings</h1></li>
+<li>No of Siblings</li>
 <li>Year in School</li>
 <li>Hair Color</li>
 <li>Height</li>
@@ -1806,57 +1814,69 @@ summary {
 <p>I picked these stratigically to illustrate the different types of data that we see in the wild.</p>
 <p>First, we can categorize all data in two ways:</p>
 <ul>
-<li></li>
-<li></li>
+<li><strong>numerical/quantitative</strong></li>
+<li><strong>cagtegorical/qualitative</strong></li>
 </ul>
+<p>For both kinds, we can make important distinctions:</p>
+<p>Numerical/Quantitative Data can be either:</p>
+<ul>
+<li><strong>Discrete</strong>. Things that are countable!
+<ul>
+<li>Examples: # of students in this class, # of siblings</li>
+</ul></li>
+<li><strong>Continuous</strong>. Anything that can be <em>measured</em>. Could be <em>any</em> real number.
+<ul>
+<li>Examples: Weight, height, volume, time taken, distance, area, etc et. Basically any physical measurement.</li>
+</ul></li>
+</ul>
+<p>Wierd example: money. Let’s agree, here in Math 120, that money is continuous. Kinda weird, because you can’t have $0.004652 dollars. BUT, interest is computed continuously.</p>
+<p>Categorical Data can be either</p>
+<ul>
+<li><strong>Ordinal</strong>. Has a natural order to it.
+<ul>
+<li>Examples: Year in school.<br />
+</li>
+</ul></li>
+<li><strong>Nominal</strong>. No natural order.
+<ul>
+<li>Examples: Hair color, nationality, gender, etc. etc.</li>
+</ul></li>
+</ul>
+<p>Understanding what kind of data you’re using is <strong>absolutely critical</strong> in any statistical analysis! We need different tools to analyze different types of data!</p>
+<p>Example: What’s the “average hair color” of students in this class?</p>
+<p>Dunno, doesn’t make sense!</p>
+<p>Example: What percent of students in this class are 65.237 inches tall?</p>
+<p>Doesn’t make sense to talk about specific continuous value!</p>
 </div>
-<div id="metadata" class="section level2">
-<h2>Metadata</h2>
+<div id="metadata" class="section level3">
+<h3>Metadata</h3>
 <p>In order to use any dataset effectively, we need documentation about what it’s rows (observations) and columns (variables) actually describe.</p>
 <p>This document is called the “metadata” for the dataset. Metadata literally means, “data about data”.</p>
 <p>Usually, these documents don’t have a specific format. Instead, they’re inteded for human use – i.e., <strong>you</strong> have to read them and understand what they mean.</p>
+</div>
 <div id="example-mpg-data" class="section level3">
 <h3>Example: MPG Data</h3>
-<p>One of the example datasets that we’ll look at in class is a historical dataset called “mpg”. The first few rows are shown below. Can you guess what the data is about?</p>
+<p>One of the example datasets that we’ll look at in class is a historical dataset called “mpg”. The first few rows are shown below. Can you guess what the data is about? Cars!</p>
 <pre class="r"><code>head(mpg)</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["manufacturer"],"name":[1],"type":["chr"],"align":["left"]},{"label":["model"],"name":[2],"type":["chr"],"align":["left"]},{"label":["displ"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["year"],"name":[4],"type":["int"],"align":["right"]},{"label":["cyl"],"name":[5],"type":["int"],"align":["right"]},{"label":["trans"],"name":[6],"type":["chr"],"align":["left"]},{"label":["drv"],"name":[7],"type":["chr"],"align":["left"]},{"label":["cty"],"name":[8],"type":["int"],"align":["right"]},{"label":["hwy"],"name":[9],"type":["int"],"align":["right"]},{"label":["fl"],"name":[10],"type":["chr"],"align":["left"]},{"label":["class"],"name":[11],"type":["chr"],"align":["left"]}],"data":[{"1":"audi","2":"a4","3":"1.8","4":"1999","5":"4","6":"auto(l5)","7":"f","8":"18","9":"29","10":"p","11":"compact"},{"1":"audi","2":"a4","3":"1.8","4":"1999","5":"4","6":"manual(m5)","7":"f","8":"21","9":"29","10":"p","11":"compact"},{"1":"audi","2":"a4","3":"2.0","4":"2008","5":"4","6":"manual(m6)","7":"f","8":"20","9":"31","10":"p","11":"compact"},{"1":"audi","2":"a4","3":"2.0","4":"2008","5":"4","6":"auto(av)","7":"f","8":"21","9":"30","10":"p","11":"compact"},{"1":"audi","2":"a4","3":"2.8","4":"1999","5":"6","6":"auto(l5)","7":"f","8":"16","9":"26","10":"p","11":"compact"},{"1":"audi","2":"a4","3":"2.8","4":"1999","5":"6","6":"manual(m5)","7":"f","8":"18","9":"26","10":"p","11":"compact"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<p>Let’s take a look at the metadata together. If you’re reading later on, <a href="https://ggplot2.tidyverse.org/reference/mpg.html">here is the link</a></p>
-</div>
-<div id="exercise---mpg-dataset" class="section level3">
-<h3>Exercise - MPG dataset</h3>
-<p>For both kinds, we can make important distinctions:</p>
-<p>Numerical/Quantitative Data can be either:</p>
-<ul>
-<li><ul>
-<li>Examples:</li>
-</ul></li>
-<li><ul>
-<li>Examples:</li>
-</ul></li>
-</ul>
-<p>Categorical Data can be either</p>
-<ul>
-<li><ul>
-<li>Examples:</li>
-</ul></li>
-<li><ul>
-<li>Examples:</li>
-</ul></li>
-</ul>
-<p>Understanding what kind of data you’re using is <strong>absolutely critical</strong> in any statistical analysis! We need different tools to analyze different types of data!</p>
-<p>Example: What’s the “average hair color” of students in this class?</p>
-<p>Example: What percent of students in this class are 65.237 inches tall?</p>
+<p>Tricky example: year is ordinal! Not counting anything, so not dicrete. Same for all dates and days.</p>
+<p>Tricky example: fuel efficiency is cts, even though rounded to whole number!</p>
+<p>Let’s take a look at the metadata together. If you’re reading later on, <a href="https://ggplot2.tidyverse.org/reference/mpg.html">here is the link</a>.</p>
 </div>
 </div>
-<div id="summary-statistics-for-quantitative-data" class="section level2">
-<h2>Summary Statistics For Quantitative Data</h2>
+<div id="friday-aug-21" class="section level2">
+<h2>Friday Aug 21</h2>
+<p>(subject to change!)</p>
+<div id="summary-statistics-for-quantitative-data" class="section level3">
+<h3>Summary Statistics For Quantitative Data</h3>
 <p>We humans can only remember a handful of numbers at a time. So, it’s impossible for us to make smart conclusions simply by reading a dataset.</p>
 <p>We need to summarize it somehow!</p>
 <p>As we saw above, the tools we use depends on the type of data we have. Let’s talk about quantitative variables first.</p>
+</div>
 <div id="distributions" class="section level3">
 <h3>Distributions</h3>
 <p>For any variable, the “distribution” simply means the list of observations for that variable. Since we’re talking about quantitative/numerical variables now, let’s think about the distributions for # of siblings and height.</p>
@@ -1876,8 +1896,9 @@ summary {
 </ul>
 <p>Note that these are all different! Depending on the data, they can give you dramatically different results!</p>
 <p><strong>Example</strong></p>
-<p>Suppose, in a small class of 6 students, the scores (out of 10) for exam 1 were as follows:</p>
-<p>1, 10, 10, 10, 10</p>
+<p>Suppose a dataset has the following measurements:</p>
+<p>1, 1, 1, 1, 1, 19</p>
+<p>What are the mean, median, and mode of this dataset?</p>
 </div>
 </div>
 </div>

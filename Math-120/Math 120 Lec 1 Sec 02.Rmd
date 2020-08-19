@@ -43,9 +43,15 @@ The program I'm using to write these notes is called RStudio.  It uses the progr
 The main reason I like to use RStudio is that it lets me perform computations just as easily as typing.  Check this out:
 
 
+```{r}
+1+3
+```
 
 
 
+```{r}
+head(iris)
+```
 
 
 
@@ -104,9 +110,9 @@ The dataset we collected above was an example of a specific kind of dataset -- *
 
 What are the key features?
 
-1)  Each row is:
-2)  Each column is:
-3)  Each individual entry is:
+1)  Each row is: an observation/case.  The individual we're collecting data about.
+2)  Each column is: a variable.  I.e., a specific quality of the individuals/observations/cases.
+3)  Each individual entry is: a value (or cell).
 
 Datasets like this one are the starting point for our analysis as statisticians.  
 
@@ -137,8 +143,8 @@ I picked these stratigically to illustrate the different types of data that we s
 
 First, we can categorize all data in two ways:
 
-- 
-- 
+- quantitative (numerical)
+- qualitative (categorical)
 
 
 
@@ -156,17 +162,24 @@ For both kinds, we can make important distinctions:
 
 Numerical/Quantitative Data can be either:
 
-- 
-  - Examples:
-- 
-  - Examples:
+- Discrete.  Must be countable.  Must be whole numbers.
+  - Examples: #of studetns in this class, # siblings.
+- Continuous.  Cts.  Anything that can be measured.  Could be any real number!
+  - Examples: height, weight, distance, length of time/duration, volume, mass, etc etc.  All physical measurements are continuous.
+  
+  
+  
+  
+  
+  
+  
   
 Categorical Data can be either
 
-- 
-  - Examples:
-- 
-  - Examples:
+- Ordinal.  Has an intrinsic order.  
+  - Examples: Year in school.  Age in years.  
+- Nominal.  
+  - Examples: Hair color.  
   
   
   
@@ -239,9 +252,11 @@ Let's take a look at the metadata together.  If you're reading later on, [here i
 
 
 
+Tricky example:  year is ordinal.  All date words are!
 
+Tricky example:  just because numbers get rounded, that doesn't mean not continuous!
 
-
+Trick example:  money.  Could argue either way.  Let's agree in Math 120 that money is continuous!
 
 
 

@@ -36,14 +36,31 @@ theme_set(theme_tufte() +
 
 ## Wednesday Aug 19
 
-Allright, introductions are over -- let's do some math!
+Alright, introductions are over -- let's do some math!
 
 The program I'm using to write these notes is called RStudio.  It uses the programming language "R".  You **don't** need to know how to use either of these for this class, but you'll acclimate to it as the semester goes on.  If you want to learn more about R, feel free to talk to me about it in office hours!  
 
 The main reason I like to use RStudio is that it lets me perform computations just as easily as typing.  Check this out:
 
+```{r}
+1+1
+
+```
 
 
+
+
+
+
+
+
+
+
+Also, it lets me work directly with datasets.  Here's an example of the famous "iris" dataset that we'll see in HW later:
+
+```{r}
+head(iris)
+```
 
 
 
@@ -74,7 +91,7 @@ Ready?  Let's do this!
 
 
 
-## Data -- What is it?
+### Data -- What is it?
 
 Statistics is the mathematical science of analyzing data.  But, we should ask an important question --
 
@@ -98,15 +115,15 @@ To the internet!  Check your email!
 
 
 
-## Rectangular Data
+### Rectangular Data
 
 The dataset we collected above was an example of a specific kind of dataset -- **rectangular** or **tabular** data.  Data Analytics people call it "Tidy" data, but that's silly.  ;D  Here, we'll call it a rectangular dataset.
 
 What are the key features?
 
-1)  Each row is:
-2)  Each column is:
-3)  Each individual entry is:
+1)  Each row is: an observation, i.e., an individual in the data
+2)  Each column is:a variable, i.e. a specific quality of the observations
+3)  Each individual entry is: a cell, i.e., a specific value for an individual observation.
 
 Datasets like this one are the starting point for our analysis as statisticians.  
 
@@ -124,11 +141,11 @@ Datasets like this one are the starting point for our analysis as statisticians.
 
 
 
-## Types of Variables
+### Types of Variables
 
 You all entered data about four different variables:
 
-1) # Siblings
+1) No of Siblings
 2) Year in School
 3) Hair Color
 4) Height
@@ -137,8 +154,8 @@ I picked these stratigically to illustrate the different types of data that we s
 
 First, we can categorize all data in two ways:
 
-- 
-- 
+-  **numerical/quantitative**
+-  **cagtegorical/qualitative**
 
 
 
@@ -156,17 +173,25 @@ For both kinds, we can make important distinctions:
 
 Numerical/Quantitative Data can be either:
 
-- 
-  - Examples:
-- 
-  - Examples:
+- **Discrete**.  Things that are countable!
+  - Examples: # of students in this class, # of siblings
+- **Continuous**.  Anything that can be *measured*.  Could be *any* real number.  
+  - Examples: Weight, height, volume, time taken, distance, area, etc et.  Basically any physical measurement.
+  
+Wierd example: money.  Let's agree, here in Math 120, that money is continuous.  Kinda weird, because you can't have $0.004652 dollars.  BUT, interest is computed continuously.  
+  
+  
+  
+  
+  
+  
   
 Categorical Data can be either
 
-- 
-  - Examples:
-- 
-  - Examples:
+- **Ordinal**.  Has a natural order to it.  
+  - Examples: Year in school.  
+- **Nominal**.  No natural order.
+  - Examples: Hair color, nationality, gender, etc. etc.  
   
   
   
@@ -183,8 +208,11 @@ Understanding what kind of data you're using is **absolutely critical** in any s
 
 Example:  What's the "average hair color" of students in this class?
 
+Dunno, doesn't make sense!
+
 Example:  What percent of students in this class are 65.237 inches tall?
 
+Doesn't make sense to talk about specific continuous value!
 
 
 
@@ -197,7 +225,8 @@ Example:  What percent of students in this class are 65.237 inches tall?
 
 
 
-## Metadata
+
+### Metadata
 
 In order to use any dataset effectively, we need documentation about what it's rows (observations) and columns (variables) actually describe.
 
@@ -208,24 +237,17 @@ Usually, these documents don't have a specific format.  Instead, they're inteded
 
 
 
-
-
-
-
-
-
-
-
-
 ### Example: MPG Data
 
-One of the example datasets that we'll look at in class is a historical dataset called "mpg".  The first few rows are shown below.  Can you guess what the data is about?
+One of the example datasets that we'll look at in class is a historical dataset called "mpg".  The first few rows are shown below.  Can you guess what the data is about? Cars!
 
 ```{r}
 head(mpg)
 ```
 
+Tricky example: year is ordinal!  Not counting anything, so not dicrete.  Same for all dates and days.  
 
+Tricky example:  fuel efficiency is cts, even though rounded to whole number!
 
 
 
@@ -250,34 +272,11 @@ Let's take a look at the metadata together.  If you're reading later on, [here i
 
 
 
+## Friday Aug 21
 
+(subject to change!)
 
-### Exercise - MPG dataset
-
-What kind of data is each of the variables in the mpg dataset?
-
-- manufacturer:
-- model:      
-- displ:      
-- year:        
-- cyl:         
-- trans:      
-- drv:         
-- cty:         
-- hwy:        
-- fl:         
-- class:      
-
-
-
-
-
-
-
-
-
-
-## Summary Statistics For Quantitative Data
+### Summary Statistics For Quantitative Data
 
 We humans can only remember a handful of numbers at a time.  So, it's impossible for us to make smart conclusions simply by reading a dataset.
 
