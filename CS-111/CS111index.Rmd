@@ -38,13 +38,12 @@ These are all on my [our shared folder on Google](https://drive.google.com/drive
 
 The work I do in those vids is availabe on this site below.  
 
-Currently, we haven't had any lectures.  Check back soon!
 
 ## CS 111 Lecture Notes
 *They look great on your phone, so you can read them anywhere.  Steal my code!  Don't understand something?  Ask me!*
 
 ### Week 1
-(Wednesday 8-17)[https://millera2.github.io/CS-111/Lec-01.html]
+[Wednesday 8-17](https://millera2.github.io/CS-111/Lec-01.html)
 
 ## Next Quiz
 
