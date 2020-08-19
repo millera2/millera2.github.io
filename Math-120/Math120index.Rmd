@@ -47,13 +47,21 @@ Currently, we haven't had any lectures.  Check back soon!
 
 ## Next Quiz
 
-Info for the next quiz will be posted here.  Check frequently!
+Coverage:  Week 1 Notes (Wed and Fri)
+
+Practice Problems:
+
+1) Identify data types of the `mpg` dataset variables
+2) In rectangular/tabular data, what do the rows represent?  The columns?
+3) Textbook Exercise 1.9 on p20
+4) Textbook Exercises 2.15 and 2.16 (p58 and 59)
 
 ## Reading Assignments
 
 Wanna know what's going on?  Read this stuff!
 
 Due 8/19:  Textbook Ch 1.2 (p12-18)
+Due 8/21:  Textbook Ch 2.1 (p41-46)
 
 ## HW Assignments
 
