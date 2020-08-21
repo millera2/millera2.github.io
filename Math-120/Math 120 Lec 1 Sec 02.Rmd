@@ -276,7 +276,7 @@ Let's take a look at the metadata together.  If you're reading later on, [here i
 
 ## Friday Aug 21
 
-(subject to change!)
+
 
 ### Summary Statistics For Quantitative Data
 
@@ -349,7 +349,9 @@ qplot(studentSurvey$`Height in inches`, bins=9)
 
 Right away, we can make smart observations about your heights!  There's so much useful information here!  Let's digest:
 
-
+- Looks like a typical height is 65-66 inches
+- Variability:  looks like most students are between 64 and 70 inches.
+- Seems somewhat symmetric - i.e., balanced on both sides othe "Middle".
 
 
 
@@ -363,24 +365,25 @@ Right away, we can make smart observations about your heights!  There's so much 
 qplot(studentSurvey$`Number of Siblings`, bins=6)
 ```
 
+- Woah, different shape!  Not symmetric!  Instead, most students have only 1 or 2 siblings, it's uncommon for students to have many siblings.
 
 
 
 ### Distributions
 
-For any variable, the "distribution" simply means the list of observations for that variable.  Since we're talking about quantitative/numerical variables now, let's think about the distributions for # of siblings and height.
+For any variable, the "distribution" simply means the list of values for that variable.  Since we're talking about quantitative/numerical variables now, let's think about the distributions for # of siblings and height.
 
 There are three major things we want to say about quantitative distributions:
 
-1) Center of the distribution:  
-2) Spread of the distribution:  
-3) Shape of the distribution: 
+1) Center of the distribution:  i.e., what's "typical"?
+2) Spread of the distribution:  in general, how far away do we expect value to be?  What range of values are most common?
+3) Shape of the distribution: In what regions are values concentrated?
 
 There are a several common shapes.  In particular, we care about:
 
-- Symmetry:
-- Skew:
-- Modality:
+- Symmetry:  roughly balanced on both sides of center
+- Skew:  not symmetric, concentrated on one side. Remember: skew == tail.
+- Modality:  How many "bumps", i.e, common regions.
 
 
 
@@ -396,9 +399,9 @@ A measure of center is mathematical measure of what's "typical" in a dataset.
 
 You guys already know these:
 
-- 
-- 
-- 
+- average, i.e. (mean).  Balancing point.
+- median: the middle of the distribution.  I.e, if you list all values in order, the median is the middle value.
+- mode: most common value
 
 
 Note that these are all different!  Depending on the data, they can give you dramatically different results!
@@ -426,7 +429,9 @@ Suppose a dataset has the following measurements:
 
 What are the mean, median, and mode of this dataset?
 
-
+median: 1
+mean: (1+1+1+1+1+19)/6 = 4
+mode:1
 
 
 
@@ -434,6 +439,20 @@ What are the mean, median, and mode of this dataset?
 
 
 **Important observation:**
+
+If data is skew, then median tends to be better description of "typical", better measure of center.
+
+If data is roughly symmetric, then mean and median are about the same.  Use the mean!
+
+The tail/skew has a strong effect on the mean, only a small effect on the median.
+
+So, if right skew, the right tail pulls up the mean.  
+
+I.e., right skew -> mean is bigger than median
+
+      left skew -> mean is smaller than median
+
+
 
 
 

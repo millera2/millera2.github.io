@@ -276,7 +276,7 @@ Let's take a look at the metadata together.  If you're reading later on, [here i
 
 ## Friday Aug 21
 
-(subject to change!)
+
 
 ### Summary Statistics For Quantitative Data
 
@@ -349,7 +349,9 @@ qplot(studentSurvey$`Height in inches`, bins=9)
 
 Right away, we can make smart observations about your heights!  There's so much useful information here!  Let's digest:
 
-
+- A typical height for students in this class is about 65-66inches roughly.
+- Most students are between 65 and 70 inches tall (spread/variability)
+- Seems roughly symmetric -- most students are towards the middle, fewer at the extremes
 
 
 
@@ -363,7 +365,9 @@ Right away, we can make smart observations about your heights!  There's so much 
 qplot(studentSurvey$`Number of Siblings`, bins=6)
 ```
 
+Observation:  woah!  totally different shape!  
 
+Most students only have one or two siblings.  More than that is quite unusual.  
 
 
 ### Distributions
@@ -372,15 +376,15 @@ For any variable, the "distribution" simply means the list of observations for t
 
 There are three major things we want to say about quantitative distributions:
 
-1) Center of the distribution:  
-2) Spread of the distribution:  
-3) Shape of the distribution: 
+1) Center of the distribution:  what's "normal" or "typical"
+2) Spread of the distribution:  how far from "typical" do we exepct to see observations?  What range of values do they fall in?
+3) Shape of the distribution: in what ranges are observations concentrated.  
 
 There are a several common shapes.  In particular, we care about:
 
-- Symmetry:
-- Skew:
-- Modality:
+- Symmetry:  symmetric if "balanced" on both sides of the center
+- Skew: not symmetric, values are concentrated at left or right
+- Modality: what's the most typical?  One value?  Two values? etc?  I.e., the mode is the "bump" in the distribution.
 
 
 
@@ -396,9 +400,13 @@ A measure of center is mathematical measure of what's "typical" in a dataset.
 
 You guys already know these:
 
-- 
-- 
-- 
+- average, i.e. "mean" (balancing point of data)
+- median, i.e., the middle of the distro.  If we list all values in a row in order, the median is the center.
+- mode: most common
+
+Example: 1, 2, 3, 4
+
+What's the median?  Middle is at 2.5.  Kinda weird, because 2.5 isn't in the original data!  
 
 
 Note that these are all different!  Depending on the data, they can give you dramatically different results!
@@ -426,29 +434,27 @@ Suppose a dataset has the following measurements:
 
 What are the mean, median, and mode of this dataset?
 
+Median:   1
+Mean:   (1+1+1+1+1+19)/6 = 4
+Mode:  1
 
-
-
-
+Here, it seems like the median does a much better job of telling us what's "typical" in the daset (i.e., 1!)
 
 
 
 **Important observation:**
 
 
+Moral of the story: pick the right tool for the job!
 
+If data has skew, use the median!
 
+If data is symmetric, both similar.  Use the mean.  
 
+Skew affect the mean, not the median.  
 
-
-
-
-
-
-
-**Example: Your Siblings**
-
-
+- If right skew, the right tail makes the mean bigger!
+- If left skew, then we expect the mean to be smaller than the median.
 
 
 
@@ -486,11 +492,10 @@ Let's look at some HW exercises: 2.15 and 2.16 (p58 and 59)
 
 Here's the formula for computing standard deviation.  
 
-*As you embark upon your journey to understand mathematics, I invite you to appreciate the timeless aesthetic and simplicity of this style of communication.  It's a beautiful gift from our human ancestors across the globe.*
 
 $$s=\sqrt{\frac{\sum{(x_i-\bar{x})^2}}{n-1}}$$
 
-
+*As you embark upon your journey to understand mathematics, I invite you to appreciate the timeless aesthetic and simplicity of this style of communication.  It's a beautiful gift from our human ancestors across the globe.*
 
 
 
