@@ -376,8 +376,11 @@ There are three major things we want to say about quantitative distributions:
 2) Spread of the distribution:  
 3) Shape of the distribution: 
 
+There are a several common shapes.  In particular, we care about:
 
-
+- Symmetry:
+- Skew:
+- Modality:
 
 
 
@@ -388,6 +391,8 @@ There are three major things we want to say about quantitative distributions:
 
 
 ### Measures of Center
+
+A measure of center is mathematical measure of what's "typical" in a dataset.
 
 You guys already know these:
 
@@ -439,6 +444,8 @@ What are the mean, median, and mode of this dataset?
 
 
 
+
+
 **Example: Your Siblings**
 
 
@@ -447,7 +454,42 @@ What are the mean, median, and mode of this dataset?
 
 
 
-### 
+
+
+
+**Example: Predicting the Shape of a Distribution**  
+
+Let's look at some HW exercises: 2.15 and 2.16 (p58 and 59)
+
+
+
+
+
+
+
+
+
+### Measures of Spread
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Here's the formula for computing standard deviation.  
+
+*As you embark upon your journey to understand mathematics, I invite you to appreciate the timeless aesthetic and simplicity of this style of communication.  It's a beautiful gift from our human ancestors across the globe.*
+
+$$s=\sqrt{\frac{\sum{(x_i-\bar{x})^2}}{n-1}}$$
+
 
 
 
