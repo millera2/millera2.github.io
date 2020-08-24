@@ -1,0 +1,190 @@
+---
+title: "Math 120 Lec 01"
+author: "Ali Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: hide
+    theme: yeti
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+studentSurvey <- read_csv("Student Data.csv")
+
+#------------------------------------------------#
+```
+
+# Math 120 Week 2
+
+## Monday Aug 24
+
+### Summary Statistics for Quantitative Variables
+
+Last week, we thought about three important qualities of a distribuion for a quantitative variable.
+
+Warm-up question: what's a distribution?
+
+A distribution is simply the list of values for a variable.  Everything we saw.
+
+
+Warm-up question 2: what are the three important qualities of quantitative distributions that we care about?
+
+Care about center, spread, and shape.
+
+
+Warm-up question 3: which measure of center is best for distributions with strong skew?
+
+If strong skew, median is a better measure of center.  Ex:  1, 1, 1, 1, 1, 19
+
+
+
+
+
+
+Here's a nice picture to summarize how shape affects measures of center:
+
+![](https://s3.amazonaws.com/libapps/accounts/73082/images/Skeweness.jpg)
+
+
+
+
+
+
+
+**Example: Predicting the Shape of a Distribution**  
+
+Let's look at some HW exercises: 2.15 and 2.16 (p58 and 59)
+
+2.15a.  Most people have zero or few pets.  It's uncommon to have many pets.  Thus, we see right skew in this distro.  The median is the better measure of center.  Right skew makes mean bigger.
+
+2.15c.  Most people have "normal/typical".  For men, around 5'9".  This is a symmetric distro.  All measures of center are about the same, let's use mean.  
+
+2.15d.  Distribution:  scores on an easy exam in a large class.  Left skew!  Most students have high scores, only a few have low.  We expect median to be bigger, since left tail pulls down the mean.
+
+
+
+
+
+
+
+### Measures of Spread
+
+We care about the "spread" or "variability" of a distribution -- how dispered are the values we see for this variable?
+
+A picture is worth a thousand words:
+
+![](https://www.researchgate.net/profile/Mihir_Solanki/publication/322909108/figure/fig3/AS:631615269109797@1527600223668/ariation-in-process-and-Sigma-level-normal-distribution-curve.png)
+
+
+
+
+
+
+
+
+
+
+
+
+We saw that there's more than way to measure the center of a distribution.
+
+
+
+Similarly, there's  more than one way to measure its spread.  Here are the major ones:
+
+- Range: max value - min value.  Measure of TOTAL spread.  Easy to compute, shows all possible values.  Limitation: unusual/erroneous data can wreck the range.  Not useful if there's a very unusual value.  
+- Interquartile Range.  IQR.  Range of the middle half of the data.  
+
+To find the IQR:
+
+- cut data into upper and lower half.
+- find the median of each half.
+- IQR is the distance between the medians (Q3 and Q1).
+
+
+Silly example:  1, 2, 3, 4, 5, 6, 7, 8, 9, 1000
+
+Lower half: 1, 2, 3, 4, 5      -> Q1 = 3
+Upper half: 6, 7, 8, 9, 1000   -> Q3 = 8
+
+IQR = 8-3 = 5.  About half of the values lie between 3 and 8.
+
+Note:  IQR is best if there is skew/outliers in the data.  IQR is unaffected by values on the outskirts of the distro.  
+
+So far, two measures of spread:  range and IQR.  Lastly:
+
+- Standard deviation.  "Deviation" == difference from the mean.  Standard deviation is the "average" difference from the mean.
+
+
+Ex: 1, 2, 3.
+
+
+Here, mean = xbar = 2
+
+Each individual value is "x_i".  For this data, 
+x_1 = 1, 
+x_2 = 2,
+x_3 = 3
+
+Each "deviation" is x_i - xbar.
+
+
+
+
+
+
+Here's the formula for computing standard deviation.  
+
+
+$$s=\sqrt{\frac{\sum{(x_i-\bar{x})^2}}{n-1}}$$
+
+*As you embark upon your journey to understand mathematics, I invite you to appreciate the timeless aesthetic and simplicity of this style of communication.  It's a beautiful gift from our human ancestors across the globe.*
+
+Story of the formula:
+
+First, sum up all the deviations x_i - xbar.
+
+For 1,2,3:
+
+(1-2)+(2-2)+(3-2) = 0!!!
+
+Uh-oh!  The values are all "balanced" around the mean.  Some are higher, some are lower, but the sum of all deviations is always zero!!
+
+By squaring each deviation, we ensure that they won't cancel.  Get a measure of TOTAL deviation.  
+
+Lastly, we divide by n-1 to find "average" deviation.  
+
+Finally, take the square root to "undo" the square stuff.  Gives us the same units that we started with.  
+
+Let's finish the std dev for 1,2,3:
+
+(1-2)^2 + (2-2)^2 + (3-2)^2 = 1 + 0 + 1 = 2
+
+We've got the sum of the square deviations.  Now:  divide by n-1:
+
+2/(3-1) = 1
+
+Finally (for real): sqrt(1) = 1.  Yay!  The std dev of 1,2,3 is 1.
+
+
+
+
