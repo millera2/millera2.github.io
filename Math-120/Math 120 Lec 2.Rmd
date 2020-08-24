@@ -1,5 +1,5 @@
 ---
-title: "Math 120 Lec 01"
+title: "Math 120 Week 2"
 author: "Ali Miller"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
