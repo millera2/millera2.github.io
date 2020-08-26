@@ -35,6 +35,8 @@ theme_set(theme_tufte() +
 
 Due Friday Sept 4 on Notebowl by 5pm as a **.pdf document.**
 
+To watch me talk about this in video, view the **Week 2, Wednesday Aug 26** lecture video.  Remember, links to lecture vids are on my GitHub homepage millera2.github.io.
+
 This dataset concerns the `iris` dataset that I've shared with you on Notebowl.
 
 HW will be graded on completness, corectness, and presentation (including the use of English sentences, good formatting, and overall clarity of the work).
