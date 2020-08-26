@@ -50,7 +50,7 @@ What measures of center and spread are appropriate for this variable?  Compute t
 
 ## Problem 2 
 
-By making histograms, find a variable in the dataset that seems the most **skew**.  Paste the histogram for this variable (just the symmetric one).
+By making histograms, find a variable in the dataset that seems the most **skew**.  Paste the histogram for this variable (just the skew one).
 
 What measures of center and spread are appropriate for this variable?  Compute these directly, using appropriate commands in Google Sheets.  Show the commands you used, and your results, in your solution for Problem 1 (along with the histogram).
 
