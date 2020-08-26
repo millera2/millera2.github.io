@@ -31,7 +31,7 @@ theme_set(theme_tufte() +
 #------------------------------------------------#
 ```
 
-# HW 1 
+# HW 1  - Investigating the Iris Data
 
 Due Friday Sept 4 on Notebowl by 5pm as a **.pdf document.**
 
