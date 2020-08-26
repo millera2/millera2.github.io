@@ -1,0 +1,60 @@
+---
+title: "Math 120 HW"
+author: "Your Name"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 1
+    code_folding: show
+    theme: yeti
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+# HW 1 
+
+Due Friday Sept 4 on Notebowl by 5pm as a **.pdf document.**
+
+This dataset concerns the `iris` dataset that I've shared with you on Notebowl.
+
+HW will be graded on completness, corectness, and presentation (including the use of English sentences, good formatting, and overall clarity of the work).
+
+Late HW will not be accepted for any reason.  Students may turn in HW early, of course.
+
+## Problem 1 
+
+By making histograms, find a variable in the dataset that seems the most **symmetric**.  Paste the histogram for this variable (just the symmetric one).
+
+What measures of center and spread are appropriate for this variable?  Compute these directly, using appropriate commands in Google Sheets.  Show the commands you used, and your results, in your solution for Problem 1 (along with the histogram).
+
+
+## Problem 2 
+
+By making histograms, find a variable in the dataset that seems the most **skew**.  Paste the histogram for this variable (just the symmetric one).
+
+What measures of center and spread are appropriate for this variable?  Compute these directly, using appropriate commands in Google Sheets.  Show the commands you used, and your results, in your solution for Problem 1 (along with the histogram).
+
+## Problem 3
+
+By using the sorting function of Google Sheets, find the mean Sepal Length for each species (*setosa*, *versicolor*, and *virginica*.).
+
