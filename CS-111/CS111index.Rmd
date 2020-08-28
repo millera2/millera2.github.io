@@ -34,7 +34,7 @@ theme_set(                                #this sets the theme for all    #
 
 ## Video Lectures
 
-These are all on my [our shared folder on Google](https://drive.google.com/drive/folders/1ttByiga1W9uSIpLj9KSzFTDSzWaGwm8F?usp=sharing)
+These are all on [our shared folder on Google](https://drive.google.com/drive/folders/1ttByiga1W9uSIpLj9KSzFTDSzWaGwm8F?usp=sharing)
 
 The work I do in those vids is availabe on this site below.  
 
