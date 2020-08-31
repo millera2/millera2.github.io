@@ -48,14 +48,15 @@ The work I do in those vids is availabe on this site below.
 
 ## Next Quiz
 
-Coverage:  Week 1 Notes (Wed and Fri)
+Coverage:  Week 2 Notes
 
-Practice Problems:
+Topics inlude:
 
-1) Identify data types of the `mpg` dataset variables
-2) In rectangular/tabular data, what do the rows represent?  The columns?
-3) Textbook Exercise 1.9 on p20
-4) Textbook Exercises 2.15 and 2.16 (p58 and 59)
+- Measures of spread for categorical variables (story of the formula)
+- Meaning of "robust"
+- Summarizing categorical variables
+- Meaning of "statistical inference"
+- Be able to identify and explain symbols for statistis and parameters discussed in class
 
 ## Reading Assignments
 

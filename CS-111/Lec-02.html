@@ -13018,45 +13018,6 @@ ul.typeahead-list  > li > a.pull-right {
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
-    
-/* Temporary definitions which will become obsolete with Notebook release 5.0 */
-.ansi-black-fg { color: #3E424D; }
-.ansi-black-bg { background-color: #3E424D; }
-.ansi-black-intense-fg { color: #282C36; }
-.ansi-black-intense-bg { background-color: #282C36; }
-.ansi-red-fg { color: #E75C58; }
-.ansi-red-bg { background-color: #E75C58; }
-.ansi-red-intense-fg { color: #B22B31; }
-.ansi-red-intense-bg { background-color: #B22B31; }
-.ansi-green-fg { color: #00A250; }
-.ansi-green-bg { background-color: #00A250; }
-.ansi-green-intense-fg { color: #007427; }
-.ansi-green-intense-bg { background-color: #007427; }
-.ansi-yellow-fg { color: #DDB62B; }
-.ansi-yellow-bg { background-color: #DDB62B; }
-.ansi-yellow-intense-fg { color: #B27D12; }
-.ansi-yellow-intense-bg { background-color: #B27D12; }
-.ansi-blue-fg { color: #208FFB; }
-.ansi-blue-bg { background-color: #208FFB; }
-.ansi-blue-intense-fg { color: #0065CA; }
-.ansi-blue-intense-bg { background-color: #0065CA; }
-.ansi-magenta-fg { color: #D160C4; }
-.ansi-magenta-bg { background-color: #D160C4; }
-.ansi-magenta-intense-fg { color: #A03196; }
-.ansi-magenta-intense-bg { background-color: #A03196; }
-.ansi-cyan-fg { color: #60C6C8; }
-.ansi-cyan-bg { background-color: #60C6C8; }
-.ansi-cyan-intense-fg { color: #258F8F; }
-.ansi-cyan-intense-bg { background-color: #258F8F; }
-.ansi-white-fg { color: #C5C1B4; }
-.ansi-white-bg { background-color: #C5C1B4; }
-.ansi-white-intense-fg { color: #A1A6B2; }
-.ansi-white-intense-bg { background-color: #A1A6B2; }
-
-.ansi-bold { font-weight: bold; }
-
-    </style>
-<style type="text/css">
     /*This file contains any manual css for this page that needs to override the global styles.
 This is only required when different pages style the same element differently. This is just
 a hack to deal with our current css styles and no new styling should be added in this file.*/
@@ -13375,7 +13336,7 @@ donuts
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[50]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">getMean</span><span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
@@ -13384,7 +13345,6 @@ donuts
     <span class="k">return</span> <span class="n">result</span>
 
 
-    
     
     
     
@@ -13443,9 +13403,390 @@ donuts
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>In large datasets that possibly contain lots of fluctuation, we frequently wish to "smooth" the data by taking averages of "nearby" values.  The picture is worth a thousand words:  see p13.</p>
+<p>Let's use a small, example dataset to work with when writing the algorithm:</p>
+<p>18.9, 18.9, 19.0, 19.2, 19.3, 19.3, 19.2, 22.1, 19.4, 19.3</p>
+<p>We'll smooth this out with a "window size" of 5.  But generally, we want to be able to choose any size algorithm.</p>
+<p><strong>Inputs</strong></p>
+<ul>
+<li>a list of <em>n</em> numbers (i.e., length of list is n)</li>
+<li>the window size, <em>w</em> </li>
+</ul>
+<p><strong>Algorithm</strong></p>
+<ol>
+<li>Create an empty list of averages.</li>
+</ol>
+<p>Note:  total number of windows is n-w+1</p>
+<ol>
+<li><p>For all values <em>d</em> from 1 n-w+1, 
+   find the average of d, d+1, d+2, d+w-1 
+   (i.e. the w numbers starting at d)
+   append the new average to the list of averages</p>
+</li>
+<li><p>return the list of averages</p>
+</li>
+</ol>
+<p>Now, what about time complexity?</p>
+<p>Note: each average takes w operations.  How many averages did we need?  After you figure it out, multiply together!</p>
+<p>1+</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[51]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[51]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>15</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>That's one way to skin this cat.  Meow!  Might there be a better way?</p>
+<p>Of course, if you've read the book, you know there is.  Let's think through how it works, and why it's better.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="We-Should-Really-Talk-about-Binary">We Should Really Talk about Binary<a class="anchor-link" href="#We-Should-Really-Talk-about-Binary">&#182;</a></h3><p>In reference to computation, you've probably heard about all the zeroes and ones.  Binary!  But, what exactly does that mean?</p>
+<p>CS 111 isn't an engineering course, and we won't focus on the details of how computer hardware works.  But, let's <strong>do</strong> discuss a few basics.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="How-do-computers-&quot;remember&quot;?--How-do-they-&quot;think&quot;?">How do computers "remember"?  How do they "think"?<a class="anchor-link" href="#How-do-computers-&quot;remember&quot;?--How-do-they-&quot;think&quot;?">&#182;</a></h4><p>The fundamental unit of computer hardware is a transistor.</p>
+<p>A transistor is a <strong>switch</strong>.  Like a light switch, it's either on or off.</p>
+<p>If it's on, that means "1".
+If it's off, that means "0".</p>
+<p>Remember, a transistor is a physical object.  They're very small, but it's a real-live machine.</p>
+<p>Modern computer processors (CPUs) may contain over a <strong>trillion</strong> transistors.  Holy crap, dude.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So, all of the information in a computer is ultimatey a long list of 0's and 1's.  But, how does that work?</p>
+<p>In short: binary code can express all of the information contained in other media (numbers, text, sound, video, etc etc).</p>
+<p>Let's start with the simplest example:  numbers.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>First, let's remember our "normal" way of writing nubmers:  base 10.</p>
+<p>Consider the following example:  the number 182,736.</p>
+<p><img src="https://www.cplusplus.com/doc/hex/base_decimal.gif" alt=""></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Wait, how would base 16 work?</p>
+<p>In base 16, we need 16 different numberal:</p>
+<p>0, 1, 2, 3, 4, 5, 6, 7, 8, 9, a, b, c, d, e, f</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>That's why we call it "base 10" -- each place in the number is a power of 10.</p>
+<p>So, let's look at base 2!</p>
+<p><img src="https://brookieboo143.files.wordpress.com/2012/09/04-binary-base1.png" alt=""></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Example</strong>:  write "21" in binary.</p>
+<p>Remember, there are only two numerals (possibilities) in each place:  either 0 or 1.</p>
+<p>Biggest power of 2:  2^4 = 16.  I.e., we've got a "1" in the 5th place</p>
+<p>1 x x x x</p>
+<p>Now, 5 is left.  The biggest power of 2 is 2^2.  So, we've got a "1" in the 3rd spot</p>
+<p>1 0 1 x x</p>
+<p>Lastly, we've taken care of 16 and 4, so only 1 is left (out of 21).  The biggest power of 2 is 2^0.  Wer're done:</p>
+<p>1 0 1 0 1</p>
+<p>First:  1<em>2^0 = 1
+Next: 1</em>2^2 = 4
+Last: 1*2^4 = 16</p>
+<p>Example:  Write 29 in base 2.</p>
+<p>29 = 16 + 8 + 4 + 1</p>
+<p>1 1 1 0 1</p>
+<hr>
+<p>Hey! this is me making new notes!</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Computer-Images:--Bitmaps">Computer Images:  Bitmaps<a class="anchor-link" href="#Computer-Images:--Bitmaps">&#182;</a></h3><p>You guys know from Snapchat and Youtube that computers can "remember" and process images.  But how does that work in binary?</p>
+<p>The answer:  bitmaps.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://i.pinimg.com/originals/cb/05/15/cb0515b14ba9490e96a681156166aca4.png" alt=""></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>All images are store as matrices (i.e., just lists of numbers).  At each location, a color value is stored.</p>
+<p>We have binary representations of colors, the most common is 24bit RBG</p>
+<p>I.e., we're always mixing "primary colors" to make specific color.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="ASCII----Encoding-Text-and-Special-Characters">ASCII -- Encoding Text and Special Characters<a class="anchor-link" href="#ASCII----Encoding-Text-and-Special-Characters">&#182;</a></h3><p>We've seen how binary can be used to represent numbers.  What about the rest of the English alphabet (and all alphabets!).</p>
+<p>The answer:  ASCII (The <strong>A</strong>merican <strong>S</strong>tandard <strong>C</strong>ode for <strong>I</strong>nformation <strong>I</strong>nterchange)</p>
+<p>Simply put, ASCII is like a huge dictionary that assigns a binary code to every letter in every alphabet.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://i.pinimg.com/originals/8b/43/a8/8b43a81418d71cf1a25ba26077770cff.png" alt=""></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Descisions-in-a-Binary-World:--Truth-Tables">Descisions in a Binary World:  Truth Tables<a class="anchor-link" href="#Descisions-in-a-Binary-World:--Truth-Tables">&#182;</a></h3><p>We've seen how we can represent numbers and language using binary code.  But, how can computers make "decisions"?</p>
+<p>Computers use <strong>logic gates</strong> to decide what to do.  These are physical devices on the CPU (like transistors) that perfom basic logical operations.  Modern CPUs have many millions of logic gates pysically printed on the chip.</p>
+<p>There are three core logic gates:</p>
+<ul>
+<li>AND</li>
+<li>OR</li>
+<li>NOT (inversion)</li>
+</ul>
+<p>Like all elementary operations, these are <strong>binary operators</strong> -- they act on inputs a pair at a time.  I'm going to use the same notation as your book, and call these two inputs <code>a</code> and <code>b</code>.</p>
+<p>Let's look at the truth tables.  Remember, in binary logic</p>
+<ul>
+<li><code>1</code> means "true"</li>
+<li><code>0</code> means "false"</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Truth-Table-for-AND">Truth Table for <code>AND</code><a class="anchor-link" href="#Truth-Table-for-AND">&#182;</a></h4><table>
+<thead><tr>
+<th style="text-align:center"><code>a</code></th>
+<th style="text-align:center"><code>b</code></th>
+<th style="text-align:center"><code>a and b</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[1]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
 </div>
     </div>
   </div>

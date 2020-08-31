@@ -1743,7 +1743,7 @@ summary {
 
 <h1 class="title toc-ignore">Math 120 Week 2</h1>
 <h4 class="author">Ali Miller</h4>
-<h4 class="date">24 August, 2020</h4>
+<h4 class="date">30 August, 2020</h4>
 
 </div>
 
@@ -1754,7 +1754,8 @@ summary {
 <li><a href="#summary-statistics-for-quantitative-variables">Summary Statistics for Quantitative Variables</a></li>
 <li><a href="#measures-of-spread">Measures of Spread</a></li>
 </ul></li>
-<li><a href="#wednesday-aug-26">Wednesday Aug 26</a><ul>
+<li><a href="#friday-aug-28">Friday Aug 28</a><ul>
+<li><a href="#summarizing-categoricalqualitative-varaibles">Summarizing Categorical/Qualitative Varaibles</a></li>
 <li><a href="#a-few-notes-about-notation-samples-and-populations">A Few Notes About Notation, Samples, and Populations</a></li>
 </ul></li>
 </ul></li>
@@ -1830,24 +1831,102 @@ summary {
 <p>Finally (for real): sqrt(1) = 1. Yay! The std dev of 1,2,3 is 1.</p>
 </div>
 </div>
-<div id="wednesday-aug-26" class="section level2">
-<h2>Wednesday Aug 26</h2>
-<p>(Subject to change!)</p>
+<div id="friday-aug-28" class="section level2">
+<h2>Friday Aug 28</h2>
+<p>Quick summary of quantitative distributions:</p>
+<ul>
+<li>center
+<ul>
+<li>mean: balancing point</li>
+<li>median: middle element</li>
+<li>mode: most common</li>
+</ul></li>
+<li>spread
+<ul>
+<li>range: max value - min value</li>
+<li>std dev: average distance from values to mean</li>
+<li>IQR: range of middle 50% of data.<br />
+Compute IQR = Q3 - Q1 (helpful for homework!)</li>
+</ul></li>
+<li>shape
+<ul>
+<li>skew (left/right), symmetric, unimodal/bimodal/multimodal</li>
+</ul></li>
+</ul>
+<p>Q: Which measues of center and spread are affected (strongly) by shape?</p>
+<p>A: Mean, Std dev (range also) are strongly affected by skew.</p>
+<p>On, the other hand, median and IQR aren’t affected by skew/outliers since they only depend on the middle.</p>
+<p>This is called “robustness”. A statistic is “robust” if it’s not strongly affected by skew/outlers.</p>
+<div id="summarizing-categoricalqualitative-varaibles" class="section level3">
+<h3>Summarizing Categorical/Qualitative Varaibles</h3>
+<p>The (only) statistic for summarizing categorical variables is <strong>proportion</strong> (exactly the same as “percent”).</p>
+<p>p = (# in the category)/n</p>
+<p>For categorical variables, the “distribution” is the proportions of all “levels” of the category.</p>
+<p>Hair color example: distribution is the proporiton for each color: brown, black, blonde, red, other.</p>
+<p>** Example: Visualizing Categorical Data **</p>
+<p>Bar graphs! Look like histograms, but important differences:</p>
+<ol style="list-style-type: decimal">
+<li><p>x axis isn’t a range, instead they’re distinct categories (bars don’t touch)</p></li>
+<li><p>the order of the bars doesn’t matter, i.e., there’s no “shape” for categorical variables.</p></li>
+</ol>
+<p>** Example ** Death Penalty</p>
+<p>Look:</p>
+<pre class="r"><code>head(deathPenaltyData)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Date"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Name"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Age"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Sex"],"name":[4],"type":["chr"],"align":["left"]},{"label":["Race"],"name":[5],"type":["chr"],"align":["left"]},{"label":["Crime"],"name":[6],"type":["chr"],"align":["left"]},{"label":["Victim Count"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["Victim Sex"],"name":[8],"type":["chr"],"align":["left"]},{"label":["Victim Race"],"name":[9],"type":["chr"],"align":["left"]},{"label":["County"],"name":[10],"type":["chr"],"align":["left"]},{"label":["State"],"name":[11],"type":["chr"],"align":["left"]},{"label":["Region"],"name":[12],"type":["chr"],"align":["left"]},{"label":["Method"],"name":[13],"type":["chr"],"align":["left"]},{"label":["Juvenile"],"name":[14],"type":["chr"],"align":["left"]},{"label":["Volunteer"],"name":[15],"type":["chr"],"align":["left"]},{"label":["Federal"],"name":[16],"type":["chr"],"align":["left"]},{"label":["Foreign National"],"name":[17],"type":["chr"],"align":["left"]}],"data":[{"1":"01/17/1977","2":"Gary Gilmore","3":"36","4":"Male","5":"White","6":"Murder","7":"1","8":"Male","9":"White","10":"Utah","11":"UT","12":"West","13":"Firing Squad","14":"No","15":"Yes","16":"No","17":"No"},{"1":"05/25/1979","2":"John Spenkelink","3":"30","4":"Male","5":"White","6":"Murder","7":"1","8":"Male","9":"White","10":"Leon","11":"FL","12":"South","13":"Electrocution","14":"No","15":"No","16":"No","17":"No"},{"1":"10/22/1979","2":"Jesse Bishop","3":"46","4":"Male","5":"White","6":"Murder","7":"1","8":"Male","9":"White","10":"Clark","11":"NV","12":"West","13":"Gas Chamber","14":"No","15":"Yes","16":"No","17":"No"},{"1":"03/09/1981","2":"Steven Judy","3":"24","4":"Male","5":"White","6":"Murder","7":"4","8":"2 Male, 2 Female","9":"White","10":"Marion","11":"IN","12":"Midwest","13":"Electrocution","14":"No","15":"Yes","16":"No","17":"No"},{"1":"08/10/1982","2":"Frank Coppola","3":"38","4":"Male","5":"White","6":"Murder","7":"1","8":"Male","9":"White","10":"Newport News City","11":"VA","12":"South","13":"Electrocution","14":"No","15":"Yes","16":"No","17":"No"},{"1":"12/07/1982","2":"Charlie Brooks","3":"40","4":"Male","5":"Black","6":"Murder","7":"1","8":"Male","9":"White","10":"Tarrant","11":"TX","12":"South","13":"Lethal Injection","14":"No","15":"No","16":"No","17":"No"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Let’s look at the distribution for Race:</p>
+<pre class="r"><code>deathPenaltyData$Race %&gt;% table %&gt;% prop.table()</code></pre>
+<pre><code>## .
+##           Asian           Black          Latino Native American 
+##     0.004160888     0.343273232     0.083217753     0.011095700 
+##           Other           White 
+##     0.001386963     0.556865465</code></pre>
+<p>Q: Is there evidence of system bias in death penalty, or could the differnce be explained by random chance?</p>
+<p>Q: What percent of peopel who receive the death penalty are women?</p>
+<pre class="r"><code>deathPenaltyData$Sex %&gt;% table %&gt;% prop.table()</code></pre>
+<pre><code>## .
+##    Female      Male 
+## 0.0110957 0.9889043</code></pre>
+</div>
 <div id="a-few-notes-about-notation-samples-and-populations" class="section level3">
 <h3>A Few Notes About Notation, Samples, and Populations</h3>
 <p>Our goal as statisticians is to make empirically-supported conclusions about the populations we study.</p>
 <p>But there’s a big problem: most populations are very large! It’s often impossible (or at least very difficult) to collect information from every individual in a population.</p>
 <p><strong>Example</strong>: How would we find the average height of <em>all</em> Americans?</p>
-<p>Instead, we’re usually limited to <strong>samples</strong>:</p>
+<p>Impossible to direclty measure all individuals (census),</p>
+<p>Instead, we’re usually limited to <strong>samples</strong>: a (hopefully representative) subset of our population.</p>
 <p>Samples allow us to collect information about a population, but that information is always <strong>incomplete</strong>! It’s a bummer - we never have all the info that we want. So, we have to be careful about what information we <strong>hope to know</strong> vs what information we <strong>actually have</strong>.</p>
 <ul>
-<li><p>We <strong>hope</strong> to know about populations. A population is:</p></li>
-<li><p>In particular, we really want to know about <strong>parameters</strong>:</p></li>
-<li><p>Examples include:</p></li>
-<li><p>In reality, we’re always stuck with <strong>samples</strong>. A sample is:</p></li>
-<li><p>Numerical summaries of samples are called:</p></li>
-<li><p>We hope:</p></li>
+<li>We <strong>hope</strong> to know about populations. A population is: all individuals in consideration.</li>
 </ul>
+<p>I.e., all americans, all giraffes, all college students, all products that come from a factory.</p>
+<ul>
+<li><p>In particular, we really want to know about <strong>parameters</strong>, i.e., a numerical summary of a population.</p></li>
+<li><p>Examples include: mean height of all americans, proportion of all college studetns who study out-of-state, average life-span of every product (of a particular model) from a factory.</p></li>
+<li><p>In reality, we’re always stuck with <strong>samples</strong>. A sample is a subset of a population. Hopefully representative!</p></li>
+<li><p>Numerical summaries of samples are called: <strong>statistics</strong>!</p></li>
+<li><p>We hope that statistics tell us something smart about the parameters they approximate.</p></li>
+</ul>
+<p><strong>Statistical inference</strong> is the process of making mathematically-suported conclusions about population parameters based upon sample statistics.</p>
+<p>Need to be <strong>super careful</strong> about terminology:</p>
+<p>Means. We have population means, and sample means!</p>
+<p>sample mean: xbar</p>
+<p><span class="math display">\[\bar{x}\]</span></p>
+<p>population mean: mu</p>
+<p><span class="math display">\[\mu\]</span></p>
+<p>We hope xbar (btw, what we actually have) tells us about mu (the the thing we want).</p>
+<p>Proportions:</p>
+<p>Sample proportion: phat</p>
+<p><span class="math display">\[\hat{p}\]</span></p>
+<p>True pop proportion: p</p>
+<p><span class="math display">\[p\]</span></p>
+<p>Std deviation:</p>
+<p>sample standard deviation is s (or s_x if clarifying variable)</p>
+<p><span class="math display">\[s_x\]</span> pop std dev is sigma</p>
+<p><span class="math display">\[\sigma\]</span></p>
 </div>
 </div>
 </div>

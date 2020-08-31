@@ -1,5 +1,5 @@
 ---
-title: "Math 120 Lec 01"
+title: "Math 120 Week 2"
 author: "Ali Miller"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
@@ -29,6 +29,7 @@ theme_set(theme_tufte() +
   theme(text=element_text(family="sans")))  
 
 studentSurvey <- read_csv("Student Data.csv")
+deathPenaltyData <- read_csv("death penalty data.csv")
 
 #------------------------------------------------#
 ```
@@ -184,6 +185,102 @@ We've got the sum of the square deviations.  Now:  divide by n-1:
 2/(3-1) = 1
 
 Finally (for real): sqrt(1) = 1.  Yay!  The std dev of 1,2,3 is 1.
+
+
+
+
+
+
+
+
+
+## Friday Aug 28
+
+
+Quick summary of quantitative distributions:
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Summarizing Categorical/Qualitative Varaibles
+
+
+
+
+
+
+
+
+
+
+
+
+
+### A Few Notes About Notation, Samples, and Populations
+
+Our goal as statisticians is to make empirically-supported conclusions about the populations we study.  
+
+But there's a big problem:  most populations are very large!  It's often impossible (or at least very difficult) to collect information from every individual in a population.
+
+**Example**: How would we find the average height of *all* Americans?
+
+
+
+
+
+
+
+
+
+
+
+
+Instead, we're usually limited to **samples**:
+
+
+
+Samples allow us to collect information about a population, but that information is always **incomplete**!  It's a bummer - we never have all the info that we want.  So, we have to be careful about what information we **hope to know** vs what information we **actually have**.
+
+
+
+
+
+
+
+
+
+
+- We **hope** to know about populations.  A population is:
+
+- In particular, we really want to know about **parameters**:
+
+- Examples include:
+
+
+
+
+
+
+
+
+
+
+
+
+- In reality, we're always stuck with **samples**.  A sample is:
+
+- Numerical summaries of samples are called:
+
+- We hope:
 
 
 
