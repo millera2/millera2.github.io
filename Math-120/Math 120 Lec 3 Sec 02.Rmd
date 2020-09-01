@@ -1,0 +1,141 @@
+---
+title: "Math 120 Week 2"
+author: "Ali Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: hide
+    theme: yeti
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+studentSurvey <- read_csv("Student Data.csv")
+deathPenaltyData <- read_csv("death penalty data.csv")
+
+#------------------------------------------------#
+```
+
+# Math 120 Week 3
+
+## Monday 
+
+### Describing Two Quantitative Variables (Bivariate Data)
+
+Bivariate data is
+
+
+
+
+
+
+
+
+
+
+
+
+
+To visualize bivariate data, we use
+
+
+
+
+
+
+
+
+
+
+
+
+Just like for histograms, there are some important qualitites about scatterplots that we need to talk about:
+
+
+
+
+
+
+
+
+
+
+
+In Math 120, we'll study linear relationships in depth (even though there are others, like...)
+
+
+
+
+
+
+
+
+
+
+
+
+
+In order to measure the strength of a linear relationship, we need an objective mathematical measure.  
+
+We call this
+
+
+
+
+
+
+
+
+
+
+
+Let's look at some examples:
+
+- mpg hwy vs cty
+- mpg displ vs cty
+- iris sepal length vs sepal width
+
+
+
+
+
+
+
+
+When talking about correlation, the x and y variables have important roles:
+
+
+
+
+
+
+
+
+
+
+
+
+
+Important properties of *r*, correlation coefficient:
+
+  
+
+

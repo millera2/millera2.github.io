@@ -52,7 +52,7 @@ Coverage:  Week 2 Notes
 
 Topics inlude:
 
-- Measures of spread for categorical variables (story of the formula)
+- Measures of spread for quantitative variables (story of the formula)
 - Meaning of "robust"
 - Summarizing categorical variables
 - Meaning of "statistical inference"

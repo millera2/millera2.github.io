@@ -199,10 +199,26 @@ Finally (for real): sqrt(1) = 1.  Yay!  The std dev of 1,2,3 is 1.
 
 Quick summary of quantitative distributions:
 
+Important qualities:
+
+- Center
+  - mean: balancing point of dist
+  - median: middle
+  - mode: most common element
+- Spread
+  - Std Dev:  average distance between values and the mean.
+  - IQR:  range of the middle half of the data
+    To compute:  Q3 - Q1
+  - Range: max val - min val
+- Shape 
+  - skew (left/right), symmetry, unimodal, bimodal, multimodal etc.
 
 
+If a dataset has skew/outliers, then the mean and std are strongly affected.
 
+In contrast, the median and IQR are not strongly affected by skew/outliers.  
 
+A statistics is **robust** if it's not strongly affecgted by skew/outliers.
 
 
 
@@ -213,11 +229,41 @@ Quick summary of quantitative distributions:
 
 ### Summarizing Categorical/Qualitative Varaibles
 
+The (only) numerical summary for categorical variables is **proportion** (i.e. percent).  
+
+proportion = (how many in category)/n
+
+For categorical vars, the "distribution" means all the proportions for each level of the category.
+
+**Visualization**  For categorical, we use "bar graphs".  Look a lot like histograms, but important differences:
+
+- x axis isn't a range.  each "bar" is a distinct category.  Bars don't touch.
+- order doesn't matter!  arbitrary!  No "shape" for categorical vars.
+
+**Example:  Distribution for categorical**
+
+Death penalty data.
+
+Let's look:
+
+```{r}
+head(deathPenaltyData)
+```
+
+Let's look at the distribution for Race.
+
+```{r}
+deathPenaltyData$Race %>% table %>% prop.table()
+```
 
 
+Observation:  34.3% were black.  Of all americans, 13.4% are black.  Does this provide evidence of systemic bias in using the death penalty?  Could this be explained by random chance?
 
+What percent were women?
 
-
+```{r}
+deathPenaltyData$Sex %>% table %>% prop.table()
+```
 
 
 
@@ -244,7 +290,7 @@ But there's a big problem:  most populations are very large!  It's often impossi
 
 
 
-Instead, we're usually limited to **samples**:
+Instead, we're usually limited to **samples**, i.e., a (hopefully representative) subset of the population.
 
 
 
@@ -259,15 +305,13 @@ Samples allow us to collect information about a population, but that information
 
 
 
-- We **hope** to know about populations.  A population is:
+- We **hope** to know about populations.  A population is all individuals in consideration.
 
-- In particular, we really want to know about **parameters**:
+Examples:  all americans, all college students, all giraffes, all products made on an assembly line
 
-- Examples include:
+- In particular, we really want to know about **parameters**, i.e., numerical summaries of populations.  
 
-
-
-
+- Examples include: mean height of all americans, prortion of all college students who study out-of-state, median lifespan of all products produced by an assembly line. 
 
 
 
@@ -276,12 +320,57 @@ Samples allow us to collect information about a population, but that information
 
 
 
-- In reality, we're always stuck with **samples**.  A sample is:
-
-- Numerical summaries of samples are called:
-
-- We hope:
 
 
 
 
+- In reality, we're always stuck with **samples**.  A sample is a subset of the population.
+
+- Numerical summaries of samples are called **statistics**.  
+
+- We hope that statistics tell us something smart about parameters.
+
+**Statistical inference** is the process of making mathematically-supported conclusions about parameters based upon statistics.  
+
+
+
+### Important notation (symbols)
+
+Remember, every numerical summary has two version: pop (parameter) and sample (statistic).
+
+**Mean**
+
+Sample mean:  xbar
+
+$$\bar{x}$$
+
+
+Population mean:  mu
+
+$$\mu$$
+
+**Standard deviation**
+
+Sample std dev = s    (or s_x to specify variable)
+
+$$s_x$$
+
+Population std dev = sigma
+
+$$\sigma$$
+
+**proportions**
+
+Sample proportion:  phat
+
+$$\hat{p}$$
+
+Population proportion:  p
+
+$$p$$
+
+The game:
+
+Say something smart aobut mu based on xbar.
+Say sometimething smart about sigma based on s.
+Say something smart about p based on phat.
