@@ -49,15 +49,24 @@ The work I do in those vids is availabe on this site below.
 
 ## Next Quiz
 
-Coverage:  Week 2 Notes
+Coverage:  Week 3
+
+Practice Problems:
+
+- 8.5 (p313)
+- 8.6, 8.7 (p314)
+- 8.11 (p315)
+- 8.17, 8.19 (p325)
+- 8.25 (all parts except **c**)
 
 Topics inlude:
 
-- Measures of spread for quantitative variables (story of the formula)
-- Meaning of "robust"
-- Summarizing categorical variables
-- Meaning of "statistical inference"
-- Be able to identify and explain symbols for statistis and parameters discussed in class
+- Interpreting Scatterplots
+- Understanding the correlation coefficient and its properties
+- Basics of least squres line
+  - finding equation from summary statistics
+  - explaining what the coefficients mean
+- Meaning of residuals
 
 ## Reading Assignments
 
@@ -65,6 +74,9 @@ Wanna know what's going on?  Read this stuff!
 
 - Due 8/19:  Textbook Ch 1.2 (p12-18)
 - Due 8/21:  Textbook Ch 2.1 (p41-46)
+- Due 9/04:  Textbook 8.1
+- Due 9/07:  Textbook 8.2
+- Due 9/12:  Textbook 8.3
 
 ## HW Assignments
 
