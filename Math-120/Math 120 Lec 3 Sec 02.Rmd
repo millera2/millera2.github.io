@@ -36,11 +36,15 @@ deathPenaltyData <- read_csv("death penalty data.csv")
 
 # Math 120 Week 3
 
-## Monday 
+## Monday Aug 31
 
 ### Describing Two Quantitative Variables (Bivariate Data)
 
-Bivariate data is
+Bivariate data is two paired quantitative variables.  I.e., two measurements from the same individuals/cases.
+
+Example:  heights and weights of students in class.
+
+Our goal:  explore relationships between the two variables.  
 
 
 
@@ -54,7 +58,7 @@ Bivariate data is
 
 
 
-To visualize bivariate data, we use
+To visualize bivariate data, we use **scatterplot**, i.e., x-y points for all of the cases.  Each case/individual will be a dot on the scatterplot.
 
 
 
@@ -64,13 +68,53 @@ To visualize bivariate data, we use
 
 
 
+Let's look at some examples:
 
+- mpg hwy vs cty
+
+```{r}
+mpg %>% ggplot(aes(hwy, cty))+geom_point()
+```
+
+Human feelings:  as hwy measuresments get bigger, so do cty.  Makes sense!  If the care is more efficient on the hwy, i'd expect it's more efficient in the city.  
+
+- mpg displ vs cty
+
+```{r}
+mpg %>% ggplot(aes(displ, cty))+geom_point()
+
+```
+
+Human feelings:  bigger cars are less fuel efficient.  Makes sense, a bigger car should need more gas!
+
+
+
+
+
+
+- iris sepal length vs sepal width
+
+```{r}
+iris %>% ggplot(aes(Sepal.Length, Sepal.Width))+geom_point()
+```
+
+Human feelings:  looks like a blob.  Can't really tell any interesting info about sepal width based upon sepal length.  
+
+
+
+
+
+
+
+### Important Qualities of Scatterplots
 
 
 Just like for histograms, there are some important qualitites about scatterplots that we need to talk about:
 
 
-
+- Form/shape.  Do the dots follow a pattern?  Examples: linear, exponential, logistic, quadratic, many others etc.  
+- Direction.  Pos or negative.  I.e., do x and y tend to get bigger together (pos relationship), or as x gets bigger, does y tend to get smaller (neg rel).   
+- Strength. How closely do the points follow the pattern?  How much "scatter" is there?
 
 
 
@@ -90,37 +134,50 @@ In Math 120, we'll study linear relationships in depth (even though there are ot
 
 
 
+### The correlation coefficient
+
+
+In order to measure the strength of a linear relationship, we need an objective mathematical measure (ie a statistic for correlation).  
+
+We call this the "correlation coefficient", r.  
+
+FOr all of Math 120, the letter "r" always means "correlation coefficient".
+
+It's a measure of both strength and direction for a linear relationship.
+
+**Example: mpg data**
+
+
+```{r}
+cor(mpg$hwy, mpg$cty)
+```
+
+There's an r value of r=0.96 for hwy and cty mpg.  
+
+More examples:
+
+![](https://saylordotorg.github.io/text_introductory-statistics/section_14/07aa5db140b70615a15e8631c2d7a2c4.jpg)
+
+
+### Important qualities of r
+
+1)  -1 <= r <= +1
+
+2)  If r is close to +1, then there's a strong positive linear relationship between x an y.
+
+3)  If r is close to -1, then there's a strong negative linear relationship.  (ie the line goes down.)
+
+4)  If r is close to zero, then there's no (or little) LINEAR relationship.
+
+
+WARNING:  Just because r is close to zero, that doesn't mean there's NO relationship.  Just not linear.
+
+5) R doesn't have units, not affected by units.  Whew!  Doesn't matter what measurement scale you use.  You can convert lbs - kg, ft-meters, etc, and not change r.
+
+6)   Doesn't matter which is x and y.  Same r.  
 
 
 
-In order to measure the strength of a linear relationship, we need an objective mathematical measure.  
-
-We call this
-
-
-
-
-
-
-
-
-
-
-
-Let's look at some examples:
-
-- mpg hwy vs cty
-- mpg displ vs cty
-- iris sepal length vs sepal width
-
-
-
-
-
-
-
-
-When talking about correlation, the x and y variables have important roles:
 
 
 
@@ -134,8 +191,12 @@ When talking about correlation, the x and y variables have important roles:
 
 
 
-Important properties of *r*, correlation coefficient:
 
-  
+
+
+
+
+
+
 
 
