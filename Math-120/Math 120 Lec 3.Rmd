@@ -40,13 +40,11 @@ deathPenaltyData <- read_csv("death penalty data.csv")
 
 ### Describing Two Quantitative Variables (Bivariate Data)
 
-Bivariate data is a pair of two quantitative varibles.  Each pair, (x,y), describes the same case/individual.  Paired quarntitative variables.
+Bivariate data is two paired quantitative variables.  I.e., two measurements from the same individuals/cases.
 
-Ex:  Heights and weights for students in the class.  
+Example:  heights and weights of students in class.
 
-Goal:  investigate the relationship (if any) between the two variables.
-
-
+Our goal:  explore relationships between the two variables.  
 
 
 
@@ -58,7 +56,16 @@ Goal:  investigate the relationship (if any) between the two variables.
 
 
 
-To visualize bivariate data, we use a **scatterplot**, i.e., a point-by-point (x,y) coordinate representation of the data.
+
+
+To visualize bivariate data, we use **scatterplot**, i.e., x-y points for all of the cases.  Each case/individual will be a dot on the scatterplot.
+
+
+
+
+
+
+
 
 
 Let's look at some examples:
@@ -69,16 +76,21 @@ Let's look at some examples:
 mpg %>% ggplot(aes(hwy, cty))+geom_point()
 ```
 
-Human feelings:  both hwy and city get bigger together!  Ie, if a car has higher hwy mpg, we expect in general it's cty mpg to be high also!
-
+Human feelings:  as hwy measuresments get bigger, so do cty.  Makes sense!  If the care is more efficient on the hwy, i'd expect it's more efficient in the city.  
 
 - mpg displ vs cty
 
 ```{r}
 mpg %>% ggplot(aes(displ, cty))+geom_point()
+
 ```
 
-Human feelings:  as engine size (displ) gets bigger, fuel efficiency decreases.  Makes sense!  Bigger cars need more gas!
+Human feelings:  bigger cars are less fuel efficient.  Makes sense, a bigger car should need more gas!
+
+
+
+
+
 
 - iris sepal length vs sepal width
 
@@ -86,19 +98,23 @@ Human feelings:  as engine size (displ) gets bigger, fuel efficiency decreases. 
 iris %>% ggplot(aes(Sepal.Length, Sepal.Width))+geom_point()
 ```
 
-Human feelings: looks a blob!  It doesn't seem like I could predict a flower's sepal width based on it's sepal length.  
+Human feelings:  looks like a blob.  Can't really tell any interesting info about sepal width based upon sepal length.  
 
 
 
-### Qualities of Scatterplots
+
+
+
+
+### Important Qualities of Scatterplots
 
 
 Just like for histograms, there are some important qualitites about scatterplots that we need to talk about:
 
-- Form/shape.  Is there a pattern?  Examples: linear (straight line), exponential, logistic, quadratic, etc etc.  
-- Direction:  pos or neg?  Do the points seem to get bigger together (x bigger -> y bigger, going up to the right), or are they negatively related:  y gets smaller when x gets bigger.
-- Strength.  How tightly do the points comform to the pattern.  
 
+- Form/shape.  Do the dots follow a pattern?  Examples: linear, exponential, logistic, quadratic, many others etc.  
+- Direction.  Pos or negative.  I.e., do x and y tend to get bigger together (pos relationship), or as x gets bigger, does y tend to get smaller (neg rel).   
+- Strength. How closely do the points follow the pattern?  How much "scatter" is there?
 
 
 
@@ -118,48 +134,47 @@ In Math 120, we'll study linear relationships in depth (even though there are ot
 
 
 
+### The correlation coefficient
 
-### Correlation Coefficient
 
-In order to measure the strength of a linear relationship, we need an objective mathematical measure.  Ie, a statistic!
+In order to measure the strength of a linear relationship, we need an objective mathematical measure (ie a statistic for correlation).  
 
-We call this the linear correlation coefficient, r.
+We call this the "correlation coefficient", r.  
 
-From now on, whenever you see "r" in Math 120, that -always- means "linear correlation coefficient".  
+FOr all of Math 120, the letter "r" always means "correlation coefficient".
 
-Quick example:  mpg cty vs hwy.
+It's a measure of both strength and direction for a linear relationship.
+
+**Example: mpg data**
+
 
 ```{r}
-cor(mpg$cty, mpg$hwy)
 cor(mpg$hwy, mpg$cty)
 ```
 
-The r value here is r=0.96.  This indicates a very strong, positive relationship.
+There's an r value of r=0.96 for hwy and cty mpg.  
+
+More examples:
+
+![](https://saylordotorg.github.io/text_introductory-statistics/section_14/07aa5db140b70615a15e8631c2d7a2c4.jpg)
 
 
-### Important properties of r, the correl coeff
+### Important qualities of r
 
--1 <= r <= 1.  R can never be smaller than neg 1, never bigger than +1.
+1)  -1 <= r <= +1
 
-If r is close to +1, then there's a strong positive linear relationship.  If r == 1, all of the points are literall on the same line.
+2)  If r is close to +1, then there's a strong positive linear relationship between x an y.
 
-Smart question:  how close is "close"?  Return to this later.  For right now, understand that closer to 1 means stronger.
+3)  If r is close to -1, then there's a strong negative linear relationship.  (ie the line goes down.)
 
-If r is close to -1, then there's a strong negative linear relationship.  (I.e., the line goes down).  
-
-If r is close to zero, then there's little/no LINEAR relationship.  
-
-WARNING:  just because there's no LINEAR relationship, that doesn't mean there's no relationship of any kind.
-
-ALWAYS look at the scatter plot with your human eyeballs!
-
-The correl coeff r doesn't have units.  Doesn't depend on units!  WHew!  In other words, it doesn't matter if your data is lbs/kg, ft/meters, whatever units don't affect r.  
-
-Lastly, it doesn't matter which variable is x (ie first) and which is y (ie second)
+4)  If r is close to zero, then there's no (or little) LINEAR relationship.
 
 
+WARNING:  Just because r is close to zero, that doesn't mean there's NO relationship.  Just not linear.
 
+5) R doesn't have units, not affected by units.  Whew!  Doesn't matter what measurement scale you use.  You can convert lbs - kg, ft-meters, etc, and not change r.
 
+6)   Doesn't matter which is x and y.  Same r.  
 
 
 
@@ -173,7 +188,6 @@ Lastly, it doesn't matter which variable is x (ie first) and which is y (ie seco
 
 
 
-When talking about correlation, the x and y variables have important roles:
 
 
 
@@ -184,11 +198,5 @@ When talking about correlation, the x and y variables have important roles:
 
 
 
-
-
-
-Important properties of *r*, correlation coefficient:
-
-  
 
 
