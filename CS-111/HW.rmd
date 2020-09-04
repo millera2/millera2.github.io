@@ -60,16 +60,17 @@ Problems:
 
 4)  In class on Friday Sept 04, we wrote a `for` loop to assign each employee in a list of employees a day of the week to work on.
 
-Your HW problem is to extend this program in the following way:
+- Your HW problem is to extend this program in the following way:
 
-- It should prompt the user (who we'll call "The Boss") to enter the list of employees, and the list of days in the week that the business is open.  This list can be arbitraily long, depending on what the user inputs. Use the `input()` function.  There are many reasonable ways to go about this.  
-- It should prompt the user for the list of days that the business is open.  You may assume that this list will be some subset of "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun". 
+  - It should prompt the user (who we'll call "The Boss") to enter the list of employees, and the list of days in the week that the business is open.  This list can be arbitraily long, depending on what the user inputs. Use the `input()` function.  There are many reasonable ways to go about this.  
+  - It should prompt the user for the list of days that the business is open.  You may assume that this list will be some subset of "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun". 
 
-There are two acceptable outputs:
+- There are two acceptable outputs:
 
-1)  Your program can print out the schedule in the same way we did in Lecture.  A correct solution like this will earn a maximum of 92% credit for this problem.
+  1)  Your program can print out the schedule in the same way we did in Lecture.  A correct solution like this will earn a maximum of 92% credit for this problem.
 
-2)  Your program can return a list of lists (one for each day of the work week) that show who works on which day.  For example, if the work week consists of Mon, Tue, Wed, Thurs, Fri, and the employee list is Ali, Ben, Charles, Deb, Ellie, Fred, Greg, Helen, Ian, Jack, then the output should be the followign list of lists:
+  2)  Your program can return a list of lists (one for each day of the work week) that show who works on which day.  
+      - For example, if the work week consists of Mon, Tue, Wed, Thurs, Fri, and the employee list is Ali, Ben, Charles, Deb, Ellie, Fred, Greg, Helen, Ian, Jack, then the output should be the followign list of lists:
 
 `[['Ali, Fred'], ['Ben', 'Greg'], ['Charles', 'Helen'], ['Deb', 'Ian'], ['Ellie', 'Jack']]`
 
