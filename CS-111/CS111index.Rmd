@@ -45,6 +45,7 @@ The work I do in those vids is availabe on this site below.
 
 - [Week 1](https://millera2.github.io/CS-111/Lec-01.html)
 - [Week 2](https://millera2.github.io/CS-111/Lec-02.html)
+- [Week 3](https://millera2.github.io/CS-111/Lec-03.html)
 
 ## Next Quiz
 
@@ -58,11 +59,7 @@ Key Skills:  Base-2 representations, truth tables, and basic binary concepts.
 
 ## HW Assignments
 
-**HW 2 so far** (more problems coming):
-
-- 2.2.7
-- 2.2.8
-
+HW 2 is up!
 
 
 [Here are the HW Assignment Descriptions](https://millera2.github.io/CS-111/HW.html)

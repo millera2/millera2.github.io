@@ -1,5 +1,5 @@
 ---
-title: "Math 120 Week 2"
+title: "Math 120 Week 3"
 author: "Ali Miller"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
@@ -177,6 +177,11 @@ WARNING:  Just because r is close to zero, that doesn't mean there's NO relation
 6)   Doesn't matter which is x and y.  Same r.  
 
 
+## Wednesday Sept 02
+
+Check the lecture video to see how to use Google Sheets to make scatterplots and compute correlation coefficients.
+
+Don't assume you can figure it out -- go learn some stuff!  ;D
 
 
 
@@ -192,6 +197,9 @@ WARNING:  Just because r is close to zero, that doesn't mean there's NO relation
 
 
 
+## Friday Sept 04
+
+### The "Best Fit" Line
 
 
 
@@ -200,3 +208,86 @@ WARNING:  Just because r is close to zero, that doesn't mean there's NO relation
 
 
 
+
+
+
+
+#### Algebra review:  lines
+
+
+
+
+
+
+
+
+
+
+#### Making predictions: x and y
+
+
+
+
+
+
+
+
+
+
+#### The Slope
+
+
+
+
+
+
+
+
+
+
+
+#### The Intercept
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### What makes it the "Best Fit"?  - Residuals
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### Analyzing Residuals -- Redidual plot
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### Coefficient of determination

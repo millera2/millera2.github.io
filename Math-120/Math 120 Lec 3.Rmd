@@ -183,8 +183,98 @@ Check the lecture video to see how to use Google Sheets to make scatterplots and
 
 Don't assume you can figure it out -- go learn some stuff!  ;D
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Friday Sept 04
 
+### The "Best Fit" Line
+
+
+
+
+
+
+
+
+
+
+
+
+#### Algebra review:  lines
+
+
+
+
+
+
+
+
+
+
+#### Making predictions: x and y
+
+
+
+
+
+
+
+
+
+
+#### The Slope
+
+
+
+
+
+
+
+
+
+
+
+#### The Intercept
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### What makes it the "Best Fit"?  - Residuals
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### Analyzing Residuals -- Redidual plot
 
 
 
@@ -200,10 +290,4 @@ Don't assume you can figure it out -- go learn some stuff!  ;D
 
 
 
-
-
-
-
-
-
-
+#### Coefficient of determination
