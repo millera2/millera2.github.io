@@ -49,11 +49,11 @@ The work I do in those vids is availabe on this site below.
 
 ## Next Quiz
 
-Lecture Coverage:  Week 2
+Lecture Coverage:  Week 3
 
-Book coverage: Section 1.3-1.4
+Book coverage: Section 2.1-2.4
 
-Key Skills:  Base-2 representations, truth tables, and basic binary concepts.
+Key Skills:  Arithmetic in python, floor and mod functions, handling data types, converting between strings and integers, using the `input()` function.
 
 
 
