@@ -46,6 +46,7 @@ The work I do in those vids is availabe on this site below.
 - [Week 1](https://millera2.github.io/Math-120/Math-120-Lec-1.html)
 - [Week 2](https://millera2.github.io/Math-120/Math-120-Lec-2.html)
 - [Week 3](https://millera2.github.io/Math-120/Math-120-Lec-3.html)
+- [Week 4](https://millera2.github.io/Math-120/Math-120-Lec-4.html)
 
 ## Next Quiz
 
@@ -57,7 +58,7 @@ Practice Problems:
 - 8.6, 8.7 (p314)
 - 8.11 (p315)
 - 8.17, 8.19 (p325)
-- 8.25 (all parts except **c**)
+- 8.23 (all parts except **c**)
 
 Topics inlude:
 
