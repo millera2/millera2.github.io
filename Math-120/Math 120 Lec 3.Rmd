@@ -435,26 +435,3 @@ REsidual = y - yhat
 ```
 
 In other words, our model under-approimated the cty mpg by 6.416mpg.  Error!
-
-
-
-
-
-
-#### Analyzing Residuals -- Redidual plot
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#### Coefficient of determination
