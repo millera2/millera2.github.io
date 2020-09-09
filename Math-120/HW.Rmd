@@ -46,13 +46,13 @@ Your goal is to create and analyze linear models for the following:
 
 For each, perform the following:
 
-  1) Make a scatterplot, and describe it's key features using language from lecture.
+  1) Make a scatterplot, and describe its key features using language from lecture.
   2) Compute the 5 key summary statistics:
     $\bar{x}$, $\bar{y}$, $s_x$, $s_y$, $r$
   3) Compute the equation of the least-squres line.
   4) Carefully interpret the slope of the line, as practiced in lecture.
   4) Make, and interpret, a residual plot.
-  5) Compute and interpret R^2.
+  5) Compute and interpret $R^2$.
 
 Everything should be neatly and clearly presented in a Google Docs report in complete English sentences and paragraphs.  Exported to .pdf.  
 
