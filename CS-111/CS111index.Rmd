@@ -46,6 +46,7 @@ The work I do in those vids is availabe on this site below.
 - [Week 1](https://millera2.github.io/CS-111/Lec-01.html)
 - [Week 2](https://millera2.github.io/CS-111/Lec-02.html)
 - [Week 3](https://millera2.github.io/CS-111/Lec-03.html)
+- [Week 4](https://millera2.github.io/CS-111/Lec-04.html)
 
 ## Next Quiz: Sept 09
 

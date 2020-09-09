@@ -426,6 +426,143 @@ Here, resid =
 
 Our linear model under-approximated the cty mpg by 3.92.  That's the error for this observation (the green line).
 
+# Week 4
+
+## Monday Sept 07
+
+### Warm-up example: mpg
+
+## Monday Sept 7
+
+#### Warm-up example
+
+Suppose we wish to predict cty fuel efficiency based upon engine size (displ).  We find the following summary stats:
+
+THus, x = displ and y = cty
+
+Mean displacement: 3.472 L   xbar
+Mean cty mpg: 16.859 mpg     ybar
+Stdev displacement: 1.292 L  s_x
+Stddev cty mpg: 4.256 mpg    s_y
+correlation coeff = -0.799   r
+
+1) Find the equation for the least-squares line.
+
+
+slope =b_1 = r*s_y/s_x
+
+```{r}
+-.799*4.256/1.292
+```
+
+int = b_0 = ybar - b_1*xbar
+
+```{r}
+16.859 - (-2.632)*3.472
+```
+
+
+yhat = 25.996-2.632x
+
+
+```{r}
+mpg %>% ggplot(aes(displ,cty))+geom_point()+geom_smooth(method="lm")
+```
+
+2)  Suppose a new car has engine size 2.1L and cty mpg of 23mpg.
+
+What cty mpg would our model predict?
+
+Answer: plug in x=2.1.
+
+```{r}
+25.996-2.632*2.1
+```
+
+3) Compute the residual for the car in #2.
+
+Residuals are errors in approximation.  
+
+resid = y- yhat
+      = observed - expected
+      = 23 - 20.469
+      
+```{r}
+23-20.469
+```
+
+Our model under-approximated mpg by 2.531mpg.
+
+### Interpreting Slope and Intercept
+
+In general, slope means steepness.  More specifically:  if x increases by 1 unit, we expect y to change by the slope.  
+
+In mpg model, slope was -2.632.
+
+If engine size increases by 1 L, we expect/predict fuel efficiency to decrease by 2.632mpg.
+
+
+In general, the y-int is the y-val when x=0.  More specifically, the y-int is our prediction/expection for y when x is zero units.
+
+
+If a car's engine is 0L big (huh???), we expect it to have cty mpg of 25.996.
+
+Doesn't seem to make sense.  Why?  **Extrapolation** is when we predict based upon "bad" x values well outside the range of observations in our data.
+
+There's no reason to expect that the linear pattern continuous outside of our observations. 
+
+Junk in, junk out!
+
+
+
+## Analyzing Residuals
+
+Need to say smart things about residuals (errors) so we know how "good" the model is.
+
+Visual summary:  residual plot, ie a scatterplot where the y-coords show residuals.
+
+x = original x data
+y = residual (error) for those x values.
+
+Literally shows error for each measurement.
+
+**Example** Plot residuals for mpg model above.
+
+Original data:
+
+x = displ
+y = cty mpg
+
+
+```{r}
+myModel <- lm(mpg$cty~mpg$displ)
+
+qplot(mpg$displ, myModel$residuals)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
