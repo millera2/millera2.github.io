@@ -83,7 +83,7 @@ Wanna know what's going on?  Read this stuff!
 
 [Click here for HW assignments](https://millera2.github.io/Math-120/HW.html)
 
-Next HW due:  Sept 4 by 5pm on Notebowl.  File format: .pdf document.
+Next HW due:  Sept 18 by 5pm on Notebowl.  File format: .pdf document.
 
 
 ## Syllabus
@@ -129,3 +129,7 @@ I think this will be better than setting aside specific times that work for ever
 - [Math 120 Textbook](https://www.openintro.org/stat/textbook.php?stat_book=os)
   - *OpenIntro Statistics* is an excellent, free introduction to modern statistical analysis.
   
+```{r}
+mpg %>% write_csv("mpg.csv")
+```
+
