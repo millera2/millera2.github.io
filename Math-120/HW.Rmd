@@ -54,7 +54,7 @@ For each, perform the following:
   4) Make, and interpret, a residual plot.
   5) Compute and interpret R^2.
 
-Everything should be neatly, clearly presented in a Google Docs report, exported to .pdf.  
+Everything should be neatly and clearly presented in a Google Docs report in complete English sentences and paragraphs.  Exported to .pdf.  
 
 Late HW will not be accepted for any reason.  Students may turn in HW early, of course.
 
