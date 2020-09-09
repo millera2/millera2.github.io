@@ -31,6 +31,34 @@ theme_set(theme_tufte() +
 #------------------------------------------------#
 ```
 
+# HW 2 - What's In Your Breakfast Cereal?
+
+Due Friday Sept 18 by 5pm on Notebowl.  Submit as .pdf document, just like HW 1.
+
+For this HW you'll be looking at data on a selection of common breakfast cereals.  [Find the data here](https://docs.google.com/spreadsheets/d/1U6P9UEVwQiEZGFoX0CndcZXRqj8UN1bEeRlwFFB1xAY/edit?usp=sharing)
+
+(For the record, I'm a Honey Bunches of Oats woman, myself.)
+
+Your goal is to create and analyze linear models for the following:
+
+- Predict `Fiber` based on `Potassium`
+- Predict `Protein` based on `Sugar`.
+
+For each, perform the following:
+
+  1) Make a scatterplot, and describe it's key features using language from lecture.
+  2) Compute the 5 key summary statistics:
+    $\bar{x}$, $\bar{y}$, $s_x$, $s_y$, $r$
+  3) Compute the equation of the least-squres line.
+  4) Carefully interpret the slope of the line, as practiced in lecture.
+  4) Make, and interpret, a residual plot.
+  5) Compute and interpret R^2.
+
+Everything should be neatly, clearly presented in a Google Docs report, exported to .pdf.  
+
+Late HW will not be accepted for any reason.  Students may turn in HW early, of course.
+
+
 # HW 1  - Investigating the Iris Data
 
 Due Friday Sept 4 on Notebowl by 5pm as a **.pdf document.**
