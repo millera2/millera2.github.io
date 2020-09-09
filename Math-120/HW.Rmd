@@ -35,7 +35,7 @@ theme_set(theme_tufte() +
 
 Due Friday Sept 18 by 5pm on Notebowl.  Submit as .pdf document, just like HW 1.
 
-For this HW you'll be looking at data on a selection of common breakfast cereals.  [Find the data here](https://docs.google.com/spreadsheets/d/1U6P9UEVwQiEZGFoX0CndcZXRqj8UN1bEeRlwFFB1xAY/edit?usp=sharing)
+For this HW you'll be looking at data on a selection of common breakfast cereals.  [Find the data here](https://docs.google.com/spreadsheets/d/1bkgXy3AP8MBGS98_Qhb4Df9L2y0Mjw7YtepJC7H5-9w/edit?usp=sharing)
 
 (For the record, I'm a Honey Bunches of Oats woman, myself.)
 
