@@ -99,8 +99,8 @@ Your script should contain the following functions:
   
 Grading:  
 
-- To earn a C, students must at least implement the `makeSquare`, `makeTriangle`, and `main` functions  without errors and according to the specifications, along with the docstring.  
-- If, in addition, students can implement any ONE of the `spread`, `zoom`, or `slide` functions, then they can earn a B.
+- To earn a maximum of C, students must at least implement the `makeSquare`, `makeTriangle`, and `main` functions  without errors and according to the specifications, along with the docstring.  
+- If, in addition, students can implement any ONE of the `spread`, `zoom`, or `slide` functions, then they can earn a max grade of B.
 - To earn an A, students must implement all functions with correct code, **clear style and presentation**, docstrings, and **comments**.
 - If students add any extra bells and whistles (beyond the full specifications of the assignment), they'll additionally earn Prof. Miller's respect (a very valuable commodity).  ;D
 
