@@ -42,6 +42,58 @@ Homework solutions will be graded on the following critera:
 - Creativity, ingenuity, and elegance demonstrated in a student's ideas and insights.
 
 
+# HW 3 Due Friday 9/25 by 5pm
+
+(Under construction, not finished!)
+
+File Format: turn in a .py script file to NoteBowl.  The name should be lastname_firstname_hw3.py.  For example:
+
+`lovelace_ada_hw3.py`
+
+This HW will focus on the `turtle` library discussed in class.  The goal of the program is to allow the user to create 
+
+Your script should contain the following functions:
+
+- `makeSquare(tortise, heading, x, y, length, fillColor)`
+
+  - The argument `tortise` will be a turtle object, 
+  - `heading` is the initial heading in degrees $(0^\circ=$ due east and $180^\circ=$ due west, as in a circle$)$,
+  - `x` and `y` are the lower-left coordinates of the square, 
+  - `length` is the side length of the square, and 
+  - `fillColor` is the color that will be filled in the square.  If you wanna flex, you can add additional arguments, but they should come **after** the five listed above and should all be optional (i.e., have defaults).
+  
+- `makeTriangle`, a similar function called  that takes the same arguments but draws triangles.
+
+- `spread`  (arguments are up to you)
+  This function should be able to make a "spread" of either squares or triangles (depending on input). See example picture below.  Details not specified here are up to you.  
+
+![](https://millera2.github.io/CS-111/Img/hw3_1.png)  
+
+- `zoom` (arguments up to you)
+  This function should make a "zoom" of squares or triangles (depending on input).  See picture below.  Details not specified here are up to you.
+  
+![](https://millera2.github.io/CS-111/Img/hw3_2.png)   
+  
+- `slide` (arguments up to you)
+  This function should slide an input shape, either squares or triangles.  See picture below.  Details not specified here are up to you.
+
+![](https://millera2.github.io/CS-111/Img/hw3_3.png) 
+
+- A `main()` function that controls the logic of the program.  
+
+
+  Your program should use the `input()` function to prompt the user for the following:
+  - Triangles or Squares?
+  - Side length?
+  - Color?
+  - Spread, Zoom, or Slide?
+  The program should then draw the object requested by the user.
+  
+  
+
+
+
+
 # HW 2 Due Friday 9/11 by 5pm
 
 File Format: turn in the .ipynb file for your notebook.  Name it with this format:

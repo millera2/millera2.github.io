@@ -1,0 +1,1 @@
+import pandas#%%newDF = pandas.read_csv("Cereal_Data.csv")1+1
