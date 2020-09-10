@@ -67,17 +67,17 @@ Your script should contain the following functions:
 - `spread`  (arguments are up to you)
   This function should be able to make a "spread" of either squares or triangles (depending on input). See example picture below.  Details not specified here are up to you.  
 
-![](https://millera2.github.io/CS-111/Img/hw3_1.png)  
+![](https://millera2.github.io/CS-111/Img/hw3_1.png =300x300)  
 
 - `zoom` (arguments up to you)
   This function should make a "zoom" of squares or triangles (depending on input).  See picture below.  Details not specified here are up to you.
   
-![](https://millera2.github.io/CS-111/Img/hw3_2.png)   
+![](https://millera2.github.io/CS-111/Img/hw3_2.png = 300x300)   
   
 - `slide` (arguments up to you)
   This function should slide an input shape, either squares or triangles.  See picture below.  Details not specified here are up to you.
 
-![](https://millera2.github.io/CS-111/Img/hw3_3.png)  
+![](https://millera2.github.io/CS-111/Img/hw3_4.png =300x300)  
 
 - A `main()` function that controls the logic of the program.  
 
