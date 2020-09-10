@@ -93,7 +93,7 @@ Your script should contain the following functions:
   
 Grading:  
 
-- Students can still earn a max of 75/100 if they implement the code for `makeSquare`, `makeTriangle`, and `main`  without errors, according to the specifications.  
+- Students can still earn a max of 75/100 if they implement the code for `makeSquare` and `makeTriangle` without errors, according to the specifications.  This assumes that students have also implemented a `main()` function as described above.
 - If, in addition, students can implement any ONE of the `spread`, `zoom`, or `slide` functions, then they can earn a max of 85/100.
 - **For all of the above options**: in order to earn a maximum score, students must implement all functions with correct code, clean style and presentation, docstrings, and **comments**.
 - If students add any extra bells and whistles (beyond the full specifications of the assignment), they'll additionally earn Prof. Miller's respect.  It's a very valuable commodity.  ;D
