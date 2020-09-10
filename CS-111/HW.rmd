@@ -92,6 +92,10 @@ Your script should contain the following functions:
   - Spread, Zoom, or Slide?
   The program should then draw the object requested by the user.
   
+- A **docstring** that: 
+  1) explains how functional abstraction was used in this assignment, and
+  2) demonstrates that you've reflected about the concept of functional abstraction and why we keep talking about it.
+  
 Grading:  
 
 - Students can still earn a max of 75/100 if they implement the code for `makeSquare`, `makeTriangle`, and `main`  without errors, according to the specifications.  
