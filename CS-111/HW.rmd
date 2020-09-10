@@ -65,18 +65,18 @@ Your script should contain the following functions:
 - `makeTriangle`, a similar function called  that takes the same arguments but draws triangles.
 
 - `spread`  (arguments are up to you)
-  This function should be able to make a "spread" of either squares or triangles (depending on input). See example picture below.  Details not specified here are up to you.  
+  This function should be able to make a "spread" of either squares or triangles (depending on input). See example picture below.  Details not specified here are up to you.  Choose wisely.
 
 ![](https://millera2.github.io/CS-111/Img/hw3_1.png){width=50%}  
 
 - `zoom` (arguments up to you)
-  This function should make a "zoom" of squares or triangles (depending on input).  See picture below.  Details not specified here are up to you.
+  This function should make a "zoom" of squares or triangles (depending on input).  See picture below.  Details not specified here are up to you.  Choose wisely.
   
 ![](https://millera2.github.io/CS-111/Img/hw3_2.png){width=50%} 
 
   
 - `slide` (arguments up to you)
-  This function should slide an input shape, either squares or triangles.  See picture below.  Details not specified here are up to you.
+  This function should slide an input shape, either squares or triangles.  See picture below.  Details not specified here are up to you.  Choose wisely.
 
 ![](https://millera2.github.io/CS-111/Img/hw3_4.png){width=50%}   
 
@@ -87,12 +87,16 @@ Your script should contain the following functions:
   - Triangles or Squares?
   - Side length?
   - Color?
+  - Starting coordinates?
   - Spread, Zoom, or Slide?
   The program should then draw the object requested by the user.
   
-  
+Grading:  
 
-
+- Students can still earn a max of 75/100 if they implement the code for `makeSquare` and `makeTriangle` without errors, according to the specifications.
+- If, in addition, students can implement any ONE of the `spread`, `zoom`, or `slide` functions, then they can earn a max of 85/100.
+- **For all of the above options**: in order to earn a maximum score, students must implement all functions with correct code, clean style and presentation, docstrings, and **comments**.
+- If students add any extra bells and whistles (beyond the full specifications of the assignment), they'll additionally earn Prof. Miller's respect.  It's a very valuable commodity.  ;D
 
 
 # HW 2 Due Friday 9/11 by 5pm
