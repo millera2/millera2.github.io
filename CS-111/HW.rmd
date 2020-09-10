@@ -90,6 +90,7 @@ Your script should contain the following functions:
   - Color?
   - Starting coordinates?
   - Spread, Zoom, or Slide?
+  Based upon these user inputs, the function should draw the appropriate figures.
   The program should then draw the object requested by the user.
   
 - A **docstring** that: 
