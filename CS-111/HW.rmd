@@ -46,7 +46,6 @@ All code should be written **individually** by the student, unless otherwise spe
 
 # HW 3 Due Friday 9/25 by 5pm
 
-**(Under construction, not finished!)**
 
 File Format: turn in a .py script file to NoteBowl.  The name should be lastname_firstname_hw3.py.  For example:
 
