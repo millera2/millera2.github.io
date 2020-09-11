@@ -41,16 +41,17 @@ Homework solutions will be graded on the following critera:
 - Demonstration of the student's understanding of the material.
 - Creativity, ingenuity, and elegance demonstrated in a student's ideas and insights.
 
+All code should be written **individually** by the student, unless otherwise specified in the HW.  Students are encouraged to work together, but sharing code is a violation of academic dishonesty.
+
 
 # HW 3 Due Friday 9/25 by 5pm
 
-**(Under construction, not finished!)**
 
 File Format: turn in a .py script file to NoteBowl.  The name should be lastname_firstname_hw3.py.  For example:
 
 `lovelace_ada_hw3.py`
 
-This HW will focus on the `turtle` library discussed in class.  The goal of the program is to allow the user to create 
+This HW will focus on the `turtle` library discussed in class.  The goal of the program is to allow the user to create shape patterns based on their input.
 
 Your script should contain the following functions:
 
@@ -60,9 +61,11 @@ Your script should contain the following functions:
   - `heading` is the initial heading in degrees $(0^\circ=$ due east and $180^\circ=$ due west, as in a circle$)$,
   - `x` and `y` are the lower-left coordinates of the square, 
   - `length` is the side length of the square, and 
-  - `fillColor` is the color that will be filled in the square.  If you wanna flex, you can add additional arguments, but they should come **after** the five listed above and should all be optional (i.e., have defaults).
+  - `fillColor` is the color that will be filled in the square.  You may assume that the input either [one of the valid, built-in color strings](https://www.w3schools.com/cssref/css_colors.asp) or a hex tuple (see p74 of your text).  
+  - Do not use the built-in `shape()` function.
+  - If you wanna flex, you can add additional arguments, but they should come **after** the five listed above and should all be optional (i.e., have defaults).
   
-- `makeTriangle`, a similar function called  that takes the same arguments but draws triangles.
+- `makeTriangle`, a similar function called  that takes the same arguments but draws triangles.  Do not use the built-in `shape()` function.
 
 - `spread`  (arguments are up to you)
   This function should be able to make a "spread" of either squares or triangles (depending on input). See example picture below.  Details not specified here are up to you.  Choose wisely.
@@ -72,13 +75,14 @@ Your script should contain the following functions:
 - `zoom` (arguments up to you)
   This function should make a "zoom" of squares or triangles (depending on input).  See picture below.  Details not specified here are up to you.  Choose wisely.
   
-![](https://millera2.github.io/CS-111/Img/hw3_2.png){width=50%} 
+![](https://millera2.github.io/CS-111/Img/hw3_4.png){width=50%} 
 
   
 - `slide` (arguments up to you)
   This function should slide an input shape, either squares or triangles.  See picture below.  Details not specified here are up to you.  Choose wisely.
 
-![](https://millera2.github.io/CS-111/Img/hw3_4.png){width=50%}   
+![](https://millera2.github.io/CS-111/Img/hw3_2.png){width=50%} 
+
 
 - A `main()` function that controls the logic of the program.  
 
@@ -89,14 +93,19 @@ Your script should contain the following functions:
   - Color?
   - Starting coordinates?
   - Spread, Zoom, or Slide?
+  Based upon these user inputs, the function should draw the appropriate figures.
   The program should then draw the object requested by the user.
+  
+- A **docstring** that: 
+  1) explains how functional abstraction was used in this assignment, and
+  2) demonstrates that you've reflected about the concept of functional abstraction and why we keep talking about it.
   
 Grading:  
 
-- Students can still earn a max of 75/100 if they implement the code for `makeSquare` and `makeTriangle` without errors, according to the specifications.  This assumes that students have also implemented a `main()` function as described above.
-- If, in addition, students can implement any ONE of the `spread`, `zoom`, or `slide` functions, then they can earn a max of 85/100.
-- **For all of the above options**: in order to earn a maximum score, students must implement all functions with correct code, clean style and presentation, docstrings, and **comments**.
-- If students add any extra bells and whistles (beyond the full specifications of the assignment), they'll additionally earn Prof. Miller's respect.  It's a very valuable commodity.  ;D
+- To earn a maximum of C, students must at least implement the `makeSquare`, `makeTriangle`, and `main` functions  without errors and according to the specifications, along with the docstring.  
+- If, in addition, students can implement any ONE of the `spread`, `zoom`, or `slide` functions, then they can earn a max grade of B.
+- To earn an A, students must implement all functions with correct code, **clear style and presentation**, docstrings, and **comments**.
+- If students add any extra bells and whistles (beyond the full specifications of the assignment), they'll additionally earn a stoic nod from Prof. Miller. 
 
 
 # HW 2 Due Friday 9/11 by 5pm
