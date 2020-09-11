@@ -51,7 +51,7 @@ File Format: turn in a .py script file to NoteBowl.  The name should be lastname
 
 `lovelace_ada_hw3.py`
 
-This HW will focus on the `turtle` library discussed in class.  The goal of the program is to allow the user to create 
+This HW will focus on the `turtle` library discussed in class.  The goal of the program is to allow the user to create shape patterns based on their input.
 
 Your script should contain the following functions:
 
