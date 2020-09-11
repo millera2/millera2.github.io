@@ -62,9 +62,10 @@ Your script should contain the following functions:
   - `x` and `y` are the lower-left coordinates of the square, 
   - `length` is the side length of the square, and 
   - `fillColor` is the color that will be filled in the square.  You may assume that the input either [one of the valid, built-in color strings](https://www.w3schools.com/cssref/css_colors.asp) or a hex tuple (see p74 of your text).  
+  - Do not use the built-in `shape()` function.
   - If you wanna flex, you can add additional arguments, but they should come **after** the five listed above and should all be optional (i.e., have defaults).
   
-- `makeTriangle`, a similar function called  that takes the same arguments but draws triangles.
+- `makeTriangle`, a similar function called  that takes the same arguments but draws triangles.  Do not use the built-in `shape()` function.
 
 - `spread`  (arguments are up to you)
   This function should be able to make a "spread" of either squares or triangles (depending on input). See example picture below.  Details not specified here are up to you.  Choose wisely.
