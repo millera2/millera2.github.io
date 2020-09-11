@@ -30,16 +30,13 @@ theme_set(theme_tufte() +
 
 studentSurvey <- read_csv("Student Data.csv")
 deathPenaltyData <- read_csv("death penalty data.csv")
-
+housingData <- read_csv("../Data/House-Sales.csv")
 #------------------------------------------------#
 ```
 
+# Monday Sept 7
 
-# Week 4
-
-## Monday Sept 7
-
-#### Warm-up example
+## Warm-up example
 
 Suppose we wish to predict cty fuel efficiency based upon engine size (displ).  We find the following summary stats:
 
@@ -110,7 +107,7 @@ Junk in, junk out!  There's no reason to expect that the pattern continues outsi
 
 
 
-### Analyzing residuals.
+## Analyzing residuals.
 
 Remember, residuals are errors.  So, understanding them is important in understanding how "good" the model.
 
@@ -128,10 +125,129 @@ qplot(mpg$displ, myModel$residuals)
 ```
 
 
+# Friday Sept 09
+
+## Interpreting Residuals (continued)
+
+
+Recall:  residuals are errors.
+
+The residual plot shows:
+
+x-axis:  original x data
+y-axis:  residuals (y-yhat)
+
+It's a picture of all the errors!
+
+Q: What observations do we wanna make?
+
+1) Is there a pattern?
+
+  - Homoskedasticity: the residuals are evenly spread across the range of x values (Good!  **No pattern**, linear model is good.)
+  
+  
+  - Heteroskedasticy:  The magnitude of the residuals tends to be bigger in some areas than others.  The linear model is doing very poorly in some ranges of x values.  Suggests that linear model isn't the best.
+  
+  - Curve pattern.  Parabola, exponenital, any kind of swoosh.  This shape suggests our errors are **predictable**!  I.e., we ought to be able to do better.  Linear model might not be the best.
+  
+  
+![](https://www.researchgate.net/profile/Akhmad_Fauzy/publication/319091775/figure/fig2/AS:526826008846336@1502616516067/Example-of-homoscedasticity-Ideally-residuals-are-randomly-scattered-around-0-the.png)  
+  
+**Real-world Example of Heterskedasticity**
+
+Data:  Housing data.  Sale price, sqft, num of bath, num of bed, et etc
+
+```{r}
+head(housingData)
+```
+
+Make a model:  predict price based upon sqft_living.  
+
+Here's the residual plot:
+
+```{r}
+houseModel <- lm(price~sqft_living, data=housingData)
+
+qplot(housingData$sqft_living, houseModel$residuals)
+```
+
+Strong heteroskedasticity!!!
+
+Does this make sense?  
+
+Summarize:  for "normal" houses, the model does a good job (small residual).  
+
+BUt, for huge houses, the model has big residuals (error!) both pos and negative.  Much more variability for these "unususal" houses.
+
+WARNING:  homo vs heteroskedasticity ONLY describes RESIDUALS, not the original data!
+
+Back to observations about residuals....
+
+2) Do the residuals follow a "normal"/"bell-curve" distribution?
+
+We hope that the residuals DO follow a normal dist: ie unimodal, bump in the middle, symmetric tails.
+
+If the residuals show strong skew, suggests that the linear model ISN'T the best.
+
+To decide:  make a histogram of residuals!
+
+**Example:  Mpg Data**
+
+We can see some fairly strong right skew.  Suggests that linear model isn't the best.
 
 
 
 
 
 
-#### Coefficient of determination
+
+## Coefficient of determination:  R^2
+
+The coeff of det is another way, in addition to a residual plot, of characterising how good our linear model.
+
+Computing is easy:  literally (r)^2.  I.e., (correlation coeff)^2
+
+But, special, seperate, important interpretation:  R^2 is the percent of variation in the y data (up-and-down variation) that BECAUSE OF/ DUE TO the linear relationship between x and y.
+
+We know that the x variable isn't the ONLY thing affecting y.  Think height and weight:  a person's weight doensn't depend ONLY on their height, right?  However, height has to affect it somehow!  That's what R^2 measures!
+
+**Example:  height and weight from quiz**
+
+Suppose we collect medical information from 100 adult men ages 30-39.  We find that their average height is 68.7 inches with std dev 3.4 inches.  Also, we find that their average weight is 178 lbs with std dev 8.2 lbs.  The correlation between height and weight is 0.784.
+
+xbar = 68.7
+sx = 3.4
+ybar = 178
+sy = 8.2
+r = 0.784
+
+Slope:
+```{r}
+0.784*8.2/3.4
+```
+Int:
+```{r}
+178-1.891*68.7
+```
+
+yhat = 48.088+1.891x
+
+1) Interpret the slope and intercept of this model.  What do they tell us about these men?
+
+For every additional inch taller, we expect/predict a man to weight 1.891 lbs more.
+
+If a man is zero inches tall, we expect him to weigh 48.088 lbs (extrapolation!  bad!)
+
+At the same time, we know height isn't the ONLY factor?  How much does it account for?  Answer:  R^2!!
+
+```{r}
+0.784^2
+```
+
+In other words, about 61.5% of the variation present in men's weights is due to the relationship between height and weight.
+
+Monday topic: how outliers affect linear models 8.3!!
+
+
+
+

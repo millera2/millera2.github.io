@@ -50,24 +50,22 @@ The work I do in those vids is availabe on this site below.
 
 ## Next Quiz
 
-Coverage:  Week 3
+Coverage:  Week 4
+
+Topics:
+- interpreting slope and intercept of regression line in context of model
+- interpreting residual plot, understanding key features, support (or not) for linear model
+- understanding coefficient of determination, explaining in context
 
 Practice Problems:
 
-- 8.5 (p313)
-- 8.6, 8.7 (p314)
-- 8.11 (p315)
-- 8.17, 8.19 (p325)
-- 8.23 (all parts except **c**)
+- 8.17 (p325)
+- 8.19 (p325)
+- 8.21 (p325)
+- 8.23c (p326)
+- 8.25bcd (p237)
 
-Topics inlude:
 
-- Interpreting Scatterplots
-- Understanding the correlation coefficient and its properties
-- Basics of least squres line
-  - finding equation from summary statistics
-  - explaining what the coefficients mean
-- Meaning of residuals
 
 ## Reading Assignments
 
