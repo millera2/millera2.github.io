@@ -4,7 +4,7 @@
 import turtle
 
 
-def drawSquare(myTurtle, x, y, sideLength=defaultSideLength):     # def for square function
+def drawSquare(myTurtle, x, y, sideLength=100):     # def for square function
     myTurtle.goto(x,y)                              # set startin place for turtle
     for i in range(4):                              # need to repeat 4 times
         myTurtle.forward(sideLength)

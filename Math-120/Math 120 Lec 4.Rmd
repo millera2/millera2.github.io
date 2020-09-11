@@ -201,7 +201,7 @@ We can see some fairly strong right skew.  Suggests that linear model isn't the 
 
 
 
-## Coefficient of determination:  R^2
+## Coefficient of determination:  $R^2$
 
 The coeff of det is another way, in addition to a residual plot, of characterising how good our linear model.
 

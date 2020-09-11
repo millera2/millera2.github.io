@@ -1756,7 +1756,7 @@ summary {
 </ul></li>
 <li><a href="#friday-sept-09">Friday Sept 09</a><ul>
 <li><a href="#interpreting-residuals-continued">Interpreting Residuals (continued)</a></li>
-<li><a href="#coefficient-of-determination-r2">Coefficient of determination: R^2</a></li>
+<li><a href="#coefficient-of-determination-r2">Coefficient of determination: <span class="math inline">\(R^2\)</span></a></li>
 </ul></li>
 </ul>
 </div>
@@ -1860,7 +1860,7 @@ qplot(housingData$sqft_living, houseModel$residuals)</code></pre>
 <p>We can see some fairly strong right skew. Suggests that linear model isn’t the best.</p>
 </div>
 <div id="coefficient-of-determination-r2" class="section level2">
-<h2>Coefficient of determination: R^2</h2>
+<h2>Coefficient of determination: <span class="math inline">\(R^2\)</span></h2>
 <p>The coeff of det is another way, in addition to a residual plot, of characterising how good our linear model.</p>
 <p>Computing is easy: literally (r)^2. I.e., (correlation coeff)^2</p>
 <p>But, special, seperate, important interpretation: R^2 is the percent of variation in the y data (up-and-down variation) that BECAUSE OF/ DUE TO the linear relationship between x and y.</p>
