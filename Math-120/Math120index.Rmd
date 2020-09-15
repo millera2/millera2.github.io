@@ -76,6 +76,8 @@ Wanna know what's going on?  Read this stuff!
 - Due 9/04:  Textbook 8.1
 - Due 9/07:  Textbook 8.2
 - Due 9/12:  Textbook 8.3
+- Due 9/18:  [Empirical Rule](https://www.statisticshowto.com/empirical-rule-2/) (Nice simple explanation and cute short video)
+- Due 9/18:  Texbook 2.1 (p49-50 about *box plots*), Texbtook 4.1 (p134-135 *about z-scores*)
 
 ## HW Assignments
 
