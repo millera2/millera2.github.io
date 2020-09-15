@@ -1,5 +1,5 @@
 ---
-title: "Math 120 Week 3"
+title: "Math 120 Week 4"
 author: "Ali Miller"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
@@ -30,15 +30,15 @@ theme_set(theme_tufte() +
 
 studentSurvey <- read_csv("Student Data.csv")
 deathPenaltyData <- read_csv("death penalty data.csv")
+housingData <- read_csv("../Data/House-Sales.csv")
 
 #------------------------------------------------#
 ```
 
-# Math 120 Week 3
 
-## Monday Aug 31
+# Monday Aug 31
 
-### Describing Two Quantitative Variables (Bivariate Data)
+## Describing Two Quantitative Variables (Bivariate Data)
 
 Bivariate data is two paired quantitative variables.  I.e., two measurements from the same individuals/cases.
 
@@ -541,6 +541,78 @@ qplot(mpg$displ, myModel$residuals)
 ```
 
 
+## Friday 9-09
+
+
+### Analyzing Residuals (Continued)
+
+Recall, residuals are errors.
+
+A residual plot is an x-y plot:
+
+x-axis:  original x data
+y-axis:  residuals (y-yhat)
+
+The residual plot gives a picture of all errors.  Important tool for deciding how "good" our model and its predictions are.
+
+Let's talk about smart observations we can make for residual plots:
+
+
+
+1) Shape/Pattern.  Is there evidence of a pattern?
+
+Idea:  pattern indicates that errors (residuals) are predictable!  Shouldn't we be able to make a better model?  Pattern -> linear model might not be the best.
+
+What's a pattern?  Few options:
+
+- curve/polynomial pattern.  Example:  mpg data with x=displ and y=cty.  
+
+
+Another common shape feature:  homoskedasticity vs heteroskedasticity.
+
+- Homoskedastic: residuals tend to be evenly distributed (same magnitude) across the range of x values.  No discernable pattern, blob, suggests we can't do better than the linear model.  I.e., line is good!
+
+- Heteroskedastic: residuals have higher magnitude in some ranges, smaller magnitude in others. This is an example of a "pattern".  Our linear model does well in some ranges, but bad in others.  Suggests that the linear model isn't the best.
+
+
+**Example: housing data**
+
+Dataset:  records for about 20,000 houses in the Seattle-Tacoma area
+
+```{r}
+head(housingData)
+```
+
+Consider this model:  predicting price based upon sqft_living.
+
+Let's look at the residuals:
+
+```{r}
+houseModel = lm(price~sqft_living, data=housingData)
+
+qplot(housingData$sqft_living, houseModel$residuals)
+```
+
+Strongly heteroskedastic!  Suggest linear model isn't the best.
+
+Does this make sense?  Probably:  the "normal" houses have relatively small residual, the unusually large houses have large residuals, both + and -.  
+
+
+Back to analyzing residuals...
+
+2) Distribution of residuals should be roughly normal.
+
+Normal = "bell curve" = unimodal, bump in the middle, symmetric tails.
+
+If roughly normal, supports the use of the linear model.  Ie, good!
+
+If skew or not normal, suggests linear model isn't the best.
+
+Easy to check:  make a histo of the residuals.
+
+**Example: mpg data**
+
+Looking at the residuals from lab, we see strong right skew.  Suggests that the linear model isn't the best.
 
 
 
@@ -559,6 +631,28 @@ qplot(mpg$displ, myModel$residuals)
 
 
 
+#### Coefficient of determination: R^2
+
+R^2 is another important tool/diagnostic for deciding how good our model is.  
+
+Easy to compute:  (R)^2
+
+But, R^2 has important distinct meaning:  R^2 is the percentage of the variation in the y data that's due to/because of the linear relationship between y and x.
+
+Example: quiz:
+
+
+Suppose we collect medical information from 100 adult men ages 30-39.  We find that their average height is 68.7 inches with std dev 3.4 inches.  Also, we find that their average weight is 178 lbs with std dev 8.2 lbs.  The correlation between height and weight is 0.784.
+
+r^2:
+
+```{r}
+0.784^2
+```
+
+We know that height isn't the only factor that determines weight.  But certainly, it's a factor.  From R^2, we see:  61.5% of the variation in men's weight is due to the linear relationship between height and weight.
+
+Monday:  read about outliers!  8.3
 
 
 
@@ -567,28 +661,3 @@ qplot(mpg$displ, myModel$residuals)
 
 
 
-
-
-
-
-
-
-
-
-#### Analyzing Residuals -- Redidual plot
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#### Coefficient of determination

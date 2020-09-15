@@ -63,7 +63,7 @@ Practice Problems:
 - 8.19 (p325)
 - 8.21 (p325)
 - 8.23c (p326)
-- 8.25bcd (p237)
+- 8.25bcd (p237) (Here, slope = 2.559 and intercept = -29.901)
 
 
 
@@ -127,7 +127,4 @@ I think this will be better than setting aside specific times that work for ever
 - [Math 120 Textbook](https://www.openintro.org/stat/textbook.php?stat_book=os)
   - *OpenIntro Statistics* is an excellent, free introduction to modern statistical analysis.
   
-```{r}
-mpg %>% write_csv("mpg.csv")
-```
 

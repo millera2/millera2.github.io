@@ -1,0 +1,150 @@
+---
+title: "Math 120 Week 4"
+author: "Ali Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: hide
+    theme: yeti
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+studentSurvey <- read_csv("Student Data.csv")
+deathPenaltyData <- read_csv("death penalty data.csv")
+housingData <- read_csv("../Data/House-Sales.csv")
+
+#------------------------------------------------#
+```
+
+
+# Monday Sep 14
+
+## Quiz 
+
+
+
+
+
+
+
+
+
+
+
+## Effects of outliers on linear regression
+
+Always need to *look* at the scatter plot to check for outliers.  Outliers can have a variety of effects.
+
+- An outlier could make a weak relationship seem strong. (iris examle)
+- Or, an outlier could make a strong relationship seem weak (mpg example)
+- It might not have much effect at all.
+
+Morals of the story:
+
+- outliers can have all sorts of effects (stronger, weaker, mnot much chang)
+- always need to look at scatterplot
+- perform analysis both ways: with and without outliers.
+
+
+
+
+
+
+
+
+
+
+
+
+## What's an outlier -- IQR Method
+
+Intuition: outliers are "unusual" values in a dataset.
+
+Need an objective tool to decide what values are (and are not) outliers.
+
+
+IQR Method:  All numbers that are either
+
+- smaller than Q1 - 1.5*IQR or
+- bigger than Q3 + 1.5*IQR
+
+are outliers.
+
+**Example:  Exam scores:**
+
+75, 76, 79, 80, 80, 81, 82, 83, 84, 99
+
+We see that Q1 = 79, Q3 = 83, IQR = 4
+
+Compute cutoffs:
+
+Low:
+```{r}
+79 - 1.5*4
+```
+Upper:
+```{r}
+83+1.5*4
+```
+
+Since 99 is larger, it's an outlier!
+
+Note, this is an arbitrary (but frequently used) standard.  
+
+Some texts define an "extreme" outlier as one that's 3 IQRS away from Q1, Q2 (as opposed to 1.5).
+
+
+
+
+
+
+
+
+
+
+## What's an outlier - z score method
+
+For a value, the z score ("standard score") is the number of std devs above or below the mean that the value is.
+
+Example:  average height is 64", std dev is 3".  Jill is 70" tall.  What's her zscore?
+
+Her z-score is +2!  She's 2 std devs above the mean.
+
+z = (obs - exp)/stdev
+  = (x - xbar)/s_x
+
+Z-scores are a measure of how "unusual" a value is.  Large positive z score means way above the mean!  Large negative z-score means far below the mean.
+
+
+Sometimes, outliers are defined to be any value with a z-score greater than 3 or less than -3.
+
+We'll always prefer the IQR method, since IQR is robust and stdev isn't.  
+
+
+
+
+
+
+
+
+
+

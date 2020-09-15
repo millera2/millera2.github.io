@@ -1,10 +1,11 @@
-"""Draws squares with turtle
+"""Draws squares with turtle module.
 """
 
 import turtle
 
 
 def drawSquare(myTurtle, x, y, sideLength=100):     # def for square function
+    """This was my stupid docstring"""
     myTurtle.goto(x,y)                              # set startin place for turtle
     for i in range(4):                              # need to repeat 4 times
         myTurtle.forward(sideLength)
