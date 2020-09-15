@@ -48,13 +48,13 @@ The work I do in those vids is availabe on this site below.
 - [Week 3](https://millera2.github.io/CS-111/Lec-03.html)
 - [Week 4](https://millera2.github.io/CS-111/Lec-04.html)
 
-## Next Quiz: Sept 09
+## Next Quiz: Sept 16
 
-Lecture Coverage:  Week 3
+Lecture Coverage:  Week 4
 
-Book coverage: Section 2.1-2.4
+Book coverage: Section 3.1-3.4
 
-Key Skills:  Arithmetic in python, floor and mod functions, handling data types, converting between strings and integers, using the `input()` function.
+Key Skills:  ADTs, classes vs objects, functional abstraction, default parameter values, docstrings, `main()` function.
 
 
 
