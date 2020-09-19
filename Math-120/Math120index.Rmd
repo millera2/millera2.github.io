@@ -57,11 +57,17 @@ Coverage:  Week 5
 
 Topics:
 
-- Effects of outliers on linear regression (given a scatterplot with an outlier, decide if it strengthens/weakes/doesn't change the correlation)
+- Effects of outliers on linear regression (given a scatterplot with an outlier, decide if it strengthens/weakens/doesn't change the correlation)
 - Meaning of outlier, computing which values are outliers
 - Meaning of z-score, computing and examples
 - Empirical rule, practical examples, how it's useful for intuition
 
+Practice:
+
+- 8.27 (p330, Just decide whether the outlier "strengthens/weakens/doesn't change" the correlation.  Don't worry about the distinction between "outlier" and "influential observation".)
+- 2.13 (p58)
+- [Practice Emprical Rule](https://www.khanacademy.org/math/ap-statistics/density-curves-normal-distribution-ap/stats-normal-distributions/e/empirical_rule)
+- [Cute practice problems for finding outliers](https://mathbitsnotebook.com/Algebra1/StatisticsData/STOutlierPractice.html)
 
 
 
