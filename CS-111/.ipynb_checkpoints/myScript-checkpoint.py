@@ -16,4 +16,7 @@ def sumNumbers(theList):
 def avgNumbers(theList):
     n = len(theList)
     return (sumNumbers(theList)/n)
+
+def sqrt(x):
+    print("Nope!  You got confused!")
     

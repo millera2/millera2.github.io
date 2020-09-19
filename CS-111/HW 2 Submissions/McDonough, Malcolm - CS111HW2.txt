@@ -1,0 +1,14 @@
+CS111 HW2
+
+2.2.7) A hard drive in a computer can hold about a terabyte (2^40 bytes) of information. An average song requires about 8 megabytes (8 x 2^20 bytes). How many songs can the hard drive hold?
+
+>>> (2**40)//(8*(2**20))
+131072
+
+2.2.8) What is the value of each of the following Python expressions? Make sure you understand why in each case.
+	a) 15*3-2 = 43
+	b) 15-3*2 = 9
+	c) 15*3//2 = 22
+	d) 15*3/2 = 22.5
+	e) 15*3%2 = 1
+	f) 15*3/2e0 = 22.5

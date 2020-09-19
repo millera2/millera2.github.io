@@ -47,23 +47,21 @@ The work I do in those vids is availabe on this site below.
 - [Week 2](https://millera2.github.io/Math-120/Math-120-Lec-2.html)
 - [Week 3](https://millera2.github.io/Math-120/Math-120-Lec-3.html)
 - [Week 4](https://millera2.github.io/Math-120/Math-120-Lec-4.html)
+- [Week 4](https://millera2.github.io/Math-120/Math-120-Lec-4.html)
+- [Week 5](https://millera2.github.io/Math-120/Math-120-Lec-5.html)
+
 
 ## Next Quiz
 
-Coverage:  Week 4
+Coverage:  Week 5
 
 Topics:
-- interpreting slope and intercept of regression line in context of model
-- interpreting residual plot, understanding key features, support (or not) for linear model
-- understanding coefficient of determination, explaining in context
 
-Practice Problems:
+- Effects of outliers on linear regression (given a scatterplot with an outlier, decide if it strengthens/weakes/doesn't change the correlation)
+- Meaning of outlier, computing which values are outliers
+- Meaning of z-score, computing and examples
+- Empirical rule, practical examples, how it's useful for intuition
 
-- 8.17 (p325)
-- 8.19 (p325)
-- 8.21 (p325)
-- 8.23c (p326)
-- 8.25bcd (p237) (Here, slope = 2.559 and intercept = -29.901)
 
 
 
