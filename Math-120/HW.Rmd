@@ -41,11 +41,11 @@ Your goal is to make the following pivot tables:
 
 *(Remember, you can copy/paste your Google Sheets pivot tables into a Google Docs document)*
 
-1) Show **percentages** for survival, broken down by `sex`.  *Hint: Choose `sex` for the rows.
+1) Make a pivot table to show **percentages** of passenger survival, broken down by `sex`.  *Hint: Choose `sex` for the rows.
 
 2)  Make a pivot table showing the average age broken down by both `sex` and `Pclass` (passenger class, either 1, 2, or 3).
 
-3)  Check for outliers in `Fare` (ie, the price of the ticket) for each passenger class (`pclass`)
+3)  Make a pivot table to check for outliers in `Fare` (ie, the price of the ticket) for each passenger class (`pclass`).  Your table should show outlier cutoffs, as well as min/max values for each class.
 
 For each of the above pivot tables, write a sentence or two explaining the practical meaning of your findings.
 
