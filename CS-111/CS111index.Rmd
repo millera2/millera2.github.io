@@ -47,20 +47,18 @@ The work I do in those vids is availabe on this site below.
 - [Week 2](https://millera2.github.io/CS-111/Lec-02.html)
 - [Week 3](https://millera2.github.io/CS-111/Lec-03.html)
 - [Week 4](https://millera2.github.io/CS-111/Lec-04.html)
+- [Week 5](https://millera2.github.io/CS-111/Lec-05.html)
 
-## Next Quiz: Sept 16
 
-Lecture Coverage:  Week 4
 
-Book coverage: Section 3.1-3.4
+## Next Quiz: 
 
-Key Skills:  ADTs, classes vs objects, functional abstraction, default parameter values, docstrings, `main()` function.
 
 
 
 ## HW Assignments
 
-HW 2 is up!
+HW 3 is up!
 
 
 [Here are the HW Assignment Descriptions](https://millera2.github.io/CS-111/HW.html)

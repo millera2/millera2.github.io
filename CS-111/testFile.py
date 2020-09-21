@@ -1,6 +1,8 @@
 """Just an example of module namespaces
 """
 
+#this is a comment
+
 def sumNumbers(list):
     """Adds numbers in the list
     input: list

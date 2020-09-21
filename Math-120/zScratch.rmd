@@ -31,15 +31,38 @@ theme_set(theme_tufte() +
 #------------------------------------------------#
 ```
 
-## Delete Below This ## 
-
-Remember, the white part is where we type our thoughts/obvservations/narrative.
-
 ```{r}
+library(reticulate)
+use_condaenv(conda = "~/opt/anaconda3/envs/R")
 
-# And here in the gray part is our code
+for i in range(10):
+  print
+```
 
 
+```{python}
+population= []
+population.append(12000)
 
+for i in range(0,7):
+  thisYearPopulation = population[i]+population[i]*.08-1500
+  population.append(thisYearPopulation)
+
+
+print(population)
+
+
+```
+
+```{python}
+population[9]
+
+
+```
+
+```{python}
+1+"test"
+
+sys.stdout.read()
 ```
 
