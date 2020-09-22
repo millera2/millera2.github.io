@@ -247,6 +247,8 @@ WARNING:  THAT'S A BIG "IF"
 
 then:
 
+![](https://andymath.com/wp-content/uploads/2019/12/empirical-rule-normdist2.jpg)
+
 - 68% of all the data lies within 1 stdev above or below the mean
   (ie, 68% of all values have a zscore between -1 and +1)
 - 95% of all the data lies within 2 stdev above or below the mean
