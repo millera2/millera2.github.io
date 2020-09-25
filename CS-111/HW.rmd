@@ -45,7 +45,131 @@ All code should be written **individually** by the student, unless otherwise spe
 
 # HW 4 Due Friday Oct 9
 
+File Format: turn in an .ipynp notebook file to NoteBowl.  The name should be lastname_firstname_hw4.ipynb.  For example:
 
+`hopper_grace_hw4.ipynp`
+
+Your notebook should be neatly formatted, with a heading (including your name, the assignment, the class, the date) and appropriate use of Markdown cells alongside code cells.
+
+
+
+
+### The Model: Mortgage Payments
+
+Time for some modelling, y'all!
+
+<center>![](https://i.pinimg.com/originals/62/a5/9b/62a59b21963b12f47a4ea94d0f7c1bb8.gif){width=50%}</center>
+<br>
+Uh, I meant **mathematical** models!
+
+<center>![](https://media0.giphy.com/media/1qZ91iFRo5h1elYOAH/giphy-downsized-large.gif){width=50%}</center>
+
+<br>
+
+Buying a house is the biggest financial decision most Americans (or humans of any nationality) will make.  In order to finance the purchase, most folks will need to take out a loan.  Loans for property are called "mortgages".  These loans use an interest schedule known as "amortization":
+
+- *a*: to/onto/upon
+- *mort* death
+- *ize* to make
+
+Thus "amortization literally means "to make it dead", or "to kill it off".  Isn't that nice?  
+
+The mechanics of amortized amortized loans are quite simple, but the choices that buyers make can have dramatic implications for the total amount of money they spend (and also the time it takes to pay the loan).  For context, most Americans choose a 30-year amortization schedule -- that's most of your working life!
+
+In this HW, you'll write a computer model to investigate these considerations.  First, let's establish some terminology:
+
+- The `closing price` is the amount of money that the property sells for.  It's called that because the process of finalizing a mortgage is called "closing".
+- The `down payment` is the amount of money that the property buyers pay immediately upon purchase.  In this way, buyers pay a portion of the total closing price immediately upon purchase, and the rest is payed on a loan schedule.
+- The `principal` is the amount of money that property buyers need to borrow in order to buy the property.  Upon purchase, the principal is easy to calculate:
+    
+    `principal` = `closing price` - `down payment`
+
+  In other words, this is the debt that home buyers have to begin with upon purchasing their property.
+  
+  Each month, the `principal` gets smaller as owners pay off the debt.
+  
+
+- The `APR`, or Annual Percentage Rate, is the interest rate that homeowners are charged for their loan.  Generally this rate is somewhere between 2% - 6%.  **Important Note**  Interest is added to the loan on a *monthly*  basis.  See details right below.
+
+- The `interest` is the finance charge added to the balance.  It's based on the APR.  Each month, the interest is calculated by the following model:
+
+    `interest` = `principal`*`apr`/12
+    
+    
+- The `payment` is the amount that buyers pay **each month** for their loan.  Each month, the payment will first pay off the `interest` accrued, and the remainder will go to the `principal`.
+
+  Thus, each month, the principal is decreased by the following formula:
+  
+    `principal` = `principal` - (`payment` - `interest`)
+    
+### Deliverables (Ie, What Ya Gotta Do)
+
+Students must write a script, in one code cell at the beginning of the notebook, that includes the following functions:
+
+- `monthlyPayment()` [arguments up to you] should take as input the current `principal`, `payment`, and `apr`.  It should return as output a list of the following:
+  - the new `principal`, 
+  - the amount of `interest` paid that month, and 
+  - how much of the payment went to interest (ie `payment` - `principal`)
+
+- `paymentHistory()` [arguments up to you] should take as input the `closing price`, the `down payment`, the `apr`, and the monthly `payment`s.  This function should use a loop to calculate the balance each month for the duration of the loan (until the balance is zero) using the `monthlyPayment()` function.  It should return as output a list of the following:
+  - a list of the balances for each month (starting at the original principal and decreasing to zero) 
+  - a list of the interest charges each month
+  - a list of the amounts for each month of money spent on principal.  On a monthly basis, this is simple to calculate:  `payment` - `interest`
+  
+- `printRecords()` [argument up to you] should take as input the results of your `paymentHistory()` function, and print the following on a row-by-row (ie month-by-month) basis to the console:
+  - The year and month of the loan
+  - The current balance for that month
+  - The principal paid that month
+  - The interest paid that month
+  
+  The results should be neatly, thoughtfully formatted using a format string as discussed in class and the text.  Here's example output for a home that with a closing price of \$165,000, a down payment of \$30,000, an APR of 3.25%, and a monthly payment of \$950:
+  
+<center>![](https://millera2.github.io/CS-111/Img/hw4_1.png){width=50%} </center> 
+
+- `plotTotals()` should take as input the results of your `paymentHistory()` function, and use the `matplotlib` library to plot the following monthly TOTALS:
+  - Total principal paid each month
+  - Total interest paid each month
+  - Balance remaining each month
+  
+  Here's an example using the same input as the table above:
+  
+<center>![](https://millera2.github.io/CS-111/Img/hw4_2.png){width=50%} </center>
+
+- `main()` should control the action as usual.  Your `main()` function should prompt the user for the following input:
+  - `closing price`
+  - `down payment`
+  - `apr`
+  - `monthly payments`
+  - It should also ask the user whether they'd like a table or a plot.  Depending on user choice, `printRecords` or `plotTotals` functions should be called.
+  
+
+
+
+
+### Short-Answer Reflection
+
+Below your code for the above model, use additional code cells to actually *run* the model you wrote above.  In particular, you should experiment with:
+
+- Different choices of `down payment`
+- Different choices of `apr`
+- Different choices of `payment`
+
+Using Markdown cells, discuss:  
+
+- What conclusions do you draw from these investigations?  
+- What advice do you have for property buyers?  Of course debt is bad, that's not the point.  What strategies would you suggest for a young adult getting started who wants to buy a home?
+
+Be creative.  Play around with your model.  Have fun!
+
+### Closing Remarks
+
+As usual, the assignment description lays out the minimum qualifications.  You don't have to get it 100% right to pass, you just need to show me your thoughts and ideas.  **Your code must actually run in order to earn a passing grade**, but know that I'll give you partial credit for making it part of the way there.
+
+To earn an A, students must implement all functionality as described above, in good clear style with documentation.
+
+You may find opportunities to improve upon the output and structure of the program.  Be sure your work satisfies the minimum requirements, but feel free to expand upon these and to exercise your creativity.  I enjoy reading your work, and maybe there's a `stoic nod` from Prof Miller in your future.  ;D
+
+<center>![](https://i.pinimg.com/originals/b6/9b/60/b69b602b8b4e0e70968df700059b108f.gif)</center>
 
 # HW 3 Due Friday 9/25 by 5pm
 
