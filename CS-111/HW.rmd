@@ -69,10 +69,10 @@ Uh, I meant **mathematical** models!
 Buying a house is the biggest financial decision most Americans (or humans of any nationality) will make.  In order to finance the purchase, most folks will need to take out a loan.  Loans for property are called "mortgages".  These loans use an interest schedule known as "amortization":
 
 - *a*: to/onto/upon
-- *mort* death
-- *ize* to make
+- *mort*: death
+- *ize*: to make
 
-Thus "amortization literally means "to make it dead", or "to kill it off".  Isn't that nice?  
+Thus "amortization" literally means "to make it dead", or "to kill it off".  Isn't that nice?  
 
 The mechanics of amortized amortized loans are quite simple, but the choices that buyers make can have dramatic implications for the total amount of money they spend (and also the time it takes to pay the loan).  For context, most Americans choose a 30-year amortization schedule -- that's most of your working life!
 
@@ -163,7 +163,7 @@ Be creative.  Play around with your model.  Have fun!
 
 ### Closing Remarks
 
-As usual, the assignment description lays out the minimum qualifications.  You don't have to get it 100% right to pass, you just need to show me your thoughts and ideas.  **Your code must actually run in order to earn a passing grade**, but know that I'll give you partial credit for making it part of the way there.
+As usual, the assignment description lays out the minimum qualifications.  You don't have to get it 100% right to pass, you just need to show me your thoughts and ideas.  **Your code must actually run in order to earn a passing grade**, but know that I'll give you partial credit for making it part of the way to the complete assignment.
 
 To earn an A, students must implement all functionality as described above, in good clear style with documentation.
 
