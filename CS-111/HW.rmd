@@ -43,7 +43,7 @@ Homework solutions will be graded on the following criteria:
 All code should be written **individually** by the student, unless otherwise specified in the HW.  Students are encouraged to work together, but sharing code is a violation of academic integrity.
 
 
-# HW 4 Due Friday Oct 9
+# HW 4 Due Thurs Oct 8 by 5pm
 
 File Format: turn in an .ipynp notebook file to NoteBowl.  The name should be lastname_firstname_hw4.ipynb.  For example:
 
@@ -142,7 +142,9 @@ Students must write a script, in one code cell at the beginning of the notebook,
   - `monthly payments`
   - It should also ask the user whether they'd like a table or a plot.  Depending on user choice, `printRecords` or `plotTotals` functions should be called.
   
+**All functions must have an accompanying docstring explaining their purpose, the inputs, and the outputs.**
 
+For partial credit, use comments to exlain what your code does.
 
 
 
