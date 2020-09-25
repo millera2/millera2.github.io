@@ -158,3 +158,98 @@ The problems for this HW come from the text:
 
 
 All of these problems should be solved in clear, consise English sentences (or lists).  No code here.
+
+
+
+
+
+
+
+
+
+At some point in their lives, most Americans will have a credit card.  If you plan to live and work in America (and if you're not independently wealthy), you will likely manage credit card debt.  
+
+This doesn't have to be bad -- paying off your credit bill every month is a quick way to build a great credit score!  But, spending more than you can afford to pay off is a swift ticket to a low credit score (and all the associated sadness).  
+
+Are credit cards immoral and exploitative?  *Maybe!*  But nonetheless, they're here to stay.  Let's build a model that helps you explore the consequences of credit card debt, and how your monthly payments affect your total debt.
+
+Credit cards work via **compound interest**.  This means that, at regular intervals, a charge is added to your balance. This charge is a percentage of your total debt, **interest**.  
+
+Since the interest is calculated based on your total debt, *including past interest*, that means that the amount of interest you pay is **compounded**.  In other words, the interest charges *themselves* accrue interest!  <small>(Dudes, dudettes, and excellent non-binary students:  I'm not joking!  This is how it works.  If this sounds crazy to you, that just means you're paying attention!)</small>
+
+Before we get into details, let's establish some important vocabulary:
+
+- `Starting Balance`: The amount of debt the card-holder begins with.  **We'll assume that the card-holder doesn't add any new purchases to the balance while they're paying it off.**  (In this way, the model works just like a student loan.)
+- `Current Balance`: The amount of debt you owe right now.
+- `APR`: Annual interest rate. (Keep reading!)
+- `Minimum Payment Rate`: The smallest percent of the `current balance` that card holders can pay *each month* without violating their contract and incurring additional fees.  Thus, the `minimum payment` each month is `current balance`*`minimum payment rate`.
+- `Actual Payment`: the amount of money that the card holder pays each month to decrease their `current balance`.  This must be **at least as much** as the `minimum payment`, but it may be larger also.
+
+
+Credit cards companies advertise an `APR`, or "Annual Percentage Rate".  It's a bit of a misnomer, however: almost all credit card debt in the US is compounded **daily**.  
+
+Here's how it works:  suppose your  APR is 17% (the mean APR for credit cards in the US).  Then, every day, your `current balance` is increased by $\frac{.17}{365} \cdot$ 100%:
+
+New Debt = $\left(1+\frac{.17}{365}\cdot \right)$(Old Debt)
+
+If we're starting on a Monday, then:
+
+- Tuesday Debt = $\left( 1+\frac{.17}{365}\right )\cdot$(Monday Debt)
+- Wednesday Debt = $\left(1+\frac{.17}{365}\right)\cdot$(Tuesday Debt)
+- Thursday Debt = $\left(1+\frac{.17}{365}\right)\cdot$(Wednesday Debt)
+
+... and so on.  
+
+In order to pay your debt down, card holders make monthly payments.  **(For simplicity, you may assume that every month has 30 days.  You'll need to know this!)**  Every 30 days, card holders make a payment that decreases their `current balance`.  This payment must be at least as big as the `minimum payment`.
+
+Thus, on typical days, the  `current balance` is increased by `APR`/365 $\cdot$ 100%.
+
+Every 30th day, the current balance is both increased by `APR`/365 $\cdot$ 100% **and** decreased by `minimum payment`.
+
+Thus, for example, on day 30:
+
+    
+
+#### Your Goal:
+
+Write a python script **contained in one code cell of your notebook** that models the debt for a particular credit card holder.  It should follow the style guidelines established in class, with the following functions:
+
+- `monthlyChange()` [arguments up to you], which takes as input the `current balance`, `APR`, `min payment rate` and `payment` (which must be no smaller than the minimum payment).   Its outputs should be: the new balance, the payment made that month, and the amount of interest accrued that month.
+
+- `paymentHistory()` [arguments up to you], which takes as input:
+  - the `starting balance` of the credit card debt, 
+  - the `APR`, 
+  - the `min payment rate` for the card, and 
+  - the montly `payment` to be paid by the card holder.  
+  
+  Its return should be the following, each as a list of values:
+  - A list of all months for which payment was made (starting at 1 and continuing till the debt is paid)
+  - The `current balance` for each month.
+  - The amount of interest paid accrued during the month.
+  - The total payment up to the month (ie for each month, the sum of all payments made up to that time)
+  - The total interest accrued up to the month (ie for each month, the sum of all the interest amounts accrued up to that time).
+  
+  In addition, `paymentHistory` should print a neatly-formatted table of values to the console, using a format string, the `format()` command, and the `print()` command.  (See examples from lecture to understand what the format string is for.)
+  
+- `plotMonthlies()` [arguments up to you], which uses `pyplot.plot()` to make the following three line graphs:
+  - Total payment up to the month
+  - Total interest accrued up to the month
+  - `current balance` for each month
+  
+  All three lines must appear on the same graph, and the x-axis must be the month numbers.
+
+  
+
+- `main()` function that performs the logic of the function:
+
+  - taking user input
+    - Starting balance, APR, monthly payments
+  - executing model functions
+  - plotting and printing output on a monthly basis
+
+**Important Note About `Minimum Payment`**:  The min payment must be no less than a percentage (`min payment rate`) of the `current debt`.  So, if a credit card holder chooses a monthly payment of \$25 (for example), and their card has a `min payment rate` of 2%,  they'd have to pay .02\*`current debt` each month until their debt is less than \$1,250.  **You can use 2% as a "standard" minimum payment rate**; it's the one I'll use when testing your code.
+
+**Important Note About about `APR`** Let's assume that the APR is **always less than 30%**.  Even in the US, rates higher than that are frowned upon.
+
+
+All functions should be documented appropriately with docstrings.  Use comments liberally to explain your code (and help secure partial credit!).  Use good style and programming structure as explored in class and Ch 3 in the text.
