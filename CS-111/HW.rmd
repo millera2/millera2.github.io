@@ -109,7 +109,7 @@ Students must write a script, in one code cell at the beginning of the notebook,
 - `monthlyPayment()` [arguments up to you] should take as input the current `principal`, `payment`, and `apr`.  It should return as output a list of the following:
   - the new `principal`, 
   - the amount of `interest` paid that month, and 
-  - how much of the payment went to interest (ie `payment` - `principal`)
+  - how much of the payment went to interest (ie `payment` - `interest`)
 
 - `paymentHistory()` [arguments up to you] should take as input the `closing price`, the `down payment`, the `apr`, and the monthly `payment`s.  This function should use a loop to calculate the balance each month for the duration of the loan (until the balance is zero) using the `monthlyPayment()` function.  It should return as output a list of the following:
   - a list of the balances for each month (starting at the original principal and decreasing to zero) 
