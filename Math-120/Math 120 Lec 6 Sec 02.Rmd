@@ -1,5 +1,5 @@
 ---
-title: "Math 120 Week 4"
+title: "Math 120 Week 6"
 author: "Ali Miller"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
@@ -31,38 +31,33 @@ theme_set(theme_tufte() +
 studentSurvey <- read_csv("Student Data.csv")
 deathPenaltyData <- read_csv("death penalty data.csv")
 housingData <- read_csv("../Data/House-Sales.csv")
-
 #------------------------------------------------#
 ```
 
+# Monday Sept 21
 
-# Monday Sep 14
+## Intro To Probability - Basic Examples
 
-## Quiz 
+Recall, our goal: statistical inference is the process of making mathematically-supported conclusions about populations based on sample data.
+
+Probability lets us do this!  It's the tool we use to make conslusions about our sample data.
+
+Key question:  given our assumptions, how likely is our sample data?
+
+This is pretty tough; first let's look at some basics.
+
+Ex:  A fair coin is tossed.  What's the probability that heads shows up?
+
+Answer:  50% = 1/2 = .5.  Why?  There are two equally likely outcomes, we're interested in one of them.  1/2
+
+Ex A fair 6-sided dice is tossed. What's the probability that a "2" shows up?  
+
+Answer:  1/6.  There are six equally-likely outcomes, we're talking about one specific one ("2"), thus 1/6.
 
 
+Ex:  A fair 6-sided dice is tossed.  What's the prob that an even number shows up?
 
-
-
-
-
-
-
-
-
-## Effects of outliers on linear regression
-
-Always need to *look* at the scatter plot to check for outliers.  Outliers can have a variety of effects.
-
-- An outlier could make a weak relationship seem strong. (iris examle)
-- Or, an outlier could make a strong relationship seem weak (mpg example)
-- It might not have much effect at all.
-
-Morals of the story:
-
-- outliers can have all sorts of effects (stronger, weaker, mnot much chang)
-- always need to look at scatterplot
-- perform analysis both ways: with and without outliers.
+Answer:  3/6 = 1/2 = .5 = 50%.  Of the six possibilities (1,2,3,4,5,6), there are three evens (2,4,6).  Thus 3/6
 
 
 
@@ -75,230 +70,227 @@ Morals of the story:
 
 
 
-## What's an outlier -- IQR Method
-
-Intuition: outliers are "unusual" values in a dataset.
-
-Need an objective tool to decide what values are (and are not) outliers.
 
 
-IQR Method:  All numbers that are either
 
-- smaller than Q1 - 1.5*IQR or
-- bigger than Q3 + 1.5*IQR
 
-are outliers.
 
-**Example:  Exam scores:**
 
-75, 76, 79, 80, 80, 81, 82, 83, 84, 99
 
-We see that Q1 = 79, Q3 = 83, IQR = 4
 
-Compute cutoffs:
 
-Low:
+
+
+
+
+
+
+
+
+
+## Defs of Probability
+
+Book:  The probability of an outcome/event is the percentage/proportion of times we'd observe that outcome/even if we made infinitely many observations.  (performed the experiment infinite times).
+
+
+Ex: if we tossed a coin infinity times, then half of those would be heads.
+
+
+This is just like "p", the population proportion.
+
+This notion of probability is also called "classical" or "theoretical" probability.  
+
+
+Another notion of probability:  experimental/relative frequency probability.  It's the proportion of occurances of our event/outcome after n repetitions of the chance experiment.
+
+Experimental probability is just like "phat", the sample proportion.  
+
+In probability, we HOPE to know the theoretical probability, but we're always stuck with the experimental probability.
+
+BUMMER!
+
+GOOD NEWS!  The law of large numbers states that as the number of repetitions/observations (n) increases, the obsererved experimental probabilities (phat) tend to get closer and closer to the "true" theoretical probability.
+
+It's easy to see the law of large numbers in action.
+
+Coin Toss Simulation!
+
+We'll say that "heads" is 1, tails is "0".
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Addition Rule for disjoint outcomes
+
+
+Two events, A and B, are "disjoint" if the can't both happen at the same time.
+
+There are no possible outcomes that are in both A and B.
+
+Ex:  The lights are either on or off.
+
+Ex:  A coin shows either heads or tails.
+
+    P(A and B) = 0
+    
+No chance of both!
+
+Note:  "disjoint" == "mutually exlcusive"
+
+"Addition rule for disjoint outcomes" says:
+
+If A, B are disjoint, then
+  
+    P(A or B) = P(A) + P(B)
+    
+
+Ex:  We flip a coin.  What's the probability it shows either heads or tails. 
+
+P(H) = .5
+P(T) = .5
+
+    P(H or T) = .5 + .5 = 1 = 100%
+    
+Ex:  We roll a dice.  What's the prob that the face showing up is either a 1 or a 5?
+
+
+    P(1 or 5) = 1/6 + 1/6 = 2/6 = 1/3 = 33.333333333%
+    
+    
+WARNING:  This only works for DISJOINT events!!!
+
+
+
+
+
+
+## General Addition Rule
+
+If two events A, B are -not- disjoint, what then??  How can we find the P(A or B)?
+
+Intuition:  Venn Diagram
+
+General addition rule:  Don't want to double count!
+
+    P(A or B) = P(A) + P(B) - P(A and B)
+    
+
+Ex:  Roll a 6-sided dice.  What's the probability that the number on top is either an even number or a prime number?
+
+WARNING:  not disjoint!  Use general addition rule:
+
+Even:  2, 4, 6 (three of them)
+Primes: 2, 3, 5 (three of them)
+Even and prime:  2 (one of them)
+
+    P(Even or Prime) = 3/6 + 3/6 - 1/6 = 5/6
+    
+Ex:  In a standard 52-card deck, there are 4 suits:
+
+- hearts, diamonds, clubs, spades
+
+Each suit has 13 cards:
+
+- 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A
+
+Where J, Q, K are "face cards"
+
+There are two colors:  
+
+- the hearts and diamonds are red
+- the clubs and spadeas are black
+
+
+Ex:  Addition rule.  If we randomly select a card from the deck, what's the prob that the card is either RED or a FACE CARD?
+
+WE know:
+
+    P(Red or Face) = P(Red) + P(Face) - P(Red and Face)
+     
+- Reds:  26 of them (13 hearts, 13 diamonds, ie half the deck)
+- Face: 12 of them ( 3 in each of the 4 suits)
+- Red AND Face: 6 of them (JQK of hearts and diamonds)
+
+So:
+
+    P(Red or Face) = 26/52 + 12/52 - 6/52 = 32/52
+    
 ```{r}
-79 - 1.5*4
-```
-Upper:
-```{r}
-83+1.5*4
-```
-
-Since 99 is larger, it's an outlier!
-
-Note, this is an arbitrary (but frequently used) standard.  
-
-Some texts define an "extreme" outlier as one that's 3 IQRS away from Q1, Q2 (as opposed to 1.5).
-
-
-
-
-
-
-
-
-
-
-## What's an outlier - z score method
-
-For a value, the z score ("standard score") is the number of std devs above or below the mean that the value is.
-
-Example:  average height is 64", std dev is 3".  Jill is 70" tall.  What's her zscore?
-
-Her z-score is +2!  She's 2 std devs above the mean.
-
-z = (obs - exp)/stdev
-  = (x - xbar)/s_x
-
-Z-scores are a measure of how "unusual" a value is.  Large positive z score means way above the mean!  Large negative z-score means far below the mean.
-
-
-Sometimes, outliers are defined to be any value with a z-score greater than 3 or less than -3.
-
-We'll always prefer the IQR method, since IQR is robust and stdev isn't.  
-
-
-
-
-
-
-
-
-
-
-# Friday Sep 18
-
-# Z scores and the Empirical Rule
-
-Concept:
-z = ( obs - exp)/stdev
-
-Sample:
-
-z = (x - xbar)/s_x
-
-Pop:
-
-z = (x - mu)/sigma
-
-
-Z scores are useful, because they account for both center and spread!  The tell us how "unusual" values are, relative to the mean and std dev of the data.
-
-For this reason, also called "standard scores".  They give us a "level playing field" to compare data from different distributions.
-
-**Example:  SAT vs ACT**
-
-The average score on ACT is 21, std dev of 4.
-
-The average score on SAT is 580, std dev of 65.
-
-Suppose Beth scored a 27 on the ACT, and Hannah scored 650 on the SAT.  Who scored "better"?
-
-How to compare?  z-scores!
-
-Beth:  z = (27 - 21)/4
-
-```{r}
-(27 - 21)/4
-```
-
-Beth's score is 1.5 std devs above the average score for ACT.
-
-Hanna:  z = (650 -  580)/65
-
-```{r}
-(650 -  580)/65
-```
-
-Relative to the pool of test takers, Beth scored "better".
-
-
-## Empirical Rule (68-95-99.7 Rule)
-
-IF data follows a normal dist (ie bell-shaped, ie unimodal and symmetric), then:
-
-- 68% of the data lies within 1 std dev above or below the mean
-  (i.e., 68% of values have a z-score between -1 and +1)
-- 95% of the data lies within 2 std dev above or below the mean
-  (ie 95% of data has z-score between -2 and 2)
-- 99.7% of the data lies within 3 std dev above or below the mean
-  (ie 99.7% of data has z-score between -3 and 3)
-
-Important since emprical rule gives intuition about how "common" or "uncommon" data is.
-
-Ex, if a value has a z-score of 1.43, this is quite common.
-Ex, if a value has a z-score of 3.2, this is quite uncommon!
-Ex, if a value has a z-score of 7.8, this is crazy pants!
-
-Also, empirical rule lets us make predictions about where we expect data to lie.
-
-**Example:  heights**
-
-In the US, men ages 20-29 have mean height of 69" with std dev 2.7".
-
-What percent of men are between 66.3" and 71.7" tall?
-
-Find z-scores:
-
-```{r}
-(66.3 - 69)/2.7
-```
-
-
-```{r}
-(71.7 - 69)/2.7
-```
-
-About 68% of men are in this range of heights.
-
-In this way, we can "slice up" the normal dist into regions by std dev (z-score)
-
-
-**Example** What percent of men are taller than 74.4"?
-
-Find z-score:
-
-```{r}
-(74.4 - 69)/2.7
+32/52
 ```
 
-Above z=2, there's a total of 2.35% + 0.15% = 2.5% of the data.  About 2.5% of men are taller than 6'2.4".
 
 
 
-## Box plots
 
-Recall, an "outler" is any value that's:
+    
+    
 
-- smaller than Q1 - 1.5*IQR
-- bigger than Q3 + 1.5*IQR
 
-IQR = Q3 - Q1
 
 
-New visualization (picture) for looking at outliers:  box plot.
 
 
-The "box" shows the IQR:
 
-- the bottom is Q1
-- the top is Q3
-- the line inside is M
+## Probability Distribution
 
-The "whiskers" extend to the largest/smallest values that are NOT OUTLIERS.
+A sample distribution is just a list of all the values we observed in our data (for a variable).
 
-IF there are outliers (not always), then each one is represented by a * or dot or something.
+A probability distribution is a list of 
 
-Boxlpots are especially useful for **comparing** multiple distributions, or breaking down by category.
+1) all possible outcomes, and 
+2) the probability for each one.
 
-**Example:  iris**
+These are commonly represented as tables.
 
-```{r}
-head(iris)
-```
+Important difference:  sample dists describe what *did* happen, while probability dists describe what *may* happen.
 
-Let's compare the dist for sepal length by species: setosa, versicolor, and virginica.
 
-```{r}
-boxplot(iris$Sepal.Length~iris$Species)
-```
+Ex:  We roll a dice, record the face showing up.  Construct a probability distro.
 
-Setosas have the smallest spread, i.e., setosa sepal lengths tend to be close to the center.  Not as much variation.  
+| X  | P(X) |
+|----|------|
+| 1  |  1/6 |
+| 2  |  1/6 |
+| 3  |  1/6 |
+| 4  |  1/6 |
+| 5  |  1/6 |
+| 6  |  1/6 |
 
-Viriginicas have the largest center, i.e., virginicas tend to have the longest sepal lengths.  
+**Rules/Properties** for probability distributions:
 
-Virginicas also have lots of spread:  they tend to be larger, but sometimes they're small also!
+All probability distributions must satisfy the following:
 
-Also, there's an outlier in the virginias.  Ie, an unusually small one.
+1)  0 <= P(X) <= 1 for all X.  Ie., all probabilities must be at least 0, no greater than 1.  
+2)  If we add all probabilities, must get 1:  sum(P(x)) = 1 (for all x)
 
+Ex:  Suppose we have the following probability dist:
 
+| X   |  1  |  2  |  3  |
+|P(X) |  .7 |  .2 |  ?  |
 
+Must be the case that P(3) = .1, since all add to 1.
 
 
+Ex:  In the above dist, what's P(1 or 2)?
 
+Disjoint events, so:
 
+    P(1 or 2) = P(1)+P(2) = .7+.2 = .9
+    
 
 
 
@@ -326,20 +318,18 @@ Also, there's an outlier in the virginias.  Ie, an unusually small one.
 
 
 
+Def and rules
 
+## Complement of an Event
 
+## Independence and the Multiplication Rule
 
+Examples p90
 
+## Contingency Tables - Marginal and Joint Probabilities
 
 
-
-
-
-
-
-
-
-
+## Conditional Probability
 
 
 
