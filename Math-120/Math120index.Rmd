@@ -49,26 +49,11 @@ The work I do in those vids is availabe on this site below.
 - [Week 4](https://millera2.github.io/Math-120/Math-120-Lec-4.html)
 - [Week 4](https://millera2.github.io/Math-120/Math-120-Lec-4.html)
 - [Week 5](https://millera2.github.io/Math-120/Math-120-Lec-5.html)
-
+- [Week 6](https://millera2.github.io/Math-120/Math-120-Lec-6.html)
 
 ## Next Quiz
 
-Coverage:  Week 5
-
-Topics:
-
-- Effects of outliers on linear regression (given a scatterplot with an outlier, decide if it strengthens/weakens/doesn't change the correlation)
-- Meaning of outlier, computing which values are outliers
-- Meaning of z-score, computing and examples
-- Empirical rule, practical examples, how it's useful for intuition
-
-Practice:
-
-- 8.27 (p330, Just decide whether the outlier "strengthens/weakens/doesn't change" the correlation.  Don't worry about the distinction between "outlier" and "influential observation".)
-- 2.13 (p58)
-- [Practice Emprical Rule](https://www.khanacademy.org/math/ap-statistics/density-curves-normal-distribution-ap/stats-normal-distributions/e/empirical_rule)
-- [Cute practice problems for finding outliers](https://mathbitsnotebook.com/Algebra1/StatisticsData/STOutlierPractice.html)
-
+We're taking a "Rest and Recharge" day this Wednesday.  No quiz, but yes class.  Remote.
 
 
 ## Reading Assignments
@@ -82,6 +67,8 @@ Wanna know what's going on?  Read this stuff!
 - Due 9/12:  Textbook 8.3
 - Due 9/18:  [Empirical Rule](https://www.statisticshowto.com/empirical-rule-2/) (Nice simple explanation and cute short video)
 - Due 9/18:  Texbook 2.1 (p49-50 about *box plots*), Texbtook 4.1 (p134-135 *about z-scores*)
+- Due 10/1: Texbook 3.1-3.3
+
 
 ## HW Assignments
 

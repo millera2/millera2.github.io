@@ -1,5 +1,5 @@
 ---
-title: "Math 120 Week 5"
+title: "Math 120 Week 6"
 author: "Ali Miller"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
@@ -34,304 +34,256 @@ housingData <- read_csv("../Data/House-Sales.csv")
 #------------------------------------------------#
 ```
 
-# Monday 9-14
+# Monday Sept 21
+
+## Intro To Probability - Basic Examples
+
+Recall, our goal:  statistical inference is the process of making conclusions about populations based on sample data.
+
+Main tool:  probability!!! Ie, given our assumptions, how likely is the sample we obtained!
+
+Start simple:  basic concepts of probability.
 
 
-## Quiz Problem
+Ex:  suppose we toss a fair coin.  What's the probability that "heads" shows up?
 
-Suppose we collect medical information from 100 adult men ages 30-39.  We find that their average height is 68.7 inches with std dev 3.4 inches.  Also, we find that their average weight is 178 lbs with std dev 8.2 lbs.  The correlation between height and weight is 0.784.
+Answer:  1/2.  Why?  Know:  two equally likely options.  Heads and tail.  Our outcome is exactly one of them:  heads.  So, our probability is 1 out of 2.
 
-xbar = 68.7       sx=3.4
-ybar = 178        sy=8.2         r = 0.784
-slope:
+Ex:  suppose we roll a fair 6-sided dice.  What's the probability of rolling a 2?
+
+Answer:  1/6.  Six equally-likely options, only one is a "2".
+
+Ex:  suppose we roll a fair 6-sided dice.  What's the probability of getting an "odd" number show up?
+
+All possibilities:  1, 2, 3, 4, 5, 6
+Odd:  1, 3, 5
+
+Answer:  3/6 = 50% = .5 = 1/2
+
+
+
+
+
+## Defs of Probability
+
+Book:  The probability of an event/outcome is the proportion of times we'd observe that event/outcome if we made an infinite number of observations.
+
+Ex:  if we tossed a coin infinity times, we'd expect half of them to be heads.
+
+This notion is called "theoretical" or "classical" probability.
+
+Another way:  experimental or relative frequency probability.  Here, the probability of an event/outcome is the proportion of times that we observe it after n trials.  
+
+Classical probability:  p (population proportion)
+Experimental/Relative Frequency probability:  phat (sample proportion)
+
+
+We always hope to know true/theoretical probability.  BUT, we're usually stuck with experimental probability.
+
+BUMMER!
+
+## Law of Large Numbers
+
+BUT, GOOD NEWS!  "Law of large numbers":  as n (number of trials/repetitions) increases, experimental probabilities (phat) tend to get closer and closer to the true theoretical probability (p).
+
+
+Deep math is required to prove this.  Easy to see it in action.
+
+We'll run a simulation with coin tosses.
+
+For us, we'll say "heads" = 1, "tails" = 0.
+
+Since our outcomes are only 0s and 1s, then the average of the outcomes shows the percentage of 1s.  This is phat!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Addition Rule for disjoint outcomes
+
+The word "disjoint" means the two events cannot happen at the same time.
+
+Ie, they have no outcomes in common.  If A, B are disjoint, then there's no scenario where both A happens and B happens.
+
+Note:  "disjoint" == "mutually exclusive".  
+
+Ex:  The lights can be on OR off, but not both.
+
+Ex:  A coin can be heads OR tails, but not both.
+
+Ex: Roll a dice, get an even number vs roll a dice, get an odd number.
+
+If A, B are mutually exclusive events, then it's easy to find the P of A OR B
+
+If so:
+
+      P(A OR B) = P(A) + P(B)
+      
+(this is the "addition rule for disjoint events")
+
+
+Ex:  If we flip a coin, what's the prob that it shows heads or tails?
+
+P(H or T)
+
+These outcomes are disjoint, can't both happen, and each one has probability 1/2 = 50% = .5
+
+P(H or T) = .5 + .5 = 1
+
+Ex: Roll a dice, what's the prob that we get either "1" or "5"?
+
+Disjoint, so:
+
+    P(1 or 5) = 1/6 + 1/6 = 2/6 = 33.33333%
+    
+WARNING:  Must make sure that they really are disjoint!!!!
+
+
+
+
+
+
+
+
+
+
+
+## General Addition Rule
+
+Q:  What if A, B are NOT dijoint?  What's P(A or B)?
+
+Idea:  Venn Diagram
+
+For or, don't want to double count!  Subtract one of them!
+
+    P(A or B) = P(A)+P(B) - P(A and B)
+
+Ex:  Roll a dice.  What's the probability that the number shown is either even or prime?
+
+Evens:  3 of them (2, 4, and 6)
+Primes:  2, 3, 5.  3 again.
+
+    P( even or prime) = 3/6 + 3/6 - 1/6  = 5/6
+
+EX (in-class only)  A standard deck of 52 cards has 4 "suits"
+
+Hearts, Diamonds, Spades, and Clubs
+
+There are two "colors":
+
+Hears and Diamonds are red, Spades and Clubs are black
+
+In each suit, the cards are:
+
+2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A
+
+The J, Q, and K are "face cards"
+
+Ex:  If we select a card at random, what's the probability that the card is either a red card or a face card?
+
+To answer, we need to count:
+
+- How many reds? 26 red cards (half the deck)
+
+- How many face cards? 12 face cards (JQK of all 4 suit)
+
+- How many are both red and face card?  There are 6: JKQ of diamionds, and JQK of hearts.
+
+    P(Red or Face) = 26/52 + 12/52 - 6/52 = 32/52
+    
 ```{r}
-.784*8.2/3.4
-```
-```{r}
-178-1.891*68.7
-
-```
-yhat = 48.088 + 1.891*x
-
-
-Residual Problem:
-
-y = 26.2
-
-x = 1.98
-
-yhat = 0.849 + .683x
-
-Plug in x to get yhat:
-
-```{r}
-.849+.683*1.98
-```
-
-REsidual = y - yhat:
-
-```{r}
-26.2 - 2.201
-```
-
-
-
-##  Effects of Outliers on Linear Regression
-
-Outliers can have a variety of effects on lin models.
-
-Because of this, we -always- need to look at the scatterlot.
-
-Examples:
-
-- Iris - sometimes outliers make relationship seem stronger than it is.
-
-- mpg data - Sometimes outliers make strong relationships seem weak.
-
-- sometimes, outliers have little effect.
-
-
-Morals of the story:
-
-- outliers aren't always "good" or "bad"
-- always, always look at a scatterplot.  Your human feelings matter just as much as the summary statistics.  
-- When in doubt, always run the analysis twice, both with and without outliers.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### What is an outlier?  Boxplots
-
-Intuition:  outliers are "unusual" values.  Could be errors, could be genuinely unusual individuals.  
-
-
-We need an objetive way to decide what's an outlier.
-
-### outliers with IQR
-
-Two main way.  First, **using IQR**.
-
-We define outliers to be any value:
-
-- smaller than Q1 - 1.5*IQR
-- larger than Q3 + 1.5*IQR
-
-Idea:  if a value is much smaller than Q1 or much larger than Q3, it's an outlier.  Our notion of "much smaller" or "much bigger" depends on the IQR.
-
-
-
-
-**Example:  Exam scores:**
-
-75, 76, 79, 80, 80, 81, 82, 83, 84, 99
-
-First:  Q1 is middle of lower half and Q3 is middle of upper half.
-
-Q3 = 83, Q1 = 79,  -> IQR 83-79 = 4.  
-
-Let's compute the "cutoffs" for outliers:
-
-Q1 - 1.5*IQR
-
-```{r}
-79 - 1.5*4
-```
-
-Q3 + 1.5*IQR
-```{r}
-83 + 1.5*4
-```
-
-Since the value of 99 is greater than Q3 + 1.5*IQR, it's an outlier.  There aren't any "small" outliers.
-
-
-
-Some texts mention an "extreme outlier" that's 3 IQRS away from Q1 and Q3, instead of just 1.5 like we did.
-
-### Outliers with z-scores.
-
-
-For an individual, a "z-score" or "standard score" is how far above or below the mean that individual is, measured in standard deviations.
-
-Example:  average height is 64", std dev is 3".  Jill is 70" tall.  What's her zscore?
-
-Her z score is +2!  She's 2 std devs above the mean.
-
-Math:
-
-z = (obs - exp)/stdev
-
-  = (x - xbar)/s_x
-  
-$$ z = \frac{x-\bar{x}}{s_x}$$
-
-Z scores are a measure of how "unusual" an observation is.
-
-Another notion of outliers:  any individual with a z-score that's bigger than +3 or less than -3.
-
-Generally, we prefer the IQR method because IQR is robust!  It's resistant to outliers!
-
-Z scores, based on mean and std dev, are not robust and may be affect strongly by skew.  
-
-
-
-
-
-
-# Friday Sep 18
-
-## Z scores and the Empirical Rule
-
-Sample:
-z = ( x - xbar  )/s_x
-
-Pop:
-
-z = (x - mu)/sigma
-
-Concept:
-z = ( obs - exp )/stdev
-
-
-Since z scores measure in **std devs**, they give a level playing field field for different datasets.  Z-scores measure how "unsual" and element is, independent of the center and spread of the distribution.
-
-That's why z-scores are also called "standard scores"!
-
-**Example: SAT vs ACT **
-
-Both exams do the same thing: evaluate college prep.  But, they have totally different measurement scales!
-
-On the ACT, the mean score is 21, std dev 4.
-On the SAT, the mean score is 580, std dev is 65.
-
-
-Suppose that Beth scored a 27 on the ACT, and Hannah scored 650 on the SAT.  Which one performed better?
-
-To answer, find z-scores!
-
-Beth:  z = (27 - 21)/4
-
-```{r}
-(27 - 21)/4
+32/52
 ```
 
-Hannah:  z = (650 - 580)/65
-
-```{r}
-(650 - 580)/65
-```
-
-z = 1.077
-
-Since Beth scored 1.5 std devs above the mean, she performed better relative the pool of test takers.
 
 
-### Empirical Rule (68-95-99.7 Rule)
-
-If a distribution has a normal distribution (i.e., bell shaped, i.e. unimodal, symmetric)
-
-WARNING:  THAT'S A BIG "IF"
-
-then:
-
-- 68% of all the data lies within 1 stdev above or below the mean
-  (ie, 68% of all values have a zscore between -1 and +1)
-- 95% of all the data lies within 2 stdev above or below the mean
-  (ie, 95% of all values have a zscore between -2 and +2)
-- 99.7% of all the data lies within 3 stdev above or below the mean
-  (ie, 99.7% of all values have a zscore between -3 and +3)
-
-IMPORTANT HUMAN FEELINGS:  Now, we can make a judgement about how common (or "uncommon") a measurement is just by seeing its z score!
-
-Ex:  a z-score of 1.42 is quite common!
-Ex:  a z-score of 3.42 is quite uncommon!
-Ex:  a z-score of 7.21 is crazy pants!
-
-Also, gives us expectations for what ranges of values are common/how common a range of values is.
-
-** Example:  Height **
-
-In the US, the average height for men 20-29 is 69" with stdev 2.7".  
-What percent of men are between 66.3" and 71.7"?
-
-This is a range of z scores between -1 and 1.  
-
-In general, we can "slice up" normal distributions by std dev.
 
 
-** Example **  What percent of men are taller than 74.4"?
 
-z = +2
+## Probability Distribution
 
-```{r}
-(74.4 - 69)/2.7
-```
+For samples, the "distribution" is just the list of all values observed.
 
-Above z = 2, only 2 regions:
+For probability experiments, the "distribution" is a list of 
 
-Between z = 2 and z =3, there's 2.35% of the data
-Above z = 3, there's 0.15% of the data.
+1) all possible outcomes, along with 
+2) the probability of each.
 
-All together, only 2.5% of men in the US age 20-29 are taller than 74.4" (i.e. 6'2.4").
+Important difference:  sample dists describe what has already occurred, while probability dists describe what *may* occur.
+
+Generally, probability distributions are represented a **table**.
+
+Ex:  Roll a dice, record the face showing up.  Make a probability distro.
+
+1st:  what are all possibilities?  Here:  1, 2, 3, 4, 5, 6
+
+2nd:  Each prob is 1/6.  
+
+| X  | P(X) |
+|--- | ---  |
+| 1  |  1/6 |
+| 2  |  1/6 |
+| 3  |  1/6 |
+| 4  |  1/6 |
+| 5  |  1/6 |
+| 6  |  1/6 |
 
 
-## Boxplots
+**Rules/Properties for Probability Dists**
 
-Recall, an outlier is any value that's
+1) Every probability must be greater/equal to zere, less/equal to 1.
+    0 <= P(X) <= 1   for all x
+    
+Intuitively:  can't have "negative" probability, can have more than 100% probability.
 
-- smaller than Q1 - 1.5(IQR)
-- larger than Q3 + 1.5(IQR)
+2) sum( P(X) ) = 1  (summing over all outcomes X).  If you add all probabilities, you MUST get 1.
 
-Recall: IQR = Q3 - Q1
 
-New visualization (picture) for outliers:  the box plot.
+EX:  Consider the follwing dist:
 
-Note: can't verify from a histogram is a point is an "outlier".  
+| x  | 1 | 2 | 3 |
+|P(X)| .1| .7| ? |
 
-In a box plot,
+If P(x) is a valid probablity dist, then P(X=3) must be .2!
 
-The box shows the IQR:
+In the above distro, What's the P(1 or 2)?
 
-- the bottom of the box is Q1
-- the top of the box is Q3
-- the line in the middle is M
+By the addition rule:  P(1 or 2) = .1 + .7 = .8
 
-The "whiskers", the lines extending above and below the box plot, extend to the largest/smallest values that ARE NOT outliers.
 
-IF there are outliers, each individual one is represented by a * or other symbol.  Remember:  outliers are outside (Q1 - 1.5IQR, Q3+1.5IQR).
 
-Boxplots are especially useful for comparing multiple distributions.
 
-**Example: iris dataset**
 
-Let's compare the distribution of Sepal Lengths across the three species: setosa, versicolor, and virginica.  
 
-```{r}
-head(iris)
-```
 
-```{r}
-boxplot(iris$Sepal.Length~iris$Species)
-```
 
-Setosa irises have the smallest spread (look at the box/IQR!)  We don't see much variation/spread in the setosas.
 
-Virginica irises have the highest center!  Generally, virginicas have the larges sepal length of the three species.
 
-There's one outlier: a virginica iris with sepal lenght of about 4.9cm!
+
+## Complement of an Event
+
+## Independence and the Multiplication Rule
+
+Examples p90
+
+## Contingency Tables - Marginal and Joint Probabilities
+
+
+## Conditional Probability
+
+
+
 
 
 

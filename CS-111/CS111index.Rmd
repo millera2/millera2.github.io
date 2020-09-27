@@ -48,10 +48,15 @@ The work I do in those vids is availabe on this site below.
 - [Week 3](https://millera2.github.io/CS-111/Lec-03.html)
 - [Week 4](https://millera2.github.io/CS-111/Lec-04.html)
 - [Week 5](https://millera2.github.io/CS-111/Lec-05.html)
+- - [Week 6](https://millera2.github.io/CS-111/Lec-06.html)
 
 
 
-## Next Quiz: 
+## Next Quiz: Wed Sept 30
+
+Coverage:  Week 6 notes, and chapter 4
+
+Topics:  Modelling, matplotlib, Newton's method, HW 4 contents.
 
 
 
