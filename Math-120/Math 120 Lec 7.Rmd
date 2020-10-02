@@ -1,0 +1,506 @@
+---
+title: "Math 120 Week 7"
+author: "Ali Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: hide
+    theme: yeti
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+studentSurvey <- read_csv("Student Data.csv")
+deathPenaltyData <- read_csv("death penalty data.csv")
+housingData <- read_csv("../Data/House-Sales.csv")
+#------------------------------------------------#
+```
+
+
+
+# Monday Sept 28
+
+## Complement of an Event
+
+Complement means "not"
+
+Notation:  If our event is called "A", then the complement is "A^C"
+
+$$A^C$$
+
+Sometimes: A'
+
+Ex:  Suppose we roll a dice.  A is the event that a prime number shows up.  Compute/express A^C:
+
+Here:  A = {2, 3, 5}
+
+So, A^C = {1, 4, 6}
+
+Complements:
+
+Since, for any event A, our entire set of all possible outcomes is everything in A OR in A^C
+
+SO:
+
+    P(A)+P(A^C) = 1
+    
+More frequently expressed as:
+
+    P(A^C) = 1-P(A)
+    
+**Ex** What's the probability that we roll a dice and DON'T get a "2"?
+
+Could do:  1/6+1/6+1/6+1/6+1/6 = 5/6
+
+Easier to use the complement rule:  1 - 1/6 = 5/6
+
+
+
+
+
+
+
+## Independence and the Multiplication Rule
+
+Recall, two events A,B are "disjoint" if it's impossible for both A and B to occur at the same time.
+
+    P(A and B) = 0
+    
+Review:  If A and B are disjoint, then P(A or B) = P(A)+P(B)
+
+
+Ex:  If we roll a a dice, what's the probability that it's a "3" or an "even"?
+
+These are disjoint, so P(3 or E) = 1/6 + 3/6 = 4/6
+
+Now:
+
+Two events A, B are "independent" if the outcome of A doesn't affect the outcome of B, and vice verse.
+
+WARNING:  this is completely unrelated to "disjoint"/"mutually exlusive".  In fact it's impossible for two events to be both disjoint and independent. (Explanation below)
+
+Example:  Roll two dice.  The outcome of one dice doesn't affect the outcome of another.
+
+Example:  coin toss.  Doesn't matter if you get 10 heads in a row, the probability for the next toss is still 50/50.  
+
+To check for independence (or to use it):  the multiplication rule for independent events:
+
+If A, B are independent, then P(A and B) = P(A) * P(B)
+
+This works for more than two events.  If A,B,C,D are indep:
+
+    P(A and B and C and D) = P(A)*P(B)*P(C)*P(D)
+    
+If indep, "and means times"
+
+**Example**  Suppose we roll two dice.  What's the probability that we get a "2" both times?
+
+    P("2" and "2") = 1/6 * 1/6 = 1/36
+    
+```{r}
+1/36
+```
+
+**Example** Suppose we roll two dice. What's the prob that the first is a "2" and the second is a "5"?
+
+    P(2) = 1/6,  P(5)=1/6
+    
+Since indep:
+
+    P(2 and 5) = 1/6*1/6 = 1/36
+    
+Same thing!
+
+**Example** Suppose we roll four dice. What's the prob that:
+ - the first is a "2"
+ - the second is an "even"
+ - the third is strictly greater than 4
+ - the fourth is a prime number?
+ 
+ 
+     P(2 and E and 4 and P) = 1/6 * 3/6 * 2/6 * 3/6 = 18/6^4
+
+```{r}
+18/6^4
+```
+
+**Super important example**:  Suppose we roll a dice 10 times.  What's the probability that at least one outcome is a "2".
+
+WARNING:  this is describing many, many possible outcomes!  Tens of thousands of possibilities!
+
+2 x x x x x x x x x 
+
+x 2 x 2 x x x x x x 
+
+x x 2 2 2 x 2 x x x
+
+How to solve?  Complement!
+
+Our event:  At least one "2".  
+
+Complement:  NONE OF THEM ARE 2s!!!
+
+There's only one type of solution:
+
+x x x x x x x x x x x 
+
+For each:  P(not a 2) = 1 - P(2) = 5/6
+
+(5/6)(5/6)(5/6)*....*(5/6)  = (5/6)^10
+
+P(at least one "2") = 1 - (5/6)^10
+
+```{r}
+1-(5/6)^10
+```
+
+
+
+**Example** If we toss a coin 20 times, what's the probability that at least one is a heads?
+
+For "at least one", use the complement!
+
+Here, the complement is:  only get tails!
+
+P(T) * P(T) * ..... * P(T) = (P(T))^20 = (1/2)^20
+
+So, P(a least one heads) = 1 - (1/2)^20
+
+```{r}
+1 - (1/2)^20
+```
+
+
+Examples p90
+
+
+
+
+
+## Contingency Tables - Marginal and Joint Probabilities
+
+A "contingency table" (also called a "two-way table") is a summary of counts/frequencies for two categorical variables (one in the rows, one the columns.)
+
+Let's go make one:  Student Data in Google Sheets
+
+In  a pivot table, there are two kinds of probabilities we can find
+
+[remember, these are all EXPERIMENTAL/RELATIVE FREQUENCY probabilities because they're based on data]
+
+- "joint" probabilities.  In other words:  "and" probabilities.
+
+**Ex**  Find the probability that a student is a junior AND has blonde hair.
+
+SInce there are 5 students who are both blonde and junior, and since there's 42 total students, we get a joint probability of 
+
+```{r}
+5/42
+```
+
+Note that in our student contingency table, there are 12 differernt joint probabilities (4 years, 3 colors  4*3=12)
+
+
+- Next type of prob from contingency table:  **marginal** prob
+
+**Ex** What's the probability that a student is a Soph?
+
+Since there are 5 soph (check the margin) and 42 total, there's a 
+
+```{r}
+5/42
+```
+
+**Ex** What's the probability that a student is a senior?
+
+There are 19 seniors, 42:
+
+```{r}
+19/42
+```
+
+
+### Finding "or" probabilities from contingency table
+
+Recall:
+
+    P(A or B) = P(A) + P(B) - P(A and B)
+    
+In table, we can find these:
+
+- P(A) and P(B) are both MARGINAL probs!
+- P(A and B) is a JOINT prob!
+
+**Ex**  What's the probability that a stuent is a senior OR has brown hair?
+
+    P(Sen or Brn)  = P(S) + P(B) - P(S and B)
+    
+From table:
+
+- P(S) = 19/42
+- P(B) = 28/42
+- P(S and B) = 15/42
+
+All together:
+
+    P(S or B) = 19/42+28/42-15/42
+    
+```{r}
+19/42+28/42-15/42
+```
+  
+**Ex**  What's the prob that a student is Blonde or Fresh?
+
+1:  notice it's an "or"
+2:  remember, have a "general or formula" that always works
+
+    P(Bl or Fr) = P(Bl) + P(Fr) - P(Bl and Fr)
+                   6/42 + 6/42  - 0/42
+                   
+Btw, this means the events are "disjoint" or "mutually excl" (careful, not the same as "independent").
+
+```{r}
+12/42
+```
+
+###  Checking for independence in contingency table
+
+WARNING:  future quiz question
+
+**Ex** Are the events "student is a senior" and "student is blonde" independent?
+
+
+Remember, if events indepenent then:
+
+    P(A and B) = P(A)*P(B)
+    
+Note: this is how we always check for idependence!
+
+If both sides are equal, then YES indep.  Otherwise, no, not indep.
+
+Here:
+
+
+    P(Sr and Bl) = P(Sr)*P(Bl)
+    
+- P(Sr and Bl) = 1/42
+- P(Sr) = 19/42
+- P(Bl) = 6/42
+
+Let's check!  Left side:
+
+```{r}
+1/42
+```
+
+Right side:
+
+```{r}
+(19/42)*(6/42)
+```
+
+Is it true that .0238 =? .0646  No!  Thus, they're not independent!
+
+**Ex**  Are the events "brown hair" and "junior" independent?
+
+
+## Conditional Probability
+
+Sometimes, our knowledge of one event changes how likely another event is.
+
+
+Ex:  If it's cloudy outside, it's more likely to rain.
+
+Ex:  If the skies are clear, rain is unlikely.
+
+Notation:
+
+    P(A|B)
+    
+Read as:  "probability of event A, GIVEN that event B has occurred.
+
+The thing after ther | is the "given condition".  Ie, we know that thing has occurred.
+
+Goal:  find the probability.
+
+From picture, we have formula:
+
+    P(A|B) = P(A and B)/P(B)
+    
+Note:  the letters don't matter, but the given ALWAYS has to be the bottom!
+
+     P(M|G) = P(M and G)/P(G)
+     
+Ex:  Suppose the probability of being both cloudy and raining is 30%.
+
+If the probability it's cloudy is 40%.
+
+If it's cloudy, what's the probability that it rains?
+
+    P(R|C) = P(R and C)/P(C) = .3/.4 = 75%
+    
+**Ex**  Contingency Table
+
+Studend data for hair color and year.
+
+What's the probability that a student has brown hair, given that the student is a soph?
+
+If a student is a soph, what's the prob that they have brown hair?
+
+    P(Br | S) = P(Br and S)/P(S) = (4/42) / (5/42) = 4/5 = 80%
+    
+**Ex**  We randomly select a card from a 52-card deck.  What's the probability that the card is a face card, given that it's black.
+
+    P( F | B)  = P(F and B)/P(B)
+    
+Need to count:
+
+- How many are black and face?  6/52
+- How many are black?  26/52
+
+Finish:
+
+    P(F | B) = 6/52 / 26/52 = 6/26
+    
+```{r}
+6/26
+```
+
+  
+So far:
+
+ - general "or" formula
+ - "not" probabilities (complement) [related: at least one]
+ - "and", but ONLY for independent!!
+ - contidional probs
+ 
+ 
+## General "And" formula
+
+Recall:      P(A|B) = P(A and B)/P(B)
+
+Note that this always works for all A,B, so we can rearrange to get the "and" formula:
+
+For any two events, A,B:
+
+    P(A and B) = P(A|B)*P(B)
+               = P(B|A)*P(A)
+               
+Both versions always give the same number, but often only have info for one!
+
+**Ex**  Suppose 51% of DU students are female (nearly true).  Of all female students, 45% are STEM majors (making this one up).
+
+What's the probability that a randomly selected student is both female AND a stem major?
+
+Translate:
+
+- P(F) = .51
+- P(STEM | F) = .45
+
+Need to find:  P(F and STEM)
+
+Two versions:
+
+    P(F and Stem) = P(F | Stem) * P(Stem)
+                  = P(Stem | F) * P(F)   <---- have to use this one!
+                  
+                  = .45 * .51
+                  
+```{r}
+.45*.51
+```
+
+About 23% of all DU students are female STEM majors.
+
+d
+                  
+        
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Conditional Probability
+
+
+
+
+
+
+## Probability Trees
+
+## Bayes's Theorem
+
+
+
+
+
+
+
+
+
+
