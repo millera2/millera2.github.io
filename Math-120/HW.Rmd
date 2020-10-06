@@ -49,7 +49,7 @@ In this HW, you'll answer some basic probability questions using the **Death Pen
   - What's the probability that a randomly selected prisoner was executed in the South?
   - What's the probability that a randomly selected prisoner was executed in the South and the method was Lethal Injection?
   
-Late HW will not be accepted for any reason.  Students may turn in HW early, of course.
+
 
 2)  Are the events "died by Electrocution" and "executed in the Northeast" mutually exclusive events?  Why or why not? Justification requires math.
 
@@ -60,6 +60,8 @@ Late HW will not be accepted for any reason.  Students may turn in HW early, of 
 4)  If we know that a prisoner was executed in the South, what's the probability that they died in a Gas Chamber?
 
 5)  What's the probability that a randomly selected prisoner was executed in the South or died by Firing Squad?
+
+Late HW will not be accepted for any reason.  Students may turn in HW early, of course.
 
 
 # HW 3 - The Titanic
