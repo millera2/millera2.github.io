@@ -31,6 +31,35 @@ theme_set(theme_tufte() +
 #------------------------------------------------#
 ```
 
+# HW 4 - The Death Penalty
+
+Due Friday Oct 16 by 5pm on Notebowl.  Submit .pdf report as usual.
+
+In this HW, you'll answer some basic probability questions using the **Death Penalty Data** (see our shared folder on Google Drive for the data).
+
+**For each answer, give the number answer first, followed by a brief explanation with a comlete sentence or two.**
+
+**To find the answers, you'll need to make an appropriate contingency table (ie a pivot table that shows counts)**  
+
+Late HW will not be accepted for any reason.  Students may turn in HW early, of course.
+
+
+1) Regarding the `Method` and `Region` variables, 
+  - What's the probability that a randomly selected prisoner died by electrocution? 
+  - What's the probability that a randomly selected prisoner was executed in the South?
+  - What's the probability that a randomly selected prisoner was executed in the South and the method was Lethal Injection?
+
+2)  Are the events "died by Electrocution" and "executed in the Northeast" mutually exclusive events?  Why or why not? Justification requires math.
+
+
+3)  Are the events "executed in the Midwest" and "died by Lethal Injection" **independent**?  Why or why not? Justification requires math.
+
+
+4)  If we know that a prisoner was exectued in the South, what's the probability that they died in a Gas Chamber?
+
+5)  What's the probability that a randomly selected prisoner was executed in the South or died by Firing Squad?
+
+
 # HW 3 - The Titanic
 
 Due Friday Oct 2 by 5pm on Notebowl.  Submit as .pdf document per the usual.
