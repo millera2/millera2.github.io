@@ -41,13 +41,15 @@ In this HW, you'll answer some basic probability questions using the **Death Pen
 
 **To find the answers, you'll need to make an appropriate contingency table (ie a pivot table that shows counts)**  
 
-Late HW will not be accepted for any reason.  Students may turn in HW early, of course.
+
 
 
 1) Regarding the `Method` and `Region` variables, 
   - What's the probability that a randomly selected prisoner died by electrocution? 
   - What's the probability that a randomly selected prisoner was executed in the South?
   - What's the probability that a randomly selected prisoner was executed in the South and the method was Lethal Injection?
+  
+Late HW will not be accepted for any reason.  Students may turn in HW early, of course.
 
 2)  Are the events "died by Electrocution" and "executed in the Northeast" mutually exclusive events?  Why or why not? Justification requires math.
 
