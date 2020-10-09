@@ -308,28 +308,807 @@ Disjoint events, so:
 
 
 
-
-
-
-
-
-
-
-
-
-
-Def and rules
-
 ## Complement of an Event
+
+
+Complement means "not".  I.e, the complement of an even A is all outcomes that are NOT in A.
+
+Math notation:  A^C
+
+$$A^C$$
+
+**Ex** We're rolling a dice, A is the event that we get a prime number.  Find/compute the complement of A, A^C.
+
+A = {2, 3, 5}
+
+A^C = {1, 4, 6}
+
+Complement Probability Rule:
+
+For any event A, it's true that A and A^C together account for all possible outcomes (they're either in A, or they're not).
+
+Thus, 
+
+    P(A)+P(A^C) = 1
+    
+More commonly:
+
+    P(A^C) = 1 - P(A)
+    
+
+**Example** We roll a dice.  What's the probability that we DON'T get a "2"?
+
+Here, the event in question is more complicated:
+
+A = {1, 3, 4, 5, 6}
+
+The complment is simple:
+
+A^C = {2}
+
+SO, P(not a 2) = 1 - 1/6 = 5/6
+
+
+
+
+
+
+
+
+
 
 ## Independence and the Multiplication Rule
 
+Recall, two events A, B are "disjoint"/"mutually excl" if they can't both occur at the same time.
+
+P(A and B) = 0
+
+In this case, if A, B are disjoint, then P(A or B) = P(A) + P(B)
+
+**Example**  We roll a dice, what's the prob of getting a 3 or an even number?
+
+Disjoint, so:
+
+    P(3 or E) = 1/6 + 3/6 = 4/6
+    
+[Think:  if "disjoint", then "or means plus"]
+
+
+On the other hand, unrelatedly, two events A and B are said to be **independent** if the outcome of A doesn't affect the outcome of B and vice versa.
+
+Example:  Successive dice rolls or coin tosses.
+
+
+WARNING:  "disjoint" and "independent" are totally different!  In fact, it's impossible for two events to be both disjoint AND independent.
+
+**Multiplication Rule for Indep Events**  If A, B are indpendent, then 
+
+    P(A and B) = P(A)*P(B)
+    
+    
+[Think:  if "indep", then "and means times"]    
+
+Also works for more than two events.  Ex, if A,B, C, D are all independent, then 
+
+    P(A and B and C and D) = P(A)*P(B)*P(C)*P(D)
+    
+    
+**Example**  We roll two dice.  What's the probability that the first shows a "2" and the second also shows a "2"?
+
+    P(2 and 2) = 1/6*1/6
+    
+since independent.
+
+**Example** We roll two dice.  What's the probability that the first is a "2" and the second is a "5"?
+
+    P(2 and 5) = 1/6 * 1/6  
+    
+same thing.
+
+**Example** We roll 4 dice.  What's the probability that:
+
+- the first is a "2"
+- the second is even
+- the third is prime
+- the last one is strictly greater than 4
+
+    P(2 and E and P and >4) = 1/6 * 3/6 * 3/6 * 2/6 = 18/6^4
+    
+```{r}
+18/6^4
+```
+    
+
+**Ex**:  Suppose we roll a dice 10 times.  What's the probability that at least one of them is a "2".
+
+Big problem:  this is a very complicated set of outcomes!  Tens of thousands of them!
+
+x = not a 2
+2 = yes a 2
+
+One possibility:
+
+x 2 x x x x x x x x 
+
+another:
+
+x x x 2 x x x 2 2 x
+
+2 x x x x x x 2 x x
+
+Our event:  Roll 10 times, at least one "2".
+
+Complement:  none of the 10 are twos.  All are "not 2"
+
+Diagram:
+
+x x x x x x x x x x
+
+    P(A^C) = (5/6)*(5/6)*(5/6)*...*(5/6) = (5/6)^10
+    
+So, 
+
+    P(A) = 1 - (5/6)^10
+    
+```{r}
+1 - (5/6)^10
+```
+
+
+I call these "at least one" problems.
+
+Ex:  Suppose we toss a coin 20 times.  What's the probability that at least 1 is a heads?
+
+
+A = "at least one head"
+A^C = "all are tails"
+
+Diagram:
+
+T T T T T .... T  (20 times)
+
+    P(A^C) = (1/2)*(1/2)*(1/2)*...(1/2) = (1/2)^20
+    
+Thus,
+
+    P(A) = 1 - (1/2)^20
+    
+    
+```{r}
+1 - (1/2)^20
+```
+    
+
+
+
 Examples p90
+
+
+
 
 ## Contingency Tables - Marginal and Joint Probabilities
 
+A *contingency table* (also called a "two-way table") a tabular breakdown of data by two categorical variables (rows and columns) showing the *counts*/*frequencies*.
+
+**Ex** Student data.  Make a table for year in school and hair color.
+
+There are several important probabilities we can get from a contingency table:
+
+###  Joint probabilities
+
+"Joint" means "and".  
+
+**Ex**  WHat's the prob that a randomly selected student has brown hair AND is a junior.
+
+Since there are 7 students who have both brown hair and are juniors, and there are 42 students total, that's:
+
+```{r}
+7/42
+```
+
+
+**Ex** What's the prob that a students is a freshman and has black hair?
+
+```{r}
+4/42
+```
+
+
+### Marginal probabilities
+
+These are probabilities in the margins.  
+
+**Ex** What's the prob that a student is Blonde?
+
+There are 6 blonde students (check the margin), 42 total:
+
+```{r}
+6/42
+```
+
+**Ex** What's the prob that a student is a senior?
+
+```{r}
+19/42
+```
+
+
+### "Or probabilies"
+
+Recall,
+
+    P(A or B) = P(A) + P(B) - P(A and B)
+    
+("gereral addition rule")
+
+Note: "general" means it always works!
+
+- Note that P(A) and P(B) are marginal probabilities
+- ALso, P(A and B) is a joint prob
+
+**Ex**  What's the proability that student is a junior OR they have brown hair.
+
+    P(J or Br) = P(J) + P(Br) - P(J and Br)
+    
+- P(J) = 12/42
+- P(Br) = 28/42
+- P(J and Br) = 7/42
+
+Thus:
+
+    P(J or Br) = 12/42 + 28/42 - 7/42
+
+```{r}
+12/42 + 28/42 - 7/42
+```
+
+**Ex** What's the prob that a student is either blonde or fresh?
+
+    P(Bl or F) = P(Bl) + P(F) - P(Bl and F)
+    
+               = 6/42  + 6/42 - 0/42
+               
+Btw, what's the special quality that Bl and F have?  These are "disjoint" events!  Also: "mutually exclusive".  WARNING:  not "indpendent"!
+
+
+### Checking for independence in contingency tables
+
+Q:  Are event A and event B "independent"?
+
+ALways check with the multiplication rule:
+
+If A, B are indep, then
+   
+    P(A and B) = P(A)*P(B)
+    
+Note, you can get all of these from a contigency table
+
+- P(A), P(B) are marginal
+- P(A and B) is joint
+
+**Example** Are the events "junior" and "brown hair" independent?
+
+Check:  is it true that:
+
+    P(J and Br) =? P(J)*P(Br)
+    
+- P(J and Br) = 7/42
+- P(J) = 12/42
+- P(Br) = 28/42
+
+Check:  is left hand = right hand??
+
+Left:
+```{r}
+7/42
+```
+
+Right:
+```{r}
+(12/42)*(28/42)
+
+```
+
+Close, but no cigar!  The LHS and RHS are not equal, therefore these events are NOT independent.
+
+Note for the future:  these were fairly close.  Do we really think, at the population level, that the events are not independent?  More on that later.
+
+
+
+
+
+
+
 
 ## Conditional Probability
+
+Sometimes, our knowledge of the outcome of one event changes how likely another event is.
+
+Ex:  If it's cloudy, it's more likely to rain.
+
+Ex:  If the skies are clear, it's unlikely to rain.
+
+Notation:
+
+    P(A|B)
+    
+    
+Read:  "probability that A occurs given that B has occurred"
+
+Note:  B is called the "given condition".  We know it happened!
+
+Formula:
+
+
+     P(A|B) = P(A and B)/P(B)
+     
+think:  "and on top, given on bottom"
+
+    P(X|H) = P(X and H)/P(H)
+    
+
+*Ex*  Suppose the probabaility that it's both cloudy and raining is 30%.  Suppose the probability that it's cloudy is 40%
+
+If it's cloudy, what's the probability that it rains?
+
+    P( R | C) = P(R and C)/P(C) = .3/.4 = 75%
+    
+*Ex* Contingency table:  studend data for hair color and year in school.
+
+If a student is a soph, what's the prob that they have brown hair?
+
+Same thing:  Given that a student is a soph, what's the prob they have brown hair?
+
+    P( Br | Soph) = P(Br and Soph)/P(Soph) = (4/42)/(5/42) = 4/5
+    
+If a student is soph, then there's an 80% chance they have brown hair.
+
+
+So far, you know:
+
+- "or" for disjoint events
+- "not" (complement rule)   [related:  "at least one"]
+- "general or" P(A or B) = P(A)+P(B) - P(A and B)
+- "and" FOR INDEP EVENTS
+- conditional probs
+
+##  General "and" rule
+
+Q:  What if two events AREN'T independent?  What then?  How to find "and" prob?
+
+Recall:  For any two events A,B:
+
+     P(A|B) = P(A and B)/P(B)
+
+Rearranging, we get the the general "and" rule:
+
+     P(A and B) = P(A|B)*P(B)
+                = P(B|A)*P(A)
+     
+Both versions are always the same, but sometimes you only info for one!
+
+*Ex*  About 51% of DU students are female (true).  Of all women at DU, about 39% are STEM majors (i made this up ;D).
+
+Q:  If a student is selected at random, what's the prob that they're both a woman and a STEM major?
+
+Translate:
+
+P(F) = .51
+P(Stem | F) = .39
+
+Need to find:  P(F and Stem).
+
+    P(F and Stem) = P(F | Stem)*P(Stem)
+                  = P(Stem | F)*P(F)     <--- need this one
+                  = (.39)*(.51)
+                  
+```{r}
+.39*.51
+```
+
+About 19.89% of all DU students are both female and STEM majors.
+
+
+
+
+
+# Monday 10-05
+
+## Probability Trees
+
+So far, we've seen many "kinds" of probabilities:
+
+- or 
+- and
+- conditional
+
+Probability trees are a handy visual aid for understanding the relationships between all the various probabilities in a system.
+
+
+**Ex**  A test for a disease advertises a "95%" accuracy rate.  What this means:  if a person has the disease, there's a 95% chance that they'll test +.  Suppose, in a addition, if a person doesn't have the disease then they test "-" 85%.
+
+About 3% of people in the population have the disease.
+
+Let's construct a probability tree for this scenario.
+
+
+Example of cond prob:  P(-|D) = .05
+
+And probabilities:
+
+P(D and +) = .03*.95 = 
+```{r}
+.03*.95
+```
+
+```{r}
+.03*.05
+```
+
+```{r}
+.97*.15
+```
+
+
+```{r}
+.97*.85
+```
+
+
+### Two Key Uses of the Tree
+
+1) What's the prob that a random person in the population tests positive??  P(+)?
+
+  Note:  there are only two outcomes that result in a "+":  either you have the D and you get +, or you don't have the D and you get +.
+  
+  Easy:  just add the probabilities from the tree:
+  
+```{r}
+.0285+.1455
+```
+  
+  About 17.4% of all people who take the test will test +.
+  
+  Btw, this thing we just did is called "The Law of Total Probability"
+  
+  
+2)  Given that a person test +, what's the probability they really have the disease?  Interesting observation:  the is one you actually care about!  If you get a +, how worried should you be?
+
+
+  Interesting observation #2:  this is "backwards" from the probability we were given.  We know:  P(+|D) = .95.    However, we actually care about P(D|+).  
+  
+  To answer:  use the conditional probability formula.  All the pieces are on the tree!
+  
+    P(D|+) = P(D and +)/P(+) = .0285/.174
+    
+    
+```{r}
+.0285/.174
+```
+    
+Ie, if you get a + result after taking the test, there's only about a 16.4% chance that you really have the disease.
+
+
+  Note about Thing 2:  This is Bayes's Theorem.  Surprise!  You just learned Bayes's Theorem.  Bayes's Rule just uses the info in the tree in the conditional probability formula.  The result:  we end up "reversing" the conditionality.  Start with P(A|B), use Bayes's to find P(B|A).
+  
+**Ex** One more Bayes:  Find P(D^C | -)
+
+Use the formula:
+
+
+    P(D^C | - ) = P(D^C and -)/P(-) = .8245/(.0015+.8245)
+    
+```{r}
+.8245/(.0015+.8245)
+```
+    
+    
+
+
+
+    
+    
+    
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
+     
+     
+     
+     
+
+
+
+
+
+Major advice for prob problems:  
+
+Look for key words to identify what "kind" of problem:
+
+- if it's an "or" prob, then use P(A or B) = P(A)+P(B)-P(AandB)
+- if it's an "and", then use either 
+     P(A and B) = P(A)*P(B)  (if independent)
+     P(A and B) = P(A|B)*P(B)
+- if it's "given" or "conditional" prob, then use 
+     P(A | B) = P(A and B)/P(B)
+     
+     
+     
+P(EW or LD) = P(EW)+P(LD) - P(both)
+
+
+
+
+
+Sum of 5:
+
+1, 4  -> sum of 5
+3, 2
+4, 1
+2, 3 
+
+
+All possibilities for two dice:  6 * 6
+
+1st\2nd  
+   1   2   3   4  5   6
+1              x
+2          x
+3      x
+4  x
+5
+6
+
+
+    (1/2)*(1/2)*....(1/2) = (1/2)^10
+     
+     
+     
+     
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+```{r}
+1-(5/6)^8
+```
+
+
+
+
+
+**Example:  Bayes**  Suppose: 
+
+- 0.1% of the American population currently has lung cancer (event "L") 
+- 90% of all lung cancer cases are smokers (event "S") 
+- 21% of those without lung cancer also smoke. 
+
+(These values are fairly close to the values given on the American Lung Association web site.)
+
+Construct a probability tree to find the following probabilities:
+
+- P(S^C|L) = 0.1 = 10%
+
+
+- P(S and L^C) = .20979 = 20.1%
+
+
+- P(S) = .0009 +  .20979 = .21069  (note, this is law of total probability!)
+
+```{r}
+.0009 +  .20979 
+```
+
+
+
+
+
+- P(L|S) = P(L and S)/P(S) = .0009/(.21069)
+
+```{r}
+.0009/(.21069)
+```
+
+About .42% chance.
+
+
+- P(L|S^C) = P(L and S^C)/P(S^C) = .0001/(.0001+.78921)
+
+```{r}
+.0001/(.0001+.78921)
+```
+
+How many times more likely is it for a smoker to have lung cancer than a non-smoker?
+```{r}
+0.004271679/0.0001266929
+```
+
+If you're a a smoker, you are about 34 times more likely to have lung cancer.  Wow!
+
+
+
+
+# Continuous Distributions - Normal Distribution
+
+Context:  you've learned about probability dists.  Now, let's get to know the normal dist (the bell curve), ie the most famous probability distribution.
+
+Interesting fact:  normal dists arise naturally in many, many scenarios.  They're super common in nature and in data!
+
+Any time we observe **means** or **sums** of random number (all from the same population), the result is -always- a normal dist (as long as our sample size is big enough).
+
+Let's demonstrate this with random numbers:
+
+```{r}
+runif(1)
+```
+
+Easy to choose a random number between 0 and 1, all equally likely (uniform).
+
+```{r}
+runif(10)
+```
+
+Let's look at 10000 random real numbers between 0 and 1:
+
+Q:  what shape would we expect to see if we made a histogram of these number?
+
+```{r}
+hist(runif(10000))
+```
+
+What if we repeat this process many times, and look at the MEANS of the numbers?
+
+```{r}
+hist(replicate(5000, mean(runif(10000))))
+```
+
+Wooooah!  When we look at the means for our random samples, we see they follow a bell curve, a normal dist.
+
+Intuition:  makes sense.  Most observations are in the middle.  It's increasingly unlikely for an observation to be very big or very small.
+
+Whenever a result is the factor of many random processes, it follows a normal dist.
+
+Ex:  human height follows a normal dist (it really does!).  Makes sense, lots of factors that influence height:  lots of genes, nutition, environment, etc...
+
+Normal dists happen frequently for any biometric (bio = alive, metric = measure)
+
+Goal:  use the normal dist to find probabilities.
+
+PROBLEM:  Normally-distributed variable can take an infinite number of possibilities!
+
+Ex: height.  Might 65", might be 65.0021, might be 65.32134t2452 inches.
+
+This is a continuous distribution - they work differently!  Can't just list all options and their probabilities since there's infinitely many of them.
+
+
+How to solve?  Make a "density curve" that shows how likely it is to be in a particular region.
+
+TO FIND PROBABILITY FOR A NORMAL DIST, find the AREA under the density curve.
+
+
+
+**Ex**  Height for adult men in the US follows a normal dist with mean 69" and std dev 2.7". 
+
+What's the probability that a randomly selected man is less than 70" tall?
+
+Picture:
+
+What's the prob that a rando man is between 67 and 68" tall?
+
+
+
+**Problem**  Impossible to compute these areas by hand!
+
+Solution:  need help, either from 
+
+1) A table of values (Z table)
+2) software (like Google Sheets or others)
+
+
+**One more problem**  We've seen that there are lots of normal dists, BUT there's only one table!!
+
+What to do?
+
+Answer:  always convert to a "Standard Normal Dist", ie the normal dist with center = 0 and spread = 1.
+
+The standard normal is ALWAYS represeted with the letter "Z".
+
+
+**Example computations with std normal**
+
+IF Z has a standard normal dist, compute the following probabilities:
+
+1)  P(Z<1.84) = .9671
+
+
+2)  P(Z>1.84) = 1 - P(Z<1.84)  [complementary events!]
+
+```{r}
+1-.9671
+```
+
+3)  P( -0.26 < Z < 1.73 ) = P(Z<1.73) - P(Z<-.26) = .9582 - .3974
+
+```{r}
+.9582 - .3974
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

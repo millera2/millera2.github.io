@@ -253,3 +253,62 @@ Write a python script **contained in one code cell of your notebook** that model
 
 
 All functions should be documented appropriately with docstrings.  Use comments liberally to explain your code (and help secure partial credit!).  Use good style and programming structure as explored in class and Ch 3 in the text.
+
+
+```{r}
+.582*22/(22-7)
+```
+
+
+
+
+
+
+
+
+
+Hello!  I am saying things!
+
+It's time for some math!
+
+```{r}
+head(iris)
+```
+
+
+Week 5:
+
+Coverage:  Week 5
+
+Topics:
+
+- Effects of outliers on linear regression (given a scatterplot with an outlier, decide if it strengthens/weakens/doesn't change the correlation)
+- Meaning of outlier, computing which values are outliers
+- Meaning of z-score, computing and examples
+- Empirical rule, practical examples, how it's useful for intuition
+
+Practice:
+
+- 8.27 (p330, Just decide whether the outlier "strengthens/weakens/doesn't change" the correlation.  Don't worry about the distinction between "outlier" and "influential observation".)
+- 2.13 (p58)
+- [Practice Emprical Rule](https://www.khanacademy.org/math/ap-statistics/density-curves-normal-distribution-ap/stats-normal-distributions/e/empirical_rule)
+- [Cute practice problems for finding outliers](https://mathbitsnotebook.com/Algebra1/StatisticsData/STOutlierPractice.html)
+
+
+
+```{r}
+(21.5-18.1)/2.3
+```
+
+
+Coverage: Week 7
+
+Practice Problems:  **All examples from lecture**
+
+Also:
+
+- 3.5 (p 92)
+- 3.9 (p93)
+- 3.11 (p94)
+- 3.13, 3.14, 3.15 (p109)
+- 3.17 (p110)

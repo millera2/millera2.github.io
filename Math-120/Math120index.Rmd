@@ -51,22 +51,21 @@ The work I do in those vids is availabe on this site below.
 - [Week 5](https://millera2.github.io/Math-120/Math-120-Lec-5.html)
 - [Week 6](https://millera2.github.io/Math-120/Math-120-Lec-6.html)
 - [Week 7](https://millera2.github.io/Math-120/Math-120-Lec-7.html)
+- [Week 8](https://millera2.github.io/Math-120/Math-120-Lec-8.html)
 
 
 
 ## Next Quiz 
 
-Coverage: Week 7
+Coverage:  Week 8
 
-Practice Problems:  **All examples from lecture**
+Practic problems:
 
-Also:
+- 3.19 (p111)
+- 4.1 (p142)
 
-- 3.5 (p 92)
-- 3.9 (p93)
-- 3.11 (p94)
-- 3.13, 3.14, 3.15 (p109)
-- 3.17 (p110)
+
+
 
 ## Reading Assignments
 

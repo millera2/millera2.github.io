@@ -62,7 +62,7 @@ Coverage:  Week 7
 
 ## HW Assignments
 
-HW 3 is up!
+HW 5 is up!
 
 
 [Here are the HW Assignment Descriptions](https://millera2.github.io/CS-111/HW.html)

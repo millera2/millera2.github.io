@@ -42,6 +42,17 @@ Homework solutions will be graded on the following criteria:
 
 All code should be written **individually** by the student, unless otherwise specified in the HW.  Students are encouraged to work together, but sharing code is a violation of academic integrity.
 
+# HW 5 Due Thurs Oct 22 by 10pm
+
+File format:  .ipynb notebook file on Notebowl.  Each solution should be contained in one code cell, discussion for each in an accompanying Markdown cell.
+
+Book Problems:
+
+- 5.1.5 (p197)
+- 5.1.6 (p 197)
+- 5.1.7 (p 198)
+- 5.4.14 (p 222)
+
 
 # HW 4 Due Thurs Oct 8 by 5pm
 
