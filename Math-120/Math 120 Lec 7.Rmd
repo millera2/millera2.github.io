@@ -474,26 +474,250 @@ d
 
 
 
-
-
-
-
-
-
-
-
-
-
-## Conditional Probability
-
-
-
-
-
-
 ## Probability Trees
 
-## Bayes's Theorem
+Probability trees provide a handy visual aid for organizing all of the various probabilities we care about.
+
+*Ex*  Suppose a test for a disease advertises itself as "95% accurrate.  This means:  if the test is administered to someone who *has* the disease, the test will show "+" 95% of the time.
+
+Suppose that if a person doesn't have the disease, then they'll test "-" about 85%.
+
+Suppose that 3% of the population has the disease.
+
+Let's draw a probability tree to summarize the probabilities.
+
+List of Probabilities:
+
+P(+|D) = .95
+P(-|D) = .05
+P(+|D^C) = .15
+P(-|D^C) = .85
+
+
+P(+ and D) = .03*.95
+
+```{r}
+.03*.95
+```
+
+
+P(D and -) = .03*.05
+
+```{r}
+.03*.05
+```
+
+```{r}
+.97*.15
+```
+
+```{r}
+.97*.85
+```
+
+In summary, the tree gives and intuitive layout for all conditional probabilities and "and" probabilites.
+
+
+Two important uses:
+
+1)  Q:  what percent of people test positive?  Can easily figure it out from the tree.  There's only four possibilities!
+
+  Want to find:  P(+)?  There are only two options for this scenario:  D and + or D^D and +.  So, add up the probabilities!
+  
+P(+) = .0285 + .1455
+
+```{r}
+.0285+.1455
+```
+
+About 17.4% of all people in the population will test positive.
+
+2)  What's the probability that, if you test +, you actually have the disease??  Observations:
+
+- this is what YOU care about if you're taking the test!
+- "backwards" from what we have right now!  RIght now, we know P(+|D).  We want the other way:  P( D | +)?  
+
+From the tree, we know everyting.  Use the conditional probability formula:
+
+
+    P(D|+) =  P(D and +)/P(+) = .0285/.174
+    
+```{r}
+.0285/.174
+```
+
+If you test positive, there's only about 16.4% chance that you really do have the disease!  Woah!  
+    
+    
+Notes:
+
+- 1 above is the "law of total probability".  To find P(+), we added all the possible probabilities:
+
+
+    P(+) = P(D and +) + P(D^C and +)
+    
+- 2 above is Bayes Rule!  Bayes rule is a formula/law for "reversing" conditional probabilities.  Here: we started with P(+|D). But actually, we're interested in the probability P(D|+).
+
+Recall, the test advertises itself as "95% accurate".  BUT, if you get a + result on the test, there's only a 16.4% chance that you really have the disease!!
+
+Think of Bayes this way:  it reverses conditional probability using info from the tree and the definition of conditional probability.
+
+
+**Example:  Bayes**  Suppose: 
+
+- 0.1% of the American population currently has lung cancer (event "L") 
+- 90% of all lung cancer cases are smokers (event "S") 
+- 21% of those without lung cancer also smoke. 
+
+(These values are fairly close to the values given on the American Lung Association web site
+
+Construct a probability tree to find the following probabilities:
+
+- P(S^C|L) = .1
+
+- P(S and L^C) = .20979
+
+
+- P(S) = .0009 + .20979 = 0.21069
+
+```{r}
+.0009 + .20979
+```
+
+
+
+- P(L|S) = P(L and S)/P(S) = .0009/.21069
+
+```{r}
+.0009/.21069
+```
+
+
+
+
+- P(L|S^C) = P(L and S^C)/P(S^C) = .0001/(.0001+.78921)
+
+```{r}
+.0001/(.0001+.78921)
+```
+
+Q:  how much more likely is it for a smoker to have lung cancer than a non-smoker?
+
+Divide:  smoking lung rate/non smoking rate:
+
+```{r}
+0.004271679/0.0001266929
+```
+
+Smokers are nearly 34 times more likely to have lung cancer!
+
+
+```{r}
+hist(runif(10000))
+```
+
+
+# Friday 10-9
+
+## Continuous Distributions - Normal Dist
+
+Context:  let's get to know the most famous probability distribution: normal dist, ie, the bell curve.
+
+Interesting fact:  the normal dist arises naturally in many real life/data applications.  
+
+Cool fact:  the normal dist is seen whenever we examine sums or **means** of random numbers.
+
+```{r}
+runif(1)
+```
+
+Random real number between 0 and 1.
+
+
+```{r}
+runif(10)
+```
+
+
+```{r}
+hist(runif(10000))
+```
+
+Punchline:  what if we do this a bunch of times (10000) and look at a histogram of the means/averages:
+
+```{r}
+hist(replicate(50000, sum(runif(10000))))
+```
+
+Moral of the story:  any time we study averages of randomly selected number (each one from the same population), the means (or sums) will follow a normal dist.
+
+Intuition:  most values are in the middle.  Very large (or very small) results are increasingly unlikely.
+
+The normal dist also arises frequently in biological variables: ex human height is normally distributed.  
+
+
+Weird thing about the normal dist:  it's a "continuous" distribution.  In other words, we can't list out all the possible options for X.
+
+Ex: Human height.  Not possible to make list of all possible human heights.  Infinitely many!
+
+Because of this, we can't make a distribution table!
+
+Instead:  use a density curve.  To find probability for a normal dist, we need to find area under the density curve.
+
+Ex: Height for adult men in the US follows a normal dist, with mean 69" and std 2.7".
+
+What's the probability that a randomly selected man is less than 70" tall?
+
+What's the probability that a randomly selecte man is between 67 and 68" tall?
+
+**Problem** It's easy to draw the picture, it's hard to find the area!  No simple geometric formula!
+
+If you've taken calculus:  this is an unsolvable integral!  No closed-form solution!
+
+So, we NEED computational assistance.  
+
+1)  Refer to a table
+2)  Use software (including Google Sheets)
+
+**One more problem**  There are MANY normal distributions (depending on center and spread).  
+
+Answer:  use the Standard Normal Dist, ie the normal distribution with center = 0 and spread (std dev) = 1.
+
+To perform any of these computations, we'll need to convert our data to a standard normal.  (More on this later).
+
+Let's do some example computations.
+
+NOTE:  The standard normal distribution is ALWAYS denoted by "Z".  
+
+*EX* Suppose Z has a standard normal dist.  Compute the following:
+
+a) P(Z<1.28) = .8997
+
+b) P(Z>1.28) = 1 - P(Z<1.28)   [complement rule]
+
+```{r}
+1-.8997
+```
+
+c) P( -0.82  < Z < 2.51 ) = P(Z<2.51) - P(Z< -0.82) = .9940 - .2061
+
+```{r}
+.9940 - .2061
+```
+
+
+
+Problem:  if we look up z=2.51 in the table, we'll get ALL the area below that cutoff.  But that's too much!  So, let's subtract off the area below -.82:
+
+
+
+
+
+
+
+
+
+
 
 
 
