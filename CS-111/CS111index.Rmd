@@ -50,6 +50,7 @@ The work I do in those vids is availabe on this site below.
 - [Week 5](https://millera2.github.io/CS-111/Lec-05.html)
 - [Week 6](https://millera2.github.io/CS-111/Lec-06.html)
 - [Week 7](https://millera2.github.io/CS-111/Lec-07.html)
+- [Week 8](https://millera2.github.io/CS-111/Lec-08.html)
 
 
 
