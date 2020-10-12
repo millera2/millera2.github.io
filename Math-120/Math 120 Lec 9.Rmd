@@ -52,8 +52,6 @@ Suppose that 3% of the population has the disease.
 
 Let's draw a probability tree to summarize the probabilities.
 
-![](https://sketch.io/render/sk-0bf647aee623d6b7689a644624480f75.jpeg)
-
 List of Probabilities:
 
 P(+|D) = .95
@@ -140,9 +138,6 @@ Think of Bayes this way:  it reverses conditional probability using info from th
 (These values are fairly close to the values given on the American Lung Association web site
 
 Construct a probability tree to find the following probabilities:
-
-![](https://sketch.io/render/sk-4d47fdc6b6de928ddfa0eeab2d4a5301.jpeg)
-
 
 - P(S^C|L) = .1
 
@@ -279,6 +274,100 @@ c) P( -0.82  < Z < 2.51 ) = P(Z<2.51) - P(Z< -0.82) = .9940 - .2061
 
 
 Problem:  if we look up z=2.51 in the table, we'll get ALL the area below that cutoff.  But that's too much!  So, let's subtract off the area below -.82:
+
+
+
+
+
+
+# Monday Oct 12
+
+## Normal Dists (continued)
+
+Recall:  to find probability for a normal dist, need to FIND THE AREA under the normal curve (corresponding to our range).  
+
+Last time:  practiced finding probabilities with the STANDARD NORMAL DIST:  mean = 0 and std dev = 1  (ie the one in the table)
+
+**Warm-up example**  If Z has a standard normal dist, find 
+
+    P( 0.34 < Z < 1.29) = P(Z<1.29) - P(Z < 0.34)
+
+```{r}
+.9015 - .6331
+```
+
+
+So far, all of our exmaples have been with the standard normal dist.
+
+But what about real data?  How to convert to std normal?
+
+A:  Easy, find a z-score!
+
+    z = (x-mean)/stdev
+    
+If X has a normal dist, the the above Z converts it to a std normal so we can use the table!  This formula converts our data to have a mean of 0, std dev of 1.
+
+**Example**
+
+Heights for adult men in the US follow a normal dist (this is true) with mean 69" (also tru) and std dev 2.7" (still true!).  
+
+What's the probability that a rando man is 70 inches tall or less?
+
+Step 1:  Get a z score! Convert our data to std normal!
+
+    z = (70 - 69)/2.7
+
+```{r}
+(70 - 69)/2.7
+```
+
+Note: to use table, MUST round z-score to 2 decimals.  Here, z = 0.37.  
+
+From table:  P(Z<.37) = .6443
+
+There's a 64.43% chance that rando man is less than 70" tall.  
+
+
+**Ex**  Heights for women in the US follow a normal dist with mean 64", std dev 2.4" (that's all true).  
+
+What's the prob that a randomly selected woman is between 65" and 70" tall?
+
+Idea:  get z scores, look em up!  Answer = big prob - small prob
+
+x = 70:
+
+z=
+```{r}
+(70-64)/2.4
+```
+
+X = 65:
+
+Z =
+```{r}
+(65 - 64)/2.4
+```
+z = .42
+
+Look em up!
+
+```{r}
+.9938 - .6628
+```
+
+There's a 33.1% chance that rando woman is between 65" and 70" tall.
+
+**Ex**  What's the probabability that your math professor is as tall as she is?  75"
+
+```{r}
+(75-64)/2.4
+```
+
+Hmmmmmmmm!!!  Thinking emoji!
+
+
+
+
 
 
 
