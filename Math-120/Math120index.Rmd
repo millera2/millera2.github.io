@@ -52,19 +52,17 @@ The work I do in those vids is availabe on this site below.
 - [Week 6](https://millera2.github.io/Math-120/Math-120-Lec-6.html)
 - [Week 7](https://millera2.github.io/Math-120/Math-120-Lec-7.html)
 - [Week 8](https://millera2.github.io/Math-120/Math-120-Lec-8.html)
+- [Week 9](https://millera2.github.io/Math-120/Math-120-Lec-9.html)
 
 
 
-## Next Quiz 
+## Next Quiz: This Wednesday
 
-Coverage:  Week 8
+Coverage:  Last Week
 
-Practic problems:
+Practice:  4.3bf, 4.5, 4.7 (p142-3)
 
-- 3.19 (p111)
-- 4.1 (p142)
-
-
+Lots of additional practice problems and solutions [here](https://www.stat.colostate.edu/inmem/gumina/st201/recitation8/downloads/Normal%20Probabilites%20Practice.pdf)
 
 
 ## Reading Assignments

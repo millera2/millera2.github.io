@@ -1,2 +1,4 @@
-This is an example of a text file.
-It contains some text.  Yay!
+This is our example text file.  Yay!
+We'll use it to explore options for working with files.
+
+Here's one more line just for funzies.  ;D

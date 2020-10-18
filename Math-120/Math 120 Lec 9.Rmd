@@ -35,247 +35,6 @@ housingData <- read_csv("../Data/House-Sales.csv")
 ```
 
 
-# Monday Oct 5
-
-
-
-
-## Probability Trees
-
-Probability trees provide a handy visual aid for organizing all of the various probabilities we care about.
-
-*Ex*  Suppose a test for a disease advertises itself as "95% accurrate.  This means:  if the test is administered to someone who *has* the disease, the test will show "+" 95% of the time.
-
-Suppose that if a person doesn't have the disease, then they'll test "-" about 85%.
-
-Suppose that 3% of the population has the disease.
-
-Let's draw a probability tree to summarize the probabilities.
-
-List of Probabilities:
-
-P(+|D) = .95
-P(-|D) = .05
-P(+|D^C) = .15
-P(-|D^C) = .85
-
-
-P(+ and D) = .03*.95
-
-```{r}
-.03*.95
-```
-
-
-P(D and -) = .03*.05
-
-```{r}
-.03*.05
-```
-
-```{r}
-.97*.15
-```
-
-```{r}
-.97*.85
-```
-
-In summary, the tree gives and intuitive layout for all conditional probabilities and "and" probabilites.
-
-
-Two important uses:
-
-1)  Q:  what percent of people test positive?  Can easily figure it out from the tree.  There's only four possibilities!
-
-  Want to find:  P(+)?  There are only two options for this scenario:  D and + or D^D and +.  So, add up the probabilities!
-  
-P(+) = .0285 + .1455
-
-```{r}
-.0285+.1455
-```
-
-About 17.4% of all people in the population will test positive.
-
-2)  What's the probability that, if you test +, you actually have the disease??  Observations:
-
-- this is what YOU care about if you're taking the test!
-- "backwards" from what we have right now!  RIght now, we know P(+|D).  We want the other way:  P( D | +)?  
-
-From the tree, we know everyting.  Use the conditional probability formula:
-
-
-    P(D|+) =  P(D and +)/P(+) = .0285/.174
-    
-```{r}
-.0285/.174
-```
-
-If you test positive, there's only about 16.4% chance that you really do have the disease!  Woah!  
-    
-    
-Notes:
-
-- 1 above is the "law of total probability".  To find P(+), we added all the possible probabilities:
-
-
-    P(+) = P(D and +) + P(D^C and +)
-    
-- 2 above is Bayes Rule!  Bayes rule is a formula/law for "reversing" conditional probabilities.  Here: we started with P(+|D). But actually, we're interested in the probability P(D|+).
-
-Recall, the test advertises itself as "95% accurate".  BUT, if you get a + result on the test, there's only a 16.4% chance that you really have the disease!!
-
-Think of Bayes this way:  it reverses conditional probability using info from the tree and the definition of conditional probability.
-
-
-**Example:  Bayes**  Suppose: 
-
-- 0.1% of the American population currently has lung cancer (event "L") 
-- 90% of all lung cancer cases are smokers (event "S") 
-- 21% of those without lung cancer also smoke. 
-
-(These values are fairly close to the values given on the American Lung Association web site
-
-Construct a probability tree to find the following probabilities:
-
-- P(S^C|L) = .1
-
-- P(S and L^C) = .20979
-
-
-- P(S) = .0009 + .20979 = 0.21069
-
-```{r}
-.0009 + .20979
-```
-
-
-
-- P(L|S) = P(L and S)/P(S) = .0009/.21069
-
-```{r}
-.0009/.21069
-```
-
-
-
-
-- P(L|S^C) = P(L and S^C)/P(S^C) = .0001/(.0001+.78921)
-
-```{r}
-.0001/(.0001+.78921)
-```
-
-Q:  how much more likely is it for a smoker to have lung cancer than a non-smoker?
-
-Divide:  smoking lung rate/non smoking rate:
-
-```{r}
-0.004271679/0.0001266929
-```
-
-Smokers are nearly 34 times more likely to have lung cancer!
-
-
-```{r}
-hist(runif(10000))
-```
-
-
-# Friday 10-9
-
-## Continuous Distributions - Normal Dist
-
-Context:  let's get to know the most famous probability distribution: normal dist, ie, the bell curve.
-
-Interesting fact:  the normal dist arises naturally in many real life/data applications.  
-
-Cool fact:  the normal dist is seen whenever we examine sums or **means** of random numbers.
-
-```{r}
-runif(1)
-```
-
-Random real number between 0 and 1.
-
-
-```{r}
-runif(10)
-```
-
-
-```{r}
-hist(runif(10000))
-```
-
-Punchline:  what if we do this a bunch of times (10000) and look at a histogram of the means/averages:
-
-```{r}
-hist(replicate(50000, sum(runif(10000))))
-```
-
-Moral of the story:  any time we study averages of randomly selected number (each one from the same population), the means (or sums) will follow a normal dist.
-
-Intuition:  most values are in the middle.  Very large (or very small) results are increasingly unlikely.
-
-The normal dist also arises frequently in biological variables: ex human height is normally distributed.  
-
-
-Weird thing about the normal dist:  it's a "continuous" distribution.  In other words, we can't list out all the possible options for X.
-
-Ex: Human height.  Not possible to make list of all possible human heights.  Infinitely many!
-
-Because of this, we can't make a distribution table!
-
-Instead:  use a density curve.  To find probability for a normal dist, we need to find area under the density curve.
-
-Ex: Height for adult men in the US follows a normal dist, with mean 69" and std 2.7".
-
-What's the probability that a randomly selected man is less than 70" tall?
-
-What's the probability that a randomly selecte man is between 67 and 68" tall?
-
-**Problem** It's easy to draw the picture, it's hard to find the area!  No simple geometric formula!
-
-If you've taken calculus:  this is an unsolvable integral!  No closed-form solution!
-
-So, we NEED computational assistance.  
-
-1)  Refer to a table
-2)  Use software (including Google Sheets)
-
-**One more problem**  There are MANY normal distributions (depending on center and spread).  
-
-Answer:  use the Standard Normal Dist, ie the normal distribution with center = 0 and spread (std dev) = 1.
-
-To perform any of these computations, we'll need to convert our data to a standard normal.  (More on this later).
-
-Let's do some example computations.
-
-NOTE:  The standard normal distribution is ALWAYS denoted by "Z".  
-
-*EX* Suppose Z has a standard normal dist.  Compute the following:
-
-a) P(Z<1.28) = .8997
-
-b) P(Z>1.28) = 1 - P(Z<1.28)   [complement rule]
-
-```{r}
-1-.8997
-```
-
-c) P( -0.82  < Z < 2.51 ) = P(Z<2.51) - P(Z< -0.82) = .9940 - .2061
-
-```{r}
-.9940 - .2061
-```
-
-
-
-Problem:  if we look up z=2.51 in the table, we'll get ALL the area below that cutoff.  But that's too much!  So, let's subtract off the area below -.82:
-
-
 
 
 
@@ -364,6 +123,316 @@ There's a 33.1% chance that rando woman is between 65" and 70" tall.
 ```
 
 Hmmmmmmmm!!!  Thinking emoji!
+
+Since there's almost no area past z=4.58, 
+
+P(Z>4.58) ~ 0  (approximately zero).
+
+There's almost no chance of randomly picking a woman who's 75" or taller.
+
+Moral of the story:  statistics only tells us about populations, not individuals!
+
+
+
+**Ex** What's the probability that a randomly selected woman is less than 75" tall?
+
+P(X<=75) ~ 1.
+
+
+### Backwards problems
+
+All of the problems that we've seen so far are "forwards problems":
+  
+   Given a z score, find a probability.
+   Given a value, find a probability.
+   
+**Backwards problems** go the other way:
+
+   Given a probability (area), find the corresponding value.
+   
+   
+   
+Ex:  How tall must a man be in order to be in the top 10% of men's heights?
+
+
+First, let's do some basic ones with the z table.
+
+**Ex** Find the z-score that's larger than 85% of all values in the standard normal dist.
+
+We need to find the z-score with area/probability .85 below.  
+
+Best z-score (might not always be exact):  z = 1.04.
+
+
+
+**Ex** What's the z-score of an individual in the top 10% of measurements.
+
+Need to look up area = 0.9 (that's on the left!!!)
+
+The individual would need a z-score of z=1.28.  
+
+
+
+# Friday 10-16
+
+## Backwards Problems continued
+
+Backwards problems are how we find "percentiles" for normal dists.
+
+Ex:  40th percentile
+$$P_{40}$$
+
+This number is a value (not a probability!) in the dataset that's larger than 40% of data in the distribution.
+
+Ex:  If you score in the 99th percentile (P_99), then you scored higher than 99% of test takers.  (Good thing!)
+
+Ex: A 4-year old is in the 70th percentile of heights for 4-year olds.  P_70.
+
+You already know a couple of special percentiles:
+
+P_25 = Q_1!!!
+P_75 = Q_3!!!
+P_50 = Median
+
+Called "order statistics", because they show where, in order, the data is.
+
+Backwrds problems are how we find percentiles:
+
+
+**Ex** Reticulated giraffes have an avg height of 18.1' and std dev of 1.6', height follow normal dist.  Calculate the 75th percentile (P_70) for giraffe heights.
+
+Equivalent:  how tall must the giraffe be in order to be taller than 75% of all giraffes.
+
+First:  need to find the z-score.  Backwards problem, so look up the area in the table!
+
+We find the z-score with area closest to 70% is z=0.67.
+
+Not quite done:  still need to know how tall the giraffe is!
+
+    z = (x - mean)/stdev
+    
+Plug in:
+
+    .67 = (x-18.1)/1.6
+    
+```{r}
+.67*1.6+18.1
+```
+
+Thus, the giraffe must be 19.172ft tall in order to be in the 75th percentile.
+
+
+
+**Ex** Scores on the SAT follow a normal dist with mean 1100 and std dev 200.
+
+How high must a student score to be in the 90th percentile, P_90?
+
+Backwards, since we're looking for a value (not a probability!)  First, find z in the table:  look up the area that's as close as possible to .9.
+
+Best z-score: z = 1.28
+
+Still need to compute the score:
+
+    z = (x - mean)/stdev
+    
+    1.28 = (x-1100)/200
+    
+Find x:
+
+
+```{r}
+1.28*200+1100
+```
+
+A student would have to score 1356 in order to be in the 90th percentile.
+
+
+**Special example!**  Again about SAT ( mean=1100 and stdev = 200).  What range of scores encompass the middle 90% of the data?
+
+What are the cutoffs (low and high) that separate the middle 90% most common scores?
+
+Picture!
+
+We see that for z_low, need to look up area of .05.
+
+Uh-oh!  There are two areas that are equally close (z-scores of -1.64 and -1.65).  No problem, just split the difference:
+
+    z = -1.645
+    
+Ok, got the low z-score.  What about the high?  Look up area of 0.95:
+
+    z = +1.645
+    
+Note:  for "middle %" problems, the z-scores always match (+/-) because the normal dist is symmetric!  Gotta be the same on both sides!  Don't really need to look up both. 
+
+Still need to find the scores!  No prob, plug in:
+
+Low:
+
+    -1.645 = (x - 1100)/200
+    
+```{r}
+-1.645*200+1100
+```
+    
+High:
+
+    +1.645 = (x - 1100)/200
+
+```{r}
+1.645*200+1100
+```
+
+Conclusion:  the middle 90% of scores on the SAT are between 771 and 1429.
+
+
+
+**Ex**  Heights for women in the US follow a normal dist, mean = 64" and stdev = 2.4".
+
+Find the IQR for women's heights.
+
+Remember, IQR is the range of the middle 50%!
+
+Picture!
+
+We see we need to find the area = .25.  Look it up: z = -.67 is closest.
+
+Thus, the z-scores are +/- .67
+
+Find the heights:  plug in!
+
+    -.67 = (x-64)/2.4
+    
+```{r}
+-.67*2.4+64
+```
+    
+    +.67 = (x-64)/2.4
+    
+```{r}
+.67*2.4+64
+```
+
+Conclusion:  the middle 50% of women range between 62.392 inches and 65.608 inches.
+
+Thus, the IQR = 65.608- 62.392
+
+```{r}
+65.608- 62.392
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+.8*.95
+```
+
+```{r}
+.76+.08
+```
+
+
+P(S|B) = P(B and S)/B(B)
+
+```{r}
+.76/.84
+```
+
+
+
+```{r}
+1-pnorm(1.83)
+```
+
+
+```{r}
+pnorm(3.01)-pnorm(-1.23)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
 
 
 

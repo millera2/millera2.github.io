@@ -1,0 +1,5 @@
+This is an example of a text file.
+Woohoo!
+Text files are the most fundamental form of input for a computer program.
+There are variations, like .csvs (for the DA folks), but even those are really just text files.
+To a computer programming language, -everything- is a text file or a binary file (more on those later).
