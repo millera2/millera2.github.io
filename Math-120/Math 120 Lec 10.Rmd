@@ -1,0 +1,149 @@
+---
+title: "Math 120 Week 8"
+author: "Ali Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: hide
+    theme: yeti
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+studentSurvey <- read_csv("Student Data.csv")
+deathPenaltyData <- read_csv("death penalty data.csv")
+housingData <- read_csv("../Data/House-Sales.csv")
+#------------------------------------------------#
+```
+
+
+
+
+
+
+# Monday 10-19
+
+## Ch 5:  Inference
+
+Recall, **statistical inference** is the process of making mathematically supported conclusions about populations based upon sample data.
+
+
+Statistical inference always starts with a "point estimate", ie a single number that represents our best guess about the population paramater.
+
+  (Rember:
+
+  - Parameters are summaries of populations
+  - Statistics are summaries of samples
+
+  )
+
+You already know a couple of point estimates:
+
+-xbar is a point estimate for a population mean, mu
+-phat is a point estimate for a population proportion, p
+
+Two problems:
+
+-No guarantee that these are correct for populations!  Sample are random!
+- (So far) we don't know how much variability there is in these point estimates.  
+
+Let's study both of these with an example from the text (p170):
+
+- Given the parameter:  p = .88  (in real life, we wouldn't know!)
+
+From some of our example random samples of size 1000, we see the resulting proportion varies.  We saw:  86.1%, 87.8%, 90.1%, 89.4%, etc etc.
+
+Idea:  let's perform this sample 5000 times and look at the results.  We are going to make a histogram of 5000 sample proportions from 5000 samples.  
+
+Observations from the histogram:
+
+- Looks like sample proportions follow a normal dist (ooh!)
+- The center of the distribution is .88 (most are close to the true value).
+- We have an idea for the variability of the sample results.  Here, they all seem to be within +/- 4% of the true value.
+
+## Sampling Distributions
+
+The histogram you saw above is an example of a "sampling dist", ie the distribution for possible SAMPLE RESULTS.
+
+Restate:  a sampling distribution is a probability distribution that describes the likelihood of observing a sample result of fixed size, n (i.e. it DOESN'T tell you about individuals!)
+
+As you've seen, these often look like normal dists!  This amazing fact is called the **Central Limit Theorem**.  
+
+According to the CLT, sample statistics (like xbar and phat) will always follow a normal distribution as long as the sample size is "large enough".
+
+For **sample proportions**, phat,  they follow a normal dist with:
+
+1) mean = p
+
+$$\mu_{\hat{p}}=p$$
+
+In other words, the expected value for sample proportions phat is the true population proportion, p.
+
+2) stdev = sqrt(p*(1-p)/n)
+
+$$\sigma_\hat{p}=\sqrt{p(1-p)/n}$$
+
+Thus, for any particular sample proportion, phat, we can find z-scores!
+
+For phat:
+
+     z = (phat - p)/sqrt(p*(1-p)/n)
+       = (obs - exp)/stdev
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
