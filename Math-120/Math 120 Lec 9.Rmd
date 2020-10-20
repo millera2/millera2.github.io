@@ -50,6 +50,8 @@ Last time:  practiced finding probabilities with the STANDARD NORMAL DIST:  mean
 **Warm-up example**  If Z has a standard normal dist, find 
 
     P( 0.34 < Z < 1.29) = P(Z<1.29) - P(Z < 0.34)
+    
+![](https://sketch.io/render/sk-b150eb88bc4129ca3bcb24f1d1a79932.jpeg)
 
 ```{r}
 .9015 - .6331
@@ -124,6 +126,8 @@ There's a 33.1% chance that rando woman is between 65" and 70" tall.
 
 Hmmmmmmmm!!!  Thinking emoji!
 
+![](https://sketch.io/render/sk-2be5552ef23f8121b75f398dd9947360.jpeg)
+
 Since there's almost no area past z=4.58, 
 
 P(Z>4.58) ~ 0  (approximately zero).
@@ -161,6 +165,8 @@ First, let's do some basic ones with the z table.
 
 We need to find the z-score with area/probability .85 below.  
 
+![](https://sketch.io/render/sk-f223f260e52b54c768176ac910d2266f.jpeg)
+
 Best z-score (might not always be exact):  z = 1.04.
 
 
@@ -169,7 +175,11 @@ Best z-score (might not always be exact):  z = 1.04.
 
 Need to look up area = 0.9 (that's on the left!!!)
 
+![](https://sketch.io/render/sk-7a8f0a8ffd925df8f7959c238b1f5221.jpeg)
+
 The individual would need a z-score of z=1.28.  
+
+
 
 
 
@@ -198,19 +208,21 @@ Called "order statistics", because they show where, in order, the data is.
 
 Backwrds problems are how we find percentiles:
 
-
-**Ex** Reticulated giraffes have an avg height of 18.1' and std dev of 1.6', height follow normal dist.  Calculate the 75th percentile (P_70) for giraffe heights.
+### Typo Corrected!
+**Ex** Reticulated giraffes have an avg height of 18.1' and std dev of 1.6', height follow normal dist.  Calculate the 75th percentile (P_75) for giraffe heights.
 
 Equivalent:  how tall must the giraffe be in order to be taller than 75% of all giraffes.
 
 First:  need to find the z-score.  Backwards problem, so look up the area in the table!
 
-We find the z-score with area closest to 70% is z=0.67.
+![](https://sketch.io/render/sk-3f63f7c25e6258cbc402d680f925f6b6.jpeg)
+
+We find the z-score with area closest to 75% is z=0.67.
 
 Not quite done:  still need to know how tall the giraffe is!
 
     z = (x - mean)/stdev
-    
+
 Plug in:
 
     .67 = (x-18.1)/1.6
@@ -228,6 +240,8 @@ Thus, the giraffe must be 19.172ft tall in order to be in the 75th percentile.
 How high must a student score to be in the 90th percentile, P_90?
 
 Backwards, since we're looking for a value (not a probability!)  First, find z in the table:  look up the area that's as close as possible to .9.
+
+![](https://sketch.io/render/sk-7a8f0a8ffd925df8f7959c238b1f5221.jpeg)
 
 Best z-score: z = 1.28
 
@@ -251,7 +265,7 @@ A student would have to score 1356 in order to be in the 90th percentile.
 
 What are the cutoffs (low and high) that separate the middle 90% most common scores?
 
-Picture!
+Picture!  (Shown below this problem)
 
 We see that for z_low, need to look up area of .05.
 
@@ -286,6 +300,7 @@ High:
 Conclusion:  the middle 90% of scores on the SAT are between 771 and 1429.
 
 
+![](https://sketch.io/render/sk-8987458bfd3ed86d9243d226e39f68f2.jpeg)
 
 **Ex**  Heights for women in the US follow a normal dist, mean = 64" and stdev = 2.4".
 
@@ -293,7 +308,7 @@ Find the IQR for women's heights.
 
 Remember, IQR is the range of the middle 50%!
 
-Picture!
+Picture! (Seen above, below the previous example)
 
 We see we need to find the area = .25.  Look it up: z = -.67 is closest.
 
@@ -320,126 +335,6 @@ Thus, the IQR = 65.608- 62.392
 ```{r}
 65.608- 62.392
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-```{r}
-.8*.95
-```
-
-```{r}
-.76+.08
-```
-
-
-P(S|B) = P(B and S)/B(B)
-
-```{r}
-.76/.84
-```
-
-
-
-```{r}
-1-pnorm(1.83)
-```
-
-
-```{r}
-pnorm(3.01)-pnorm(-1.23)
-```
-
-
-
-
-
-
-
-
-
-
-
-
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
