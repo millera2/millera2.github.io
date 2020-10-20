@@ -31,6 +31,34 @@ theme_set(theme_tufte() +
 #------------------------------------------------#
 ```
 
+# HW 5 - The Normal Distribution 
+
+## (Due Thurs Oct 29 by 10pm on Notebowl)
+
+Turn in a Google Docs report, exported to pdf.  As usual, take care to make it presentable.  
+
+
+Using the built-in functions in Google Sheets, compute the following probabilities.  Do *not* use a Z table -- software only.  <small>(But, if you know another statistical software platform/language and want to show off, you can use that too **as long as you clearly show the (written) commands you used.  No web apps.** ) </small>
+
+For each, show **both** the command you used, and the output.
+
+a) Women in Sweden have mean height 65.23 inches (stdev 2.64).  What percent of Swedish women are taller than 71"?
+
+b)  Female giraffes have mean height 16.8' (stdev 1.7').  What's the probability that a randomly selected female giraffe is between 16' and 17' tall?
+
+c)  The residuals for a linear regression model follow a normal distribution, with mean 0 units and stddev 0.73 units.  What's the range of the middle 80% of residuals for this model?
+
+d) At a large state university, exam scores for a large lecture section of Calculus follow a normal distribution with mean 74% and stdev 8.2%.  How high must a student score in order to be at the 80th percentile?
+
+
+e) At Denison, about 82% of students are from out-of-state (ie grew up outside of Ohio).  If we take a sample of 100 students, what's the likelihood that at least 75% of them are from out-of-state?
+
+
+f) To relieve stress, Prof Miller sometimes completes "speedruns" (ie, as fast as possible) of the classic 1994 Nintendo adventure game, *Super Metroid*.  Her average completion time is 2 hours 32 minutes, stdev 24 minutes.  <small>*(She's probably done this nearly 100 times in the past 25 years.)*</small>
+<br>If her completion times follow a normal distribution, what's the chance that her completion time on a random speedrun is more than 2 standard deviaitons (above or below) her average completion time.
+
+<br><br>
+
 # HW 4 - The Death Penalty
 
 Due Friday Oct 16 by 5pm on Notebowl.  Submit .pdf report as usual.
