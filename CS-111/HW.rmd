@@ -42,6 +42,31 @@ Homework solutions will be graded on the following criteria:
 
 All code should be written **individually** by the student, unless otherwise specified in the HW.  Students are encouraged to work together, but sharing code is a violation of academic integrity.
 
+<br><br>
+
+# HW 6 Due Thurs Nov 5th by 10pm
+
+File format: .ipynb notebook file submitted to Notebowl.  Each solution should be contained in a seperate, individual code cell.  Clearly label each solution with a Markdown cell.  Docstrings are required for all functions.  No (English language) discussion/explanation is required, although any discussion you provide about your solution (contained in a Markdwown cell) may help you earn partial credit.
+
+Students have choice for this HW:
+
+Pick **two** of the following three problems: 
+
+- 6.3.6 and 6.3.7 (p268) <small>(**both** count as one choice)</small>,   
+- 6.3.19-20 (p270) <small>(**both** count as one choice)</small>,  
+- 6.6.5 (p296)
+
+In addition, pick **two** of the following four problems:  
+
+- 6.1.9 (p 249), 
+- 6.2.6 (p259), 
+- 6.3.5 (p268), 
+- 6.3.11 (p269)
+
+A student's maximum score will be the sum of two problems from one list, two from the other.  If more than two from either list is submitted, their grade will be the **lowest** two scores in the lists.
+
+<br><br>
+
 # HW 5 Due Thurs Oct 22 by 10pm
 
 File format:  .ipynb notebook file on Notebowl.  Each solution should be contained in one code cell, discussion for each in an accompanying Markdown cell.

@@ -293,6 +293,372 @@ Virginicas also have lots of spread:  they tend to be larger, but sometimes they
 
 Also, there's an outlier in the virginias.  Ie, an unusually small one.
 
+**Ex** What's the z-score of an individual in the top 10% of measurements.
+
+Need to look up area = 0.9 (that's on the left!!!)
+
+The individual would need a z-score of z=1.28.  
+
+
+
+
+# Friday 10-16
+
+## Backwards Problems continued
+
+Backwards problems are how we find "percentiles" for normal dists.
+
+A percentile is a VALUE that's at or above a certain percent of the data.
+
+$$P_{40}$$
+
+Ex:  P_40, the 40th percentile, is the value in the data that's as big or bigger than the lower 40% of the data.
+
+
+**Ex** if you score in the 90th percentile on an exam,that means your score was as high or higher than 90% of students.  Good!
+
+**Ex** If a 4-year-old is as tall or taller than 70% of similar-age children, we'd say he/she is in the 70th percentile.
+
+Percentiles denote cutoff for LEFT area.  
+
+A percentile is an example of an "order statistic" because it tells you WHERE in the dataset you are.  You already know 3 of them!
+
+P_25 = Q_1 !!
+P_75 = Q_3 !!
+P_50 = Median!!
+
+**Ex** Heights for women in the US follow a normal dist with mean 64" and stdev 2.4"
+
+How tall must a woman be to be in the 90th percentile for women's heights?
+
+Backwards:  given an area (90%), looking for value (her height)!
+
+Find area=.9 in the table: she has a z-score of 1.28.
+
+Still need to find her height:  plug in to z-score formula!
+
+    z = (x-mean)/stdev
+    
+    1.28 = (x - 64)/2.4
+    
+```{r}
+1.28*2.4+64
+```
+
+In order to be in P_90, she must be 67.072" tall.
+
+
+**Ex**  SAT scores follow a normal dist with mean 1100 and stdev 200.
+
+How high must a student score to be in the 75th percentile?
+
+Backwards:  looking for a value based an area.
+
+Find area=.75 in the table: z = .67
+
+Still need SAT score:  plug in!
+
+    z = (x - mean)/stdev
+    
+    .67 = (x - 1100)/200
+    
+```{r}
+.67*200+1100
+```
+    
+The student must score at least a 1234 on the exam to be in P_75.
+
+
+**Special problem type**  [I call these "middle %" problems] Reticulated giraffes have a mean height 18.1' and std dev 1.6', normal dist.  
+
+What range of values encompass the middle 90% of giraffe heights?
+
+What are the cutoffs (low and high) for the middle 90% most common giraffe heights?
+
+Picture!
+
+We see that we need to look up the z-score for lower area=.05
+
+Two z-scores are equally good:  -1.64 and -1.65.  Choose half-way point:  use low z = -1.645
+
+For high z, look up area = .95:  use z = 1.645.
+
+Note:  since normal dist is symmetric about zero, this always happens!  +/- zscores are the same!  Don't need to find both, just find one of them and the other is the negative.
+
+Finally, find the heights: z = +/- 1.645
+
+Low:  -1.645 = (x-18.1)/1.6
+
+```{r}
+-1.645*1.6+18.1
+```
+
+high:  +1.645 = (x-18.1)/1.6
+
+```{r}
+1.645*1.6+18.1
+```
+
+Conclusion:  the middle 90% most common giraffe heights are between 15.468 and 20.732'.
+
+
+
+
+
+**Ex**  SAT scores:  normal, mean = 1100, stdev = 200.
+
+Compute the IQR of SAT scores.
+
+Compute the range of the **middle 50%** of the data.
+
+Picture!  Look up area = .25 in the table:  z = +/- 0.67 (use both)
+
+Now, find SAT scores by plugging in:
+
+low: 
+
+    -0.67=(x-1100)/200
+```{r}
+-.67*200+1100
+```
+    
+high: 
+
+    +0.67=(x-1100)/200
+```{r}
+.67*200+1100
+```
+
+The middle 50% of SAT scores are between 966 and 1234.  THus, the IQR:
+
+```{r}
+1234-966
+```
+
+
+
+
+P( S | B)  = P(S and B)/P(B)  = .76/.84
+           =    P7/(P7+P9)
+
+```{r}
+.76/.84
+```
+
+
+```{r}
+1-0.9664
+```
+
+```{r}
+.9987 - .1093
+```
+
+P( a < z < b) = P(Z<b) - P(z<a)
+
+
+
+
+
+
+z = 0.84
+
+.84 = (x-153)/7.67
+
+```{r}
+.84*7.67+153
+```
+
+
+-.53 = (x - 151)/7
+
+```{r}
+-.53*7+151
+```
+
+
+
+
+
+
+
+
+# Monday 10-19
+
+## Statistical Inference
+
+Recall, statistical inference is the process of making mathematically supported conclusions about populations based on sample statistics.
+
+The process always begins with a **point estimate**, ie a single number that represents our best guess about the population.
+
+You know a couple:
+
+- xbar, the sample mean, estimates the population mean (mu)
+- phat, the sample proportion, estimates the population proportion (p)
+
+(Recall:
+
+- parameters are numerical summaries of populations (p, mu)
+- statistics are numerical summaries of samples (phat, xbar)
+
+)
+
+Two related problems:
+
+- No guarantee that the point estimates are "correct"
+- Don't know (yet) how much variability there is in out estimates.  
+
+Let's investigate with the example on p170 (5.1)
+
+- problem tells us parameter:  p = .88 (in real life, we wouldn't know!)
+
+- After conducting several simulated samples of n=1000, we saw phat values:  .861, .872, .887, .888, .895
+
+Seems like they tend to be pretty close.  Let's investigate the behavior of MANY such samples, say 1000.  We'll make a histogram that shows the sample proportions phat for our 1000 different samples of size 1000.  
+
+From the histogram, we see:
+
+- THe sample results (phat) tend to follow a normal dist
+- The center of the dist was the same as the true population proportion, p=.88.  Most samples tended to be close to the true population parameter.
+- All of the 1000 sample results were withing +/- 4% of the true value.
+
+### Sampling Distributions
+
+The histogram we saw in the above example shows a **sampling distribution**!  
+A sampling dist is a probility dist that describes the probability of observing a **sample result** (not an individual result).
+
+We saw that our sampling dist had a special shape:  normal.  In fact, under the correct circumstances, this ALWAYS happens.  
+
+**The Central Limit Theorem** states that sample statistics (like xbar and phat) always follow a normal distribution as long as the sample size, n, is "large enough".
+
+Furthermore, for **phat** we know the center and spread of the distribution:
+
+1)  Mean:  $$\mu_\hat{p} = p$$
+
+In other words, the expected value for our sample prorportion is the population proportion, p.  We expect phat is close to p.
+
+2) Stdev:  $$\sigma_\hat{p}=\sqrt{p(1-p)/n}$$
+
+Thus, we can compute the spread/variability in the sample dist.  
+
+Putting these together, we can get z-scores for phat!
+
+    z = (obs - exp)/stdev
+      = (phat - p)/sqrt(p*(1-p)/n)
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
