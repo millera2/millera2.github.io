@@ -63,7 +63,7 @@ In addition, pick **two** of the following four problems:
 - 6.3.5 (p268), 
 - 6.3.11 (p269)
 
-A student's maximum score will be the sum of two problems from one list, two from the other.  If more than two from either list is submitted, their grade will be the **lowest** two scores in the lists.
+A student's maximum score will be the sum of two problems from one list, two from the other.  If more than two from either list is submitted, their grade will be the **lowest** two scores in the lists.  If you'd like to attempt other problems and get feedback without risking your score, feel free to include these solutions prefaced by the disclaimer "**Just for fun!**"
 
 <br><br>
 
