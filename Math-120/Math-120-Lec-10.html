@@ -1743,7 +1743,7 @@ summary {
 
 <h1 class="title toc-ignore">Math 120 Week 8</h1>
 <h4 class="author">Ali Miller</h4>
-<h4 class="date">19 October, 2020</h4>
+<h4 class="date">23 October, 2020</h4>
 
 </div>
 
@@ -1753,6 +1753,7 @@ summary {
 <li><a href="#ch-5-inference">Ch 5: Inference</a></li>
 <li><a href="#sampling-distributions">Sampling Distributions</a></li>
 </ul></li>
+<li><a href="#friday-oct-23">Friday Oct 23</a></li>
 </ul>
 </div>
 
@@ -1807,6 +1808,59 @@ summary {
    = (obs - exp)/stdev</code></pre>
 </div>
 </div>
+<div id="friday-oct-23" class="section level1">
+<h1>Friday Oct 23</h1>
+<p>Recall: sampling distributions are probability distributions for entire sample results.</p>
+<p>The goal: answer the question, &quot;how likely (or unlikely) is our sample result?</p>
+<p>Remember, the only reason this is possible is because of the CENTRAL LIMIT THEOREM: ie, if our sample size is “large enough”, we know that our sample results (xbar and phat) follow a normal distribution.</p>
+<p>Wait, what’s “large enough?” Answer: it depends!</p>
+<p>First, we’ll think about categorical variables (phat).<br />
+Later, we’ll think about quantitative variables (xbar).</p>
+<p>For now, “large enough” for categorical variables means the following:</p>
+<pre><code>n*phat &gt;= 10   n*(1-phat) &gt;= 10</code></pre>
+<p>Equivalently, we need at least 10 individuals that ARE IN the category, and at least 10 indivuals that ARE NOT IN the category.</p>
+<p><strong>Ex</strong> In our class, 65% of students have brown hair. There are 50 students (n) in our class. Could we use a normal distribution to describe the likelihood of such a scenario?</p>
+<p>Check:</p>
+<pre class="r"><code>50*.65</code></pre>
+<pre><code>## [1] 32.5</code></pre>
+<pre class="r"><code>50*.35</code></pre>
+<pre><code>## [1] 17.5</code></pre>
+<p>Yes! n is “large enough”!</p>
+<p><strong>Ex</strong> Suppose that 60% of all DU students have brown hair. How likely would it be to take a sample of 50 students, and find that 65% (or more) of those students have brown hair?</p>
+<p>We saw above that n is “large enough”</p>
+<p>mu_phat = mean = .6 (population proportion) sigma_phat = stdev = sqrt(.6*(1-.6)/50)</p>
+<pre class="r"><code>sqrt(.6*(1-.6)/50)</code></pre>
+<pre><code>## [1] 0.06928203</code></pre>
+<p>obs = .65 exp = .60 stdev = .0693</p>
+<pre><code>z = (obs - exp)/stdev
+  = (.65 - .6)/.0693
+  </code></pre>
+<pre class="r"><code>(.65 - .6)/.0693</code></pre>
+<pre><code>## [1] 0.7215007</code></pre>
+<p>z = .72. Look it up!</p>
+<pre class="r"><code>1-0.7642</code></pre>
+<pre><code>## [1] 0.2358</code></pre>
+<p>There’s about a 23.58% chance that in a samle of 50 students, 65% or more would have brown hair.</p>
+<p>Such an occurrance is not unlikely.</p>
+<p><strong>Ex</strong> According to the internet, 82% of DU students are from “out-of-state” (not from Ohio).</p>
+<p>If we took a sample of 100 students, what’s the probability that at least 90% of them are from out-of-state?</p>
+<p>Check to see if we can use normal dist:</p>
+<pre class="r"><code>100*.9</code></pre>
+<pre><code>## [1] 90</code></pre>
+<pre class="r"><code>100*(1-.9)</code></pre>
+<pre><code>## [1] 10</code></pre>
+<p>Close! But, both are at least 10, so we CAN use the normal dist!</p>
+<p>obs = .9 exp = .82 stdev = sqrt(.82*(1-.82)/100)</p>
+<pre class="r"><code>sqrt(.82*(1-.82)/100)</code></pre>
+<pre><code>## [1] 0.03841875</code></pre>
+<p>Find zscore!</p>
+<pre class="r"><code>(.9 - .82)/.03842</code></pre>
+<pre><code>## [1] 2.082249</code></pre>
+<p>z= 2.08</p>
+<pre class="r"><code>1-0.9812</code></pre>
+<pre><code>## [1] 0.0188</code></pre>
+<p>There’s about a 1.88% chance of obtaining such a sample result. Pretty unlikely!</p>
+</div>
 
 
 
@@ -1843,7 +1897,7 @@ $(document).ready(function () {
 <!-- code folding -->
 <script>
 $(document).ready(function () {
-  window.initializeCodeFolding("hide" === "show");
+  window.initializeCodeFolding("show" === "show");
 });
 </script>
 

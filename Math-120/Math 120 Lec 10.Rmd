@@ -6,7 +6,7 @@ output:
   html_document:
     toc: true
     toc_depth: 3
-    code_folding: hide
+    code_folding: show
     theme: yeti
     df_print: paged
   
@@ -132,6 +132,118 @@ For phat:
 
 
 
+# Friday Oct 23
+
+Recall: sampling distributions are probability distributions for entire sample results.
+
+The goal:  answer the question, "how likely (or unlikely) is our sample result?
+
+Remember, the only reason this is possible is because of the CENTRAL LIMIT THEOREM: ie, if our sample size is "large enough", we know that our sample results (xbar and phat) follow a normal distribution.
+
+Wait, what's "large enough?"  Answer: it depends!
+
+First, we'll think about categorical variables (phat).  
+Later, we'll think about quantitative variables (xbar).  
+
+For now, "large enough" for categorical variables means the following:
+
+    n*phat >= 10   n*(1-phat) >= 10
+    
+Equivalently, we need at least 10 individuals that ARE IN the category, and at least 10 indivuals that ARE NOT IN the category.  
+
+
+**Ex**  In our class, 65% of students have brown hair.  There are 50 students (n) in our class.  Could we use a normal distribution to describe the likelihood of such a scenario?
+
+Check:
+
+```{r}
+50*.65
+```
+
+```{r}
+50*.35
+```
+
+Yes!  n is "large enough"!
+
+**Ex**  Suppose that 60% of all DU students have brown hair.   How likely would it be to take a sample of 50 students, and find that 65% (or more) of those students have brown hair?
+
+
+We saw above that n is "large enough"
+
+mu_phat = mean = .6 (population proportion)
+sigma_phat = stdev = sqrt(.6*(1-.6)/50)
+
+```{r}
+sqrt(.6*(1-.6)/50)
+```
+
+obs = .65
+exp = .60
+stdev = .0693
+
+    z = (obs - exp)/stdev
+      = (.65 - .6)/.0693
+      
+
+```{r}
+(.65 - .6)/.0693
+```
+
+z = .72.  Look it up!
+
+
+```{r}
+1-0.7642
+```
+
+There's about a 23.58% chance that in a samle of 50 students, 65% or more would have brown hair.
+
+Such an occurrance is not unlikely.
+
+
+**Ex**  According to the internet, 82% of DU students are from "out-of-state" (not from Ohio).  
+
+If we took a sample of 100 students, what's the probability that at least 90% of them are from out-of-state?
+
+Check to see if we can use normal dist:
+
+
+```{r}
+100*.9
+```
+
+```{r}
+100*(1-.9)
+```
+
+Close!  But, both are at least 10, so we CAN use the normal dist!
+
+obs = .9
+exp = .82
+stdev = sqrt(.82*(1-.82)/100)
+
+
+```{r}
+sqrt(.82*(1-.82)/100)
+```
+
+Find zscore!
+
+
+```{r}
+(.9 - .82)/.03842
+```
+
+z= 2.08
+
+
+
+```{r}
+1-0.9812
+```
+
+There's about a 1.88% chance of obtaining such a sample result.  Pretty unlikely!
 
 
 
