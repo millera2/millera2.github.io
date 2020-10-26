@@ -61,27 +61,19 @@ The work I do in those vids is availabe on this site below.
 
 Coverage:  Last Week
 
+Practice:  5.1 and 5.3f. (p179)
+
+Additional practice problem:  About 22% of Denison students are athletes.  If we take a sample of 100 students, what's the probability that at least 20% of them will be athletes?
+
+<small>Answer: 68.5%</small>
 
 
-## Reading Assignments
-
-Wanna know what's going on?  Read this stuff!
-
-- Due 8/19:  Textbook Ch 1.2 (p12-18)
-- Due 8/21:  Textbook Ch 2.1 (p41-46)
-- Due 9/04:  Textbook 8.1
-- Due 9/07:  Textbook 8.2
-- Due 9/12:  Textbook 8.3
-- Due 9/18:  [Empirical Rule](https://www.statisticshowto.com/empirical-rule-2/) (Nice simple explanation and cute short video)
-- Due 9/18:  Texbook 2.1 (p49-50 about *box plots*), Texbtook 4.1 (p134-135 *about z-scores*)
-- Due 10/1: Texbook 3.1-3.3
 
 
 ## HW Assignments
 
 [Click here for HW assignments](https://millera2.github.io/Math-120/HW.html)
 
-Next HW due:  Oct 2 by 5pm on Notebowl.  File format: .pdf document.
 
 
 ## Syllabus
