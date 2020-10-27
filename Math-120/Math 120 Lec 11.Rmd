@@ -35,6 +35,224 @@ housingData <- read_csv("../Data/House-Sales.csv")
 ```
 
 
+Quiz #3:
+
+x = 60, mean = 64, stdev = 2.4
+
+z-score:
+
+```{r}
+(60-64)/2.4
+```
+
+z = -1.67
+
+From table, left area is 0.0475.  We want "at least":
+
+```{r}
+1-0.0475
+```
+
+Quiz #4
+
+Find z-scores:
+
+x = 20:
+
+```{r}
+(20-21)/5.8
+```
+
+x = 25:
+
+```{r}
+(25-21)/5.8
+```
+
+Look em up!
+
+```{r}
+0.7549-0.4325
+```
+
+Quiz #5:
+
+```{r}
+(100-75)/6.1
+```
+
+Almost no area above z=4, so P(X>100) ~ 0.
+
+
+Quiz #6
+
+If he's in top 60%, he's ABOVE 40%.
+
+z = -.25
+
+z = (x-mean)/stdev
+
+-.25 = (x - 69)/2.7
+
+```{r}
+-.25*2.7+69
+```
+
+Quiz #7:
+
+For middle 50%, tail cutoffs are z = +/- .67
+
+```{r}
+-.67*7.3+76
+```
+
+```{r}
++.67*7.3+76
+```
+
+IQR:  
+
+```{r}
+80.891-72.109
+```
+
+
+# Monday Oct 26
+
+Section 5.2:  Confidence intervals.
+
+We're about to do real, honest statistical inference! Yaay!
+
+
+A confidence interval is a range of reasonable values for a population parameter based upon sample data.
+
+
+We never know exactly what the true parameter is, but we can provide a likely range of values.
+
+
+First, we're going estimate population proportion, p.  Our first example:  estimate the proportion of DU students who have brown hair.  
+
+TO find this, simply find the "middle %" of the sampling distribution based on our sample result.
+
+Common values:  95% confidence interval, 90% confidence interval, 99% confidence interval.
+
+Here, the distribution we're looking at is the sampling distribution for phat.  CATEGORICAL DATA!!!
+
+This distribution is normal, has mean p, stdev p(1-p)/n.  
+
+
+If we're trying to estimate p (pop prop), so we'll have to use sample prop phat instead.
+
+
+    z-score:  (phat - p)/stdev(phat*(1-phat)/n)
+    
+Goal:  solve this for p!  Thre's always two:  one for the negative z-score, one for the positive.  
+
+After algebra, here's the forumula for CI for p:
+
+
+           phat - z*sqrt(phat*(1-phat)/n)  <  p <  phat + z*sqrt(phat*(1-phat)/n)
+
+$$ \hat{p} \pm z^* \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$$
+
+The z-score here has a special name, "critical value".  It's the z-score that corresponds to the 'middle %'.
+
+CAUTION:  THe interval is only valid if our sample size is LARGE ENOUGH!
+
+    phat*n >= 10    (1-phat)*n >= 10 
+    
+**Example**  Using our class data (assume that it's a random sample), estmiate the proportion of all DU students with brown hair with 95% confidence.
+
+From our data:  n = 42, phat = 28/42
+
+CHECK:  Is n large enough?
+
+```{r}
+42*28/42
+```
+
+```{r}
+42*(1-28/42)
+```
+
+Both larger than 10, so yes!  Use normal dist.
+
+Need to find critical value z*.  Since 95% is in the middle, that means there's 2.5% left over for the tails.  Let's find the z-score that matches area=.025.  Use critical value zstar = 1.96.
+
+
+Plug into formula for CI:
+
+    phat - z*sqrt(phat(1-phat)/n)
+
+```{r}
+(28/42) - 1.96*sqrt((28/42)*(1-28/42)/42)
+```
+
+```{r}
+(28/42) + 1.96*sqrt((28/42)*(1-28/42)/42)
+```
+
+Based upon our sample data, we're 95% confident that the true proportion of all DU students is between 52.4% and 80.9%.
+
+
+### Margin of Error
+
+The MOE is the stuff after the +/- in the CI formula.  It determines the width of the interval!
+
+
+    ( ---------------------   phat   ---------------------)
+    
+Visually, the MOE is the width of the arms.
+
+In the hair example, our MOE was
+
+```{r}
+1.96*sqrt((28/42)*(1-28/42)/42)
+```
+
+In general, we hope that our MOE is small!  Maybe 14.2% doesn't seem so great....
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
