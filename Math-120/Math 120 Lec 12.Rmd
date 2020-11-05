@@ -1,0 +1,148 @@
+---
+title: "Math 120 Week 11"
+author: "Ali Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: yeti
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+studentSurvey <- read_csv("Student Data.csv")
+deathPenaltyData <- read_csv("death penalty data.csv")
+housingData <- read_csv("../Data/House-Sales.csv")
+#------------------------------------------------#
+```
+
+
+
+
+# Monday Nov 2
+
+## Hypothesis Tests (Ctd)
+
+Let's do one.  
+
+**Ex**  In our class data, we found that 28 out of 42 of you had "brown hair".  Does this provide evidence that more than half of all DU students have brown hair?
+
+Perform an appropriate hyp test with alpha = .05 significance.   
+
+```{r}
+28/42
+```
+
+1) Hypotheses.  Our claim:  more than half of DU studnets have brown hair.  This is the "alternate hypothesis", Ha. 
+
+WARNING:  EVERY hypothesis has to be a mathemetical statement about a population parameter.   Here:  we're talking about "p", the population proportion of students with brown hair.
+
+Ha: p > .5
+
+Of course, we can't just assume we're correct.  Instead, we must assume the "null hypothesis":
+
+H0: p = .5
+
+Note:  the H0 must always be a statement of equality about a population parameter.  
+
+
+H0: p = .5
+Ha: p > .5
+
+
+
+2) Test statistic.   The test stat is just the z-score for our sample result!
+
+    z = (obs - exp)/stdev
+    
+      = (phat - p)/sqrt(p*(1-p)/n)
+      
+Here, phat is our sample prop, and p is the pop prop from the null hyp!!!
+
+
+
+```{r}
+(28/42 - .5)/sqrt(.5*(1-.5)/42)
+```
+
+Here, our test stat:  z = 2.16
+
+
+3) p-value.  The "p-value" is the probability of observing a sample result as exteme as the one we got, assuming H0 is true.
+
+
+Visually:  p = tail area outside our result.
+
+Look up in table:
+
+```{r}
+1-0.9850
+```
+
+Here, p = 0.015.  
+
+4)  We need to make a decision:  is our p-value "small enough"?  If our sample result is very unlikely (small p-val), then the assumptions we made to compute it must be wrong. We assumed H0!
+
+This "cutoff" for "small enough" is called the "significance level".  We can choose our own sig level, alpha.  Here, we're using alpha = .05, a common value in the literature (but totally arbitrary).  
+
+Here, since our p-value < alpha  (.015 < .05), it makes us suspect that H0 is wrong, so we REJECT Ho.  Thus, we've found strong evidence to support the Ha:  more than 50% of DU students have brown hair.
+
+Yay!  We're happy, because we've found support for our claim!  There is "statistically siginficant" evidence to support our assertion that more than 50% of students have brown hair.
+
+
+
+** Ex**  In our class, 12 out of 42 students are juniors.  Does this support the claim that "more than a quarter of 120 students are juniors"?  
+1) Hyp
+
+Ho: p = .25
+Ha: p > .25
+
+2) Test stat
+
+    z = (12/42 - .25)/sqrt(.25*(1-.25)/42)
+
+
+```{r}
+(12/42 - .25)/sqrt(.25*(1-.25)/42)
+```
+
+3) p-val
+
+    p = P(Z>.53)
+    
+```{r}
+1-0.7019 
+```
+
+Here:  p = .2981.
+
+
+4)  This is a large p-val:  p > .05.  In other words, our sample data and the H0 seem to be in agreement.  We do NOT have enough evidence to reject H0.  Sad face!  Our claim that "more than a quarter of 120 studens are juniors" was not supported.  
+
+
+
+
+
+
+
+
+
+

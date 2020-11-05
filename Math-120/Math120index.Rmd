@@ -62,7 +62,11 @@ The work I do in those vids is availabe on this site below.
 
 Coverage:  Last Week
 
+Topics:  Confidence intervals.
 
+- Constructing CIs
+- the meaning of confidence
+- interpreting a CI
 
 
 
