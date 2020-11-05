@@ -1,5 +1,5 @@
 ---
-title: "Math 120 Week 10"
+title: "Math 120 Week 11"
 author: "Ali Miller"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
@@ -215,258 +215,261 @@ In general, we hope that our MOE is small!  Maybe 14.2% doesn't seem so great...
 
 
 
+## Wednesday Oct 28
 
+Last time:  95% CI for brown hair based on our class data.  Our data:  phat = 28/42.
 
+Results:  we're 95% confident that the true proportion of all DU students with brown hair is between 52.4% and 80.9%.  Here, MOE = (80.9-52.4)/2 = 14.25
 
+- Note 1:  It's super important that your conclusion is about the population **parameter**.  Here, that's p = population proportion.
 
+- Note 2:  The "conficence" level determines the "middle %" of the sampling distribution that we use.
 
+- Note 3:  The confidence level is NOT the probability that our confidence interval is "correct", ie contains the true parameter.  In fact, we have no way of knowing if our CI was a "success".  
 
+- Note 4:  "Confidence" means the following:  if we were to conduct many random samples of size n, then about 90/95/99% of our intervals will be "successful", ie contiain the true population value.
 
 
+## Factors that affect margin of error
 
+**Ex** Let's construct a 90% confidence interval for the proportion of all DU student with brown hair using the same data from before:  28 brown/42 total.
 
+Need z*:  cutoff for the middle 90% of the sampling dist.
 
+If 90% in the middle, 5% in each tail.  Need to find z-score with area = .05.  For us:  z* = 1.645  (between the two best).
 
+Plug into the formula!
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Monday 10-19
-
-## Ch 5:  Inference
-
-Recall, **statistical inference** is the process of making mathematically supported conclusions about populations based upon sample data.
-
-
-Statistical inference always starts with a "point estimate", ie a single number that represents our best guess about the population paramater.
-
-  (Rember:
-
-  - Parameters are summaries of populations
-  - Statistics are summaries of samples
-
-  )
-
-You already know a couple of point estimates:
-
--xbar is a point estimate for a population mean, mu
--phat is a point estimate for a population proportion, p
-
-Two problems:
-
--No guarantee that these are correct for populations!  Sample are random!
-- (So far) we don't know how much variability there is in these point estimates.  
-
-Let's study both of these with an example from the text (p170):
-
-- Given the parameter:  p = .88  (in real life, we wouldn't know!)
-
-From some of our example random samples of size 1000, we see the resulting proportion varies.  We saw:  86.1%, 87.8%, 90.1%, 89.4%, etc etc.
-
-Idea:  let's perform this sample 5000 times and look at the results.  We are going to make a histogram of 5000 sample proportions from 5000 samples.  
-
-Observations from the histogram:
-
-- Looks like sample proportions follow a normal dist (ooh!)
-- The center of the distribution is .88 (most are close to the true value).
-- We have an idea for the variability of the sample results.  Here, they all seem to be within +/- 4% of the true value.
-
-## Sampling Distributions
-
-The histogram you saw above is an example of a "sampling dist", ie the distribution for possible SAMPLE RESULTS.
-
-Restate:  a sampling distribution is a probability distribution that describes the likelihood of observing a sample result of fixed size, n (i.e. it DOESN'T tell you about individuals!)
-
-As you've seen, these often look like normal dists!  This amazing fact is called the **Central Limit Theorem**.  
-
-According to the CLT, sample statistics (like xbar and phat) will always follow a normal distribution as long as the sample size is "large enough".
-
-For **sample proportions**, phat,  they follow a normal dist with:
-
-1) mean = p
-
-$$\mu_{\hat{p}}=p$$
-
-In other words, the expected value for sample proportions phat is the true population proportion, p.
-
-2) stdev = sqrt(p*(1-p)/n)
-
-$$\sigma_\hat{p}=\sqrt{p(1-p)/n}$$
-
-Thus, for any particular sample proportion, phat, we can find z-scores!
-
-For phat:
-
-     z = (phat - p)/sqrt(p*(1-p)/n)
-       = (obs - exp)/stdev
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Friday Oct 23
-
-Recall: sampling distributions are probability distributions for entire sample results.
-
-The goal:  answer the question, "how likely (or unlikely) is our sample result?
-
-Remember, the only reason this is possible is because of the CENTRAL LIMIT THEOREM: ie, if our sample size is "large enough", we know that our sample results (xbar and phat) follow a normal distribution.
-
-Wait, what's "large enough?"  Answer: it depends!
-
-First, we'll think about categorical variables (phat).  
-Later, we'll think about quantitative variables (xbar).  
-
-For now, "large enough" for categorical variables means the following:
-
-    n*phat >= 10   n*(1-phat) >= 10
+    phat +/- zstar*sqrt(phat*(1-phat)/n)
     
-Equivalently, we need at least 10 individuals that ARE IN the category, and at least 10 indivuals that ARE NOT IN the category.  
-
-
-**Ex**  In our class, 65% of students have brown hair.  There are 50 students (n) in our class.  Could we use a normal distribution to describe the likelihood of such a scenario?
-
-Check:
+    (28/42) +/- 1.645*sqrt(28/42*(1-28/42)/42)
+    
 
 ```{r}
-50*.65
+(28/42) - 1.645*sqrt(28/42*(1-28/42)/42)
+
 ```
 
 ```{r}
-50*.35
+(28/42) + 1.645*sqrt(28/42*(1-28/42)/42)
+
 ```
 
-Yes!  n is "large enough"!
+Thus, we're 90% confident that the true proportion of DU with brown hair is between 54.7% and 78.6%.
 
-**Ex**  Suppose that 60% of all DU students have brown hair.   How likely would it be to take a sample of 50 students, and find that 65% (or more) of those students have brown hair?
-
-
-We saw above that n is "large enough"
-
-mu_phat = mean = .6 (population proportion)
-sigma_phat = stdev = sqrt(.6*(1-.6)/50)
+MOE: 
 
 ```{r}
-sqrt(.6*(1-.6)/50)
+1.645*sqrt(28/42*(1-28/42)/42)
 ```
 
-obs = .65
-exp = .60
-stdev = .0693
+Conclusion:  Smaller confidence results in smaller margin of error!
+
+
+# Friday Oct 30
+
+## Factors that affect MOE
+
+We've seen that larger confidence level produces larger MOE.  Bummer!
+
+Analogy: fishing.  If we want to guarantee that we capture our fish, we need a big net!  In CI, if we capture the true parameter, the we need a wide interval!  Bigger margin of error!  Bummer!
+
+Fortunately, there are TWO factors that affect margin of error:
+
+1) Bigger confidence means bigger MOE
+2) Bigger **sample size** means **smaller** margin of error (good!)
+
+Our ability to get "good" estimates is directly connected to our sample size.  Balancing act!
+
+We're able to plan ahead in our study to decide how large our sample size needs to be in order to guarantee a desired MOE.
+
+
+**Ex**  We've previously, using the class data, estimated the proportion of DU students with brown hair.  Suppose we wish to estimate this proportion with MOE no greater than 10%.  Q:  How big would our sample have to be?
+
+Remember, MOE = stuff after +/-.
+
+
+Here:  
+
+    MOE = zstar*sqrt(phat(1-phat)/n)
+    
+It's easy to solve this equation for n:
+
+     n = phat(1-phat)(zstar/MOE)^2
+     
+We know all this stuff!  Here, let's do 95% confidence.  Recall, 
+
+    zstar = 1.96
+    
+Recall, our prior estimate for phat = 28/42, want MOE = .1.  Plug in!
+
+    n = (28/42)*(1-28/42)*(1.96/.1)^2
+   
+```{r}
+(28/42)*(1-28/42)*(1.96/.1)^2
+```
+
+Need n=86 in order to guarantee our MOE is no greater than 10%.
+    
+
+Q:  In the above example, we used a "prior estimate" for the proportion.  What if have no prior estimate?  What then?
+
+A:  Use phat = .5.  Thanks to calculus, we know that phat = .5 is a "worst case scenario" guaranteed to give the biggest n.  Thus, we're GUARANTEED to have a desired MOE.
+
+
+**Ex**  Let's say we wish to estimate the proportion of DU students who are vegetarians.  Suppose we want a 99% CI with MOE no greater than 5%.
+
+Q:  for 99%, what's zstar?
+
+Since we cover the middle 99% of the dist, the tails must each have 0.5% area.
+
+Find zscore with area = .005.  Here:  z = 2.575  (between 2.57 and 2.58)
+
+Since we have no prior estimate, let's use phat = .5.
+
+    n = (.5)*(1-.5)*(2.575/.05)^2
+
+```{r}
+(.5)*(1-.5)*(2.575/.05)^2
+```
+
+We'd need at least 664 students in our sample.  Note:  this is a very large sample size.  Perhaps our expectations (99% CI with MOE<5%) are unrealistic!
+
+
+## Hypothesis Test
+
+So far, we've seen one major tool for statistical inference:  CIs approximate a population parameter.
+
+
+The other major tool is a "hypotesis test":  hyp tests are designed to answer a question (or a claim) about a population.  
+
+Hyp tests are just like criminal trials!
+
+**In a criminal trial:**
+
+1) We're here to invesigate whether the defendant is innocent or guilty.  We must assume at first that they're innocent, **but** the real reason we're conducting the trial is because we **think they're guilty**!
+
+2) In a criminal trial, witnesses and experts give testimony about the crime.  
+
+3)  Based upon the testimony, the jury must decide how strong (or not) the evidence is.
+
+4)  Conclusion:  if the evidence is strong enough, then we rule the defendent is GUILTY!  If the evidence isn't strong enough, we can't rule they're guilty.
+
+
+**In a hypothesis test**:
+
+1) We're here to investigate a claim about a population parameter (p, mu, sigma).  By default, we have to assume that our claim isn't true (the null hypothesis, H0).  But, the real reason we're perfoming the test is because we think our claim is true (alternate hypothesis, Ha).
+
+2) We base our decision based on sample data!  The important summary of the sample data is called the "test statistic".  
+
+3) We use probability (sampling distributions) to decide how likely or unlikely our sample result is.  Called "p-value".
+
+4)  If the probability is small enough, it makes us suspect that H0 is false.  Otherwise if the probability isn't small enough, then our sample seems likely, and we don't have evidence to support the claim.  Here "small enough" is the "significance level" of the test.
+
+
+
+
+
+# Monday Nov 2
+
+## Hypothesis Tests (Ctd)
+
+Let's do one.  
+
+**Ex**  In our class data, we found that 28 out of 42 of you had "brown hair".  Does this provide evidence that more than half of all DU students have brown hair?
+
+Perform an appropriate hyp test with alpha = .05 significance.   
+
+```{r}
+28/42
+```
+
+1) Hypotheses.  Our claim:  more than half of DU studnets have brown hair.  This is the "alternate hypothesis", Ha. 
+
+WARNING:  EVERY hypothesis has to be a mathemetical statement about a population parameter.   Here:  we're talking about "p", the population proportion of students with brown hair.
+
+Ha: p > .5
+
+Of course, we can't just assume we're correct.  Instead, we must assume the "null hypothesis":
+
+H0: p = .5
+
+Note:  the H0 must always be a statement of equality about a population parameter.  
+
+
+H0: p = .5
+Ha: p > .5
+
+
+
+2) Test statistic.   The test stat is just the z-score for our sample result!
 
     z = (obs - exp)/stdev
-      = (.65 - .6)/.0693
+    
+      = (phat - p)/sqrt(p*(1-p)/n)
       
-
-```{r}
-(.65 - .6)/.0693
-```
-
-z = .72.  Look it up!
-
-
-```{r}
-1-0.7642
-```
-
-There's about a 23.58% chance that in a samle of 50 students, 65% or more would have brown hair.
-
-Such an occurrance is not unlikely.
-
-
-**Ex**  According to the internet, 82% of DU students are from "out-of-state" (not from Ohio).  
-
-If we took a sample of 100 students, what's the probability that at least 90% of them are from out-of-state?
-
-Check to see if we can use normal dist:
-
-
-```{r}
-100*.9
-```
-
-```{r}
-100*(1-.9)
-```
-
-Close!  But, both are at least 10, so we CAN use the normal dist!
-
-obs = .9
-exp = .82
-stdev = sqrt(.82*(1-.82)/100)
-
-
-```{r}
-sqrt(.82*(1-.82)/100)
-```
-
-Find zscore!
-
-
-```{r}
-(.9 - .82)/.03842
-```
-
-z= 2.08
+Here, phat is our sample prop, and p is the pop prop from the null hyp!!!
 
 
 
 ```{r}
-1-0.9812
+(28/42 - .5)/sqrt(.5*(1-.5)/42)
 ```
 
-There's about a 1.88% chance of obtaining such a sample result.  Pretty unlikely!
+Here, our test stat:  z = 2.16
+
+
+3) p-value.  The "p-value" is the probability of observing a sample result as exteme as the one we got, assuming H0 is true.
+
+
+Visually:  p = tail area outside our result.
+
+Look up in table:
+
+```{r}
+1-0.9850
+```
+
+Here, p = 0.015.  
+
+4)  We need to make a decision:  is our p-value "small enough"?  If our sample result is very unlikely (small p-val), then the assumptions we made to compute it must be wrong. We assumed H0!
+
+This "cutoff" for "small enough" is called the "significance level".  We can choose our own sig level, alpha.  Here, we're using alpha = .05, a common value in the literature (but totally arbitrary).  
+
+Here, since our p-value < alpha  (.015 < .05), it makes us suspect that H0 is wrong, so we REJECT Ho.  Thus, we've found strong evidence to support the Ha:  more than 50% of DU students have brown hair.
+
+Yay!  We're happy, because we've found support for our claim!  There is "statistically siginficant" evidence to support our assertion that more than 50% of students have brown hair.
 
 
 
+** Ex**  In our class, 12 out of 42 students are juniors.  Does this support the claim that "more than a quarter of 120 students are juniors"?  
+1) Hyp
+
+Ho: p = .25
+Ha: p > .25
+
+2) Test stat
+
+    z = (12/42 - .25)/sqrt(.25*(1-.25)/42)
 
 
+```{r}
+(12/42 - .25)/sqrt(.25*(1-.25)/42)
+```
+
+3) p-val
+
+    p = P(Z>.53)
+    
+```{r}
+1-0.7019 
+```
+
+Here:  p = .2981.
+
+
+4)  This is a large p-val:  p > .05.  In other words, our sample data and the H0 seem to be in agreement.  We do NOT have enough evidence to reject H0.  Sad face!  Our claim that "more than a quarter of 120 studens are juniors" was not supported.  
 
 
 

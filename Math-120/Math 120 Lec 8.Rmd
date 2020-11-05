@@ -286,3 +286,216 @@ Problem:  if we look up z=2.51 in the table, we'll get ALL the area below that c
 
 
 
+
+
+
+# Friday Oct 23
+
+From last time:  A sampling dist is a probability distribution for entire sample results.
+
+Now, we're able to answer the following question:  what's the probability of observing a sample result like one we got???
+
+
+The only reason this is possible is the CENTRAL LIMIT THEOREM!  Ie, if our sample is "large enough", then the sample results (xbar, phat) will follow a normal distribution.
+
+
+We'll start by thinking about categorical data:  our statistic is phat.
+
+Later, we'll think about quantitative data.  Then, our stastic will be xbar.
+
+Important question:  how large is "large enough" for our sample size to ensure that our sample results follow a normal dist.
+
+Answer:  it depends!  If we're talking about a sample proportion, then need the following:
+
+
+     n*phat >= 10      AND     n*(1-phat) > 10
+     
+     
+     
+Another way to think about this:  we need at least 10 individuals IN the category, and at least 10 NOT IN the category.
+
+
+Example:  IN our class, about 65% of students have brown hair.  There are 50 students.  Is this n large enough to use a normal distribution?
+
+phat = .65
+(1-phat) = .35
+
+n = 50
+
+Check:
+
+```{r}
+50*.65
+```
+
+
+```{r}
+50*.35
+```
+
+Yes, n is big enough!
+
+
+Suppose it's the case that 60% of all DU students have brown hair.  What's the probability that as many students have brown hair in our class as is the case?
+
+What's the probability of observing a sample of 50 DU students, in at least 65% have brown hair?
+
+Let's do the math!
+
+We checked that n is large enough to use normal dist.
+
+
+We know:
+
+mu_phat = p = .6 
+sigma_phat = sqrt(p*(1-p)/n) = sqrt(.6*(1-.6)/50)
+
+
+```{r}
+sqrt(.6*(1-.6)/50)
+```
+
+Recall:
+
+    z = (obs - exp)/stdev
+    
+      = (.65 - .6)/.06928203
+      
+```{r}
+(.65 - .6)/.06928203
+```
+    
+z = .72
+
+Look it up on the table!
+    
+    
+```{r}
+1-0.7642
+```
+
+If 60% of all DU students have brown hair, there's about a 23.6% chance that in a random sample of 50 students, 65% or more would have brown hair.
+
+Human feelings:  not an unusual sample.
+
+
+
+
+**Ex**  At DU, about 82% of students are from "out-of-state", ie not from Ohio.  If we take a sample of 100 DU students, what's the probability that at least 90% of the students in the sample are from out-of-state?
+
+First, check that n is large enough.
+
+n = 100
+phat = .90
+
+```{r}
+100*.9
+```
+
+```{r}
+100*(1-.9)
+```
+
+Both are at least 10, but it's close!  For this scenario, we could NOT use a smaller sample!  Thus, we can use the normal dist!
+
+mean = population proportion = .82
+stdev = sqrt(p*(1-p)/n) = sqrt(.82*(1-.82)/100)
+
+
+```{r}
+sqrt(.82*(1-.82)/100)
+```
+
+obs = .9
+exp = .82
+stdev = .038
+
+Find the z score!
+
+```{r}
+(.9 - .82)/.038
+```
+
+z = 2.11.  Look up on table:
+
+```{r}
+1-0.9826
+```
+
+There's about a 1.74% chance that, in our sample of 100 students, at least 90 of them are from out-of-state.  Pretty unlikely!  Hmmmmmm.....
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

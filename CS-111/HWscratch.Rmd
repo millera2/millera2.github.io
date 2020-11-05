@@ -312,3 +312,19 @@ Also:
 - 3.11 (p94)
 - 3.13, 3.14, 3.15 (p109)
 - 3.17 (p110)
+
+
+
+Practice:  4.3bf, 4.5, 4.7 (p142-3)
+
+Lots of additional practice problems and solutions [here](https://www.stat.colostate.edu/inmem/gumina/st201/recitation8/downloads/Normal%20Probabilites%20Practice.pdf)
+
+
+
+Practice:  5.1 and 5.3f. (p179)
+
+
+
+Additional practice problem:  About 22% of Denison students are athletes.  If we take a sample of 100 students, what's the probability that at least 20% of them will be athletes?
+
+<small>Answer: 68.5%</small>
