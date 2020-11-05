@@ -1758,9 +1758,6 @@ summary {
 <li><a href="#factors-that-affect-moe">Factors that affect MOE</a></li>
 <li><a href="#hypothesis-test">Hypothesis Test</a></li>
 </ul></li>
-<li><a href="#monday-nov-2">Monday Nov 2</a><ul>
-<li><a href="#hypothesis-tests-ctd">Hypothesis Tests (Ctd)</a></li>
-</ul></li>
 </ul>
 </div>
 
@@ -1938,68 +1935,6 @@ summary {
 <li><p>We base our decision based on sample data! The important summary of the sample data is called the “test statistic”.</p></li>
 <li><p>We use probability (sampling distributions) to decide how likely or unlikely our sample result is. Called “p-value”.</p></li>
 <li><p>If the probability is small enough, it makes us suspect that H0 is false. Otherwise if the probability isn’t small enough, then our sample seems likely, and we don’t have evidence to support the claim. Here “small enough” is the “significance level” of the test.</p></li>
-</ol>
-</div>
-</div>
-<div id="monday-nov-2" class="section level1">
-<h1>Monday Nov 2</h1>
-<div id="hypothesis-tests-ctd" class="section level2">
-<h2>Hypothesis Tests (Ctd)</h2>
-<p>Let’s do one.</p>
-<p><strong>Ex</strong> In our class data, we found that 28 out of 42 of you had “brown hair”. Does this provide evidence that more than half of all DU students have brown hair?</p>
-<p>Perform an appropriate hyp test with alpha = .05 significance.</p>
-<pre class="r"><code>28/42</code></pre>
-<pre><code>## [1] 0.6666667</code></pre>
-<ol style="list-style-type: decimal">
-<li>Hypotheses. Our claim: more than half of DU studnets have brown hair. This is the “alternate hypothesis”, Ha.</li>
-</ol>
-<p>WARNING: EVERY hypothesis has to be a mathemetical statement about a population parameter. Here: we’re talking about “p”, the population proportion of students with brown hair.</p>
-<p>Ha: p &gt; .5</p>
-<p>Of course, we can’t just assume we’re correct. Instead, we must assume the “null hypothesis”:</p>
-<p>H0: p = .5</p>
-<p>Note: the H0 must always be a statement of equality about a population parameter.</p>
-<p>H0: p = .5 Ha: p &gt; .5</p>
-<ol start="2" style="list-style-type: decimal">
-<li><p>Test statistic. The test stat is just the z-score for our sample result!</p>
-<p>z = (obs - exp)/stdev</p>
-<p>= (phat - p)/sqrt(p*(1-p)/n)</p></li>
-</ol>
-<p>Here, phat is our sample prop, and p is the pop prop from the null hyp!!!</p>
-<pre class="r"><code>(28/42 - .5)/sqrt(.5*(1-.5)/42)</code></pre>
-<pre><code>## [1] 2.160247</code></pre>
-<p>Here, our test stat: z = 2.16</p>
-<ol start="3" style="list-style-type: decimal">
-<li>p-value. The “p-value” is the probability of observing a sample result as exteme as the one we got, assuming H0 is true.</li>
-</ol>
-<p>Visually: p = tail area outside our result.</p>
-<p>Look up in table:</p>
-<pre class="r"><code>1-0.9850</code></pre>
-<pre><code>## [1] 0.015</code></pre>
-<p>Here, p = 0.015.</p>
-<ol start="4" style="list-style-type: decimal">
-<li>We need to make a decision: is our p-value “small enough”? If our sample result is very unlikely (small p-val), then the assumptions we made to compute it must be wrong. We assumed H0!</li>
-</ol>
-<p>This “cutoff” for “small enough” is called the “significance level”. We can choose our own sig level, alpha. Here, we’re using alpha = .05, a common value in the literature (but totally arbitrary).</p>
-<p>Here, since our p-value &lt; alpha (.015 &lt; .05), it makes us suspect that H0 is wrong, so we REJECT Ho. Thus, we’ve found strong evidence to support the Ha: more than 50% of DU students have brown hair.</p>
-<p>Yay! We’re happy, because we’ve found support for our claim! There is “statistically siginficant” evidence to support our assertion that more than 50% of students have brown hair.</p>
-<p>** Ex** In our class, 12 out of 42 students are juniors. Does this support the claim that “more than a quarter of 120 students are juniors”?<br />
-1) Hyp</p>
-<p>Ho: p = .25 Ha: p &gt; .25</p>
-<ol start="2" style="list-style-type: decimal">
-<li><p>Test stat</p>
-<p>z = (12/42 - .25)/sqrt(.25*(1-.25)/42)</p></li>
-</ol>
-<pre class="r"><code>(12/42 - .25)/sqrt(.25*(1-.25)/42)</code></pre>
-<pre><code>## [1] 0.5345225</code></pre>
-<ol start="3" style="list-style-type: decimal">
-<li><p>p-val</p>
-<p>p = P(Z&gt;.53)</p></li>
-</ol>
-<pre class="r"><code>1-0.7019 </code></pre>
-<pre><code>## [1] 0.2981</code></pre>
-<p>Here: p = .2981.</p>
-<ol start="4" style="list-style-type: decimal">
-<li>This is a large p-val: p &gt; .05. In other words, our sample data and the H0 seem to be in agreement. We do NOT have enough evidence to reject H0. Sad face! Our claim that “more than a quarter of 120 studens are juniors” was not supported.</li>
 </ol>
 </div>
 </div>
