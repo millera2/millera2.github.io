@@ -68,6 +68,18 @@ Topics:  Confidence intervals.
 - the meaning of confidence
 - interpreting a CI
 
+Practice Problems:
+
+1) Suppose in a sample of 80 DU students, we find that 33 of them prefer Cheerios to Frosted Flakes.  Estimate, with 85% confidence the proportion of all DU students who "prefer Cheerios".
+
+2)  If we wanted to estimate the proportion of all DU students who prefer Cheerios with 98% confidence and MOE no greater than 5%, how many students would we need to include in our sample?
+
+3)  If we constructed a 95% CI using the sample data in #1, what would be the MOE?
+
+4)  If we increase confidence level, what happens to MOE?  Is that good or bad?
+
+5)  If we increase sample size, what happense to MOE?  Is that good or bad?
+
 
 
 

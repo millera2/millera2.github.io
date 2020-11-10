@@ -327,6 +327,160 @@ Next time:  failure modes for hyp test.
 
 
 
+# Monday Nov 9
+
+## Inference for Quantitative Data (Ch 7)
+
+So far, all of our inference has been about categorical data.  Ie, we've performing inference on **p**, the population proportion!
+
+Now, let's do the same things for quantitative data.  Ie, we'll be performing inference on **mu**, the population mean.
+
+Recall, there are two major types of statistical inference:
+
+ - CIs are used to **estimate** population parameters (p, and mu)
+ - Hyp tests are use to investigate a claim/answer a question about a population parameter (p, and mu).
+ 
+ 
+The only reason this is possible is because of the CLT: as long our sample size is "large enough", then the sample statistics we collect follow a normal distribution.
+
+
+For proportions (phat):  if np>10 and n(1-p)>10, then phat follows a normal dist with 
+
+- mean = p
+- stdev = sqrt(p*(1-p)/n)
+
+
+
+For means (xbar):  if n > 30, then xbar follows a normal dist with
+
+- mean = mu (population mean)
+- stdev = sigma/sqrt(n)   (sigma is the population stdev).
+
+The above gives us everything we need to do inference with means.
+
+Ex)  Mean height for women in the US is 64" with std 2.4".  If we take sample of 40 women, what's the probability that their average height is greater than 64.3"?
+
+Since n>30, we know xbar follows a normal dist.
+
+Q:  Compute P( xbar >64.3 )
+
+Find z-score:
+
+    z = (obs - exp)/stdev
+      = (64.3 - 64)/(2.4/sqrt(40))
+      
+      
+```{r}
+ (64.3 - 64)/(2.4/sqrt(40))
+```
+
+```{r}
+1-0.7852
+```
+
+There's about a 21.48% chance that, in a sample of 40 women, their avg height is at least 64.3".
+
+## Hyp Tests for mu
+
+Suppose that, in a sample of 50 men at DU, their avg height is computed to be 69.7" and stdev = 3.2".  THIS IS **S**, NOT SIGMA!!
+
+Does this provide statistically significant evidence the mean height of men at DU is higher than the national average of 69?
+
+
+1) Hypotheses
+
+H0: mu = 69
+Ha: mu > 69
+
+2)  Test statistic:
+
+    z = (obs - exp)/stdev
+      = (xbar - mu)/(sigma/sqrt(n))
+
+Problem!  What's sigma?  Remember, the whole reason we're doing this hyp test is because we DON'T KNOW what the population parmeters are!  Definitely don't know mu, that's what we're here for. So, why would we know sigma?  WE DON'T!!
+
+Oh no!  What to do??
+
+Need to use the next best thing:  sample standard dev, s!
+
+Ok, but there's another problem:
+
+    (xbar - mu)/(s/sqrt(n))  DOESN'T follow a normal distribution!
+
+The answer:  use a modified version of the normal distribution called the 
+
+  **t distribution**!!
+  
+![](https://andyjconnelly.files.wordpress.com/2017/05/distributions1.png)  
+  
+
+Let's get to know "t" a little better.  Important properties:
+
+ - looks just like the normal dist!  bell-shaped, and symmetric about 0.
+ - importand difference:  the t dist has "thicker tails".  This has two consequences:
+   - it makes our CIs wider, since we need to go further out to get the middle%
+   - it makes p-vals bigger in Hyp Tests, since tail area is bigger!
+  
+These differences are a huge bummer!  CIs an Hyp Tests based on t are less good/successful.  However, we have be honest.  This is the price that we pay for not knowing the population standard deviation sigma!
+
+Back to our test:
+
+    t = (69.7-69)/(3.2/sqrt(50))
+    
+Here:
+
+- xbar = 69.7 (observed mean)
+- mu = 69 (expectation from the Null Hyp)
+- s = 3.2 (std dev of our data)
+- n = 50
+
+```{r}
+(69.7-69)/(3.2/sqrt(50))
+```
+
+WARNING:  the t-table is a arranged a little differently.  The specific shape of the t-dist depends on the sample. In order to use the table, need a sample size.  Here, we call this "degrees of freedom" or "df".
+
+   df = n - 1 = 50-1
+   
+Our df = 49
+
+3) P-val
+
+From the t-table, our p-val (tail area) must be between .05 and .10.  
+
+    .05 < p < .10
+    
+4)  Since p>.05, we FAIL to reject H0.  There's not strong evidence to support the claim that men at DU have mean height greater than 69".
+
+
+
+### Summary of difference between proportions (categorical) and means (quant):
+
+- for proportions, use the z table.  exp = p, stdev = sqrt(p(1-p)/n)
+
+- for means, use the t table.  exp = mu, stdev = s/sqrt(n)
+
+
+
+
+
+    
+
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

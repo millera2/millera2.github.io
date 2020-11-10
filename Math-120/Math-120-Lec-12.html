@@ -1743,7 +1743,7 @@ summary {
 
 <h1 class="title toc-ignore">Math 120 Week 11</h1>
 <h4 class="author">Ali Miller</h4>
-<h4 class="date">05 November, 2020</h4>
+<h4 class="date">09 November, 2020</h4>
 
 </div>
 
@@ -1751,6 +1751,10 @@ summary {
 <ul>
 <li><a href="#monday-nov-2">Monday Nov 2</a><ul>
 <li><a href="#hypothesis-tests-ctd">Hypothesis Tests (Ctd)</a></li>
+</ul></li>
+<li><a href="#friday-nov-6">Friday Nov 6</a><ul>
+<li><a href="#practice-problem-ci">Practice Problem: CI</a></li>
+<li><a href="#two-tail-test">Two-tail test</a></li>
 </ul></li>
 </ul>
 </div>
@@ -1815,6 +1819,111 @@ summary {
 <ol start="4" style="list-style-type: decimal">
 <li>This is a large p-val: p &gt; .05. In other words, our sample data and the H0 seem to be in agreement. We do NOT have enough evidence to reject H0. Sad face! Our claim that “more than a quarter of 120 studens are juniors” was not supported.</li>
 </ol>
+</div>
+</div>
+<div id="friday-nov-6" class="section level1">
+<h1>Friday Nov 6</h1>
+<div id="practice-problem-ci" class="section level2">
+<h2>Practice Problem: CI</h2>
+<p><strong>Ex</strong> In a random sample of 100 DU students, 12 students had gone waterskiing.</p>
+<p>Estimate the proportion of all DU students who’ve gone waterskiing with 92% confidence.</p>
+<p><strong>Thoughts</strong></p>
+<p>The thing we want to estimate is the PROPORTION, p.</p>
+<p>Our sample data: phat = 12/100, n = 100.</p>
+<p><strong>Q</strong>: Is out sample size big enough?</p>
+<p>Need: phat<em>n and (1-phat)</em>n both need to be bigger than 10.</p>
+<pre class="r"><code>100*(12/100)</code></pre>
+<pre><code>## [1] 12</code></pre>
+<pre class="r"><code>100*(1-12/100)</code></pre>
+<pre><code>## [1] 88</code></pre>
+<p>Yes! Sample size is big enough!</p>
+<p>Middle 92% -&gt; 4% in the tails. Look up zstar.</p>
+<p>Here: zstar = 1.75.</p>
+<p>Formula:</p>
+<pre><code> phat +/- zstar * sqrt( phat*(1-phat)/n )
+ 
+ 12/100 +/- 1.75*sqrt(12/100*(1-12/100)/100)    
+ </code></pre>
+<pre class="r"><code>12/100 - 1.75*sqrt(12/100*(1-12/100)/100)</code></pre>
+<pre><code>## [1] 0.06313173</code></pre>
+<pre class="r"><code>12/100 + 1.75*sqrt(12/100*(1-12/100)/100)</code></pre>
+<pre><code>## [1] 0.1768683</code></pre>
+<p>We are 92% confident that the true proportion of DU students who’ve gone waterskiing is between 6.3% and 17.7%.</p>
+<p><strong>Ex</strong> What’s the MOE in the above CI?</p>
+<p>Answer: after +/-</p>
+<pre class="r"><code>1.75*sqrt(12/100*(1-12/100)/100)</code></pre>
+<pre><code>## [1] 0.05686827</code></pre>
+<p><strong>Ex</strong></p>
+<p>If we wanted to conduct a future study to estimate the proportion with MOE no greater than 3%, how large would our sample size have to be? Still using 92% confidence level.</p>
+<p>Recall:</p>
+<pre><code> n = phat*(1-phat)*(zstar/MOE)^2
+   = (12/100)*(1-12/100)*(1.75/.03)^2
+ </code></pre>
+<pre class="r"><code>(12/100)*(1-12/100)*(1.75/.03)^2</code></pre>
+<pre><code>## [1] 359.3333</code></pre>
+<p>We’d need at least 360 people in our sample.</p>
+<p><strong>Ex</strong> In a sample of 200 DU studets, 79 of them enjoyed eating grapefruit.</p>
+<p>Does this provide statistically significant evidence that fewer than half of students enjoy grapefruit? Conduct an appropriate hyp test with alpha = .05.</p>
+<ol style="list-style-type: decimal">
+<li>Hypotheses</li>
+</ol>
+<p>H0: p = .5 Ha: p &lt; .5</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Test stat</li>
+</ol>
+<p>Recall, test stat is just a z-score:</p>
+<pre><code>z = (obs - exp)/stdev
+  = (79/200 - .5)/sqrt(.5*(1-.5)/200)</code></pre>
+<pre class="r"><code>(79/200 - .5)/sqrt(.5*(1-.5)/200)</code></pre>
+<pre><code>## [1] -2.969848</code></pre>
+<p>Here, our test stat: z = -2.97.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>p-value.</li>
+</ol>
+<p>Recall: the p-value is the probability of observing a sample result that’s as extreme the one we got, GIVEN THAT H0 IS TRUE.</p>
+<p>Ie, find P(Z&lt;-2.97)</p>
+<p>Look up on the table: p-val = .0015</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Conclusion</li>
+</ol>
+<p>Here, p&lt;alpha. .0015 &lt; .05. So, we reject H0. Thus, we’ve found strong evidence to support the Ha: fewer than half of DU students have gone waterskiing.</p>
+<p>Yay!</p>
+</div>
+<div id="two-tail-test" class="section level2">
+<h2>Two-tail test</h2>
+<p>The test we just did is a “left tail test”.</p>
+<p>In a left tail test, the Ha has “&lt;”, thus the p-val is the area of the left tail.</p>
+<p>On monday, we did “right tail tests”. In a right tail test, the alternate hypotheis is “bigger than”.</p>
+<p>What if we want to test “not equal”</p>
+<p>Ha: !=</p>
+<p>Since we’re interested in BOTH small and large results, we need the tail area on BOTH SIDES.</p>
+<p>Problem: we only have one test stat! Either on the left or the right.</p>
+<p>Answer: no prob, the normal dist is symmetric!</p>
+<p>Thus, for a 2-tail test, you must always DOUBLE the tail area!</p>
+<p><strong>Ex</strong> In Prof Miller’s 2016 Math 120 course, 16 of 24 students were female.</p>
+<p>Does this support the claim that the proportion of students at DU who are women differs from 50%?</p>
+<ol style="list-style-type: decimal">
+<li>Hyps</li>
+</ol>
+<p>H0: p = .5 Ha: p != .5 (not equals)</p>
+<ol start="2" style="list-style-type: decimal">
+<li>test stat</li>
+</ol>
+<pre class="r"><code>(16/24 - .5)/sqrt(.5*(1-.5)/24)</code></pre>
+<pre><code>## [1] 1.632993</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>p-val</li>
+</ol>
+<p>tail area:</p>
+<pre class="r"><code>1-0.9484</code></pre>
+<pre><code>## [1] 0.0516</code></pre>
+<p>p-value: 2*tail area:</p>
+<pre class="r"><code>2.*.0516</code></pre>
+<pre><code>## [1] 0.1032</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Since p-val &gt; .05, we fail to reject the H0. There is not strong evidence that the proportion of female students differs from 50%.</li>
+</ol>
+<p>Next time: failure modes for hyp test.</p>
 </div>
 </div>
 
