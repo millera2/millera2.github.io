@@ -44,6 +44,27 @@ All code should be written **individually** by the student, unless otherwise spe
 
 <br><br>
 
+#HW 7 Due Tues Nov 24 by 10pm
+
+File format: .ipynb notebook file submitted to Notebowl.  Each solution should be contained in a seperate, individual code cell.  Clearly label each solution with a Markdown cell.  Docstrings are required for all functions.  No (English language) discussion/explanation is required, although any discussion you provide about your solution (contained in a Markdwown cell) may help you earn partial credit.
+
+Students have choice for this HW:
+
+Pick **two** of the following three problems: 
+
+- 8.1.8 (p357) 
+- 8.1.9 (p357) 
+- 8.2.9 (p371) 
+
+Also, pick **two** of the following three problems: 
+
+- 8.1.13 (p358) 
+- 8.1.18 (p359) 
+- 8.2.17 (p373) 
+
+A student's maximum score will be the sum of two problems from one list, two from the other.  If more than two from either list is submitted, their grade will be the **lowest** two scores in the lists.  If you'd like to attempt other problems and get feedback without risking your score, feel free to include these solutions prefaced by the disclaimer "**Just for fun!**"
+
+
 # HW 6 Due Thurs Nov 5th by 10pm
 
 File format: .ipynb notebook file submitted to Notebowl.  Each solution should be contained in a seperate, individual code cell.  Clearly label each solution with a Markdown cell.  Docstrings are required for all functions.  No (English language) discussion/explanation is required, although any discussion you provide about your solution (contained in a Markdwown cell) may help you earn partial credit.
