@@ -44,7 +44,7 @@ All code should be written **individually** by the student, unless otherwise spe
 
 <br><br>
 
-#HW 7 Due Tues Nov 24 by 10pm
+# HW 7 Due Tues Nov 24 by 10pm
 
 File format: .ipynb notebook file submitted to Notebowl.  Each solution should be contained in a seperate, individual code cell.  Clearly label each solution with a Markdown cell.  Docstrings are required for all functions.  No (English language) discussion/explanation is required, although any discussion you provide about your solution (contained in a Markdwown cell) may help you earn partial credit.
 
