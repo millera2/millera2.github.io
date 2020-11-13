@@ -1,5 +1,5 @@
 ---
-title: "Math 120 Week 11"
+title: "Math 120 Week 13"
 author: "Ali Miller"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
@@ -33,295 +33,6 @@ deathPenaltyData <- read_csv("death penalty data.csv")
 housingData <- read_csv("../Data/House-Sales.csv")
 #------------------------------------------------#
 ```
-
-
-
-
-# Monday Nov 2
-
-## Hypothesis Tests (Ctd)
-
-Let's do one.  
-
-**Ex**  In our class data, we found that 28 out of 42 of you had "brown hair".  Does this provide evidence that more than half of all DU students have brown hair?
-
-Perform an appropriate hyp test with alpha = .05 significance.   
-
-```{r}
-28/42
-```
-
-1) Hypotheses.  Our claim:  more than half of DU studnets have brown hair.  This is the "alternate hypothesis", Ha. 
-
-WARNING:  EVERY hypothesis has to be a mathemetical statement about a population parameter.   Here:  we're talking about "p", the population proportion of students with brown hair.
-
-Ha: p > .5
-
-Of course, we can't just assume we're correct.  Instead, we must assume the "null hypothesis":
-
-H0: p = .5
-
-Note:  the H0 must always be a statement of equality about a population parameter.  
-
-
-H0: p = .5
-Ha: p > .5
-
-
-
-2) Test statistic.   The test stat is just the z-score for our sample result!
-
-    z = (obs - exp)/stdev
-    
-      = (phat - p)/sqrt(p*(1-p)/n)
-      
-Here, phat is our sample prop, and p is the pop prop from the null hyp!!!
-
-
-
-```{r}
-(28/42 - .5)/sqrt(.5*(1-.5)/42)
-```
-
-Here, our test stat:  z = 2.16
-
-
-3) p-value.  The "p-value" is the probability of observing a sample result as exteme as the one we got, assuming H0 is true.
-
-
-Visually:  p = tail area outside our result.
-
-Look up in table:
-
-```{r}
-1-0.9850
-```
-
-Here, p = 0.015.  
-
-4)  We need to make a decision:  is our p-value "small enough"?  If our sample result is very unlikely (small p-val), then the assumptions we made to compute it must be wrong. We assumed H0!
-
-This "cutoff" for "small enough" is called the "significance level".  We can choose our own sig level, alpha.  Here, we're using alpha = .05, a common value in the literature (but totally arbitrary).  
-
-Here, since our p-value < alpha  (.015 < .05), it makes us suspect that H0 is wrong, so we REJECT Ho.  Thus, we've found strong evidence to support the Ha:  more than 50% of DU students have brown hair.
-
-Yay!  We're happy, because we've found support for our claim!  There is "statistically siginficant" evidence to support our assertion that more than 50% of students have brown hair.
-
-
-
-** Ex**  In our class, 12 out of 42 students are juniors.  Does this support the claim that "more than a quarter of 120 students are juniors"?  
-1) Hyp
-
-Ho: p = .25
-Ha: p > .25
-
-2) Test stat
-
-    z = (12/42 - .25)/sqrt(.25*(1-.25)/42)
-
-
-```{r}
-(12/42 - .25)/sqrt(.25*(1-.25)/42)
-```
-
-3) p-val
-
-    p = P(Z>.53)
-    
-```{r}
-1-0.7019 
-```
-
-Here:  p = .2981.
-
-
-4)  This is a large p-val:  p > .05.  In other words, our sample data and the H0 seem to be in agreement.  We do NOT have enough evidence to reject H0.  Sad face!  Our claim that "more than a quarter of 120 studens are juniors" was not supported.  
-
-
-
-# Friday Nov 6
-
-## Practice Problem:  CI
-
-**Ex** In a random sample of 100 DU students, 12 students had gone waterskiing.  
-
-Estimate the proportion of all DU students who've gone waterskiing with 92% confidence.
-
-**Thoughts**
-
-The thing we want to estimate is the PROPORTION, p.
-
-Our sample data:  phat = 12/100, n = 100.
-
-**Q**:  Is out sample size big enough?
-
-Need:  phat*n and (1-phat)*n both need to be bigger than 10.
-
-```{r}
-100*(12/100)
-```
-
-```{r}
-100*(1-12/100)
-```
-
-Yes!  Sample size is big enough!
-
-
-Middle 92% -> 4% in the tails.  Look up zstar.
-
-Here:  zstar = 1.75.
-
-Formula:
-
-     phat +/- zstar * sqrt( phat*(1-phat)/n )
-     
-     12/100 +/- 1.75*sqrt(12/100*(1-12/100)/100)    
-     
-```{r}
-12/100 - 1.75*sqrt(12/100*(1-12/100)/100)
-```
-  
-```{r}
-12/100 + 1.75*sqrt(12/100*(1-12/100)/100)
-
-```
-  
-We are 92% confident that the true proportion of DU students who've gone waterskiing is between 6.3% and 17.7%.
-
-
-
-**Ex**  What's the MOE in the above CI?
-
-Answer:  after +/-
-
-```{r}
-1.75*sqrt(12/100*(1-12/100)/100)
-```
-
-
-**Ex**
-
-If we wanted to conduct a future study to estimate the proportion with MOE no greater than 3%, how large would our sample size have to be?  Still using 92% confidence level.
-
-Recall:
-
-     n = phat*(1-phat)*(zstar/MOE)^2
-       = (12/100)*(1-12/100)*(1.75/.03)^2
-     
-```{r}
-(12/100)*(1-12/100)*(1.75/.03)^2
-```
-     
-We'd need at least 360 people in our sample.
-
-
-
-
-**Ex**  In a sample of 200 DU studets, 79 of them enjoyed eating grapefruit.
-
-Does this provide statistically significant evidence that fewer than half of students enjoy grapefruit?  Conduct an appropriate hyp test with alpha = .05.
-
-1) Hypotheses
-
-H0:  p = .5
-Ha:  p < .5
-
-
-2) Test stat
-
-Recall, test stat is just a z-score:
-
-
-    z = (obs - exp)/stdev
-      = (79/200 - .5)/sqrt(.5*(1-.5)/200)
-
-
-```{r}
-(79/200 - .5)/sqrt(.5*(1-.5)/200)
-```
-
-Here, our test stat:  z = -2.97.
-
-
-
-3) p-value.
-
-Recall:  the p-value is the probability of observing a sample result that's as extreme the one we got, GIVEN THAT H0 IS TRUE.
-
-Ie, find P(Z<-2.97)
-
-Look up on the table:  p-val = .0015
-
-
-4) Conclusion
-
-Here, p<alpha.   .0015 < .05.  So, we reject H0.  Thus, we've found strong evidence to support the Ha:  fewer than half of DU students have gone waterskiing.
-
-
-Yay!
-
-
-## Two-tail test
-
-The test we just did is a "left tail test".  
-
-In a left tail test, the Ha has "<", thus the p-val is the area of the left tail.
-
-On monday, we did "right tail tests".  In a right tail test, the alternate hypotheis is "bigger than".  
-
-
-What if we want to test "not equal"
-
-Ha:   !=
-
-Since we're interested in BOTH small and large results, we need the tail area on BOTH SIDES.
-
-
-Problem:  we only have one test stat!  Either on the left or the right.
-
-Answer:  no prob, the normal dist is symmetric!
-
-Thus, for a 2-tail test, you must always DOUBLE the tail area!
-
-
-**Ex**  In Prof Miller's 2016 Math 120 course,  16 of 24 students were female.
-
-Does this support the claim that the proportion of students at DU who are women differs from 50%?
-
-1) Hyps
-
-H0: p = .5
-Ha: p != .5   (not equals)
-
-
-2) test stat
-
-```{r}
-(16/24 - .5)/sqrt(.5*(1-.5)/24)
-```
-
-3)  p-val
-
-tail area:
-
-```{r}
-1-0.9484
-```
-
-
-p-value:  2*tail area:
-
-```{r}
-2.*.0516
-```
-
-
-4)  Since p-val > .05, we fail to reject the H0.  There is not strong evidence that the proportion of female students differs from 50%.
-
-
-Next time:  failure modes for hyp test.
-
 
 
 
@@ -462,6 +173,241 @@ From the t-table, our p-val (tail area) must be between .05 and .10.
 
 
 
+# Wed Nov 11
+
+## Hyp tests for mu (ctd)
+
+Recall, since we don't know the population stdev, sigma, we have to use the t dist.
+
+Recall, the test stat for p (proportions):
+
+z = (phat - p)/sqrt(p(1-p)/n)
+
+Assume the value of p in H0, phat comes from data.
+
+Now, for mu (means):
+
+z = (xbar - mu)/(sigma/sqrt(n))
+
+Since we don't know sigma, forced to use s (sample stdev) instead.  THAT'S why we need the t dist:
+
+t = (xbar - mu)/(s/sqrt(n))
+
+REMEMBER:  in any test or CI involving "means/averages", use the t dist!
+
+**Ex** Average IQ in the US is 100.  A researcher wonders:  do musicians have higher average IQ than the general population?
+
+Suppose, in a sample of 50 musicians, their average IQ was computed to be 105, stdev 12.2.  (xbar = 105, s = 12.2, n=50)
+
+Conduct a hypothesis test to investigate the claim.
+
+
+1) Hypotheses
+
+H0: mu = 100
+Ha: mu > 100  (right tail test!)
+
+2) Test stat
+
+     t = (obs - exp)/stdev
+       = (105 - 100)/(12.2/sqrt(50))
+       
+```{r}
+(105 - 100)/(12.2/sqrt(50))
+```
+
+So, t = 2.90.
+
+
+3) p-val.  We have t=2.90 and df = n - 1 =  49.  
+
+From table, p < .005 (since t value is larger than anything in the table).
+
+This means that, if the mean IQ of musicians really is 100, then there's less than a 0.5% chance of observing a sample mean that's as large as the one we got.
+
+4)  Conclusion
+
+Since p<.05, we reject H0.  There's strong evidence that the mean IQ of musicians is greater than the pop mean of 100.
+
+Yay!  Our claim was supported!
+
+# Friday Nov 13
+
+### Reminder:  Two-tail tests
+
+The above example is a "one-tail" test, since we're checking ">".  But remember, if the Ha is "!=", then we need a "two tail area".
+
+
+
+**Ex** Mean height for women in the US is 64.  Suppose a researcher wonders if mean height for women in Russia differs from women in the US.
+
+To investigate, the reseracher collects data about 50 randomly selected women in Russia, and calculates their avg height to bo 64.3" with stdev 2.8".
+
+H0: mu  = 64
+Ha: mu != 64  (two-tail test!)
+
+2) Test stat
+
+```{r}
+(64.3 - 64)/(2.8/sqrt(50))
+```
+
+t = .758, df = 50 - 1 = 49.
+
+3) p-val.  From the table:  p-val > .2
+
+If the mean height for women in Russia really is 64", then there's over 20% chance of obtaining a sample result that's as large as ours (64.3").  
+
+4) Conclusion:  Since p>.05, we fail to reject H0.  We did not find strong evidence that the mean height of women in Russia differs from the mean in the US.
+
+
+## Comparing Two Populations
+
+(2 samp tests)
+
+So far, we've developed methods for performing statistical inference on ONE population.  Ie, saying something smart about a population proportion or a population mean.
+
+Oftentimes, we wish to compare two populations.  Is the mean of one bigger than the mean of the other?  Does one proportion differ from the other?
+
+First, let's talk about two proportions: p1 and p2.
+
+We always make inference about the DIFFERENCE between them:  p1 - p2.
+
+Need the same pieces:
+
+- estimator: phat1 - phat2 (the two sample proportions)
+- mean/expected: p1 - p2   (the two pop proportions)
+- stdev:  sqrt( p1(1-p1)/n1 + p2(1-p2)/n2 )
+
+Confidence intervals for p1 - p2:
+
+    phat1 - phat2 +/- zstar*sqrt( p1(1-p1)/n1 + p2(1-p2)/n2 )
+
+        estimator +/  critval * stdev
+
+**Ex**  In a sample of 100 DU students, 78 of them were from out-of-state.  In a sample of 150 Oberlin students, 139 of them were from out of state.
+
+Construct a 95% CI to estimate the difference in proportion of out-of-state students between the two schools.
+
+For zstar, need bounds of the middle 95%.  In table, look up area = .025, thus zstar = 1.96.
+
+phat1 = 78/100,  n1 = 100
+phat2 = 139/150, n2 = 150
+
+```{r}
+
+(78/100-139/150) - 1.96*sqrt(78/100*(1-78/100)/100 + 139/150*(1-139/150)/150)
+
+
+```
+
+
+```{r}
+(78/100-139/150) + 1.96*sqrt(78/100*(1-78/100)/100 + 139/150*(1-139/150)/150)
+
+```
+
+We're 95% confident that the difference in proportion out-of-state students between DU and Oberlin is between -23.8% and -5.5%.
+
+                    -23.8%  <  p1 - p2 < -5.5%
+
+Think:  if a - b is a negative number, which is bigger?  b is bigger!
+
+Here, seems like p2 is bigger, ie the proportion of out-of-state students at Oberlin is likely higher.  
+
+
+## Hyp tests for two proportions  
+
+In a sample of 100 DU students, 78 of them were from out-of-state.  In a sample of 150 Oberlin students, 139 of them were from out of state.
+
+Does this data provide statistically significant evidence that the proportion of out-of-state students at DU **differs** from the proportion at Oberlin?
+
+1) Hypotheses
+
+H0:  p1 - p2  = 0  (ALWAYS THE H0!!!)
+Ha:  p1 - p2 != 0 
+
+2) Test stat
+
+Same format:
+
+    z = (obs - exp)/stdev
+
+Wrinkle in the problem:  in the null hypothesis, we're assuming that the two proportions are the same!
+
+Because of that, it makes sense to "pool" our sample data together.  We call this the "pooled" proportion:
+
+phat_p = (x_1 + x_2)/(n_1 + n_2) = (all "successes")/(total sample size)
+
+      (78+139)/(100 + 150)
+
+```{r}
+(78+139)/(100 + 150)
+```
+
+Here, phat_p = .868  
+
+Let's use this in our test stat:
+
+    (78/100 - 139/150 - 0 )/sqrt( .868*(1-.868)/100 + .868*(1-.868)/150  ) 
+
+
+
+```{r}
+(78/100 - 139/150 - 0 )/sqrt( .868*(1-.868)/100 + .868*(1-.868)/150  ) 
+```
+
+t = -3.36.
+
+What about df?  Use the smaller of the two.  Here: df 100 - 1 = 99.
+
+Since df = 99 not in the table, use the next smaller one.  Here df = 90.
+
+Here, p < .01 (smallest two-tail area).
+
+
+4) Conclusion:  Since p<.05, we reject H0.  We found strong evidence that the proportion of DU students who are out-of-state differs from the proportion at Oberlin.
+
+
+
+WHOOPS!  USED THE WRONG TABLE!  PROPORTION IS ALWAYS Z! 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     
@@ -469,46 +415,6 @@ From the t-table, our p-val (tail area) must be between .05 and .10.
     
     
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
