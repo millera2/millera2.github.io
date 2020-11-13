@@ -44,6 +44,41 @@ All code should be written **individually** by the student, unless otherwise spe
 
 <br><br>
 
+# **Final HW** Due Dec 02 at 10pm
+
+![](https://mainblades.com/wp-content/uploads/2020/09/aircraft-lightning-strike-statistics-880x440.jpg)
+
+![](https://www.reactiongifs.us/wp-content/uploads/2018/01/Shocked.gif)
+
+![](https://media1.giphy.com/media/xUA7aYBBcYX7K8ng1W/giphy.gif)
+
+![](https://media2.giphy.com/media/l4KhStwfccoc7t6IU/200.gif)
+<br>
+
+File format: .ipynb notebook file submitted to Notebowl.  Each solution should be contained in a seperate, individual code cell.  Clearly label each solution with a Markdown cell.  Docstrings are required for all functions.  No (English language) discussion/explanation is required, although any discussion you provide about your solution (contained in a Markdwown cell) may help you earn partial credit.
+
+Students have choice for this HW:
+
+Pick **three** of the following four problems: 
+
+- 10.1.2 (p485)
+- 10.2.4 (p499)
+- 10.4.3 (p508)
+- 10.5.2 (p516)
+
+
+
+Pick **three** of the following three problems:
+
+- 8.1.20 (p 359)
+- 10.1.6 (p 486)
+- 10.2.11 (p 499)
+- 10.2.10 (p 499)
+
+Do NOT do more than three problems from each list (students should turn in a total of 6 problems).  Do NOT do any other problems.
+
+<br><br>
+
 # HW 7 Due Tues Nov 24 by 10pm
 
 File format: .ipynb notebook file submitted to Notebowl.  Each solution should be contained in a seperate, individual code cell.  Clearly label each solution with a Markdown cell.  Docstrings are required for all functions.  No (English language) discussion/explanation is required, although any discussion you provide about your solution (contained in a Markdwown cell) may help you earn partial credit.
