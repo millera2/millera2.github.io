@@ -1,5 +1,5 @@
 ---
-title: "Math 120 Week 11"
+title: "Math 120 Week 12"
 author: "Ali Miller"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
@@ -320,7 +320,6 @@ p-value:  2*tail area:
 4)  Since p-val > .05, we fail to reject the H0.  There is not strong evidence that the proportion of female students differs from 50%.
 
 
-Next time:  failure modes for hyp test.
 
 
 

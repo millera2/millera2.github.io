@@ -399,7 +399,7 @@ summary {
 
 
 <h1 class="title toc-ignore">Math 120 Fall 2020 Homepage</h1>
-<h4 class="date">Updated: 10 November, 2020</h4>
+<h4 class="date">Updated: 13 November, 2020</h4>
 
 </div>
 
@@ -407,13 +407,7 @@ summary {
 <ul>
 <li><a href="#video-lectures">Video Lectures</a></li>
 <li><a href="#math-120-lecture-notes">Math 120 Lecture Notes</a></li>
-<li><a href="#next-quiz-this-wednesday">Next Quiz: This Wednesday</a><ul>
-<li><a href="#section">1</a></li>
-<li><a href="#section-1">2</a></li>
-<li><a href="#section-2">3</a></li>
-<li><a href="#section-3">4</a></li>
-<li><a href="#section-4">5</a></li>
-</ul></li>
+<li><a href="#next-quiz-this-wednesday">Next Quiz: This Wednesday</a></li>
 <li><a href="#hw-assignments">HW Assignments</a></li>
 <li><a href="#syllabus">Syllabus</a></li>
 <li><a href="#office-hours">Office Hours</a><ul>
@@ -446,70 +440,20 @@ summary {
 <li><a href="https://millera2.github.io/Math-120/Math-120-Lec-9.html">Week 9</a></li>
 <li><a href="https://millera2.github.io/Math-120/Math-120-Lec-10.html">Week 10</a></li>
 <li><a href="https://millera2.github.io/Math-120/Math-120-Lec-11.html">Week 11</a></li>
+<li><a href="https://millera2.github.io/Math-120/Math-120-Lec-12.html">Week 12</a></li>
 </ul>
 </div>
 <div id="next-quiz-this-wednesday" class="section level2">
 <h2>Next Quiz: This Wednesday</h2>
 <p>Coverage: Last Week</p>
-<p>Topics: Confidence intervals.</p>
+<p>Topics: CI for p. Performing the test, intepreting the steps, definition of p-value, connection to criminal trials.</p>
+<p>Book Practice:</p>
 <ul>
-<li>Constructing CIs</li>
-<li>the meaning of confidence</li>
-<li>interpreting a CI</li>
+<li>5.15 (p202)</li>
+<li>5.17 (p202)</li>
+<li>5.21 (p203)</li>
+<li>Read Sec 5.3</li>
 </ul>
-<p>Practice Problems:</p>
-<ol style="list-style-type: decimal">
-<li><p>Suppose in a sample of 80 DU students, we find that 33 of them prefer Cheerios to Frosted Flakes. Estimate, with 85% confidence the proportion of all DU students who “prefer Cheerios”.</p></li>
-<li><p>If we wanted to estimate the proportion of all DU students who prefer Cheerios with 98% confidence and MOE no greater than 5%, how many students would we need to include in our sample?</p></li>
-<li><p>If we constructed a 95% CI using the sample data in #1, what would be the MOE?</p></li>
-<li><p>If we increase confidence level, what happens to MOE? Is that good or bad?</p></li>
-<li><p>If we increase sample size, what happense to MOE? Is that good or bad?</p></li>
-</ol>
-<p><strong>Solutions</strong></p>
-<p>Look away! No, don’t look yet!</p>
-<p>Oh please, no, please try the problem first!</p>
-<p>Ahhhhhh!!!!</p>
-<p>Ok, here they are:</p>
-<div id="section" class="section level3">
-<h3>1</h3>
-<pre><code>middle 85% -&gt; tail area = 15/2 = 7.5%
-
--&gt; zstar = 1.44
-           
--&gt; 33/80 +/-    1.44*sqrt(33/80*(1-33/80)/80)
- </code></pre>
-<pre class="r"><code>33/80 - 1.44*sqrt(33/80*(1-33/80)/80)</code></pre>
-<pre><code>## [1] 0.3332438</code></pre>
-<pre class="r"><code>33/80 + 1.44*sqrt(33/80*(1-33/80)/80)</code></pre>
-<pre><code>## [1] 0.4917562</code></pre>
-<p><strong>We’re 85% confident that between 33.3% and 49.2% of all DU students prefer Cheerios to Frosted Flakes.</strong></p>
-</div>
-<div id="section-1" class="section level3">
-<h3>2</h3>
-<pre><code>98% confidence -&gt; 1% tail area -&gt; zstar = 2.33
-
-n &gt;= (33/80)*(1-33/80)*(2.33/.05)^2</code></pre>
-<pre class="r"><code>(33/80)*(1-33/80)*(2.33/.05)^2</code></pre>
-<pre><code>## [1] 526.264</code></pre>
-<p><strong>We’d need at least 527 students.</strong></p>
-</div>
-<div id="section-2" class="section level3">
-<h3>3</h3>
-<pre><code>95% -&gt; zstar = 1.96
--&gt; MOE = 1.96*sqrt(33/80*(1-33/80)/80)
-    </code></pre>
-<pre class="r"><code>1.96*sqrt(33/80*(1-33/80)/80)</code></pre>
-<pre><code>## [1] 0.1078765</code></pre>
-<p><strong>The MOE would be 10.8% </strong></p>
-</div>
-<div id="section-3" class="section level3">
-<h3>4</h3>
-<p>Bigger confidence level means BIGGER MOE. This is because we’d need to widen our interval to include more of the sampling distribution. This is BAD – we want to be confident, but we DON’T want to have large MOE!</p>
-</div>
-<div id="section-4" class="section level3">
-<h3>5</h3>
-<p>Bigger n means smaller MOE. This is because n is in the <em>denominator</em> of the MOE formula. This is GOOD! If we’re able to increase our sample size, we can decrease MOE.</p>
-</div>
 </div>
 <div id="hw-assignments" class="section level2">
 <h2>HW Assignments</h2>
@@ -530,6 +474,8 @@ n &gt;= (33/80)*(1-33/80)*(2.33/.05)^2</code></pre>
 <p>So, <strong>don’t wait till the night before a deadline to get help!</strong></p>
 <p>I like chatting with students – come find me!</p>
 <p>I think this will be better than setting aside specific times that work for everyone.</p>
+<pre class="r"><code>qnorm(.1)</code></pre>
+<pre><code>## [1] -1.281552</code></pre>
 </div>
 <div id="ta-hours" class="section level3">
 <h3>TA Hours</h3>

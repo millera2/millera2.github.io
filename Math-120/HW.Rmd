@@ -31,6 +31,26 @@ theme_set(theme_tufte() +
 #------------------------------------------------#
 ```
 
+# HW 6 - Inference on The Counted
+
+Independent British newspaper The Guarian conducted a study in 2015 and 2016 to record data on all Americans killed by police in the United States (amazingly, no US agency tracks this data).  The project is called "The Counted", and you can peruse the results at [The Guardian's Website](https://www.theguardian.com/us-news/ng-interactive/2015/jun/01/the-counted-police-killings-us-database)
+
+For this lab, you can find the two datasets in our usual shared folder for data -- find links on our GitHub homepage as always.
+
+In the usual format (polished Google Docs report exported to pdf), answer the following questions about the data.
+
+1) For each dataset, make a pivot table showing the frequencies broken down by the variables `raceethnicity` and `armed`.  Paste those pivot tables into your report.
+
+2)  In 2015-2016, about 13.5% of all Americans were African-American.  Using the data above, find out what percent of people killed by police are black.  For each year (seperately), conduct an appropriate hypothesis test to determine if this proportion is greater than the 13.5%.  Clearly include and narrate each step.  
+
+3) Describe **precisely and in context** what your p-values above indicate, using the definition of p-value (not just the number or the conclusion).
+
+4) In each year 2015 and 2016, use your pivot table to compute the proportion of Americans killed by police who were **unarmed**.  Conduct an appropriate hypothesis test to see if the proportion in 2015 differs from the proportion in 2016.  Clearly show all steps and conclusions.
+
+<br><br>
+
+
+
 # HW 5 - The Normal Distribution 
 
 ## (Due Thurs Oct 29 by 10pm on Notebowl)
