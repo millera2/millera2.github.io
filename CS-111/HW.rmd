@@ -55,6 +55,8 @@ All code should be written **individually** by the student, unless otherwise spe
 ![](https://media2.giphy.com/media/l4KhStwfccoc7t6IU/200.gif)
 <br>
 
+This assignment is the culmination of your training in CS 111.  **Students must work individually.**  Unlike usual, I won't be offering consults and insights on how to complete these problems -- it's up to you!  It doesn't have to be perfect -- show me what you've learned!
+
 File format: .ipynb notebook file submitted to Notebowl.  Each solution should be contained in a seperate, individual code cell.  Clearly label each solution with a Markdown cell.  Docstrings are required for all functions.  No (English language) discussion/explanation is required, although any discussion you provide about your solution (contained in a Markdwown cell) may help you earn partial credit.
 
 Students have choice for this HW:
