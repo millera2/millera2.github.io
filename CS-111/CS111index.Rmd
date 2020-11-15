@@ -54,12 +54,14 @@ The work I do in those vids is availabe on this site below.
 - [Week 9](https://millera2.github.io/CS-111/Lec-09.html)
 - [Week 10](https://millera2.github.io/CS-111/Lec-10.html)
 - [Week 11](https://millera2.github.io/CS-111/Lec-11.html)
+- [Week 12](https://millera2.github.io/CS-111/Lec-12.html)
+- [Week 13](https://millera2.github.io/CS-111/Lec-13.html)
 
 
 
 ## Next Quiz: This Wednesday
 
-Coverage:  Last week
+Coverage:  Week 12
 
 
 
