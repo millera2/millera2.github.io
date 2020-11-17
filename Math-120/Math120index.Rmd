@@ -63,7 +63,7 @@ The work I do in those vids is availabe on this site below.
 
 Coverage:  Last Week
 
-Topics:  CI for p.  Performing the test, intepreting the steps, definition of p-value, connection to criminal trials.
+Topics:  Hyp Test for p.  Performing the test, intepreting the steps, definition of p-value, connection to criminal trials.
 
 Book Practice:
 

@@ -1,0 +1,428 @@
+---
+title: "Math 120 Week 13"
+author: "Ali Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: yeti
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+studentSurvey <- read_csv("Student Data.csv")
+deathPenaltyData <- read_csv("death penalty data.csv")
+housingData <- read_csv("../Data/House-Sales.csv")
+#------------------------------------------------#
+```
+
+
+
+
+
+# Monday Nov 9
+
+## Inference for Quantitative Data (Ch 7)
+
+So far, all of our inference has been about categorical data.  Ie, we've performing inference on **p**, the population proportion!
+
+Now, let's do the same things for quantitative data.  Ie, we'll be performing inference on **mu**, the population mean.
+
+Recall, there are two major types of statistical inference:
+
+ - CIs are used to **estimate** population parameters (p, and mu)
+ - Hyp tests are use to investigate a claim/answer a question about a population parameter (p, and mu).
+ 
+ 
+The only reason this is possible is because of the CLT: as long our sample size is "large enough", then the sample statistics we collect follow a normal distribution.
+
+
+For proportions (phat):  if np>10 and n(1-p)>10, then phat follows a normal dist with 
+
+- mean = p
+- stdev = sqrt(p*(1-p)/n)
+
+
+
+For means (xbar):  if n > 30, then xbar follows a normal dist with
+
+- mean = mu (population mean)
+- stdev = sigma/sqrt(n)   (sigma is the population stdev).
+
+The above gives us everything we need to do inference with means.
+
+Ex)  Mean height for women in the US is 64" with std 2.4".  If we take sample of 40 women, what's the probability that their average height is greater than 64.3"?
+
+Since n>30, we know xbar follows a normal dist.
+
+Q:  Compute P( xbar >64.3 )
+
+Find z-score:
+
+    z = (obs - exp)/stdev
+      = (64.3 - 64)/(2.4/sqrt(40))
+      
+      
+```{r}
+ (64.3 - 64)/(2.4/sqrt(40))
+```
+
+```{r}
+1-0.7852
+```
+
+There's about a 21.48% chance that, in a sample of 40 women, their avg height is at least 64.3".
+
+## Hyp Tests for mu
+
+Suppose that, in a sample of 50 men at DU, their avg height is computed to be 69.7" and stdev = 3.2".  THIS IS **S**, NOT SIGMA!!
+
+Does this provide statistically significant evidence the mean height of men at DU is higher than the national average of 69?
+
+
+1) Hypotheses
+
+H0: mu = 69
+Ha: mu > 69
+
+2)  Test statistic:
+
+    z = (obs - exp)/stdev
+      = (xbar - mu)/(sigma/sqrt(n))
+
+Problem!  What's sigma?  Remember, the whole reason we're doing this hyp test is because we DON'T KNOW what the population parmeters are!  Definitely don't know mu, that's what we're here for. So, why would we know sigma?  WE DON'T!!
+
+Oh no!  What to do??
+
+Need to use the next best thing:  sample standard dev, s!
+
+Ok, but there's another problem:
+
+    (xbar - mu)/(s/sqrt(n))  DOESN'T follow a normal distribution!
+
+The answer:  use a modified version of the normal distribution called the 
+
+  **t distribution**!!
+  
+![](https://andyjconnelly.files.wordpress.com/2017/05/distributions1.png)  
+  
+
+Let's get to know "t" a little better.  Important properties:
+
+ - looks just like the normal dist!  bell-shaped, and symmetric about 0.
+ - importand difference:  the t dist has "thicker tails".  This has two consequences:
+   - it makes our CIs wider, since we need to go further out to get the middle%
+   - it makes p-vals bigger in Hyp Tests, since tail area is bigger!
+  
+These differences are a huge bummer!  CIs an Hyp Tests based on t are less good/successful.  However, we have be honest.  This is the price that we pay for not knowing the population standard deviation sigma!
+
+Back to our test:
+
+    t = (69.7-69)/(3.2/sqrt(50))
+    
+Here:
+
+- xbar = 69.7 (observed mean)
+- mu = 69 (expectation from the Null Hyp)
+- s = 3.2 (std dev of our data)
+- n = 50
+
+```{r}
+(69.7-69)/(3.2/sqrt(50))
+```
+
+WARNING:  the t-table is a arranged a little differently.  The specific shape of the t-dist depends on the sample. In order to use the table, need a sample size.  Here, we call this "degrees of freedom" or "df".
+
+   df = n - 1 = 50-1
+   
+Our df = 49
+
+3) P-val
+
+From the t-table, our p-val (tail area) must be between .05 and .10.  
+
+    .05 < p < .10
+    
+4)  Since p>.05, we FAIL to reject H0.  There's not strong evidence to support the claim that men at DU have mean height greater than 69".
+
+
+
+### Summary of difference between proportions (categorical) and means (quant):
+
+- for proportions, use the z table.  exp = p, stdev = sqrt(p(1-p)/n)
+
+- for means, use the t table.  exp = mu, stdev = s/sqrt(n)
+
+
+
+# Wed Nov 11
+
+## Hyp tests for mu (ctd)
+
+Recall, since we don't know the population stdev, sigma, we have to use the t dist.
+
+Recall, the test stat for p (proportions):
+
+z = (phat - p)/sqrt(p(1-p)/n)
+
+Assume the value of p in H0, phat comes from data.
+
+Now, for mu (means):
+
+z = (xbar - mu)/(sigma/sqrt(n))
+
+Since we don't know sigma, forced to use s (sample stdev) instead.  THAT'S why we need the t dist:
+
+t = (xbar - mu)/(s/sqrt(n))
+
+REMEMBER:  in any test or CI involving "means/averages", use the t dist!
+
+**Ex** Average IQ in the US is 100.  A researcher wonders:  do musicians have higher average IQ than the general population?
+
+Suppose, in a sample of 50 musicians, their average IQ was computed to be 105, stdev 12.2.  (xbar = 105, s = 12.2, n=50)
+
+Conduct a hypothesis test to investigate the claim.
+
+
+1) Hypotheses
+
+H0: mu = 100
+Ha: mu > 100  (right tail test!)
+
+2) Test stat
+
+     t = (obs - exp)/stdev
+       = (105 - 100)/(12.2/sqrt(50))
+       
+```{r}
+(105 - 100)/(12.2/sqrt(50))
+```
+
+So, t = 2.90.
+
+
+3) p-val.  We have t=2.90 and df = n - 1 =  49.  
+
+From table, p < .005 (since t value is larger than anything in the table).
+
+This means that, if the mean IQ of musicians really is 100, then there's less than a 0.5% chance of observing a sample mean that's as large as the one we got.
+
+4)  Conclusion
+
+Since p<.05, we reject H0.  There's strong evidence that the mean IQ of musicians is greater than the pop mean of 100.
+
+Yay!  Our claim was supported!
+
+# Friday Nov 13
+
+### Reminder:  Two-tail tests
+
+The above example is a "one-tail" test, since we're checking ">".  But remember, if the Ha is "!=", then we need a "two tail area".
+
+
+
+**Ex** Mean height for women in the US is 64.  Suppose a researcher wonders if mean height for women in Russia differs from women in the US.
+
+To investigate, the reseracher collects data about 50 randomly selected women in Russia, and calculates their avg height to bo 64.3" with stdev 2.8".
+
+H0: mu  = 64
+Ha: mu != 64  (two-tail test!)
+
+2) Test stat
+
+```{r}
+(64.3 - 64)/(2.8/sqrt(50))
+```
+
+t = .758, df = 50 - 1 = 49.
+
+3) p-val.  From the table:  p-val > .2
+
+If the mean height for women in Russia really is 64", then there's over 20% chance of obtaining a sample result that's as large as ours (64.3").  
+
+4) Conclusion:  Since p>.05, we fail to reject H0.  We did not find strong evidence that the mean height of women in Russia differs from the mean in the US.
+
+
+## Comparing Two Populations
+
+(2 samp tests)
+
+So far, we've developed methods for performing statistical inference on ONE population.  Ie, saying something smart about a population proportion or a population mean.
+
+Oftentimes, we wish to compare two populations.  Is the mean of one bigger than the mean of the other?  Does one proportion differ from the other?
+
+First, let's talk about two proportions: p1 and p2.
+
+We always make inference about the DIFFERENCE between them:  p1 - p2.
+
+Need the same pieces:
+
+- estimator: phat1 - phat2 (the two sample proportions)
+- mean/expected: p1 - p2   (the two pop proportions)
+- stdev:  sqrt( p1(1-p1)/n1 + p2(1-p2)/n2 )
+
+Confidence intervals for p1 - p2:
+
+    phat1 - phat2 +/- zstar*sqrt( p1(1-p1)/n1 + p2(1-p2)/n2 )
+
+        estimator +/  critval * stdev
+
+**Ex**  In a sample of 100 DU students, 78 of them were from out-of-state.  In a sample of 150 Oberlin students, 139 of them were from out of state.
+
+Construct a 95% CI to estimate the difference in proportion of out-of-state students between the two schools.
+
+For zstar, need bounds of the middle 95%.  In table, look up area = .025, thus zstar = 1.96.
+
+phat1 = 78/100,  n1 = 100
+phat2 = 139/150, n2 = 150
+
+```{r}
+
+(78/100-139/150) - 1.96*sqrt(78/100*(1-78/100)/100 + 139/150*(1-139/150)/150)
+
+
+```
+
+
+```{r}
+(78/100-139/150) + 1.96*sqrt(78/100*(1-78/100)/100 + 139/150*(1-139/150)/150)
+
+```
+
+We're 95% confident that the difference in proportion out-of-state students between DU and Oberlin is between -23.8% and -5.5%.
+
+                    -23.8%  <  p1 - p2 < -5.5%
+
+Think:  if a - b is a negative number, which is bigger?  b is bigger!
+
+Here, seems like p2 is bigger, ie the proportion of out-of-state students at Oberlin is likely higher.  
+
+
+## Hyp tests for two proportions  
+
+In a sample of 100 DU students, 78 of them were from out-of-state.  In a sample of 150 Oberlin students, 139 of them were from out of state.
+
+Does this data provide statistically significant evidence that the proportion of out-of-state students at DU **differs** from the proportion at Oberlin?
+
+1) Hypotheses
+
+H0:  p1 - p2  = 0  (ALWAYS THE H0!!!)
+Ha:  p1 - p2 != 0 
+
+2) Test stat
+
+Same format:
+
+    z = (obs - exp)/stdev
+
+Wrinkle in the problem:  in the null hypothesis, we're assuming that the two proportions are the same!
+
+Because of that, it makes sense to "pool" our sample data together.  We call this the "pooled" proportion:
+
+phat_p = (x_1 + x_2)/(n_1 + n_2) = (all "successes")/(total sample size)
+
+      (78+139)/(100 + 150)
+
+```{r}
+(78+139)/(100 + 150)
+```
+
+Here, phat_p = .868  
+
+Let's use this in our test stat:
+
+    (78/100 - 139/150 - 0 )/sqrt( .868*(1-.868)/100 + .868*(1-.868)/150  ) 
+
+
+
+```{r}
+(78/100 - 139/150 - 0 )/sqrt( .868*(1-.868)/100 + .868*(1-.868)/150  ) 
+```
+
+t = -3.36.
+
+What about df?  Use the smaller of the two.  Here: df 100 - 1 = 99.
+
+Since df = 99 not in the table, use the next smaller one.  Here df = 90.
+
+Here, p < .01 (smallest two-tail area).
+
+
+4) Conclusion:  Since p<.05, we reject H0.  We found strong evidence that the proportion of DU students who are out-of-state differs from the proportion at Oberlin.
+
+
+
+WHOOPS!  USED THE WRONG TABLE!  PROPORTION IS ALWAYS Z! 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
