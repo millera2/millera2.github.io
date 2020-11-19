@@ -4,7 +4,7 @@ title: "Math 120 Fall 2020 Homepage"
 date: "Updated: `r format(Sys.time(), '%d %B, %Y')`"
 output: 
   html_document:
-    toc: true
+    toc: false
     toc_depth: 3
     theme: yeti
 
@@ -30,6 +30,19 @@ theme_set(                                #this sets the theme for all    #
                                                                           #
 
 ```
+<br><br>
+
+# **Final Quiz and HW Info**
+
+If you're in the 8am section, your quiz is on  **Mon Nov. 30 2:00-4:00**.
+
+If you're in the 9:10am section, your quiz is on **Tues Dec. 1 2:00-4:00**.
+
+For both sections, the final HW is due on Notebowl on **Monday Nov 30 by 10pm**.
+
+Students **must** take the quiz at the time for the section they're enrolled.
+
+<br><br>
 
 
 ## Video Lectures

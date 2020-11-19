@@ -1,5 +1,5 @@
 ---
-title: "Math 120 Week 13"
+title: "Math 120 Week 13-14"
 author: "Ali Miller"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
@@ -325,7 +325,7 @@ Does this data provide statistically significant evidence that the proportion of
 1) Hypotheses
 
 H0:  p1 - p2  = 0  (ALWAYS THE H0!!!)
-Ha:  p1 - p2 != 0 
+Ha:  p1 - p2 != 0  (two tail test)
 
 2) Test stat
 
@@ -357,13 +357,9 @@ Let's use this in our test stat:
 (78/100 - 139/150 - 0 )/sqrt( .868*(1-.868)/100 + .868*(1-.868)/150  ) 
 ```
 
-t = -3.36.
+z = -3.36.
 
-What about df?  Use the smaller of the two.  Here: df 100 - 1 = 99.
-
-Since df = 99 not in the table, use the next smaller one.  Here df = 90.
-
-Here, p < .01 (smallest two-tail area).
+Look up in table, tail area = .0004.  SInce two-tail, our p-val = .0008.
 
 
 4) Conclusion:  Since p<.05, we reject H0.  We found strong evidence that the proportion of DU students who are out-of-state differs from the proportion at Oberlin.
@@ -371,6 +367,183 @@ Here, p < .01 (smallest two-tail area).
 
 
 WHOOPS!  USED THE WRONG TABLE!  PROPORTION IS ALWAYS Z! 
+
+
+
+# Monay Nov 16
+
+## 2-samp tests for means
+
+
+If two samples, we always do inference on the DIFFERENCE between them:  mu1 - mu2
+
+
+estimator:  xbar1 - xbar2
+expected:   mu1 - mu2
+stdev:      
+
+    sqrt(s1^2/n1 + s2^2/n2)  
+  
+where s1 and s2 are the sample stdevs for the two samples.
+
+Since talking about means, we'll ALWAYS use the t-dist!
+
+Q:  since there are two samples, what's the df? 
+
+A1:  Use a long nasty math formula
+
+A2:  Use the shortcut:  choose the smaller of the two!
+
+
+CI:  
+
+    estimator  +/- critval*stdev
+    
+    xbar1 - xbar2 +/- tstar*sqrt(s1^2/n1 + s2^2/n2)
+    
+**Ex**  A hungry math professor wondered:  is there a difference in delivery time between Donatos and Elms?
+
+To investigate, she collected data about 42 Donatos deliveries (mean time 23 min, stdev 5 min) and 35 Elms deliveries (mean time of 28 minutes, stdev 6 min).
+
+Construct a 95% CI to estimate the DIFFERENCE in mean delivery times.
+
+
+Donatos: n1 = 42, xbar1 = 23, s1 = 5
+
+Elms:    n2 = 35, xbar2 = 28, s2 = 6
+
+Find tstar.  Middle 95% area.  Use df = 35-1 = 34.  From table, tstar = 2.03.
+
+Low bound:
+
+```{r}
+23 - 28 - 2.03*sqrt(5^2/42+6^2/35)
+```
+
+```{r}
+23 - 28 + 2.03*sqrt(5^2/42+6^2/35)
+
+```
+
+            -7.59 < mu1 - mu2 < -2.41
+            
+We're 95% confident that the true difference in mean delivery time between Dominos and Elms is between -7.59 min and -2.41 min.
+
+Think:  mu2 is bigger than mu1!  Makes us think that Elms has greater delivery time!
+
+### Hyp test for two means
+
+**Ex**  A hungry math professor wondered:  is there a difference in delivery time between Donatos and Elms?
+
+To investigate, she collected data about 42 Donatos deliveries (mean time 23 min, stdev 5 min) and 35 Elms deliveries (mean time of 28 minutes, stdev 6 min).
+
+Perform an appropriate hyp test to determine if there's statistically significant evidence of a *difference* in mean delivery time.
+
+Donatos: n1 = 42, xbar1 = 23, s1 = 5
+Elms:    n2 = 35, xbar2 = 28, s2 = 6
+
+1) Hypotheses
+
+H0: mu1 - mu2  = 0  (ALWAYS the H0 for 2 means!!!)
+Ha: mu1 - mu2 != 0  (two-tail test!)
+
+2) Test stat
+
+    t = (obs - exp)/stdev
+    
+      = (23-28 - 0)/sqrt(5^2/42 + 6^2/35)
+      
+```{r}
+(23-28 - 0)/sqrt(5^2/42 + 6^2/35)
+```
+      
+      
+t = -3.92, df = 35-1 = 34.  
+
+
+3) pval
+
+Look for +3.92.  Find:  p-val < .01.
+
+
+4) Since p<.05, we reject H0.  There's strong evidence of a difference in mean delivery times between Donatos and Elms.
+
+
+
+### SUmmary of difference between 2-prop and 2-mean tests
+
+For 2-prop, use z score:
+
+    z = (phat-phat2 - 0)/sqrt(phat_p(1-phat_p)/n1 + phat_p(1-phat_p)/n2)
+
+where phat_p is the combined "pooled" sample proportion. 
+
+For 2-means, use t score:
+
+    t = (xbar1-xbar2 -0)/sqrt(s1^2/n1 + s2^2/n2)
+    
+For df, use the smaller of the two
+
+# Friday Nov 18
+
+## Error Types for Hypothesis tests
+
+Our tests always end in one of two options:
+
+- Reject H0
+- Fail to reject H0
+
+BUT, in reality, either:
+
+- H0 True
+- H0 False
+
+Somtimes, with "unusual" data ("unrepresentative"), the conclusion of our Hyp Test could be wrong!!
+
+![](https://sketch.io/render/sk-d307d5811f1ee8a4d56163191c475849.jpeg)
+
+**Examples**
+
+1) An EPA enforcement officer suspects that the mean concentration of a toxic chemical in a local water water supply is greater than the federally mandated max of .8g/ml.  
+
+To investigate, she takes 40 samples from local water sources and finds a mean concentration of the toxic chemical to be .85g/ml.
+
+Q:  What would type I and type II errors really MEAN in this case?
+
+H0:  mu = .8     (water is ok.)
+Ha:  mu > .8     (water is dangerous!)
+
+Type I error:  rejected H0, but actually H0 is true.  We think that the water is dangerous, but actually it's ok.
+
+Type II error:  fail to reject H0, but actually H0 is false.  We think the water is ok, but actually the water is dangerous!!
+
+
+
+2) Criminal Trial:
+
+H0: innoncent
+Ha: guilty
+
+Type I error:  We think they're guilty, but actually they're innocent.
+Type II error:  We think they're innocent, but actually they're guilty.
+
+
+### Factors affecting type I and type II error
+
+The probability of getting a type I error is ALPHA!!  The significance level of the test.  Usually, there's a 5% chance of a Type I error.
+
+But, the choice of alpha is up to the investigator.
+
+The chance of a Type II error is inversely proportionl to the chance of a type I error.  Gotta balance!
+
+
+If Type I is worse, use smaller alpha.
+If Type II is worse, use larger alpha!!!!
+
+
+
+
+
 
 
 
