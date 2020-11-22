@@ -69,21 +69,21 @@ The work I do in those vids is availabe on this site below.
 - [Week 10](https://millera2.github.io/Math-120/Math-120-Lec-10.html)
 - [Week 11](https://millera2.github.io/Math-120/Math-120-Lec-11.html)
 - [Week 12](https://millera2.github.io/Math-120/Math-120-Lec-12.html)
-- [Week 13](https://millera2.github.io/Math-120/Math-120-Lec-13.html)
+- [Week 13 and 14](https://millera2.github.io/Math-120/Math-120-Lec-14.html)
 
 
-## Next Quiz: This Wednesday
+## Final Quiz: Week 13 and 14
 
-Coverage:  Last Week
+Topics:  Hyp tests and CIs for two means, hyp tests and CIs for two proportions, error types in hypothesis testing.
 
-Topics:  Hyp Test for p.  Performing the test, intepreting the steps, definition of p-value, connection to criminal trials.
+Book practice:
 
-Book Practice:
+- 5.25,(p 203)
+- 6.21 (p 226)
+- 6.23 (p 226)
+- 7.25 (p 275)
+- 7.27 (p 275)
 
-- 5.15 (p202)
-- 5.17 (p202)
-- 5.21 (p203)
-- Read Sec 5.3
 
 ## HW Assignments
 
