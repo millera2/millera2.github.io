@@ -34,13 +34,19 @@ theme_set(                                #this sets the theme for all    #
 
 # **Final Quiz and HW Info**
 
-If you're in the 8am section, your quiz is on  **Mon Nov. 30 2:00-4:00**.
 
-If you're in the 9:10am section, your quiz is on **Tues Dec. 1 2:00-4:00**.
 
-For both sections, the final HW is due on Notebowl on **Monday Nov 30 by 10pm**.
+To help you integrate the final quiz into your schedule, I've decided to let students take it **AT ANY TIME BETWEEN NOV 30 AT 2PM UNTIL DEC 1 AT 4PM (EST)**.
 
-Students **must** take the quiz at the time for the section they're enrolled.
+
+**THERE WILL BE A 1 HOUR TIME LIMIT** that begins as soon as you start the quiz.  Regardless, **the window will end at 4pm on Dec 1**.  So, don't start at 3:50 on Dec 1!
+
+Remember, Notebowl saves your work the instant you type it.  **IF YOUR BROWSER FREEZES, JUST QUIT AND RELOAD NOTEBOWL!!!**  DON'T JUST WAIT!  I've done 100s of Notebowl quizzes, and never has a student lost any work from reloading.
+
+
+The final HW is due at 10pm Monday Nov 30.
+
+
 
 <br><br>
 
