@@ -1,0 +1,375 @@
+---
+title: "Math 120 Week 11"
+author: "Ali Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: yeti
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+studentSurvey <- read_csv("Student Data.csv")
+deathPenaltyData <- read_csv("death penalty data.csv")
+housingData <- read_csv("../Data/House-Sales.csv")
+#------------------------------------------------#
+```
+
+
+Quiz #3:
+
+x = 60, mean = 64, stdev = 2.4
+
+z-score:
+
+```{r}
+(60-64)/2.4
+```
+
+z = -1.67
+
+From table, left area is 0.0475.  We want "at least":
+
+```{r}
+1-0.0475
+```
+
+Quiz #4
+
+Find z-scores:
+
+x = 20:
+
+```{r}
+(20-21)/5.8
+```
+
+x = 25:
+
+```{r}
+(25-21)/5.8
+```
+
+Look em up!
+
+```{r}
+0.7549-0.4325
+```
+
+Quiz #5:
+
+```{r}
+(100-75)/6.1
+```
+
+Almost no area above z=4, so P(X>100) ~ 0.
+
+
+Quiz #6
+
+If he's in top 60%, he's ABOVE 40%.
+
+z = -.25
+
+z = (x-mean)/stdev
+
+-.25 = (x - 69)/2.7
+
+```{r}
+-.25*2.7+69
+```
+
+Quiz #7:
+
+For middle 50%, tail cutoffs are z = +/- .67
+
+```{r}
+-.67*7.3+76
+```
+
+```{r}
++.67*7.3+76
+```
+
+IQR:  
+
+```{r}
+80.891-72.109
+```
+
+
+# Monday Oct 26
+
+Section 5.2:  Confidence intervals.
+
+We're about to do real, honest statistical inference! Yaay!
+
+
+A confidence interval is a range of reasonable values for a population parameter based upon sample data.
+
+
+We never know exactly what the true parameter is, but we can provide a likely range of values.
+
+
+First, we're going estimate population proportion, p.  Our first example:  estimate the proportion of DU students who have brown hair.  
+
+TO find this, simply find the "middle %" of the sampling distribution based on our sample result.
+
+Common values:  95% confidence interval, 90% confidence interval, 99% confidence interval.
+
+Here, the distribution we're looking at is the sampling distribution for phat.  CATEGORICAL DATA!!!
+
+This distribution is normal, has mean p, stdev p(1-p)/n.  
+
+
+If we're trying to estimate p (pop prop), so we'll have to use sample prop phat instead.
+
+
+    z-score:  (phat - p)/stdev(phat*(1-phat)/n)
+    
+Goal:  solve this for p!  Thre's always two:  one for the negative z-score, one for the positive.  
+
+After algebra, here's the forumula for CI for p:
+
+
+           phat - z*sqrt(phat*(1-phat)/n)  <  p <  phat + z*sqrt(phat*(1-phat)/n)
+
+$$ \hat{p} \pm z^* \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$$
+
+The z-score here has a special name, "critical value".  It's the z-score that corresponds to the 'middle %'.
+
+CAUTION:  THe interval is only valid if our sample size is LARGE ENOUGH!
+
+    phat*n >= 10    (1-phat)*n >= 10 
+    
+**Example**  Using our class data (assume that it's a random sample), estmiate the proportion of all DU students with brown hair with 95% confidence.
+
+From our data:  n = 42, phat = 28/42
+
+CHECK:  Is n large enough?
+
+```{r}
+42*28/42
+```
+
+```{r}
+42*(1-28/42)
+```
+
+Both larger than 10, so yes!  Use normal dist.
+
+Need to find critical value z*.  Since 95% is in the middle, that means there's 2.5% left over for the tails.  Let's find the z-score that matches area=.025.  Use critical value zstar = 1.96.
+
+
+Plug into formula for CI:
+
+    phat - z*sqrt(phat(1-phat)/n)
+
+```{r}
+(28/42) - 1.96*sqrt((28/42)*(1-28/42)/42)
+```
+
+```{r}
+(28/42) + 1.96*sqrt((28/42)*(1-28/42)/42)
+```
+
+Based upon our sample data, we're 95% confident that the true proportion of all DU students is between 52.4% and 80.9%.
+
+
+### Margin of Error
+
+The MOE is the stuff after the +/- in the CI formula.  It determines the width of the interval!
+
+
+    ( ---------------------   phat   ---------------------)
+    
+Visually, the MOE is the width of the arms.
+
+In the hair example, our MOE was
+
+```{r}
+1.96*sqrt((28/42)*(1-28/42)/42)
+```
+
+In general, we hope that our MOE is small!  Maybe 14.2% doesn't seem so great....
+
+
+
+
+## Wednesday Oct 28
+
+Last time:  95% CI for brown hair based on our class data.  Our data:  phat = 28/42.
+
+Results:  we're 95% confident that the true proportion of all DU students with brown hair is between 52.4% and 80.9%.  Here, MOE = (80.9-52.4)/2 = 14.25
+
+- Note 1:  It's super important that your conclusion is about the population **parameter**.  Here, that's p = population proportion.
+
+- Note 2:  The "conficence" level determines the "middle %" of the sampling distribution that we use.
+
+- Note 3:  The confidence level is NOT the probability that our confidence interval is "correct", ie contains the true parameter.  In fact, we have no way of knowing if our CI was a "success".  
+
+- Note 4:  "Confidence" means the following:  if we were to conduct many random samples of size n, then about 90/95/99% of our intervals will be "successful", ie contiain the true population value.
+
+
+## Factors that affect margin of error
+
+**Ex** Let's construct a 90% confidence interval for the proportion of all DU student with brown hair using the same data from before:  28 brown/42 total.
+
+Need z*:  cutoff for the middle 90% of the sampling dist.
+
+If 90% in the middle, 5% in each tail.  Need to find z-score with area = .05.  For us:  z* = 1.645  (between the two best).
+
+Plug into the formula!
+
+
+    phat +/- zstar*sqrt(phat*(1-phat)/n)
+    
+    (28/42) +/- 1.645*sqrt(28/42*(1-28/42)/42)
+    
+
+```{r}
+(28/42) - 1.645*sqrt(28/42*(1-28/42)/42)
+
+```
+
+```{r}
+(28/42) + 1.645*sqrt(28/42*(1-28/42)/42)
+
+```
+
+Thus, we're 90% confident that the true proportion of DU with brown hair is between 54.7% and 78.6%.
+
+MOE: 
+
+```{r}
+1.645*sqrt(28/42*(1-28/42)/42)
+```
+
+Conclusion:  Smaller confidence results in smaller margin of error!
+
+
+# Friday Oct 30
+
+## Factors that affect MOE
+
+We've seen that larger confidence level produces larger MOE.  Bummer!
+
+Analogy: fishing.  If we want to guarantee that we capture our fish, we need a big net!  In CI, if we capture the true parameter, the we need a wide interval!  Bigger margin of error!  Bummer!
+
+Fortunately, there are TWO factors that affect margin of error:
+
+1) Bigger confidence means bigger MOE
+2) Bigger **sample size** means **smaller** margin of error (good!)
+
+Our ability to get "good" estimates is directly connected to our sample size.  Balancing act!
+
+We're able to plan ahead in our study to decide how large our sample size needs to be in order to guarantee a desired MOE.
+
+
+**Ex**  We've previously, using the class data, estimated the proportion of DU students with brown hair.  Suppose we wish to estimate this proportion with MOE no greater than 10%.  Q:  How big would our sample have to be?
+
+Remember, MOE = stuff after +/-.
+
+
+Here:  
+
+    MOE = zstar*sqrt(phat(1-phat)/n)
+    
+It's easy to solve this equation for n:
+
+     n = phat(1-phat)(zstar/MOE)^2
+     
+We know all this stuff!  Here, let's do 95% confidence.  Recall, 
+
+    zstar = 1.96
+    
+Recall, our prior estimate for phat = 28/42, want MOE = .1.  Plug in!
+
+    n = (28/42)*(1-28/42)*(1.96/.1)^2
+   
+```{r}
+(28/42)*(1-28/42)*(1.96/.1)^2
+```
+
+Need n=86 in order to guarantee our MOE is no greater than 10%.
+    
+
+Q:  In the above example, we used a "prior estimate" for the proportion.  What if have no prior estimate?  What then?
+
+A:  Use phat = .5.  Thanks to calculus, we know that phat = .5 is a "worst case scenario" guaranteed to give the biggest n.  Thus, we're GUARANTEED to have a desired MOE.
+
+
+**Ex**  Let's say we wish to estimate the proportion of DU students who are vegetarians.  Suppose we want a 99% CI with MOE no greater than 5%.
+
+Q:  for 99%, what's zstar?
+
+Since we cover the middle 99% of the dist, the tails must each have 0.5% area.
+
+Find zscore with area = .005.  Here:  z = 2.575  (between 2.57 and 2.58)
+
+Since we have no prior estimate, let's use phat = .5.
+
+    n = (.5)*(1-.5)*(2.575/.05)^2
+
+```{r}
+(.5)*(1-.5)*(2.575/.05)^2
+```
+
+We'd need at least 664 students in our sample.  Note:  this is a very large sample size.  Perhaps our expectations (99% CI with MOE<5%) are unrealistic!
+
+
+## Hypothesis Test
+
+So far, we've seen one major tool for statistical inference:  CIs approximate a population parameter.
+
+
+The other major tool is a "hypotesis test":  hyp tests are designed to answer a question (or a claim) about a population.  
+
+Hyp tests are just like criminal trials!
+
+**In a criminal trial:**
+
+1) We're here to invesigate whether the defendant is innocent or guilty.  We must assume at first that they're innocent, **but** the real reason we're conducting the trial is because we **think they're guilty**!
+
+2) In a criminal trial, witnesses and experts give testimony about the crime.  
+
+3)  Based upon the testimony, the jury must decide how strong (or not) the evidence is.
+
+4)  Conclusion:  if the evidence is strong enough, then we rule the defendent is GUILTY!  If the evidence isn't strong enough, we can't rule they're guilty.
+
+
+**In a hypothesis test**:
+
+1) We're here to investigate a claim about a population parameter (p, mu, sigma).  By default, we have to assume that our claim isn't true (the null hypothesis, H0).  But, the real reason we're perfoming the test is because we think our claim is true (alternate hypothesis, Ha).
+
+2) We base our decision based on sample data!  The important summary of the sample data is called the "test statistic".  
+
+3) We use probability (sampling distributions) to decide how likely or unlikely our sample result is.  Called "p-value".
+
+4)  If the probability is small enough, it makes us suspect that H0 is false.  Otherwise if the probability isn't small enough, then our sample seems likely, and we don't have evidence to support the claim.  Here "small enough" is the "significance level" of the test.
+
+
+
+
+
+
+

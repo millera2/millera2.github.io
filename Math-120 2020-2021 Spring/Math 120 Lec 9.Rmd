@@ -1,0 +1,341 @@
+---
+title: "Math 120 Week 9"
+author: "Ali Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: yeti
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+studentSurvey <- read_csv("Student Data.csv")
+deathPenaltyData <- read_csv("death penalty data.csv")
+housingData <- read_csv("../Data/House-Sales.csv")
+#------------------------------------------------#
+```
+
+
+
+
+
+
+# Monday Oct 12
+
+## Normal Dists (continued)
+
+Recall:  to find probability for a normal dist, need to FIND THE AREA under the normal curve (corresponding to our range).  
+
+Last time:  practiced finding probabilities with the STANDARD NORMAL DIST:  mean = 0 and std dev = 1  (ie the one in the table)
+
+**Warm-up example**  If Z has a standard normal dist, find 
+
+    P( 0.34 < Z < 1.29) = P(Z<1.29) - P(Z < 0.34)
+    
+![](https://sketch.io/render/sk-b150eb88bc4129ca3bcb24f1d1a79932.jpeg)
+
+```{r}
+.9015 - .6331
+```
+
+
+So far, all of our exmaples have been with the standard normal dist.
+
+But what about real data?  How to convert to std normal?
+
+A:  Easy, find a z-score!
+
+    z = (x-mean)/stdev
+    
+If X has a normal dist, the the above Z converts it to a std normal so we can use the table!  This formula converts our data to have a mean of 0, std dev of 1.
+
+**Example**
+
+Heights for adult men in the US follow a normal dist (this is true) with mean 69" (also tru) and std dev 2.7" (still true!).  
+
+What's the probability that a rando man is 70 inches tall or less?
+
+Step 1:  Get a z score! Convert our data to std normal!
+
+    z = (70 - 69)/2.7
+
+```{r}
+(70 - 69)/2.7
+```
+
+Note: to use table, MUST round z-score to 2 decimals.  Here, z = 0.37.  
+
+From table:  P(Z<.37) = .6443
+
+There's a 64.43% chance that rando man is less than 70" tall.  
+
+
+**Ex**  Heights for women in the US follow a normal dist with mean 64", std dev 2.4" (that's all true).  
+
+What's the prob that a randomly selected woman is between 65" and 70" tall?
+
+Idea:  get z scores, look em up!  Answer = big prob - small prob
+
+x = 70:
+
+z=
+```{r}
+(70-64)/2.4
+```
+
+X = 65:
+
+Z =
+```{r}
+(65 - 64)/2.4
+```
+z = .42
+
+Look em up!
+
+```{r}
+.9938 - .6628
+```
+
+There's a 33.1% chance that rando woman is between 65" and 70" tall.
+
+**Ex**  What's the probabability that your math professor is as tall as she is?  75"
+
+```{r}
+(75-64)/2.4
+```
+
+Hmmmmmmmm!!!  Thinking emoji!
+
+![](https://sketch.io/render/sk-2be5552ef23f8121b75f398dd9947360.jpeg)
+
+Since there's almost no area past z=4.58, 
+
+P(Z>4.58) ~ 0  (approximately zero).
+
+There's almost no chance of randomly picking a woman who's 75" or taller.
+
+Moral of the story:  statistics only tells us about populations, not individuals!
+
+
+
+**Ex** What's the probability that a randomly selected woman is less than 75" tall?
+
+P(X<=75) ~ 1.
+
+
+### Backwards problems
+
+All of the problems that we've seen so far are "forwards problems":
+  
+   Given a z score, find a probability.
+   Given a value, find a probability.
+   
+**Backwards problems** go the other way:
+
+   Given a probability (area), find the corresponding value.
+   
+   
+   
+Ex:  How tall must a man be in order to be in the top 10% of men's heights?
+
+
+First, let's do some basic ones with the z table.
+
+**Ex** Find the z-score that's larger than 85% of all values in the standard normal dist.
+
+We need to find the z-score with area/probability .85 below.  
+
+![](https://sketch.io/render/sk-f223f260e52b54c768176ac910d2266f.jpeg)
+
+Best z-score (might not always be exact):  z = 1.04.
+
+
+
+**Ex** What's the z-score of an individual in the top 10% of measurements.
+
+Need to look up area = 0.9 (that's on the left!!!)
+
+![](https://sketch.io/render/sk-7a8f0a8ffd925df8f7959c238b1f5221.jpeg)
+
+The individual would need a z-score of z=1.28.  
+
+
+
+
+
+# Friday 10-16
+
+## Backwards Problems continued
+
+Backwards problems are how we find "percentiles" for normal dists.
+
+Ex:  40th percentile
+$$P_{40}$$
+
+This number is a value (not a probability!) in the dataset that's larger than 40% of data in the distribution.
+
+Ex:  If you score in the 99th percentile (P_99), then you scored higher than 99% of test takers.  (Good thing!)
+
+Ex: A 4-year old is in the 70th percentile of heights for 4-year olds.  P_70.
+
+You already know a couple of special percentiles:
+
+P_25 = Q_1!!!
+P_75 = Q_3!!!
+P_50 = Median
+
+Called "order statistics", because they show where, in order, the data is.
+
+Backwrds problems are how we find percentiles:
+
+### Typo Corrected!
+**Ex** Reticulated giraffes have an avg height of 18.1' and std dev of 1.6', height follow normal dist.  Calculate the 75th percentile (P_75) for giraffe heights.
+
+Equivalent:  how tall must the giraffe be in order to be taller than 75% of all giraffes.
+
+First:  need to find the z-score.  Backwards problem, so look up the area in the table!
+
+![](https://sketch.io/render/sk-3f63f7c25e6258cbc402d680f925f6b6.jpeg)
+
+We find the z-score with area closest to 75% is z=0.67.
+
+Not quite done:  still need to know how tall the giraffe is!
+
+    z = (x - mean)/stdev
+
+Plug in:
+
+    .67 = (x-18.1)/1.6
+    
+```{r}
+.67*1.6+18.1
+```
+
+Thus, the giraffe must be 19.172ft tall in order to be in the 75th percentile.
+
+
+
+**Ex** Scores on the SAT follow a normal dist with mean 1100 and std dev 200.
+
+How high must a student score to be in the 90th percentile, P_90?
+
+Backwards, since we're looking for a value (not a probability!)  First, find z in the table:  look up the area that's as close as possible to .9.
+
+![](https://sketch.io/render/sk-7a8f0a8ffd925df8f7959c238b1f5221.jpeg)
+
+Best z-score: z = 1.28
+
+Still need to compute the score:
+
+    z = (x - mean)/stdev
+    
+    1.28 = (x-1100)/200
+    
+Find x:
+
+
+```{r}
+1.28*200+1100
+```
+
+A student would have to score 1356 in order to be in the 90th percentile.
+
+
+**Special example!**  Again about SAT ( mean=1100 and stdev = 200).  What range of scores encompass the middle 90% of the data?
+
+What are the cutoffs (low and high) that separate the middle 90% most common scores?
+
+Picture!  (Shown below this problem)
+
+We see that for z_low, need to look up area of .05.
+
+Uh-oh!  There are two areas that are equally close (z-scores of -1.64 and -1.65).  No problem, just split the difference:
+
+    z = -1.645
+    
+Ok, got the low z-score.  What about the high?  Look up area of 0.95:
+
+    z = +1.645
+    
+Note:  for "middle %" problems, the z-scores always match (+/-) because the normal dist is symmetric!  Gotta be the same on both sides!  Don't really need to look up both. 
+
+Still need to find the scores!  No prob, plug in:
+
+Low:
+
+    -1.645 = (x - 1100)/200
+    
+```{r}
+-1.645*200+1100
+```
+    
+High:
+
+    +1.645 = (x - 1100)/200
+
+```{r}
+1.645*200+1100
+```
+
+Conclusion:  the middle 90% of scores on the SAT are between 771 and 1429.
+
+
+![](https://sketch.io/render/sk-8987458bfd3ed86d9243d226e39f68f2.jpeg)
+
+**Ex**  Heights for women in the US follow a normal dist, mean = 64" and stdev = 2.4".
+
+Find the IQR for women's heights.
+
+Remember, IQR is the range of the middle 50%!
+
+Picture! (Seen above, below the previous example)
+
+We see we need to find the area = .25.  Look it up: z = -.67 is closest.
+
+Thus, the z-scores are +/- .67
+
+Find the heights:  plug in!
+
+    -.67 = (x-64)/2.4
+    
+```{r}
+-.67*2.4+64
+```
+    
+    +.67 = (x-64)/2.4
+    
+```{r}
+.67*2.4+64
+```
+
+Conclusion:  the middle 50% of women range between 62.392 inches and 65.608 inches.
+
+Thus, the IQR = 65.608- 62.392
+
+```{r}
+65.608- 62.392
+```
+
+
+
+
