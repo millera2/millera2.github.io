@@ -30,76 +30,30 @@ theme_set(                                #this sets the theme for all    #
                                                                           #
 
 ```
-<br><br>
 
-# **Final Quiz and HW Info**
-
-
-
-To help you integrate the final quiz into your schedule, I've decided to let students take it **AT ANY TIME BETWEEN NOV 30 AT 2PM UNTIL DEC 1 AT 4PM (EST)**.
-
-
-**THERE WILL BE A 1 HOUR TIME LIMIT** that begins as soon as you start the quiz.  Regardless, **the window will end at 4pm on Dec 1**.  So, don't start at 3:50 on Dec 1!
-
-Remember, Notebowl saves your work the instant you type it.  **IF YOUR BROWSER FREEZES, JUST QUIT AND RELOAD NOTEBOWL!!!**  DON'T JUST WAIT!  I've done 100s of Notebowl quizzes, and never has a student lost any work from reloading.
-
-
-The final HW is due at 10pm Monday Nov 30.
+## Math 120 Partial Lecture Notes
+*They look great on your phone, so you can read them anywhere.    Don't understand something?  Ask me!*
 
 
 
-<br><br>
+## Next Quiz
 
+Practice Quiz!  Get it down now, so that you can succeed on the real thing!  
 
-## Video Lectures
+Go to NoteBowl -> Assignments
 
-These are all on [our Google Drive shared folder](https://drive.google.com/drive/folders/1DUJNs5i-88NPDnLlGW04BCl0NkWm700S?usp=sharing)
+**It will only be visible during your scheduled Tuesday class time.**
 
-The work I do in those vids is availabe on this site below.  
-
-
-
-## Math 120 Lecture Notes
-*They look great on your phone, so you can read them anywhere.  Steal my code!  Don't understand something?  Ask me!*
-
-- [Week 1](https://millera2.github.io/Math-120/Math-120-Lec-1.html)
-- [Week 2](https://millera2.github.io/Math-120/Math-120-Lec-2.html)
-- [Week 3](https://millera2.github.io/Math-120/Math-120-Lec-3.html)
-- [Week 4](https://millera2.github.io/Math-120/Math-120-Lec-4.html)
-- [Week 4](https://millera2.github.io/Math-120/Math-120-Lec-4.html)
-- [Week 5](https://millera2.github.io/Math-120/Math-120-Lec-5.html)
-- [Week 6](https://millera2.github.io/Math-120/Math-120-Lec-6.html)
-- [Week 7](https://millera2.github.io/Math-120/Math-120-Lec-7.html)
-- [Week 8](https://millera2.github.io/Math-120/Math-120-Lec-8.html)
-- [Week 9](https://millera2.github.io/Math-120/Math-120-Lec-9.html)
-- [Week 10](https://millera2.github.io/Math-120/Math-120-Lec-10.html)
-- [Week 11](https://millera2.github.io/Math-120/Math-120-Lec-11.html)
-- [Week 12](https://millera2.github.io/Math-120/Math-120-Lec-12.html)
-- [Week 13 and 14](https://millera2.github.io/Math-120/Math-120-Lec-14.html)
-
-
-## Final Quiz: Week 13 and 14
-
-Topics:  Hyp tests and CIs for two means, hyp tests and CIs for two proportions, error types in hypothesis testing.
-
-Book practice:
-
-- 5.25,(p 203)
-- 6.21 (p 226)
-- 6.23 (p 226)
-- 7.25 (p 275)
-- 7.27 (p 275)
+**WARNING**:  Our Tuesday class time is different than MWF!  Check your schedule!
 
 
 ## HW Assignments
 
-[Click here for HW assignments](https://millera2.github.io/Math-120/HW.html)
-
-
+Stay tuned!
 
 ## Syllabus
 
-[Math 120 Fall 2020 Syllabus (Miller)](https://millera2.github.io/Math-120/Math-120-Fall2020-Miller.pdf)
+[Math 120 Fall 2020 Syllabus (Miller)](https://millera2.github.io/Math-120/Math-120-Spring-2021-Miller.pdf)
 
 ## Office Hours 
 
@@ -107,41 +61,31 @@ Book practice:
 
 [Google Meet Room](https://meet.google.com/wtr-funk-wph)
 
-Hours: Most weekdays before 4pm.
+All virtual, all by appointment.  Don't be shy!  A few things:
 
-If you want to talk, shoot me an email (always use Denison email addresses) and propose a couple of times that work for you.
+- Schedule 24 hours in advance
+- I'm free most weekdays from 1:30-4pm
+- When you write, propose a time to cut down on back-and-forth.
 
-Of course, I don't check email in the evening, so we'll have to meet the next day in that case.
 
-So, **don't wait till the night before a deadline to get help!**  
+I never check email after 4pm, so **don't wait till the night before a deadline to get help!**  
 
 I like chatting with students -- come find me!
 
-I think this will be better than setting aside specific times that work for everyone.
-
-```{r}
-qnorm(.1)
-```
 
 
-
-### TA Hours
-
-*TBA*
 
 
 
 
 ## Shared Google Drive Folder:
 
-[You can find all of our datasets here](https://drive.google.com/drive/folders/1tJFLMDFflBiXDHidWoTZU0SjzVi_z3zW?usp=sharing)
-
 
 
 
 ## Texbook Links
 
-- [Math 120 Textbook](https://www.openintro.org/stat/textbook.php?stat_book=os)
+- [Math 120 Textbook](https://www.openintro.org/book/os/)
   - *OpenIntro Statistics* is an excellent, free introduction to modern statistical analysis.
   
 
