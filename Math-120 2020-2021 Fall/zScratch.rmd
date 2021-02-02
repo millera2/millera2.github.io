@@ -1,0 +1,68 @@
+---
+title: "Math 120 Lec xx"
+author: "Your Name"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: simplex
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+```{r}
+library(reticulate)
+use_condaenv(conda = "~/opt/anaconda3/envs/R")
+
+for i in range(10):
+  print
+```
+
+
+```{python}
+population= []
+population.append(12000)
+
+for i in range(0,7):
+  thisYearPopulation = population[i]+population[i]*.08-1500
+  population.append(thisYearPopulation)
+
+
+print(population)
+
+
+```
+
+```{python}
+population[9]
+
+
+```
+
+```{python}
+1+"test"
+
+sys.stdout.read()
+```
+

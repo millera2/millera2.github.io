@@ -1,0 +1,269 @@
+---
+title: "Math 120 Week 3"
+author: "Ali Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: hide
+    theme: yeti
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+studentSurvey <- read_csv("Student Data.csv")
+deathPenaltyData <- read_csv("death penalty data.csv")
+housingData <- read_csv("../Data/House-Sales.csv")
+#------------------------------------------------#
+```
+
+# Monday Sept 7
+
+## Warm-up example
+
+Suppose we wish to predict cty fuel efficiency based upon engine size (displ).  We find the following summary stats:
+
+I.e.: displ is x and cty is y.
+
+```{r}
+mpg %>% ggplot(aes(displ, cty))+geom_point()
+```
+
+
+Mean displacement: 3.472 L   xbar
+Mean cty mpg: 16.859 mpg     ybar
+Stdev displacement: 1.292 L  s_x
+Stddev cty mpg: 4.256 mpg    s_y
+correlation coeff = -0.799   r
+
+
+1) Find the equation of the least squres line.
+
+slope = b_1 = r*s_y/s_x = -2.632
+
+Next, intercept:  
+
+yint = b_0 = ybar - b_1*xbar 25.997
+
+Thus, the equation:  
+
+yhat = 25.997 - 2.632x
+
+2)  A new car has an engine size of 2.1 L and city fuel efficiency of 27mpg.
+
+What would our linear model (the least squares line) predict this car's city mpg?  What's the residual for this measurement?
+
+Prediction:  plug in x=2.1
+
+```{r}
+25.997 - 2.632*2.1
+```
+
+Predict the cty mpg to be 20.496mpg.
+
+Residual:  obs y-value - expected (prediction).  
+```{r}
+27 - 20.470
+```
+
+Our model under-approximated the cty mpg by 6.53mpg.
+
+## Interpreting slope and intercept
+
+slope = how steep the line is.  Specifically: the slope is how much we epect the y-variable to change in response to a 1-unit change in x.
+
+
+Our slope for predicting mpg based on displ: -2.632.  This means that for each additional liter of engine size, we expect the cty fuel effiency to decrease by 2.632L. 
+
+yint = y-val when x=0.  Here, if the x variable measures 0 units, we predict the y variable to be the y-int.  
+
+In our car model, interpret:  if a car has an engine size of zero, we expect cty fuel efficienty to be 25.997mpg.
+
+Weird!  Car couldn't have engine size of 0L.  In our data, ranged from about 2 to 7.  This is **extrapolation**, i.e. making a prediction based on an x value that's well outside the range of observations.  This is bad!  
+
+Junk in, junk out!  There's no reason to expect that the pattern continues outside the range of observations.
+
+
+
+
+
+
+
+
+## Analyzing residuals.
+
+Remember, residuals are errors.  So, understanding them is important in understanding how "good" the model.
+
+To see them, we use a visual.  **Residual plot**!  Its a scatter plot:
+
+x: original x data
+y: residuals (error)
+
+Example: plot residuals for our mpg model (x=displ, y=cty)
+
+```{r}
+myModel <- lm(mpg$cty~mpg$displ)
+
+qplot(mpg$displ, myModel$residuals)
+```
+
+
+# Friday Sept 09
+
+## Interpreting Residuals (continued)
+
+
+Recall:  residuals are errors.
+
+The residual plot shows:
+
+x-axis:  original x data
+y-axis:  residuals (y-yhat)
+
+It's a picture of all the errors!
+
+Q: What observations do we wanna make?
+
+1) Is there a pattern?
+
+  - Homoskedasticity: the residuals are evenly spread across the range of x values (Good!  **No pattern**, linear model is good.)
+  
+  
+  - Heteroskedasticy:  The magnitude of the residuals tends to be bigger in some areas than others.  The linear model is doing very poorly in some ranges of x values.  Suggests that linear model isn't the best.
+  
+  - Curve pattern.  Parabola, exponenital, any kind of swoosh.  This shape suggests our errors are **predictable**!  I.e., we ought to be able to do better.  Linear model might not be the best.
+  
+  
+![](https://www.researchgate.net/profile/Akhmad_Fauzy/publication/319091775/figure/fig2/AS:526826008846336@1502616516067/Example-of-homoscedasticity-Ideally-residuals-are-randomly-scattered-around-0-the.png)  
+  
+**Real-world Example of Heterskedasticity**
+
+Data:  Housing data.  Sale price, sqft, num of bath, num of bed, et etc
+
+```{r}
+head(housingData)
+```
+
+Make a model:  predict price based upon sqft_living.  
+
+Here's the residual plot:
+
+```{r}
+houseModel <- lm(price~sqft_living, data=housingData)
+
+qplot(housingData$sqft_living, houseModel$residuals)
+```
+
+Strong heteroskedasticity!!!
+
+Does this make sense?  
+
+Summarize:  for "normal" houses, the model does a good job (small residual).  
+
+BUt, for huge houses, the model has big residuals (error!) both pos and negative.  Much more variability for these "unususal" houses.
+
+WARNING:  homo vs heteroskedasticity ONLY describes RESIDUALS, not the original data!
+
+Back to observations about residuals....
+
+2) Do the residuals follow a "normal"/"bell-curve" distribution?
+
+We hope that the residuals DO follow a normal dist: ie unimodal, bump in the middle, symmetric tails.
+
+If the residuals show strong skew, suggests that the linear model ISN'T the best.
+
+To decide:  make a histogram of residuals!
+
+**Example:  Mpg Data**
+
+We can see some fairly strong right skew.  Suggests that linear model isn't the best.
+
+
+
+
+
+
+
+## Coefficient of determination:  $R^2$
+
+The coeff of det is another way, in addition to a residual plot, of characterising how good our linear model.
+
+Computing is easy:  literally (r)^2.  I.e., (correlation coeff)^2
+
+But, special, seperate, important interpretation:  R^2 is the percent of variation in the y data (up-and-down variation) that BECAUSE OF/ DUE TO the linear relationship between x and y.
+
+We know that the x variable isn't the ONLY thing affecting y.  Think height and weight:  a person's weight doensn't depend ONLY on their height, right?  However, height has to affect it somehow!  That's what R^2 measures!
+
+**Example:  height and weight from quiz**
+
+Suppose we collect medical information from 100 adult men ages 30-39.  We find that their average height is 68.7 inches with std dev 3.4 inches.  Also, we find that their average weight is 178 lbs with std dev 8.2 lbs.  The correlation between height and weight is 0.784.
+
+xbar = 68.7
+sx = 3.4
+ybar = 178
+sy = 8.2
+r = 0.784
+
+Slope:
+```{r}
+0.784*8.2/3.4
+```
+Int:
+```{r}
+178-1.891*68.7
+```
+
+yhat = 48.088+1.891x
+
+1) Interpret the slope and intercept of this model.  What do they tell us about these men?
+
+For every additional inch taller, we expect/predict a man to weight 1.891 lbs more.
+
+If a man is zero inches tall, we expect him to weigh 48.088 lbs (extrapolation!  bad!)
+
+At the same time, we know height isn't the ONLY factor?  How much does it account for?  Answer:  R^2!!
+
+```{r}
+0.784^2
+```
+
+In other words, about 61.5% of the variation present in men's weights is due to the relationship between height and weight.
+
+Monday topic: how outliers affect linear models 8.3!!
+
+
+
+
+
+
+
+
+
+
+
+x = potassium  (mg)
+y = fiber       (g)
+
+
+R^2:  The percentage of variation in fiber that's because of the linear relationship between fiber and potassium.
+
+
+
+

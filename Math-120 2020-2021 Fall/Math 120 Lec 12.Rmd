@@ -1,0 +1,367 @@
+---
+title: "Math 120 Week 12"
+author: "Ali Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: yeti
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+studentSurvey <- read_csv("Student Data.csv")
+deathPenaltyData <- read_csv("death penalty data.csv")
+housingData <- read_csv("../Data/House-Sales.csv")
+#------------------------------------------------#
+```
+
+
+
+
+# Monday Nov 2
+
+## Hypothesis Tests (Ctd)
+
+Let's do one.  
+
+**Ex**  In our class data, we found that 28 out of 42 of you had "brown hair".  Does this provide evidence that more than half of all DU students have brown hair?
+
+Perform an appropriate hyp test with alpha = .05 significance.   
+
+```{r}
+28/42
+```
+
+1) Hypotheses.  Our claim:  more than half of DU studnets have brown hair.  This is the "alternate hypothesis", Ha. 
+
+WARNING:  EVERY hypothesis has to be a mathemetical statement about a population parameter.   Here:  we're talking about "p", the population proportion of students with brown hair.
+
+Ha: p > .5
+
+Of course, we can't just assume we're correct.  Instead, we must assume the "null hypothesis":
+
+H0: p = .5
+
+Note:  the H0 must always be a statement of equality about a population parameter.  
+
+
+H0: p = .5
+Ha: p > .5
+
+
+
+2) Test statistic.   The test stat is just the z-score for our sample result!
+
+    z = (obs - exp)/stdev
+    
+      = (phat - p)/sqrt(p*(1-p)/n)
+      
+Here, phat is our sample prop, and p is the pop prop from the null hyp!!!
+
+
+
+```{r}
+(28/42 - .5)/sqrt(.5*(1-.5)/42)
+```
+
+Here, our test stat:  z = 2.16
+
+
+3) p-value.  The "p-value" is the probability of observing a sample result as exteme as the one we got, assuming H0 is true.
+
+
+Visually:  p = tail area outside our result.
+
+Look up in table:
+
+```{r}
+1-0.9850
+```
+
+Here, p = 0.015.  
+
+4)  We need to make a decision:  is our p-value "small enough"?  If our sample result is very unlikely (small p-val), then the assumptions we made to compute it must be wrong. We assumed H0!
+
+This "cutoff" for "small enough" is called the "significance level".  We can choose our own sig level, alpha.  Here, we're using alpha = .05, a common value in the literature (but totally arbitrary).  
+
+Here, since our p-value < alpha  (.015 < .05), it makes us suspect that H0 is wrong, so we REJECT Ho.  Thus, we've found strong evidence to support the Ha:  more than 50% of DU students have brown hair.
+
+Yay!  We're happy, because we've found support for our claim!  There is "statistically siginficant" evidence to support our assertion that more than 50% of students have brown hair.
+
+
+
+** Ex**  In our class, 12 out of 42 students are juniors.  Does this support the claim that "more than a quarter of 120 students are juniors"?  
+1) Hyp
+
+Ho: p = .25
+Ha: p > .25
+
+2) Test stat
+
+    z = (12/42 - .25)/sqrt(.25*(1-.25)/42)
+
+
+```{r}
+(12/42 - .25)/sqrt(.25*(1-.25)/42)
+```
+
+3) p-val
+
+    p = P(Z>.53)
+    
+```{r}
+1-0.7019 
+```
+
+Here:  p = .2981.
+
+
+4)  This is a large p-val:  p > .05.  In other words, our sample data and the H0 seem to be in agreement.  We do NOT have enough evidence to reject H0.  Sad face!  Our claim that "more than a quarter of 120 studens are juniors" was not supported.  
+
+
+
+# Friday Nov 6
+
+## Practice Problem:  CI
+
+**Ex** In a random sample of 100 DU students, 12 students had gone waterskiing.  
+
+Estimate the proportion of all DU students who've gone waterskiing with 92% confidence.
+
+**Thoughts**
+
+The thing we want to estimate is the PROPORTION, p.
+
+Our sample data:  phat = 12/100, n = 100.
+
+**Q**:  Is out sample size big enough?
+
+Need:  phat*n and (1-phat)*n both need to be bigger than 10.
+
+```{r}
+100*(12/100)
+```
+
+```{r}
+100*(1-12/100)
+```
+
+Yes!  Sample size is big enough!
+
+
+Middle 92% -> 4% in the tails.  Look up zstar.
+
+Here:  zstar = 1.75.
+
+Formula:
+
+     phat +/- zstar * sqrt( phat*(1-phat)/n )
+     
+     12/100 +/- 1.75*sqrt(12/100*(1-12/100)/100)    
+     
+```{r}
+12/100 - 1.75*sqrt(12/100*(1-12/100)/100)
+```
+  
+```{r}
+12/100 + 1.75*sqrt(12/100*(1-12/100)/100)
+
+```
+  
+We are 92% confident that the true proportion of DU students who've gone waterskiing is between 6.3% and 17.7%.
+
+
+
+**Ex**  What's the MOE in the above CI?
+
+Answer:  after +/-
+
+```{r}
+1.75*sqrt(12/100*(1-12/100)/100)
+```
+
+
+**Ex**
+
+If we wanted to conduct a future study to estimate the proportion with MOE no greater than 3%, how large would our sample size have to be?  Still using 92% confidence level.
+
+Recall:
+
+     n = phat*(1-phat)*(zstar/MOE)^2
+       = (12/100)*(1-12/100)*(1.75/.03)^2
+     
+```{r}
+(12/100)*(1-12/100)*(1.75/.03)^2
+```
+     
+We'd need at least 360 people in our sample.
+
+
+
+
+**Ex**  In a sample of 200 DU studets, 79 of them enjoyed eating grapefruit.
+
+Does this provide statistically significant evidence that fewer than half of students enjoy grapefruit?  Conduct an appropriate hyp test with alpha = .05.
+
+1) Hypotheses
+
+H0:  p = .5
+Ha:  p < .5
+
+
+2) Test stat
+
+Recall, test stat is just a z-score:
+
+
+    z = (obs - exp)/stdev
+      = (79/200 - .5)/sqrt(.5*(1-.5)/200)
+
+
+```{r}
+(79/200 - .5)/sqrt(.5*(1-.5)/200)
+```
+
+Here, our test stat:  z = -2.97.
+
+
+
+3) p-value.
+
+Recall:  the p-value is the probability of observing a sample result that's as extreme the one we got, GIVEN THAT H0 IS TRUE.
+
+Ie, find P(Z<-2.97)
+
+Look up on the table:  p-val = .0015
+
+
+4) Conclusion
+
+Here, p<alpha.   .0015 < .05.  So, we reject H0.  Thus, we've found strong evidence to support the Ha:  fewer than half of DU students have gone waterskiing.
+
+
+Yay!
+
+
+## Two-tail test
+
+The test we just did is a "left tail test".  
+
+In a left tail test, the Ha has "<", thus the p-val is the area of the left tail.
+
+On monday, we did "right tail tests".  In a right tail test, the alternate hypotheis is "bigger than".  
+
+
+What if we want to test "not equal"
+
+Ha:   !=
+
+Since we're interested in BOTH small and large results, we need the tail area on BOTH SIDES.
+
+
+Problem:  we only have one test stat!  Either on the left or the right.
+
+Answer:  no prob, the normal dist is symmetric!
+
+Thus, for a 2-tail test, you must always DOUBLE the tail area!
+
+
+**Ex**  In Prof Miller's 2016 Math 120 course,  16 of 24 students were female.
+
+Does this support the claim that the proportion of students at DU who are women differs from 50%?
+
+1) Hyps
+
+H0: p = .5
+Ha: p != .5   (not equals)
+
+
+2) test stat
+
+```{r}
+(16/24 - .5)/sqrt(.5*(1-.5)/24)
+```
+
+3)  p-val
+
+tail area:
+
+```{r}
+1-0.9484
+```
+
+
+p-value:  2*tail area:
+
+```{r}
+2.*.0516
+```
+
+
+4)  Since p-val > .05, we fail to reject the H0.  There is not strong evidence that the proportion of female students differs from 50%.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

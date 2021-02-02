@@ -1,0 +1,457 @@
+---
+title: "Math 120 Week 3"
+author: "Ali Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: hide
+    theme: yeti
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+studentSurvey <- read_csv("Student Data.csv")
+deathPenaltyData <- read_csv("death penalty data.csv")
+
+#------------------------------------------------#
+```
+
+# Math 120 Week 3
+
+## Monday Aug 31
+
+### Describing Two Quantitative Variables (Bivariate Data)
+
+Bivariate data is two paired quantitative variables.  I.e., two measurements from the same individuals/cases.
+
+Example:  heights and weights of students in class.
+
+Our goal:  explore relationships between the two variables.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+To visualize bivariate data, we use **scatterplot**, i.e., x-y points for all of the cases.  Each case/individual will be a dot on the scatterplot.
+
+
+
+
+
+
+
+
+
+Let's look at some examples:
+
+- mpg hwy vs cty
+
+```{r}
+mpg %>% ggplot(aes(hwy, cty))+geom_point()
+```
+
+Human feelings:  as hwy measuresments get bigger, so do cty.  Makes sense!  If the care is more efficient on the hwy, i'd expect it's more efficient in the city.  
+
+- mpg displ vs cty
+
+```{r}
+mpg %>% ggplot(aes(displ, cty))+geom_point()
+
+```
+
+Human feelings:  bigger cars are less fuel efficient.  Makes sense, a bigger car should need more gas!
+
+
+
+
+
+
+- iris sepal length vs sepal width
+
+```{r}
+iris %>% ggplot(aes(Sepal.Length, Sepal.Width))+geom_point()
+```
+
+Human feelings:  looks like a blob.  Can't really tell any interesting info about sepal width based upon sepal length.  
+
+
+
+
+
+
+
+### Important Qualities of Scatterplots
+
+
+Just like for histograms, there are some important qualitites about scatterplots that we need to talk about:
+
+
+- Form/shape.  Do the dots follow a pattern?  Examples: linear, exponential, logistic, quadratic, many others etc.  
+- Direction.  Pos or negative.  I.e., do x and y tend to get bigger together (pos relationship), or as x gets bigger, does y tend to get smaller (neg rel).   
+- Strength. How closely do the points follow the pattern?  How much "scatter" is there?
+
+
+
+
+
+
+
+
+In Math 120, we'll study linear relationships in depth (even though there are others, like...)
+
+
+
+
+
+
+
+
+
+
+### The correlation coefficient
+
+
+In order to measure the strength of a linear relationship, we need an objective mathematical measure (ie a statistic for correlation).  
+
+We call this the "correlation coefficient", r.  
+
+FOr all of Math 120, the letter "r" always means "correlation coefficient".
+
+It's a measure of both strength and direction for a linear relationship.
+
+**Example: mpg data**
+
+
+```{r}
+cor(mpg$hwy, mpg$cty)
+```
+
+There's an r value of r=0.96 for hwy and cty mpg.  
+
+More examples:
+
+![](https://saylordotorg.github.io/text_introductory-statistics/section_14/07aa5db140b70615a15e8631c2d7a2c4.jpg)
+
+
+### Important qualities of r
+
+1)  -1 <= r <= +1
+
+2)  If r is close to +1, then there's a strong positive linear relationship between x an y.
+
+3)  If r is close to -1, then there's a strong negative linear relationship.  (ie the line goes down.)
+
+4)  If r is close to zero, then there's no (or little) LINEAR relationship.
+
+
+WARNING:  Just because r is close to zero, that doesn't mean there's NO relationship.  Just not linear.
+
+5) R doesn't have units, not affected by units.  Whew!  Doesn't matter what measurement scale you use.  You can convert lbs - kg, ft-meters, etc, and not change r.
+
+6)   Doesn't matter which is x and y.  Same r.  
+
+
+## Wednesday Sept 02
+
+Check the lecture video to see how to use Google Sheets to make scatterplots and compute correlation coefficients.
+
+Don't assume you can figure it out -- go learn some stuff!  ;D
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Friday Sept 04
+
+### The "Best Fit" Line
+
+
+Lots of names.  "The line":
+
+- Best fit line
+- Trend line   <-- (Google Sheets)
+- Regression line
+- Least squares line <--- (Prof Miller's choice)
+
+But, they all mean the same thing.  THE line.
+
+Whew!  This is a relief, we don't have to worry about lots of equally-good lines.  
+
+
+
+
+
+
+
+#### Algebra review:  lines
+
+Recall the equation:
+
+y = mx + b
+
+where m is the slope ("steepness") and b is the y-intercept.
+
+In stats, we have different names (but they're the same thing):
+
+slope = b_1  (same thing as m)
+
+intercept = b_0 (same thing as b above)
+
+If you know the slope and intercept, you've got the line!  We call the regression line "yhat"
+
+yhat = b_0 + b_1*x
+
+$$\hat{y} = b_0+b_1\cdot x$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### Making predictions: x and y
+
+The x variable is always the "independent" variable, ie, the "explanatory variable".  We think of x as "causing" an effect in y.  We will base our predictions on x values.
+
+The y variable is the "dependent" variable, ie the response variable.  We make predictions ABOUT y BASED ON x.  
+
+It's critical to keep em straight:  the model is different both concept and math if you switch x and y.  
+
+To make a prediction, simply plug an x-value.
+
+Example:  plug in distance between train stops to predict travel time.  
+
+
+
+
+
+
+#### The Slope
+
+Must find first.  Equation:
+
+b_1 = r*s_y/s_x
+
+$$b_1=r\cdot s_y/s_x$$
+
+Where r is the correlation coefficient, s_y is the std dev of the y data and s_x is the std dev of the x data.  
+
+On Quiz, I'll tell you these.  Don't have to find by hand.  
+
+Observations:
+
+1) s_y/s_x reminds us of deltay/deltax.  It's a ratio of change!
+
+2) Stronger correlation -> r is bigger -> slope is bigger.  I.e., the relationship between x and y is "steeper".  X has a bigger effect on y.
+
+
+
+
+
+
+
+
+
+#### The Intercept
+
+b_0 = ybar - b_1*xbar
+
+$$b_0 = \bar{y}-b_1\cdot \bar{x}$$
+
+Where ybar is the mean of the y data, xbar is the mean of the x data, and b_1 is the slope we found above.
+
+All together:
+
+yhat = b_0 + b_1*x
+
+#### Easy example
+
+For some data set, suppose
+
+xbar = 2
+ybar = 3
+s_x = 4
+s_y = 8
+r = .5
+
+What's the equation of the line?
+
+b1 = r*s_y/s_x 
+
+```{r}
+.5*8/4
+```
+b0 = ybar - b1*xbar
+
+```{r}
+3 - 1*2
+```
+
+Equation:  yhat = 1 + 1*x
+
+
+
+
+
+
+
+
+
+
+
+
+## Real-world example
+
+Let's predict cty mpg based upon hwy mpg.
+
+Cty = y
+hwy = x
+
+
+
+
+
+
+
+
+Need to get summary statistics.
+
+xbar = 23.440 mpg
+
+ybar = 16.859
+
+s_x = 5.955
+
+s_y = 4.256
+
+r = 0.956
+
+Slope:
+```{r}
+.956*4.256/5.955
+```
+Intercept:
+
+```{r}
+16.859 - (0.683)*23.440
+```
+
+All together:  yhat = 0.894 + 0.683x
+
+
+Make a prediction.  Suppose a new car has HWY fuel efficiency of 42mpg.
+
+Predict it's cty mpg.  Plug in x=42
+
+```{r}
+.894+.683*42
+```
+
+Predict it's city mpg to be 29.58mpg.
+
+
+
+
+
+#### What makes it the "Best Fit"?  - Residuals
+
+The best fit line, i.e. the least-square line, is the one that minimizes the square errors in prediction.
+
+We call these residuals, i.e. 
+
+resid = y - yhat
+      = observed data - predicted line
+      
+Residuals are the vertical distance between the dots and the line.
+
+We minimize SQUARE residual so that they don't cancel to zero.  Totally the same idea as for standard deviation.  
+
+**Example** Compute a residual.
+
+Remember earlier, we considered a car with hwy mpg of 42mpg.
+
+We predicted that it's cty mpg is 29.58.
+
+Suppose, in reality, its city mpg is 33.5mpg.  What's the residual?
+
+Here, resid = 
+
+```{r}
+33.5 - 29.58
+```
+
+Our linear model under-approximated the cty mpg by 3.92.  That's the error for this observation (the green line).
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### Analyzing Residuals -- Redidual plot
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### Coefficient of determination

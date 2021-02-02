@@ -1,0 +1,501 @@
+---
+title: "Math 120 Week 8"
+author: "Ali Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: hide
+    theme: yeti
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+studentSurvey <- read_csv("Student Data.csv")
+deathPenaltyData <- read_csv("death penalty data.csv")
+housingData <- read_csv("../Data/House-Sales.csv")
+#------------------------------------------------#
+```
+
+
+# Monday Oct 5
+
+
+
+
+## Probability Trees
+
+Probability trees provide a handy visual aid for organizing all of the various probabilities we care about.
+
+*Ex*  Suppose a test for a disease advertises itself as "95% accurrate.  This means:  if the test is administered to someone who *has* the disease, the test will show "+" 95% of the time.
+
+Suppose that if a person doesn't have the disease, then they'll test "-" about 85%.
+
+Suppose that 3% of the population has the disease.
+
+Let's draw a probability tree to summarize the probabilities.
+
+![](https://sketch.io/render/sk-0bf647aee623d6b7689a644624480f75.jpeg)
+
+List of Probabilities:
+
+P(+|D) = .95
+P(-|D) = .05
+P(+|D^C) = .15
+P(-|D^C) = .85
+
+
+P(+ and D) = .03*.95
+
+```{r}
+.03*.95
+```
+
+
+P(D and -) = .03*.05
+
+```{r}
+.03*.05
+```
+
+```{r}
+.97*.15
+```
+
+```{r}
+.97*.85
+```
+
+In summary, the tree gives and intuitive layout for all conditional probabilities and "and" probabilites.
+
+
+Two important uses:
+
+1)  Q:  what percent of people test positive?  Can easily figure it out from the tree.  There's only four possibilities!
+
+  Want to find:  P(+)?  There are only two options for this scenario:  D and + or D^D and +.  So, add up the probabilities!
+  
+P(+) = .0285 + .1455
+
+```{r}
+.0285+.1455
+```
+
+About 17.4% of all people in the population will test positive.
+
+2)  What's the probability that, if you test +, you actually have the disease??  Observations:
+
+- this is what YOU care about if you're taking the test!
+- "backwards" from what we have right now!  RIght now, we know P(+|D).  We want the other way:  P( D | +)?  
+
+From the tree, we know everyting.  Use the conditional probability formula:
+
+
+    P(D|+) =  P(D and +)/P(+) = .0285/.174
+    
+```{r}
+.0285/.174
+```
+
+If you test positive, there's only about 16.4% chance that you really do have the disease!  Woah!  
+    
+    
+Notes:
+
+- 1 above is the "law of total probability".  To find P(+), we added all the possible probabilities:
+
+
+    P(+) = P(D and +) + P(D^C and +)
+    
+- 2 above is Bayes Rule!  Bayes rule is a formula/law for "reversing" conditional probabilities.  Here: we started with P(+|D). But actually, we're interested in the probability P(D|+).
+
+Recall, the test advertises itself as "95% accurate".  BUT, if you get a + result on the test, there's only a 16.4% chance that you really have the disease!!
+
+Think of Bayes this way:  it reverses conditional probability using info from the tree and the definition of conditional probability.
+
+
+**Example:  Bayes**  Suppose: 
+
+- 0.1% of the American population currently has lung cancer (event "L") 
+- 90% of all lung cancer cases are smokers (event "S") 
+- 21% of those without lung cancer also smoke. 
+
+(These values are fairly close to the values given on the American Lung Association web site
+
+Construct a probability tree to find the following probabilities:
+
+![](https://sketch.io/render/sk-4d47fdc6b6de928ddfa0eeab2d4a5301.jpeg)
+
+
+- P(S^C|L) = .1
+
+- P(S and L^C) = .20979
+
+
+- P(S) = .0009 + .20979 = 0.21069
+
+```{r}
+.0009 + .20979
+```
+
+
+
+- P(L|S) = P(L and S)/P(S) = .0009/.21069
+
+```{r}
+.0009/.21069
+```
+
+
+
+
+- P(L|S^C) = P(L and S^C)/P(S^C) = .0001/(.0001+.78921)
+
+```{r}
+.0001/(.0001+.78921)
+```
+
+Q:  how much more likely is it for a smoker to have lung cancer than a non-smoker?
+
+Divide:  smoking lung rate/non smoking rate:
+
+```{r}
+0.004271679/0.0001266929
+```
+
+Smokers are nearly 34 times more likely to have lung cancer!
+
+
+```{r}
+hist(runif(10000))
+```
+
+
+# Friday 10-9
+
+## Continuous Distributions - Normal Dist
+
+Context:  let's get to know the most famous probability distribution: normal dist, ie, the bell curve.
+
+Interesting fact:  the normal dist arises naturally in many real life/data applications.  
+
+Cool fact:  the normal dist is seen whenever we examine sums or **means** of random numbers.
+
+```{r}
+runif(1)
+```
+
+Random real number between 0 and 1.
+
+
+```{r}
+runif(10)
+```
+
+
+```{r}
+hist(runif(10000))
+```
+
+Punchline:  what if we do this a bunch of times (10000) and look at a histogram of the means/averages:
+
+```{r}
+hist(replicate(50000, sum(runif(10000))))
+```
+
+Moral of the story:  any time we study averages of randomly selected number (each one from the same population), the means (or sums) will follow a normal dist.
+
+Intuition:  most values are in the middle.  Very large (or very small) results are increasingly unlikely.
+
+The normal dist also arises frequently in biological variables: ex human height is normally distributed.  
+
+
+Weird thing about the normal dist:  it's a "continuous" distribution.  In other words, we can't list out all the possible options for X.
+
+Ex: Human height.  Not possible to make list of all possible human heights.  Infinitely many!
+
+Because of this, we can't make a distribution table!
+
+Instead:  use a density curve.  To find probability for a normal dist, we need to find area under the density curve.
+
+Ex: Height for adult men in the US follows a normal dist, with mean 69" and std 2.7".
+
+What's the probability that a randomly selected man is less than 70" tall?
+
+What's the probability that a randomly selecte man is between 67 and 68" tall?
+
+**Problem** It's easy to draw the picture, it's hard to find the area!  No simple geometric formula!
+
+If you've taken calculus:  this is an unsolvable integral!  No closed-form solution!
+
+So, we NEED computational assistance.  
+
+1)  Refer to a table
+2)  Use software (including Google Sheets)
+
+**One more problem**  There are MANY normal distributions (depending on center and spread).  
+
+Answer:  use the Standard Normal Dist, ie the normal distribution with center = 0 and spread (std dev) = 1.
+
+To perform any of these computations, we'll need to convert our data to a standard normal.  (More on this later).
+
+Let's do some example computations.
+
+NOTE:  The standard normal distribution is ALWAYS denoted by "Z".  
+
+*EX* Suppose Z has a standard normal dist.  Compute the following:
+
+a) P(Z<1.28) = .8997
+
+b) P(Z>1.28) = 1 - P(Z<1.28)   [complement rule]
+
+```{r}
+1-.8997
+```
+
+c) P( -0.82  < Z < 2.51 ) = P(Z<2.51) - P(Z< -0.82) = .9940 - .2061
+
+```{r}
+.9940 - .2061
+```
+
+
+
+Problem:  if we look up z=2.51 in the table, we'll get ALL the area below that cutoff.  But that's too much!  So, let's subtract off the area below -.82:
+
+
+
+
+
+
+
+
+
+
+# Friday Oct 23
+
+From last time:  A sampling dist is a probability distribution for entire sample results.
+
+Now, we're able to answer the following question:  what's the probability of observing a sample result like one we got???
+
+
+The only reason this is possible is the CENTRAL LIMIT THEOREM!  Ie, if our sample is "large enough", then the sample results (xbar, phat) will follow a normal distribution.
+
+
+We'll start by thinking about categorical data:  our statistic is phat.
+
+Later, we'll think about quantitative data.  Then, our stastic will be xbar.
+
+Important question:  how large is "large enough" for our sample size to ensure that our sample results follow a normal dist.
+
+Answer:  it depends!  If we're talking about a sample proportion, then need the following:
+
+
+     n*phat >= 10      AND     n*(1-phat) > 10
+     
+     
+     
+Another way to think about this:  we need at least 10 individuals IN the category, and at least 10 NOT IN the category.
+
+
+Example:  IN our class, about 65% of students have brown hair.  There are 50 students.  Is this n large enough to use a normal distribution?
+
+phat = .65
+(1-phat) = .35
+
+n = 50
+
+Check:
+
+```{r}
+50*.65
+```
+
+
+```{r}
+50*.35
+```
+
+Yes, n is big enough!
+
+
+Suppose it's the case that 60% of all DU students have brown hair.  What's the probability that as many students have brown hair in our class as is the case?
+
+What's the probability of observing a sample of 50 DU students, in at least 65% have brown hair?
+
+Let's do the math!
+
+We checked that n is large enough to use normal dist.
+
+
+We know:
+
+mu_phat = p = .6 
+sigma_phat = sqrt(p*(1-p)/n) = sqrt(.6*(1-.6)/50)
+
+
+```{r}
+sqrt(.6*(1-.6)/50)
+```
+
+Recall:
+
+    z = (obs - exp)/stdev
+    
+      = (.65 - .6)/.06928203
+      
+```{r}
+(.65 - .6)/.06928203
+```
+    
+z = .72
+
+Look it up on the table!
+    
+    
+```{r}
+1-0.7642
+```
+
+If 60% of all DU students have brown hair, there's about a 23.6% chance that in a random sample of 50 students, 65% or more would have brown hair.
+
+Human feelings:  not an unusual sample.
+
+
+
+
+**Ex**  At DU, about 82% of students are from "out-of-state", ie not from Ohio.  If we take a sample of 100 DU students, what's the probability that at least 90% of the students in the sample are from out-of-state?
+
+First, check that n is large enough.
+
+n = 100
+phat = .90
+
+```{r}
+100*.9
+```
+
+```{r}
+100*(1-.9)
+```
+
+Both are at least 10, but it's close!  For this scenario, we could NOT use a smaller sample!  Thus, we can use the normal dist!
+
+mean = population proportion = .82
+stdev = sqrt(p*(1-p)/n) = sqrt(.82*(1-.82)/100)
+
+
+```{r}
+sqrt(.82*(1-.82)/100)
+```
+
+obs = .9
+exp = .82
+stdev = .038
+
+Find the z score!
+
+```{r}
+(.9 - .82)/.038
+```
+
+z = 2.11.  Look up on table:
+
+```{r}
+1-0.9826
+```
+
+There's about a 1.74% chance that, in our sample of 100 students, at least 90 of them are from out-of-state.  Pretty unlikely!  Hmmmmmm.....
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

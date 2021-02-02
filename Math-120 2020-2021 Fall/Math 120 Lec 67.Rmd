@@ -1,0 +1,271 @@
+---
+title: "Math 120 Week 6"
+author: "Ali Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: hide
+    theme: yeti
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+studentSurvey <- read_csv("Student Data.csv")
+deathPenaltyData <- read_csv("death penalty data.csv")
+housingData <- read_csv("../Data/House-Sales.csv")
+#------------------------------------------------#
+```
+
+# Monday Sept 21
+
+## Intro To Probability - Basic Examples
+
+Recall, our goal:  statistical inference is the process of making conclusions about populations based on sample data.
+
+Main tool:  probability!!! Ie, given our assumptions, how likely is the sample we obtained!
+
+Start simple:  basic concepts of probability.
+
+
+Ex:  suppose we toss a fair coin.  What's the probability that "heads" shows up?
+
+Answer:  1/2.  Why?  Know:  two equally likely options.  Heads and tail.  Our outcome is exactly one of them:  heads.  So, our probability is 1 out of 2.
+
+Ex:  suppose we roll a fair 6-sided dice.  What's the probability of rolling a 2?
+
+Answer:  1/6.  Six equally-likely options, only one is a "2".
+
+Ex:  suppose we roll a fair 6-sided dice.  What's the probability of getting an "odd" number show up?
+
+All possibilities:  1, 2, 3, 4, 5, 6
+Odd:  1, 3, 5
+
+Answer:  3/6 = 50% = .5 = 1/2
+
+
+
+
+
+## Defs of Probability
+
+Book:  The probability of an event/outcome is the proportion of times we'd observe that event/outcome if we made an infinite number of observations.
+
+Ex:  if we tossed a coin infinity times, we'd expect half of them to be heads.
+
+This notion is called "theoretical" or "classical" probability.
+
+Another way:  experimental or relative frequency probability.  Here, the probability of an event/outcome is the proportion of times that we observe it after n trials.  
+
+Classical probability:  p (population proportion)
+Experimental/Relative Frequency probability:  phat (sample proportion)
+
+
+We always hope to know true/theoretical probability.  BUT, we're usually stuck with experimental probability.
+
+BUMMER!
+
+## Law of Large Numbers
+
+BUT, GOOD NEWS!  "Law of large numbers":  as n (number of trials/repetitions) increases, experimental probabilities (phat) tend to get closer and closer to the true theoretical probability (p).
+
+
+Deep math is required to prove this.  Easy to see it in action.
+
+We'll run a simulation with coin tosses.
+
+For us, we'll say "heads" = 1, "tails" = 0.
+
+Since our outcomes are only 0s and 1s, then the average of the outcomes shows the percentage of 1s.  This is phat!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Addition Rule for disjoint outcomes
+
+The word "disjoint" means the two events cannot happen at the same time.
+
+Ie, they have no outcomes in common.  If A, B are disjoint, then there's no scenario where both A happens and B happens.
+
+Note:  "disjoint" == "mutually exclusive".  
+
+Ex:  The lights can be on OR off, but not both.
+
+Ex:  A coin can be heads OR tails, but not both.
+
+Ex: Roll a dice, get an even number vs roll a dice, get an odd number.
+
+If A, B are mutually exclusive events, then it's easy to find the P of A OR B
+
+If so:
+
+      P(A OR B) = P(A) + P(B)
+      
+(this is the "addition rule for disjoint events")
+
+
+Ex:  If we flip a coin, what's the prob that it shows heads or tails?
+
+P(H or T)
+
+These outcomes are disjoint, can't both happen, and each one has probability 1/2 = 50% = .5
+
+P(H or T) = .5 + .5 = 1
+
+Ex: Roll a dice, what's the prob that we get either "1" or "5"?
+
+Disjoint, so:
+
+    P(1 or 5) = 1/6 + 1/6 = 2/6 = 33.33333%
+    
+WARNING:  Must make sure that they really are disjoint!!!!
+
+
+
+
+
+
+
+
+
+
+
+## General Addition Rule
+
+Q:  What if A, B are NOT dijoint?  What's P(A or B)?
+
+Idea:  Venn Diagram
+
+For or, don't want to double count!  Subtract one of them!
+
+    P(A or B) = P(A)+P(B) - P(A and B)
+
+Ex:  Roll a dice.  What's the probability that the number shown is either even or prime?
+
+Evens:  3 of them (2, 4, and 6)
+Primes:  2, 3, 5.  3 again.
+
+    P( even or prime) = 3/6 + 3/6 - 1/6  = 5/6
+
+EX (in-class only)  A standard deck of 52 cards has 4 "suits"
+
+Hearts, Diamonds, Spades, and Clubs
+
+There are two "colors":
+
+Hears and Diamonds are red, Spades and Clubs are black
+
+In each suit, the cards are:
+
+2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A
+
+The J, Q, and K are "face cards"
+
+Ex:  If we select a card at random, what's the probability that the card is either a red card or a face card?
+
+To answer, we need to count:
+
+- How many reds? 26 red cards (half the deck)
+
+- How many face cards? 12 face cards (JQK of all 4 suit)
+
+- How many are both red and face card?  There are 6: JKQ of diamionds, and JQK of hearts.
+
+    P(Red or Face) = 26/52 + 12/52 - 6/52 = 32/52
+    
+```{r}
+32/52
+```
+
+
+
+
+
+
+## Probability Distribution
+
+For samples, the "distribution" is just the list of all values observed.
+
+For probability experiments, the "distribution" is a list of 
+
+1) all possible outcomes, along with 
+2) the probability of each.
+
+Important difference:  sample dists describe what has already occurred, while probability dists describe what *may* occur.
+
+Generally, probability distributions are represented a **table**.
+
+Ex:  Roll a dice, record the face showing up.  Make a probability distro.
+
+1st:  what are all possibilities?  Here:  1, 2, 3, 4, 5, 6
+
+2nd:  Each prob is 1/6.  
+
+| X  | P(X) |
+|--- | ---  |
+| 1  |  1/6 |
+| 2  |  1/6 |
+| 3  |  1/6 |
+| 4  |  1/6 |
+| 5  |  1/6 |
+| 6  |  1/6 |
+
+
+**Rules/Properties for Probability Dists**
+
+1) Every probability must be greater/equal to zere, less/equal to 1.
+    0 <= P(X) <= 1   for all x
+    
+Intuitively:  can't have "negative" probability, can have more than 100% probability.
+
+2) sum( P(X) ) = 1  (summing over all outcomes X).  If you add all probabilities, you MUST get 1.
+
+
+EX:  Consider the follwing dist:
+
+| x  | 1 | 2 | 3 |
+|P(X)| .1| .7| ? |
+
+If P(x) is a valid probablity dist, then P(X=3) must be .2!
+
+In the above distro, What's the P(1 or 2)?
+
+By the addition rule:  P(1 or 2) = .1 + .7 = .8
+
+
+
+
+
+
+
+
+

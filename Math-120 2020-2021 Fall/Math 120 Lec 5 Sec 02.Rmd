@@ -1,0 +1,714 @@
+---
+title: "Math 120 Week 4"
+author: "Ali Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: hide
+    theme: yeti
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+studentSurvey <- read_csv("Student Data.csv")
+deathPenaltyData <- read_csv("death penalty data.csv")
+housingData <- read_csv("../Data/House-Sales.csv")
+
+#------------------------------------------------#
+```
+
+
+# Monday Sep 14
+
+## Quiz 
+
+
+
+
+
+
+
+
+
+
+
+## Effects of outliers on linear regression
+
+Always need to *look* at the scatter plot to check for outliers.  Outliers can have a variety of effects.
+
+- An outlier could make a weak relationship seem strong. (iris examle)
+- Or, an outlier could make a strong relationship seem weak (mpg example)
+- It might not have much effect at all.
+
+Morals of the story:
+
+- outliers can have all sorts of effects (stronger, weaker, mnot much chang)
+- always need to look at scatterplot
+- perform analysis both ways: with and without outliers.
+
+
+
+
+
+
+
+
+
+
+
+
+## What's an outlier -- IQR Method
+
+Intuition: outliers are "unusual" values in a dataset.
+
+Need an objective tool to decide what values are (and are not) outliers.
+
+
+IQR Method:  All numbers that are either
+
+- smaller than Q1 - 1.5*IQR or
+- bigger than Q3 + 1.5*IQR
+
+are outliers.
+
+**Example:  Exam scores:**
+
+75, 76, 79, 80, 80, 81, 82, 83, 84, 99
+
+We see that Q1 = 79, Q3 = 83, IQR = 4
+
+Compute cutoffs:
+
+Low:
+```{r}
+79 - 1.5*4
+```
+Upper:
+```{r}
+83+1.5*4
+```
+
+Since 99 is larger, it's an outlier!
+
+Note, this is an arbitrary (but frequently used) standard.  
+
+Some texts define an "extreme" outlier as one that's 3 IQRS away from Q1, Q2 (as opposed to 1.5).
+
+
+
+
+
+
+
+
+
+
+## What's an outlier - z score method
+
+For a value, the z score ("standard score") is the number of std devs above or below the mean that the value is.
+
+Example:  average height is 64", std dev is 3".  Jill is 70" tall.  What's her zscore?
+
+Her z-score is +2!  She's 2 std devs above the mean.
+
+z = (obs - exp)/stdev
+  = (x - xbar)/s_x
+
+Z-scores are a measure of how "unusual" a value is.  Large positive z score means way above the mean!  Large negative z-score means far below the mean.
+
+
+Sometimes, outliers are defined to be any value with a z-score greater than 3 or less than -3.
+
+We'll always prefer the IQR method, since IQR is robust and stdev isn't.  
+
+
+
+
+
+
+
+
+
+
+# Friday Sep 18
+
+# Z scores and the Empirical Rule
+
+Concept:
+z = ( obs - exp)/stdev
+
+Sample:
+
+z = (x - xbar)/s_x
+
+Pop:
+
+z = (x - mu)/sigma
+
+
+Z scores are useful, because they account for both center and spread!  The tell us how "unusual" values are, relative to the mean and std dev of the data.
+
+For this reason, also called "standard scores".  They give us a "level playing field" to compare data from different distributions.
+
+**Example:  SAT vs ACT**
+
+The average score on ACT is 21, std dev of 4.
+
+The average score on SAT is 580, std dev of 65.
+
+Suppose Beth scored a 27 on the ACT, and Hannah scored 650 on the SAT.  Who scored "better"?
+
+How to compare?  z-scores!
+
+Beth:  z = (27 - 21)/4
+
+```{r}
+(27 - 21)/4
+```
+
+Beth's score is 1.5 std devs above the average score for ACT.
+
+Hanna:  z = (650 -  580)/65
+
+```{r}
+(650 -  580)/65
+```
+
+Relative to the pool of test takers, Beth scored "better".
+
+
+## Empirical Rule (68-95-99.7 Rule)
+
+IF data follows a normal dist (ie bell-shaped, ie unimodal and symmetric), then:
+
+- 68% of the data lies within 1 std dev above or below the mean
+  (i.e., 68% of values have a z-score between -1 and +1)
+- 95% of the data lies within 2 std dev above or below the mean
+  (ie 95% of data has z-score between -2 and 2)
+- 99.7% of the data lies within 3 std dev above or below the mean
+  (ie 99.7% of data has z-score between -3 and 3)
+
+Important since emprical rule gives intuition about how "common" or "uncommon" data is.
+
+Ex, if a value has a z-score of 1.43, this is quite common.
+Ex, if a value has a z-score of 3.2, this is quite uncommon!
+Ex, if a value has a z-score of 7.8, this is crazy pants!
+
+Also, empirical rule lets us make predictions about where we expect data to lie.
+
+**Example:  heights**
+
+In the US, men ages 20-29 have mean height of 69" with std dev 2.7".
+
+What percent of men are between 66.3" and 71.7" tall?
+
+Find z-scores:
+
+```{r}
+(66.3 - 69)/2.7
+```
+
+
+```{r}
+(71.7 - 69)/2.7
+```
+
+About 68% of men are in this range of heights.
+
+In this way, we can "slice up" the normal dist into regions by std dev (z-score)
+
+
+**Example** What percent of men are taller than 74.4"?
+
+Find z-score:
+
+```{r}
+(74.4 - 69)/2.7
+```
+
+Above z=2, there's a total of 2.35% + 0.15% = 2.5% of the data.  About 2.5% of men are taller than 6'2.4".
+
+
+
+## Box plots
+
+Recall, an "outler" is any value that's:
+
+- smaller than Q1 - 1.5*IQR
+- bigger than Q3 + 1.5*IQR
+
+IQR = Q3 - Q1
+
+
+New visualization (picture) for looking at outliers:  box plot.
+
+
+The "box" shows the IQR:
+
+- the bottom is Q1
+- the top is Q3
+- the line inside is M
+
+The "whiskers" extend to the largest/smallest values that are NOT OUTLIERS.
+
+IF there are outliers (not always), then each one is represented by a * or dot or something.
+
+Boxlpots are especially useful for **comparing** multiple distributions, or breaking down by category.
+
+**Example:  iris**
+
+```{r}
+head(iris)
+```
+
+Let's compare the dist for sepal length by species: setosa, versicolor, and virginica.
+
+```{r}
+boxplot(iris$Sepal.Length~iris$Species)
+```
+
+Setosas have the smallest spread, i.e., setosa sepal lengths tend to be close to the center.  Not as much variation.  
+
+Viriginicas have the largest center, i.e., virginicas tend to have the longest sepal lengths.  
+
+Virginicas also have lots of spread:  they tend to be larger, but sometimes they're small also!
+
+Also, there's an outlier in the virginias.  Ie, an unusually small one.
+
+**Ex** What's the z-score of an individual in the top 10% of measurements.
+
+Need to look up area = 0.9 (that's on the left!!!)
+
+The individual would need a z-score of z=1.28.  
+
+
+
+
+# Friday 10-16
+
+## Backwards Problems continued
+
+Backwards problems are how we find "percentiles" for normal dists.
+
+A percentile is a VALUE that's at or above a certain percent of the data.
+
+$$P_{40}$$
+
+Ex:  P_40, the 40th percentile, is the value in the data that's as big or bigger than the lower 40% of the data.
+
+
+**Ex** if you score in the 90th percentile on an exam,that means your score was as high or higher than 90% of students.  Good!
+
+**Ex** If a 4-year-old is as tall or taller than 70% of similar-age children, we'd say he/she is in the 70th percentile.
+
+Percentiles denote cutoff for LEFT area.  
+
+A percentile is an example of an "order statistic" because it tells you WHERE in the dataset you are.  You already know 3 of them!
+
+P_25 = Q_1 !!
+P_75 = Q_3 !!
+P_50 = Median!!
+
+**Ex** Heights for women in the US follow a normal dist with mean 64" and stdev 2.4"
+
+How tall must a woman be to be in the 90th percentile for women's heights?
+
+Backwards:  given an area (90%), looking for value (her height)!
+
+Find area=.9 in the table: she has a z-score of 1.28.
+
+Still need to find her height:  plug in to z-score formula!
+
+    z = (x-mean)/stdev
+    
+    1.28 = (x - 64)/2.4
+    
+```{r}
+1.28*2.4+64
+```
+
+In order to be in P_90, she must be 67.072" tall.
+
+
+**Ex**  SAT scores follow a normal dist with mean 1100 and stdev 200.
+
+How high must a student score to be in the 75th percentile?
+
+Backwards:  looking for a value based an area.
+
+Find area=.75 in the table: z = .67
+
+Still need SAT score:  plug in!
+
+    z = (x - mean)/stdev
+    
+    .67 = (x - 1100)/200
+    
+```{r}
+.67*200+1100
+```
+    
+The student must score at least a 1234 on the exam to be in P_75.
+
+
+**Special problem type**  [I call these "middle %" problems] Reticulated giraffes have a mean height 18.1' and std dev 1.6', normal dist.  
+
+What range of values encompass the middle 90% of giraffe heights?
+
+What are the cutoffs (low and high) for the middle 90% most common giraffe heights?
+
+Picture!
+
+We see that we need to look up the z-score for lower area=.05
+
+Two z-scores are equally good:  -1.64 and -1.65.  Choose half-way point:  use low z = -1.645
+
+For high z, look up area = .95:  use z = 1.645.
+
+Note:  since normal dist is symmetric about zero, this always happens!  +/- zscores are the same!  Don't need to find both, just find one of them and the other is the negative.
+
+Finally, find the heights: z = +/- 1.645
+
+Low:  -1.645 = (x-18.1)/1.6
+
+```{r}
+-1.645*1.6+18.1
+```
+
+high:  +1.645 = (x-18.1)/1.6
+
+```{r}
+1.645*1.6+18.1
+```
+
+Conclusion:  the middle 90% most common giraffe heights are between 15.468 and 20.732'.
+
+
+
+
+
+**Ex**  SAT scores:  normal, mean = 1100, stdev = 200.
+
+Compute the IQR of SAT scores.
+
+Compute the range of the **middle 50%** of the data.
+
+Picture!  Look up area = .25 in the table:  z = +/- 0.67 (use both)
+
+Now, find SAT scores by plugging in:
+
+low: 
+
+    -0.67=(x-1100)/200
+```{r}
+-.67*200+1100
+```
+    
+high: 
+
+    +0.67=(x-1100)/200
+```{r}
+.67*200+1100
+```
+
+The middle 50% of SAT scores are between 966 and 1234.  THus, the IQR:
+
+```{r}
+1234-966
+```
+
+
+
+
+P( S | B)  = P(S and B)/P(B)  = .76/.84
+           =    P7/(P7+P9)
+
+```{r}
+.76/.84
+```
+
+
+```{r}
+1-0.9664
+```
+
+```{r}
+.9987 - .1093
+```
+
+P( a < z < b) = P(Z<b) - P(z<a)
+
+
+
+
+
+
+z = 0.84
+
+.84 = (x-153)/7.67
+
+```{r}
+.84*7.67+153
+```
+
+
+-.53 = (x - 151)/7
+
+```{r}
+-.53*7+151
+```
+
+
+
+
+
+
+
+
+# Monday 10-19
+
+## Statistical Inference
+
+Recall, statistical inference is the process of making mathematically supported conclusions about populations based on sample statistics.
+
+The process always begins with a **point estimate**, ie a single number that represents our best guess about the population.
+
+You know a couple:
+
+- xbar, the sample mean, estimates the population mean (mu)
+- phat, the sample proportion, estimates the population proportion (p)
+
+(Recall:
+
+- parameters are numerical summaries of populations (p, mu)
+- statistics are numerical summaries of samples (phat, xbar)
+
+)
+
+Two related problems:
+
+- No guarantee that the point estimates are "correct"
+- Don't know (yet) how much variability there is in out estimates.  
+
+Let's investigate with the example on p170 (5.1)
+
+- problem tells us parameter:  p = .88 (in real life, we wouldn't know!)
+
+- After conducting several simulated samples of n=1000, we saw phat values:  .861, .872, .887, .888, .895
+
+Seems like they tend to be pretty close.  Let's investigate the behavior of MANY such samples, say 1000.  We'll make a histogram that shows the sample proportions phat for our 1000 different samples of size 1000.  
+
+From the histogram, we see:
+
+- THe sample results (phat) tend to follow a normal dist
+- The center of the dist was the same as the true population proportion, p=.88.  Most samples tended to be close to the true population parameter.
+- All of the 1000 sample results were withing +/- 4% of the true value.
+
+### Sampling Distributions
+
+The histogram we saw in the above example shows a **sampling distribution**!  
+A sampling dist is a probility dist that describes the probability of observing a **sample result** (not an individual result).
+
+We saw that our sampling dist had a special shape:  normal.  In fact, under the correct circumstances, this ALWAYS happens.  
+
+**The Central Limit Theorem** states that sample statistics (like xbar and phat) always follow a normal distribution as long as the sample size, n, is "large enough".
+
+Furthermore, for **phat** we know the center and spread of the distribution:
+
+1)  Mean:  $$\mu_\hat{p} = p$$
+
+In other words, the expected value for our sample prorportion is the population proportion, p.  We expect phat is close to p.
+
+2) Stdev:  $$\sigma_\hat{p}=\sqrt{p(1-p)/n}$$
+
+Thus, we can compute the spread/variability in the sample dist.  
+
+Putting these together, we can get z-scores for phat!
+
+    z = (obs - exp)/stdev
+      = (phat - p)/sqrt(p*(1-p)/n)
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
