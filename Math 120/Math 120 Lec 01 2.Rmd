@@ -1,0 +1,172 @@
+---
+title: "Math 120 Lec 01"
+author: "Prof Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: simplex
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+
+# Week 1
+
+## Wednesday Feb 3
+
+
+This is Rstudio!
+
+I can write stuff, but I can also do math:
+
+```{r}
+1+1
+```
+
+Sometimes you'll see me use code, like this:  let's look at the famous "iris" dataset. 
+
+```{r}
+head(iris)
+```
+
+
+You don't need to know any R code, but you ABSOLUTELY SHOULD understand all mathematical computations.
+
+
+
+## 1.2: Data Basics
+
+What's a dataset?
+
+There are a several ways to represent data.  In 120, we'll always use **rectangular data**.
+
+Data is rectangular if:
+
+- Each row is an individual (case)
+- Each column is a variable, i.e., a quality of the individuals that we're measuring
+- Each cell/entry contins a specivic observation/value
+
+Goal:  look at a dataset, and say smart things about the individuals in it.
+
+### Types of Data
+
+Not all data is created equal!
+
+Need to be **very** careful -- different data types require different tools to analyze.
+
+
+First major division:  some data are numbers, some are not!
+
+Ex:  makes sense to find mean sepal length, but makes no sense to find "mean species".
+
+Broadly speaking:
+
+-quantitative/numerical data:  it's a number
+-qualitative/categorical data:  it's not a number
+
+We can subdivide further:
+
+Quantitative data can be either:
+
+- discrete: countable.  whole numbers.  Ex:  number of students in this class.  # of siblings you have.  Etc.  
+- continuous:  measurable.  could take any real number (within reasonable bounds).  Ex:  height, GPA, temperature, weight.  In general:  any physical measurement of the universe.  
+
+Caveats:
+
+- Height.  We usually round our height to whole number.  But it's still cts!  Depends on the nature of the variable, not how we round it.  
+
+- Money.  Let's just agree that money is continuous.
+
+
+
+Qualitative data can also be subdivided into two types:
+
+- nominal data: no intrinsic order.  Ex: color,  species, gender, nationality, language, 
+- ordinal data: DO have intrinsic order.  Ex:  Age, Month, Alphabet, Income level, Educational attainment,  minutes in the our, year in school, seasons
+
+Caveats:
+
+- Age:  might seem like quantitative, but careful, it's a category!  Same with minutes in the hour.  
+
+- We can always ASSIGN and ordering.  Like color:  we -could- order by wavelength.  
+
+
+### Metadata
+
+Metadata is data about data.
+
+Almost always, we study data collected by someone else.  Not always clear what the variables represent.  Ex:  "mpg dataset"
+
+```{r}
+head(mpg)
+```
+
+Metadata tells:
+
+- what the cases are (rows)
+- what variables mean (columns)
+- what the units are (when applicable)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

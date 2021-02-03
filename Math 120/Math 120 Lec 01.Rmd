@@ -1,0 +1,144 @@
+---
+title: "Math 120 Week 01"
+author: "Prof Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: yeti
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+
+
+# Wednesday Feb 3
+
+
+This is Rstudio!  I take notes here!
+
+It's cool, because I can do math:
+
+```{r}
+1+1
+```
+
+Note:  the stuff in grey is code.  Unless it's just a mathematical computation, you don't need to worry about it.  But, DO worry about mathematical computations!
+
+I can look at data!
+
+```{r}
+head(iris)
+```
+
+## Section 1.2 - Data Basics
+
+What's data?  What's a dataset?
+
+Here in 120, we'll be using "rectangular data".
+
+In rectangular data:
+
+- 
+- 
+- 
+
+
+In 120, when we say say "dataset", we *always* mean rectangular data.  
+
+Our goal:  say something smart about the individuals based on the data!
+
+
+## Type of data
+
+Not all data is created equal!  Important!  The tools we use for analysis vary drastically depending on what type of variable we're studying.
+
+
+Main categories:  
+
+- 
+- 
+
+
+We use -radically- different tools for analyzing each.  Ex:  doesn't make sense to find "mean species".  
+
+
+We can further subdivide:
+
+Quantitative data can be subdivided into two types:
+
+-  
+- 
+
+Interesting caveats:
+
+- Height:
+
+- Money:   
+
+
+Qualitative data can also be broken down into two types:
+
+- 
+- 
+
+## Metadata
+
+Sometimes, it's not always clear what the data represents.
+
+Example:  mpg dataset
+
+```{r}
+head(mpg)
+```
+
+Not clear what all the variables are!
+
+Answer:  metadata!  Data about data!  Describes:
+
+- 
+- 
+- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
