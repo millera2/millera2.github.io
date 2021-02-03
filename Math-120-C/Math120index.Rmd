@@ -34,7 +34,7 @@ theme_set(                                #this sets the theme for all    #
 ## Math 120 Partial Lecture Notes
 *They look great on your phone, so you can read them anywhere.    Don't understand something?  Ask me!*
 
-- [Week 1](https://millera2.github.io/Math-120-Lec-01.html)
+- [Week 1](https://millera2.github.io/Math-120-C/Math-120-Lec-01.html)
 
 
 ## Next Quiz
