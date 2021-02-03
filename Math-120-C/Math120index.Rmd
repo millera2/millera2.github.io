@@ -39,9 +39,7 @@ theme_set(                                #this sets the theme for all    #
 
 ## Next Quiz
 
-Practice Quiz!  Get it down now, so that you can succeed on the real thing!  
-
-Go to NoteBowl -> Assignments
+Covering material from class on Week 1.
 
 **It will only be visible during your scheduled Tuesday class time.**
 
@@ -52,9 +50,7 @@ Go to NoteBowl -> Assignments
 
 Stay tuned!
 
-## Syllabus
 
-[Math 120 Fall 2020 Syllabus (Miller)](https://millera2.github.io/Math-120/Math-120-Spring-2021-Miller.pdf)
 
 ## Office Hours 
 
