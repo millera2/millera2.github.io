@@ -1,0 +1,92 @@
+
+---
+title: "Math 120 Fall 2020 Homepage"
+date: "Updated: `r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: false
+    toc_depth: 3
+    theme: yeti
+
+      
+  
+---
+
+```{r setup, include=FALSE}
+
+                                                                          #
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)      #
+                                                                          #
+library(tidyverse)           #The tidyverse has all of our data tools     #
+library(ggthemes)            #ggthemes makes our graphs look nicer        #
+                                                                          # 
+theme_set(                                #this sets the theme for all    #
+  theme_tufte() +                         #plots that we make             #
+  theme(text=element_text(family="sans")) + 
+  theme(axis.text.x = element_text(angle=-90))                            #
+  )                                                                       #
+                                                                          #
+                                                                          #
+                                                                          #
+
+```
+
+## Math 120 Partial Lecture Notes
+*They look great on your phone, so you can read them anywhere.    Don't understand something?  Ask me!*
+
+- [Week 1](https://millera2.github.io/Math-120-Lec-01.html)
+
+
+## Next Quiz
+
+Practice Quiz!  Get it down now, so that you can succeed on the real thing!  
+
+Go to NoteBowl -> Assignments
+
+**It will only be visible during your scheduled Tuesday class time.**
+
+**WARNING**:  Our Tuesday class time is different than MWF!  Check your schedule!
+
+
+## HW Assignments
+
+Stay tuned!
+
+## Syllabus
+
+[Math 120 Fall 2020 Syllabus (Miller)](https://millera2.github.io/Math-120/Math-120-Spring-2021-Miller.pdf)
+
+## Office Hours 
+
+### Prof Miller's Hours (Google Meet)
+
+[Google Meet Room](https://meet.google.com/wtr-funk-wph)
+
+All virtual, all by appointment.  Don't be shy!  A few things:
+
+- Schedule 24 hours in advance
+- I'm free most weekdays from 1:30-4pm
+- When you write, propose a time to cut down on back-and-forth.
+
+
+I never check email after 4pm, so **don't wait till the night before a deadline to get help!**  
+
+I like chatting with students -- come find me!
+
+
+
+
+
+
+
+## Shared Google Drive Folder:
+
+
+
+
+## Texbook Links
+
+- [Math 120 Textbook](https://www.openintro.org/book/os/)
+  - *OpenIntro Statistics* is an excellent, free introduction to modern statistical analysis.
+  
+
