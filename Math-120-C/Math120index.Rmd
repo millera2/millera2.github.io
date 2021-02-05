@@ -41,6 +41,13 @@ theme_set(                                #this sets the theme for all    #
 
 Covering material from class on Week 1.
 
+Practice Problems:
+
+- 1.9 (p20)
+- 1.10 (p20)
+- 1.11 (p21)
+- 2.15 (p58)
+
 **It will only be visible during your scheduled Tuesday class time.**
 
 **WARNING**:  Our Tuesday class time is different than MWF!  Check your schedule!
