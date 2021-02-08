@@ -123,6 +123,45 @@ Answer:  metadata!  Data about data!  Describes:
 - 
 
 
+# Friday Feb 3
+
+## Describing Data - Visualizations
+
+Our goal:  say smart things about the individuals in our data.
+
+Always first:  visualize!  Pictures's worth a 1000 words!
+
+
+### Visualizing a single quantitative variable
+
+Most important visulization:  
+
+Every time we make a histogram, there are three important observations to make:
+
+- 
+- 
+-  
+
+Ex:  Number of siblings.  We observe... 
+
+IMPORTANT WARNING ABOUT HISTOGRAMS:  The "bucket size" (the width of the rectangles, ie the number of rectangles) is ...
+
+Another important shape word:  "bimodal" data...  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
