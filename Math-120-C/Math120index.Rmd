@@ -4,8 +4,8 @@ title: "Math 120 Fall 2020 Homepage"
 date: "Updated: `r format(Sys.time(), '%d %B, %Y')`"
 output: 
   html_document:
-    toc: false
-    toc_depth: 3
+    toc: true
+    toc_depth: 2
     theme: yeti
 
       
