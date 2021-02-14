@@ -35,6 +35,273 @@ theme_set(theme_tufte() +
 
 # Monday Feb 8
 
+## Visualizations for Categorical Variables
+
+Number one most important:  
+
+(Note:  Never, ever use pie charts.  Never trust anyone who does!)
+
+Heights of the bars represent ...
+
+Look like histograms, but a couple of important differences...
+
+
+
+
+Most important takeaway from a bar graph:  ...
+
+
+## Textbook:  2.1-2.2.  Measures of center and spread for quant variables
+
+Idea:  need objective measures of center and spread for datasets.
+
+
+Of course the picture is crucial, but need to agree on statistics.
+
+There are many measures for both center and spread.  They were created by people!  They have strenghts and weaknesses.  Always need to consider context!
+
+
+## Measures of Center
+
+Center: what's typical in a dataset?
+
+There are several measures of center:
+
+1) 
+
+2) 
+
+3) 
+
+
+Important note: it's not the case that one measure is "better"!  But, sometimes one is more appropriate than the other!
+
+Ex:  Made-up data:  1, 1, 1, 1, 1, 19
+
+
+Mean:  ...
+
+Median:  ...
+
+Seems like [...] did a better job of describing "typical" elements.  
+
+Notice that the strong right skew has a big effect on ...
+
+
+
+Takeaways:
+
+1)  A statistic is **robust** if ...
+
+2)  If our dataset contains skew/outliers (check the picture!), then it's best to use ...
+
+3)  In a skew dataset, the tail affects...
+
+  - In left skew, we see ...
+  - In a symmetric dist, ...
+  - In a right skew dist, ...
+
+
+Ex)  Consider the salaries of all employees at a very large corporation with thousands of employees from custodial staff, retail, etc all the way up to the CXO.  
+
+What shape would you expect this distribution to have?  Which is a more appropriate measure of center, the mean or the median?
+
+Which is bigger:  mean salary, or median salary?  
+
+
+Ex)  Consider exam scores for a large class on an EASY exam.  
+
+
+
+
+
+# Wednesday Feb 10
+
+
+## Measures of Spread
+
+Last time:  measures of center.  This time:  measures of spread.
+
+There are three main measures:
+
+1)  
+2)  
+
+Thoughts:
+
+  1)  Why do we square the deviations?  
+
+  2) What are the units of stdev?  
+
+Measure of spread #3)  
+
+
+Since the IQR is unaffected by the lower 25% and upper 25% of the data, it is quite robust!
+
+
+**Key takeaway**:  
+
+- If data has skew/outliers, describe it with ...
+- If data is (roughly) symmetric, use ...
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Normal_Distribution_PDF.svg/1200px-Normal_Distribution_PDF.svg.png)
+
+
+Above:  which has larges spread?  Smallest spread?  Smallest center?
+
+
+## Statistical Inference
+
+We've seen several numerical summaries so far -- *mean*, median, mode, iqr, *stdev*, range, *proportion.*
+
+
+But, so far, we've worked exclusively with **sample data**.  
+
+Our goal is to say something about **populations**.  Ex:  all university students ,all americans, all humans, all tax payers, all irises, all cars, etc.  
+
+
+Unfortuanately, populations tend to be large (much too large!) for us to collect data about every individual.
+
+Compromise:  study a subset of the population, called a sample!  We -hope- that the sample is representative, but always sample data is limited!  
+
+**Statististical Inference** is the process of ...
+
+Every numerical summary has two versions:
+
+- **Statistics** are ...
+
+- **Parameters** are ...
+
+Examples:
+
+
+- Mean.  
+  - Sample mean. ... 
+  - Pop mean.     ...
+  
+
+  
+- Std Dev.
+  - Sample stdev. ...
+  - Pop stdev.    ...
+  
+
+  
+- Proportion.  (ie, the major categorical statistic.  same as "percentage")
+  - Sample prop. ...
+  - Pop prop.     ...
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
