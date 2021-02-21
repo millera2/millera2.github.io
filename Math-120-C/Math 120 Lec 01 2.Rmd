@@ -7,7 +7,7 @@ output:
     toc: true
     toc_depth: 3
     code_folding: show
-    theme: simplex
+    theme: yeti
     df_print: paged
   
   
@@ -129,6 +129,427 @@ Metadata tells:
 - what the cases are (rows)
 - what variables mean (columns)
 - what the units are (when applicable)
+
+
+## Describing Data - Visualizations
+
+Always, our first tool for describing data is a **visualization**.  A picture is worth a 1000 words.
+
+There are many different types of visualaztions.  We need to be carefu to choose the right one for our data.
+
+### Visualizations for a single quantitative variable
+
+The most important visualization for a single quant variable is a **histogram**.  
+
+Whenver we constrtuct a histo, there are three important qualities to observe:
+
+- Center.  What's a common value in the dataset?  Example:  common height is about 67" tall (informal).  
+- Spread. Variability.  How far away from the center do we expect individuals to be?  In what range do we expect most individuals to lie?  Example:  in our class most students are between 63" and 75" (informal). 
+- Shape. Ex:  for your heights:  a little symmetric, but also a little skew right (think:  skew == tail).
+
+
+Ex:  For # siblings, there is STONG right skew in the histo:  most of you only have 1-2 siblings, it's rare for you to have many siblings. 
+
+WARNING:  The details of the shape of the histogram can vary drastically depending on the bin width / bucket size you choose.  THIS IS ARBITRARY!  It's up to you decide how to represent the data.
+
+
+# Monday Feb 8
+
+## Visualizations for categorical variables
+
+Most important - bar graph.  Looks like a histo, but it's not!
+
+(We never ever use pie charts to visualize categorical variables.  We don't trust anyone who does!  Sorry USA Today!)
+
+
+Example:  Your hair color.  
+
+Note:  Bar graphs can show either frequencies (counts) -or- proportions (percentages) on the y axis.  In the Google sheets example, we have frequencies.  Both of these have exactly the same shape and scale, ie, look the same!  
+
+Key information:  what proportion of the whole belongs to each "level" of the category?  Here:  most have brown hair, few have red, etc.
+
+All proportions together are called a "distribution".  
+
+Differences from histogram:
+
+- The order of the bars (categories) is totally arbitrary!  So, it doesn't make sense to talk about the "shape" of a bar graph!  Also, no notion of center or spread in a bar graph.  I.e., it doesn't make sense to talk about the "mean hair color".
+
+- In a bar graph, the bars don't touch.  Each category is distinct and seperate.
+
+
+## Text:  2.1 and 2.2 -- Measures of center and spread for quant variable
+
+
+We need objective measures of center and spread.
+
+Note:  these tools and techniques are made by people!
+
+Whenver we're analyzing data, we must always be careful to choose the right tool for the job!
+
+
+## Measures of center
+
+Remember, the center of a dataset tells us "what's common" or "typical".
+
+There are several measures:
+
+1) Mean.  (Average)  Story of the formula:  the mean is "balancing point" of the data.
+
+2) Median.  Story of the formula:  middle value.  If we ordered the values, about half are above the median, about half are below.
+
+3) Mode.  Story:  most common element.  We don't really use mode much.
+
+
+Both mean and median have different strategies for measuring center, it's not necessarily the case that one is better!  Depends on circumstance!
+
+Ex: Consider the following silly data:  1, 1, 1, 1, 1, 19
+
+Mean:  (1+1+1+1+1+19)/6 = 4
+Med:   Average of 1 and 1 = 1.
+
+Here, the median did a better job of measureing what's "typical" in this dataset.
+
+Important word:  A statistic is **robust** if it's not strongly affected by skew and/or outliers.
+
+
+We just saw that the median is robust, but the mean is not.  The mean was strongly affected by the outlier/skew ("19"), whereas the median isn't affected by the values on the outskirts of the distro.
+
+Thus, if our distro has skew/outliers, we prefer the MEDIAN to measure center.  If the distro is symmetric, then we prefer the mean.  
+
+More about this relationship:
+
+  - If the distro has left skew, then we expect the mean to be -smaller- than the median!
+  - If the distrto has right skew, then the mean is -larger- than the median.
+  - If the distro is symmetric, then the mean and median are approx equal.
+  
+  
+Example:  Consider the following variable:  employee salaries at a large company (thousands of employees), everyone from custodial staff all the way up to CXOs.
+
+We'd expect this distro to be strong right skew -- most people make relatively little money, only a handful have very large salaries.
+
+We'd expect the mean to be larger (maybe much larger!) than the median.  This could be used to decieve about "normal" earnings at the company.  
+
+# Wed Feb 10
+
+## Opening Example - Measures of Center
+
+Ex:  Consider the exam scores in a large class on an easy exam.  
+
+Since we'd expect most students to have high scores, only a few with low scores, we'd expect this distro to have left skew.  
+
+Since there's skew, we use the median to describe the center of the distro.  We'd expect the mean to be smaller (it's pulled down by the left tail).
+
+
+## Measures of Spread for a quant variable
+
+There are three main ones:
+
+### Range.  
+
+Max - min.  Advantages:  super easy to calculate.  Con:  very, very susceptible to outliers/skew!!!  Even ONE unusual measurement/outlier messes up the range.  
+
+###  Standard Deviation.  
+
+Forumula notes:
+
+x_i's are individual values
+xbar = mean
+x_i - xbar is the "deviation" for x_i.  Ie, how far away from the mean is x_i?
+n = sample size/number of values
+
+- We square the deviations to ensure that all are positive, and so don't cancel each other out.  In fact, the sum of the deviations (not squared) is always zero!!!  By adding square deviations, we get TOTAL variability in the dataset.
+
+- We square rooted the squares.  Thus, std dev has the SAME units as the original data!
+
+All together, Story of the Formula:  Stdev is the AVERAGE DISTANCE between data points and the mean!
+
+
+Example:  Compute the stdev of 1, 2, 3
+
+Here:  xbar = 2.
+
+First, add square deviations:
+
+(1-2)^2 + (2-2)^2 + (3-2)^2 = 1 + 0 + 1 = 2
+
+s = sqrt(2/(3-1)) = sqrt(1) = 1.
+
+### Interquartile Range.  IQR.
+
+The quartiles are the medians of the lower and upper halves of the data.
+
+Q1 = median of the lower half of the data.  Larger than 25% of the data
+Q3 = median of the upper half of the data   Larger than 75% of the data
+
+The IQR = Q3 - Q1.  Story of the formula:  The IQR is the width/range of the middle half of the data!
+
+Ex:  71, 72, 75, 78, 80, 82, 88, 95
+
+Lower half:  71, 72, 75, 78   ->  Q1 = 73.5
+Upper half:  80, 82, 88, 95   ->  Q3 = 85
+
+IQR = 85 - 73.5 = 11.5
+
+
+Note:  Since std dev is based upon the mean, it is NOT robust!  Ie, it's affected by skew/outliers.
+
+Since IQR only describes the middle 50% of the data, it's not affected by skew/outliers.  IQR is robust.
+
+
+## Statistical Inference
+
+So far, we've learned how to describe sample data.  Visualizations, numerical summaries, etc.
+
+Often, our real goal is to say something smart about the POPULATION that our sample came from.  
+
+Generally, populations are too big to take a census (ie, collect data from all individuals).  All americans, all DU students, all giraffes, etc etc.   
+
+We're forced to analyze samples, (hopefully) representative subsets of the population.
+
+We HAVE sample data.
+We WANT info about the population.
+
+Even though sample data is limited, imperfect, incomplete, etc, we can still make smart mathematically-supported conclusions about our population:
+
+**Statistical Inference** is the process of making mathematically-supported conclusions about populations based on sample data.
+
+Every numerical summary that we consider has TWO VERSIONS:
+
+**Statistics** are numerical summaries of sampes.  Ex:  sample mean, xbar.
+
+**Parameters** are numerical summaries of populations.  
+
+Examples:
+
+
+- Mean.
+  - Sample mean.  Symbol:  xbar.  This is what we have.
+  - Population mean.  Symbol:  mu.  This is what we want.
+  
+  Goal:  say something smart about mu based on xbar.
+  
+  
+- Stdev.
+  - Sample stdev.  Symbol:  s, s_x
+  - Pop stdev.     Symbol:  sigma
+  
+- Proportion. (Ie, the main statistic for categorical variables.  Same as percent.)
+  - Sample proportion:  phat
+  - Pop Proportion:     p  (pi was busy)
+  
+  
+  
+  
+  
+$$\hat{p}$$
+$$\sigma$$
+
+
+# Mon Feb 15
+
+## Z-scores
+
+So far, all of our descriptive statistics tell us about entire distributions.  Ex:  mean, median, mode, range, stdev, iqr, et etc etc.
+
+
+Goal for today:  what can we say about individual measurements?
+
+
+Specifically:  how "unusual" (or not) is a value in a dataset.  
+
+Main tool:  z-scores.  Also called:  normal scores, standard scores. 
+
+For a particular observation, x, the z-score is the distance, measured in std devs, between x and xbar.  
+
+Ie, how many std devs above (or below) the mean is x?
+
+This is a little like "deviation":  x - xbar.  BUT, z-scores don't measure absolute difference.  They measure the distance in units of std devations.  
+
+Z-scores account for BOTH the center and spread in a distribution.
+
+Formula:
+
+   z = (x - xbar)/s_x
+   
+   
+   
+Example:  The mean score on the ACT is 17, stdev 4.3.  The mean score on the SAT is 765, stdev 56.  
+
+Amy took the ACT and scored 29.  Beth took the SAT and scored 872.  Who performed better?
+
+Problem:  ACT and SAT have different scales!
+
+Answer:  z-scores!
+
+Amy:
+
+```{r}
+(29-17)/4.3
+```
+
+Amy scored 2.79 std devs above the mean.  
+
+Beth:
+
+```{r}
+(872-765)/56
+```
+
+Beth scored 1.91 stdevs above the mean for the SAT.
+
+
+Amy performed better on the test.
+
+
+
+## Empirical Rule (68-95-99.7 Rule) 
+
+
+IF a distribution follows a bell-shaped ("normal") distribution [btw, these are super common in the nature], then:
+
+1) About 68% of all the data in the dataset lies within +/1 stdevs of the mean.
+2) About 95% of data lies within +/- 2 stdevs of the mean.
+3) About 99.7% of data lies within +/- 3 stdevs of the mean.
+
+
+The Empirical Rule lets us "carve up" the normal/bell distribution.  
+
+Example:  Giraffes have average height 18', stdev 2.5'.  What percent of giraffes are between 15.5' and 23'?  Giraffe heights follow a normal/bell dist. 
+
+Z-scores!
+
+15.5:
+
+```{r}
+(15.5-18)/2.5
+```
+
+23:
+
+```{r}
+(23-18)/2.5
+```
+
+In this range:
+
+```{r}
+34+34+13.5
+```
+
+About 81.5% of giraffes are between 15.5' and 23' tall.  
+
+
+$$f(-1)=2 \textrm{, and } \lim_{x\rightarrow-1}f(x)\textrm{ does not exist}$$
+$$f(0)=-1 \textrm{, and } \lim_{x\rightarrow0}f(x)=0$$
+$$f(1) \textrm{ is not defined, and } \lim_{x\rightarrow1}f(x)=2$$
+$$f(2)=0 \textrm{, and } \lim_{x\rightarrow2}f(x)=0$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+   
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

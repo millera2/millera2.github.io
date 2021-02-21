@@ -36,24 +36,20 @@ theme_set(                                #this sets the theme for all    #
 
 - [Week 1](https://millera2.github.io/Math-120-C/Math-120-Lec-01.html)
 - [Week 2](https://millera2.github.io/Math-120-C/Math-120-Lec-02.html)
-
+- [Week 3](https://millera2.github.io/Math-120-C/Math-120-Lec-03.html)
 
 ## Next Quiz
 
-Covering material from Week 2.
+Week 3 material.  Practice problems:
 
-Practice Problems:
+- 2.10 (p57)
+- 2.13 (p58)
 
+Practice with Empirical Rule at Khan Academy (with solutions): [click here](https://www.khanacademy.org/math/ap-statistics/density-curves-normal-distribution-ap/stats-normal-distributions/e/empirical_rule)
 
-- 2.15 (p58) 
-- 2.8 (p57)
-- 2.5 (p56)
-- 2.12 (p 58)
 
 
 **It will only be visible during your scheduled Tuesday class time.**
-
-**WARNING**:  Our Tuesday class time is different than MWF!  Check your schedule!
 
 
 ## HW Assignments

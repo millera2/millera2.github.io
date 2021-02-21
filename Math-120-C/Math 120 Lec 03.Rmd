@@ -1,0 +1,282 @@
+---
+title: "Math 120 Week 03"
+author: "Prof Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: yeti
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+# Monday Feb 15
+
+## Z-scores
+
+Motivatating question:  how "unusual" (or not) is a particular element in a dataset (quantitative).
+
+
+First tool:  "z score".  Also called:  "standard score".  
+
+For a paricular value, x, in a quant dataset, the z-score is:  ...
+
+
+Similar to deviation:  x - xbar.  BUT!  Z-scores aren't ...
+
+Picture:  
+
+
+Math:
+
+    z = 
+    
+    
+One important application:  comparing values from different distributions!
+
+Example:  The SAT and ACT are both college entrance exams.  The mean score on the ACT is 17, stdev of 4.3.  The mean score of the SAT is 765, stdev 52.
+
+Amy took the ACT and scored 26.  Beth took the SAT and scored 872.  Who scored "better" relative to the pool of test takers?
+
+
+
+## Empirical Rule (68-95-99.7 Rule)
+
+*If a distribution is roughly bell shaped ('normal')*,  [btw, this is common!], then we can say something about where the data lies in the distribution:
+
+1)  About 68% of the data in the dataset lies within +/- 1 stdev from the mean.  
+2)  About 95% of the data in the dataset lies within +/- 2 stdevs from the mean.
+3)  About 99.7% of the data lies within +/- 3 stdevs.
+
+We can use this to "carve up" the normal distribution.  Picture!
+
+Practical takeaways:
+
+If your z-score is within +/-1, you're a very "typical" observation.  Grouped in with the middle 68%.  
+
+If your z-score is between +/-1 and +/- 2, Still fairly normal.  Over a quarter (27%) of the data has a z-score close to yours.
+
+BUT, if your z-score is larger the 3 or smaller than -3, YOU'RE QUITE UNUSUAL!  You're part of only 0.3% of the distribution!
+
+If you see see a z-score above |4|, that's coco puffs!
+
+Ex)  Giraffes have average height 18', stdev 2.5'.  What percent of all giraffes are between 15.5' and 23' tall?
+
+
+
+
+
+
+
+# Wednesday Feb 17
+
+## Practice:  Empirical Rule
+
+In the US, the mean height of men ages 20-29 is 69" with stdev 2.7" (this is true).  For women ages 20-29, the mean height is 64" with stdev 2.4" (also true).  For both, heights follow a normal (bell-curve) distribution (yep, true!).
+
+
+a)  If we select a man at random (rando man), what's the probability that he's between 63.6" and 71.7"?
+
+
+
+
+b)  If we select a rando woman, what's the probabilit that she's over 71.2" tall?
+
+
+
+
+## 5-number summary, boxplots, and outliers
+
+
+Outliers are values/measurements in a dataset that are substantially unlike the others.  Unusual!  Way out there!
+
+Outliers can have a significant effect on our analyses.  We want to identify them and consider their impact.
+
+### 5-number summary
+
+It's these 5 numbers:   
+
+
+Ie, the 5 number summary cuts up our distro into ...
+
+
+Ex:  56, 69, 71, 82, 83, 85, 88, 95.
+
+Motivating question:  is "56" an outlier?
+
+First:  5-number summary:
+
+
+
+## Outliers
+
+In a dataset, any value that's **larger** than ...
+
+
+or **smaller** than ...
+
+
+is considered an **outlier**.
+
+Note: the spread of the distro is key for deciding who's an outlier!
+
+Ex:  are any of the scores in our data above outliers?
+
+
+
+
+
+
+
+
+
+# Friday Feb 19
+
+## Boxplots
+
+
+
+
+Boxplots are anothter visualization for a quant variable.  In short:  boxplots are visualizations of 
+
+
+Notes:
+
+- Boxplots are especially useful for ....
+
+Ex:  compare sepal length across species
+
+```{r}
+boxplot(iris$Sepal.Length~iris$Species, horizontal=T)
+```
+
+Since all are plotted on same axis, we can compare:  setosa sepal lengths tend to be shorter with less variability.  Virgicina sepal lengths tend to be longer with more variability (even an outlier!).
+
+
+```{r}
+hist(iris$Petal.Length)
+```
+
+- Limitation of boxplots:  ...
+
+
+## Correlation - The relationship between TWO quant variables
+
+Book 8.1-8.2
+
+Ex:  Height and weight.  Expect, in general, taller people to be heavier!
+
+Always, first tool for analyzing relationships:  picture of course!  To study relationship between two quant variables:  scatterplot.
+
+A *scatterplot* is an x-y plot of two quant variables in a rectangular dataset.  
+
+Ex:  Let's visualize the relationship between displ and cty in the mpg data:
+
+displ:  size of the engine (in liters)
+cty :   fuel efficiency (in mpg)
+
+```{r}
+qplot(mpg$displ, mpg$cty)
+```
+
+Woah!  Bigger cars tend to be less efficient!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
