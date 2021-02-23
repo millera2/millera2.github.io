@@ -166,7 +166,7 @@ Notes:
 
 - Boxplots are especially useful for ....
 
-Ex: sepal length across species
+Ex:  compare sepal length across species
 
 ```{r}
 boxplot(iris$Sepal.Length~iris$Species, horizontal=T)
