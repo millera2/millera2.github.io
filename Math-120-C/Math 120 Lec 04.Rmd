@@ -32,244 +32,244 @@ theme_set(theme_tufte() +
 ```
 
 
-# Monday Feb 15
+# Monday Feb 22
 
-## Z-scores
-
-Motivatating question:  how "unusual" (or not) is a particular element in a dataset (quantitative).
+## Correlation
 
 
-First tool:  "z score".  Also called:  "standard score".  
+Last time: scatterplots.  Main tool for looking at relationship between two variables in a dataset.
 
-For a paricular value, x, in a quant dataset, the z-score is:  ...
+```{r}
+qplot(mpg$displ, mpg$cty)+geom_smooth(method="lm")
+```
+
+```{r}
+cor(mpg$displ, mpg$cty)
+```
 
 
-Similar to deviation:  x - xbar.  BUT!  Z-scores aren't ...
+Observation:  relationship!  Mpg goes down when displ goes up!
 
-Picture:  
+Ex:  cty vs hwy
 
 
-Math:
+```{r}
+qplot(mpg$cty, mpg$hwy)+geom_smooth(method="lm")
+```
 
-    z = 
+```{r}
+cor(mpg$cty, mpg$hwy)
+```
+
+Woah!  Looks like cars that are more efficient in the city are also more efficient on the highway.  Makes sense!  
+
+Ex:  Iris data:  sepal length vs width:
+
+```{r}
+qplot(iris$Sepal.Length, iris$Sepal.Width)+geom_smooth(method="lm")
+```
+
+```{r}
+cor(iris$Sepal.Length, iris$Sepal.Width)
+```
+
+
+Hmm, looks like a blob.  Doesn't seem that knowing one tells much about the other.
+
+## Observations to make about scatterplot
+
+3 key features:
+
+- 
+-  
+- 
+
+
+## The linear correlation coefficient, r
+
+Idea:  
+
+### Important properties of r
+
+
+
+## Linear Regression
+
+The line!!!
+
+Goal:  if there's a linear relationship, what's the equation of that line?  What does it tell us?  What can we use it for?
+
+Lots of different names:
+
+- best fit line
+- regression line
+- least squares line
+- trend line
+- etc etc
+
+Imporant fact:  
+
+My favorite name for "the line":  Least Squares Line
+
+Question:  what makes it the "best"?  Picture:
+
+Answer:  the least squares line is the one that ...
+
+
+# Wed Feb 24 
+
+IMPORTANT CONTEXT:  The least squares line models y based upon x!!
+
+
+
+This "order" matters!  Be careful what you're basing your precictions -upon-.  That's x!
+
+The linear model is a line!  All lines have same type of equation:
+
+    y = mx + b
+
+where:
+
+  - m is the slope
+  - b y-int
+  
+Same for us.  Use different letters/notation:
+
+    yhat = b0 + b1*x
     
+where
+
+  - b0 is ...
+  - b1 is ...
+  
+If you can compute these, you know the equation!  Fortunately, pretty easy!
+
+## Computing eqn of least squares.
+
+1) Find slope first:
+
+
+     
+     
+
+  
+Stories for this formula:
+
+- 
+- 
+
+
+2)  Find the intercept:
+
+Fun fact:  the best fit line ALWAYS touches the point ...
+
+From this, we have:
+
+  
     
-One important application:  comparing values from different distributions!
 
-Example:  The SAT and ACT are both college entrance exams.  The mean score on the ACT is 17, stdev of 4.3.  The mean score of the SAT is 765, stdev 52.
 
-Amy took the ACT and scored 26.  Beth took the SAT and scored 872.  Who scored "better" relative to the pool of test takers?
 
+Practice Example:  Suppose for a dataset, xbar = 1, ybar = 2, sx = 3, sy=4, r=1/2
 
 
-## Empirical Rule (68-95-99.7 Rule)
+# Friday Feb 26
 
-*If a distribution is roughly bell shaped ('normal')*,  [btw, this is common!], then we can say something about where the data lies in the distribution:
+## Interpreting the coefficients
 
-1)  About 68% of the data in the dataset lies within +/- 1 stdev from the mean.  
-2)  About 95% of the data in the dataset lies within +/- 2 stdevs from the mean.
-3)  About 99.7% of the data lies within +/- 3 stdevs.
+Coefficients:  slope and intercept.
 
-We can use this to "carve up" the normal distribution.  Picture!
 
-Practical takeaways:
+Goal:  study the relationship between x and y.  The coeffs of the linear model tell us a lot about that relationship!
 
-If your z-score is within +/-1, you're a very "typical" observation.  Grouped in with the middle 68%.  
+### Slope
 
-If your z-score is between +/-1 and +/- 2, Still fairly normal.  Over a quarter (27%) of the data has a z-score close to yours.
+From high school:  deltay/delta x.  If x changes by 1, then y changes by the slope.
 
-BUT, if your z-score is larger the 3 or smaller than -3, YOU'RE QUITE UNUSUAL!  You're part of only 0.3% of the distribution!
+Remember, yhat is our PREDICTION.  So:  
 
-If you see see a z-score above |4|, that's coco puffs!
+On the quiz, NEVER JUST SAY "X" OR "Y"!  Describe IN CONTEXT!
 
-Ex)  Giraffes have average height 18', stdev 2.5'.  What percent of all giraffes are between 15.5' and 23' tall?
 
 
 
+Ex:  In a sample of 50 men, the average height was 69.2" with stdev 3.1".  The mean weight was 174 lbs with stdev 10.4 lbs.  The correlation coefficient between height and weight is r=0.78.
 
+Find the eqn for the linear model that predicts weight based upon height.  Interpret the slope of line, in context.
 
+ 
 
 
-# Wednesday Feb 17
 
-## Practice:  Empirical Rule
+Ex:  We found the linear model for predicting petal width based on petal length:
 
-In the US, the mean height of men ages 20-29 is 69" with stdev 2.7" (this is true).  For women ages 20-29, the mean height is 64" with stdev 2.4" (also true).  For both, heights follow a normal (bell-curve) distribution (yep, true!).
+    yhat= -0.363 + 0.416x
+    
+Interpret the slope.  
 
 
-a)  If we select a man at random (rando man), what's the probability that he's between 63.6" and 71.7"?
 
 
 
+### Intercept
 
-b)  If we select a rando woman, what's the probabilit that she's over 71.2" tall?
+From HS:  the intercept is the y-coord where x=0.
 
+In lin reg:  
 
 
+Ex:  Height and weight.  
 
-## 5-number summary, boxplots, and outliers
+    yhat = -7.096 + 2.617x
+    
+Interpet the intercept. 
 
 
-Outliers are values/measurements in a dataset that are substantially unlike the others.  Unusual!  Way out there!
+This is silly!  In particular:  extrapolation!  Ie ...
 
-Outliers can have a significant effect on our analyses.  We want to identify them and consider their impact.
 
-### 5-number summary
+- 
+- 
 
-It's these 5 numbers:   
 
-
-Ie, the 5 number summary cuts up our distro into ...
-
-
-Ex:  56, 69, 71, 82, 83, 85, 88, 95.
-
-Motivating question:  is "56" an outlier?
-
-First:  5-number summary:
-
-
-
-## Outliers
-
-In a dataset, any value that's **larger** than ...
-
-
-or **smaller** than ...
-
-
-is considered an **outlier**.
-
-Note: the spread of the distro is key for deciding who's an outlier!
-
-Ex:  are any of the scores in our data above outliers?
-
-
-
-
-
-
-
-
-
-# Friday Feb 19
-
-## Boxplots
-
-
-
-
-Boxplots are anothter visualization for a quant variable.  In short:  boxplots are visualizations of 
-
-
-Notes:
-
-- Boxplots are especially useful for ....
-
-Ex:  compare sepal length across species
+Ex:  iris petals
 
 ```{r}
-boxplot(iris$Sepal.Length~iris$Species, horizontal=T)
+qplot(iris$Petal.Length, iris$Petal.Width)
 ```
 
-Since all are plotted on same axis, we can compare:  setosa sepal lengths tend to be shorter with less variability.  Virgicina sepal lengths tend to be longer with more variability (even an outlier!).
+     yhat= -0.363 + 0.416x
+     
+Interpret the interce
+pt:  
+Also extrapolation!  
 
+
+
+
+
+## Evaluating the model
+
+Idea:  we know how to construct and interpret the linear model.  But, how good is it?  How useful?  Are the predictions it makes good or bad?
+
+The correlation coefficient tells us something about how strong relationship is.  But, what about the predictions it makes?
+
+First:  effects of outliers.
+
+
+Example:  iris data.  Model:  x=sepal length, y=sepal width.
+
+Recall: r = -0.117.  Blob!
 
 ```{r}
-hist(iris$Petal.Length)
+qplot(iris$Sepal.Length, iris$Sepal.Width)
 ```
 
-- Limitation of boxplots:  ...
 
+Add outlier:  x=40, y=40
 
-## Correlation - The relationship between TWO quant variables
 
-Book 8.1-8.2
-
-Ex:  Height and weight.  Expect, in general, taller people to be heavier!
-
-Always, first tool for analyzing relationships:  picture of course!  To study relationship between two quant variables:  scatterplot.
-
-A *scatterplot* is an x-y plot of two quant variables in a rectangular dataset.  
-
-Ex:  Let's visualize the relationship between displ and cty in the mpg data:
-
-displ:  size of the engine (in liters)
-cty :   fuel efficiency (in mpg)
-
-```{r}
-qplot(mpg$displ, mpg$cty)
-```
-
-Woah!  Bigger cars tend to be less efficient!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Here, original data was a blob.  No strong relationship!  But, with the outlier...
 
 
 

@@ -37,16 +37,18 @@ theme_set(                                #this sets the theme for all    #
 - [Week 1](https://millera2.github.io/Math-120-C/Math-120-Lec-01.html)
 - [Week 2](https://millera2.github.io/Math-120-C/Math-120-Lec-02.html)
 - [Week 3](https://millera2.github.io/Math-120-C/Math-120-Lec-03.html)
+- [Week 4](https://millera2.github.io/Math-120-C/Math-120-Lec-04.html)
 
 ## Next Quiz
 
-Week 3 material.  Practice problems:
+Week 4 Material.  Practice questions:
 
-- 2.10 (p57)
-- 2.13 (p58)
-
-Practice with Empirical Rule at Khan Academy (with solutions): [click here](https://www.khanacademy.org/math/ap-statistics/density-curves-normal-distribution-ap/stats-normal-distributions/e/empirical_rule)
-
+- 8.6 (p314)
+- 8.7, 8.8 (p314)
+- 8.11 (p315)
+- 8.17 (p325)
+- 8.19 (p325)
+- 8.23abdef (all except part c) (p326)
 
 
 **It will only be visible during your scheduled Tuesday class time.**
@@ -70,10 +72,19 @@ All virtual, all by appointment.  Don't be shy!  A few things:
 - I'm free most weekdays from 1:30-4pm
 - When you write, propose a time to cut down on back-and-forth.
 
-
 I never check email after 4pm, so **don't wait till the night before a deadline to get help!**  
 
 I like chatting with students -- come find me!
+
+
+
+## TA Hours
+
+Our TA, Pede, will hold hours on Google Meet ([same channel as always, see](https://meet.google.com/wtr-funk-wph) ) at the following times:
+
+- Thursday 12-2pm
+- Sunday 6pm-9pm
+
 
 
 
