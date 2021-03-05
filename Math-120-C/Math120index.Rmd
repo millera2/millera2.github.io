@@ -38,20 +38,20 @@ theme_set(                                #this sets the theme for all    #
 - [Week 2](https://millera2.github.io/Math-120-C/Math-120-Lec-02.html)
 - [Week 3](https://millera2.github.io/Math-120-C/Math-120-Lec-03.html)
 - [Week 4](https://millera2.github.io/Math-120-C/Math-120-Lec-04.html)
+- [Week 5](https://millera2.github.io/Math-120-C/Math-120-Lec-05.html)
 
 ## Next Quiz
 
-Week 4 Material.  Practice questions:
+Week 5 Material.  Practice questions:
 
-- 8.6 (p314)
-- 8.7, 8.8 (p314)
-- 8.11 (p315)
-- 8.17 (p325)
 - 8.19 (p325)
-- 8.23abdef (all except part c) (p326)
+- 8.21c (p325)
+- 8.23 (all parts) (p326)
+- 8.27 (p330)  <small>**Modified Instructions**:  State whether the outlier will strengthen the correlation, weaken the correlation, or not change it much (just like in class discussions).</small>
+- 3.1 (p 92)
+- 3.7 (not part f) (p 93)
 
 
-**It will only be visible during your scheduled Tuesday class time.**
 
 
 ## HW Assignments
