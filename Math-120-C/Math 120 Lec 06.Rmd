@@ -1,11 +1,11 @@
 ---
-title: "Math 120 Week 03"
+title: "Math 120 Week 06"
 author: "Prof Miller"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
   html_document:
     toc: true
-    toc_depth: 3
+    toc_depth: 4
     code_folding: show
     theme: yeti
     df_print: paged
@@ -31,405 +31,233 @@ theme_set(theme_tufte() +
 #------------------------------------------------#
 ```
 
-# Monday Mar 1
 
-## Effects of outliers (ctd)
+# Mon March 8
 
-More examples.
+Probability Dist Example:  Sum of two dice.
 
-### Ex:  mpg data.  Predict cty mpg based on displ
+#### Ex:  Sum of Two Dice
 
-```{r}
-qplot(mpg$displ, mpg$cty)
-```
-```{r}
-cor(mpg$cty, mpg$displ)
-```
+We roll two dice, record x = their sum.  Construct a prob dist for x.  
 
-What if the following outlier is added:  x=20L, y=100mpg
 
-Before outlier:  
-After outerlier:  
 
+Terminology:  The set of all possible values for X (everything that has non-zero probability) for a distribution is called the "support" for the distro.  
 
-Moral of the story:  
+Previous example:  Support:  X = 2, 3, 4, ...., 12
 
-### Ex:  same mpg example (x=displ, y=cty).
+####  Important properties of Prob Dists
 
-Try the following outlier:  x=5, y=70.
+1)  
+2)  
 
-Correl before:  
-Correl after:  
 
-Some effect, but not drastic.  Why?
 
-Answer:  Leverage.
 
--Outliers with x-values that far outside the range of observations ....
 
--Outliers with x-vals that are within the range of observations  ...
 
-Moral of the story:   doesn't change much.  
-                     
-### Final example:  mpg data, x=cty y=hwy
 
-```{r}
-qplot(mpg$cty, mpg$hwy)
-```
 
-```{r}
-cor(mpg$cty, mpg$hwy)
-```
+### Complement
 
+Notation:  The "complement" of event A is:  A' or A^C:  All possible outcomes NOT contained in A.  
 
-Outlier:  x= 100, y=115.
+Probability:
 
-Correl before:   
-Correl after:   
+     P(A')  = 1 - P(A)
+     
+Think:  A and A' together have all possibilities.  So:
 
-Moral of the story
-
-### BIG MORAL OF THE STORY:  
-
-Outliers could do anything!  Have to look!
-
-
-
-
-## Analyzing the model (ctd)
-
-So far:  outliers
-
-Now:  residuals.
-
-Recall:  for an observation x,
-
-
-    resid = 
-    
-(the vertical distance between a point and the line)
-
-Think:  residuals are errors!
-
-As always, visualize first!   Tool:  residual plot!
-
-    x-axis:  
-    y-axis:  
-    
-    
-Example: mpg x=displ y=cty
-
-Original:
-```{r}
-qplot(mpg$displ, mpg$cty)+geom_smooth(method="lm")
-```
-
-
-Residual plot:
-```{r}
-mpgModel <- lm(mpg$cty~mpg$displ)
-qplot(mpg$displ, mpgModel$residuals)
-```
-
-
-
-Qualities of "bad" residuals:
-
-- ...
-- ... 
-
-### Examples:  mpg x=displ and y=cty 
-
-Residual plot shows ...
-
-### Example:  mpg x=cty and y=hyw
-
-```{r}
-mpgModel2 <- lm(mpg$hwy~mpg$cty)
-qplot(mpg$cty, mpgModel2$residuals)
-
-```
-
-...
-
-
-### Good residuals follow a normal distribution
-
-### Ex:  mpg, x=cty, y=hyw
-
-```{r}
-hist(mpgModel2$residuals)
-```
-
-...
-
-### Ex:  mpg, x=displ, y=cty
-
-```{r}
-hist(mpgModel$residuals)
-```
-
-Can see right skew...
-
-
-
-# Wed March 3
-
-## Evaluating the model (ctd)
-
-So far:
-
-- Effects of Outliers
-- Residuals (resid plot and dist of the residuals)
-
-Today:
-
-- Coefficient of Determination, r^2, (R^2).  
-
-The coeff of det, r^2, tells us ...
-
-
-Discussion:  ...
-
-Math is easy:  literally (r)^2 !!  
-
-    coef of det = (correl coeff)^2
-    
-### Ex:  
-
-Suppose that, in a dataset about 50 men, the correlation coeff between height and weight is computed to be r=0.76.  In a linear model to predict weight based on height, compute and interpret the coef of det.
-
-
-x = height
-y = weight
-
-Compute:
-
-```{r}
-.76^2
-```
-
-Interpret:  ...
-
-### Ex:  mpg x=displ y=cty
-
-```{r}
-cor(mpg$displ, mpg$cty)
-```
-
-```{r}
-(-.7985)^2
-```
-
-Interpretation: ...
-
-
-
-
-
-
-
-
-## Ch 3 - Probability
-
-### Two Defs
-
-A random experiment/chance experiment/random process is any process that could result in two or more unknown outcomes.
-
-Ex:  Flipping a coin.  Could be heads or tails, no way of knowing.  
-
-Ex:  Rolling a dice.  Could be 1,2,3,4,5,6, no way of knowing.  
-
-Ex:  Select a random DU student, record their height.  
-
-Ex:  Take a random sample of 50 DU students, and record the proportion of them that are       Freshmen.
-
-Goal:  how likely/unlikely is any outcome?  Probability!  Two main definitions:
-
-1) Classical/Theoretical Probability.  ...
-
-Ex:  Flip a "fair" coin.  What's the probability of seeing H?
-
+     P(A) + P(A') = 1
      
      
-Ex:  Roll a dice.  What's the chance that a prime number shows on top?  Prime numbers:  2, 3, 5.  
+#### Ex.  "At least one"
 
+Suppose we flip a coin three times.  What's the probability that at least one shows heads?
+
+Note:  this is a big complex event!
+
+
+
+
+#### Ex:  At least one
+
+At DU, 19% of students are international.  If we take a random sample of 10 students, what's the probability that at least one of them is an international student?
+
+
+
+
+
+
+
+
+### Independence/ Mult Rule
+
+
+Recall:  Two events are **disjoint** if ...
+
+We say that two events A,B are **independent** if ...
+
+
+Otherwise, we say that they're "dependent" (or not independent).  
+
+Ex:  The event "it's cloudy" and the event "it's raining" are likely not independent.  
+
+Ex:  If we roll a dice twice, the outcome of the first doesn't affect the outcome of the second.  Independent!
+
+
+#### Multiplcation Rule for Independent Events:
+
+If A,B are independent:
+
+     P(A and B) = P(A)*P(B)
      
- 
+Think:  for independent events, "and" means "times"
 
-2)  Experimental/Relative Frequency Probability.  ...
-
-Ex)  An imprisoned mathematician flips a coin 10,000 times and observes 4,981 Heads.
+NOTE:  WORKS BOTH WAYS!  If P(A and B) = P(A)*P(B), then A and b are indep!
 
 
-### Law of Large Numbers
+Ex:  Suppose we flip a coin 5 times.
 
-... 
-
-Good news! ...
+a)  P(H, H, H, T, H) = ...
 
 
-Important notes about the picture on p82: ...
+b)  P(H, H, H, H, H) = ...
 
-
-
-
-
-
-
-### Disjoint Events / Addition Rule
-
-Two events A and B are disjoint (mutually exclusive) if ...
 
 #### Ex:  
 
-Are the following events disjoint?  Random process:  roll a dice.  
-
-    A = the event that an even shows on top
-    B = the event that a prime number shows
-    
+Roll a dice.  What's the prob we get 1, then an even?
 
 
-#### ADDITION RULE:  
 
-If events A and B are disjoint, then:
+#### Ex:  
 
-     P(A or B) = P(A) + P(B)
+We pick a card from the deck (52 card poker).  Without replacing it, we pick a second.  What's the probability that both are hearts?
+
+  
+
+Q:  What if we'd replaced the first at random?  
+
+
+Idea:  "sampling with replacement".  If not, events might NOT BE INDEPENDENT!  
+
+#### Ex:  
+
+There are 2300 Students at DU.  1200 students are women, 1100 students are men.  If we take a sample of two students, what's the probability that they're both women?
+
+a)  "Without replacement"
+
+
+b)  "With replacement"
+
+
+# Wed Mar 10
+
+### Sampling w/ Replacement vs Not
+
+
+MORAL OF THE STORY:  If our population is "large", we can assume that sampling is INDEPENDENT.  Probabilities are basically the same.
+
+
+What's "large enough"?  Answer:  ...
+
+
+#### Ex:  
+
+Suppose we take a random sample of 30 DU students.  Can we assume that these events (each student) are independent?
+
+
+
+#### Ex:  
+
+If we select two cards at random from a 52 card deck, can we assume indep?
+
+
+
+
+
+
+
+
+
+
+
+### Conditional Probabity 
+
+    P(A | B) = "probability of A given B"
+             = if we know that B occured, how likely is A?
+             
+Ex:
+
+     P(Rains | Cloudy) = ?
      
-Think:  For disjoint events, "or" means "+".  
-
-#### Ex:  Roll a dice.  
-
-     A = event that an odd shows up
-     B = event that a number GREATER than 5 shows up
      
-Compute P(A or B)
+Make a picture!
+
+Think:  "and on top, given on the bottom"
 
 
-     
-     
-     
+#### Ex:  
+
+At DU, 51% of students are female, 17% of students are both female and a STEM major.
+
+If we select a random female student, what's the probability that she's a STEM major?
 
 
 
-
-
-### Not Disjoint Events / General Addition Rule 
-
-What if A, B have outcomes in common?  Venn Diagram!
-
-For ANY two events A and B:
-
-    ...
-    
-    
-Think:  ...
-
-Q:  What if we use this formula on disjoint events?  
-
-A:  Not a probelm, since for disjoint A and B:  ...
-
-#### Ex:  Roll a dice.
-
-     A = event that an even shows up
-     B = event that a prime shows up
-     
-Calculate P(A or B):
-
-
-     ...
-               
-#### Ex:  Two way tables  (Contingency Tables)
-
-mpg data, comparing year vs drive type
-
-4 = 4 wheel drive
-f = front wheel drive
-r = rear wheel drive
+#### Ex:  mpg
 
 ```{r}
 table(mpg$year, mpg$drv) %>% addmargins()
 ```
 
-What's the probability that a random car is either a 1999 model or has rear wheel drive?
 
-   
-               
-#### Deck of cards:
-
-4 suits:  diamonds, hearts, spades, clubs
-
-Each suit has 13 cards:
-
-2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q K, A
-
-All together: 52 total cards
-
-There are two colors:
-
- - All diamonds and hearts are red
- 
- - All spades and clubs are black
- 
-The following in each suit are "face" cars:  J, Q, K
+a)  If we randomly select a car from 1999, what's the probability it has front wheel drive?
 
 
-#### Ex)  
-
-If a card is selected at random, what's the probability that it's either a face card or a red card?
+b)  Are the events "from 2008" and "rear wheel drive" indep?
 
 
 
-### Probability Distribution
-
-For a chance experiment, a probability distribution is:
-
-- a list of all possible outcomes
-- the probability for each
-
-Usually, we'll express it as a table.  
-
-
-Ex:  Suppose we flip a coin twice, and record the number of heads (x).  Construct a probability distribution for x.
-
-
-    
-    
-
-
-
-
-
-
-
-
-
-
-### Complement/Sample Space
-
-### Independence/ Mult Rule
-
-### Sampling w/ Replacement vs Not
-
-### Conditional Probabity 
+MORAL:  for indep, check mult rule!
 
 ### General Multiplication Rule
 
+So far:
+
+A,B are disjoint ->
+  
+    P(A or B) = P(A) + P(B)
+    
+For ANY A,B:
+    
+    P(A or B) = P(A) + P(B) - P(A and B)
+    
+If A,B are independent:
+
+    P(A and B) = P(A)*P(B)
+    
+    
+Q?  What if A,B indep???? What about P(A and B)????
+
+A:  Conditional probability!  Algebra:
+
+    P(A and B) = ...
+               
+               
+#### Ex:  
+
+I'm walking my dog.  If he sees a squirrel, there's an 82% chance he'll bark.  If he doesn't see a squirrel, there's 27% chance he'll bark.  In my neighborhood, there's a 71% chance he'll see a squirrel.
+
+On a random walk, what's the prob that my dog sees a squirrew and barks?
+
+
+
+
+
+
 ### Trees, Total Probability, and Bayes
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
