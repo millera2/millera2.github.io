@@ -47,6 +47,13 @@ theme_set(                                #this sets the theme for all    #
 
 Normal Dist!  Z-table, practical problems, forwards backwards, middle %.
 
+Practice:
+
+- 4.1 (p142)
+- 4.3 [b-f only] (p142)
+- 4.7 (p143)
+
+
 
 ## HW Assignments
 
