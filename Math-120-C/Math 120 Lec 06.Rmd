@@ -253,12 +253,195 @@ I'm walking my dog.  If he sees a squirrel, there's an 82% chance he'll bark.  I
 On a random walk, what's the prob that my dog sees a squirrew and barks?
 
 
+# Friday Mar 12
+
+#### Ex
+
+Suppose P(A) = .3, P(B) = .4.  Find P(A or B)....
+
+a) if P(A and B) = .05
+
+    P(A or B) = P(A) + P(B) - P(A and B) = .3 + .4 - .05 = .65
+
+b) A,B are indep
+
+    P(A and B) = (.3)*(.4) = .12
+    
+    ->  P(A or B) = .3 + .4 - .12 = .58
+
+c) A,B are disjoint
+
+    P(A and B) = 0
+    
+    ->  P(A or B) = .3 + .4 - 0 = .7
+
+
+d) P(A|B) = .1
+
+
+    P(A and B) = P(A)*P(B|A)
+               = P(B)*P(A|B) = .4*.1 = .04
+               
+    -> P(A or B) = .3 + .4 - .04 = .66
+    
+    
+#### Ex:  At least one
+
+Suppose we roll a dice 15 times.  What's the probability that at least one time shows "4"?
+
+Complement:  not a 4, not a 4, not a 4, ...... not a 4
+
+    P(none are 4) = (5/6)^15
+    
+    P(at least 1 shows "4") = 1 - P(none are 4)
+                            = 1 - (5/6)^15
+
+```{r}
+1 - (5/6)^15
+```
+
+```{r}
+(5/6)^15
+```
 
 
 
 
 ### Trees, Total Probability, and Bayes
 
+Ex:  Suppose that a lie detector test claims to be 95% accurate.  This means:  if someone is lying (L), there's a 95% chance the test will show positive (+).  
+
+Further, if a person is not lying (L'), then there's an 88% chance the test shows negative (-).  
+
+In our population, most are honest:  99% of people are honest.  
+
+Conditionals:
+
+P(+|L) = .95
+P(-|L) = .05
+P(+|L')= .12
+P(-|L')= .88
+
+Follow-up questions:  What percent of lie detector test takers get a + result?
+
+Only two possibilies:
+
+ - L and +
+ - L' and +
+ 
+ Together:
+ 
+P(+) = P(L and +) + P(L' and +) = .0095 + .1188
+
+```{r}
+.0095 + .1188
+```
+
+This is the "Law of Total Probability".  In the tree:  add all "and" probs that involve the condition (here: +)
+
+
+Question 2:  Reminder:  P(+|L) = .95  But, what about other direction?  If I get + result, what's the chance I'm actually a liar?
+
+Looking for:
+
+    P( L | +) = P(L and +)/P(+) = (.0095)/.1283
+
+
+```{r}
+(.0095)/.1283
+```
+
+Only 7.4% chance!!!!  This is Bayes Thm, ie, how to reverse the conditionality.
+
+Given:  P(A|B)
+
+Want:   P(B|A) (bayes)
+
+Ex)  A kicker in soccer can either kick:  L, R, or C.  The goalie tries to block (event B).
+
+If the kick is L, then there's a 85% chance of B.
+If the kick is R, then there's 70% chance of B.
+If the kick is C, then there's a 95% chance of B.
+
+This kicker kicks....
+
+- L 55% of time
+- R 30% of time
+- C 15% of time
+
+
+1) COnstruct tree.
+
+2)  What's P(B)?
+
+    .55*.85+.3*.7+.15*.95
+```{r}
+.55*.85+.3*.7+.15*.95
+```
+
+(Total Prob!)
+
+3)  If the ball is blocked, what's the prob it was kicked to the right?
+
+    P( R | B) = P(R and B)/P(B) = .3*.7/.82
+
+```{r}
+.3*.7/.82
+```
+
+
+Homework notes:  Contingency Tables (Pivot Tables)
+
+Ex:  mpg:
+
+```{r}
+table(mpg$year, mpg$drv)
+```
+
+Let's do it  in Google Sheets: Make a table comparing Year in school and Hair color.
+
+   Brn  Black  Red Blonde Other 
+F
+S
+J
+S
+
+
+Ex:  Make a pivot table showing mean height by year in school
+    mean height
+F
+S
+J
+Sr
+
+
+
+
+
+Ands:
+
+P(L and +) = P(L)*P(+|L) = 
+
+```{r}
+.99*.12
+```
+
+.99*.88
+```{r}
+.99*.88
+
+```
+
+
+
+
+```{r}
+64-2*2.4
+```
+
+```{r}
+64+3*2.4
+```
 
 
 
@@ -267,3 +450,408 @@ On a random walk, what's the prob that my dog sees a squirrew and barks?
 
 
 
+
+
+
+
+
+
+
+
+
+```{r}
+h <- c(63, 64, 66, 67, 67, 68, 69, 70, 70, 77)
+boxplot(h)
+```
+
+
+```{r}
+.78*124/1.1
+```
+
+```{r}
+1600 - 87.92*17
+```
+
+```{r}
+95+2.35
+```
+
+```{r}
+68+13.5
+```
+
+```{r}
+68+2.35+13.5
+```
+
+```{r}
+.13/.24
+```
+
+
+```{r}
+.24*.2
+```
+
+```{r}
+.13*.24
+```
+
+
+
+
+
+# Mon March 22
+
+
+
+
+## The most important distro:  Normal!
+
+Idea:  you know what a prob dist is.
+
+Now:  Let's learn the most important one:  the normal dist (bell curve!)
+
+Normal Dist:  most of us are in the middle.  It's rare to be large or small!
+
+"The" normal dist is actually a family of distributions.  ALl have same shape, 
+
+ - different center (mean)
+ - different spread (std dev)  
+ 
+ 
+Q:  Given teh center and spread of a normal dist, how do we compute probabilities?
+ 
+### Ex: 
+
+Adult men in the US have mean height 69", stdev 2.7".  What's the probability that a ranom man is less than 71" tall?
+ 
+Ex:  What's the prob that rando man is between 68 an 70" tall?
+
+Idea:  PROBABILITY = AREA
+
+PROBLEM:  Can't do it by hand!
+
+Solution:  Two ways:
+
+
+1) Statistical Tables.
+2)  Software, like Google Sheets!
+
+
+Problem:  lots of different normal dists!  But, only one table!
+
+Answer:  Always use the same one, the STANDARD NORMAL DISTRIBUTION:
+
+- mean = 0
+- std dev = 1
+
+
+Problem:  What if our data is normal, but not STANDARD normal?  Ex:  height!
+
+ANSWER: Z-SCORES! Z-scores count how many std devs above/below the mean an observation is
+
+
+    Z = (X-mean)/stdev
+    
+    
+### Ex:  
+
+If Z follows a std normal dist, find....
+
+
+a)  P(Z<1.23) = .8907
+
+b)  P(Z>1.23) = 1 - P(Z<1.23) = 1-.8907
+
+```{r}
+1-.8907
+```
+
+
+
+
+
+
+# Wed March 24
+
+Last time:  Z table shows area to the left of a z-score (std normal score).
+
+### Ex:  
+
+If Z is std normal, find
+
+a)  P(Z< -1.85) = 0.0322
+
+b)  P(Z > -2.53) = 1 - P(Z < -2.53) 
+                 = 1 - .0057
+
+```{r}
+1 - .0057
+```
+
+c)  P( 0.64 <  Z < 3.12) = P(Z<3.12) - P(<0.64) = .9991 - .7389
+
+```{r}
+.9991 - .7389
+```
+
+
+d)  P( -2 < Z < 2) = P(Z<2) - P(Z<-2) = .9773 - .0228
+
+```{r}
+.9773 - .0228
+```
+
+Ah ha!  That's why the Emprical Rule works!
+
+
+
+## Backwards Problems
+
+So far:  given Z, find area/prob.  Forwards!
+
+Now:  given an area/prob, need to find Z.  Backwards!
+
+#### Ex:  
+
+What Z-score seperates the lower 80% of the normal dist from the upper 20%?
+
+Ie, find the 80th percentile.
+
+Find area = 0.8 in the table.  Closest:  area = 0.7995 -> Z = 0.84
+
+#### Ex:  
+
+What z-score corresponds to the 99th percentile?
+
+Find area = 0.99 in the table.  Z = 2.33
+
+## Practical Problems:  Forwards
+
+Idea:  convert to z-score, look it up!
+
+   z = (x-mean)/stdev
+   
+   
+#### Ex)  
+
+Height for women in the US follows normal dist with mean 64", stdev 2.4".  Find the probability that random woman is....
+
+
+a)  P(X<70) = P(Z < (70-64)/2.4)
+
+
+```{r}
+(70-64)/2.4
+```
+
+           = P(Z<2.5) = .9938
+           
+Ie, 99.38% of women are less than 5'10".  
+
+b)  P( 60 < X < 65)  =  P(  (60-64)/2.4  < Z < (65-64)/2.4 )
+
+```{r}
+(65 -64)/2.4
+```
+
+```{r}
+(60-64)/2.4
+```
+
+                  = P( -1.67 < Z < 0.42 ) = .6628 - .0475
+
+```{r}
+.6628 - .0475
+```
+
+Ie, 61.53% of adult women are between 5'0"  and 5'5".  
+
+c)  P(X>75) 
+
+```{r}
+(75 - 64)/2.4
+```
+
+
+     = P(Z>4.58) ~~ 0
+     
+Moral of the story:  even if Z is "off the charts", don't let that stop you!
+
+d)  P(X<75) ~~ 1
+
+## Practical Backwards Problems
+
+Idea:  look up z-score, solve for x.  
+
+    z = (x-mean)/stdev
+    
+    x = z*stdev + mean
+    
+#### Ex: 
+
+IQ follows a normal dist with mean 100, stdev 15.  
+
+a)  How high must one's IQ be in order to be in the top 10%?
+
+Ie, 90th percentile.  Look up area = 0.9000 in the table.  
+
+Z = 1.28  
+
+
+    z = (x - mean)/stdev
+    
+    1.28 = (x - 100)/15
+    
+    x = 1.28*15 + 100
+    
+    
+```{r}
+1.28*15 + 100
+```
+    
+You'd need an IQ of at least 119.2 to be in the top 10%.  
+
+
+b)  What IQ marks the 25th percentile?
+
+In table, find area = 0.25
+
+z = -.67
+
+    -.67 = (x - 100)/15
+
+```{r}
+(-.67)*15+100
+```
+
+An IQ of 90 is at the 25th percentile.  
+
+# Friday March 26
+
+## "Middle Percent" Problems
+
+### Ex)  
+
+Height for men is normal with mean 69" stdev 2.7".
+
+Q:  What's the range of the middle 50% of heights for men?
+
+Note:  backwards!  Given area, need ranges of heights.
+
+
+Need to look up area.  But, what area?
+
+For lo cutoff, look up area = 0.25, z = -0.67
+
+For hi cutoff, look up area = 0.75, z = +0.67
+
+Find heights:
+
+lo:
+     z = (x-mean)/stdev
+     -0.67 = (x-69)/2.7
+     
+```{r}
+-.67*2.7+69
+```
+
+
+hi:
+```{r}
+.67*2.7+69
+```
+
+Cutoffs for middle 50%:  from 67.2" to 70.8".  
+
+Range:
+
+```{r}
+70.8-67.2
+```
+
+Note:  This is IQR!  Range of middle 50%!
+
+### Ex)  
+
+Mean IQ is 100, stdev 15, normal.  Find range of middle 90% of IQ.
+
+Find area = .05, both z=1.64 and 1.65 are equally good, split the diff:  
+
+     z = +/- 1.645
+
+Cutoffs:  
+
+      x  = z*stdev+mean
+      
+```{r}
+-1.645*15 + 100
+```
+     
+```{r}
+1.645*15 + 100
+```
+ 
+Range between 75.3 and 124.7:
+
+```{r}
+124.7-75.3
+```
+
+CUTOFF FOR QUIZ.  Quiz:  normal dist!  forwards and backwards!  basic and practical!  need z-table  
+
+
+## Sampling Distributions
+
+So far: asking questions about individuals.  
+
+A "sampling dist" is a probability distribution for the likelihood of a SAMPLE STATISTIC.
+
+- How likely is our sample mean?        xbar
+- How likely is our sample propotion?   phat
+- How likely is our sample stdev?       s_x
+- How likely is our cor coef?           r
+
+Ie:  NOT ABOUT INDIVIDUALS!  Instead, describing ENTIRE SAMPLES!
+
+
+### Ex)  
+
+Suppose we roll two dice.  Find the sampling dist for their mean, **xbar**.
+
+Need two things:
+
+- All possible values of xbar (all possible means of two dice)
+- Find their probabilities
+
+
+
+xbar = 1   (1,1)
+xbar = 1.5 (1,2), (2,1)
+xbar = 2   (1,3), (3,1), (2,2)
+xbar = 2.5 (1,4), (4,1), (2,3), (3,2)
+xbar = 3   (1,5), (5,1), (2,4), (4,2), (3,3)
+xbar = 3.5 (1,6), (6,1), (2,5), (5,2) ,(3,4), (4,3)  
+xbar = 4   (2,6), (6,2), (3,5), (5,3), (4,4) 
+..
+xbar = 6   (6,6)
+
+Picture!  
+
+![](https://share.sketchpad.app/21/667-c09e-006730.png)
+
+Observations:
+
+1)  Shape has changed!  X has a "flat" distribution, Xbar has a peak in the middle
+
+2)  Spread has changed!  X has larger spread than xbar!
+
+3)  Center has not changed!  
+
+These are always true for ALL sampling dists, no matter what x is, no matter what n (sample size):
+
+ - shape becomes more peaked in the middle (sound familiar?)
+ - spread smaller as n bigger
+ - center never changes!

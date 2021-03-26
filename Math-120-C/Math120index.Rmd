@@ -40,22 +40,12 @@ theme_set(                                #this sets the theme for all    #
 - [Week 4](https://millera2.github.io/Math-120-C/Math-120-Lec-04.html)
 - [Week 5](https://millera2.github.io/Math-120-C/Math-120-Lec-05.html)
 - [Week 6](https://millera2.github.io/Math-120-C/Math-120-Lec-06.html)
+- [Week 8](https://millera2.github.io/Math-120-C/Math-120-Lec-07.html)
 
 
-## Exam
+## Next Quiz
 
-Up to and including Week 6, Wednesday.  (All of the Week 6 Notes above)
-
-Practice problems for week 6 material:
-
-- 3.5 (p92)
-- 3.6 (p92) [Check your class notes for the solution]
-- 3.9 (p93)
-- 3.13 (p109)
-- 3.15 (p109)
-
-
-
+Normal Dist!  Z-table, practical problems, forwards backwards, middle %.
 
 
 ## HW Assignments
