@@ -41,18 +41,27 @@ theme_set(                                #this sets the theme for all    #
 - [Week 5](https://millera2.github.io/Math-120-C/Math-120-Lec-05.html)
 - [Week 6](https://millera2.github.io/Math-120-C/Math-120-Lec-06.html)
 - [Week 8](https://millera2.github.io/Math-120-C/Math-120-Lec-07.html)
-
+- [Week 9](https://millera2.github.io/Math-120-C/Math-120-Lec-07.html)
 
 ## Next Quiz
 
-Normal Dist!  Z-table, practical problems, forwards backwards, middle %.
+Sampling distributions for xbar and phat.
 
-Practice:
+Practice problems:
 
-- 4.1 (p142)
-- 4.3 [b-f only] (p142)
-- 4.7 (p143)
+1)  The average wait time at a particular bus stop is 12 min, with stdev 2.1 min.  If we take a sample of 35 people, what's the probability that their mean wait time is at least 10 min?
 
+2)  The average wait time at a particular bus stop is 12 min, with stdev 2.1 min.  If we take a sample of 50 people, how high must their average wait time be in order to be in the top 5% of sample mean wait times?
+
+3)  This year at DU, 51% of students are female.  In a sample of 45 students, what's the probability that at least half of them are female?
+
+<small> Answers:
+
+1) 0.9205  2) 12.49   3) 0.5534
+
+</small>
+
+<br><br>
 
 
 ## HW Assignments
