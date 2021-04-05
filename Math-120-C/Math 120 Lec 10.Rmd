@@ -1,0 +1,399 @@
+---
+title: "Math 120 Week 06"
+author: "Prof Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 4
+    code_folding: show
+    theme: yeti
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+
+
+# Wed March 31
+
+Simulation for the dice distribution.
+
+Sample of dice, n=10:
+
+```{r}
+mean(sample(1:6, 1000, replace = TRUE))
+```
+
+Idea:  take MANY samples, find their means, make histogram.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+20000 Dice Rolls (n=1)
+
+```{r}
+n=1
+qplot(replicate(20000, mean(sample(1:6, n, replace=TRUE))))
+```
+
+
+
+
+
+
+Thousands of means (xbar), n=2 dice:
+
+```{r}
+n=2
+qplot(replicate(10000, mean(sample(1:6, n, replace=TRUE))))
+```
+
+
+
+Thousands of means (xbar), n=5 dice
+
+```{r}
+n=5
+qplot(replicate(30000, mean(sample(1:6, n, replace=TRUE))),bins=30)
+```
+
+
+
+Thousands of means, n=30 dice
+
+```{r}
+n=30
+qplot(replicate(10000, mean(sample(1:6, n, replace=TRUE))),bins=18)
+```
+
+
+
+
+
+
+Woah!  Looks familiar!
+
+Summary:
+
+- When looking at sample averages (xbar), smooshed towards the center.  Less likely to get very small xbar or very xbar.  
+- As n (sample size) gets larger and larger, the sampling distribution for xbar gets closer and closer to a normal distribution!  Woah!
+- We know the probability dist for xbar.  Ie, we can say how likely or unlikely SAMPLE MEANS are!
+
+Summary:
+
+The Central Limit Theorem says:  [...]
+
+
+For xbar, "large enough" generally means [...]  
+
+Know the shape:  normal.  
+
+    z = (x-mean)/stdev
+
+Center:  the mean stays the same!  
+
+- the expected value for xbar is the same as the expected value for x
+
+Spread:  stdev for xbar is 
+
+    s_x / sqrt(n)
+    
+    = stdev for original population / sqrt of sample size
+    
+Note:  as n gets big, s_x/n gets small!  Bigger samples have less variation!
+
+
+### Ex 1:  
+
+Height for adult men is normal, mean=69", stdev = 2.7".  What's the probability that a randomly selected man is at least 70" tall?
+
+    z = (70-69)/2.7
+    
+```{r}
+(70-69)/2.7
+```
+    
+Look up z = 0.37
+
+P(X>70) = 
+
+```{r}
+1-0.6443
+```
+
+About 35.57% of men are at least 70" tall.
+
+
+### Ex 2:  
+
+Suppose we take a sample of 4 men and calculate their average height.  What's the probability that xbar is at least 70"?  
+
+Ie,  P( xbar >= 70)  
+
+mean:  stays the same.  mean for xbar = 69"
+
+spread: smaller.  spread for sbar = 2.7/sqrt(4)  = 1.35
+
+     P(xbar >= 70) = P(z > 1.35)
+                   = 1-.9115
+     
+```{r}
+1-.9115
+```
+
+
+### Ex 3)  
+
+If we take a sample of n=30 men what's the prob that their mean height is at least 70"?  
+
+mean:  69 (doesn't change)
+stdev:  2.7/sqrt(30)
+
+      P(xbar >= 70) = P(Z > (70-69)/ ( 2.7/sqrt(30) )   )
+
+```{r}
+(70-69)/( 2.7/sqrt(30) )
+```
+
+                    = P(Z > 2.03) = 1-.9788
+                    
+```{r}
+1-.9788
+```
+                    
+
+Observations:
+
+- ...
+- ..
+
+
+### Ex:  
+
+The life span of a brand of lightbulb has mean of 10,000 hours with stdev 500.  If we take a sample of 60 lightbulbs, what are the cutoffs for the middle 70% most likely sample averages?  
+
+Look up area = .15 in table:  z = +/- 1.04
+
+
+     z = (obs - mean)/stdev
+     
+     z = (xbar - mean)/(stdev/sqrt(n))
+     
+Low:
+
+```{r}
+-1.04*(500/sqrt(60))+10000
+```
+
+hi:
+
+```{r}
+1.04*(500/sqrt(60))+10000
+```
+
+The middle 70% most common sample means are between 9932.9, 10067.1.  
+
+
+
+# Friday April 2
+
+Last time:  samp dist for xbar.  
+
+Idea:  find probability of a particular sample mean. 
+
+Center: stays the same
+
+     mu_xbar = mu_x
+     
+Think:  "the mean of the mean is the mean".  
+
+
+Spread:  gets smaller with n
+
+     sigma_xbar = sigma/sqrt(n)
+     
+Shape:
+
+   - If X (original pop) is normal, then xbar (samp dist) is normal no matter what n is.  
+   
+   - CLT:  As long as n is large (n>=30), then xbar is normal no matter what original population we sample from!!  Holy cow!
+   
+   
+   
+   
+   
+### Ex:  
+
+Giraffe height is normal with mean 18', stdev 2.5'.  If we take sample of 5 giraffes, what's the prob their mean height is at least 19' tall?
+
+mu_x = 18  (population mean)
+sigma_x = 2.5 (population stdev)
+
+n=5
+
+Find:  P(xbar >= 19)
+
+Q: Can we use Z table?  Is xbar normal?  Since giraffe height is normal, xbar is normal even for small n.  
+
+Dist for xbar:
+
+mu_xbar = 18
+sigma_xbar = 2.5/sqrt(5)
+
+z:
+```{r}
+(19-18)/(2.5/sqrt(5))
+```
+
+Area on right:
+```{r}
+1-.8133
+```
+
+There's about an 18.67% chance of observing such a sample mean.  
+
+
+## Proportions
+
+Idea:  xbar is the statistic for quant data (numbers)
+       phat is the statistic for qualitative data (categories)
+       
+       
+Sampling Dist for phat:
+
+Center:  doesn't change
+
+     mu_phat = p
+     
+Spread:  decreases with n
+
+     sigma_phat = sqrt( p(1-p)/n )
+
+Shape:  CLT works for phat also!
+
+     If n is "large enough", phat follows a normal dist no matter what.
+     
+### Ex)  
+
+At DU, 19% of students are international students.  
+
+If we take a sample of 100 DU students, what's the probability that at least a quarter (25%) of them are international?
+
+    p = .19
+    
+    n = 100
+    
+Need: 
+
+    P(phat > .25)
+
+Q:  can we use Z table?  Is phat normal?
+
+    Need:  np>=10  and n(1-p)>=10
+    
+```{r}
+100*.19
+```
+
+```{r}
+100*(1-.19)
+```
+
+YES!  CLT IS SATISFIED!  UZE Z TABLE!
+
+Get z-score:
+
+    z = (obs - exp)/spread
+    
+      = (.25 - .19)/sqrt( .19 * (1-.19) / 100 ) 
+
+```{r}
+(.25 - .19)/sqrt( .19 * (1-.19) / 100 )
+```
+z = 1.53
+
+On table:  area to left = .9370
+
+P(phat >= .25) =
+
+```{r}
+1-.9370
+```
+
+There's about a 6.3% chance of observing such a sample proportion.
+
+### Ex)  
+
+At DU,  77% of students are from out-of-state.  
+
+In a sample of 60 students, what's the probability that at least half are from out of state?
+
+    p = .77
+    n = 60
+    
+Can we use z?
+
+```{r}
+60*.77
+```
+
+```{r}
+60*(1-.77)
+```
+
+Find z for phat = .5
+
+    (.5 - .77)/sqrt( .77 * (1-.77) / 60)
+
+```{r}
+(.5 - .77)/sqrt( .77 * (1-.77) / 60)
+```
+
+P(Z > -4.97) = almost 1
+
+It's nearly certain that more than half of students in the sample are out-of-state.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
