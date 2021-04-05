@@ -447,54 +447,701 @@ $$f(2)=0 \textrm{, and } \lim_{x\rightarrow2}f(x)=0$$
 
 
 
+# Wed Feb 17
+
+## Practice with Empirical Rule
+
+Ex)  For men in the US ages 20-29, the mean height is 69" with stdev 2.7" (this is true).  For women, the mean height is 64", stdev 2.4" (also true).  For both, the distribution follows a normal/bell curve distribution (yep, that's true too!).
+
+a)  If we select a man at random (rando man), what's the probability that he's between 63.6" and 71.7"?
+
+Find z-score:
+
+For 63.6:
+
+```{r}
+(63.6 - 69)/2.7
+```
+
+For 71.7:
+
+```{r}
+(71.7 - 69)/2.7
+```
+
+Find area of region correspondinging to z=-2 to z=1
+
+```{r}
+13.5+34+34
+```
+
+About 81.5% of men are between 63.6" and 71.7" tall.
+
+Note:  right now, we can only solve these problems for whole number z scores.
 
 
 
+b)  If we select a rando woman, what's the probability that she's over 71.2" tall?
+
+```{r}
+(71.2 - 64)/2.4
+```
+
+What portion of the normal/bell curve is above z=+3?
+
+Only 0.15% of women are as tall or taller than 71.2" (5'11.2").
 
 
 
+## 5-number summary, boxplots, and OUTLIERS
+
+Outliers:  measurements that are substantially different from others in the dataset.  Unusual!
+
+Goal:  mathetical criterion for what IS and outlier and what ISN'T.
+
+### 5 number summary
+
+These numbers:  
+
+- low/min
+- q1
+- med
+- q3
+- hi/max
+
+The 5 number summary divides a dataset into quarters.
+
+Ex:  42, 71, 73, 74, 78, 82, 83, 95
+
+5-number summary:
+
+- low:  42
+- q1 :  72
+- med:  76
+- q3 :  82.6
+- hi :  95
+
+## Outliers
+
+If any value in a dataset is either:
+
+    less than Q1 - 1.5*IQR = Q1 - 1.5*(Q3 - Q1)
+    
+or
+
+    greater than Q3 + 1.5*IQR = Q3 + 1.5*(Q3 - Q1)
+    
+then we consider that value to be an outlier.
 
 
 
+Ex:  42, 71, 73, 74, 78, 82, 83, 95
+
+5-number summary:
+
+- low:  42
+- q1 :  72
+- med:  76
+- q3 :  82.5
+- hi :  95
+
+Are there outliers?  Let's compute the "cutoffs":
+low:
+```{r}
+72 - 1.5*(82.5-72)
+```
+hi:
+```{r}
+82.5 + 1.5*(82.5-72)
+```
+
+Since 42 is less than the low cutoff of 56.25, we consider it to be an outlier.  There are no other outliers.
 
 
    
    
+1) Range.  Max - min.
+2) Stdev.  s is the average distance between points in the dataset and the mean.  
+3) IQR.  It's the range of the middle 50%.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Statistical inference is the process of making mathematically supported conclusions about populations based on sample data.  
+
+Ex, we could try to estimate the mean height (mu) of all DU students based on the mean height of a sample of 50 students (xbar).  
+
+
+Say something smart about p based on phat.  
+
+Say something smart about sigma based on s_x.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Histograms are visualizations for quantitative data.  
+Bar graphs are visualizations of qualitative data.
+
+Differences:
+
+- In a bar graph, order of the bars don't matter.  No notion of shape, spread, center, etc.
+- Bars don't touch in a bar graph - categories are discrete.  
+
+
+
+
+
+# Monday Feb 22
+
+## Correlation
+
+Last time:  main visual tool for analyzing relationships between 2 quant variables:  scatterplot.  
+
+```{r}
+qplot(mpg$displ, mpg$cty)+geom_smooth(method="lm")
+```
+
+```{r}
+cor(mpg$displ, mpg$cty)
+```
+
+
+Ex:  mpg, cty vs hwy
+
+```{r}
+qplot(mpg$cty, mpg$hwy)+geom_smooth(method="lm")
+```
+
+```{r}
+cor(mpg$cty, mpg$hwy)
+```
+
+
+Woah!  Seems like cars that are efficient in the city are also more efficient on the highway!
+
+Ex:  iris, sepal length vs sepal width
+
+```{r}
+qplot(iris$Sepal.Length, iris$Sepal.Width)+geom_smooth(method="lm")
+```
+
+```{r}
+cor(iris$Sepal.Length, iris$Sepal.Width)
+```
+
+
+
+Looks like a blob!  Seems like no strong relationship.
+
+## Important features/observations about scatterplots
+
+
+1) Form.  Shape.  Examples:  linear, parabola, exponential, logistic, etc et...  FOr us in 120:  only care about linear.  
+
+2) Direction.  
+  - positive.  When x gets bigger, y tends to get bigger too.  Goes up!
+  - negative.  When x gets bigger, y tends to get smaller.     Goes down!
+
+3) Strength. How closely do the points seem to fit the pattern?  Is there lots of scatter?  Are they close to the line?  
+
+
+
+
+## The linear correlation coefficient, r
+
+r measures both strength and direction of a linear relationship.  
+
+### Important properties of r:
+
+- The sign (+/-) of r is determined by the sign of the relationship.  Pos r value means positive relationship, neg r value means neg rel.
+- If r is close to +1, then there's a strong positive lin rel.
+- If r == 1, the points in the plot are **colinear**
+- If r is close to -1, then there's a strong negative lin rel
+- If r == -1, the points are colinear
+- If r is close to zero, there is little/no LINEAR relationship.
+- Related warning:  r ONLY measures LINEAR relationships.  Just because r is close to zero, that doesn't mean that there's NO relationship.
+- r only tells you about the strength and direction.  It DOESN'T tell you about the slope.  
+
+- r has no units.  
+- r is unaffected by the choice of units in measuring data!  Ex: inches/cm, F/C, mi/km, pounds/kg etc.  Changing units has no effect on r.  WHEW!  Don't have to worry about choice of units.
+- For any dataset, it's always true that:   -1 <= r <= 1.   Ie, you can't have r=1.81.
+
+
+
+## Linear Regression
+
+Idea:  what's the "best" line that comes "as close as possible" to the points?
+
+Many names:
+
+- best fit line
+- trend line
+- regression line
+- linear model
+- least squares line (my fave)
+
+GOOD NEWS:  these all describe exactly the same thing!  There's exactly ONE unique line that does the best job!  Whew!
+
+Problem:  What's the equation of the line?  What makes it the best?
+
+Goal:  minimize the (vertical) distance between the points and the line.  RESIDUALS!
+
+    residual = point - line
+             = y - yhat
+             = observed - expected
+             = error in prediction!
+             
+It's called the "least squares" line because it minimizes the SQUARE residuals:
+
+    (y - yhat)^2
+    
+Need to use square residuals so that + resids and - resids don't cancel out.  Minimize TOTAL error in the model.  
+
+
+
+
+
+
+
+# Friday Feb 19
+
+## Boxplots
+
+Boxplots are another visualization for quant data.  They show specifically the 5-number summary and outliers.
+
+
+Example:  Scores;  42, 71, 73, 74, 78, 82, 83, 95
+5-# summary:
+
+lo:  42
+q1:  72
+med: 76
+q3:  82.5
+hi:  95
+
+Outlier cutoffs:
+low:  q1 - 1.5*(q3 - q1):
+```{r}
+72 - 1.5*(82.5-72)
+```
+hi:  q3 + 1.5(q3 - q1)
+```{r}
+82.5+1.5*(82.5-72)
+```
+
+There's an outlier:  42.
+
+Ignoring the outlier, it seems that our grade distro has right skew (the right whisker is longer).  
+
+Notes:
+
+- Boxplots are very useful for comparing multiple quant distributions, because you can have them on the same axis!
+
+```{r}
+boxplot(iris$Sepal.Length~iris$Species, horizontal = T)
+```
+
+Let's compare!  Look like setosa has the lowest center (ie we expect setosa sepal lengths to be shorter).  
+
+Versicolor and virigina have similar spreads, looks like virginica is a little more spread out.  
+
+The only outlier is in the virginica species with a sepal length of about 4.9cm.
+
+A disadvantage of boxplots:  can miss details about the shape (bimodal or multimodal).  
+
+```{r}
+hist(iris$Petal.Length)
+```
+
+### What to do about outliers?
+
+We've seen that outliers can strongly affect our statistical analyses.  What to do?
+
+Good practice:  analyze data two times:  with outliers and without.  Deciding how important they are is up to you, the investigator!  
+
+
+## Correlation:  comparing TWO quantitative variables.
+
+How can we study the relationship between TWO quantitative variables?
+
+Ex:  height and weight.  We'd expect, in general, that taller people are heavier.  
+
+As always, start with a picture!  Here:  scatterplot.
+
+A **scatterplot** is an x-y plot of all points for our two variables.
+
+
+Ex: In the mpg data, make a scatterplot show the relationship between displ (x) and cty mpg (y).
+
+
+Displ:  size of the engine (liters)
+cty:    mpg in city traffic
+
+
+```{r}
+qplot(mpg$displ, mpg$cty)
+```
+
+Woah!  Looks like larger engines tend to be less efficient!  
+
+
+
+# Wed Feb 24
+
+Goal: model the relationship between x and y as a line.  
+
+We think of x as the "indendent variable", or "explnatory variable."
+
+We think of y as the "dependent variable", or the "response variable."
+
+Our linear model describes the effect that x has on y.  We make prediction ABOUT y BASED UPON x.
+
+Linear model, ie line.  All lines have the same form of equation:
+
+    y = mx + b
+    
+where
+
+  - m is slope
+  - b is intercept
+  
+  
+For us, no different.  BUT, use differen notation (letters):
+
+
+     yhat = b0 + b1*x
+     
+where
+
+  - b0 is the intercept
+  - b1 is the slope
+  
+  
+  
+## Finding eqn of the least squares line
+
+1) Slope
+
+    b1 = r*sy/sx
+    
+where:
+
+  - r is the correlation coeff
+  - sy is the stdev of the y data
+  - sx is the stdev of the x data
+
+Stories about the formula:
+
+- Since teh slope is scaled (multiplied by) r, stronger correlation means bigger slope.  I.e., if there's stronger correlation, then x has a steeper effect on y!
+
+- Remember from HS:  m = change in y / change in x.  Here, we're looking at the ratio of standard deviation (think: variability) in y compared to x  (sy/sx).
+
+2)  Intercept
+
+Neat fact:  the regression line ALWAYS touches the point (xbar, ybar).
+
+From this, get intercept:
+
+    b0 = ybar - b1*xbar
+
+
+Silly example:  Suppose that xbar = 1, sx = 2, ybar = 3, sy = 4, r = 1/2
+
+b1 = r*sy/sx = (1/2)*4/2 = 1
+
+b0 = ybar - b1 xbar = 3 - 1*1 = 2
+
+->  yhat = 2 + 1*x
+
+
+## Interpreting Coefficients
+
+Coeffiecents: b0 and b1
+
+Goal:  study rel btwn x and y.  
+
+Slope:
+
+From high school:  change in y / change in x.  If x increases by 1, then y changes by the slope.  
+
+In our linear model, we're making predictions about y based on x.  In context:
+
+
+If the [x variable] increases by 1 [x units], then we predict/expect [y variable] to change (inc/dec) by [slope] [y units].
+
+
+Ex:  In a sample of 50 men, the average height was computed to be 68.7" with stdev 3.1".  Their avg weight was 174.3 lbs with stdev 10.2.  The correlation coefficient was computed to be 0.764
+
+Find the equation for the linear model to predict weight based on height.  Interpret the slope of this model.
+
+
+x = height
+y = weight
+
+xbar = 68.7
+sx   = 3.1
+ybar = 174.3
+sy   = 10.2
+r    = 0.764
+
+1) slope:
+
+```{r}
+0.764*10.2/3.1
+```
+
+
+2)  intercept:
+
+```{r}
+174.3 - 2.514*68.7
+```
+
+    yhat = 1.588 + 2.514x
+    
+    
+Slope = 2.514.  Interpret:  For each addition inch tall a man is, we'd predict/expect that his weight increases by 2.514 lbs.
+
+
+
+
+Ex:  Iris.  Predict pedal width based on petal length.  Eqn:  yhat= -0.363 + 0.416x
+
+Interpret slope:  For additional cm longer a petal is, we predict/expect its width to increase by 0.416 cm.
+
+### Interpreting y-int
+
+From HS:  the y-intercept is the y-coord where x = 0.
+
+
+In a lin model, the intercept is what we predict [y variable] to be when [x variable] is zero [x units].
+
+Ex:  height model.  yhat = 1.588 + 2.514x
+
+x = height
+y = weight
+
+If a man is 0 inches tall, we'd predict that he weighs 1.588 lbs.  Of course, this is silly!  Extrapolation!  Ie, making predictions based on x-vals that are outside the range of observed values.  Bad!
+
+
+- Just because we observed a relationship in our data, there's no reason to assume that it continuous OUTSIDE the range of observations we've made!
+
+- "Garbage in, garbage out!"
+
+Ex:  iris.  Petal width based on petal length.
+
+    yhat= -0.363 + 0.416x
+    
+Interpret intercept:  if a petal's length is 0cm, then we predict its width to be -0.363cm.  (!!!)
+
+Extrapolation!
+
+
+```{r}
+qplot(iris$Petal.Length,iris$Petal.Width)
+```
+
+
+##  Evaluating the model
+
+Idea:  is it good?  is it bad?  can we trust predictions made by the model?
+
+
+### Effects of outliers
+
+Outliers can have a variety of effects on the linear model.  None of the coefficients are robust, so we wonder:  are the outliers changing the model?
+
+Ex:  Iris.  Predict sepal width based on sepal length
+
+```{r}
+qplot(iris$Sepal.Length, iris$Sepal.Width)
+```
+
+Looks like a blob.  r:
+
+```{r}
+cor(iris$Sepal.Length, iris$Sepal.Width)
+```
+
+What if we add the following outlier:  x=40, y=40
+
+Moral of the story:  the original data DID NOT have a strong relationship.  Here, the outlier made a weak relationship SEEM stronger than it really is!
+
+
+
+
+
+# Monday Mar 1
+
+## Evaluating the Model
+
+### Effects of outliers (ctd)
+
+Ex:  mpg, x=displ, y=cty
+
+```{r}
+qplot(mpg$displ, mpg$cty)
+```
+```{r}
+cor(mpg$displ, mpg$cty)
+```
+
+What if outlier:  x=20, y=60
+
+Correl before: r=-0.8, cor after = -0.06.  Moral of the story:  sometimes, an outlier can make a strong relationship seem weak!
+
+
+**Leverage** is how much imapact an outlier is likely to have on the model coefficients.  Outliers with x-coords far outside the range of observations (extrapolation!) tend to be high leverage.  Example:  both we've seen so far.
+
+Outliers with x-val within the range of "normal" observations tend to be low leverage.  Example:  below.
+
+Example:  mpg.  x=displ, y=cty.  (same as above, see scatterplot)
+
+Outlier:  x=4.5, y=50
+
+Correl before: r= -0.8.  Correl after:  r = -0.7.  Some impact, but not much, since this isn't a "high leverage" outlier.
+
+Ex:  mpg, x=cty y=hwy
+
+```{r}
+qplot(mpg$cty, mpg$hwy)
+```
+
+Outlier:  x=100, y=125
+
+Here, started with strong pos rel, outlier doesn't change that since it fits the pattern.  Moral:  sometimes outliers don't have any effect on the liner model.
+
+BIG ULTIMATE MORAL:  Outliers can do lots of things!  Need to check the scatterplot to decide.
+
+
+## Evaluating the Model (ctd)
+
+### Residuals
+
+Recall:
+
+    resid = y - yhat
+          = obs - expected
+          = point - line
+          = vertical distance between the point and the line
+          = ERROR!!!!  BAD!!
+          
+First:  residual plot!
+
+   x-axis:  original x data
+   y-axis:  residuals!
    
+Example:  mpg, x=displ, y=cty
 
+Original:
 
+```{r}
+qplot(mpg$displ, mpg$cty)+geom_smooth(method="lm")
+```
 
+When analyzing a residual plot, the following suggest that the linear model is not the best/not appropriate (bad residuals):
 
+- A pattern.  (Usually a curve pattern).  If the residuals have a pattern, then the errors are predictable!  But, if errors are predictable, we should be able to fix them!  Linear model probably not the best.
 
+- heteroskedasticity.  magnitude of residuals changes across the range of x vals.  If residuals are heterosked, then the model does well in some ranges, but poorly in others.  Linear model probably not the best.
 
+"Good residuals":  evenly dispersed, no patter.  Blob!  No pattern in error -> can't do better than linear model.  Lin model is good!
 
+### We hope residuals follow normal dist
 
+To see:  histogram of residuals!
 
+```{r}
+mpgmodel <- lm(mpg$cty~mpg$displ)
+hist(mpgmodel$residuals)
+```
 
+Not awful, but definitely some right skew.  Could indicate that linear model isn't the best.
 
 
 
+# Wed Mar 3
 
 
 
 
+## Evaluating the model (cont)
 
+So far:
 
+- outliers
+- residuals (resid plot and histogram of resids)
 
 
+Now:  Coeffecient of determination, r^2  (or R^2).
 
+Goal in lin reg:  study effects of x on y.  Genenerally, we know x isn't the only factor!  Ex:  predicting weight based on height.  We know height's not the only factor, but how much does it account for?
 
+Answer:  The coefficient of determination is the percentage of variation in the y data that's due to/because of/attributable to the linear relationship between x and y.  
 
+Ex:  Suppose data is collected on 50 men.  We calculate the correlation coefficient between height and weight to be r = 0.78.  For the linear model that predicts weight based on height, calculate and interpret the coefficient of determination.  
 
+x = height
+y = weight
 
+Calculate r^2:
+```{r}
+(.78)^2
+```
 
+Of all the variation in their weight, about 61% was because of the effect of the linear relationship between height and weight.  
 
 
+Ex)  mpg data, x=displ y=cty
 
+```{r}
+cor(mpg$displ, mpg$cty)
+```
 
+r^2:
 
+```{r}
+(-0.798524)^2
+```
 
 
+Interpret r^2:  Of all the variation in city fuel efficiency, about 64% is attributable to the relationship between engine size and fuel efficiency.  
 
 
 
@@ -506,33 +1153,73 @@ $$f(2)=0 \textrm{, and } \lim_{x\rightarrow2}f(x)=0$$
 
 
 
+## Ch 3 - Probability
 
+### Two Defs
 
+A chance experiment or probability experiment is any occurance that could result in at least two different ways (possibly many more!), and there's no way of knowing in advance what the outcome will be.
 
 
+Ex:  A coin toss.  Results:  either heads or tails.
 
+Ex:  Roll a dice.  Results:  1,2,3,4,5,6
 
+Ex:  Pick two cards at random from a deck.  Results:  all possible combos of 2 cards
 
+Ex:  Select a DU student at random, record their year in school.  
 
+Ex:  Select a random sample of 35 DU students, record their average height.
 
 
+Goal:  decide how likely or unlikely certain outcomes are!
 
+Answer:  Probability
 
+1)  Classical/Theoretical probability of an outcome is the ratio of occurances of that outcome after observing the random process an infinite number of times.
 
+Ex)  A fair coin is tossed.  What's the probability of a H showing up?  Two possible outcomes, both equally likely:
 
+    P(H) = 1/2 = 50% = 0.5
+    
+    
+2)  A fair 6-sided dice is rolled.  What's the probability of observing a number greater than 4?  Two numbers greater than 4, 6 possibilities total:
 
+     P(>4) = 2/6 = 1/3 = 0.33333 = 33.33333%
+     
+     
+PROBLEM:  can't always compute theoretical probabilities!  Could be very large number of possibilities (all humans), could be infinite!, could be changing!
 
+2) Experimental/Observational/Relative Frequency probability is ratio of times (relative frequency) that an outcome occurs over the total number of trials (n).
 
 
+Ex:  An imprisoned mathematician flips a coin 10,000 times and observes 4967 heads.
 
+     P(H) = 4967/10000 = 0.4967
+     
+Good!  We can always compute relative frequencies!
 
+Bad!  They're usually wrong!  (At least a little)
 
+### The Law of Large Numbers
 
+As the number of repetitions, n, of a random process increases, the relative frequency probability tends to get closer and closer to the true theoretical probability.
 
+Good news!  We don't have to care too much about the difference between theoretical and experimental probabilities, as long as n is "large enough".  
 
+Important notes:
 
+- When n is small, we tend to see lots of variability in experimental probability.
 
+- When gets large, two things:
+  1) Variation gets small (repeatable outcomes)
+  2) The value they converge to is the true/theoretical probability
+  
+  
+Ex:  Goal:  find P(1) when rolling a dice via experimental prob.  
 
+```{r}
+186142.4 + 39.113*1420
+```
 
 
 
@@ -551,18 +1238,43 @@ $$f(2)=0 \textrm{, and } \lim_{x\rightarrow2}f(x)=0$$
 
 
 
+### Disjoint Events / Addition Rule
 
+A random process can have many possible outcomes.
 
+An "event" is any collection of those outcomes that we're interested in.
 
+Ex:  Roll a dice.  Let event A = the event that an even number shows.
 
+    A = {2,4,6}
 
+Two events are "disjoint" (mutually exclusive) if they have no outcomes in common.
 
+Ex:  Roll a dice.  Are the events disjoint?
 
+     A = even number
+     B = prime number
+     
+No, not disjoint, since 2 is an outcome in both!
 
+**Addition Rule for disjoint events**:  If A,B are disjoint events, then:
 
+     P(A or B) = P(A) + P(B)
+     
+Think:  If disjoint, then "or" means "+"
 
+Ex:  Roll a dice.  
 
+    A = an odd shows up                 = {1, 3, 5}
+    B = number greater than 5 shows up  = {6}
+    
+Find P(A or B):
 
+    P(A or B) = P(A) + P(B)
+              = 3/6  + 1/6  = 4/6
+    
+    
+ 
 
 
 
@@ -570,24 +1282,1427 @@ $$f(2)=0 \textrm{, and } \lim_{x\rightarrow2}f(x)=0$$
 
 
 
+### Not Disjoint Events (General Addition Rule)
 
+For ANY two events A,B:
 
+     P(A or B) = P(A) + P(B) - P(A and B)
+     
+Idea:  don't want to double count the overlap (A and B)
 
 
+Ex)  Roll a dice.  
 
+     A = even
+     B = prime
+     
+Compute P(A or B).
 
+    P(A or B) = P(A) + P(B) - P(A and B)
+              = 3/6  + 3/6  - 1/6
+              = 5/6
+              
+Ex:  **Contingency Table**/**Two Way Table**
 
+```{r}
+table(mpg$year, mpg$drv) %>% addmargins()
+```
 
 
+a)  Compute P(f).  Ie, if we randomly select a car, what's the prob that it's a front-wheel-drive car?
 
+    P(f) = 106/234
+    
+b)  Compute P(99 or r).
 
+    P(99 or r) = P(99) +   P(r) -   P(99 and r)
+               = 117/234 + 25/234 - 11/234
+               
+```{r}
+117/234 + 25/234 - 11/234
+```
+               
 
 
+Ex)  A card is selected at random from a 52-card deck.  What's the probability that it's either a red card or a face card?
 
+    P(R or F) = P(R)  + P(F) -  P(R and F)
+              = 26/52 + 12/52 - 6/52 = 32/52
+              
+```{r}
+32/52
+```
+              
 
 
 
 
+### Probability Distribution
 
+A prob dist is:
 
+- list of all outcomes
+- for each, the associatied probability
 
+Usually shown as a table.
+
+Ex:  Two coins are tossed.  We record the number of heads showing (x).  Construct a prob dist for x.
+
+
+H, H   ->  x=2
+H, T   ->  x=1
+T, H   ->  x=1
+T, T   ->  x=0
+
+
+ x   |  0  |  1  |  2  |
+ P(x)| 1/4 | 2/4 | 1/4 |
+
+
+# Mon March 8
+
+Ex:  Roll two dice.  Let X=sum of the faces shown  Construct a prob dist for x.
+
+- What are possible values for x?
+
+smallest:  x=2
+biggest:   x=12
+
+Possible values for x:  2, 3, 4, .... 12.  
+
+"Support":  the set of possible values for x.  
+
+How many possible outcomes?  
+
+One outcome:  (3,5)  [three on first, five on second]  x=8
+
+__| 1 | 2 | 3 | 4 | 5 | 6
+1 |
+2 |
+3 | 
+4 |
+5 | 
+6 |
+
+How likely is each outcome?
+
+
+x = 2  (1,1)                                       P(x=2) = 1/36
+x = 3  (1,2), (2,1)                                P(x=3) = 2/36
+x = 4  (1,3), (3,1), (2,2)                         P(x=4) = 3/36
+x = 5  (1,4), (4,1), (3,2), (2,3)                  P(x=5) = 4/36
+x = 6  (1,5), (5,1), (4,2), (2,4) (3,3)            P(x=6) = 5/36
+x = 7  (1,6), (6,1), (5,2), (2,5), (3,4), (4,3)    P(x=7) = 6/36
+x = 8  (2,6), (6,2), (5,3), (3,5), (4,4)           P(x=8) = 5/36
+
+P(x = 9) = 4/36
+P(x = 10) = 3/36
+P(x = 11) = 2/36
+P(x = 12) = 1/36
+
+x   | 2     3     4     5     6      7      8     9     10      11     12
+P(x)|1/36 2/36  3/36  4/36   5/36   6/36   5/36  ....
+
+
+
+
+####  Properties of Prob Dists
+
+1)  0 <= P(x) <= 1  for all x
+2)  sum(P(x)) = 1  (for all x)
+
+
+
+
+
+
+
+
+
+### Complement
+
+The complement of an event A 
+
+(Notation:  A',  A^C)
+
+is the set of all outcomes NOT CONTAINED in event A.
+
+Ex:  Roll a dice.  A = event that an even shows.
+
+Options:  {1,2,3,4,5,6}
+
+A = {2,4,6}
+
+A' = {1,3,5}
+
+#### Complement Rule:
+
+     P(A')  = 1 - P(A)
+
+Makes sense: any outcome is either in A or not in A, so:
+
+    P(A) + P(A') = 1
+    
+    
+Ex:  Flip a coin 4 times.  What's the probability that at least one coin shows H?
+
+Note:  many possible outcomes!
+
+H T H T
+H H H H
+H T T T
+H T T H
+
+....
+
+
+Complicated!  But, the complment is simple:
+
+T T T T
+
+    P(T and T and T and T) = (1/2)*(1/2)*(1/2)*(1/2) = 1/16
+    P( at least one heads) = 1 - P(all are tails)
+                           = 1 - 1/16 = 15/16
+                           
+```{r}
+15/16
+
+```
+                           
+                          
+Ex:  About 19% of DU students are international students.  If we take a random sample of 10 students, what's the probability that at least one of them is an international student?
+
+Complement:  none of them are international.  
+
+    P(all 10 are not international) = (.81)*(.81)*(.81)*...*(.81) = (.81)^10
+    ->  P(at least one is international) = 1-(.81)^10
+    
+```{r}
+1-(.81)^10
+```
+    
+#### "At least one" problems:
+
+     P(at least one) = 1 - P(none)
+    
+    
+    
+
+
+
+### Independence/ Mult Rule
+
+Recall:  A,B are disjoint if they have no outcomes in common.  If so:
+
+     P(A or B) = P(A) + P(B)
+     
+Think:  if disjoint, "or" means "plus"
+     
+Two events A,B are **independent** if the outcome of one doesn't affect the likelihood of the other.
+
+WARNING:  TOTALLY DIFFERENT FROM "DISJOINT"!
+
+Ex:  Event A:  it's cloudy.  Event B:  it's raining.  Probably not independent!  These events are "dependent".  
+
+#### Multiplication Rule for Indep Events:
+
+If A, B are indep, then:
+
+    P(A and B) = P(A)*P(B)
+
+If indep, then "and" means "times".
+
+
+Ex:  flip a coin 5 times.  
+
+a)  P(H, H, T, H, T) = (1/2)*(1/2)*(1/2)*(1/2)*(1/2) = (1/2)^5 = 1/32
+
+Ex:  We randomly select three cards from a deck, and replace them at random each time we choose one.  What's the probability that all three are hearts?
+
+    P(H and H and H)  = (13/52)*(13/52)*(13/52)
+
+```{r}
+(13/52)*(13/52)*(13/52)
+```
+
+
+Indep events!
+
+What if we DON'T replace the card?
+
+
+    P(H and H and H) = (13/52)*(12/51)*(11/50)
+    
+```{r}
+(13/52)*(12/51)*(11/50)
+```
+    
+Hmm.... both seem similar...
+
+
+
+
+
+### Sampling w/ Replacement vs Not
+
+Saw:  often similar!
+
+Idea:  If population is "large", it doesn't really matter if we sample with replacement or not!
+
+Rule of thumb:  if the sample size is no greater than 5% of the pop size, we consider all samples to be independent.  YAY!  Multiplication rule for indep events is easy!
+
+
+Ex:  We take a sample of size n=50 from the pop of DU students (2300).  
+
+```{r}
+50/2300
+```
+
+Sample n is <5%, so we consider indpendent!  Yay!  Doesn't matter if we sample with replacement!
+
+Ex:  If 51% of DU students are female, and we take a sample of 10 students, what's the probability that they're all women?
+
+Note:
+
+```{r}
+10/2300
+```
+
+Assume independent, use multiplication rule:
+
+.51*.51*.51*......*.51 ...
+
+```{r}
+.51^10
+```
+
+
+
+
+
+
+### Conditional Probabity 
+
+    P( A | B ) = "prob of A given B"
+               = "if we know B occurs, how likely is A?"
+
+Ex:  P( Rains | Cloudy) = ?
+
+Formula:  only considering outcomes in B (new sample space!).  So formula:
+
+    P(A | B) = P(A and B)/P(B)
+    
+Think:  "and on top, given on bottom"
+
+Ex:  At DU, 51% of students are women.  Suppose that 17% of all students are both women and STEM majors.
+
+If we choose a random woman, what's the probability that she's a STEM major?
+
+GIven:
+
+   - P(W) = .51
+   - P(W and S) = .17
+   
+Need to find:
+
+    P( S |  W ) = P(W and S) / P(W)
+                =    .17 / .51
+
+```{r}
+.17/.51
+```
+
+Ex:  mpg
+
+```{r}
+table(mpg$year, mpg$drv) %>% addmargins()
+```
+
+a) If we select a car at random from the year 1999, what's the prob that it's 4wd?
+
+Need:  
+
+    P( 4  | 99)  = P(4 and 99) / P(99)
+                 =    (49/234) / (117/234)
+                 =          49 / 117
+                 
+```{r}
+49/117
+```
+                 
+b) Are the events "has front wheel drive" and "is from 2008" independent?
+
+How to check?  
+
+Answer:  if they are indpendent, the mult rule must work!
+
+    P(f and 08) = P(f)*P(08)
+    
+Is this true?  Lets check!
+
+    P(f and 08) = 49/234
+    P(f)        = 106/234
+    P(08)       = 117/234
+    
+"and":
+```{r}
+49/234
+```
+
+"times":
+```{r}
+(106/234)*(117/234)
+```
+
+No!  P(A and B) not equal P(A)*P(B).  Not independent!
+
+
+
+
+
+
+
+
+
+
+
+
+### General Multiplication Rule
+
+Recall:
+
+If A,B disjoint:
+
+    P(A or B) = P(A) + P(B)
+    
+For any A,B:
+
+    P(A or B) = P(A) + P(B) - P(A and B)
+    
+    
+If A,B are indep:
+
+     P(A and B) = P(A)*P(B)
+     
+Q:  What if A,B are NOT independent?  How to find "and" prob????
+
+A:  Conditional probability!
+
+    P(A | B ) = P(A and B)/P(B)
+    
+Little algebra:
+
+    P(A and B) = P(B)*P(A|B)
+               = P(A)*P(B|A)
+               
+Both ways work for ALL events!  Careful:  might only have one conditional prob!
+
+
+Ex:  I am walking my dog.  If he sees a squirrel, there's a 82% chance that he'll bark.  If he doesn't see a squirrel, there's a 27% chance that he'll bark.  In my neighborhood, there's an 76% chance that he'll see a squirrel.
+
+On a random walk, what's the prob that my dog sees a squirrel and barks?
+
+Given:
+
+   - P( B | S)  = .82
+   - P( B | S') = .27
+   - P(S)       = .76
+   
+Need to find:  
+
+   - P(B and S) = P(B)*P(S|B)   <- don't know this stuff!
+                = P(S)*P(B|S)  = (.76)*(.82)
+
+```{r}
+(.76)*(.82)
+```
+
+
+
+
+
+
+# Friday March 12
+
+Ex:  Suppose P(A) = .3, P(B) = .4.  Compute P(A or B) if....
+
+a) ... P(A and B) = .05
+
+    P(A or B) = .3 + .4 - .05 = .65
+
+b) ... A,B are indep
+
+    If A,B indep, then P(A and B) = (.3)*(.4) = .12
+    
+    ->  P(A or B)  = .3 + .4 - .12 = .58
+
+c) ... A,B are disjoint
+
+    If A,B are disjoint, then P(A or B) = P(A) + P(B)  
+    -OR-, if disjoint, then P(A and B) = 0
+    
+    ->  P(A or B) = .3 + .4 - 0 = .7
+
+
+
+d) ... P(A|B) = .05
+
+    P(A and B) = P(A) * P(B|A)
+               = P(B) * P(A|B)  = .4*.05 = 
+               
+```{r}
+.4*.05
+```
+               
+    P(A or B) = .3 + .4 - .02
+              = .68
+
+
+
+Ex)  Suppose we roll a dice 15 times.  What's the probability that at least one time shows "4"?
+
+
+
+Complement:  none are 4s!
+
+not a 4 * not a 4 * not a 4 * ...... * not a 4
+
+= (5/6)^15
+
+     P(at least 1 "4") = 1-(5/6)^15
+
+```{r}
+1-(5/6)^15
+```
+
+
+
+
+### Trees, Total Probability, and Bayes Theorem
+
+
+Ex:  A lie detector test advertises that it's "95% accurate".  This means:  if a person is lying (L), then there's 95% chance that the test shows positive (+).  
+
+Additionally, if a person is not lying, there's an 88% chance that the test shows -.
+
+Most people are honest:  only about 1% of people in the pop are liars.
+
+Draw a prob tree to summarize this scenario.
+
+P(+|L) = .95
+P(-|L) = .05
+P(+|L') = .12
+P(-|L') = .88
+
+
+```{r}
+.99*.12
+```
+
+
+```{r}
+.99*.88
+```
+
+
+Follow-up QUestions:
+
+1) What's the probability that a rando person tests +?
+
+Only two possibilities:
+
+ - Could be honest and positive (L' and +)
+ - Could by lying and positive (L and +)
+ 
+ ->  P(+) = P(L and +) + P(L' and +) = .0095 + .1188
+ 
+```{r}
+.0095 + .1188
+```
+ 
+ 
+ This is the Law of Total Probability!
+ 
+2)  If you get a + result, what's the chance that you're actually lying?
+
+    P( L | + ) = P(L and +)/P(+)  = .0095/.1283
+    
+```{r}
+.0095/.1283
+```
+    
+This is Bayes Thm! Ie, reversing conditionality:
+
+Know:  P(A|B),
+Want:  P(B|A)  
+
+
+Ex:  In a soccer match, a kicker is trying score a goal.  The goalie is trying to stop them.
+
+- If the kick is to the L, there's an 82% chance of B
+- If the kick is to the C, There's a 90% chance of a B
+- If the kick is to the R, there's a 60% chance of a B
+
+Kicker: 
+
+- There's a 55% chance to kick L
+- There's a 20% chance to kick C
+- There's a 25% chance to kick R
+
+1)  Make a prob tree
+
+2)  What's the probability the ball is blocked?
+
+   P(B) = P(L and B) + P(C and B) + P(R and B) 
+        = .55*.82 + .2*.9 + .25*.6
+
+```{r}
+.55*.82 + .2*.9 + .25*.6
+```
+
+3) If the kick is to the right, what's the prob that it's blocked?
+
+.6
+
+4) If the kick is blocked, what's the prob that it was kicked to the right?
+
+    P( R | B)  = P(R and B) / P(B)
+               = (.25*.6)/.781
+
+```{r}
+(.25*.6)/.781
+```
+
+
+## HW:  Contingency Tables ( Pivot Tables )
+
+
+Ex:  Student Data.  Make Pivot table for Year in School and Hair Color
+
+   Blonde Brown Red Other Black
+F
+S
+J
+Sr
+
+Ex:  Student Data.  Make Pivot table for height and Year In School
+
+
+     Mean Height     Min Height     Max Height    Q1 Height   Q3 HEight
+F
+S
+Jr
+Sr
+
+
+
+
+
+
+
+
+
+
+
+
+Suppose that a dataset about  house sales is collected, and a model to predict the sale price based upon square feet is constructed.  The equation of the model is:
+
+yhat = 186142.4 + 39.113x
+
+The correlation coefficient is 0.650.
+
+Write a complete English sentence to carefully and completely interpret the slope in context of the model, as done in class.
+
+
+For each additional square ft larger a house is, we expect its sale price to increase by 39.11 dollars.  
+
+
+
+
+
+
+
+
+
+
+
+Suppose that a dataset about  house sales is collected, and a model to predict the sale price based upon square feet is constructed.  The equation of the model is:
+
+yhat = 186142.4 + 39.113x
+
+The correlation coefficient is 0.650.
+
+If a particular house sold for $200,000 and had 1420 sq ft, calculate the residual for this house and explain its meaning.
+
+
+    resid = y - yhat 
+    
+    y = 200,000
+    
+yhat:
+
+```{r}
+186142.4+39.113*1420
+```
+
+resid:
+
+```{r}
+200000-241682.9
+```
+
+OUr model OVER-APPROXIMATED the value of the house (negative resid) by $41,682.
+
+
+
+
+
+
+
+
+
+
+```{r}
+iris %>% group_by(Species)%>%summarise(mean(Sepal.Length))
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+A researcher collected data about dogs and their lifespans.  Among the 50 dogs in his dataset, the average (adult) weight was 45.2 lbs with stdev 18.6 lbs.  The average age at death of the dogs was 12.3 years with stdev 2.1 years.  The correlation coefficient between the two variables was -0.68.
+
+Find the complete equation for the linear model that predicts the age at death of a dog based upon its weight.
+
+(Show at least your setup work for credit.)
+
+
+xbar = 45.2
+sx = 18.6
+ybar = 12.3
+sy = 2.1
+r = -0.68
+
+```{r}
+-.68*2.1/18.6
+```
+
+```{r}
+12.3-(-.0768)*45.2
+```
+
+yhat = 15.771 - 0.077x
+
+
+
+
+
+
+
+
+
+
+```{r}
+ 0.68^2
+```
+
+
+x = weight in lbs
+y = age in years
+
+Of all the variation we observed in age at death, about 46.2% of it was due to the linear relationship between weight and age at death.  
+
+
+
+
+
+
+
+
+
+
+P(poker or pizza) = P(poker) + P(pizza) - P(poker and pizza)
+                  =  25/115  +  44/115  - 10/115
+                  
+
+
+```{r}
+(25+44-10)/115
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Mon March 22
+
+
+
+Pivot Table Example:  Check for outliers in sepal length by species.
+
+```{r}
+boxplot(iris$Sepal.Length~iris$Species)
+```
+
+Cutoffs:
+
+low:  q1 - 1.5*(q3-q1)
+hi :  q3 + 1.5*(q3-q1)
+
+
+
+
+## The Normal Dist
+
+
+Idea:  We know what prob dists are.  Here's the most important one:  normal!
+
+Why normal?  Most individuals are close to "average", its increasingly rare to be far above or below.  Pops up in nature all the time!  
+
+Common example:  biometrics (measurements of animals) tend to be normally distributed.  Think:  human height!  
+
+"The" normal dist is actually a family of distributions.  All have same shape, but differ in center and spread.
+
+Normal dists are determined by their mean and std dev!
+
+Ex:  Height for men in the US has mean 69", stdev of 2.7".
+     Height for women in the US has mean 64", stdev of 2.4".  
+
+
+To find probabilities for normal dists, need to find AREA!  
+
+
+
+    AREA = PROBABILITY!!!
+    
+    
+PROBLEM:  There's no "closed form" solution for finding this area. 
+
+Two ways:
+
+1)  Statistical Tables.  Look up the area!
+2)  Software.  Like Google Sheets, Excel, R, SASS, ....
+
+First:  table.  All tables show THE STANDARD NORMAL DIST.  Ie, the normal dist with 
+
+ - mean = 0
+ - stdev = 1
+ 
+Problem:  what if our data doesn't follow a "standard" normal dist?  Ex: human height?
+
+
+To convert:  find the z-score!  Z-scores measure the number of stdevs above or below the mean:
+
+
+     z = (x - mean)/stdev
+
+NOTE:  Z-SCORE == STD NORMAL DIST!!!  
+
+
+To use the table:
+
+1)  Look up your z-score
+2)  Find your area
+
+The table always shows area TO THE LEFT.  
+
+Ex:  Suppose Z has std normal dist.  Compute:
+
+a)  P(Z<1.23) = .8907
+
+b)  P(Z>1.23) = 1 - P(Z<1.23) = 1 - .8907 = 
+
+```{r}
+1 - .8907
+```
+
+
+
+
+
+# Wed March 24
+
+Last time:
+
+P(0.72 < Z < 2.34) = P(Z < 2.34) - P(Z < 0.72)
+                   = .9904 - .7642
+
+```{r}
+.9904 - .7642
+```
+
+
+
+## Reading the table Backwards
+
+So far:  Given a z-score, find area.  Forwards!
+
+Now:     Given an area, find the z-score.  Backwards!
+
+Ex:  What z-score marks the 80th percentile?
+
+In table, find area = 0.8.  Z = .84 (best option)
+
+Ex:  What's the z-score for the 60th percentile?
+
+Find area = .6, z = 0.25.
+
+##  Practical problems - Forwards
+
+Idea:  X has normal dist.  Compute z-score, look it up!
+
+     z = (X - mean)/stdev
+     
+     
+Ex)  Height for adult women in US follows normal dist with mean 64 and stdev 2.4.  Compute the probability that a rando woman....
+
+a)  is less than 70" tall.
+
+z-score:
+
+```{r}
+(70-64)/2.4
+```
+
+     P(X<70) = P(Z<2.5) = .9938
+     
+Ie, 99.38% of adult women in the US are 5'10" or less.
+
+
+
+b)  P(60 < X < 65) = P( -1.67 < Z < 0.42) = .6628 - .0475
+
+z-scores:
+
+```{r}
+(65-64)/2.4
+```
+
+```{r}
+(60-64)/2.4
+```
+
+
+```{r}
+.6628 - .0475
+```
+
+About 61.53% of women are btwn 5'0" and 5'5".  
+
+
+
+c)  P(X>75)  =  P(Z>4.58) ~ 0
+
+z-score:
+
+```{r}
+(75-64)/2.4
+```
+
+
+d) P(X<75) ~ 1
+
+
+MORAL:  Just because z-score is off the charts, doesn't mean you can't find probability!
+
+
+## Practical examples - backwards
+
+IQ has normal dist with mean 100, stdev 15.  
+
+a)  How high would your IQ have to be to be in the top 10%?  
+
+Idea:  first, find z-score for upper 10%.  Then, solve for x.  
+
+     z = (x-mean)/stdev
+     x = z*stdev + mean
+
+
+Find area = .9, z = 1.28
+
+Solve for x:
+
+    1.28 = (x - 100)/15
+    
+    x = 1.28*15+100
+    
+```{r}
+1.28*15+100
+```
+    
+In order to score in the top 10% of IQ, you'd need to score at least 119.2 points.  
+
+Ex)  What's the cutoff for the 25th percentile of IQ?
+
+Look up area = .25, z = -.62
+
+Solve for IQ:
+
+      -0.62 = (x-100)/15
+      
+      x = (-.62)*15+100
+    
+```{r}
+(-.62)*15+100
+```
+    
+The bottom quartile cutoff for IQ is 90.7 points.  
+    
+    
+# Friday March 26
+
+## "Middle Percent" Problems
+
+Ex)  Height for men is normal with mean 69" stdev 2.7".
+
+Q:  What's the range of the middle 50% of heights for men?
+
+Note:  backwards!  Given area, need ranges of heights.
+
+
+Need to look up area.  But, what area?
+
+For lo cutoff, look up area = 0.25, z = -0.67
+
+For hi cutoff, look up area = 0.75, z = +0.67
+
+Find heights:
+
+lo:
+     z = (x-mean)/stdev
+     -0.67 = (x-69)/2.7
+     
+```{r}
+-.67*2.7+69
+```
+
+hi:
+```{r}
+.67*2.7+69
+```
+
+Cutoffs for middle 50%:  from 67.2" to 70.8".  
+
+Range:
+
+```{r}
+70.8-67.2
+```
+
+Note:  This is IQR!  Range of middle 50%!
+
+Ex)  Mean IQ is 100, stdev 15, normal.  Find range of middle 90% of IQ.
+
+Find area = .05, both z=1.64 and 1.65 are equally good, split the diff:  
+
+     z = +/- 1.645
+
+Cutoffs:  
+
+      x  = z*stdev+mean
+      
+```{r}
+-1.645*15 + 100
+```
+     
+```{r}
+1.645*15 + 100
+```
+ 
+Range between 75.3 and 124.7:
+
+```{r}
+124.7-75.3
+```
+
+CUTOFF FOR QUIZ.  Quiz:  normal dist!  forwards and backwards!  basic and practical!  need z-table  
+
+
+## Sampling Distributions
+
+So far: asking questions about individuals.  
+
+A "sampling dist" is a probability distribution for the likelihood of a SAMPLE STATISTIC.
+
+- How likely is our sample mean?        xbar
+- How likely is our sample propotion?   phat
+- How likely is our sample stdev?       s_x
+- How likely is our cor coef?           r
+
+Ie:  NOT ABOUT INDIVIDUALS!  Instead, describing ENTIRE SAMPLES!
+
+
+Ex)  Suppose we roll two dice.  Find the sampling dist for their mean, **xbar**.
+
+Need two things:
+
+- All possible values of xbar (all possible means of two dice)
+- Find their probabilities
+
+
+
+xbar = 1   (1,1)
+xbar = 1.5 (1,2), (2,1)
+xbar = 2   (1,3), (3,1), (2,2)
+xbar = 2.5 (1,4), (4,1), (2,3), (3,2)
+xbar = 3   (1,5), (5,1), (2,4), (4,2), (3,3)
+xbar = 3.5 (1,6), (6,1), (2,5), (5,2) ,(3,4), (4,3)  
+xbar = 4   (2,6), (6,2), (3,5), (5,3), (4,4) 
+..
+xbar = 6   (6,6)
+
+Picture!  Observations:
+
+1)  Shape has changed!  X has a "flat" distribution, Xbar has a peak in the middle
+
+2)  Spread has changed!  X has larger spread than xbar!
+
+3)  Center has not changed!  
+
+These are always true for ALL sampling dists, no matter what x is, no matter what n (sample size):
+
+ - shape becomes more peaked in the middle (sound familiar?)
+ - spread smaller as n bigger
+ - center never changes!
+ 
+ 
+ 
+# Wed March 31
+
+
+Important properties of sampling dists:
+
+- center doesn't change.  
+
+      mu_xbar = mu_x
+      
+      
+      
+- stdev decreases
+
+      sigma_xbar = sigma_x / sqrt(n)
+      
+Note:  as n increases, spread for xbar decreases!
+
+- if X (original pop) is normal, then xbar is normal no matter what, even for small n
+
+- As long as n is "large enough", then xbar follows a normal distribution NO MATTER WHAT POPULATION WE'RE SAMPLING FROM!  ANY X!  
+
+This is the Central Limit Threorem!
+
+Notes:
+
+  - This works for many statistics, not just xbar.  Ex:  phat!  
+  - For xbar, n is "large enough" if n>=30.  
+
+
+Main idea:  we can say how likely or unlikely a sample result is!!
+
+
+To use the CLT:
+
+    z = (obs - exp)/spread
+      = (obs - mean)/stdev
+      = (xbar - mu)/(sigma/sqrt(n))
+      
+      
+Ex)  Men's heights:  normal, mean=69, stdev=2.7.  
+
+   mu_x = 69,   sigma_x =2.7
+   
+a)  What's the prob that a random man is above 70"?  
+
+   z = (70 - 69)/2.7
+
+```{r}
+(70 - 69)/2.7
+```
+
+On table:
+
+```{r}
+1-0.6443
+```
+About 35.6% of men are at least 70".
+
+b) What's the prob that, in a sample of 4 men, their avg height is above 70"?
+
+    P(xbar >= 70)
+
+z-score for  xbar=70:
+
+```{r}
+(70-69)/(2.7/sqrt(4))
+```
+
+Look up:
+
+```{r}
+1-.7704
+```
+
+c) What's the prob that, if n=10, xbar is at least 70?
+
+```{r}
+(70-69)/(2.7/sqrt(10))
+```
+Look up:
+
+```{r}
+1-0.8790
+```
+
+
+d)  If n=50, what's the prob their avg height is at least 70?
+
+```{r}
+(70-69)/(2.7/sqrt(50))
+```
+
+Look up:
+
+```{r}
+1-0.9956
+```
+
+Note:  prob of being away from the mean decreases (a lot) as sample size gets bigger!
+
+
+Ex:  A partical model of lightbulb has mean lifespan of 10,000 hours with stdev 500 hours.  If we take a sample of 60 lightbulbs, what are the cutoffs for the middle 70% most common sample average lifespans?
+
+
+Look up area = .15:  z = +/- 1.04
+
+Find cutoffs:
+
+    z = (xbar - mu)/(sigma/sqrt(n))
+    
+Lo:
+
+    -1.04 = (xbar - 10000)/(500/sqrt(60))
+    
+    xbar = -1.04*(500/sqrt(60))+10000
+    
+```{r}
+-1.04*(500/sqrt(60))+10000
+```
+    
+Hi cutoff (same, but positive z):
+
+```{r}
+1.04*(500/sqrt(60))+10000
+```
+
+
+If we take sample of size n=60 lightbulbs and find average lifespan,  the middle 70% most common sample means lie between 9932.9 hours and 10067.1 hours.
+
+# Wed April 02
+
+## Samling dist for xbar
+
+Center:  stays the same
+
+    mu_xbar = mu_x
+    
+Think:  the mean of the mean is the mean.  
+
+Spread:  gets smaller with n
+
+    sigma_xbar = sigma_x / sqrt(n)
+    
+Shape:
+
+  - If original pop (x) is normal, then xbar is normal no matter what (even for small n).  
+  
+  - CLT:  If n is "large" (n>=30), then xbar is normal no matter what x (original pop) is!  
+  
+  
+Ex) Giraffe height is normal, mean 18', stdev 2.5'.  If we take a saple of 5 giraffes, what's the prob that their mean height is at least 19'?
+
+mu_x = 18
+sigma_x = 2.5
+
+n = 5
+
+Sample:
+
+mu_xbar = 18 
+sigma_xbar = 2.5/sqrt(5)
+
+Q:  How do we know we can use Z?  Is xbar normal?  Yes, since original population (heights) already normal.  Xbar is normal no matter what n.  
+
+P(xbar>19)
+
+z-score:
+
+    z = (obs - exp)/stdev
+      = ( 19 - 18 )/(2.5/sqrt(5))
+
+```{r}
+( 19 - 18 )/(2.5/sqrt(5))
+```
+
+z = .89
+
+Area to the right:
+
+```{r}
+1-0.8133
+```
+
+There's about an 18.67% chance of observing such a sample.
+
+## Samp dist for phat
+
+Idea:  what if we're looking at categorical data?  
+
+Key statistic:  sample proportion, phat.  
+
+Sampling dist for phat:
+
+Center:  stays the same!
+
+    mu_phat = p (population proportion!)
+    
+Spread:  decreases with n
+
+    sigma_phat = sqrt( p*(1-p) / n )
+    
+    
+Shape:  CLT works for phat also!
+
+If n is "large enough", then phat follows a normal distribution no matter what population we're sampling from.
+
+Large enough:  need BOTH
+
+     n*p >= 10   and   n*(1-p) >= 10
+     
+Same thing:  at least 10 in the category, and 10 out of the category.  
+
+
+Ex) At DU, 19% of students are international.  If we take a sample of 100 students, what's the probability that at least a quarter (.25) of students are international?
+
+Need:   P(phat >= .25)
+
+    p = .19
+    n = 100
+    
+    mu_phat = .19
+    
+    sigma_phat = sqrt( .19*(1-.19)/100 )
+
+Q:  how do we know we can use Z?  Is phat normal?
+
+```{r}
+100*.19
+```
+
+```{r}
+100*(1-.19)
+```
+
+Yes!  n is "large enough"!  
+
+z score:
+
+    z = (obs-exp)/stdev
+      = (.25 - .19)/sqrt(.19*(1-.19)/100)
+
+```{r}
+(.25 - .19)/sqrt(.19*(1-.19)/100)
+```
+
+area to the right:
+
+```{r}
+1-0.9370
+```
+
+There's about a 6.3% chance of observing such a sample.  
+
+
+Ex)  At DU, 77% of students are from out-of-state.  In a sample of 60 students, what's the prob that at least half of them are from out-of-state.
+
+    P(phat >= .5)
+
+    p = .77
+    n = 60
+    
+    mu_phat = .77
+
+    sigma_phat = sqrt( .77*(1-.77)/60 )
+    
+Q:  Are we sure phat is normal?
+
+```{r}
+60*.77
+```
+
+```{r}
+60*(1-.77)
+```
+
+Yes!  phat normal!  n is "large enough"!
+
+z-score:
+
+```{r}
+(.5 - .77)/sqrt( .77*(1-.77)/60 )
+```
+
+Need:  P(Z >= -4.97) ~ 1
+
+In a sample of size 60, it's nearly certain (almost 100%) that at least half of students are out-of-state students.
+
+
+
+                   means          |          proportions
+                   
+center:         mu_xbar = mu_x                 mu_phat = p
+
+spread:     sigma_xbar = sigma_x/sqrt(n)    sigma_phat = sqrt( p(1-p)/n )
+
+z-score:  (xbar - mu_x)/(sigma_x/sqrt(n))  (phat - p)/sqrt( p(1-p)/n )
+
+large enough     n>=30                        np>=10 and n(1-p) >= 10
