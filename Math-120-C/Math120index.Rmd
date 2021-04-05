@@ -49,7 +49,7 @@ Sampling distributions for xbar and phat.
 
 Practice problems:
 
-1)  The average wait time at a particular bus stop is 12 min, with stdev 2.1 min.  If we take a sample of 35 people, what's the probability that their mean wait time is at least 10 min?
+1)  The average wait time at a particular bus stop is 12 min, with stdev 2.1 min.  If we take a sample of 35 people, what's the probability that their mean wait time is at least 11.5 min?
 
 2)  The average wait time at a particular bus stop is 12 min, with stdev 2.1 min.  If we take a sample of 50 people, how high must their average wait time be in order to be in the top 5% of sample mean wait times?
 
@@ -57,7 +57,7 @@ Practice problems:
 
 <small> Answers:
 
-1) 0.9205  2) 12.49   3) 0.5534
+1) 0.9205  2) 12.49   3) 0.5517
 
 </small>
 
