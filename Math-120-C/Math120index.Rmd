@@ -40,8 +40,8 @@ theme_set(                                #this sets the theme for all    #
 - [Week 4](https://millera2.github.io/Math-120-C/Math-120-Lec-04.html)
 - [Week 5](https://millera2.github.io/Math-120-C/Math-120-Lec-05.html)
 - [Week 6](https://millera2.github.io/Math-120-C/Math-120-Lec-06.html)
-- [Week 8](https://millera2.github.io/Math-120-C/Math-120-Lec-07.html)
-- [Week 9](https://millera2.github.io/Math-120-C/Math-120-Lec-07.html)
+- [Week 8](https://millera2.github.io/Math-120-C/Math-120-Lec-08.html)
+- [Week 9](https://millera2.github.io/Math-120-C/Math-120-Lec-09.html)
 
 ## Next Quiz
 
