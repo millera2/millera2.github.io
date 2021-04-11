@@ -34,357 +34,401 @@ theme_set(theme_tufte() +
 
 
 
-# Wed March 31
-
-Simulation for the dice distribution.
-
-Sample of dice, n=10:
-
-```{r}
-mean(sample(1:6, 1000, replace = TRUE))
-```
-
-Idea:  take MANY samples, find their means, make histogram.  
 
 
+# Mon April 5
 
+Recall:  Statistical inference is the process of making mathematically supported conclusions about population parameters based on sample data.
 
+Idea:  say something smart mu based on xbar.  
 
+       say something smart about p based on phat.  
+       
+First:  
 
+## Confidence intervals for p
 
+So far:  know info about parameter, use it to find probabilty of a sample.
 
+In reality:  don't know paramters!  Don't know mu, don't know p.  
 
+Want to use our sample result to say something about population.
 
+Confidence interval:  a range of reasonable values for a parameter.
 
+Ex:  We're 95% confident that the **true population proportion** of DU who enjoy waterskiing is between 12% and 24%.  
 
+Note:  CIs alwasys describe PARAMETERS (population), not statistics (sample).  
 
-20000 Dice Rolls (n=1)
-
-```{r}
-n=1
-qplot(replicate(20000, mean(sample(1:6, n, replace=TRUE))))
-```
+Idea:  middle % problem!  Based on our sample result, what are the midde 90%/95%/99% most likely values for parameter!
 
 
 
+Ex:  In a sample of 100 DU students, 18 enjoy water skiing.  Estimate the proportion of DU students who enjoy water skiing with 95% confidence.
 
 
+Check: is phat normal?
 
-Thousands of means (xbar), n=2 dice:
-
-```{r}
-n=2
-qplot(replicate(10000, mean(sample(1:6, n, replace=TRUE))))
-```
-
-
-
-Thousands of means (xbar), n=5 dice
+Check:
 
 ```{r}
-n=5
-qplot(replicate(30000, mean(sample(1:6, n, replace=TRUE))),bins=30)
+100*(18/100)
 ```
-
-
-
-Thousands of means, n=30 dice
 
 ```{r}
-n=30
-qplot(replicate(10000, mean(sample(1:6, n, replace=TRUE))),bins=18)
+100*(1-18/100)
 ```
 
+Both larger than 10, yes phat is normal!
 
+Also:  at least 10 in the category, at least 10 out of the category.  
 
+z = +/- 1.96
 
+For phat:
 
+      z = (phat - p)/sqrt( p(1-p)/n )
 
-Woah!  Looks familiar!
+Idea:  solve for p!
 
-Summary:
+Problem:  what's p(1-p)/n ??  Approximate with phat intestead.  
 
-- When looking at sample averages (xbar), smooshed towards the center.  Less likely to get very small xbar or very xbar.  
-- As n (sample size) gets larger and larger, the sampling distribution for xbar gets closer and closer to a normal distribution!  Woah!
-- We know the probability dist for xbar.  Ie, we can say how likely or unlikely SAMPLE MEANS are!
+Lo:
 
-Summary:
-
-The Central Limit Theorem says:  [...]
-
-
-For xbar, "large enough" generally means [...]  
-
-Know the shape:  normal.  
-
-    z = (x-mean)/stdev
-
-Center:  the mean stays the same!  
-
-- the expected value for xbar is the same as the expected value for x
-
-Spread:  stdev for xbar is 
-
-    s_x / sqrt(n)
-    
-    = stdev for original population / sqrt of sample size
-    
-Note:  as n gets big, s_x/n gets small!  Bigger samples have less variation!
-
-
-### Ex 1:  
-
-Height for adult men is normal, mean=69", stdev = 2.7".  What's the probability that a randomly selected man is at least 70" tall?
-
-    z = (70-69)/2.7
-    
-```{r}
-(70-69)/2.7
-```
-    
-Look up z = 0.37
-
-P(X>70) = 
-
-```{r}
-1-0.6443
-```
-
-About 35.57% of men are at least 70" tall.
-
-
-### Ex 2:  
-
-Suppose we take a sample of 4 men and calculate their average height.  What's the probability that xbar is at least 70"?  
-
-Ie,  P( xbar >= 70)  
-
-mean:  stays the same.  mean for xbar = 69"
-
-spread: smaller.  spread for sbar = 2.7/sqrt(4)  = 1.35
-
-     P(xbar >= 70) = P(z > 1.35)
-                   = 1-.9115
+     -1.96 = (18/100 - p)/sqrt( 18/100*(1-18/100) / 100)
      
+     p = -1.96*sqrt( 18/100*(1-18/100) / 100) + 18/100
+
+
 ```{r}
-1-.9115
+-1.96*sqrt( 18/100*(1-18/100) / 100) + 18/100
 ```
 
-
-### Ex 3)  
-
-If we take a sample of n=30 men what's the prob that their mean height is at least 70"?  
-
-mean:  69 (doesn't change)
-stdev:  2.7/sqrt(30)
-
-      P(xbar >= 70) = P(Z > (70-69)/ ( 2.7/sqrt(30) )   )
+Hi:
 
 ```{r}
-(70-69)/( 2.7/sqrt(30) )
+1.96*sqrt( 18/100*(1-18/100) / 100) + 18/100
 ```
 
-                    = P(Z > 2.03) = 1-.9788
-                    
+We are 95% confident that population proportion of all DU students who enjoy water skiing is between 10.5% and 25.5%.
+
+
+## CI Concepts
+
+
+Picture:
+
+          (---------- statistic ----------)
+          (-------------phat--------------)
+          
+Stat is always in the center.  Best guess!
+
+The length of the "arms":  Margin of Error (MOE).  
+
+Formula:  If phat is normal  (at least 10 in category and outside):
+
+              phat +/- zstar*sqrt( phat(1-phat) / n)
+              
+              
+where zstar is the z-score cutoff for the "middle %" (confidence level).  
+
+
+Ex)  In Spring 2016, Prof Miller's stats class had 16 women out of 25 total students.
+
+Estimate the proportion of all DU students who are female with 90% confidence.
+
+
+Check:  is phat normal?
+
+No!  16 in the category, 9 out of the category.  Fails the check!
+
+With skepticism, let's find the CI:
+
+    phat = 16/25
+    
+Find zstar:  1.645 (since 1.64 and 1.65 equally good).
+
+CI:
+
+low:
+
 ```{r}
-1-.9788
+16/25 - 1.645*sqrt(16/25*(1-16/25)/25)
 ```
-                    
-
-Observations:
-
-- ...
-- ..
-
-
-### Ex:  
-
-The life span of a brand of lightbulb has mean of 10,000 hours with stdev 500.  If we take a sample of 60 lightbulbs, what are the cutoffs for the middle 70% most likely sample averages?  
-
-Look up area = .15 in table:  z = +/- 1.04
-
-
-     z = (obs - mean)/stdev
-     
-     z = (xbar - mean)/(stdev/sqrt(n))
-     
-Low:
 
 ```{r}
--1.04*(500/sqrt(60))+10000
+16/25 + 1.645*sqrt(16/25*(1-16/25)/25)
+```
+
+Based on this sample, we're 90% confident that the proportion of women at DU is betwen 48.2% and 79.8%.
+
+Here, MOE:  
+
+```{r}
+1.645*sqrt(16/25*(1-16/25)/25)
+```
+
+THoguht: large margin of error.
+
+Ex:  Same data (16 out of 25).  Construct a 99% CI for the proportion of women at DU.
+
+Use zstar = 2.575 (between 2.57 and 2.58)
+
+CI:  everything's the same, but zstar:
+
+```{r}
+16/25 - 2.575*sqrt(16/25*(1-16/25)/25)
+```
+
+```{r}
+16/25 + 2.575*sqrt(16/25*(1-16/25)/25)
+
+```
+
+We're 99% confident that the proportion of women at DU is between 39.3% and 88.7%.
+
+MOE:
+
+```{r}
+2.575*sqrt(16/25*(1-16/25)/25)
+```
+
+Greater confidence means greater MOE!  Bummer!
+
+
+
+
+
+
+
+
+
+
+
+# Wed April 7
+
+## CI for p
+
+Formula
+
+    phat +/- zstar*sqrt(phat(1-phat)/n)
+    
+zstar: z-score cutoffs for the "middle percent" based on confidence level
+
+Q:  What does 95% confident mean?
+
+Q:  What does it mean for a confidence interval to be successful?
+
+Goal:  estimate p (pop proportion)
+
+A "successful interval"  for p is one that CONTIAINS the true population proportion!
+
+Let's investigate with a sample:
+
+### Setup:  Coin Tosses
+
+Fair coin.  Tossing 20 times, recording the proportion of heads.
+
+phat = proportion of heads
+
+Q:  does phat follow a normal dist?
+
+np >=10 and n(1-p)>=10
+
+n = 20, p = .5
+
+```{r}
+20*.5
+```
+
+```{r}
+20*(1-.5)
+```
+
+yes!  n is large enough!  phat follow a normal dist!
+
+Simulation:  pick random numbers, 0s and 1s.  1 = heads, 0 =tails.
+
+For each sample, construct a 50% CI for p.
+
+zstar:  look up area = .25  -> zstar = 0.67
+
+## Meaning of Confidence
+
+What does it mean to be 50% confident?  This:  if we took many samples of size n and constructed confidence intervals from each one, about half of them would be successful.  
+Confidence level = SUCCESS RATE of this method.
+
+NOT TRUE:  There's a 50%/95%/whatever% chance that the interval we got is correct.
+
+No way of knowing!  
+
+## Effects on MOE
+
+We saw last time that bigger confidence means bigger MOE.  Bummer!
+
+
+A CI is like a net:  bigger means more likely to succeed! 
+
+Good news:  if n gets larger, MOE gets smaller!  Yes!
+
+## Planning for sample size
+
+Suppose we want certain confidence level and a particular margin of error.  How big must n be?
+
+
+Recall, MOE:
+
+    MOE = zstar*sqrt(phat(1-phat)/n)
+
+Solve for n!
+
+    n > phat(1-phat)*(zstar/MOE)^2
+    
+Need n to be whole number
+
+Ex)  Last time:  99% CI for gender ratio based on Prof Miller's class had MOE of 24%.  (Data:  phat = 16/25).  
+
+If wish a follow-up study to estimate the gender ratio with 95% confidence and MOE no greater than 1%, how many students must we sample?
+
+
+    phat = 16/25
+    n = 25
+    MOE = .01
+    zstar = 1.96
+    
+Plug and chug!
+
+```{r}
+(16/25)*(1-16/25)*(1.96/.01)^2
+```
+
+Uh-oh!  Sample is impossible!  Aren't that many DU students.  
+
+Adjust expectations:  90% confidence, MOE of no greater than 5%.
+
+   zstar = 1.645
+   
+```{r}
+(16/25)*(1-16/25)*(1.645/.05)^2
+```
+  
+Need at least 250 students to get a 90% CI with MOE no greater than 5%.  
+
+
+Q:  What if we have no idea about the proportion!  No prior data!
+
+A:  Use p=0.5, the worst case scenario.   Gives biggest possible MOE!  
+
+Ex)  Prof Miller would like to estimate the proportion of DU students who enjoy water skiing with 96% and MOE no greater than 7%.
+
+How many students would she need to include in her sample?
+
+    phat = 0.5 (no prior data)
+    MOE = 0.07
+    
+Critical value:  96% area in the middle, each tail has 2%.  Look up area=0.02 in table:
+
+Use zstar = 2.05.  
+
+
+```{r}
+.5*(1-.5)*(2.05/.07)^2
+```
+
+In order to estimate p with confidence 96% and moE no greater than 7%, we'd need to sample at least 215 students.
+
+
+# Friday April 9
+
+## CI for mu
+
+Ex)  In a sample of 35 DU students, the mean IQ was computed to be 113.4.
+
+Construct a 95% CI for the true mean IQ of DU students.
+
+Assume that the population stdev sigma = 15.  (!!!)
+
+zstar:  95% confidence -> tail area = .025, zstar = 1.96
+
+lo:
+
+```{r}
+113.4 - 1.96*15/sqrt(35)
 ```
 
 hi:
 
 ```{r}
-1.04*(500/sqrt(60))+10000
+113.4 + 1.96*15/sqrt(35)
+
 ```
 
-The middle 70% most common sample means are between 9932.9, 10067.1.  
+We are 95% confident that the true mean IQ of DU students is between 108.4 and 118.4.
+
+Problem:  If we don't know what mu is (reason for the CI), why would we know sigma?????
+
+We don't!  Best thing we can do:  use s instead!  (sample stdev)
+
+Problem!  If we use s:
+
+      (xbar - mu)/(s/sqrt(n))
+      
+does NOT follow a normal distribution!
+
+# The "t" distribution
+
+Very similar to the normal dist!  BUT, it accounts for not knowing sigma.
+
+Similarities:
+
+- same shape:  bell-shaped and symmetric
+- both centered at zero
+
+Differences:
+
+- t distribution has thicker tails
+- t critical values are bigger than zstar values!
+- MOE for t CIs are bigger!  Bummer!
+  - This is the price we pay for not knowing sigma.  Sad, but honest.  
+- t dist depends on sample size.  Called "degrees of freedom", "df".  
+
+        df = n-1
+        
+- As n (df) increases, the t dist shape gets closer and closer to z dist.  For very large n, there's not much difference between t and z.  
 
 
 
-# Friday April 2
+Ex) Suppose we have a samle of size n=33, and we wish to construct a 95% CI with t.  What's the critical value?
 
-Last time:  samp dist for xbar.  
+Here:  95% in the middle, each tail has 2.5%.  
 
-Idea:  find probability of a particular sample mean. 
+Df = 33 - 1 = 32
 
-Center: stays the same
+From table:  tstar = 2.04.
 
-     mu_xbar = mu_x
-     
-Think:  "the mean of the mean is the mean".  
+Ex)  In a sample of 20 men at DU, the mean height is computed to be 70.1" and stdev 3.2".
+
+Construct a 98% CI to estimate the true mean height of men at DU.
+
+Note:  human height follows a normal dist, so it's ok to have small n!
 
 
-Spread:  gets smaller with n
+tstar:  98% in the middle, each tail has 1%.  df = 20-1 = 19
 
-     sigma_xbar = sigma/sqrt(n)
-     
-Shape:
+tstar = 2.54
 
-   - If X (original pop) is normal, then xbar (samp dist) is normal no matter what n is.  
-   
-   - CLT:  As long as n is large (n>=30), then xbar is normal no matter what original population we sample from!!  Holy cow!
-   
-   
-   
-   
-   
-### Ex:  
+PLug and chug!
 
-Giraffe height is normal with mean 18', stdev 2.5'.  If we take sample of 5 giraffes, what's the prob their mean height is at least 19' tall?
-
-mu_x = 18  (population mean)
-sigma_x = 2.5 (population stdev)
-
-n=5
-
-Find:  P(xbar >= 19)
-
-Q: Can we use Z table?  Is xbar normal?  Since giraffe height is normal, xbar is normal even for small n.  
-
-Dist for xbar:
-
-mu_xbar = 18
-sigma_xbar = 2.5/sqrt(5)
-
-z:
 ```{r}
-(19-18)/(2.5/sqrt(5))
-```
-
-Area on right:
-```{r}
-1-.8133
-```
-
-There's about an 18.67% chance of observing such a sample mean.  
-
-
-## Proportions
-
-Idea:  xbar is the statistic for quant data (numbers)
-       phat is the statistic for qualitative data (categories)
-       
-       
-Sampling Dist for phat:
-
-Center:  doesn't change
-
-     mu_phat = p
-     
-Spread:  decreases with n
-
-     sigma_phat = sqrt( p(1-p)/n )
-
-Shape:  CLT works for phat also!
-
-     If n is "large enough", phat follows a normal dist no matter what.
-     
-### Ex)  
-
-At DU, 19% of students are international students.  
-
-If we take a sample of 100 DU students, what's the probability that at least a quarter (25%) of them are international?
-
-    p = .19
-    
-    n = 100
-    
-Need: 
-
-    P(phat > .25)
-
-Q:  can we use Z table?  Is phat normal?
-
-    Need:  np>=10  and n(1-p)>=10
-    
-```{r}
-100*.19
+70.1 - 2.54*3.2/sqrt(20)
 ```
 
 ```{r}
-100*(1-.19)
+70.1 + 2.54*3.2/sqrt(20)
+
 ```
 
-YES!  CLT IS SATISFIED!  UZE Z TABLE!
-
-Get z-score:
-
-    z = (obs - exp)/spread
-    
-      = (.25 - .19)/sqrt( .19 * (1-.19) / 100 ) 
-
-```{r}
-(.25 - .19)/sqrt( .19 * (1-.19) / 100 )
-```
-z = 1.53
-
-On table:  area to left = .9370
-
-P(phat >= .25) =
-
-```{r}
-1-.9370
-```
-
-There's about a 6.3% chance of observing such a sample proportion.
-
-### Ex)  
-
-At DU,  77% of students are from out-of-state.  
-
-In a sample of 60 students, what's the probability that at least half are from out of state?
-
-    p = .77
-    n = 60
-    
-Can we use z?
-
-```{r}
-60*.77
-```
-
-```{r}
-60*(1-.77)
-```
-
-Find z for phat = .5
-
-    (.5 - .77)/sqrt( .77 * (1-.77) / 60)
-
-```{r}
-(.5 - .77)/sqrt( .77 * (1-.77) / 60)
-```
-
-P(Z > -4.97) = almost 1
-
-It's nearly certain that more than half of students in the sample are out-of-state.
-
-
-
-
+We are 98% confident that the true mean height of men at DU is between 68.3" and 71.9".
 
 
 
