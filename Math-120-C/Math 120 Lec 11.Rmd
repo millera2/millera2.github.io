@@ -1,0 +1,443 @@
+---
+title: "Math 120 Week 06"
+author: "Prof Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 4
+    code_folding: show
+    theme: yeti
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+
+
+
+
+# Mon April 5
+
+Recall:  Statistical inference is the process of making mathematically supported conclusions about population parameters based on sample data.
+
+Idea:  say something smart mu based on xbar.  
+
+       say something smart about p based on phat.  
+       
+First:  
+
+## Confidence intervals for p
+
+So far:  know info about parameter, use it to find probabilty of a sample.
+
+In reality:  don't know paramters!  Don't know mu, don't know p.  
+
+Want to use our sample result to say something about population.
+
+Confidence interval:  a range of reasonable values for a parameter.
+
+Ex:  We're 95% confident that the **true population proportion** of DU who enjoy waterskiing is between 12% and 24%.  
+
+Note:  CIs alwasys describe PARAMETERS (population), not statistics (sample).  
+
+Idea:  middle % problem!  Based on our sample result, what are the midde 90%/95%/99% most likely values for parameter!
+
+
+
+Ex:  In a sample of 100 DU students, 18 enjoy water skiing.  Estimate the proportion of DU students who enjoy water skiing with 95% confidence.
+
+
+Check: is phat normal?
+
+Check:
+
+```{r}
+100*(18/100)
+```
+
+```{r}
+100*(1-18/100)
+```
+
+Both larger than 10, yes phat is normal!
+
+Also:  at least 10 in the category, at least 10 out of the category.  
+
+z = +/- 1.96
+
+For phat:
+
+      z = (phat - p)/sqrt( p(1-p)/n )
+
+Idea:  solve for p!
+
+Problem:  what's p(1-p)/n ??  Approximate with phat intestead.  
+
+Lo:
+
+     -1.96 = (18/100 - p)/sqrt( 18/100*(1-18/100) / 100)
+     
+     p = -1.96*sqrt( 18/100*(1-18/100) / 100) + 18/100
+
+
+```{r}
+-1.96*sqrt( 18/100*(1-18/100) / 100) + 18/100
+```
+
+Hi:
+
+```{r}
+1.96*sqrt( 18/100*(1-18/100) / 100) + 18/100
+```
+
+We are 95% confident that population proportion of all DU students who enjoy water skiing is between 10.5% and 25.5%.
+
+
+## CI Concepts
+
+
+Picture:
+
+          (---------- statistic ----------)
+          (-------------phat--------------)
+          
+Stat is always in the center.  Best guess!
+
+The length of the "arms":  Margin of Error (MOE).  
+
+Formula:  If phat is normal  (at least 10 in category and outside):
+
+              phat +/- zstar*sqrt( phat(1-phat) / n)
+              
+              
+where zstar is the z-score cutoff for the "middle %" (confidence level).  
+
+
+Ex)  In Spring 2016, Prof Miller's stats class had 16 women out of 25 total students.
+
+Estimate the proportion of all DU students who are female with 90% confidence.
+
+
+Check:  is phat normal?
+
+No!  16 in the category, 9 out of the category.  Fails the check!
+
+With skepticism, let's find the CI:
+
+    phat = 16/25
+    
+Find zstar:  1.645 (since 1.64 and 1.65 equally good).
+
+CI:
+
+low:
+
+```{r}
+16/25 - 1.645*sqrt(16/25*(1-16/25)/25)
+```
+
+```{r}
+16/25 + 1.645*sqrt(16/25*(1-16/25)/25)
+```
+
+Based on this sample, we're 90% confident that the proportion of women at DU is betwen 48.2% and 79.8%.
+
+Here, MOE:  
+
+```{r}
+1.645*sqrt(16/25*(1-16/25)/25)
+```
+
+THoguht: large margin of error.
+
+Ex:  Same data (16 out of 25).  Construct a 99% CI for the proportion of women at DU.
+
+Use zstar = 2.575 (between 2.57 and 2.58)
+
+CI:  everything's the same, but zstar:
+
+```{r}
+16/25 - 2.575*sqrt(16/25*(1-16/25)/25)
+```
+
+```{r}
+16/25 + 2.575*sqrt(16/25*(1-16/25)/25)
+
+```
+
+We're 99% confident that the proportion of women at DU is between 39.3% and 88.7%.
+
+MOE:
+
+```{r}
+2.575*sqrt(16/25*(1-16/25)/25)
+```
+
+Greater confidence means greater MOE!  Bummer!
+
+
+
+
+
+
+
+
+
+
+
+# Wed April 7
+
+## CI for p
+
+Formula
+
+    phat +/- zstar*sqrt(phat(1-phat)/n)
+    
+zstar: z-score cutoffs for the "middle percent" based on confidence level
+
+Q:  What does 95% confident mean?
+
+Q:  What does it mean for a confidence interval to be successful?
+
+Goal:  estimate p (pop proportion)
+
+A "successful interval"  for p is one that CONTIAINS the true population proportion!
+
+Let's investigate with a sample:
+
+### Setup:  Coin Tosses
+
+Fair coin.  Tossing 20 times, recording the proportion of heads.
+
+phat = proportion of heads
+
+Q:  does phat follow a normal dist?
+
+np >=10 and n(1-p)>=10
+
+n = 20, p = .5
+
+```{r}
+20*.5
+```
+
+```{r}
+20*(1-.5)
+```
+
+yes!  n is large enough!  phat follow a normal dist!
+
+Simulation:  pick random numbers, 0s and 1s.  1 = heads, 0 =tails.
+
+For each sample, construct a 50% CI for p.
+
+zstar:  look up area = .25  -> zstar = 0.67
+
+## Meaning of Confidence
+
+What does it mean to be 50% confident?  This:  if we took many samples of size n and constructed confidence intervals from each one, about half of them would be successful.  
+Confidence level = SUCCESS RATE of this method.
+
+NOT TRUE:  There's a 50%/95%/whatever% chance that the interval we got is correct.
+
+No way of knowing!  
+
+## Effects on MOE
+
+We saw last time that bigger confidence means bigger MOE.  Bummer!
+
+
+A CI is like a net:  bigger means more likely to succeed! 
+
+Good news:  if n gets larger, MOE gets smaller!  Yes!
+
+## Planning for sample size
+
+Suppose we want certain confidence level and a particular margin of error.  How big must n be?
+
+
+Recall, MOE:
+
+    MOE = zstar*sqrt(phat(1-phat)/n)
+
+Solve for n!
+
+    n > phat(1-phat)*(zstar/MOE)^2
+    
+Need n to be whole number
+
+Ex)  Last time:  99% CI for gender ratio based on Prof Miller's class had MOE of 24%.  (Data:  phat = 16/25).  
+
+If wish a follow-up study to estimate the gender ratio with 95% confidence and MOE no greater than 1%, how many students must we sample?
+
+
+    phat = 16/25
+    n = 25
+    MOE = .01
+    zstar = 1.96
+    
+Plug and chug!
+
+```{r}
+(16/25)*(1-16/25)*(1.96/.01)^2
+```
+
+Uh-oh!  Sample is impossible!  Aren't that many DU students.  
+
+Adjust expectations:  90% confidence, MOE of no greater than 5%.
+
+   zstar = 1.645
+   
+```{r}
+(16/25)*(1-16/25)*(1.645/.05)^2
+```
+  
+Need at least 250 students to get a 90% CI with MOE no greater than 5%.  
+
+
+Q:  What if we have no idea about the proportion!  No prior data!
+
+A:  Use p=0.5, the worst case scenario.   Gives biggest possible MOE!  
+
+Ex)  Prof Miller would like to estimate the proportion of DU students who enjoy water skiing with 96% and MOE no greater than 7%.
+
+How many students would she need to include in her sample?
+
+    phat = 0.5 (no prior data)
+    MOE = 0.07
+    
+Critical value:  96% area in the middle, each tail has 2%.  Look up area=0.02 in table:
+
+Use zstar = 2.05.  
+
+
+```{r}
+.5*(1-.5)*(2.05/.07)^2
+```
+
+In order to estimate p with confidence 96% and moE no greater than 7%, we'd need to sample at least 215 students.
+
+
+# Friday April 9
+
+## CI for mu
+
+Ex)  In a sample of 35 DU students, the mean IQ was computed to be 113.4.
+
+Construct a 95% CI for the true mean IQ of DU students.
+
+Assume that the population stdev sigma = 15.  (!!!)
+
+zstar:  95% confidence -> tail area = .025, zstar = 1.96
+
+lo:
+
+```{r}
+113.4 - 1.96*15/sqrt(35)
+```
+
+hi:
+
+```{r}
+113.4 + 1.96*15/sqrt(35)
+
+```
+
+We are 95% confident that the true mean IQ of DU students is between 108.4 and 118.4.
+
+Problem:  If we don't know what mu is (reason for the CI), why would we know sigma?????
+
+We don't!  Best thing we can do:  use s instead!  (sample stdev)
+
+Problem!  If we use s:
+
+      (xbar - mu)/(s/sqrt(n))
+      
+does NOT follow a normal distribution!
+
+# The "t" distribution
+
+Very similar to the normal dist!  BUT, it accounts for not knowing sigma.
+
+Similarities:
+
+- same shape:  bell-shaped and symmetric
+- both centered at zero
+
+Differences:
+
+- t distribution has thicker tails
+- t critical values are bigger than zstar values!
+- MOE for t CIs are bigger!  Bummer!
+  - This is the price we pay for not knowing sigma.  Sad, but honest.  
+- t dist depends on sample size.  Called "degrees of freedom", "df".  
+
+        df = n-1
+        
+- As n (df) increases, the t dist shape gets closer and closer to z dist.  For very large n, there's not much difference between t and z.  
+
+
+
+Ex) Suppose we have a samle of size n=33, and we wish to construct a 95% CI with t.  What's the critical value?
+
+Here:  95% in the middle, each tail has 2.5%.  
+
+Df = 33 - 1 = 32
+
+From table:  tstar = 2.04.
+
+Ex)  In a sample of 20 men at DU, the mean height is computed to be 70.1" and stdev 3.2".
+
+Construct a 98% CI to estimate the true mean height of men at DU.
+
+Note:  human height follows a normal dist, so it's ok to have small n!
+
+
+tstar:  98% in the middle, each tail has 1%.  df = 20-1 = 19
+
+tstar = 2.54
+
+PLug and chug!
+
+```{r}
+70.1 - 2.54*3.2/sqrt(20)
+```
+
+```{r}
+70.1 + 2.54*3.2/sqrt(20)
+
+```
+
+We are 98% confident that the true mean height of men at DU is between 68.3" and 71.9".
+
+
+
+
+
+
+
+
+
+
+
+
