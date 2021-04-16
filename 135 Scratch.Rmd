@@ -31,28 +31,21 @@ theme_set(theme_tufte() +
 #------------------------------------------------#
 ```
 
+For credit, show work on all problems.
 
-$$f(x)=\frac{(x-a)(x-b)(x-c)}{(x-d)(x-c)(x-e)(x-f)}$$
+1)  Find the location of all local extrema of the following function.  Justify using the second derivative test.
 
+$$f(x)=x^4-2x^2+3$$
 
+2) Find the location of all local extrema of the following function.  Justify using the first derivative test.
 
+$$g(x)=\frac{x^2}{3x-6}$$
 
+3) Find the absolute extrema of the following function on the  interval $[-\pi/2,\pi/2]$
 
-
-
-$$\lim_{x\rightarrow \infty} \frac{\ln(x)}{\sqrt{x}}$$
-
-
-
-
-
-a) 
-
-$$\lim_{x\rightarrow \infty} x^2\ln(x)$$
-
-b)
-
-$$\lim_{x\rightarrow 0} \frac{\sin(x)-x}{\cos(2x)-1}$$
+$$h(x)=\sin(x)-\cos(x)$$
 
 
+4)  Find the absolute extrema of the following function on the interval $[0,\infty)$
 
+$$q(x)=x^2e^{-x}$$
