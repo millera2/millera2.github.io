@@ -31,6 +31,44 @@ theme_set(theme_tufte() +
 #------------------------------------------------#
 ```
 
+# HW 5 - The Normal Distribution 
+
+Due:  **Fri April 30 on Notebowl before class time.**
+
+Turn in a Google Docs report, exported to pdf.  As usual, take care to make it presentable.  
+
+
+Using the built-in functions in Google Sheets, compute the following probabilities.  Do *not* use a Z table -- software only.  <small>(But, if you know another statistical software platform/language and want to show off, you can use that too **as long as you clearly show the (written) commands you used.  No web apps.** ) </small>
+
+For each, show **both** the command you used, and the output.
+
+a) Women in Sweden have mean height 65.23 inches (stdev 2.64).  What percent of Swedish women are taller than 71"?
+
+b)  Female giraffes have mean height 16.8' (stdev 1.7').  What's the probability that a randomly selected female giraffe is between 16' and 17' tall?
+
+
+
+c) At a large state university, exam scores for a large lecture section of Calculus follow a normal distribution with mean 74% and stdev 8.2%.  How high must a student score in order to be at the 80th percentile?
+
+
+d) At Denison, about 82% of students are from out-of-state (ie grew up outside of Ohio).  If we take a sample of 100 students, what's the likelihood that at least 75% of them are from out-of-state?
+
+
+e) Suppose we wish to construct a 60% CI for a population mean (mu), based on a sample of size n=33.  Use Google Sheets to find the exact critical value we'd use.
+
+f) Suppose an hypothesis test has hypotheses:
+
+     H0: mu = 10,  Ha: mu != 10
+     
+- If a sample of size n=15 has a sample mean of 11.23 and stdev of 2.23, compute the exact p-value for the hyp test?  You may assume that the original population follows a normal distribution.
+
+
+
+
+
+
+<br><br>
+
 # HW 4 - The Death Penalty
 
 Due Friday April 16 before the beginning of class time.  Submit .pdf report as usual.
