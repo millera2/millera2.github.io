@@ -44,16 +44,17 @@ theme_set(                                #this sets the theme for all    #
 - [Week 9](https://millera2.github.io/Math-120-C/Math-120-Lec-09.html)
 - [Week 10](https://millera2.github.io/Math-120-C/Math-120-Lec-10.html)
 - [Week 11](https://millera2.github.io/Math-120-C/Math-120-Lec-11.html)
+- [Week 12](https://millera2.github.io/Math-120-C/Math-120-Lec-12.html)
 
 
 ## Next Quiz
 
-Topics:  Hyp tests for p and mu.  Meaning of Type I/II error.
+Topics:  Connection between hyp tests and CIs.  Identifying Type I and Type II errors, Understanding power of a hyp test, factors affecting alpha, beta, and power.  2-t tests and CIs.
 
-Practice:
+Practice Problem:
 
-- 6.11a (p216) [conduct a full hyp test]
-- 7.7 (p260) [conduct full hyp test, assume data is normal]
+- 7.25 (p275)
+
 
 
 ## HW Assignments

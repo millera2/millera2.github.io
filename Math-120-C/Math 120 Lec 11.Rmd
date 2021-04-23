@@ -292,9 +292,20 @@ Use t table!
   .01 < p-val .025
   
   
-4)  Conclusion
+4) Conclusion
 
-Since p<.05, we reject H0.  There's strong evidence that the mean height of men at DU is greater than 69"
+Since p<.05, we reject H0.  There is strong evidence that the mean height is greater than 69".
+
+
+
+
+
+
+
+
+
+
+
 
     
     
