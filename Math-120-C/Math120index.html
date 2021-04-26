@@ -399,7 +399,7 @@ summary {
 
 
 <h1 class="title toc-ignore">Math 120 Fall 2020 Homepage</h1>
-<h4 class="date">Updated: 23 April, 2021</h4>
+<h4 class="date">Updated: 26 April, 2021</h4>
 
 </div>
 
@@ -439,6 +439,27 @@ summary {
 <ul>
 <li>7.25 (p275)</li>
 </ul>
+<div id="solution" class="section level3">
+<h3>Solution:</h3>
+<p>Hyp Test:</p>
+<p>H0: mu1-mu2=0 Ha: mu1-mu2!=0</p>
+<p>Test stat:</p>
+<pre class="r"><code>(7.5-10.83)/sqrt(3.33^2/6+3.6^2/6)</code></pre>
+<pre><code>## [1] -1.663306</code></pre>
+<p>t=-1.66</p>
+<p>p-val:</p>
+<p>.1 &lt; p &lt; .2</p>
+<p>Conclusion: Fail to reject H0. There’s not enough evidence to support the claim that the mean is different on the weekend.</p>
+<p>CI:</p>
+<p>tstar = 2.57</p>
+<p>lo:</p>
+<pre class="r"><code>7.5-10.83 - 2.57*sqrt(3.33^2/6+3.6^2/6)</code></pre>
+<pre><code>## [1] -8.475234</code></pre>
+<pre class="r"><code>7.5-10.83 + 2.57*sqrt(3.33^2/6+3.6^2/6)</code></pre>
+<pre><code>## [1] 1.815234</code></pre>
+<p>We’re 95% confident that the true difference in mean is between -8.47 admissions and 1.81.</p>
+<p>Conclusion: It’s possible that there’s no difference in mean. Same conclusion as the hyp test.</p>
+</div>
 </div>
 <div id="hw-assignments" class="section level2">
 <h2>HW Assignments</h2>
