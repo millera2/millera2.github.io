@@ -50,53 +50,13 @@ theme_set(                                #this sets the theme for all    #
 
 ## Next Quiz
 
-Topics:  Connection between hyp tests and CIs.  Identifying Type I and Type II errors, Understanding power of a hyp test, factors affecting alpha, beta, and power.  2-t tests and CIs.
+Topics:  tests and CIs for two proportions.  Paired data tests and cis.
 
-Practice Problem:
+Practice:
 
-- 7.25 (p275)
-
-### Solution:
-
-Hyp Test:
-
-H0:  mu1-mu2=0
-Ha:  mu1-mu2!=0
-
-Test stat:
-
-```{r}
-(7.5-10.83)/sqrt(3.33^2/6+3.6^2/6)
-```
-
-t=-1.66
-
-p-val:
-
-   .1 < p < .2
-   
-Conclusion:  Fail to reject H0.  There's not enough evidence to support the claim that the mean is different on the weekend.   
-
-CI:
-
-tstar = 2.57
-
-Lo Bound:
-
-```{r}
-7.5-10.83 - 2.57*sqrt(3.33^2/6+3.6^2/6)
-```
-Hi Bound:
-```{r}
-7.5-10.83 + 2.57*sqrt(3.33^2/6+3.6^2/6)
-
-```
-
-We're 95% confident that the true difference in mean is between -8.47 admissions and 1.81.
-
-Conclusion:  It's possible that there's no difference in mean.  Same conclusion as the hyp test.
-
-
+- 7.21 (p266)
+- 6.21 (p226)
+- 6.23b (p226)
 
 ## HW Assignments
 
