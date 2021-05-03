@@ -45,6 +45,7 @@ theme_set(                                #this sets the theme for all    #
 - [Week 10](https://millera2.github.io/Math-120-C/Math-120-Lec-10.html)
 - [Week 11](https://millera2.github.io/Math-120-C/Math-120-Lec-11.html)
 - [Week 12](https://millera2.github.io/Math-120-C/Math-120-Lec-12.html)
+- [Week 13](https://millera2.github.io/Math-120-C/Math-120-Lec-13.html)
 
 
 ## Next Quiz
@@ -147,4 +148,11 @@ Our TA, Pede, will hold hours on Google Meet (he uses his own [Google Meet Room,
 - [Math 120 Textbook](https://www.openintro.org/book/os/)
   - *OpenIntro Statistics* is an excellent, free introduction to modern statistical analysis.
   
+
+```{r}
+(1243-1197)/sqrt(73^2/15+57^2/19)
+```
+```{r}
+pt(-2.005,14)
+```
 

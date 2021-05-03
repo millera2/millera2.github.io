@@ -1,0 +1,457 @@
+---
+title: "Math 120 Week 11"
+author: "Prof Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 4
+    code_folding: show
+    theme: yeti
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+
+
+
+# Fri April 23
+
+Quiz:
+
+Prof Miller suspects that a coin is not "fair", in other words that the proportion of "heads" differs from 50%.
+
+To test this, she flips the coin 100 times, and observes that 44 of them are heads.
+
+Conduct an hypothesis test to see if this sample data supports Prof Miller's claim.  Show all steps as outlined in class.
+
+1)  Hypotheses
+H0: p =.5 
+Ha: p!=.5    <- two tail
+
+2)  Test stat:
+
+```{r}
+(44/100-.5)/sqrt(.5*(1-.5)/100)
+```
+
+3) p-val
+
+tail area = 0.1151
+
+-> p-val = .2302
+
+4)  Since p>.05, fail to reject H0.  Not enough evidence to suggest the coin is unfair.
+
+
+
+
+2) Prof Miller suspects that the mean IQ of DU students is higher than the national average of 100.  To investigate, she takes a random sample of 50 Du students to take IQ tests.  Their mean IQ is calculated to be 107.2  (stdev 10.4).
+
+Does this sample data support her claim?  Conduct an hypothesis test, showing all steps as outlined in class.
+
+
+1)  Hypotheses
+
+H0:  mu=100
+Ha:  mu>100
+
+2) Test stat
+
+```{r}
+(107.2-100)/(10.4/sqrt(50))
+```
+
+df = 50-1 =49
+
+3) p-val:  close to zero
+
+4)  Since p<.05, we reject H0.  There's strong evidence to support the claim that mean IQ at DU is greater than 100.
+
+
+
+3)  Hypotheses:
+
+H0: drug has no effect         mu = ....
+Ha: drug lowers cholesterol    mu < ....
+
+We think drug lowers cholesterol, but really it doesn't.  
+
+##  Tests for two means (two-t tests)
+
+So far: answered questions about one pop mean.
+
+Now:  let's ask questions about how they compare!  Think: medical trial, pysyc study, etc etc.
+
+
+For one mean:  approximate mu with xbar.  Samp dist:
+
+         expected = mu       stdev = s/sqrt(n)
+         
+         
+Q:  what if we two populations, and sample each?  Info:
+
+     xbar1       xbar2
+     s1          s2
+     n1          n2
+     
+How do we study the difference?   mu1 - mu2!!!
+
+Samp dist:
+
+    observed:   xbar1 - xbar2
+
+    expected:   mu1 - mu2
+    
+    stdev:    sqrt( s1^2/n1 + s2^2/n2 )
+    
+    
+Test stat:
+
+    t = (obs - exp)/stdev
+      
+      = (xbar1 - xbar2 - (mu1-mu2) )/sqrt( s1^2/n1 + s2^2/n2 )
+      
+      
+CI:  
+
+      observed +/- (crit val)*(stdev)
+      
+      (xbar1-xbar2) +/- tstar*sqrt( s1^2/n1 + s2^2/n2 )
+      
+      
+Ex hyp test:
+
+Prof Miller is teaching two sections of calc.  On the final exam, the first section scores an average of 76.1 (stdev 9.5).  The second section scores average of 78.4 (stdev 8.3).  There are 45 students in the first section, 39 in the second.
+
+Is there statistically significant evidence of a difference in mean performance between the two sections?
+
+
+     xbar1 = 76.1   xbar2 = 78.4
+     s1    = 9.5    s2    = 8.3
+     n1    = 45     n2    = 39
+     
+
+
+1) Hyps
+
+H0:  mu1-mu2  = 0   ( mu1=mu2)   <- ALWAYS the H0 for 2-t tests!!!
+Ha:  mu1-mu2 != 0   (same as mu1 != mu2)
+
+
+2) test stat
+
+```{r}
+(76.1-78.4 - 0)/sqrt( 9.5^2/45 + 8.3^2/39 )
+```
+
+t = -1.18.   df = smaller of the two = 39-1 = 38
+
+3) p-val
+
+(note:  look for t=1.18, same tail area)
+
+p-val > .2  (on the far left, two tail test)
+
+
+4)  Since p>.05, fail to reject H0.  There's not strong evidence of a statistically significant difference in mean performance between the two sections.  
+
+
+## CI for two means
+
+A new drug has been developed to lower cholesterol (hopefully).
+
+Two groups of study participants with similar ages and health markers participate in the study.
+
+The 32 people in control group (no drug) have mean cholosterol 150.3, stdev 7.41.
+
+The 36 people in the experimental group (yes drug) have mean cholesterol 138.2, stdev 9.8.
+
+Construct a 95% confidence interval for the difference in mean cholesterol between the two.
+
+      xbar1 = 150.3, s1=7.41, n1=32
+      xbar2 = 138.2, s2=9.80, n2=36
+      
+tstar: one tail area = .025, df = 32-1 = 31
+
+   -> tstar 2.04
+   
+Plug and chug!
+
+```{r}
+150.3-138.2 - 2.04*sqrt( 7.41^2/32 + 9.80^2/36  )
+```
+
+```{r}
+150.3-138.2 + 2.04*sqrt( 7.41^2/32 + 9.80^2/36  )
+
+```
+
+We're 95% confident that:
+
+                       7.8 < mu1 - mu2 < 16.4
+                       
+Q: Is there evidence that the drug lowers choleterol?
+
+Ie, is mu1 > mu2?
+
+Yes!  Since the difference is verly likely to be positive, the first one is bigger!  
+
+
+
+# Wed April 28
+
+## Paired Tests
+
+"Paired" data are pairs of quantitative variables that are naturally related.
+
+Each observation in the first is paired with one specific observation in the second.  
+
+Most common:  before and after.  Paired since they're the same people/things/whatever, just before and after a treatment/program/thingie.
+
+Less common:  similar individuals are paired.  Example:  in a medical study, particpants are paired similar age/weight/health/sex stuff.  
+
+Thing we care about:  mu_diff
+
+$$\mu_{diff}$$
+
+
+Ie, the mean difference between all pairs.  Big question:  is mu_diff != 0?
+
+
+     Observed:   dbar  (average of all pair differences in data)
+     
+     Expeced:  mu_diff  (pop mean difference)
+     
+     Stdev:  s_diff/sqrt(n)
+     
+Hyp test stat:
+
+
+     (dbar - 0)/(s_diff/sqrt(n))
+     
+CI:
+
+     dbar +/- tstar*s_diff/sqrt(n)
+     
+     
+Ex:  A researcher wonders:  does listening to Mozart increase IQ?  To investigate, she enlists 4 participants in a study.  They take IQ tests at the beginning, and then again after 30 days of listing to an hour of Mozart a night.
+
+Results:
+
+      Before:    98   105   117  89
+      After:     100  106   118  87
+      diff:      -2    -1   -1    2
+      
+     dbar = (-2+-1+-1+2)/4 = -0.5
+     
+```{r}
+(-2+-1+-1+2)/4
+```
+
+      s_diff = 1.732
+      
+      
+1)  Hypotheses
+
+H0:  mu_diff = 0 
+Ha:  mu_diff < 0
+
+Think:  before - after = negative
+
+2) Test stat:
+
+    t = (-.5 - 0)/(1.732/sqrt(4))
+
+
+```{r}
+(-.5 - 0)/(1.732/sqrt(4))
+```
+
+    t = -.577
+    
+df = 4-1 =3  
+
+3)  p-val
+
+From table:  p>.1
+
+4)  Since p>.05, fail to reject H0.  We didn't find strong evidence that listening to Mozart increased IQ.
+
+## Notes about paired tests
+
+
+- Higher power than 2-t tests  (more likely to get "successful" test.  yay!)
+- Only works with paired data
+- Easier!  (Yay!)
+
+
+Ex)  A new drug is developed to fight high cholesterol.  A study is conducted with 35 participants.  Their cholesterol is measured both before taking the drug, and again after a month of treatment.  
+
+A mean difference in cholesterol of 14.3 (stdev 5.4) is observed.  
+
+    dbar = 14.3
+    s_diff = 5.4
+    
+Construct a 95% CI for the mean difference in cholesterol.  Does it provide evidence of a difference in cholesterol before and after treatment?
+
+
+Tstar:  95% in middle --> 2.5% in each (one) tail.  df = 35-1 = 34
+
+    tstar = 2.03
+    
+Plug and chug!
+
+lo:
+
+```{r}
+14.3 - 2.03*5.4/sqrt(35)
+```
+
+```{r}
+14.3 + 2.03*5.4/sqrt(35)
+
+```
+
+We are 95% confident that the mean diff in cholesterol (before and after) is between 12.45 and 16.15.
+
+Ie, pretty sure:
+
+                  12.45<  mu_diff < 16.15
+
+It's very unlikely that mu_diff=0 !!  Strong evidence of a difference!
+
+(Spoiler:  hyp test)
+
+```{r}
+(14.3-0)/(5.4/sqrt(35))
+```
+
+## 2-prop z tests and CIs
+
+Q:  How to compare two categorical variables?  
+
+A:  Compare the proportions!  p!
+
+     Expected:  p1 - p2
+     
+     Observed:  phat1 - phat2
+     
+     Stdev (CI):  sqrt( phat1(1-phat1)/n1 + phat2(1-phat2)/n2 )
+
+     use Z for critical val (just like 1-prop)
+     
+Ex)  In Fall 2010, a sample of 100 students had 67 brown-haired students.  In Fall 2020, a sample of 150 students had 75 brown-haired students.
+
+Construct a 95% ci for the difference in proporiton.  Is there evidence of a difference in proportion of brown-haired students?
+
+Crit val: 
+     
+      zstar = 1.96
+      
+Plug ang chug!
+
+Lo:  
+
+```{r}
+67/100 - 75/150 - 1.96*sqrt( 67/100*(1-67/100)/100 + 75/150*(1-75/150)/150)
+```
+
+hi:
+
+```{r}
+67/100 - 75/150 + 1.96*sqrt( 67/100*(1-67/100)/100 + 75/150*(1-75/150)/150)
+
+```
+
+We're 95% confident that the difference in proportion of brown-haired students from 2010 to 2020 is between 4.8% and 29.2%.
+
+Yes!  There's evidence of a difference in proportion.  Seems like in 2010, there was a greater proportion of brown haired students!
+
+
+
+
+
+
+
+# Fri April 30
+
+
+## Hyp tests for 2 proportions
+
+Idea:  hyp test to answer:  is there a difference in proportions?
+
+    p1-p2 != 0 ?
+
+H0:  no difference!  p1-p2=0
+
+Remember 1 poportion:
+
+    z = (phat - p)/sqrt(p(1-p)/n)
+    
+    
+Approximate p with a "pooled proportion"
+
+    phat_pool = (total number of successes)/(total sample size (both))
+              = (x1 + x2)/(n1+n2)
+              
+2 prop test:
+
+     observed:  phat1 - phat2
+     
+     expected:  p1 - p2   (=0)
+     
+     stdev:    sqrt( phat_pool(1-phat_pool)/n1 + phat_pool(1-phat_pool)/n2)
+    
+
+Ex) In a sample of 80 DU students, 54 said that "pepperoni" was the best pizza.  In a sample of 100 Oberlin students, 76 said the same.
+
+Is there evidence of a difference in proportion of students who prefer pepperoni pizza at the two schools?
+
+1) Hyps
+
+H0:  p1-p2 = 0  (no difference)
+Ha:  p1-p2 != 0 (yes difference)
+
+phat_pool = (54+76)/(80+100) = 130/180
+
+
+2) test stat
+
+```{r}
+(54/80-76/100 - 0)/sqrt( 130/180*(1-130/180)/80 + 130/180*(1-130/180)/100)
+```
+
+3) p-val (remember:  proportion -> ztable)
+
+
+tail area = .1020
+
+p-val = 2*.1020 = .2040
+
+4)  Since p>.05, we fail to reject H0.  We didn't find evidence of a difference in proportion of students who prefer pepperoni pizza between DU and Oberlin.
+
+
+
+
+
