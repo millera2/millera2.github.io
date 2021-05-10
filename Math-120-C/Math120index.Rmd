@@ -46,17 +46,18 @@ theme_set(                                #this sets the theme for all    #
 - [Week 11](https://millera2.github.io/Math-120-C/Math-120-Lec-11.html)
 - [Week 12](https://millera2.github.io/Math-120-C/Math-120-Lec-12.html)
 - [Week 13](https://millera2.github.io/Math-120-C/Math-120-Lec-13.html)
+- [Week 14](https://millera2.github.io/Math-120-C/Math-120-Lec-14.html)
 
 
 ## Next Quiz
 
-Topics:  tests and CIs for two proportions.  Paired data tests and cis.
+Topics:  $\chi^2$ GOF, test for independence.  Hyp tests for $\rho$.
 
 Practice:
 
-- 7.21 (p266)
-- 6.21 (p226)
-- 6.23b (p226)
+- 6.33 (p239)
+- 6.37 (p245)
+
 
 ## HW Assignments
 
