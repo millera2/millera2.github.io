@@ -2949,3 +2949,1448 @@ No prior data, use phat = .5  (worst case scenario).
 
 zstar:  look up 15/2 = 7.5% zstar = 1.44
 
+Plug and chug:
+
+```{r}
+.5*(1-.5)*(1.44/.06)^2
+```
+
+Need n at least 144 to estimate p with 85% confidence and MOE no greater than 6%.
+
+
+## CI for mu
+
+Goal:  estimate population mean (mu) based on sample mean (xbar).
+
+If n >= 30, then the ci for mu is:
+
+     xbar +/- zstar*sigma/sqrt(n)
+     
+
+(Wait, hold on:  if we don't know mu (ergo the CI), how would know sigma???)
+
+
+Ex:  In a sample of 30 DU students, the mean IQ was calculated to be 113.4.  
+
+Based upon this, estimate the mean IQ of all DU students with 96% confidence.
+
+Assume that sigma = 15.  (!!!)
+
+
+Find crit val:  96% in the middle, then 2% in the tails. 
+
+zstar = 2.05.  
+
+Plug and chug!
+
+```{r}
+113.4 - 2.05*15/sqrt(30)
+```
+
+```{r}
+113.4 +2.05*15/sqrt(30)
+
+```
+
+We are 96% confident that the true mean IQ of DU students is between 107.8 and 119.0.
+
+## t distribution
+
+Problem:  don't know sigma.  What to do?  
+
+Answer:  use s, the sample stdev!
+
+Problem:  
+
+    z = (xbar - mu)/(sigma/sqrt(n))
+    
+Is normal.  BUT:
+
+         (xbar - mu)/( s /sqrt(n)) 
+         
+does NOT follow a normal distribution!  
+
+
+Answer:  the "t" distribution is like the normal, but accounts for fact that we don't know the pop stdev.  Based on sample stdev.
+
+Properties of the t distribution:
+
+- very similar to z dist.  
+  - symmetric
+  - centered at zero
+  - bell shaped
+  
+- differences:
+  - thicker tails!  more area at the extremes.
+  - bigger critical values.  need to farter out to get the middle %. Bummer!
+  - Bigger margin of error!  Bummer!  But, honest:  accounting for the fact that we 
+    don't know the population stdev.  s isn't as good as sigma!
+  - the specific shape depends on sample size.  Called:  "degrees of freedom".  
+      
+             df = n-1
+
+   - as df increases (bigger sample), t gets closer and closer to the normal dist!
+   
+   
+## Using the t table
+
+Since there are many options for df, the t table works differently!  
+
+- the values "in" the table are t-scores
+- the areas are in the top margin
+- df are on left margin
+
+
+Ex)  What are the t-scores that cutoff the middle 95% of the dist when n=35.
+
+   df = 34
+   
+tstar = 2.03.  (df = 34, one tail area = .025)
+
+Ex)  In a sample of 40 women at DU, their mean height was computed to be 64.6", with stdev 3.1".
+
+
+WARNING:  3.1" is the SAMPLE stdev, s!  use t!
+
+Estimate the true mean height of women at DU with 99% confidence.
+
+Need tstar:  99% in the middle, each tail has 0.5%  (.005).  df = 39
+
+tstar = 2.71.
+
+Plug and chug!
+
+```{r}
+64.6 - 2.71*3.1/sqrt(40)
+```
+
+```{r}
+64.6 + 2.71*3.1/sqrt(40)
+
+```
+
+We're 99% confident that the true mean height of women at DU is between 63.3" and 65.9".
+
+MOE:
+
+```{r}
+2.71*3.1/sqrt(40)
+```
+
+Ex)  Over the course of a year, Prof Miller ordered pizza delivery 28 times  and recorded a mean delivery time of 28.2 min with stdev 5.3 min.
+
+Estimate the mean delivery time for her pizza with 98% confidence.  
+
+tstar:  98% in the middle, 
+
+   - one tail has 1%
+   - two tails together have 2%
+   
+tstar = 2.47
+
+Plug and chug!
+
+lo:
+```{r}
+28.2 - 2.47*5.3/sqrt(28)
+```
+```{r}
+28.2 + 2.47*5.3/sqrt(28)
+```
+
+We are 98% confident that the true mean delivery time is between 25.7" and 30.7".
+
+## Planning for sample size in CI for mu
+
+Idea:  solve for n in the MOE formula
+
+     MOE = tstar*s/sqrt(n)
+     
+     n = (tstar*s/MOE)^2
+     
+Note:  need an estimate for s.
+       what about tstar?  don't know n, don't know df!  
+       
+A:  for 95% confidence, approximate tstar = 2
+
+# Mon April 12
+
+
+
+Bunny rabbits have higher resting heart rate than humans, with a mean of 220 bpm and stdev of 20 bpm.  Assume that bunny heart rate follows a normal distribution.
+
+If we take a sample of 16 bunnies, what's the probability that their mean heart rate is at least 210 bpm?
+
+P(xbar >= 210)
+
+zscore:
+
+```{r}
+(210 - 220)/(20/sqrt(16))
+```
+
+In Granville,  38% of homes display a flower garden in the front yard.  If we take a sample of 30 homes, what's the probability that at least half of them display a flower garden in the front yard.
+
+Show all work, and justify why you were able to calculate this probability at all.
+
+
+
+
+P(phat >= .5)
+
+```{r}
+30*.38
+```
+```{r}
+30*(1-.38)
+```
+z-score:
+
+```{r}
+(.5-.38)/sqrt(.38*(1-.38)/30)
+```
+
+P(Z>1.35) = .0845
+
+
+Ex)  In a large lecture section, the average time taken to complete the final exam was 113.2 min, 15.3 min.  There are 200 students in the course.
+
+Based on this, construct a 90% CI for the true mean exam completion time.
+
+Find tstar:  90% in middle:
+
+   - one tail area = 5%
+   - two tail area (together) = 10%
+   
+df = n - 1 = 200 - 1 =  199
+
+Note:  if df not exactly on table, use next smallest.  Here:  df = 150 
+
+tstar = 1.66
+
+lo:
+
+```{r}
+113.2 - 1.66*15.3/sqrt(200)
+```
+```{r}
+113.2 + 1.66*15.3/sqrt(200)
+
+```
+
+We are 90% confident that that the true mean completion time for this exam is between 111.4 min and 115.0 min.
+
+
+# Monday April 12
+
+## Hyp Tests
+
+
+So far:
+
+Confidence Intervals estimate a population paramater based on sample data.
+
+Hypothesis tests answer a question/claim about a population parameter.
+
+
+Ex:  We wonder if mean cholesterol is lower for patients who take new drug.
+
+Hyp tests are criminal trials!
+
+In a criminal trial:
+
+1)  Q:  Innocent or guilty?  Assume by default that they're innocent, but the reason we're doing the trial is because they're think they're guilty!
+
+2) Get evidence in the form of witness testimony and experts, etc.
+
+3) A jury/judge decides how strong the evidence is.
+
+4)  Conclusion:  if evidence is strong enough, then convict!  Guilty!  If evidence isnt' strong enough, can't convict.   Innocent.
+
+
+Hyp test:  pop parameter is on trial!
+
+1)  Two competing hypotheses:
+    - H0:  The status quo.  Our assumption about the paramater.  Innocent!
+    - Ha:  Our claim/question.  The thing we're trying to support.  Guilty!
+    
+    Note:
+    
+      - The H0 is always a statement of equality (=) about a pop parameter.
+      - The Ha is always an inequality (<, >, !=).  
+      
+    H0 and Ha are always logical opposites.  
+    
+2)  The evidence is data!  Specifically:  z-score!  called "test stat"
+
+3)  "Strength" of evidence comes from probability!  Called "p-value"
+
+    The p-value is the probability of observing a sample result that's as (or 
+    more) extreme than the one we got, assuming H0 is true!!!!
+    
+4)  Conclusion.  Small p-vals are evidence agains the H0.
+
+     If p-val is small, then H0 says our data is very unlikely.
+     Ie, if p-val is small, then H0 and data disagree!!
+     
+     If p-val is small, reject the H0!  There's strong evidence to support the
+     Ha!
+     
+     If p-val is large, then H0 and data agree.  We did not find evidence
+     to support Ha.  Boo!
+     
+     
+## Hyp Tests for p (proportions)
+
+Ex)  In a samle of 100 DU students, 62 have brown hair.  Does this provide strong evidence that more than half of DU students have brown hair?
+
+
+Note:  phat is normal:
+
+100*(62/100) > 10
+(100)(1-62/100) > 10
+
+1)  Hypotheses
+
+H0:  p = .5
+Ha:  p > .5
+
+
+2) Test stat
+
+z-score:
+
+```{r}
+(62/100 - .5)/sqrt(.5*(1-.5)/100)
+```
+
+3) p-val
+
+```{r}
+1-0.9918
+```
+
+p-value = .0082
+
+4)  Q:  how small is small enough?  The "significance level" is the cutoff.  
+
+    symbol:  alpha
+    
+    By default:  use alpha = .05.
+    
+Since p-val < alpha, reject H0.  We have strong evidence to support our claim that more than half of students have brown hair.
+
+# Wed April 14
+
+## Notes about hyp tests
+
+- p-vals are always tail areas.  But:  which tail?  A:  Ha!
+
+  If Ha has ">", then right tail.  
+  If Ha has "<", then left tail.  
+    
+    
+    
+- Every conclusion has two parts:
+
+  - If we have small p-val (p-val<alpha), we reject H0.  If p is large (>alpha), we fail to reject H0.
+  - If we reject H0, then we've found strong evidence to support Ha.  Otherwise, we don't have enough evidence to support Ha.
+  
+WARNING:  If we fail to reject H0, this doesn't prove H0 is true.
+
+## Significance Level
+
+How small is small enough for p-val?  You decide!  The "cutoff" is called alpha, the significance level.  
+
+If alpha not stated, assume alpha = 0.05.  
+
+Ex)  Prof Miller has a proposition to change the faculty handbook.  For it to succeed, more than 2/3 of the faculty must vote to support it.  
+
+To investigate whether there's enough support, she takes a sample of 50 facult members, and finds that 39 of them support her proposition.
+
+Q:  Does this provide strong evidence that at least 2/3 of all faculty support her?
+
+
+1) Hypotheses
+
+H0: p=2/3
+Ha: p>2/3    <- right tail test
+
+2) test stat
+
+```{r}
+(39/50-2/3)/sqrt(2/3*(1-2/3)/50)
+```
+
+Note:  Ci for p:
+
+     phat +/- zstar*sqrt(phat(1-phat)/n)
+
+
+3) p-val
+
+Justify:
+
+```{r}
+50*2/3
+```
+```{r}
+50*(1-2/3)
+```
+Yes!  phat is normal!
+
+left tail area = .9554
+
+p-val:
+
+```{r}
+1-.9554
+```
+
+If H0 is true, there's a 4.46% chance of observing a sample result like the one we got.
+
+
+4) conclusion
+
+    p < alpha
+0.0446 < 0.05
+
+Reject H0.  We have strong evidence that more than 2/3 of faculty support the proposition.
+
+## Two tail tests
+
+So far:
+
+Ha:  <   -> left tail test
+Ha:  >   -> right tail test
+
+Q:  what if Ha has "!="  (not equals)
+
+A:  Then, both very large and very small results give evidence against H0.
+
+Q:  Only one test stat, so only one tail area.  What's the other?
+
+A:  For two tail tests, double the tail area for p-val!
+
+Ex)  Prof Miller suspects that a dice is unfair.  In particular, she thinks the proportion of times that "3" shows up differs from 1/6.
+
+To investigate, she rolls the dice 100 times and observes that "3" comes up 13 times.
+
+1) Hypotheses
+
+H0:  p  = 1/6
+Ha:  p != 1/6    <- two tail test!!!
+
+2) Test stat
+
+```{r}
+(13/100 - 1/6)/sqrt(1/6*(1-1/6)/100)
+```
+
+left-tail area:  0.1635
+
+p-val:  2*.1635
+
+```{r}
+2*.1635
+```
+
+p-val = 0.327
+
+4)  Conclusion
+
+
+The p-val is greater than 0.05, so we fail to reject H0.  We didn't find strong evidence that the dice is unfair.  
+
+## Hyp tests for mu (mean!)
+
+Ex)  Prof Miller suspects that men at DU are taller, on average, then the national mean height for adult men of 69".  
+
+To investigate, a sample is taken of 45 studnents.  Their mean height is computed to be 69.8" with stdev 2.5".
+
+Does this provide strong evidence to support the claim?
+
+
+1) Hypotheses
+
+H0:  mu = 69
+Ha:  mu > 69
+
+2) Test stat
+
+Note:  always use t-dist for means!
+
+t-score:
+
+```{r}
+(69.8-69)/(2.5/sqrt(45))
+```
+
+df = 45 - 1 = 44
+
+
+3) p-val
+
+Use t table!
+
+  .01 < p-val .025
+  
+  
+
+
+    
+    
+    
+    
+    
+# Wed April 14
+
+## Notes about hyp tests
+
+p-vals are always "tail areas".  But:  which tail?
+
+Answer:  look at Ha!
+
+Ha:  p < .25    ->  left area.  "Left tail test"
+
+Ha:  mu > 10.3  ->  right tail area.  "Right tail test"
+
+Conclusions:  only two possible conclusions:
+
+   - If p<alpha (sig level), then reject H0.  
+      There's strong evidence to support Ha.  (Yaay!)
+   - Else if p>alpha, then fail to reject H0.
+      There's not strong evidence to support Ha.  (Booooo)
+      
+Always two sentences:  reject or fail to reject?  Support Ha, or not?
+
+ALways speak in context about Ha!
+
+
+EX)  Prof Miller is proposing a change to the faculty handbook.  For her proposition to pass, she needs the support of at least 2/3 of the faculty.
+
+To investigate whether or not she has enough support before the real vote, she takes a poll of 50 faculty members.  Of those, 39 are in support.
+
+Does this provide strong evidence that 2/3 of all faculty (or more) support her?
+
+Perform and appropriate hyp test with alpha = 0.05.
+
+1)  Hypotheses
+
+H0:  p=2/3
+Ha:  p>2/3   <- right tail!
+
+2)  Test stat
+
+z-score:
+
+```{r}
+(39/50-2/3)/sqrt(2/3*(1-2/3)/50)
+```
+
+3) p-val
+
+Note:
+
+50*(39/50) > 10
+50(1-39/50) > 10
+
+Yep, normal dist!
+
+```{r}
+1-.9554
+```
+
+If it's true that 2/3 (or less) of the faculty support the proposal, then there's only a 4.5% chance of observing a sample proportion as large as the one we got.
+
+4)  Here:  p<alpha
+
+    .046 < .05
+    
+Reject H0!  There's strong evidence to support the claim that more than 2/3 of the faculty support the proposition.
+
+Yay!  I found the evidence I was looking for!
+
+
+
+## Two tail tests
+
+So far:
+
+Ha:   >   -> right tail
+Ha:   <   -> left tail
+
+Q:  what if Ha has !=  ?
+
+A:  two tail test.  area could come from -either- side!  Could be bigger, could be smaller!
+
+Want to count both tail areas!  Multiply by 2!
+
+Ex:  Prof Miller suspects that a dice isn't fair.  She thinks the proportion of "3"s is not 1/6.
+
+To test this, she rolls the dice 100 times, and observes that 14 of them are "3"s.  Does this provide strong evidence to support her claim that the proportion differs from 1/6?
+
+
+1)  Hypotheses
+
+H0:  p  = 1/6
+Ha:  p != 1/6    <- two tail!
+
+2)  test stat
+
+```{r}
+(14/100 - 1/6)/sqrt(1/6*(1-1/6)/100)
+```
+
+
+3)  p-val
+
+left tail area:  .2358
+
+p = 2(.2358)
+
+```{r}
+2*(.2358)
+```
+
+p = .4716 (both tail areas)
+
+If the dice is fair (p=1/6), then there's a 47% chance of observing a sample result like this.  Pretty likely!
+
+4)  p>alpha.  Fail to reject H0.  We did not find evidence to support Prof Miller's claim that the p!=1/6.
+
+
+WARNING:  We have NOT proven that p=1/6.  Instead, we failed to find evidence that p!=1/6.  
+
+## Hyp tests for mu (means)
+
+So far:  tested proportions.
+
+Now:  test means.
+
+Ex)  Prof Miller suspects that women at DU are taller on average than women in the US as a whole.  The mean height for women in the US is 64".  
+
+To investigate, she takes sample of 45 students and finds their average height to be 64.9", stdev 2.5".
+
+1)  Hypotheses
+
+H0:  mu = 64
+Ha:  mu > 64
+
+
+2) test stat
+
+Note:  for means, always use t (don't know sigma!)
+
+t-score:
+
+```{r}
+(64.9 - 64)/(2.5/sqrt(45))
+```
+
+df = 45 - 1 = 44
+
+3) p-val:  look on t-table!
+
+p-val is between .005 and .01.
+
+4)  Conclusion
+
+p<alpha.  Reject H0.  We've found strong evidence that mean height of women at DU is higher than the national average of 64". 
+
+
+
+
+
+
+
+
+
+## 2-t tests
+
+Idea:  How we compare two populations using two sample results?
+
+A:  investigate mu1 - mu2  (the difference between them!)
+
+So far, one population:  invesgtigate mu.
+
+    estimate:  xbar 
+    
+    stdev:    s/sqrt(n)
+    
+What about 2 pops?  investigate mu1-mu2.
+
+     estimate:  xbar1 - xbar2
+     
+     stdev:     sqrt( s1^2/n1 + s2^2/n2)
+     
+     where s1,s2 are stdevs of samples, n1,n2 are sample sizes
+     
+     
+     
+## Hyp Tests:
+
+One mean:
+
+    test stat = (obs-exp)/stdev
+              = (xbar - mu)/(s/sqrt(n))
+
+
+Two means:
+
+    test stat = (xbar1-xbar2 - (mu1-mu2))/sqrt( s1^2/n1 + s2^2/n2)
+    
+    
+    
+## CIs:
+
+In general:
+
+
+     (observed) +/- (crit val)*(stdev)
+     
+For mu1-mu2:
+
+     (xbar1-xbar2) +/- tstar*sqrt( s1^2/n1 + s2^2/n2 )
+     
+     
+## Examples
+
+Ex)  Prof Miller has two calc sections.  The first has 42 students, and on the final their average score was 76.3 (stdev 10.2).  The second section has 39 students, and on the final their average score was 80.1 (stdev 7.6).
+
+Is there statistically significant evidence of a difference in mean performance between the two?
+
+      xbar1 = 76.3   xbar2 = 80.1
+      s1 = 10.2      s2    = 7.6
+      n1 = 42        n2    = 39
+
+Hypotheses:
+
+H0:  mu1-mu2  = 0 (mu1  = mu2)  <- ALWAYS THE H0 FOR 2-T!!!!
+Ha:  mu1-mu2 != 0 (mu1 != mu2)  <- two tail test!
+
+
+Test stat:
+
+```{r}
+( (76.3-80.1) - 0 )/sqrt(10.2^2/42 + 7.6^2/39)
+```
+
+DF:  which to use?  Conservative approximation:  use the smaller one!
+
+    df = 39-1 = 38
+    
+p-val: 
+
+      .05 < p-val < .1    (two tail)
+      
+Conclusion:
+
+Since p>.05, we fail to reject H0.  We did not find statistically significant evidence of a difference in mean performance.
+
+
+
+Ex)  A researcher wonders if new drug lowers cholesterol.  Experiment:
+
+The 25 people in the control group (no drug) have mean cholesterol of 160.4, stdev 10.9.
+
+The 22 people in the experimental group (yes drug) have mean cholesterol 148.7, stdev 12.5.
+
+Construct a 95% CI for the difference in mean cholesterol between the two groups.
+
+crit val:  find one tail area = .025, df = 22 -1 = 21
+
+    tstar = 2.08
+    
+Plug and chug!
+
+lo:
+
+```{r}
+(160.4-148.7) - 2.08*sqrt(10.9^2/25 + 12.5^2/22)
+```
+hi
+```{r}
+160.4-148.7 + 2.08*sqrt(10.9^2/25 + 12.5^2/22)
+
+```
+
+We're 95% confident that the true difference in mean cholestrol between the groups is between 4.5 and 18.9.
+
+
+
+                          4.5 < mu1 - mu2 < 18.9
+
+We're confident that the difference is positive.  Ie, we're confident that mu1 is bigger than mu2!!
+
+
+
+
+
+xbar1=7.5, s1 =3.33, n1=6
+xbart2=10.83, 3.6, n2=6
+
+H0:  mu1-mu2=0
+Ha:  mu1-mu2!=0
+
+Test stat:
+
+```{r}
+(7.5-10.83)/sqrt(3.33^2/6+3.6^2/6)
+```
+
+p-val:
+
+   .1 < p < .2
+   
+Conclusion:  Fail to reject H0.  There's not enough evidence to support the claim that the mean is different on the weekend.   
+
+
+
+
+
+
+
+
+# Wed April 28
+
+## Paired Tests
+
+Paired data is a collection of two quantitative variables where every measurement in the first is "paired" with one specific measurement in the second.
+
+"Before and after".
+
+Study:  difference in the pairs
+
+      Expected:  mu_diff  = mean difference in pairs (pop)
+      
+      Observed:  dbar = mean difference in pairs (data)
+      
+      stdev:  s_diff/sqrt(n)
+      
+Hyp test statistic:
+
+     t = (dbar - mu_diff)/(s_diff/sqrt(n))
+     
+CI:
+
+     dbar +/- tstar*s_diff/sqrt(n)
+     
+     
+Ex)  Does listening to Mozart increase IQ?  To investigate, do study with 4 participants.  Record IQ at begging, and again after a month of listening to Mozart every night for an hour.
+
+Data:
+
+      Before:  97  112  92  107
+      AFter:   100 113  92  109
+      diff:    -3   -1   0   -2
+      
+Dbar:
+
+```{r}
+(-3+-1+0+-2)/4
+```
+dbar = -1.5
+
+s_diff = 1.291.
+
+1)  Hypotheses
+
+H0:  mu_diff = 0
+Ha:  mu_diff < 0 
+
+2)  Test stat
+
+t = (-1.5 - 0)/(1.291/sqrt(4))
+      
+```{r}
+(-1.5 - 0)/(1.291/sqrt(4))
+```
+
+df = 4-1 =3 
+
+3) p-val
+
+.05 < p-val < .1
+
+4)  Since p>.05, we fail to reject H0.  There's not enough evidence to support the claim listening to Mozart increases IQ.
+
+
+## Differences from 2-t tests
+
+- Simpler
+- Only work with paired data
+- Higher power!  Yay!  Higher chance of successful test.
+
+
+Ex)  A new drug is devloped to lower cholesterol.  Conduct a study:  measure cholesterol of 35 participants at the beginning, and again after a month of treatment.
+
+Compute a mean difference in cholesterol of 8.4, stdev of 3.2.  
+
+Construct a 95% CI for the mean difference.  Is there evidence of a difference?
+
+critical value:  95% in the middle, tails have 2.5%, df = 34
+
+   tstar = 2.03
+   
+Plug and chug!
+
+lo:
+
+```{r}
+8.4 - 2.03*3.2/sqrt(35)
+```
+hi
+```{r}
+8.4+2.03*3.2/sqrt(35)
+
+```
+
+We're 95% confident that the true mean difference in cholesterol (before-after) is between 7.3 and 9.5.
+
+
+Ie:
+
+            7.3 < mean diff < 9.5
+            
+Yes!  Seems unlikely that mu_diff = 0.  We have evidence of a change in mean.  Specifically, seems like before is greater than after.
+
+
+(hyp test)
+
+
+```{r}
+8.4/(3.2/sqrt(35))
+```
+
+## 2-prop z tests
+
+Q:  how do we compare categories from two populations?
+
+A:  study the difference in proportion
+
+
+
+    observation:   phat1-phat2  (diff in samp prop)
+    
+    expected:       p1 - p2      (diff in pop prop, comes from H0)
+    
+    stdev:    sqrt( phat1(1-phat1)/n1 + phat2(1-phat2)/n2 )
+    
+    
+Ex:  In 2010, a sample of 100 DU students contained 67 students with brown hair.  In 2020, a sample of 150 DU students contained 79 students with brown hair.
+
+Is there evidence of a change in proportion of brown-haired student between 2010 and 2020?  Construct a 95% CI to investigate.
+
+
+Critical value:  (remember:  use z for proportions, t for means)
+
+    zstar = 1.96
+    
+Lo:
+
+```{r}
+67/100 - 79/150 - 1.96*sqrt(67/100*(1-67/100)/100 + 79/150*(1-79/150)/150)
+```
+
+```{r}
+67/100 - 79/150 + 1.96*sqrt(67/100*(1-67/100)/100 + 79/150*(1-79/150)/150)
+
+```
+
+We are 95% confident that the difference in proportion is between 2.1% and 26.5%
+
+Ie we're pretty sure
+
+              2.1% <   p1-p2 < 26.5%
+    
+    
+Unlikely that p1-p2=0, so YES, we found evidence of a difference in proportion of brown-haired students between the years.
+
+H0:  p1-p2 = 0
+Ha:  p1-p2 != 0
+
+  
+  
+  
+  
+# Fri April 30
+
+
+## Hyp Tests for 2 proportions
+
+Idea:  take samples, compute phat1-phat2.  Say something smart about p1-p2.
+
+Like before:
+
+     H0:  p1-p2 = 0   (p1=p2)
+     
+Note:  since both samples come from populations with the same proportion, p, makes sense to combine them.  Called "pooled" estimate.
+
+    phat_pooled = (total # of success)/(total sample size)
+                = (x1 + x2)/(n1+n2)
+                
+More accurate, since bigger sample size!  Reasonable, since assume p1=p2.
+
+    observed = phat1-phat2
+    
+    expected = p1 - p2     (=0)
+    
+    stdev = sqrt( phat_pool(1-phat_pool)/n1 + phat_pool(1-phat_pool)/n2)
+    
+    
+
+Ex)  In a sample of 80 DU students, 49 of them said that pepperoni pizza was their favorite.  In a sample of 100 Oberlin students, 76 of them said that pepperoni was their favoforite.
+
+Is there evidence of a difference in proportion of students who prefer pepperoni pizza at the two schools.
+
+1) Hyps
+
+H0:  p1-p2=0  (no difference)
+Ha:  p1-p2!=0  (yes difference)
+
+phat_pooled = (49+76)/(80+100) = 125/180
+  
+2) Test stat
+
+```{r}
+(49/80-76/100 - 0)/sqrt(125/180*(1-125/180)/80 + 125/180*(1-125/180)/100)
+```
+
+z = -2.13
+
+3)  p-val  (proportions -> ztable!)
+
+tail area = .0166
+
+p-val = 2*.0166 = .0332
+
+```{r}
+2*.0166
+```
+
+4)  Since p<.05, reject H0.  We found strong evidence that the proportion of students who prefer pepperoni pizza differs between Oberlin and DU.
+
+
+
+
+
+# Monday May 3
+
+## Chi square Goodness of Fit (GOF) Test
+
+Chi:  greek letter "k"
+
+Idea:  what about a whole distribution of categories?
+
+Ex:  The Mars Co (chocolate, MnMs) claims that the color of MnMs follows the distribution:
+
+- 20% blue
+- 15% brown
+- 5% yellow
+- 30% green
+- 30% red
+
+However, we suspect that the true distribution of color differs from the claim.
+
+How can we test?
+
+Test stat:  how different are our observations from our expectations?
+
+   chissquare = sum( (obs-exp)^2/exp ) = sum( (O-E)^2/E )
+   
+We use a bag of MnMs as sample.  We count:
+
+- 34 blue
+- 20 brown
+- 10 yellow
+- 31 green
+- 28 red
+
+Does this provide evidence that the distribution of colors differs from Mars's statement?
+
+Q:  what would our expectations be?  Total:
+
+```{r}
+34+20+10+31+28
+```
+Blue:  expect 
+```{r}
+.2*123
+```
+Brown:
+```{r}
+.15*123
+```
+Yellow:
+```{r}
+.05*123
+```
+Green:
+```{r}
+.3*123
+```
+Red:
+```{r}
+.3*123
+```
+
+
+Table:
+
+Obs:  34   20   10   31    28
+Exp: 24.6 18.45 6.15 36.9 36.9
+
+
+Test:
+
+1) Hypotheses
+
+H0:  distribution is as claimed (all proportion are the same)
+Ha:  at least one color proportion is different
+
+2)  Test stat
+
+chi-square stat
+
+```{r}
+(34-24.6)^2/24.6 + (20-18.45)^2/18.45 + (10-6.15)^2/6.15 + (31-36.9)^2/36.9 + (28-36.9)^2/36.9
+```
+
+3) p-val
+
+chi square distribution:  distribution for std dev
+
+df = #categories - 1 = 5-1 = 4
+
+     .05 < p-val < .1
+     
+4)  Since p>.05, we fail to reject H0.  There's not strong evidence that the proportion of colors differs from Mars's claim.  
+
+
+Ex)  Q:  Do babies prefer a particular color of toy?  
+
+
+Data:  We have 100 babies for the study.  Each one is presented with four identical toys, each a different color:  blue, green, yellow, red.  We record which toy the baby reaches for first.
+
+In our study, we observe:
+
+19 blue, 25 green, 12 yellow, 44 red
+
+Does this provide strong evidence that the babies have a preference?
+
+
+1)  Hypotheses
+
+H0:  no preference.  all proportions are equal.  ie, 1/4 for all.
+Ha:  at least one proportion != 1/4.
+
+Exp:  25 blue, 25 green, 25 yellow, 25 red
+
+2) Test stat
+
+```{r}
+(19-25)^2/25+(25-25)^2/25+(12-25)^2/25+(44-25)^2/25
+```
+
+df = 4-1 = 3
+
+    p-val < .001
+    
+4)  Since p<.05, we reject H0. We've found strong evidence of a color preference.  Strong evidence that the babies don't prefer each equally.
+
+##  Test for independence
+
+
+Two events A and B are independent if...
+
+    P(A and B) = P(A)*P(B)
+    
+Expected counts:  formula above!  Observed:  data.
+
+Test stat:  chisquare!
+
+     chisquare = sum( (O-E)^2/E )
+     
+Ex:  The following is data about year in school and hair color:
+
+              brown  black  other   total
+    fresh      35      20     5      60
+    soph       40      15     10     65
+    total      75      35     15     125
+    
+Expected counts:
+
+     E = (Row Total)*(Column Total)/(Total Total)
+Expected:
+
+              brown  black  other   
+    fresh      36     16.8   7.2
+    soph       39     18.2   7.8
+          
+chisquare:
+```{r}
+(35-36)^2/36+(20-16.8)^2/16.8+(5-7.2)^2/7.2+(40-39)^2/39+(15-18.2)^2/18.2+(10-7.8)^2/7.8
+```
+
+1) Hyps
+
+H0: Year in school and hair color are independent
+Ha: They're not (ie, a relationship between the two)
+
+2)  Test stat
+
+(work above) chisquare = 2.52
+
+    df = (#rows - 1)*(#cols - 1) = (2-1)(3-1) = 2
+    
+3) p-val
+
+    .2 < p-val < .3
+    
+4)  Since p-val > .05, we fail to reject H0.  There's not strong evidence of a dependence relationship between year in school and hair color.  Idea:  seems like they could be independent.  
+
+Ex)  Does age affect the likelihood that one is concerned about anthropogenic climate change?  Data:
+
+           Yes   No    Total
+    20-29  45    15     60
+    50-59  28    40     68
+    Total  73    55     128
+    
+Expected:
+
+           Yes      No    
+    20-29  34.22   25.78
+    50-59  38.78   29.22
+
+chisquare:
+
+```{r}
+(45-34.22)^2/34.22 + (15-25.78)^2/25.78 + (28-38.78)^2/38.78+(40-29.22)^2/29.22
+```
+
+1) Hyps
+
+H0:  age group and opinion about climate change are indpendent
+Ha:  they're not (some dependence relationship)
+
+2)  Test stat
+
+chisquare = 14.88
+
+df = (2-1)(2-1) =1 
+
+3) p-val
+
+   p-val < .001
+   
+4) Since p<.05, we reject H0.  There's strong evidence of a dependence relationship between age group and opinion on anthalsdfkjaldfjalsj.
+
+
+
+
+  
+
+
+
+
+
+
+
+Example:  how many other-haired soph would we expect?
+
+```{r}
+65*15/125
+```
+
+    
+# Friday May 7
+
+## Tests for correlation
+
+Recall:  r tells the strength and direction of a linear relationship
+
+If...
+
+  - r close to 1, strong positive relationship
+  - r close to 0, no linear relationship
+  - r close to -1, strong neg relationship
+  
+Note:  r is a statistic based on sample data.  
+
+Population version:  rho 
+
+$$\rho$$
+
+Goal:  say something smart about rho.
+
+Problem:  sampling distribution for r is very complicated!
+
+Good news:  if we assume rho=0, then much simpler!
+
+H0:  rho = 0 (no lin rel)
+Ha:  rho <,>,!= 0 (yes lin rel)
+
+    t = r*sqrt(n-2)/sqrt(1-r^2)
+    
+    df = n-2
+    
+    
+Ex)  Iris data:  sepal length vs sepal width
+
+```{r}
+cor(iris$Sepal.Length, iris$Sepal.Width)
+```
+
+```{r}
+plot(iris$Sepal.Length, iris$Sepal.Width)
+```
+
+Q:  is there a lin rel btwn length and width?
+
+1) Hyps
+
+H0:  rho = 0
+Ha:  rho != 0 
+
+2) test stat
+
+```{r}
+-.118*sqrt(150-2)/sqrt(1-.118^2)
+```
+
+df = 150-2 = 148
+
+3) p-val
+
+    .1 < p-val < .2
+    
+4) Since p>.05, we fail to reject H0.  We have not found strong evidence of a lin rel btwn sepal length and sepal width.
+
+Ex)  mpg data:  cty vs hwy
+
+```{r}
+plot(mpg$cty, mpg$hwy)
+```
+
+Q:  Is there evidence of a positive lin rel btwn cty mpg and hwy mpg?
+
+```{r}
+cor(mpg$cty, mpg$hwy)
+```
+
+    r = .956,   n=234
+    
+    
+1)  Hyps
+
+H0:  rho=0
+Ha:  rho>0
+
+2) test stat
+
+```{r}
+.956*sqrt(232)/sqrt(1-.956^2)
+```
+
+df = 232
+
+3)  p-val
+
+    p-val << .005
+    
+4) Since p<< .05, we super duper extra for realzies reject H0.  There is extra strong evidence of a positive lin rel btwn cty mpg and hwy mpg.
+
+WARNING:  The test for rho can only show IF there's evidence of a linear rel (yes/no).  It CANNOT tell you how STRONG that relationship is.
+
+
+
+# Monday May 10
+
+Final window:  Friday 8am - Saturday 5pm
+
+Sampling distributions:  
+
+Two important statistics:
+
+  - xbar (quant data)
+  - phat (categorical data)
+  
+Central limit theorem:  as long as n is "big enough", then sample statistics (xbar and phat both) follow a normal distribution.
+
+For xbar:
+
+    expected = mu (population mean)
+    stdev = sigma/sqrt(n)
+    
+    "big enough" = at least 30
+    
+    
+For phat:
+
+    expected = (pop proportion)
+    stdev = sqrt(p(1-p)/n)
+    
+    "big enough" = both np and n(1-p) at least 10
+    
+    
+    
+Ex)  At DU, 82% of students are from out of state.  If we take a sample of 100 students, what's the probability that at least 80 of them are from out of state?
+
+      p = .82
+      
+      P(phat>=80/100) = ?
+      
+CLT:  phat is normal.  z-score!
+
+```{r}
+(80/100 - .82)/sqrt(.82*(1-.82)/100)
+```
+    
+
+
+
+Independent:
+
+    P(A and B) = P(A)*P(B)
+    
+```{r}
+table(mpg$cyl, mpg$drv) %>% addmargins()
+```
+Above:  pivot table showing counts of #cylinders and drive type.
+
+Q:  Are the events "8 cyl" and "r" independent?
+
+    - P(8) = 70/234
+    - P(r) = 25/234
+    - P(8 and r) = 21/234
+    
+Check
+
+```{r}
+70/234*25/234
+```
+```{r}
+21/234
+```
+No!  Not equal, so not independent!!
+
+
+
+
+
+## Metadata
+
+"Data about data"
+
+- what are the cases/individuals, how many?
+- what are the variables, what kind of data/what units
+- when/where/how data was collected
+
+
+
+
+
+
+
+

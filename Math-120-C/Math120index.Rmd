@@ -31,68 +31,32 @@ theme_set(                                #this sets the theme for all    #
 
 ```
 
-<h1> Final Exam: Fri 8am - Sat 5pm</h1>
-
-Once you begin, your two-hour window will start.  Take it any time.  You DO NOT need to email me.
-
-<h2>REMEMBER: If Notebowl becomes unresponsive, **JUST REFRESH THE WEBPAGE**.</h2>  
-
-*YOU WILL NOT LOSE ANY WORK*.
-
-*DO NOT JUST WAIT!  YOUR TIME WILL RUN OUT!*
-
-<h1> Having a working computer is every student's responsibility.</h1> If you're worried, use a computer in the library or other computer lab.
-
-<h2>*Students will not be granted an extension FOR ANY REASON.*</h2>
-
-
-## Math 120 Partial Lecture Notes
-*They look great on your phone, so you can read them anywhere.    Don't understand something?  Ask me!*
-
-- [Week 1](https://millera2.github.io/Math-120-C/Math-120-Lec-01.html)
-- [Week 2](https://millera2.github.io/Math-120-C/Math-120-Lec-02.html)
-- [Week 3](https://millera2.github.io/Math-120-C/Math-120-Lec-03.html)
-- [Week 4](https://millera2.github.io/Math-120-C/Math-120-Lec-04.html)
-- [Week 5](https://millera2.github.io/Math-120-C/Math-120-Lec-05.html)
-- [Week 6](https://millera2.github.io/Math-120-C/Math-120-Lec-06.html)
-- [Week 8](https://millera2.github.io/Math-120-C/Math-120-Lec-07.html)
-- [Week 9](https://millera2.github.io/Math-120-C/Math-120-Lec-09.html)
-- [Week 10](https://millera2.github.io/Math-120-C/Math-120-Lec-10.html)
-- [Week 11](https://millera2.github.io/Math-120-C/Math-120-Lec-11.html)
-- [Week 12](https://millera2.github.io/Math-120-C/Math-120-Lec-12.html)
-- [Week 13](https://millera2.github.io/Math-120-C/Math-120-Lec-13.html)
-- [Week 14](https://millera2.github.io/Math-120-C/Math-120-Lec-14.html)
 
 
 ## Next Quiz
 
-Topics:  $\chi^2$ GOF, test for independence.  Hyp tests for $\rho$.
+Practice Quiz!  
 
-Practice:
-
-- 6.33 (p239)
-- 6.37 (p245)
+- Covers the syllabus and first day lecture.
+- It'll become available on Notebowl at the beginning of class.  **You won't see it before then!
+- It won't count for your grade.  It's just for practice, so that you're ready for the real thing next week.
 
 
 ## HW Assignments
 
-[Click here for HW Assignments](https://millera2.github.io/Math-120-C/HW.html)
+(Check back soon!)
 
 
 
 ## Office Hours 
 
-### Prof Miller's Hours (Google Meet)
+If you want to see me in person, I'm in my office (Olin 214) **Monday 12:30-2:20pm**
 
-Zoom Room:  [https://zoom.us/j/96985430147?pwd=K2tMSlhCVFZ3NmZXenhybGtqZFA4QT09](https://zoom.us/j/96985430147?pwd=K2tMSlhCVFZ3NmZXenhybGtqZFA4QT09)
-
-Passcode (if needed): i7GYcC
-
-All virtual, all by appointment.  Don't be shy!  A few things:
+Or, you can catch me on Zoom by appointment.  Don't be shy!  A few things:
 
 - Schedule 24 hours in advance
-- I'm free most weekdays from 1:30-4pm
-- When you write, propose a time to cut down on back-and-forth.
+- I'm free most weekdays from 2-4pm
+- When you write, **propose a time** to cut down on back-and-forth.
 
 I never check email after 4pm, so **don't wait till the night before a deadline to get help!**  
 
@@ -100,12 +64,7 @@ I like chatting with students -- come find me!
 
 
 
-## TA Hours
 
-Our TA, Pede, will hold hours on Google Meet (he uses his own [Google Meet Room, click here](https://meet.google.com/gjf-ecsw-ysd?hs=151) ) at the following times:
-
-- Thursday 12-2pm
-- Sunday 6pm-9pm
 
 
 
@@ -116,19 +75,10 @@ Our TA, Pede, will hold hours on Google Meet (he uses his own [Google Meet Room,
 
 ## Shared Google Drive Folder:
 
-[Click here to visit our shared drive.](https://drive.google.com/drive/folders/1iTP3k6vpQrV1moJAR3XQrFd4U-c6J3GZ?usp=sharing)
+(Check back soon!)
 
-
-## Texbook Links
+## Textbook Links
 
 - [Math 120 Textbook](https://www.openintro.org/book/os/)
   - *OpenIntro Statistics* is an excellent, free introduction to modern statistical analysis.
   
-
-```{r}
-(1243-1197)/sqrt(73^2/15+57^2/19)
-```
-```{r}
-pt(-2.005,14)
-```
-
