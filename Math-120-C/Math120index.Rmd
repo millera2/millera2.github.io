@@ -35,16 +35,28 @@ theme_set(                                #this sets the theme for all    #
 
 ## Next Quiz
 
-Practice Quiz!  
+Quiz 1 (The first real quiz).
 
-- Covers the syllabus and first day lecture.
-- It'll become available on Notebowl at the beginning of class.  **You won't see it before then!
-- It won't count for your grade.  It's just for practice, so that you're ready for the real thing next week.
+Topics:
+- Syllabus
+- Rectangular data, types of data, key summaries for numerical variables.
+ 
+Related reading:
+- 2.1 (specifically p42-47)
+
+Practice Problems:
+
+- 1.9 (p20)
+- 2.9 (p57)
+- 2.14 (p58)
+- 2.15 (p58)
+- 2.16d (p59)
+
 
 
 ## HW Assignments
 
-(Check back soon!)
+[Click here for HW Assignment](http://millera2.github.io/Math-120-C/HW1.html)
 
 
 

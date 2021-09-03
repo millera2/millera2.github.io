@@ -1,0 +1,422 @@
+---
+title: "Math 120 Lec xx"
+author: "Your Name"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: simplex
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+
+
+# 09-01 Wednesday
+
+## First "Real" Day
+
+
+Hi!  This is how I take notes in class!
+
+I can do math right here!
+
+```{r}
+2+2
+```
+
+## Statistics -- WHat's that?
+
+We've got data!  Ie, measurements and observations about individuals (people/animals/objects/things).  Based on data, want two things:
+
+1) Descriptive Statistics:  describe the individuals!  Summarize, visualize, etc.
+
+2) Inferential statistics:  say smart things about the **population** that the people/objects/things come from based on the data!
+
+Example:  student data.  Let's data about *you*, and say smart things about you!
+
+Note, our data is "rectangular data"/"tabular data":
+
+Three important things:
+
+1) Each column (up/down) is a **variable**.  Ie, a specific quality of cases/individuals.
+2) Each row (left/right) is a **case**/**individual**.  Ie, the specific people/things/objects we're collecting data from.
+3) Each cell (each rectangle) has exactly **one** measurement.
+
+ALL DATA we work with in Math 120 is rectangular!
+
+Now:  let's do some descriptive stats!  What does this data say about YOU ALL?
+
+Q:  What sorts of summaries might we care about?
+
+Ex:  The MAX number of siblings we have is 5.  
+
+Ex:  What about average siblings?  
+
+Q:  What are GOOD summaries to use?
+
+Example:  mean hometown population is 6+ million.  BUT, only 4 of you come from a hometown of more than 1 million.  
+
+SEEMS LIKE AVERAGE/MEAN IS DOING A BAD JOB!
+
+
+## Numerical Summaries (Quantitative Data)
+
+- Mean/Average.  STORY OF THE FORMULA:  The mean is "balancing point" of the data.
+
+- Median.  STORY OF THE FORMULA:  Middle element (when data is ordered)
+
+- Mode.  The most common.
+
+NOT ALL OF THESE ARE EQUALLY GOOD (ALL THE TIME)!
+
+Idea: we want a good **Measure of center**, ie, what's typical for this data?
+
+Ex: Hometown:
+
+  - mean = 6.3 million
+  - median = 0.125 million
+  
+Seems like median is doing a better job!  Seems more representative of "typical"!
+
+Why is mean worse here?  SHAPE!  
+
+Notes about our first histo:
+
+- Bad!  Almost all data is in one bar, the last is an outlier.  Can't see the shape!  Fix:  bins!
+
+Population shape:  strong right skew!  (skew == "tail")
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 09-01 Wednesday
+
+## The real first day
+
+This is how I take notes!
+
+I like it because I can do math:
+
+```{r}
+2+2
+```
+
+## Statistics, What the heck is it?
+
+
+Want to say smart things about data, ie measurments and observations about people/things/objects/whatever.
+
+Two types of statistics:
+
+1)  Descriptive statistics:  descirbing/summarizing/visualizing the people/objects/whatever in the dataset.
+
+2)  Inferential statistics:  making empirically supported conclusions about the population that the people/objects/things come from, based on the data.
+
+Let's look at some data:  you!
+
+Note:  this data is **rectangular data**.  Three key qualities:
+
+1) Columns (up/down) are **variables**, ie qualities of individuals
+2) Rows (left/right) are **individuals/cases**.  The people/objects that we're measuring/observing.  
+3) Each cell (rectangle) has exactly ONE measurement/observation.
+
+WE ALWAYS USE RECTANGULAR DATA IN 120!
+
+
+Types of data:
+
+- Quantitative
+- Qualitative
+
+How we describe data depends on it's type!
+
+What can we say about you?
+
+Q:  What's the mean hometown population?
+
+A:  1.97 million
+
+Woah!  Doesn't seem like a good measure of "typical"!  Most students from hometowns less than 1 mil!
+
+What's the right tool for the job?
+
+## How to describe quantitative variables
+
+Three key observations:
+
+- measure of center.  what's typical?
+- measure of spread.  In general, how far away from the center are people?  Are all close to center, or are many far away?
+- Shape.  In what regions do most data lie?
+
+## Measures of Center (Quant variable)
+
+What's typical?
+
+- Mean: STORY OF THE FORMULA:  The balancing point of the distribution.
+- Median.  STORY OF THE FORMULA:  Middle number (if in order)
+- Mode.  Story:  Most common element.
+
+For population, mean and median are totally different!
+     
+     mean = 1 something mil
+     median = .043 million
+     
+Median seems much more representative of the "typical" value for this data!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 09-01 Wednesday
+
+## First "real" class day
+
+This is how I take notes!
+
+I can do math!
+
+```{r}
+2+2
+```
+
+
+## Stats - what the heck is it?
+
+We've got data (observations about people/things), wanna say smart things about it!
+
+Two kinds of stats:
+
+1) Descriptive stats:  Describe data with summaries, visuals, etc.  What can we say about the individuals in the dataset?
+
+2)  Inferrential stats:  Making empirically supported conclusions about the population the individuals came from.  
+
+Example:  your data!
+
+**Rectangular Data** has 3 properties:
+
+- Each **column** (up/down) is a **variable**, a characteristic of an individual
+- Each **row** (left/right) is an **individual/case**, ie the people/things that we collect data from
+- Each **cell** contains exactly one measurement.
+
+WE ALWAYS USE RECT DATA IN 120!!
+
+
+## Types of Data
+
+- Numerical/quantitative (number)
+- Categorical/qualitative (not a number)
+
+The tool we use depends on the type of data!
+
+Ex: Hometown population. 
+
+- What's the average?  A:  1.4 million
+
+Woah!  Most students are from a hometown of less than 1 mil.  1.4 mil seems unrepresentative!
+
+## What to say about quantitative variables
+
+Three key features:
+
+- Measure of center.  Ie, what's typical?
+- Measure of spread.  In general, how far from the center are you?  How much are values spread apart?
+- Shape.  In what ranges do data lie?
+
+## Measures of center
+
+- mean.  STORY OF THE FORMULA:  "balancing point"
+- median.  STORY OF THE FORMULA: middle element (when in order)
+- mode.  STORY:  most common
+
+Problem:  we've seen that these can be drastically different!
+
+    Pop:  mean = 1.4mil, median = 0.047 mil
+    
+Answer:  shape!  Since there are outliers, the mean is strongly affected (balane), but the median is not (middle).  
+
+How to decide the measure of center:
+
+- If the data has outliers/skew, use median (not affected).
+- If the data is mostly symmetric, use mean (simial to median).
+
+
+
+# Fri Sept 03
+
+## Saying smart thigns about data
+
+Last time, two types:
+
+- quant (numerical)
+- qual  (categorical)
+
+## Smart things to say about quant variables
+
+Three important characteristics/qualities for quant variables:
+
+- measure of center.  what's typical?  
+- measure of spread.  how far from center is typical?  how spread out are observations?  
+- shape
+
+
+## Measures of center
+
+- mean (balance point)
+- median (middle)
+- mode (most common)
+
+## Measures of spread
+
+- standard deviation (stdev, sd)
+
+Formula:
+
+     s = sqrt( sum(xi-xbar)^2 / n-1)
+     
+Ex:  compute the stdev of:  1, 2, 3
+
+xbar = (1+2+3)/3 = 2
+
+     salmost =   [ (1-2)^2 + (2-2)^2 + (3-2)^2 ] / (3-1)
+             =   [1 + 0 + 1]/2
+             =   2/2 = 1
+             
+     ->  s = sqrt(1) = 1
+     
+STORY OF THE FORMULA:  Stdev is the "average distance" between data points and the mean.  
+
+Q:  Why squared?  To prevent + and - differences from cancelling.  
+
+FOR STUDENTS:  DON'T need to compute by hand.  DO need to understand story of formula.  
+
+## Measures of spread (ctd)
+
+- IQR (Interquartile range).  Quartiles:  25% marks.  (just like median is the 50% mark).
+
+To find:  break data in half, find median of each.
+
+Ex:  Find quartiles of  1, 2, 3, 4, 5, 20
+
+lo half:  1,2,3  -> Q1 = 2
+
+upper half:  4,5,20  ->  Q3 = 5
+
+Then,
+
+      IQR = Q3 - Q1
+      
+STORY OF THE FORMULA:  IQR is the range of the middle half of the data.
+
+
+## Shape of a quant variable/distribution
+
+Ie, shape of historgram.  Common shapes:
+
+- symmetrical:  mirror image about the center. 
+- skew.  THINK:  SKEW MEANS TAIL!!
+- bimodal/multimodal
+
+A measurement is is ROBUST if it's NOT strongly affected by skew/outliers.
+
+
+Q:  Which is robust, the mean or median?
+
+A:  The median is robust!  Middle element not affected by extremes!  Ex:  hometown population!   Mean not robust, strongly affected by tail.
+
+Exercise:  For the following distributions, describe shape.  Which measure of center should we use?  Which will be larger?
+
+a)  Data:  the heights of men at DU
+
+b)  Data:  scores in a large class on an easy exam.
+
+
+A:
+
+a)  Expect symmetric.  Most in the middle.  Use mean (probably close to median).  Mean and median about the same.
+
+b)  Skew left.  Use median to measure center (robust).  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
