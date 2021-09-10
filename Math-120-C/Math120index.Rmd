@@ -35,22 +35,25 @@ theme_set(                                #this sets the theme for all    #
 
 ## Next Quiz
 
-Quiz 1 (The first real quiz).
-
 Topics:
-- Syllabus
-- Rectangular data, types of data, key summaries for numerical variables.
+- Outliers and boxplots
+- z-scores and Empirical Rule
+- Scatterplots and correlation coefficient
  
 Related reading:
-- 2.1 (specifically p42-47)
+- 2.1.5 (p49-)
+- 8.1.4 (p310-311)
 
 Practice Problems:
 
-- 1.9 (p20)
-- 2.9 (p57)
-- 2.14 (p58)
-- 2.15 (p58)
-- 2.16d (p59)
+- Find if there are any outliers in the data below.  Justify with math.  Draw a boxplot of the data.
+
+    11, 12, 13, 13, 14, 15, 19, 27.  
+    
+- Here are some practice problems for the [Empirical Rule](https://www.khanacademy.org/math/ap-statistics/density-curves-normal-distribution-ap/stats-normal-distributions/e/empirical_rule)
+
+- 8.7 (p 314)
+- 8.11 (p315)
 
 
 
