@@ -37,23 +37,26 @@ theme_set(                                #this sets the theme for all    #
 
 Topics:
 
-- Meaning of linear regression model (what makes it the "best"?)
-- Finding equation of linear model
-- Interpreting coefficients
-- Making predictions
-- Effects of outliers
-- Residuals (computing and interpreting)
+- Interpreting residuals and residual plots (do they support the use of linear model?)
+- Coefficient of determination, $r^2$.  Interpreting and explaining.
+- Definitions of probability
+- Law of Large Numbers (explain the picture on p82)
+- Disjoint events
+- Addition Rule and General Addition Rule (sec 3.1)
 
 Related Reading:
 
-- Texbook sections 8.2 and 8.3 (starting p317)
+- 8.2 (residuals and r^2)
+- 3.1 (probability)
 
 
 Practice:
 
-- 8.17, 8.19 (p325)
-- **8.23** parts abdef (p326)
-- 8.27 (p330)  Specifically:  do you expect the outlier to strengthen, weaken or not affect the correlation?
+- 8.21d (interpret residuals) (p325)
+- 8.23c (explain r^2)  (p326)
+- 3.7d (p93)
+- 3.17e (p110)
+- Guided Practice 3.14 (p86)
 
 ## HW Assignments
 
