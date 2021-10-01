@@ -33,9 +33,9 @@ theme_set(theme_tufte() +
 
 # HW 3 - The Titanic
 
-Due Friday March 26 on Notebowl before class time.  Submit as .pdf document per the usual.
+Due Friday October 15 on Notebowl before class time.  Submit as .pdf document per the usual.
 
-In this HW you'll be investigating a [dataset](https://drive.google.com/drive/folders/1iTP3k6vpQrV1moJAR3XQrFd4U-c6J3GZ?usp=sharing) that catalogs details about 890 passengers of the historic Titanic maiden voyage (about 1/3 of the total).
+In this HW you'll be investigating a [dataset](https://drive.google.com/drive/folders/1C1XHN3PGe4lMQXS_hq49btBM6QaiEuBW?usp=sharing) that catalogs details about 890 passengers of the historic Titanic maiden voyage (about 1/3 of the total).
 
 Your goal is to make the following pivot tables:
 
