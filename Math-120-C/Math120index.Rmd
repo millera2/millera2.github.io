@@ -37,26 +37,36 @@ theme_set(                                #this sets the theme for all    #
 
 Topics:
 
-- Interpreting residuals and residual plots (do they support the use of linear model?)
-- Coefficient of determination, $r^2$.  Interpreting and explaining.
-- Definitions of probability
-- Law of Large Numbers (explain the picture on p82)
-- Disjoint events
-- Addition Rule and General Addition Rule (sec 3.1)
+- Complement Rule
+- Independence
+- Multiplication rule for independence, checking to see if events are independent (justify mathematically)
+- "at least one" problems
+- Conditional probability
+- General multiplication rule
 
 Related Reading:
 
-- 8.2 (residuals and r^2)
-- 3.1 (probability)
+- 3.1,3.2
 
 
 Practice:
 
-- 8.21d (interpret residuals) (p325)
-- 8.23c (explain r^2)  (p326)
-- 3.7d (p93)
-- 3.17e (p110)
-- Guided Practice 3.14 (p86)
+- From class:  
+
+    HW) About 77% of DU students are from out-of-state.  If we take a sample of 4 DU students, what's the probability that at least one of them is from out-of-state?
+    
+    <small>Answer: 0.9972.  Be able to repeat this for larger samples.</small>
+
+- 3.7f (p93)
+- 3.10 (p94) <small>Answers:a) 0.079, b) 0.00977, c) 0.763 </small>
+- 3.11c (p94)
+- 3.13 (p109)
+- 3.15 (parts c and f) (p109)
+- In the data below about purchases at an ice cream shop, are the events "female" and "cone" independent? Justify mathematically.
+
+![](https://i1.wp.com/makemeanalyst.com/wp-content/uploads/2017/05/Contingency-Table1.png)
+
+
 
 ## HW Assignments
 
