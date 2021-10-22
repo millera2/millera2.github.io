@@ -35,25 +35,27 @@ theme_set(                                #this sets the theme for all    #
 
 ## Next Quiz
 
-Topics:  
+Topics:
 
-- Probability Trees
-- Bayes Thm
-- Probability Distributions
-- Expected Value
+- Binomial Distribution, Geometric Distribution
+  - Properties/Criteria/Requirements
+  - Definition
+  - Calculation
+  - Expected Value/Variance/Stdev
+- Expected Value, Variance, and Stdev for all the above distributions
+  - Sketch 
+  - Compute
+  - Properties of continuous distributions
+  - Mu ($\mu$) and sigma ($\sigma$)
 
 Reading:
-
-- 3.2 (specifically p102-108)
-- 3.1.5 (specifically p87-88)
-- 3.4 (specifically p115-116)
-
+ - Sec 4.2, 4.3
 
 Practice:
 
-
-- 3.19, 3.21 on p111 (prob trees, Bayes)
-- 3.31a, 3.33 on p124 (Construct a prob dist, and find expected value)
+- 4.12, 4.13 (p148)
+- 4.17, 4.19, 4.23 (p156-157)
+- Example 5.3.5 on [this page](https://stats.libretexts.org/Bookshelves/Introductory_Statistics/Book%3A_Introductory_Statistics_(OpenStax)/05%3A_Continuous_Random_Variables/5.03%3A_The_Uniform_Distribution) (scroll about halfway down.  Solution included.  Other examples are good.)
 
 
 ## HW Assignments
