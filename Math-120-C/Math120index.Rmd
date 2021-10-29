@@ -1,6 +1,6 @@
 
 ---
-title: "Math 120 Fall 2020 Homepage"
+title: "Math 120 Fall 2021 Homepage"
 date: "Updated: `r format(Sys.time(), '%d %B, %Y')`"
 output: 
   html_document:
@@ -37,26 +37,22 @@ theme_set(                                #this sets the theme for all    #
 
 Topics:
 
-- Binomial Distribution, Geometric Distribution
-  - Properties/Criteria/Requirements
-  - Definition
-  - Calculation
-  - Expected Value/Variance/Stdev
-- Expected Value, Variance, and Stdev for all the above distributions
-  - Sketch 
-  - Compute
-  - Properties of continuous distributions
-  - Mu ($\mu$) and sigma ($\sigma$)
-
+- Normal dist!
+  - Understanding continuous distributions
+  - Using the z-table
+  - "stdandard normal"
+  - forwards and backwards problems
+  - real-world problems
+  - "middle %" problems
+  
 Reading:
- - Sec 4.2, 4.3
+
+- 4.1
 
 Practice:
 
-- 4.12, 4.13 (p148)
-- 4.17, 4.19, 4.23 (p156-157)
-- Example 5.3.5 on [this page](https://stats.libretexts.org/Bookshelves/Introductory_Statistics/Book%3A_Introductory_Statistics_(OpenStax)/05%3A_Continuous_Random_Variables/5.03%3A_The_Uniform_Distribution) (scroll about halfway down.  Solution included.  Other examples are good.)
-
+- 4.1, 4.3, 4.5 (p142)
+- 4.7 (p143)
 
 ## HW Assignments
 
