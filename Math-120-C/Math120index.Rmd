@@ -37,22 +37,23 @@ theme_set(                                #this sets the theme for all    #
 
 Topics:
 
-- Normal dist!
-  - Understanding continuous distributions
-  - Using the z-table
-  - "stdandard normal"
-  - forwards and backwards problems
-  - real-world problems
-  - "middle %" problems
+- Sampling distribution
+  - Meaning/definition/idea/understanding
+  - Samp dist for phat 
+  - Samp dist for xbar
+  - mu/sigma for both
+  - forwards/backwards/middle% for both
+  - "large enough"
   
-Reading:
-
-- 4.1
-
-Practice:
-
-- 4.1, 4.3, 4.5 (p142)
-- 4.7 (p143)
+- Practice
+  - 5.1 (p179)
+  - In 2019, about 14% of adults in the US were smokers.  If we took a sample of 80 adults, what's the probability that over 20% of them are smokers?
+  - In 2019, about 14% of adults in the US were smokers.  If we took a sample of 100 adults and calculated the proportion that were smokers, what are the cutoffs for the middle 80% of sample proportions we might observe? 
+  - In 2018, adults in the US slept a mean of 6.3 hours per night with stdev 1.26 hours.  If we took a sample of 40 adults, what's the probability that their mean sleep time is less than 6 hours?
+  - In 2018, adults in the US slept a mean of 6.3 hours per night with stdev 1.26 hours.  If we took a sample of 100 adults, how hight would their mean sleep time have to be in order to be at the 90th percentile for such samples?
+  
+<br><br>
+  
 
 ## HW Assignments
 
