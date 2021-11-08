@@ -47,10 +47,11 @@ Topics:
   
 - Practice
   - 5.1 (p179)
-  - In 2019, about 14% of adults in the US were smokers.  If we took a sample of 80 adults, what's the probability that over 20% of them are smokers?
-  - In 2019, about 14% of adults in the US were smokers.  If we took a sample of 100 adults and calculated the proportion that were smokers, what are the cutoffs for the middle 80% of sample proportions we might observe? 
-  - In 2018, adults in the US slept a mean of 6.3 hours per night with stdev 1.26 hours.  If we took a sample of 40 adults, what's the probability that their mean sleep time is less than 6 hours?
-  - In 2018, adults in the US slept a mean of 6.3 hours per night with stdev 1.26 hours.  If we took a sample of 100 adults, how hight would their mean sleep time have to be in order to be at the 90th percentile for such samples?
+  - In 2019, about 14% of adults in the US were smokers.  If we took a sample of 80 adults, what's the probability that over 20% of them are smokers?  <smaller>**Answer**: 0.0606</smaller>
+  - In 2019, about 14% of adults in the US were smokers.  If we took a sample of 100 adults and calculated the proportion that were smokers, what are the cutoffs for the middle 80% of sample proportions we might observe? <smaller>**Answer**: 0.0903 and 0.1897</smaller>
+  - In 2018, adults in the US slept a mean of 6.3 hours per night with stdev 1.26 hours.  If we took a sample of 40 adults, what's the probability that their mean sleep time is less than 6 hours?  <smaller>**Answer**: 0.0655</smaller>
+  
+  - In 2018, adults in the US slept a mean of 6.3 hours per night with stdev 1.26 hours.  If we took a sample of 100 adults, how hight would their mean sleep time have to be in order to be at the 90th percentile for such samples?  <smaller>**Answer**: 6.461</smaller>
   
 <br><br>
   
