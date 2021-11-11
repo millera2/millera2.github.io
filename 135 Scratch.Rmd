@@ -1,9 +1,11 @@
 ---
-title: "Math 135 Final Exam"
+title: "Math 120 HW"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
   html_document:
     toc: true
-    toc_depth: 3
+    toc_depth: 1
+    code_folding: show
     theme: yeti
     df_print: paged
   
@@ -29,75 +31,30 @@ theme_set(theme_tufte() +
 ```
 
 
-Show all work for credit.  It doesn't have to be perfect, just show me your best!  I'll go to my happy place when I'm grading. 
+# HW 2 - What's In Your Breakfast Cereal?
 
-1) Compute the following limits:
+Due Friday Oct 1 before the beginning of class.  Submit as .pdf document, just like HW 1.
 
-a) $$\lim_{x \rightarrow 3} \frac{\sqrt{x+6}-3}{x-3}$$
-b) $$\lim_{x\rightarrow 0}\frac{\sin(\pi x)}{x}$$
-c) $$\lim_{x\rightarrow \infty}x^2e^{-x}$$
+For this HW you'll be looking at data on a selection of common breakfast cereals.  Find the data on our [shared Google Drive folder](https://drive.google.com/drive/folders/1C1XHN3PGe4lMQXS_hq49btBM6QaiEuBW?usp=sharing) (you can click the link here).
 
-2) Compute the derivative (using the limit definition)
-$$f(x)=\frac{2}{3x}$$
+(For the record, I'm a Honey Bunches of Oats woman, myself.)
 
-3) Using a local linearization, approximate $\sqrt{9.1}$
+Your goal is to create and analyze linear models for the following:
 
-4)  Compute the following derivatives:
+- Predict `Fiber` based on `Potassium`
+- Predict `Protein` based on `Sugar`.
 
-a) $$3x^4-2\sqrt x + \frac{3}{x^4}$$
+For each, perform the following:
 
-a) $$\frac{d}{dx}\frac{2^{x^2}}{\cos (\ln x)}$$
+  1) Make a scatterplot, and describe its key features using language from lecture.
+  2) Compute the 5 key summary statistics:
+    $\bar{x}$, $\bar{y}$, $s_x$, $s_y$, $r$
+  3) Compute the equation of the least-squares line.
+  4) Carefully interpret the slope of the line, as practiced in lecture.
+  4) Make, and interpret, a residual plot.
+  5) Compute and interpret $R^2$.
 
+Everything should be neatly and clearly presented in a Google Docs report in complete English sentences and paragraphs.  Exported to .pdf.  
 
-5) Given graphs of two functions  below, sketch the graph of the derivative:
-
-![](https://activecalculus.org/single/images/1_4_Act1d.svg)
-
-6) For the following function
-
-![](https://lh3.googleusercontent.com/proxy/9g_hu0mispX0L4eRj2TXXAdhKA7ZrlX_TPZ3XO2PYzDOrLcmYRXRMR2uoPcqxHj5Yt8TYfNANjENXNseLzxPwxk2U1rmDcKjsFOt85k)
-Identify the x-vals where the following occurs (you can use your best judgement on some of the intervals, it doesn't have to be perfect):
-
-a) $f'(x)>0$
-b) $f''(x)<0$
-c) $f'(x)$ is increasing
-d) $f'(x)=0$
-e) $f''(x)=0$
-
-7)  Identify the discontinuities and, for each, explain specifically which property of continuous functions is not satisfied:
-
-![](https://i.stack.imgur.com/4FZ94.png)
-
-8)  For the function shown in the previous problem, identify all places where the function is not differentiable.  No explanation needed.
-
-9)  For the function below, identify all local extrema and absolute extrema:
-
-![](https://activecalculus.org/single/images/3_1_PA1.svg)
-
-10) Where does the following curve have horizontal tangents?
-$$3x^2+3=\ln (5xy)$$
-
-11)  Describe all asymptotes of 
-$$q(x)=\frac{(2x-2)(x+1)}{(x+3)(x-2)}$$
-
-
-12)  Find all relative mins and maxes (using 1st derivative test) of:
-$$f(x)=-\frac{2}{x^2-4}$$
-
-13)  Find relative mins and maxes (2nd derivative test) of:
-$$f(x)=x^4-x^2$$
-
-14) A plane flying at an altitude of 5mi at a rate of 300mph passes over a person.  After 6 minutes, at what rate is the angle between the plane and the person's feet changing?
-
-15) A supermarket employee wishes to make an open-top box from a flat piece of cardboard that measures 20"x30" by cutting squares from the corners and folding the sides up.  How big shoud she cut the squares to maximize the volume of the box?  Justify with calculus.
-
-16)  Compute the following.  You don't need to plug in to your calculator.
-
-a) 
-$$\int_1^2 \frac{2}{3x\ln (5x)}dx$$ 
-
-b) 
-$$\int_0^1 \frac{2x+1}{x^2+x-3}dx$$
-
-
+Late HW will not be accepted for any reason.  Students may turn in HW early, of course.
 
