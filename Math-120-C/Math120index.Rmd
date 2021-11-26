@@ -37,18 +37,21 @@ theme_set(                                #this sets the theme for all    #
 
 Topics:
 
-- Confidence Intervals
- - Meaning, use, and interpretation
- - Computing
- - Margin of error
- - Planning ahead
+- Hypothesis Tests
+ - Tests for mu and p
+ - All 4 steps
+ - Meaning/definition of p-value
+ - Meaning of significance level
  
- 
+Reading:
+- Ch 6 Section 1, Ch 7 Section 1
   
 Practice
 
-- 6.1 (p214)
-- 6.7, 6.9bcd (p215)
+- 6.11a (p216)
+- 7.3 (p259)
+- 7.7 (p260)
+- 7.11a (p261)
   
 <br><br>
   
