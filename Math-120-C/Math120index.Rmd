@@ -50,8 +50,20 @@ Practice
 
 - 6.11a (p216)
 - 7.3 (p259)
+  - <small><small>Answers:
+  - <b>a</b>: 0.025 < p-val < 0.05
+  - <b>b</b>: p-val < 0.005
+  - <b>c</b>: p-val > 0.1
+  - <b>d</b>: 0.01 < p-val < 0.025 </small></small>
 - 7.7 (p260)
+  - <small><small> Answer clarification: 
+  - Ha:  mu < 8
+  - .025 < p-val <.05 </small></small>
+  
 - 7.11a (p261)
+  - <small><small> Answer clarification:  
+  - Ha: mu < 5
+  - p-val > 0.1 </small></small>
   
 <br><br>
   
