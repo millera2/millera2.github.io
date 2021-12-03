@@ -31,6 +31,29 @@ theme_set(theme_tufte() +
 #------------------------------------------------#
 ```
 
+# HW 6 - Hypothesis Tests
+
+Due:  **Fri Dec 17 on Notebowl by 10pm.**
+
+Turn in Google Docs report, exported to pdf.  As usual, take care to make it presentable.
+
+This HW is about the `mpg` dataset (find it on our shared Google Drive, link on my webpage and on Notebowl).  Based on this data, complete the following:
+
+1)  Is there evidence of a difference in mean city mpg between `compact` cars and `midsize` cars?  Perform an appropriate hypothesis test.  *(Hint:  Make a pivot table to break down by `class` to compute mean and stdev of each class.)*
+
+2)  Estimate the difference in mean city mpg between `compact` cars and `midsize` cars with 95% confidence.  Show your work leading to the CI, and write a sentence explaining it.
+
+3)  Do your answers in 1 and 2 above agree?  Why or why not?
+
+4)  Is there statistically significant evidence that more than half of `subcompact` models are 4 cylinder cars?  Perform an appropriate hypothesis test.  (Hint:  Use a pivot table to break down by `class` and `cyl` to find $\hat{p}$).
+
+Late HW will not be accepted for any reason. Students may turn in HW early, of course.
+
+
+<br><br>
+
+
+
 # HW 5 - The Normal Distribution 
 
 Due:  **Fri Nov 19 on Notebowl before class time.**

@@ -37,35 +37,20 @@ theme_set(                                #this sets the theme for all    #
 
 Topics:
 
-- Hypothesis Tests
- - Tests for mu and p
- - All 4 steps
- - Meaning/definition of p-value
- - Meaning of significance level
- 
-Reading:
-- Ch 6 Section 1, Ch 7 Section 1
-  
-Practice
+- Confidence interval for $mu$
+- Hypothesis test for two means ("2 t test")
+- Confidence interval for two means
+- Connection between CIs and Hyp Tests
 
-- 6.11a (p216)
-- 7.3 (p259)
-  - <small><small>Answers:
-  - <b>a</b>: 0.025 < p-val < 0.05
-  - <b>b</b>: p-val < 0.005
-  - <b>c</b>: p-val > 0.1
-  - <b>d</b>: 0.01 < p-val < 0.025 </small></small>
-- 7.7 (p260)
-  - <small><small> Answer clarification: 
-  - Ha:  mu < 8
-  - .025 < p-val <.05 </small></small>
-  
-- 7.11a (p261)
-  - <small><small> Answer clarification:  
-  - Ha: mu < 5
-  - p-val > 0.1 </small></small>
-  
-<br><br>
+Reading:
+
+- 7.1, 7.3
+
+Practice:
+
+- 7.11 (esp b and c) (p261)
+- 7.26, 7.27b (p275)
+- Based on your interval in 7.26, would you support the claim that the mean price is different?  Why or why not?
   
 
 ## HW Assignments
