@@ -51,6 +51,19 @@ Practice:
 - 7.11 (esp b and c) (p261)
 - 7.26, 7.27b (p275)
 - Based on your interval in 7.26, would you support the claim that the mean price is different?  Why or why not?
+
+<small><small>Answers for 7.26:
+
+tstar = 2.07
+
+We're 95% confident that the difference in mean price (mu_.99 - mu_1) is between -21.3 and -3.3.
+
+Since zero is not contained in this interval, we have strong evidence that there's a difference in mean (ie, mu_.99 - mu_1 $\neq$ 0).
+
+</small></small>
+
+
+
   
 
 ## HW Assignments
