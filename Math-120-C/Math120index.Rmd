@@ -37,30 +37,26 @@ theme_set(                                #this sets the theme for all    #
 
 Topics:
 
-- Confidence interval for $mu$
-- Hypothesis test for two means ("2 t test")
-- Confidence interval for two means
-- Connection between CIs and Hyp Tests
+- Type I and Type II error
+- alpha, beta, power
+- Hyp test for rho
+- CI for slope
 
 Reading:
 
-- 7.1, 7.3
+- 8.4
 
 Practice:
 
-- 7.11 (esp b and c) (p261)
-- 7.26, 7.27b (p275)
-- Based on your interval in 7.26, would you support the claim that the mean price is different?  Why or why not?
 
-<small><small>Answers for 7.26:
-
-tstar = 2.07
-
-We're 95% confident that the difference in mean price (mu_.99 - mu_1) is between -21.3 and -3.3.
-
-Since zero is not contained in this interval, we have strong evidence that there's a difference in mean (ie, mu_.99 - mu_1 $\neq$ 0).
-
-</small></small>
+- Prof Miller wants to run for Mayor of Granville.  First, she wants to take a poll of local residents to see if more than half of people will vote for her.  She collects the data, and performs a hypothesis test.  Explain, in context, what Type I and Type II error mean in this case.  Which do you think would be worse, and why?
+- In a dataset containing measurements of the height and weight of 40 men, the correlation coefficient is computed to be 0.71.  Does this provide strong evidence of a linear relationship between height and weight?  Hyp Test.
+- Suppose, using the above data, we wish to predict weight based on height.  We compute:
+  - yhat = 84.4 + 1.24*x
+  - SSResid = 19.34
+  - sum( (x-xbar)^2 ) = 8753
+  
+  Construct a 98% CI for the slope of the regression.  Interpret what it means.
 
 
 
