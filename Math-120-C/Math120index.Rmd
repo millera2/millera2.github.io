@@ -33,30 +33,34 @@ theme_set(                                #this sets the theme for all    #
 
 
 
-## Next Quiz
+## Final Quiz
+
+Remember:  if Notebowl freezes up, **REFRESH IMMEDIATELY**.  Use a **reliable computer** (go to the library or computer lab if you're worried).  Sleep well, relax, and just do your best!
+
+Remember that HW6 is due Friday night at 10pm.  It's short, and good practice for the final.  Wouldn't it feel great to just finish it tonight and not worry?  Mmm... 
+
 
 Topics:
 
-- Type I and Type II error
-- alpha, beta, power
-- Hyp test for rho
-- CI for slope
+- Hyp tests for p, mu, mu1-mu2, rho
+- CI for p, mu, mu1-mu2, beta
+- Meaning/definition of p-val
+- Connection between Hyp Tests and CIs
+- Meaning of significance level
+- Type I and Type II errors
+- alpha, beta, and power
 
 Reading:
 
-- 8.4
+- Sec 5.3, 6.1, 7.1, 7.3, 8.4
 
-Practice:
+Practice Problems:
 
-
-- Prof Miller wants to run for Mayor of Granville.  First, she wants to take a poll of local residents to see if more than half of people will vote for her.  She collects the data, and performs a hypothesis test.  Explain, in context, what Type I and Type II error mean in this case.  Which do you think would be worse, and why?
-- In a dataset containing measurements of the height and weight of 40 men, the correlation coefficient is computed to be 0.71.  Does this provide strong evidence of a linear relationship between height and weight?  Hyp Test.
-- Suppose, using the above data, we wish to predict weight based on height.  We compute:
-  - yhat = 84.4 + 1.24*x
-  - SSResid = 19.34
-  - sum( (x-xbar)^2 ) = 8753
-  
-  Construct a 98% CI for the slope of the regression.  Interpret what it means.
+- 6.5, 6.7, 6.9bcd, 6.11, 6.13, 6.15 (p215-216)
+- 7.1, 7.3 (assume two-tail), 7.7 (p259-260)
+- 7.26, 7.27 (p275)
+- All quiz problems from Q9 onward
+- Lecture examples.
 
 
 
