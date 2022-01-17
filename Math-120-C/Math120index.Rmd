@@ -33,59 +33,21 @@ theme_set(                                #this sets the theme for all    #
 
 
 
-## Final Quiz
+## Practice Quiz
 
-![](https://mainblades.com/wp-content/uploads/2020/09/aircraft-lightning-strike-statistics-880x440.jpg)
-
-![](https://www.reactiongifs.us/wp-content/uploads/2018/01/Shocked.gif)
-
-![](https://media1.giphy.com/media/xUA7aYBBcYX7K8ng1W/giphy.gif)
-
-![](https://media2.giphy.com/media/l4KhStwfccoc7t6IU/200.gif)
-<br><br>
-
-Remember:  if Notebowl freezes up, **REFRESH IMMEDIATELY**.  Use a **reliable computer** (go to the library or computer lab if you're worried).  
-
-Sleep well, relax, and just do your best!
-
-**Remember that HW6 is due Friday night at 10pm**.  It's short, and good practice for the final.  Wouldn't it feel great to just finish it tonight and not worry?  Mmm... 
-
-
-Topics:
-
-- Hyp tests for p, mu, mu1-mu2, rho
-- CI for p, mu, mu1-mu2, beta
-- Meaning/definition of p-val
-- Connection between Hyp Tests and CIs
-- Meaning of significance level
-- Type I and Type II errors
-- alpha, beta, and power
-
-Reading:
-
-- Sec 5.3, 6.1, 7.1, 7.3, 8.4
-
-Practice Problems:
-
-- 6.5, 6.7, 6.9bcd, 6.11, 6.13, 6.15 (p215-216)
-- 7.1, 7.3 (assume two-tail), 7.7 (p259-260)
-- 7.26, 7.27 (p275)
-- All quiz problems from Q9 onward
-- Lecture examples.
-
-
-
-  
+This Thurs -- take the practice quiz!  It will show up in the "Assignments" tab on Notebowl at the beginning of class time (Warning: different on Thurs!).
 
 ## HW Assignments
 
-[Click here for HW Assignment](http://millera2.github.io/Math-120-C/HW1.html)
+Stay tuned for HW!
+
+
 
 
 
 ## Office Hours 
 
-If you want to see me in person, I'm in my office (Olin 214) **Monday 12:30-2:20pm**
+If you want to see me in person, I'm in my office (Olin 214) **Wed 2:30pm-4pm.**
 
 Or, you can catch me on Zoom by appointment.  Don't be shy!  A few things:
 
