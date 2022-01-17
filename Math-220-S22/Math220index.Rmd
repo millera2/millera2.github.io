@@ -1,0 +1,97 @@
+
+---
+title: "Math 220 Spring 2022 Homepage"
+date: "Updated: `r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 2
+    theme: yeti
+
+      
+  
+---
+
+```{r setup, include=FALSE}
+
+                                                                          #
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)      #
+                                                                          #
+library(tidyverse)           #The tidyverse has all of our data tools     #
+library(ggthemes)            #ggthemes makes our graphs look nicer        #
+                                                                          # 
+theme_set(                                #this sets the theme for all    #
+  theme_tufte() +                         #plots that we make             #
+  theme(text=element_text(family="sans")) + 
+  theme(axis.text.x = element_text(angle=-90))                            #
+  )                                                                       #
+                                                                          #
+                                                                          #
+                                                                          #
+
+```
+
+
+
+## Current HW and Reading
+
+**Texbook Reading:**   Ch 1: Branches of Statistics, The Scope of Modern Statistics, Dotplot (p4-16)
+
+Lecture Examples: 1.10, 1.14, 1.15, 1.21
+
+Practice Odds: 1.17, 1.39, 1.49,
+
+<h4>**Even HW to turn in**: </h4>
+
+- 1.24, p27
+- 1.38, p35
+- 1.42, p36
+- 1.44, p44
+- 1.56, p46
+
+<bigger>**Even problems due Beginning of class Wed Jan 26** </bigger>
+
+<br><br>
+
+## Previous HW
+
+Old HW will be listed here.
+
+
+
+
+
+## Office Hours 
+
+If you want to see me in person, I'm in my office (Olin 214) **Wed 2:30pm-4pm.**
+
+Or, you can catch me on Zoom by appointment.  Don't be shy!  A few things:
+
+- Schedule 24 hours in advance
+- I'm free most weekdays from 2-4pm
+- When you write, **propose a time** to cut down on back-and-forth.
+
+I never check email after 4pm, so **don't wait till the night before a deadline to get help!**  
+
+I like chatting with students -- come find me!
+
+
+
+
+
+
+
+
+
+
+
+
+## Shared Google Drive Folder:
+
+[Click here for shared Google Drive folder](https://drive.google.com/drive/folders/1C1XHN3PGe4lMQXS_hq49btBM6QaiEuBW?usp=sharing)
+
+## Textbook Links
+
+- [Math 120 Textbook](https://www.openintro.org/book/os/)
+  - *OpenIntro Statistics* is an excellent, free introduction to modern statistical analysis.
+  
