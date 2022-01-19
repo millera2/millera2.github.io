@@ -1,0 +1,113 @@
+---
+title: "Math 120 Week 01"
+author: "Prof Miller"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    theme: yeti
+    df_print: paged
+  
+  
+---
+
+```{r setup, include=FALSE}
+
+#---------- RSTUDIO STARTER V 2.0  --------------#
+#                    -Prepared with care by  AM ;D
+                
+                                                                          
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE, 
+                      warning = FALSE)      
+library(tidyverse)                
+library(ggthemes)                    
+
+theme_set(theme_tufte() +                                     
+  theme(text=element_text(family="sans")))  
+
+#------------------------------------------------#
+```
+
+
+# Wed Jan 19
+
+Let's have class!
+
+Check it out, we can calculate:
+
+```{r}
+2+2
+```
+
+Grey boxes:  calculation!
+
+## What's a dataset?
+
+In 120, care about:  **rectangular data**.
+
+Three qualities:
+
+- Each row (left-right) represents an **individual** ("case")
+  Ex:  students (you guys!)
+  
+- Each column (up-down) represents a **variable**
+  Ex:  our data has 4 variables
+  
+- Each "cell" contains exactly ONE measurement/observation.
+
+
+## Descriptive Statistics
+
+Say smart stuff about data!
+
+WARNING!!!!  Q:  What **kind** of data is it?
+
+
+Broadly:  two types of data:
+
+
+- number data!  quantitative/numerical
+
+break down:
+
+  - discrete.  COUNTABLE!  whole numbers.  Ex:  siblings.
+  - continuous. Measureable!  Any real number.  Ex:  height.
+  
+  WARNING:  Decide based on the variable, NOT the rounding
+  
+  Generally:  Physical measurements are continuous!  height, length, weight, volume, duration (time)
+  
+  Money:  let's agree it's continuous
+  
+
+- not numbers!  categorical/qualitative 
+
+break down:
+
+  - ordinal.  has intrinsic ordering.  Ex:  year in school
+  - nominal.  no intrinsic ordering.   Ex:  genre
+  
+  
+## Metadata!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
