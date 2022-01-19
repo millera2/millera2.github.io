@@ -85,13 +85,3 @@ I like chatting with students -- come find me!
 
 
 
-
-## Shared Google Drive Folder:
-
-[Click here for shared Google Drive folder](https://drive.google.com/drive/folders/1C1XHN3PGe4lMQXS_hq49btBM6QaiEuBW?usp=sharing)
-
-## Textbook Links
-
-- [Math 120 Textbook](https://www.openintro.org/book/os/)
-  - *OpenIntro Statistics* is an excellent, free introduction to modern statistical analysis.
-  
