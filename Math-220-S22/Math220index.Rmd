@@ -35,7 +35,7 @@ theme_set(                                #this sets the theme for all    #
 
 ## Current HW and Reading
 
-**Texbook Reading:**   Ch 1: Branches of Statistics, The Scope of Modern Statistics, Dotplot (p4-16)
+**Texbook Reading:**   Ch 1
 
 Lecture Examples: 1.10, 1.14, 1.15, 1.21
 
