@@ -33,9 +33,36 @@ theme_set(                                #this sets the theme for all    #
 
 
 
-## Practice Quiz
+## Quiz 1
 
-This Thurs -- take the practice quiz!  It will show up in the "Assignments" tab on Notebowl at the beginning of class time (Warning: different on Thurs!).
+This one's for real.  **Be sure you have access to a working computer.**  Make sure you can log into Notebowl.  Have a backup if you're worried (library, computer lab, etc).  
+
+If Notebowl freezes up during the quiz, **REFRESH THE PAGE IMMEDIATELY**.  I promise you won't lose any work!
+
+Reading: Texbook 1.2 and 2.1
+
+Topics:
+
+- Syllabus
+- Rectangular Data
+- Types of Data, identifying which is which
+- Metadata
+- Describing categorical variables
+- Describing quantitative variables
+- Shape words
+- Measures of center (and how they compare)
+
+Practice Problems (from the textbook):
+
+- 1.5 (19)
+- 1.9 (p20)
+- 1.10 (p20)
+- 2.15 (p58)
+- 2.16 (p59)
+
+**Note that solutions for odd problems are in the back of the book.** See table of contents to find them.
+
+I don't post solutions to evens -- visit office hours if you have questions.
 
 ## HW Assignments
 
