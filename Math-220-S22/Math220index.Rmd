@@ -5,7 +5,7 @@ date: "Updated: `r format(Sys.time(), '%d %B, %Y')`"
 output: 
   html_document:
     toc: true
-    toc_depth: 2
+    toc_depth: 3
     theme: yeti
 
       
@@ -35,13 +35,50 @@ theme_set(                                #this sets the theme for all    #
 
 ## Current HW and Reading
 
-**Texbook Reading:**   Ch 1
+### HW 2
+
+Topics:
+
+Set theory, events, Venn diagram, axioms/properties of probability, product rule for ordered pair, general product rule, permutation and combination, conditional probability, Bayes’ theorem, Independence.
+
+ 
+
+
+Reading:  Corresponding sections in Ch 2
+ 
+
+Problems
+
+Example: 2.7, 2.10, 2.14, 2.16, 2.22, 2.23, 2.26, 2.31
+
+Odds: 2.3, 2.9, 2.13, 2.21, 2.25, 2.31, 2.47, 2.55
+
+**Even problems due to turn in:** 
+
+- 2.6, 
+- 2.14 
+- 2.26 
+- 2.30 
+- 2.32 
+- 2.34 
+- 2.48 
+- 2.60
+
+
+
+<big>**Even problems due beginning of class Monday Feb 01.** </big>  Full mathematical justifications must be shown for all solutions.  Final answers only will receive zero credit.
+
+<br><br>
+
+## Previous HW
+
+### HW 1
 
 Lecture Examples: 1.10, 1.14, 1.15, 1.21
 
 Practice Odds: 1.17, 1.39, 1.49,
 
-<h4>**Even HW to turn in**: </h4>
+Evens to turn in:
 
 - 1.24, p27
 - 1.38, p35
@@ -49,16 +86,8 @@ Practice Odds: 1.17, 1.39, 1.49,
 - 1.44, p44
 - 1.56, p46
 
-<bigger>**Even problems due Beginning of class Wed Jan 26** </bigger>  Full mathematical justifications must be shown for all solutions.  Final answers only will receive zero credit.
 
 <br><br>
-
-## Previous HW
-
-Old HW will be listed here.
-
-
-
 
 
 ## Office Hours 
