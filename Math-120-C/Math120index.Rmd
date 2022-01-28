@@ -39,30 +39,29 @@ This one's for real.  **Be sure you have access to a working computer.**  Make s
 
 If Notebowl freezes up during the quiz, **REFRESH THE PAGE IMMEDIATELY**.  I promise you won't lose any work!
 
-Reading: Texbook 1.2 and 2.1
+Reading: Texbook 2.1
 
 Topics:
 
-- Syllabus
-- Rectangular Data
-- Types of Data, identifying which is which
-- Metadata
-- Describing categorical variables
-- Describing quantitative variables
-- Shape words
-- Measures of center (and how they compare)
+Measures of spread, outliers, boxplots, z-scores, empirical rule
 
 Practice Problems (from the textbook):
+
+- 2.13 (p58)
+- 2.15 (p58) [specifically about stdev/IQR]
+- 2.16 (p59) [Hint:  draw boxplots to answer questions]
+- Practice Empirical Rule on Khan Academy [Click here](https://www.khanacademy.org/math/ap-statistics/density-curves-normal-distribution-ap/stats-normal-distributions/e/empirical_rule)
+
+
+## Old Practice Problems
+
+### Week 1
 
 - 1.5 (19)
 - 1.9 (p20)
 - 1.10 (p20)
 - 2.15 (p58) [Note:  don't worry about stdev/IQR]
 - 2.16 (p59) [Note:  don't worry about stdev/IQR]
-
-**Note that solutions for odd problems are in the back of the book.** See table of contents to find them.
-
-I don't post solutions to evens -- visit office hours if you have questions.
 
 ## HW Assignments
 
@@ -89,6 +88,15 @@ I like chatting with students -- come find me!
 
 
 
+
+## TA Hours
+
+We have two excellent TAs - Ted and Eliza.  Both are former students of mine.  Go hang out with them.  Hours:
+
+Eliza:   Monday 4-6pm
+Ted:  Sunday 4-7pm, Wednesday 4:30-6:30pm
+
+All hours are held in **Olin 215**, just down the hall from our regular classroom.
 
 
 
