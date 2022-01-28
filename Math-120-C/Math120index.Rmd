@@ -33,7 +33,7 @@ theme_set(                                #this sets the theme for all    #
 
 
 
-## Quiz 1
+## Quiz 2
 
 This one's for real.  **Be sure you have access to a working computer.**  Make sure you can log into Notebowl.  Have a backup if you're worried (library, computer lab, etc).  
 
