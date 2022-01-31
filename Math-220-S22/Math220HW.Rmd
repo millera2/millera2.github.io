@@ -1,0 +1,88 @@
+
+---
+title: "Math 220 Spring 2022 Homepage"
+date: "Updated: `r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    theme: yeti
+
+      
+  
+---
+
+```{r setup, include=FALSE}
+
+                                                                          #
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)      #
+                                                                          #
+library(tidyverse)           #The tidyverse has all of our data tools     #
+library(ggthemes)            #ggthemes makes our graphs look nicer        #
+                                                                          # 
+theme_set(                                #this sets the theme for all    #
+  theme_tufte() +                         #plots that we make             #
+  theme(text=element_text(family="sans")) + 
+  theme(axis.text.x = element_text(angle=-90))                            #
+  )                                                                       #
+                                                                          #
+                                                                          #
+                                                                          #
+
+```
+
+
+# Abbreviated Even Solutions
+
+## HW 1
+
+### 1.38
+
+a)  Reported median is 125.
+b)  New reported median is 130.  Conclusion:  even though the median is **not** sensitive to small fluctuations in data, it **can be affected** by grouping or rounding.
+
+Related topic:  The shape of a histogram can change drastically depending on how wide your bins/categories are!
+
+### 1.42
+
+- Mean:  
+
+$$\bar{y} = \frac{\sum{x_i+c}}{n} = \frac{x_1+x_2+\cdots +x_n+c+c+\cdots +c}{n}$$
+$$=\frac{\sum{x_i}}{n}+\frac{nc}{n} $$
+
+$$= \bar{x}+c$$
+
+
+- Median:  Re-order the elements $x_i$ so that $x_1 \leq x_2 \leq \dots \leq x_n$.
+
+If $n$ is odd, the median element is $x_{(n+1)/2}$.
+
+Since this ordering also places the $y_i$s in ascending order, and so 
+
+$$y_{(n+1)/2} = x_{(n+1)/2} + c$$
+
+is the median.  If $n$ is even we can say the same about $\frac{x_{n/2}+x_{n/2+1}}{2}$
+
+b. Similar arguments show that 
+
+$$\bar{y} = c\bar{x}$$
+
+and
+
+$$ y_{(n+1)/2} = c\cdot x_{(n+1)/2}$$
+
+
+## 1.44
+
+a) range = 182.6-180.3 = 2.3
+
+
+b) (note that I did not follow the "hint"; ok if you did)
+
+$$s^2 = \frac{(180.5-181.4083)^2 + \cdots + (180.5 - 181.4083)^2}{11} = .5245$$
+
+c)  $s = \sqrt{s^2} = .7242$
+
+d)  
+
+$$ \frac{394913.6 - \frac{4738894}{12}}{12-1} = .5245 $$
