@@ -78,7 +78,7 @@ Lecture Examples: 1.10, 1.14, 1.15, 1.21
 
 Practice Odds: 1.17, 1.39, 1.49,
 
-Evens to turn in:  [Solutions Here](https://millera2.github.io/Math-220-S22/Math220HW.html)
+Evens to turn in:  [Abbreviated Solutions Here](https://millera2.github.io/Math-220-S22/Math220HW.html)
 
 - 1.24, p27
 - 1.38, p35

@@ -1,6 +1,6 @@
 
 ---
-title: "Math 220 Spring 2022 Homepage"
+title: "Math 220 Spring 2022 HW Solutions"
 date: "Updated: `r format(Sys.time(), '%d %B, %Y')`"
 output: 
   html_document:
