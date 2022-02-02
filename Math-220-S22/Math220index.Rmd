@@ -37,19 +37,36 @@ theme_set(                                #this sets the theme for all    #
 
 ### HW 2
 
-Topics:
+Reading:  3.1-3.6 (skip 3.5)
 
-Set theory, events, Venn diagram, axioms/properties of probability, product rule for ordered pair, general product rule, permutation and combination, conditional probability, Bayes’ theorem, Independence.
+Example: 3.7, 3.9, 3.10, 3.12, 3.22, 3.30, 3.33, 3.38, 3.41
+
+Odds: 2.51[multiplication rule], 2.71[addition rule and Bayes], 3.13[pmf], 3.39 [expected value and variance], 3.47 [Binomial], 3.85 [Poisson Process]
 
  
 
+**Even problems due to turn in:** 
 
-Reading:  Corresponding sections in Ch 2
- 
+- 2.52 
+- 2.64 
+- 2.74 
+- 3.14 
+- 3.22 
+- 3.32 
+- 3.56 
+- 3.86
 
-Problems
 
-Example: 2.7, 2.10, 2.14, 2.16, 2.22, 2.23, 2.26, 2.31
+
+<big>**Even problems due beginning of class Wed Feb 09.** </big>  Full mathematical justifications must be shown for all solutions.  Final answers only will receive zero credit.
+
+<br><br>
+
+## Previous HW
+
+### HW 2
+
+Lecture Examples: 2.7, 2.10, 2.14, 2.16, 2.22, 2.23, 2.26, 2.31
 
 Odds: 2.3, 2.9, 2.13, 2.21, 2.25, 2.31, 2.47, 2.55
 
@@ -63,14 +80,6 @@ Odds: 2.3, 2.9, 2.13, 2.21, 2.25, 2.31, 2.47, 2.55
 - 2.34 
 - 2.48 
 - 2.60
-
-
-
-<big>**Even problems due beginning of class Monday Feb 01.** </big>  Full mathematical justifications must be shown for all solutions.  Final answers only will receive zero credit.
-
-<br><br>
-
-## Previous HW
 
 ### HW 1
 
