@@ -35,7 +35,7 @@ theme_set(                                #this sets the theme for all    #
 
 ## Current HW and Reading
 
-### HW 2
+### HW 3
 
 Reading:  3.1-3.6 (skip 3.5)
 
