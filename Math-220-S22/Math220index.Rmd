@@ -32,6 +32,10 @@ theme_set(                                #this sets the theme for all    #
 ```
 
 
+# Thursday Feb 3:  Remote Due To Weather
+
+Meet here:  [http://meet.google.com/jnp-iftr-qiu](http://meet.google.com/jnp-iftr-qiu)
+
 
 ## Current HW and Reading
 
