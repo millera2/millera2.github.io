@@ -65,7 +65,7 @@ Practice Problems (from the textbook):
 
 ## HW Assignments
 
-[Click Here for HW](https://millera2.github.io/Math-120-C/hw1.html)
+[Click Here for HW](https://millera2.github.io/Math-120-C/HW1.html)
 
 
 
