@@ -31,3 +31,35 @@ theme_set(theme_tufte() +
 #------------------------------------------------#
 ```
 
+
+
+# HW 1  - Investigating the Iris Data
+
+Due 10pm, Monday Feb 14 on Notebowl.  Write up your results in a report (complete sentences and paraphs) in Google Docs.  **Turn in your report in .pdf format.**
+
+
+This dataset concerns the `iris` dataset that I've shared with you on [Google Drive](https://drive.google.com/drive/folders/1vE7OKbVElCvQqke3i_fL_dBgTuGcxHJa?usp=sharing) (you can click the link here).
+
+HW will be graded on completeness, correctness, and presentation (including the use of English sentences, good formatting, and overall clarity of the work).
+
+**Late HW will not be accepted for any reason.**  Students may turn in HW early, of course.
+
+## Problem 1 
+
+By making histograms, find a variable in the dataset that seems the most **symmetric**.  Paste the histogram for this variable (just the symmetric one).
+
+What measures of center and spread are appropriate for this variable?  Compute these directly, using appropriate commands in Google Sheets.  Show the commands you used, and your results, in your solution for Problem 1 (along with the histogram).
+
+
+## Problem 2 
+
+By making histograms, find a variable in the dataset that is **not symmetric**.  Paste the histogram for this variable.
+
+
+
+
+Describe the shape of this distribution using shape words from class.  What measures of center and spread are appropriate for this variable?  Compute these directly, using appropriate commands in Google Sheets.  Show the commands you used, and your results, in your solution for Problem 1 (along with the histogram).
+
+## Problem 3
+
+By using the sorting function of Google Sheets, find the mean Sepal Length for each species (*setosa*, *versicolor*, and *virginica*.).
