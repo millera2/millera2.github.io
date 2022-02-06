@@ -39,21 +39,31 @@ theme_set(                                #this sets the theme for all    #
 
 If Notebowl freezes up during the quiz, **REFRESH THE PAGE IMMEDIATELY**.  I promise you won't lose any work!
 
-Reading: Texbook 2.1
+Reading: Texbook 8.1-2
 
-Topics:
+Topics:  Correlation, Scatterplots, r, least squares line, residuals, predictions
 
-Measures of spread, outliers, boxplots, z-scores, empirical rule
 
 Practice Problems (from the textbook):
+
+- 8.5 (p313)
+- 8.7 (p314)
+- 8.11 (p315)
+- 8.13 (p316)
+- 8.17 (p325)
+- 8.19 (p325)
+- **8.23** (all parts except c)
+
+<br>
+
+## Old Practice Problems
+
+### Week 2
 
 - 2.13 (p58)
 - 2.15 (p58) [specifically about stdev/IQR]
 - 2.16 (p59) [Hint:  draw boxplots to answer questions]
 - Practice Empirical Rule on Khan Academy [Click here](https://www.khanacademy.org/math/ap-statistics/density-curves-normal-distribution-ap/stats-normal-distributions/e/empirical_rule)
-
-
-## Old Practice Problems
 
 ### Week 1
 
@@ -63,11 +73,14 @@ Practice Problems (from the textbook):
 - 2.15 (p58) [Note:  don't worry about stdev/IQR]
 - 2.16 (p59) [Note:  don't worry about stdev/IQR]
 
+
+<br> 
+
 ## HW Assignments
 
 [Click Here for HW](https://millera2.github.io/Math-120-C/HW1.html)
 
-
+<br>
 
 
 
