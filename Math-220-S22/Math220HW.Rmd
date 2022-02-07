@@ -86,3 +86,88 @@ c)  $s = \sqrt{s^2} = .7242$
 d)  
 
 $$ \frac{394913.6 - \frac{4738894}{12}}{12-1} = .5245 $$
+
+
+
+## HW 2
+
+### 2.26
+
+a)  P(A1^C) = 1-.12 = .88
+b)  Since P(A1 or A2) = P(A1)+P(A2)-P(A1 and A2), we plug in:
+
+.13 = .12 + . 07 - P(A1 and A2) 
+
+Thus P(A1 and A2) = .06
+
+c)  P(A1 and A2 and A3^C) = P(A1 and A2) - P(A1 and A2 and A3) = .05
+
+d) P(at most 2) = 1 - P(A1 and A2 and A3) = .99
+
+### 2.30
+
+a)  8P3
+
+```{r}
+8*7*6
+```
+
+b)  30C6
+
+```{r}
+choose(30,6)
+```
+
+c) 8C2 10C2 12C2
+
+```{r}
+choose(8,2)*choose(10,2)*choose(12,2)
+```
+
+d) 
+
+```{r}
+83160/593775
+```
+
+e) P(all Zin or all Merlot or all Cab)
+
+```{r}
+(choose(8,6)+choose(10,6)+choose(12,6))/choose(30,6)
+```
+
+### 2.48
+
+a) P(A2 | A1) = P(A2 and A1)/P(A1) = .06/.12
+
+```{r}
+.06/.12
+```
+
+
+b) P(A1 and A2 and A3 | A1) = .01/.12
+
+```{r}
+.01/.12
+```
+
+
+
+
+c) P(exactly one defect | at least one defect)
+
+First:  P(at least one ) = .14  and P(exactly 1) = .05
+
+```{r}
+.05/.14
+```
+
+
+d) P(A3^C | A1 and A2)
+
+P(A1 and A2) = .06
+P(A1 and A2 and A3^C) = .05
+
+```{r}
+.05/.06
+```
