@@ -68,6 +68,9 @@ Odds: 2.51[multiplication rule], 2.71[addition rule and Bayes], 3.13[pmf], 3.39 
 
 ## Previous HW
 
+[Abbreviated Solutions Here](https://millera2.github.io/Math-220-S22/Math220HW.html)
+
+
 ### HW 2
 
 Lecture Examples: 2.7, 2.10, 2.14, 2.16, 2.22, 2.23, 2.26, 2.31
@@ -91,8 +94,7 @@ Lecture Examples: 1.10, 1.14, 1.15, 1.21
 
 Practice Odds: 1.17, 1.39, 1.49,
 
-Evens to turn in:  [Abbreviated Solutions Here](https://millera2.github.io/Math-220-S22/Math220HW.html)
-
+Evens to turn in:  
 - 1.24, p27
 - 1.38, p35
 - 1.42, p36
