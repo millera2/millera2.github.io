@@ -33,11 +33,34 @@ theme_set(                                #this sets the theme for all    #
 
 
 
-## Quiz 3
+## Quiz 4
 
 **Be sure you have access to a working computer.**  Make sure you can log into Notebowl.  Have a backup if you're worried (library, computer lab, etc).  
 
 If Notebowl freezes up during the quiz, **REFRESH THE PAGE IMMEDIATELY**.  I promise you won't lose any work!
+
+Reading:  8.1-8.3, 3.1
+
+Topics:  Interpreting coefficients of linear model, extrapolation, coefficient of determination, interpreting residual plots, effects of outliers, basic probability terms, two types of probability, law of large numbers, probability for equally likely events, union/intersection/complement, venn diagrams
+
+Practice Problems:
+
+- 8.21 (p325)
+- 8.23c (p326)
+- 8.25c (p327)
+- 8.27 (p330)  [Specifically:  would outlier strengthen/weaken/not affect correlation]
+- 3.3 (p92)
+- 3.5 (p92)
+- 3.6 (p92)
+- 3.7 (not a or f)
+
+
+
+<br>
+
+## Old Practice Problems
+
+### Week 3
 
 Reading: Texbook 8.1-2
 
@@ -53,10 +76,6 @@ Practice Problems (from the textbook):
 - 8.17 (p325)
 - 8.19 (p325)
 - **8.23** (all parts except c)
-
-<br>
-
-## Old Practice Problems
 
 ### Week 2
 
