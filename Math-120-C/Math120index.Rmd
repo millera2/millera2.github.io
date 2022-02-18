@@ -54,7 +54,7 @@ Practice Problems:
 - 3.13 (p109)
 - 3.14 (p109)
 - 3.15 (p109)
-- In the table below about game night preferen es:  Are the events "poker" and "cookies" independent?
+- In the table below about game night preferences:  Are the events "poker" and "cookies" independent?
 ![](https://www.softschools.com/math/probability_and_statistics/images/contingency_table_1.png)
 
 
