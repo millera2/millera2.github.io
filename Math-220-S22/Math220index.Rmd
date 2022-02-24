@@ -32,12 +32,46 @@ theme_set(                                #this sets the theme for all    #
 ```
 
 
-# Thursday Feb 3:  Remote Due To Weather
 
-Meet here:  [http://meet.google.com/jnp-iftr-qiu](http://meet.google.com/jnp-iftr-qiu)
 
 
 ## Current HW and Reading
+
+### HW 5
+
+Reading:  6.1, 6.2, 7.1
+
+Examples: 6.2 [Estimator], 6.4 [Unbiased estimator], 6.15 [MLE of Bernoulli], 6.16 [MLE of Exponential], 6.17 [MLE of Normal], 6.18 [MLE of Poisson], 6.20 [MLE of a function of parameter]
+
+ 
+
+ 
+
+Odds for practice:
+
+- 6.1 [Estimate the parameter from a given sample]
+- 6.23 [MLE of a given distribution]
+- 6.29 [MLE using partial derivative]
+
+ 
+
+Even **due Wed March 2nd at the beginning of class**:
+
+- 6.2 [Estimate the parameter from a given sample]
+- 6.8 [Point Estimation]
+- 6.20 [MLE of a given distribution]
+
+
+
+
+
+<big>**Even problems due beginning of class Wed March 02.** </big>  Full mathematical justifications must be shown for all solutions.  Final answers only will receive zero credit.
+
+<br><br>
+
+## Previous HW
+
+[Abbreviated Solutions Here](https://millera2.github.io/Math-220-S22/Math220HW.html)
 
 ### HW 4
 
@@ -67,15 +101,6 @@ Odds:
 - 4.60 
 
 
-
-
-<big>**Even problems due beginning of class Wed Feb 016.** </big>  Full mathematical justifications must be shown for all solutions.  Final answers only will receive zero credit.
-
-<br><br>
-
-## Previous HW
-
-[Abbreviated Solutions Here](https://millera2.github.io/Math-220-S22/Math220HW.html)
 
 ### HW 3
 
@@ -123,6 +148,7 @@ Lecture Examples: 1.10, 1.14, 1.15, 1.21
 Practice Odds: 1.17, 1.39, 1.49,
 
 Evens to turn in:  
+
 - 1.24, p27
 - 1.38, p35
 - 1.42, p36
