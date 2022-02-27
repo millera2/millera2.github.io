@@ -33,17 +33,32 @@ theme_set(                                #this sets the theme for all    #
 
 
 
-## Quiz 5
+## Quiz 6
 
 **Be sure you have access to a working computer.**  Make sure you can log into Notebowl.  Have a backup if you're worried (library, computer lab, etc).  
 
 If Notebowl freezes up during the quiz, **REFRESH THE PAGE IMMEDIATELY**.  I promise you won't lose any work!
 
-Reading:  3.1, 3.2
+Reading:  3.2, 3.4, 4.3
 
-Topics:  Disjoint events, general addition rule, "at least one" problems, independent events, multiplication rule for independent events, checking for independence (and justifying mathematically), conditional probaability
+Topics:  Probability trees, Law of Total Proabability, Bayes Theorem, probability distributions, expected value and variance of a distribution, binomial distribution.
 
 Practice Problems:
+
+- 3.19 (p111)  [Hint for b:  first find out P(Passed)]
+- 3.21 (p111)
+- 3.31 (find probability distribution for winnings)
+- 3.33 (p124)
+- 3.35 (p124)
+- 4.17 (p156)
+
+
+
+<br>
+
+## Old Practice Problems
+
+### Week 5
 
 - 3.1 (p92)
 - 3.5c (p92)
@@ -57,12 +72,6 @@ Practice Problems:
 - In the table below about game night preferences:  Are the events "poker" and "cookies" independent?
 ![](https://www.softschools.com/math/probability_and_statistics/images/contingency_table_1.png)
 
-
-
-
-<br>
-
-## Old Practice Problems
 
 ### Week 4
 
