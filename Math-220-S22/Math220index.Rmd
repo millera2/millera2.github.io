@@ -37,7 +37,58 @@ theme_set(                                #this sets the theme for all    #
 
 ## Current HW and Reading
 
-### HW 5
+Reading:  Ch 7.1-7.5
+
+
+Examples:
+
+- 6.20 [MLE of a function of parameter]
+- 7.1, 7.2, 7.3 [Z confidence interval]
+- 7.4 [sample size calculation]
+- 7.6 [large sample confidence interval]
+- 7.10 [one-sided confidence interval]
+- 7.11 [t confidence interval]
+
+ 
+
+
+Odds:
+
+- 7.3 [interpretation of confidence interval]
+- 7.5 [Z confidence interval and sample size calculation]
+- 7.13 [Large sample Z confidence interval]
+- 7.29 [critical value in t distribution]
+
+ 
+
+ 
+
+Even **due Wed March 9th at the beginning of class**:
+
+
+ 
+- 6.22(b) [MLE for a given distribution]
+- 7.4 [Z confidence interval and sample size calculation]
+- 7.6 [Z confidence interval and critical value]
+- 7.14 [Large sample z confidence interval and sample size calculation]
+- 7.18 [Use Rstudio to construct the boxplot, qqplot and calculate confidence interval, submitted on Notebowl]
+- 7.28, 7.30 [Use Rstudio to find the critical value in t distribution]
+- 7.32 [t confidence interval]
+
+
+
+
+<big>**Even problems due beginning of class Wed March 09.** </big>  Full mathematical justifications must be shown for all solutions.  Final answers only will receive zero credit.
+
+<br><br>
+
+## Previous HW
+
+[Abbreviated Solutions Here](https://millera2.github.io/Math-220-S22/Math220HW.html)
+
+
+
+### Week 5-6
 
 Reading:  6.1, 6.2, 7.1
 
@@ -61,17 +112,6 @@ Even **due Wed March 2nd at the beginning of class**:
 - 6.8 [Point Estimation]
 - 6.20 [MLE of a given distribution]
 
-
-
-
-
-<big>**Even problems due beginning of class Wed March 02.** </big>  Full mathematical justifications must be shown for all solutions.  Final answers only will receive zero credit.
-
-<br><br>
-
-## Previous HW
-
-[Abbreviated Solutions Here](https://millera2.github.io/Math-220-S22/Math220HW.html)
 
 ### HW 4
 
