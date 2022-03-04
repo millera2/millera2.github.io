@@ -39,11 +39,27 @@ theme_set(                                #this sets the theme for all    #
 
 If Notebowl freezes up during the quiz, **REFRESH THE PAGE IMMEDIATELY**.  I promise you won't lose any work!
 
-Reading:  3.2, 3.4, 4.3
+Reading:  4.2, 4.3, 4.5
 
-Topics:  Probability trees, Law of Total Proabability, Bayes Theorem, probability distributions, expected value and variance of a distribution, binomial distribution.
+Topics:  Binomial, geometric, poisson distributions.  Finding probabilities.  Using expected value and variance.
 
 Practice Problems:
+
+- 4.13 (p148)
+- 4.14 (p148)
+- 4.17 (p156)
+- 4.19 (p156)
+- 4.23 (p157)
+- 4.31 (p165)
+
+
+
+
+<br>
+
+## Old Practice Problems
+
+### Week 6
 
 - 3.19 (p111)  [Hint for b:  first find out P(Passed)]
 - 3.21 (p111)
@@ -51,12 +67,6 @@ Practice Problems:
 - 3.33 (p124)
 - 3.35 (p124)
 - 4.17 (p156)
-
-
-
-<br>
-
-## Old Practice Problems
 
 ### Week 5
 

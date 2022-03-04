@@ -31,6 +31,28 @@ theme_set(theme_tufte() +
 #------------------------------------------------#
 ```
 
+# HW 3 - The Titanic
+
+Due Friday Wed March 23 on Notebowlby 10pm.  Submit as .pdf document per the usual.
+
+In this HW you'll be investigating a [dataset](https://docs.google.com/spreadsheets/d/186B4a99Nnf8FWDeoqdnnRvWJxrRYcbTHJ6AoKBKnXE4/edit?usp=sharing) that catalogs details about 890 passengers of the historic Titanic maiden voyage (about 1/3 of the total).
+
+Your goal is to make the following pivot tables:
+
+*(Remember, you can copy/paste your Google Sheets pivot tables into a Google Docs document)*
+
+1) Make a pivot table to show **percentages** of passenger survival, broken down by `sex`.  *Hint: Choose `sex` for the rows.
+
+2)  Make a pivot table showing the average age broken down by both `sex` and `Pclass` (passenger class, either 1, 2, or 3).  
+
+3)  Make a pivot table to check for outliers in `Fare` (ie, the price of the ticket) for each passenger class (`pclass`).  Your table should show outlier cutoffs, as well as min/max values for each class.
+
+For each of the above pivot tables, write a sentence or two explaining the practical meaning of your findings.
+
+Everything should be neatly and clearly presented in a Google Docs report in complete English sentences and paragraphs.  Exported to .pdf.  
+
+Late HW will not be accepted for any reason.  Students may turn in HW early, of course.
+
 
 # HW 2 - What's In Your Breakfast Cereal?
 
