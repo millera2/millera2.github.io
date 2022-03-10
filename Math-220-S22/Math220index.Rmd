@@ -37,8 +37,57 @@ theme_set(                                #this sets the theme for all    #
 
 ## Current HW and Reading
 
-Reading:  Ch 7.1-7.5
 
+
+
+Example:
+
+- 8.3 [Z test]
+- 8.4, 8.5 [Type I and II error]
+- 8.6, 8.8 [Z test]
+- 8.10 [t test]
+
+ 
+
+Odds:
+
+- 5.51 [distribution of sample mean]
+- 7.23 [confidence interval for population proportion and sample size calculation]
+- 7.47 [confidence interval]
+- 7.49 [sample size calculation]
+- 8.3 [p-value]
+- 8.11 [type I II error]
+- 8.17 [Z test]
+- 8.35 [t test]
+
+Even **due Wed March 25th at the beginning of class**:
+
+5.46 [distribution of sample mean]
+
+5.54 [distribution of sample mean, normal probability. Hint: you may need to use pnorm() or qnorm() to find certain values]
+
+7.20 [confidence interval for population proportion and sample size calculation] Hing: use the simplified formula we derived in class
+
+- 7.50 
+- 7.52 (a) 
+- 8.4 
+- 8.12 
+- 8.22 
+- 8.40 
+
+
+
+<big>**Even problems due beginning of class Wed March 25.** </big>  Full mathematical justifications must be shown for all solutions.  Final answers only will receive zero credit.
+
+<br><br>
+
+## Previous HW
+
+[Abbreviated Solutions Here](https://millera2.github.io/Math-220-S22/Math220HW.html)
+
+### Week 7
+
+Reading:  Ch 7.1-7.5
 
 Examples:
 
@@ -59,12 +108,7 @@ Odds:
 - 7.13 [Large sample Z confidence interval]
 - 7.29 [critical value in t distribution]
 
- 
-
- 
-
-Even **due Wed March 9th at the beginning of class**:
-
+Evens:
 
  
 - 6.22(b) [MLE for a given distribution]
@@ -78,15 +122,7 @@ Even **due Wed March 9th at the beginning of class**:
 
 
 
-<big>**Even problems due beginning of class Wed March 09.** </big>  Full mathematical justifications must be shown for all solutions.  Final answers only will receive zero credit.
-
-<br><br>
-
-## Previous HW
-
-[Abbreviated Solutions Here](https://millera2.github.io/Math-220-S22/Math220HW.html)
-
-
+ 
 
 ### Week 5-6
 
