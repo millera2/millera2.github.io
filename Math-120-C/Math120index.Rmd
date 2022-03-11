@@ -33,24 +33,24 @@ theme_set(                                #this sets the theme for all    #
 
 
 
-## Quiz 7
+## Quiz 8
 
 **Be sure you have access to a working computer.**  Make sure you can log into Notebowl.  Have a backup if you're worried (library, computer lab, etc).  
 
 If Notebowl freezes up during the quiz, **REFRESH THE PAGE IMMEDIATELY**.  I promise you won't lose any work!
 
-Reading:  4.2, 4.3, 4.5
+Reading:  3.5, 4.1
 
-Topics:  Binomial, geometric, poisson distributions.  Finding probabilities.  Using expected value and variance.
+Topics:  Continuous distributions, uniform distribution, normal distribution, z-table
 
 Practice Problems:
 
-- 4.13 (p148)
-- 4.14 (p148)
-- 4.17 (p156)
-- 4.19 (p156)
-- 4.23 (p157)
-- 4.31 (p165)
+- 4.1 (p142)
+- 4.3 (a-g only) (p142)
+- What's the cutoff for the upper 15% of the z dist? (<small><i>Answer (don't look yet!): 1.04</i></small>)
+- The amount of time it takes Prof Miller to walk to school varies uniformly between 8 and 10 minutes.  Sketch the distribution, and compute the probabaility that it takes her at least 8.5 minutes.  (<small><i>Answer(don't look yet!): 75% </i></small>)
+
+
 
 
 
@@ -58,6 +58,15 @@ Practice Problems:
 <br>
 
 ## Old Practice Problems
+
+### Week 7
+
+- 4.13 (p148)
+- 4.14 (p148)
+- 4.17 (p156)
+- 4.19 (p156)
+- 4.23 (p157)
+- 4.31 (p165)
 
 ### Week 6
 
