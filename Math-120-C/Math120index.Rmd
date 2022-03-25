@@ -39,7 +39,7 @@ theme_set(                                #this sets the theme for all    #
 
 If Notebowl freezes up during the quiz, **REFRESH THE PAGE IMMEDIATELY**.  I promise you won't lose any work!
 
-Reading:  3.5, 4.1
+Reading:  4.1, class notes
 
 Topics:  Normal dist (practical scenarios), forwards/backwards problems, sampling distributions, Central Limit Theorem, "large enough"
 
