@@ -41,18 +41,32 @@ If Notebowl freezes up during the quiz, **REFRESH THE PAGE IMMEDIATELY**.  I pro
 
 Reading:  3.5, 4.1
 
-Topics:  Continuous distributions, uniform distribution, normal distribution, z-table
+Topics:  Normal dist (practical scenarios), forwards/backwards problems, sampling distributions, Central Limit Theorem, "large enough"
 
 Practice Problems:
 
-- 4.1 (p142)
-- 4.3 (a-g only) (p142)
+- Suppose the amount of time it takes students in a large math class to finish a quiz follows a normal distribution with mean 14 min, stdev 2.5 min.  
 
-- What's the cutoff for the upper 15% of the z dist? (<small><i>Answer (don't look yet! heystopityou'relooking!!!): 1.04</i></small>)
+a)  What's the probability it takes a student between 10 and 15 minutes?
 
-- What are the cutoffs for the middle 50% of the Z dist?  (<small><i>Answer (don't look yet! heystopityou'relooking!!!): -0.67, +0.67</i></small>)
 
-- The amount of time it takes Prof Miller to walk to school varies uniformly between 8 and 10 minutes.  Sketch the distribution, and compute the probabaility that it takes her at least 8.5 minutes.  (<small><i>Answer(don't look yet! heystopityou'relooking!!!): 75% </i></small>)
+b)  How fast must a student finish in order to be in the bottom 1% of times?
+
+
+c)  If we take a sample of 10 students, what's the probability that their average time taken is greater than 15 minutes?
+
+d)  If we take a sample of 40 students, how high must their mean time taken be in order to be in the top 10% (longest times) for such samples?
+
+
+e)  For which of the above (a-d) did we need to know in advance that finish times follow a normal distribution?
+
+    Answers (Stop looking!!!):  a) .6006   b)  8.18 min   c) .1030  d) 14.506  e) All except d
+
+- At DU, 77% of students are from out of state.  If we take a sample of 100 students, what's the probability that fewer than 75% of them are from out-of-state?
+
+    Answer (Hey!  Cut it out!!): .3173 
+    
+
 
 
 
@@ -62,6 +76,17 @@ Practice Problems:
 <br>
 
 ## Old Practice Problems
+
+### Week 8
+
+- 4.1 (p142)
+- 4.3 (a-g only) (p142)
+
+- What's the cutoff for the upper 15% of the z dist? (<small><i>Answer (don't look yet! heystopityou'relooking!!!): 1.04</i></small>)
+
+- What are the cutoffs for the middle 50% of the Z dist?  (<small><i>Answer (don't look yet! heystopityou'relooking!!!): -0.67, +0.67</i></small>)
+
+- The amount of time it takes Prof Miller to walk to school varies uniformly between 8 and 10 minutes.  Sketch the distribution, and compute the probabaility that it takes her at least 8.5 minutes.  (<small><i>Answer(don't look yet! heystopityou'relooking!!!): 75% </i></small>)
 
 ### Week 7
 
