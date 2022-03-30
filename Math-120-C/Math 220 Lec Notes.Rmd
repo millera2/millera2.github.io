@@ -32,66 +32,791 @@ theme_set(theme_tufte() +
 ```
 
 
-# Wed Jan 19
 
-Let's have class!
 
-Check it out, we can calculate:
+Check it out, we can do math!
 
 ```{r}
 2+2
 ```
 
-Grey boxes:  calculation!
+Grey box == calculation!
 
-## What's a dataset?
+# Wed Jan 19
 
-In 120, care about:  **rectangular data**.
+## Descriptive  stats
 
-Three qualities:
+Let's say smart stuff about datasets!
 
-- Each row (left-right) represents an **individual** ("case")
-  Ex:  students (you guys!)
+Ex:  iris dataset
+
+```{r}
+View(iris)
+```
+
+
+
+
+# Friday Jan 21
+
+## Descriptive Stats
+
+3 big features:
+
+- shape
+- center (location)
+- spread
+
+Ex)  Data:  salaries for everyone in a large, multinational corp, including "normal" salaries and huge salaries (CEO, etc)..
+
+Expect strong right skew!
+
+Median probably more representative measure of center.  
+
+Note:  mean > median
+
+
+
+## Measures of Spread
+
+- range
+- std dev (average dist from the mean)
+- Inter Quartile Range (IQR)
+
+
+Median = Q2  (second quartile)
+
+Q1 - first quartile - bigger than 25% of data
+Q3 - third quartile - bigger than 75% of data
+
+  IQR = Q3 - Q1 = range of middle half of the data
   
-- Each column (up-down) represents a **variable**
-  Ex:  our data has 4 variables
   
-- Each "cell" contains exactly ONE measurement/observation.
+we'll include the median in calculation of quartiles
 
 
-## Descriptive Statistics
-
-Say smart stuff about data!
-
-WARNING!!!!  Q:  What **kind** of data is it?
+Note:  IQR is robust (just like median)
 
 
-Broadly:  two types of data:
+## Outliers
+
+Suppose the final exam score in two classes is equal.  xbar = 73
+
+If a student scores 80, is it possible for them to be an outlier in one section but not the other?
+
+To find outliers, need location AND spread
+
+Qualification for outliers:  Any data either.....
+
+- lower than Q1 - 1.5IQR   (1.5 IQRs below Q1)
+- higher than Q3 + 1.5IQR  (1.5 IQRs above Q3)
+
+is an outlier!!!
+
+Ex)  Scores in a math class:
+
+    72, 73, 75, 77, 81, 95
+    
+Is 95 an outlier?
+
+Med:  76
 
 
-- number data!  quantitative/numerical
+ 72  73  75  76               76  77  81  95
+ 
+ 
+ Q1 = 74, Q3 = 79
+ 
+Low:
 
-break down:
+```{r}
+74 - 1.5*(79-74)
+```
 
-  - discrete.  COUNTABLE!  whole numbers.  Ex:  siblings.
-  - continuous. Measureable!  Any real number.  Ex:  height.
+No small outlier!
+
+Hi:
+
+```{r}
+79 + 1.5*5
+```
+
+Since 95>86.5 it's an outlier!
+
+(Note:  "Xtreme outlier!  anything more than 3IQRs outside Q1 and Q3)
+
+## Boxplots
+
+It's a visualization of the 5# summary:
+
+    low    Q1    Med    Q3   hi
+    
+We ALWAYS make boxplots WITH outliers.  Difference:
+
+- whiskers extend to largest/smallest numbers that are NOT outliers!
+- if outliers present, shown with a symbol (*)
+
+Ex)  Make a boxplot with outliers for our score data above:  
+
+
+Scores in a math class:
+
+    72, 73, 75, 77, 81, 95
+    
+
+
+Med:  76,  Q1 = 74, Q3 = 79
+
+
+
+# Wed Jan 26
+
+## Probability (Ch 2)
+
+A random process (**probability experiment**) is any scenario where one (or more) unknown outcomes could occur.
+
+Ex)  Flipping a coin!
+
+Ex)  Drawing a card from a deck.  
+
+Ex)  Randomly select a person
+
+The **sample space**, S, of a random process is the set all possible outcomes.
+
+Ex)  Experiment:  toss coin.  
+
+  S = {H, T}
   
-  WARNING:  Decide based on the variable, NOT the rounding
-  
-  Generally:  Physical measurements are continuous!  height, length, weight, volume, duration (time)
-  
-  Money:  let's agree it's continuous
-  
+Ex)  Experiment:  roll a dice 
 
-- not numbers!  categorical/qualitative 
+  S = {1,2,3,4,5,6}
+  
+Ex)  Experiment:  randomly select 3 DU students. 
 
-break down:
-
-  - ordinal.  has intrinsic ordering.  Ex:  year in school
-  - nominal.  no intrinsic ordering.   Ex:  genre
+  S = all combinations of 10 DU students (order doesn't matter)
   
   
-## Metadata!
+An **event** is any subset of S, ie collection of outcomes.
+
+Ex)  Roll a dice.  E is the event that an even shows.
+
+  E = {2, 4, 6}
+  
+## Relations between events
+
+3 big ones:
+
+- union  "or"  A or B = all events in either A or B 
+- intersection "and"  A and B = all events in BOTH A and B  
+- complement  "not"  A^C = all outcomes (in S) that are NOT in A
+
+Ex)  Dice.  
+
+S = {1,2,3,4,5,6}
+
+A = even shows up  = {2,4,6}
+B = prime number   = {2,3,5}
+
+Compute:
+
+a)  A or B = {2,3, 4, 5, 6}
+b)  A and B = {2}
+c)  A^C = {1,3,5}
+
+A **probability model** is a function that assigns every event a probability.
+
+                  P(A) = x
+                  
+Satisfying:
+
+1)     0 <=  P(A)  <= 1
+2)   P(S) = 1
+3)  If A and B are "disjoint" events (no outcomes in common), then:
+
+     P(A or B) = P(A) +  P(B)
+     
+## Venn Diagram
+
+The **general addition rule**:
+
+For ANY two events A,B:
+
+       P(A or B) = P(A) + P(B) - P(A and B)
+       
+       
+The **comlement rule**:  for any event A, 
+
+      P(A^C) = 1 - P(A)
+      
+      
+## Equally likely events
+
+Suppose a random process has a sample space of **equally likely outcomes**.  Then:
+
+-  P(any outcome) = 1/N
+
+(where N is the size of the sample space)
+
+-  P(A)  = (size of A)/(size of S)
+
+Ex) Draw random card. What's the probability that you draw a face card?
+
+P(face card) = 12/52
+
+Ex) Draw card.  
+
+A = face card
+B = red
+
+Compute P(A and B^C) = 6/52
+
+
+
+# Thurs Jan 27
+
+## 2.3  Counting
+
+Recall:  for equally likely outcomes, 
+
+    P(A) = (size of A)/(size of S)
+    
+## Product Rule
+
+We represent an (ordered) sequents of events with a "k-tuple".
+
+Ex:  Roll two dice.  (x1, x2)
+
+Product rule:  if there are n1 ways the first event can happen, n2 ways for the second, then there are:
+
+     n1 * n2 
+     
+ways for the sequence.
+
+Ex)  We roll two dice.  How many possible outcomes?
+
+   6*6 = 36
+   
+Ex)  Roll two dice.  The first is odd, the second is greater than 4.  How many ways.
+
+odds - 3
+>4   - 2
+
+->
+
+    3*2 = 6 ways
+    
+Ex)  What's the prob of the above event?
+
+P(A) = 6 / 36
+
+A **permuation** is just an ordered sequence of events.  An ordered selection of k events from n objects.
+
+
+Ex)  There are 25 students in Math 220.  Suppose I wish to select a class president, treasurer, and stenographer.
+
+How many ways are there?
+
+```{r}
+25*24*23
+```
+
+
+Ex)  In a particular state, Liscence plate numbers consist of one letter followed by 6 numbers.  The number are not re-used.
+
+How many such licence plates could this state issue?
+
+Ex)  what if #s can repeat?
+
+Ex)  above, but last number is even
+
+## Combinations
+
+A combination is an unordered selection of k objects from a total of n.
+
+Ex)  Choose committee of 3 students from 25.
+
+```{r}
+choose(25,3)
+```
+
+## Poker probabilities
+
+Poker hand:  selection of 5 cards from 52. Order doesn't matter.
+
+Ex)  How many ways are there to get a "4 of a kind"?
+
+Ex:  4, 4, 4, 4, K
+
+- what kind?  13C1
+- last card? kind:  12C1  suit:  4C1
+
+```{r}
+choose(13,1)*choose(12,1)*choose(4,1)
+```
+
+Ex)  How many "two pair"?
+
+K K  3 3  7
+
+-  13 C 2
+
+- 4 C 2
+
+- 4 C 2
+
+- 11 C 1
+
+- 4 C 1
+
+Ex)  Full house?
+
+# Friday Jan 28
+
+## Combo warm-up
+
+2.3 p73
+
+No 33:  Consider a little league team with 15 players.
+
+aa)  How many ways are there to select 9 players for the starting lineup?
+
+b)  How many ways are there to select 9 players, and choose a batting order?
+
+c)  Suppose 5 of them are lefties.  How many waays are there to select 3 lefties and all other 6 right handed?
+
+
+## 2.4  Conditional probability
+
+Idea:  sometimes knowledge of one outcome affects likelihood of another.
+
+
+Example:  If it's sunny, then less likely to rain.
+
+S = sunny
+R = rains
+
+Notation:
+
+           P(R | S)  = "prob of R given S"
+           
+           after the bar:  "given condition"
+           
+Formula:
+
+"and on top, given on the bottom"
+
+Ex)  At a zoo, 24% of animals are reptiles, and 32% of animals are green.  About 16% of all animals are both reptiles and green.
+
+If a randomly selected animal is green, what's the probability that it's a reptile?
+
+Need:  P(R | G) = P(R and G)/P(G)
+
+```{r}
+.16/.32
+```
+
+
+
+## Tree Diagrams
+
+Ex:  A Lie Detector test advertises that it's 95% accurate.  Means:  if a person is lying, then there's 95% chance that test show +.  Additionaly, if a person is not lying, there's a 90% chance the test shows -.
+
+In our population, 98% of people are honest.
+
+a)  Draw a probability tree
+
+b)  P( + | L^C ) = .1
+
+c) P(+)
+
+```{r}
+.02*.95 + .98*.1
+```
+
+"Law of Total Probability"
+
+d) P( L | + )  = P(L and +)/P(+)
+
+```{r}
+.02*.95/(.02*.95 + .98*.1)
+```
+
+"Bayes Theorem"
+
+
+
+# Monday Jan 31
+
+## 2.5 - Independence
+
+P(A | B) = P(A and B)/P(B)
+
+
+Events A, B are **independent**  if:
+
+- (intuitive) the outcome of A doesn't affect likelihood of B
+
+Classic examples:  gambling (coin tosses, dice rolls, etc)
+
+- (math):     P(A | B) = P(A)
+              P(B | A) = P(B)
+              
+              
+## mult rule for indep events
+
+If A,B are indep, then:
+
+    P(A and B) = P(A)*P(B)
+    
+    
+Q:  Is it possible for A, B to be BOTH independent AND mutually exclusive?
+
+If mutually exclusive:  P(A and B) = 0
+
+If independent,    ->   P(A)*P(B) = 0
+
+No!  can't be both independent and mutually exclusive.
+
+## Checking for independence
+
+Q:  are "male" and "L"  independent?
+
+```{r}
+52/100*13/100
+```
+
+Since .0676 != .09, not independent.
+
+Ex)  Suppose we draw two cards. What's the probability that both are spades?
+
+It depends!  Are we replacing?
+
+If replacing:
+
+```{r}
+13/52*13/52
+```
+
+If not, 
+
+```{r}
+13/52*12/51
+```
+
+Moral of the story:  only sampling **with replacement** is independent.
+
+Note:  if the population is large relative to our sample, then reasonable to assume independence.
+
+Ex)  There are 2200 DU students.  We take a sample of 2 students.  If 51% of DU students are female, what's the probability that both students sampled are female?
+
+Q:  how many F students?
+
+```{r}
+.51*2200
+```
+
+with replacement:
+
+```{r}
+1122/2200 * 1122/2200
+```
+
+```{r}
+1122/2200 * 1121/2199
+```
+
+Moral of the story:  if population is large, assume independence.
+
+
+## 3.1-2 Probability distributions
+
+A **random variable**  is a map that assigns a number to every outcome in a sample space.
+
+Ex)  Toss a coin 5 times.
+
+H H T H H
+T H T H T
+
+Let X = # of heads
+
+If X is a **count**, then **discrete**.
+
+If X is **measure**, then **continuous**.
+
+A **discrete probability distribution**  (probabily mass function, pmf) is two things:
+
+- a list of all possible outcomes for X  (**support**)
+- the probability for each one
+
+Ex)  Roll a dice.  X = the face showing up.
+
+Construct a pmf for X.
+
+support:  1,2,...6
+
+The **CDF**  (cumulative distribution function) is a function on whole real line (-infty, infty) that shows:
+
+     F(x) = P(X <= x)
+     
+     (ie, all probability to the left)
+     
+Ex)  make cdf for dice distro
+
+Ex)  Roll two dice.  X = sum.
+
+Construct a pmf for X.
+
+
+     
+           
+# Wed Feb 2           
+
+Warm -up:  Suppose a fair coin is tossed 3 times.  Let X = # of heads.
+
+a)  Construct a pmf for X.
+
+b)  Sketch the cdf for X
+
+   F(x) = P(X<=x)
+   
+   WARNING:  defined on whole real line!
+   
+   F(-2.7)
+   
+   Note:  cdfs are always NONDECREASING
+   
+   left end behavior:  cdf -> 0
+   right end behavior:  cdf -> 1
+   
+## 3.3 - Expected value and variance!
+
+For a discrete RV X, the **expected value** is:
+
+              mu_x
+              
+Ex)  3 coin tosses.  Compute E[X]
+
+Q:  so what?
+
+A:  If make many observations for X, we expect the average of those observations to be close to 1.5.
+
+Eg:  what's typical for this distribution?  what do we expect to occur?
+
+
+
+## variance of X
+
+
+
+     sigma^2_x  = sum(  (x-mu)^2 * P(x))
+     
+     
+Also:  stdev = sqrt(variance)
+
+## Linear combinations of variables
+
+Suppose X,Y are RVs.  Then:
+
+     aX + bY
+     
+is a lin comb
+
+Ex)  An entrance exam has two parts:  verbal and quantitative.
+
+The math department wants to weight the quantitative score twice as much.
+
+X = verbal, Y = quant, then
+
+         Z = X + 2*Y
+         
+Theorem:
+
+
+Ex)  Verbal:  mean = 162, stdev = 14
+     Quant:   mean = 127, stdev = 22
+     
+For the combined score Z, what's the mean and stdev?
+
+E[Z]
+
+```{r}
+1*162+2*127
+```
+
+Var[Z]
+
+
+```{r}
+1^2*14^2 + 2^2*22^2
+```
+     
+stdev[Z]
+
+```{r}
+sqrt(2132)
+```
+
+
+
+Ex)  Height for adult men has mean 69", stdev 2.7".  
+
+a)  Suppose we pick two rando men, add their height.
+
+     Z = X + X
+
+b)  Suppose we pick one rando man, double his height.
+
+     Z = 2X
+
+Q:  do these have same variance?
+
+
+
+# Thurs Jan 4
+
+Think:  2.64
+
+##  Total Probability and Bayes
+
+Total probability idea:  break into "cases".
+
+A "partition" of a sample sample is a collection of events A1, A2, A3, ... , An such that:
+
+1)  A1 union A2 union ... union An = S  (whole space)
+2)  Each intersection is empty (all disjoint)
+
+Total probability:  For any event B and any partition A1,...,An
+
+        P(B) = P(B and A1) + P(B and A2) + ..... + P(B and An)
+        
+        
+Ex)  Soccer.  A particular kicker kicks left 30% of the time, kick center 20% time, kick right 50%.  (L, C, R)
+
+If the ball goes left, there's a 20% chance the goalie blocks it.  If it goes center, then there's a 70% chance to block.  If right, then 40% chance to block.
+
+Draw a probability tree.
+
+Events:  direction, blocked.  Need direction first!
+
+1)  (Total prob)  WHat's the probabilty the ball is blocked?
+
+    P(B) = P(B and L) + P(B and C) + P(B and R)
+    
+```{r}
+.3*.2 + .2*.7 + .5*.4
+```
+  
+There's a 40% chance the kick is blocked.
+
+## Bayes Thm
+
+Idea:  reversing conditional probability.
+
+Have:  P(A | B).  Want:  P(B | A).
+
+
+Math:
+
+      P(B | A) = P(A and B)/P(A)
+      
+If E1, E2, ..., En is a partition:
+
+
+
+
+P(B|A) = P(A and B)/( P(A and E1) + P(A and E2) + .... P(A and En) )
+      
+Ex)  Given:  P( B | L).  Find P(L | B)
+
+Formula:
+
+           P(L | B) = P(L and B)/P(B)
+           
+```{r}
+.3*.2/( .3*.2 + .2*.7 + .5*.4 )
+```
+           
+If the ball gets blocked, there's a 15% chance that it was kicked to the left.
+
+
+## Independence
+
+Ex)  We roll a dice 10 times.  What's the probability that at least one of them shows "4"?
+
+E = {at least one "4"}
+
+E is quite complex!  Lots of possible ways!
+
+E^C = none of them are 4s!
+
+(not 4) (not 4) (not 4) ..... (not 4)
+
+  5/6     5/6     5/6            5/6
+  
+P(E^C)
+
+```{r}
+(5/6)^10
+```
+
+P(E)
+
+```{r}
+1-(5/6)^10
+```
+
+"at least one problems"
+
+Ex)  At DU, about 16% of students are international students.  If we take a sample of 5 DU students, what's the probabilty that at least one of them is an international student?
+
+complement:  none of the 5 students are international.
+
+(1-.16)(1-.16)(1-.16)(1-.16)(1-.16)
+
+```{r}
+.84^5
+```
+
+P(at least one international):
+
+```{r}
+1-.84^5
+```
+
+
+Q:  Is it true for any A,B that
+
+   P(A and B) = P(A)*P(B)
+   
+False!  Only for independent events!
+
+Here, we assume the sample is independent since we have a large population size.  
+
+
+cdf:
+
+    F(x)  =  P(X <= x)
+    
+Q: what's the probability that X is at least 2?
+
+   pmf           cdf
+   
+   
+   
+Q:   perm or comb?
+
+Permutation:  order matters, distinction between the objects.
+
+
+Ex)  24 students in class.  How many ways can we select a group of 3?
+
+   24C3
+   
+Ex)  24 students.  Need president, vice president, treasurer.
+
+   24P3
+   
+   
 
 
 
@@ -101,6 +826,1922 @@ break down:
 
 
 
+e-mu*mu^x/x!
+
+e^-mu = .001
+
+```{r}
+log(.001)
+```
+
+
+
+
+# Fri Feb 4
+
+
+Idea:  We know discrete distributions.  Today:  meet two important famailies of distributions.
+
+## Binomial Distribution
+
+Ex)  At DU, 16% of students are international.  If we take a sample of 10 students,  how likely is it that 3 of them are international?
+
+Notice:  many possible options!
+
+I = International
+N = not
+
+
+I I I N N N N N N N
+
+I N N I N N I N N N
+
+N N N N I N N I I N
+
+Egh!  Complex!
+
+Let X = the number of success out of a fixed number of trials.
+
+
+A RV X is **binomial** if...
+
+- Only 2 possible outcomes for each "trial":  success/fail
+
+- Each trial is independent from others
+
+- fixed number of trials (n)
+
+- constant probability of success (p)
+
+then X has the pmf:
+
+    b(x) =     nCx      *     p^x *     (1-p)^(n-x)
+    
+           # of ways for     prob of         prob of 
+             x successes     x successes    (n-x) failures
+             
+Ex)  Whaat's the probability of 3 International students out of a sample of 10?  p = .16
+
+      b(3) = 10C3 * .16^3 * .84^7
+      
+```{r}
+choose(10,3)*.16^3*.84^7
+```
+
+R functions:
+
+- pmf:  dbinom(x, n, p)
+
+```{r}
+dbinom(3,10,.16)
+```
+
+- cdf:  pbinom(x, n, p)
+
+Ex:  Same setup (n=10 students, p =.16 international).  What's the probability that less than or equal to 5 students are international?
+
+P(X <=5 ) = b(0)+b(1)+b(2)+...+b(5)
+
+No!  Use cdf!   B(5)  (cdf!)
+
+```{r}
+pbinom(5, 10, .16)
+```
+
+There's a 99.8% chance thaat 5 or fewer are international.
+
+Ex)  What's the prob that at least 3 students are international?
+
+P(X>=3) = P(x=3) + P(x=4) + ..... + P(X=10)
+
+        = 1 - P(X<=2)
+        
+```{r}
+1 - pbinom(2, 10, .16)
+```
+        
+Remember:  "d" ->  pmf
+           "p" ->  cdf
+           
+           
+           
+## Poisson  Dist
+
+A "poisson process" is one where an event happens randomly over an interval of space or time.
+
+Ex)  At Target, an average of 8 people per hour pass thru a given checkout lane.  What's the probability that, in the next hour, 10 people will checkout?
+
+Assumptions for Poisson:
+
+- occurances are independent
+- average rate is constant
+- the number of occurances is proportional to the size/length of the interval.
+
+If X describes the number of occurances in a poisson process, then X has pmf:
+
+      p(x) = ( e^-mu * mu^x ) / x!
+      
+      where mu is the average rate of occurances over a unit interval.
+      
+Ex)  Target:  avg of 8/hour.  What' the probability of 10 in the next hour?
+
+       mu = 8
+       
+       p(X=10)
+       
+```{r}
+exp(-8)*8^10/factorial(10) 
+```
+       
+R functions:
+
+   - pmf:  dpois
+   - cdf:  ppois
+
+```{r}
+dpois(10, 8)
+```
+    
+    
+Ex)  What's the probability that 15 customers check out in the next 1.5 hours?
+
+Problem:  new unit length!  Before:  8 per hour
+Now:  Over 1.5 hours, expect 1.5*8 per hour.
+
+mu = 12
+
+```{r}
+dpois(15, 12)
+```
+
+
+Ex)  What's the probability that at least 20 customers check out in the next hour?  mu = 8
+
+     P(X >= 20 ) = P(20) + P(21) + P(22) + P(23) + .....
+     
+Moral of the story:  MUST use cdf!!! 
+
+                = 1 - P(X <= 19)
+                
+```{r}
+1 - ppois(19, 8)
+```
+                
+## Expected Value and Variance
+
+E[x] = sum (x*P(x))
+
+Uh-oh!
+
+Good news:  shortcuts!
+
+Binomial:
+
+      E[X] = n*p
+      
+      Var[x] = n*p*(1-p)
+      
+Poisson:
+
+     E[X] = mu  (average rate of occurances)
+     
+     Var[X] = mu
+     
+     
+# Monday Feb 7
+
+Warm-ups:
+
+1)  At DU, 77% of students are from out-of-state.  If we take a sample of 8 students, what's the probability that at least 6 of them are from out of state?
+
+X = # of out-of-state
+
+X~binom(n=8, p=.77)
+
+P(X>=6) = P(X=6) + P(X=7) + P(X=8)
+
+
+```{r}
+dbinom(6,8,.77)+dbinom(7,8,.77) + dbinom(8,8,.77)
+```
+
+cdf:  1 - P(X<=5)
+
+```{r}
+1-pbinom(5,8,.77)
+```
+
+
+1b)  How many would you expect in the sample?
+
+If X~binom(n,p),    E[X] = np
+
+```{r}
+8*.77
+```
+
+If we take many samples of n=8, we'd expect on average close to 6.16 international students.
+
+2)  Since 1882, there have been 5 of the most serious earthquakes in Tokyo.  If they occur with constant probability over time, what's the probability that one will occur in the next year?
+
+P(X>=1) = 1 - P(X=0)
+
+
+```{r}
+dpois(1,5/140)
+```
+
+
+2b)  At least one in the next 10 years?
+
+New interval -> new mu!  -> mu = 50/140
+     
+P(X>=1) = 1- P(X=0)
+
+```{r}
+1-dpois(0,50/140)
+```
+
+c)  What's the prob of at least 3 in the next 10 years?
+
+P(X>=3)  = 1-P(X=2)-P(X=1)-P(X=0)
+
+```{r}
+1-ppois(2,50/140)
+```
+
+
+```{r}
+1-dpois(2,50/140)-dpois(1,50/140) - dpois(0, 50/140)
+```
+
+
+## Ch4:  Continuous Distributions
+
+Q:  For adult men, mean height is 69", stdev 2.4".
+
+
+What's the probability that rando man is EXACTLY 69.000000000000....... " tall?
+
+Compare:
+
+   P(68 < X < 70)
+   P(68.5 < X < 69.5)
+   P(68.9 < X < 69.1)
+   P(68.9999999 < X < 69.00000001)
+   
+   P(X = 69.000000000) = 0!!!!!
+   
+   Moral of the story:  continuous variables are weird!
+   
+   New strategy:  for cts, only makes sense to describe RANGES of values.
+   
+   Use a "density function"  (pdf):
+   
+   1)  f(x) >=0  for all x
+   2)  total area = 1
+   
+## Uniform Dist
+
+"flat line dist"
+
+Ex)  The amount of time one must wait at a bus stop varies uniformly from 2 min to 12 min.
+
+
+a)  sketch f(x)
+
+b)  WHat's the probability you must wait at least 5 min?
+
+->  7*1/10 = 70%
+
+
+
+# Wed Feb 9
+
+## CH 4 - continuous distributions
+
+If X cts -- only makes sense to taalk a out RANGES of values.
+
+P(X = c) = 0 !!!!
+
+Ex)  Which of the following is LARGER for cts X:
+
+a)  P(1 < X < 2)
+b)  P(1 <= X <= 2)
+
+Neither -- equal no matter what!
+
+P(X = 1) = P(X = 2) = 0
+
+## Unif dist:
+
+f(x) = c   for a<=X<=b, 0 otherwise
+
+## Expected value and Variance
+
+If X discrete:  E[X] = sum ( x*P(x) )
+
+
+Ex)  Find the exp val and variance for X~unif(a,b)
+
+
+
+Ex)  4.3 (p146)
+
+## Famous Cts Distributions
+
+1)  Normal dist!
+
+Idea:  most of us are in the middle!  increasingly unlikely to be far away.
+
+Ex:  Human height.  For adult men, mu = 69", sigma = 2.7", really is normal.
+
+Examples:  almost any biometric.
+
+Problem:  NON INTEGRABLE!!!
+
+A:  software (or tables)
+
+In r:  pnorm(x, mu, sigma) = P(X<=x)
+
+Ex)  What's the probabilit that rando man is less than 70" tall?
+
+```{r}
+pnorm(70, 69, 2.7)
+```
+
+
+Note:  dnorm()  exists but is useless!
+
+
+## Percentiles
+
+The k*100% percentile is the value of X such that 
+
+    P(X< kth percentile) = k
+    
+Ex)  The 30th percentile is the value of X such that 
+
+    P( X < 30th percentile) = .3
+    
+Ex)  If you're at the 60th percentile of height, then you're as tall or taller than 60% of people.
+
+
+Percentile is AREA TO THE LEFT
+
+
+
+
+Addendum:  4.13
+
+4.37 (p167)
+
+X = haul time
+
+X ~ norm(8.46, .913)
+
+a)  What's prob that haul time will be at least 10 min?  Exceed 10 min?
+
+
+F(X) = pnorm(x, mu, sigma)
+
+- P(X >= 10)  =  1-  pnorm(10,8.46, .913)
+```{r}
+1-  pnorm(10,8.46, .913)
+```
+
+
+- P(X > 10) = .04582
+
+c)  What's the prob the haul time btwn 8 min and 10 min
+
+P( 8 < X < 10)
+
+
+
+```{r}
+pnorm(10,8.46,.913) - pnorm(8, 8.46, .913)
+```
+
+d)  What value of c is such that 98% of all haul times are in the interval from 8.46 - c to 8.46 + c ?
+
+Q:  What's X such that 1% of values are below it? 1th percentile!
+
+cdf backwards!  qnorm to the rescue!
+
+   qnorm( %, mu, sigma)
+   
+```{r}
+qnorm(.01, 8.46, .913)
+```
+   
+c: distance
+
+```{r}
+8.46 - 6.34
+```
+
+upper bound: 8.46+2.12
+
+```{r}
+8.46+2.12
+```
+
+
+```{r}
+pnorm(10.58, 8.46, .913) - pnorm(6.34, 8.46, .913)
+```
+
+d*)  What are the cutoffs for the middle 50% of haul times?
+
+
+lo:
+
+```{r}
+qnorm(.25, 8.46, .913)
+```
+
+hi
+```{r}
+qnorm(.75, 8.46, .913)
+```
+
+THe middle 50% of haul times are btwn 7.84 min and 9.08 min.
+
+
+##  Standard Normal DIst
+
+The STANDARD normal dist is just a normal dist with mu=0, sigma=1.
+
+Good for comparison.  Convert to std normal:
+
+     Z = (x - mu)/sigma
+     
+Ex)  Use z-score to answer part a above:  P(X >= 10)
+
+Convert to z:
+
+```{r}
+(10 - 8.46)/.913
+```
+
+
+->   P(X >= 10)  = P(Z >= 1.687)
+
+```{r}
+1- pnorm(1.687, 0, 1)
+```
+
+
+## Critical value
+
+z_alpha = the cutoff for the upper alpha% of the standard normal dist.
+
+Note:  ALWAYS find crit vals with qnorm
+
+Ex)  Compute z_.05
+
+
+```{r}
+qnorm(.95)
+```
+
+Ex)  (4.43 p168)
+
+Idea:  use z-scores!
+
+what are teh cutoffs for STD NORMAL for lower 5% and upper 10%?
+
+mean =0, stdev = 1
+
+lo:
+```{r}
+qnorm(.05, 0, 1)
+```
+
+->   Z = -1.645
+
+hi:
+
+```{r}
+qnorm(.9,0,1)
+```
+
+
+## 4.6  Exponential distribution
+
+Before:  poisson = how many occurances over an interval of time
+
+         exponential = how long until the next occurance?
+         
+(pois):  What's the probability that an earthquake happens in the next 10 years?
+
+(exp):   What's the probability that the next earthquake happens in 5 years?
+
+
+# Monday Feb 14
+
+##  Normal approximation to the binomial.
+
+Idea:  If X~binom with big n, the graph for the distro looks just like that for normal dist!
+
+For big n, often practical to use normal instead of binomial 
+
+with:
+
+     mu = n*p
+     sigma = sqrt(np(1-p))
+     
+Ex)  In Ohio, 52.4% of voters are registered R.  If we take a sample of 100 voters, what's the probability that at least 55 of them are Republican?
+
+Which vals of X?  X=55, 56, 57, 58, ...... 100
+
+Let's try normal instead!
+
+mu:
+
+```{r}
+.524*100
+```
+
+sigma
+```{r}
+sqrt(100*.524*(1-.524))
+```
+
+area on right of 55:
+
+```{r}
+1-pnorm(55, 52.4, 4.994)
+```
+
+Above:  approx.  Below:  exactl (with pbinom)
+
+X = 55, 56,..... , 100
+```{r}
+1-pbinom(54, 100, .524)
+```
+
+## Improving the approx:  "continuity correction"
+
+Idea:  fudge the range of the normal dist by .5 in one direction.
+
+Here in normal:  subtract off everything below X=54.5.
+
+With continuity correction:
+
+```{r}
+1-pnorm(54.5, 52.4, 4.994)
+```
+
+
+## Q:  Who cares?
+
+A:  more efficient to do one normal computation than lots of binomial computations!
+
+Imagine:  n = 1000, 100000, 10000000
+
+Future:  this happens a lot!
+
+## Q:  how big is "big enough"?
+
+Rule of hand:  
+
+    np > 10     and    n(1-p) > 10
+    
+Need at least 10 "successes" and 10 "failures"
+
+Above:  n=100, p = .524
+
+```{r}
+100*.524
+```
+
+```{r}
+100*(1-.524)
+```
+
+->  normal approx is good!
+
+## Poisson vs Exponential
+
+"Wait time distribution"
+
+Q:  how long until 2 hours/3 years/whatever time until the next occurance?
+
+Ex)  Verify that f(x) is a valid pdf.
+
+1)  f(x) >= 0 for all x
+
+  (true for exp, since x, lambda > 0)
+  
+2)  total area = 1
+
+Ex)  Compute F(x) for exponential
+
+Ex)  Incoming patients at an urgent care facility follow a Poisson process with mean 0.3 patients / hour.
+
+a)  If Doctor starts her shift, what's the probability she'll have to wait at least 2 hours until the next patient?
+
+X = amt of time ~ exp(.3)
+
+P(X >=2 ) = 1 - F(2)   <-  pexp()
+
+```{r}
+1-pexp(2, .3)
+```
+
+b)  What's the prob that at least 2 patients come in the next hour?
+
+X = # of patients ~ pois(.3)
+
+P(X >= 2) = 1 - F(1)    <- ppois
+
+```{r}
+1-ppois(1, .3)
+```
+
+
+
+# Wed Feb 16
+
+Ex)  Dataset:  test scores in a large lecture section for a relatively easy exam.
+
+Q:  What shape would you expect this data to have?  What's the best measure of center?
+
+Left skew.  Use median - robust.
+
+Ex)  Game night data.  Q:  are "poker" and "cookies" independent events?  Justify mathematically.
+
+```{r}
+12/115
+```
+
+```{r}
+25/115*30/115
+```
+
+No!  Not independent!
+
+Ex)  Events A,B:  P(A) = .3,  P(B) = .4.  Compute P(A or B) if....
+
+
+a)  A,B are disjoint
+
+b)  A,B independent
+
+c)  P(A and B) = .1
+
+d)  P(A|B) = .4
+
+
+
+Ex)  A covid test:  if you really have it, shows positive 85% of time.
+                    if you really don't have it, shows negative 70%
+                    of the times
+                    
+At DU, 5% of students have covid.
+
+a)  What's the prob a rando student gets a + result?
+
+```{r}
+.05*.85 + .95*.3
+```
+
+
+b)  If you get a + result, what's the prob you really have it?
+
+P( C | +) = P(C and +) / P(+)
+
+```{r}
+.05*.85/.3275
+```
+
+```{r}
+0.67*(9.41/10.37)
+```
+
+
+# Monday Feb 21
+
+## 220 Big picture
+
+1)  Descriptive statistics
+2)  Probability
+3)  Inferrential statistics.
+
+
+Statistical inference is making conclusions about populations based on our sample data.
+
+sample:  "statistics"  Ex:  xbar, s, phat
+
+population:  "parameter" Ex:  mu, sigma, p
+
+
+Goal:  use xbar (sample mean) to say something smart about mu (pop mean)
+
+## 6.1 Point Estimators
+
+A point estimator is a single number to approximat a pop parameter.
+
+Ex:  xbar is a point estimator for mu
+
+Q:  what's our estimator?
+
+Ex:  If population follows exponential dist, then what does our data tell us about lambda?
+
+### Good estimators (qualities)
+
+1)  We hope it's **unbiased**.
+
+Ie:
+
+     E[estimator] = parameter
+     
+Think:  don't want systematic over/under approximation.
+
+2)  We hope the variance of the estimator is small.  V[estimator]
+
+Think:  want our estimates to be similar!
+
+
+Ex)  xbar is unbiased.  
+
+A "random sample"  is a collection of observations
+
+               X1, X2, X3, ..... , Xn
+               
+st:
+
+1)  Xi and Xj are independent for all i,j
+
+
+2) each comes from the same distribution (identically distributed).
+   Ie, E[X] and V[X] are all the same!
+   
+   Xbar = (X1 + X2 + ... + Xn)/n
+   
+Compute expected value:
+
+   E[Xbar] = E[ (X1 + X2 + ... + Xn)/n ]
+           = (1/n)( E[X1] + E[X2] + ... + E[Xn])
+           = (1/n)( mu + mu + .... mu)
+           = (1/n)(n*mu)
+           = mu
+           
+           Whoo!  Unbiased!  
+           
+Ex)  Mean height for adult men in us is 69".  Suppose we take a sample of n=10 men, compute xbar.
+
+  E[Xbar] = 69
+  
+Think:   "The mean of the mean is the mean."
+
+
+Ex)  sample proportion
+
+      phat = "sample prortion"
+           = X/n
+           
+           = (# of our sample in the category)/(sample size)
+           
+           NOTE:   X~binom(n,p)
+           
+Prove that phat is an unbiased estimator for p (population proportion)
+
+
+Ex)  Compute V[Xbar] and V[phat]
+
+V[Xbar] = sigma^2/n
+
+If n is big, variation is small!  Yay!
+
+
+```{r}
+x <- c(1,2,3,4)
+p <- c(.2, .4, .3, .1)
+
+sum( (x-2.3)^2 *p )
+```
+
+```{r}
+1-1/exp(1)
+```
+
+```{r}
+93.5-25*.2
+```
+
+```{r}
+sum((x-2)^2*p)
+```
+
+           
+           
+# Wed Feb 23
+
+## 6.1 - Estimators!
+
+
+Some are natural....
+
+We estimate mu with xbar.
+
+We estimate p with phat.
+
+We estimate sigma with s (stdev).
+
+Q:  is s unbiased?
+
+Q:  what if there's no natural estimator?
+
+## 6.2  Parameter estimation
+
+
+Suppose we have some data that comes from a population with exponential distribution. (Wait times)
+
+```{r}
+data <- rexp(10, .5)
+data
+```
+
+Q:  what's lambda?
+
+## Method of moments
+
+kth population moment:  E[X^k]
+
+kth sample moment:    sum( x_i ^ k)
+
+Method of moments:  set pop moments = samp moments, solve.
+
+data:
+
+1st moment:
+
+```{r}
+(1/10)*sum(data)
+```
+
+2nd moment:
+
+```{r}
+(1/10)*sum(data^2)
+```
+
+Ex)  Given the data above, estimate lambda.
+
+Need:  1st pop moment
+
+Set:
+
+     1/lambda = xbar
+     
+     ->   lambda = 1/xbar
+     
+```{r}
+1/mean(data)
+```
+     
+Based on sample, estimate lambda = 0.85
+
+
+##  Maximum Likelihood
+
+Random samaple:  X1, X2, .... , Xn
+
+joint pdf:
+
+    f(x1, x2, ..., xn)
+    
+Maximum likihood:  think of joint pdf as a function of its parameters
+
+[Ex:  lambda for exponential]
+
+Want to pick values for parameters should MAXIMIZE f!
+
+Practical:  take deriv, set = 0!
+
+Ex)  Use MLE to estimate lambda for a random sample from exponential distribution.
+
+```{r}
+iris %>% group_by(Species) %>% summarize(mean(Sepal.Length))
+```
+
+```{r}
+mean(replicate(10, 1/mean(rexp(10,.5))))
+```
+   
+
+```{r}
+1-.75^5
+```
+
+
+# Friday Feb 25
+
+Ch 6:   Estimators
+
+Ch 7:  Confidence Intervals
+
+## Sampling Dists
+
+A samp dist is a prob dist for a **sample statistic**.
+
+Ie, NOT for an individual!
+
+Q:  How likely is it to see a sample mean like the one we got?
+
+Before:   P(X)
+
+Now:     P(Xbar) = ?
+
+         P(phat) =  ?
+         
+Ex)  We roll two dice (n=2).  Construct the samp dist for xbar.
+
+
+## Samp dist for xbar
+
+Center:
+
+  mu_xbar = mu
+  
+  "the mean of the mean is the mean"
+  
+Spread:
+
+   sigma^2_xbar = sigma^2/n
+   
+   sigma_xbar = sigma / sqrt(n)
+   
+Shape?
+
+- If X~normal(mu, sigma), then xbar~normal(mu, sigma/sqrt(n))
+
+   NO MATTER WHAT!!!
+   
+- **Central Limit Theorem:**   As long as n is "large enough", then 
+                              xbar is approximately normal, no 
+                              matter what X is.
+                              
+Ex)  Height for adult women in US follows normal dist, mean = 64" and stdev = 2.4".
+
+a)  What's the prob that rando woman is at least 65" tall?
+
+```{r}
+1-pnorm(65, 64, 2.4)
+```
+
+b)  If we take a sample of 10 women, what's the probability that their mean height is at least 65"?
+
+    P(xbar >= 65)
+    
+WARNING!  SAMP DIST!
+  here:
+     mu_xbar = 64
+     sigma_xbar = 2.4/sqrt(10)
+     shape:  normal
+     
+```{r}
+1-pnorm(65, 64, 2.4/sqrt(10))
+```
+     
+c)  Sample of 50 women.  WHaat's the prob that mean height is at least 65"?
+
+```{r}
+1-pnorm(65, 64, 2.4/sqrt(50))
+```
+
+Q:  How big is "big enough"?
+A:  n>=30
+
+n=10
+
+```{r}
+2.4/sqrt(50)
+```
+
+
+Q:  why does variance get smaller?
+
+Math:  n is in the denominator!
+
+Intuitive:  if MANY people, unusual ones don't have as much effect
+
+
+
+
+# Ch 7:  Confidence Intervals for mu
+
+Ex)  Height for adult women has normal dist with mean 64", stdev 2.4".
+
+If we take a sample of n=50 women, what are the cutoffs for the middle 95% of such sample means?
+
+BACKWARDS!  Given area, need cutoff!
+
+low z:
+
+```{r}
+qnorm(.025)
+```
+
+hi z:
+```{r}
+qnorm(.975)
+```
+
+xbar ~ normal( 64 , 2.4/sqrt(50))
+
+xbar_lo:
+
+
+```{r}
+-1.96*2.4/sqrt(50)+64
+```
+
+xbar_hi:
+```{r}
+1.96*2.4/sqrt(50)+64
+```
+
+For such samples, the middle 95% most common sample means lie btwn 63.33" and 64.67".
+
+CI:  saame thing, but start with sample, get bounds for mu.
+
+We're C% confident that the true pop mean lies between xbar - z*sigma/sqrt(n) and xbar + z*sigma/sqrt(n).
+
+Ex)  What's mean height for adult men in Denmark?  Sample of 50 danish men, find their average height be 69.6" tall.
+
+Suppose we know, SOMEHOW, that sigma = 2.85.
+
+Construct a 98% CI for mean adult height of men in Denmark.
+
+Q:  critical val?
+
+```{r}
+qnorm(.01)
+```
+
+critical value = 2.33
+
+lo:
+
+```{r}
+69.6 - 2.33*2.85/sqrt(50)
+```
+
+hi:
+```{r}
+69.6 + 2.33*2.85/sqrt(50)
+
+```
+
+We are 98% confident that the true population mean height for men in Denmark is between 68.66" and 70.54".
+
+## Dice Intervals
+
+One partner:  rolls the dice 30 times.
+Other:  record (REALLY WRITE THEM DOWN!!)  results.
+
+After:  compute average, DOUBLE CHECK.
+
+Then:  swap.
+
+Q:  what's sigma?
+
+```{r}
+x <- c(1,2,3,4,5,6)
+p <- c(1/6, 1/6, 1/6, 1/6 , 1/6, 1/6)
+
+sqrt( sum( (x-3.5)^2*p))
+```
+
+```{r}
+x <- sample(1:6, 30, replace = TRUE)
+```
+
+```{r}
+mean(x)
+```
+
+```{r}
+1.96*1.71/sqrt(30)
+```
+
+
+```{r}
+3.37 - .61
+```
+
+```{r}
+23/234
+```
+
+
+
+Suppose that about 25% of DU students have gone on a backpacking trip.  If we take a sample of 5 students, what's the probability that at least one of them has gone on a backpacking trip?  Round to 3 decimals.
+
+
+P(at least 1 baackpacking) = 1-P(none backpack)
+
+```{r}
+1-.75^5
+```
+
+
+
+At a zoo:
+
+-about 21% of all animals are green.      P(G) = .21
+-about 16% of all animals are reptiles    P(R) = .16
+-of the reptiles, 79% of them are green   P(G | R) = .79
+
+If we randomly select an animal from any at the zoo, what's the probability it's both green and a reptile?
+
+Warning:  these events are not independent.
+
+Q:  P(G and R) = P(R) * P(G | R)
+
+.16*.79
+
+
+
+
+
+amnd:
+```{r}
+23/234
+```
+times:
+```{r}
+41/234*79/234
+```
+
+
+
+Q:  Why do we make CIs?
+
+A:  ESTIMATE a pop parameter with sample data.
+
+"estimate" = "construct a CI"
+
+Last time:  95% CI for mean dice roll.
+
+My interval:  we are 95% confident that the true mean dice roll is between 2.85 and 3.99.
+
+WRONG:  there's a 95% chance that true mean mu is between 2.85 and 3.99.
+
+Right:  Using our sampling method (given n), 95% of the time this method will produce an interval that contains the true mu.
+
+##  Factors influencing margin of error
+
+Confidence:  
+
+    - If our confidence level increases, then MOE increases!!
+    
+       Bummer!
+       
+       
+Sample size:
+
+    - If n increases, then MOE decreases.
+    
+      Think:  n in the denomiantor.
+      Think 2:  bigger n means skinnier samp dist!
+      
+## Planning ahead for sample size
+
+Dice example:  MOE for 95% CI
+
+```{r}
+1.96*1.71/sqrt(30)
+```
+
+Q:  How large must our sample be in order to construct a 98% CI with error no greater than .25?
+
+Previous study:  sigma = 1.71
+
+Idea:  solve for n in MOE formula!
+
+Q:  crit val?
+
+```{r}
+qnorm(.01)
+```
+
+```{r}
+qnorm(.99)
+```
+    
+crit val:  2.33
+
+plug:
+
+```{r}
+(2.33*1.71/.25)^2
+```
+
+Need 254 dice rolls for such an MOE.
+
+
+##  CI for mu - grown up version
+
+
+Problem:  if you don't know mu, then certainly don't know sigma!
+
+mu = pop mean,  sigma = pop stdev
+
+xbar = samp mean,  s = samp stdev
+
+Idea:  use the next best thing:  samp stdev s!
+
+
+Problem:  s and sigma might be different!
+
+
+Solutions:
+
+1)  "Large Sample Intervals"
+
+If n is large, then s and sigma are close.  
+
+  "Sufficiently large":  n>= 30
+  
+2)  small sample size
+
+A:  use the "t" distribution!
+
+Just like z dist, but with s instead of sigma.
+
+- t is like z:  symmetric about 0, bell shaped
+- unlike z, t depends on sample size.  
+   - bigger sample size -> closer to z dist
+   - "degrees of freedom" = df = n-1
+- t dist has thicker tails ->  CIs with t are wider 
+-  bummer!  but it's the price we pay for not knowing sigma
+   
+  
+  
+   
+Different:  for SAMPLING DISTRIBUTIONS, bigger n -> smaller variance
+
+
+   
+   
+Ex )  In Canada,  a random sample of 20 women is taken.  Mean height = 63.9", stdev 2.7".  Construct a 95% CI for true mean height of women in Canada.
+
+WARNING:  2.7 = s = samp stdev -> tdist
+
+Q:  what's our t crit val?
+
+df = 20 - 1 = 19
+
+```{r}
+qt(.025, 19)
+```
+
+crit val:  t = 2.09
+
+plug and chug:
+
+lower bound:
+```{r}
+63.9 - 2.09*2.7/sqrt(20)
+```
+upper bound:
+```{r}
+63.9 + 2.09*2.7/sqrt(20)
+```
+
+We are 95% confident that the true mean height of women in Canada is between 62.6" and 65.2".
+
+BASICALLY ALWAYS USE T
+
+q:  what if sample n = 200?
+
+```{r}
+
+```
+
+
+
+
+
+```{r}
+qqnorm(c(0, 1, 3, 4, 5, 9, 10))
+```
+
+```{r}
+x <- sort(runif(4))
+y <- c(qnorm(.5/4), qnorm(1.5/4), qnorm(2.5/4), qnorm(3.5/4))
+plot(y,x)
+qnorm(.125)
+```
+
+
+
+# Thurs March 4
+
+Q:  How do we know xbar is normal?
+
+1)  If X is normal (original pop), then xbar has normal dist no matter what.
+
+2)  (CLT)  If n is sufficiently large, then xbar has approx normal dist for ANY population X.
+
+"sufficiently large":  n>=30  
+
+CI for large sample:  use z for critical values.
+
+CI for small samples:  use t dist for critical vales (if you don't know population stdev!)
+
+Ex:  A zoologist wonders:  how tall are reticulated giraffes?  To investigate, she measures 18 giraffes.  They have mean height 18.3 ft tall, stdev 1.9' ft.
+
+WARNING:  1.9 = s = SAMPLE STDEV = NOT SIGMA!!
+
+Estimate the mean height with 90% confidence.
+
+Need crit val!
+
+```{r}
+qt(.05, 17)
+```
+
+t = 1.74
+
+plug and chug:
+
+low:
+
+```{r}
+18.3 - 1.74*1.9/sqrt(18)
+```
+hi
+```{r}
+18.3 + 1.74*1.9/sqrt(18)
+```
+
+We're 90% confident that the true mean height for reticulated giraffes is between 17.52' and 19.08'.
+
+Q:  how do we know that xbar is normal when n is small?
+
+A:  take a look at the data!  in particular:
+
+   - histogram  (does it look normal?)
+   - normal quantile plot  (qq plot)
+   
+Ex:  iris dataset.  
+
+```{r}
+head(iris)
+```
+
+Ex:  is sepal length normal?
+
+hist:
+
+```{r}
+hist(iris$Sepal.Length)
+```
+Looks ok:  roughtly symmetric/bell-shaped.
+
+Q:  is petal length normal?
+
+```{r}
+hist(iris$Petal.Length)
+```
+Nope!  If n is small, CI is no good!
+
+
+Ex:  mpg data
+
+```{r}
+head(mpg)
+```
+
+Q:  is displ normal?
+```{r}
+hist(mpg$displ)
+```
+
+
+## Normal Quantile plots
+
+Goal:  make a qq plot for data:   1, 2, 3, 4, 5
+
+Idea:  compare normal quantiles (x) to data quantiles (y)
+
+
+What are the normal quantiles?
+
+
+(-1.28, -.52, 0, .52, 1.28)
+
+```{r}
+y <- c(1,2,3,4,5)
+x <- c(-1.28, -.52, 0, .52, 1.28)
+plot(x,y)
+```
+
+
+Idea:  if data follows normal dist, then qqnorm() shows straight line.
+
+Ex:  sepal length
+
+```{r}
+hist(iris$Sepal.Length)
+```
+```{r}
+qqnorm(iris$Sepal.Length)
+```
+
+```{r}
+hist(iris$Petal.Length)
+```
+```{r}
+qqnorm(iris$Petal.Length)
+```
+Ex:  mpg data:  displ
+```{r}
+hist(mpg$displ)
+```
+```{r}
+qqnorm(mpg$displ)
+```
+
+
+so far:  CI for mu
+
+## CIs for p - population proportion
+
+Estimate:  phat = what percent in sample belong to category
+
+Example:  In Math 220, 8 out of 24 students have black hair.
+
+Construct a 99% CI for the true proportion of students with black hair.
+
+crit val:
+
+```{r}
+qnorm(.005)
+```
+
+z = 2.576
+
+plug and  chug:
+
+```{r}
+8/24 - 2.576*sqrt(8/24*(1-8/24)/24)
+```
+```{r}
+8/24 + 2.576*sqrt(8/24*(1-8/24)/24)
+```
+
+We're 99% confident that the true proportion of DU students with black hair is between 8.5% and 58.1%.
+
+Note:  always use z for proportions!
+
+Q:  For phat, how big is "big enough" to use a normal dist?
+
+Need:
+
+      n*phat > 10     AND   n(1-phat)  > 10
+      
+Ie:  must be at least 10 successes and 10 failures
+
+
+
+# Friay March 4
+
+Warm-up:  Name that norm!
+
+a)  At DU, mean IQ is 109 with stdev 14.  If we take a sample of 35 students, what's the prob their mean IQ is at least 110?
+
+P(xbar >= 110)
+
+Know:  xbar is normal since n is large.
+
+mu = 109
+sigma = 14/sqrt(35)
+
+```{r}
+1- pnorm(110, 109, 14/sqrt(35))
+```
+
+b)  At DU, 77% of students are from out-of-state.  If we take a sample of 50 students, what's the probability that 25 or less are from out-of-state?
+
+P( phat <= 25/50 )
+
+samp size:
+
+```{r}
+50*25/50
+```
+```{r}
+50*(1-25/50)
+```
+```{r}
+pnorm(25/50, .77, sqrt(.77*.23/50))
+```
+
+c)  In a sample of 100 DU students, 17 have gone backpacking.  We wish to estimate the proportion of all students who've gone backpacking with 97% confidence.
+
+What's the crit val?
+
+```{r}
+qnorm(.015)
+```
+
+crit val:  z = 2.17
+
+CI:
+
+```{r}
+17/100 - 2.17*sqrt(17/100*(1-17/100)/100)
+```
+```{r}
+17/100 + 2.17*sqrt(17/100*(1-17/100)/100)
+
+```
+We're 97% confident that btwn 8.8% and 25.2% of DU students have gone backpacking.
+
+d) In a sample of 18 DU students, their mean nightly sleep time was computed to be 6.8 hours/night, stdev 1.32 hours.
+
+We wish to estimate the true mean sleep time for all DU studens with 96% confidence.  
+
+What's the crit val?
+
+```{r}
+qt(.02, 17)
+```
+
+crit val:  t = 2.22
+
+## z or t?
+
+For proportions:  always z.
+
+   - find prob with pnorm
+   - find cutoffs/crit vals with qnorm
+   
+For means:
+
+1)  n is large  (n > 30)
+
+   z and t are close - use z
+   
+   - find prob with pnorm
+   - find cutoffs/crit vals with qnorm
+   
+2)  n is small
+
+    use t!
+    
+    - find prob with pt()
+    - find cutoffs/crit vals with qt()
+    
+## Planning ahead for sample size
+
+1) Proportions
+
+Ex)  In her pilot study, Prof Miller found that 17 / 100 DU students had gone backpacking.  She wishes to estimate the true proportion with 95% confidence and MOE no greater than 2%.
+
+prior estimate for p:  17/100
+
+crit val:
+
+```{r}
+qnorm(.025)
+```
+
+MOE:  .02
+
+```{r}
+.17*.83*(1.96/.02)^2
+```
+
+Maybe not reasonable!
+
+Q:  what if no prior estimate for p?
+
+A:
+
+What's the worst-case scenario? For what p is:
+
+    p(1-p)
+
+the largest?
+
+Use p = .5!  It's the worst-case scenario!
+
+Ex:  above:
+
+```{r}
+.5*.5*(1.96/.02)^2
+
+```
+
+2)  Meaans (small sample)
+
+Solutions:
+
+- approximate crit val:  t = 2  (95% confidence)
+- stdev:  use range/4
+
+Ex:  Prof Miller wishes to estimate the mean sleep time for DU students with 95% confidence, error no greater than .25 hours (15 min).
+
+She's pretty sure most students sleep between 5 hours and 9 hours a night.
+
+How large must the sample be?
+
+t = 2
+
+sigma ~ (9-5)/4 ~ 1
+
+```{r}
+(2*1/.25)^2
+```
+
+```{r}
+qt(.025, 63)
+```
+
+
+
+# Monday March 7
+
+## Hyp tests
+
+Statistical inference is the process of making empricially supported conclusions about populations based on sample data.
+
+Two types:
+
+1)  CIs let us ESTIMATE a population parameter based on sample
+
+2)  Hyp tests ask/answer a question/claim about a population?
+
+## analogy with criminal trial:
+
+Claim:  defendent is guilty.
+
+1)  Must assume innocent!  BUT, looking for evidence that they're guilty!
+
+2)  Witness testimony!
+
+3)  Jury debates:  how strong is the evidence?
+
+4)  Conclusion:  if evidence is "beyond a shadow of a doubt", then GUILTY!!  Evidence supports our claim!
+
+
+Now:  hyp tests
+
+
+1)  Two competing hypotheses:
+
+    H0:  (null hypothesis)  <-  innocent!  assume by default
+                                Note:  always a statement of "="
+                                about a parameter (mu, p, et)
+    Ha:  (alternate hyp)    <-  our claim about population
+                                always a statement of INequality
+                                GUILTY!
+2)  evidence = data!   "test statistic"  (z-score)
+
+3)  p-value = the probability of observing a sample result that's
+              as (or more) extreme than ours ASSUMING H0 IS TRUE!!
+              
+              SAMPLING DISTRIBUTION!
+              
+4)  Conlusion.
+
+    Small p-vals are evidence AGAINST H0.
+    
+    If p-val is small:  data and H0 disagree!
+    
+    Idea:  if p-val is "small enough", we REJECT H0.
+           ->  supporting Ha.   Yay!
+           
+           if p-val is large, we FAIL TO REJECT H0
+           ->  didn't find evidence to support Ha.  Frown.
+           
+    "Small enough":  significance level, alpha.  For us:  if 
+     not specified, always use alpha = .05
+     
+Ex)  A social scientist wonders:  does Licking County skew republican?
+
+Data:  survey of 100 people.  57 said "republican".  
+
+Does this data provide evidence that more tha half of LC voters are republican?
+
+1)  Hypotheses
+
+   H0:  p = .5       (p = proportion of R voters in LC)
+   Ha:  p > .5
+   
+2)  Test stat
+
+z = (obs - exp)/stev
+
+```{r}
+(57/100 - .5)/sqrt(.5*(1-.5)/100)
+```
+
+3)  p-val
+
+```{r}
+1 - pnorm(1.4)
+```
+
+```{r}
+1- pnorm(57/100, .5, sqrt(.5*(1-.5)/100))
+```
+   
+Meaning:  if it's true that 50% of voters are R, then there's an 8.07% chance of observing a sample with 57 (or more) republicans.
+
+4)  Conclusion
+
+Since p-val > .05, we FAIL TO REJECT H0.  We did NOT find strong evidence to support our claim that more than half of LC voters are R.
+
+
+    
+Ex)  Prof Miller suspects that a dice is "unfair", specifically:  "4" shows up more often than it should.
+
+To test:  she rolls the dice 50 times, finds 20 of them are "4"s.
+
+Does this data support her claim?
+
+1)  Hypotheses:
+
+H0:  p = 1/6
+Ha:  p > 1/6
+
+2) test stat
+
+```{r}
+(20/50 - 1/6)/sqrt(1/6*(1-1/6)/50)
+```
+
+3)  p-val
+
+right tail test ->  1-cdf
+
+```{r}
+1-pnorm(4.427)
+```
+
+If the dice was fair, there's basically zero chance of a sample like ours.
+
+
+
+4)  conclusion
+
+Since p<.05, we reject H0.  There's very strong evidence to support her claim that "4"s are too common.
+
+
+
+
+                                
+                                
+                                
+                                
+    
+# Wed March 09
+
+## Hyp Tests
+
+Last time:  hyp test for p:  proportion
+
+Now:  tests for mu: pop mean
+
+Only real difference: test stat
+
+test stat = (obs-exp)/stdev
+
+For mu:
+
+   obs = xbar
+   exp = mu (pop mean; H0)
+   stdev = 
+   
+           sigma/sqrt(n)   [if sigma is known]  -> use z
+           s/sqrt          [if sigma unknown, ie always] -> use t
+           
+Ex)  An athletic scouter suspects that women at DU are taller than the national avg of 64".
+
+To investigate: take a sample of 25 women at DU.  Their avg height is 64.4", stdev 2.53".
+
+Does this data support the claim?
+
+1)  hypotheses
+
+   H0:  mu = 64
+   Ha:  mu > 64  <-  (right tail test)
+   
+   
+2)  Test stat
+
+```{r}
+(64.4 - 64)/(2.53/sqrt(25))
+```
+
+t = 0.79
+
+3) p-val
+
+```{r}
+1-pt(.79, 24)
+```
+
+Ie:  if mean height for women at DU really is 64", then there's a 21.9% chance of observing a sample like ours.
+
+4)  Conclusion
+
+Since p>.05, fail to reject H0.  We did not find strong evidence that mean height at DU is higher than 64".
+
+
+## Two tail tests
+
+Ha:   ">"        ->  right tail test
+Ha:   "<"        ->  left tail test
+
+Q:  what if claim is "not equal"?
+
+                        !=
+                        
+Ex)  Mean IQ for adults is 100.  A researcher suspects that mean IQ for musicians is different.
+
+Practically:  p-val = 2xtail area
+
+
+Ex)  Mean IQ for adults is 100.  A researcher suspects that mean IQ for musicians is different.  She administers IQ tests to 35 musicians, find their mean IQ to be 107.3, with stdev 14.9.
+
+Q:  does this data support the claim?
+
+1)  Hypotheses
+
+H0:  mu  = 100
+Ha:  mu != 100    <- two tail test:   p-val = 2xtail area
+
+2)  test stat
+
+```{r}
+(107.3 - 100)/(14.9/sqrt(35))
+```
+
+3)  p-val
+
+```{r}
+2*( 1 - pt(2.90, 34) )
+```
+
+```{r}
+2*pt(-2.90, 34)
+```
+
+4) conclusion
+
+Since p-val < .05, we reject H0.  There's strong evidence to support the claim that mean iq for musicians differs from the general pop.
+
+
+## When to use two-tail?
+
+Student:  read the question!
+
+     "bigger/increase"  ->  right tail
+     "smaller/decrease" ->  left tail
+     "change/differs"   ->  two tail
+     
+Real world:  use two tail most of the time, UNLESS you have a VERY STRONG REASON for > or <
+
+Reason:  two-tail has bigger p-vals, harder to reject H0.
+
+## Errors in Hyp Tests
+
+Ex:  explain the errors
+
+Test:  Criminial trial
+
+H0:  innocent
+Ha:  guilty
+
+Type I:  We think they're guilty, but really they're innocent.
+
+Type II:  We think they're innocent, but really they're guilty.
+
+Opinion:  type I is worse, don't want to punish innocent people.
+
+
+Test:  An EPA officer suspects that mean levels of Toxin A is too high in the local water supply.
+
+She collects water samples, calculates Toxin A content.
+
+H0:  water is safe
+Ha:  water is dangerous
+
+Type I:  We think the water is dangerous, but really it's safe.
+
+Type II:  We think the water is safe, but really it's dangerous!
+
+Opinion:  Type II worse, because then drink dangerous water!
 
 
 
@@ -109,5 +2750,592 @@ break down:
 
 
 
+
+   
+   
+   
+
+
+
+In Tokyo, there have been 5 of the "most serious" earthquakes since 1882.
+
+What's the probability that one happens in the next year?
+
+lambda = avg rate of earthquakes
+       = # of quakes / # years
+       =  5 / 140
+
+P(X=0)
+
+```{r}
+1/.17
+```
+
+
+
+# Thursday March 10
+
+Ex)  An athletic scouter suspects that women at DU have higher than national mean height of 64".
+
+
+Collects data, p-val = 0.076.
+
+Magic stats genie:  in real life, the mean height of women at DU is 64.7" tall.
+
+Q:  What error, if any, occured?
+
+H0:  mu = 64
+Ha:  mu > 64
+
+Type II!  Fail to reject HO, but H0 is false.
+
+
+## math of error types
+
+The probability of Type I error:
+
+     P(reject H0 | H0 is true) = alpha
+                               = significance level!!
+                               = usually .05!
+                               
+Q:  Why not pick alpha super super small?
+
+The probability of a Type II error:
+
+    P(fail to reject H0 | H0 is false) = beta
+
+Problem:  (generally) impossible to compute beta!  We don't know the true population parameter.
+
+BUT:  alpha and beta are inversely proportional.
+
+If Type I is really bad:  pick small alpha (might get Type II)
+If Type II is really bad:  pick larger alpha (watch out for Type I)
+
+Q:  How to pick alpha?
+
+- balance error types
+- YOU MUST PICK ALPHA -BEFORE- CONDUCTING THE TEST!!!
+
+P-hacking!  Rigging the hyp test in your favor!
+
+## Power
+
+The "power" of a hyp test is the probability of rejecting the H0 when in fact H0 is false.
+
+Yay!  Happy ending!
+
+Power = P(successful hyp test)
+
+Same problem as beta:  since don't know true population parameter, can't compute power directly.
+
+BUT:
+
+     power = 1 - beta     [compliments!!!]
+     
+Q:  To increase power, how should adjust alpha?  Bigger or smaller?
+
+Think:
+
+    - If we increase alpha, more likely to reject H0, so power inc!!
+    - If alpha increases  ->   beta decreases
+                          ->   power increases!
+                          
+## Computing beta and power
+
+In Prof Miller's Fall 2017 stats class, there were 16 women out of 25 students.
+
+```{r}
+16/25
+```
+
+Q:  Does this support the claim that more than half of DU students are female?
+
+
+1)  Hyps
+
+H0:  p = .5
+Ha:  p > .5
+
+2) Test stat
+
+```{r}
+(16/25 - .5)/sqrt(.5*(1-.5)/25)
+```
+
+3)  p-val
+
+```{r}
+1-pnorm(1.4)
+```
+
+If it's actually true that half of DU students are female, then there's an 8.1% chance of observing a sample proportion of at least 16/25.
+
+4)  Conclusion
+
+Since p>.05, fail to reject H0.  There's not strong evidence to support the claim that DU is majority female.
+
+That semester, Prof Miller checked with the registrar:  in truth, 57% of DU students were female.
+
+Type II error!  Using true p = .57, compute beta and power.
+
+3 steps:
+
+1)  What's the z-score for rejection?
+
+```{r}
+qnorm(.95)
+```
+
+If z any bigger than 1.645, reject H0.
+
+2)  What sample data would give us z=1.645?
+
+
+```{r}
+1.645*sqrt(.5*(1-.5)/25) + .5
+```
+
+3)  Since we know that, for realzies, p = .57, what's the probability of observing phat >= .6645?
+
+```{r}
+1-pnorm(.6645, .57, sqrt(.57*(1-.57)/25))
+```
+
+So, power = 17%
+
+ANd, beta = 83%
+
+Only a 17% chance of successful test -- not surprising that ours failed!
+
+## Factors that affect power
+
+1)  If n increases:
+      - power increases
+      - BOTH prob(type I) and beta decrease
+      
+2)  If the distance between the H0 value and the for realzies value increases, then power increases also!
+
+If H0 and truth are very close, then power is very small!
+
+
+##  Connection between hyp tests and CIs
+
+Ex)  Sony claims that their wireless controllers have mean batter life of 15 hours.  Prof Miller is -convinced- that it's less than that.
+
+She collects data from play times:  over 16 different charges, the mean battery life was 14.6 hours with sdev 2.1 hours.
+
+Construct a 95% CI for the mean lifetime based on data.
+
+crit val:
+
+```{r}
+qt(.025, 15)
+```
+
+plug aand chug:
+
+lo:
+```{r}
+14.6 - 2.13*2.1/sqrt(16)
+```
+hi:
+```{r}
+14.6 + 2.13*2.1/sqrt(16)
+
+```
+
+We are 95% confident that true mean lifetime is between 13.48 hrs and 15.72 hrs.
+
+Q:  Does this CI give strong evidence that mean lifetime differs from 15 hours?
+
+Note:  in absence of other evidence, two-tail test is more prudent.
+
+
+
+No!  Seems like 15 is quite reasonable!
+
+Hyp test!
+
+xbar = 14.6,  s = 2.1,  n = 16
+
+1) Hyps
+
+H0: mu  = 15
+Ha: mu != 15
+
+2) test stat
+
+```{r}
+(14.6 - 15)/(2.1/sqrt(16))
+```
+
+
+3) p-val
+
+```{r}
+pt(-.762, 15)
+```
+
+p = 2x.229    (two-tail)
+
+```{r}
+2*.229
+```
+
+4)  Conclusion
+
+Since p is giantic, we fail to reject.  There's not strong evidence of a difference.
+
+Moral:  THIS ALWAYS HAPPENS!  If alpha and confidence "agree", you'll ALWAYS get the same conclusion from CI and a two-tail test!!!
+
+Summary:  if the value in H0 is contained in the CI, then always FAIL TO REJECT H0.
+
+
+
+## Statistical Significance vs Practical Significance
+
+"statistically significant" == "small p-val"
+
+HOWEVER, just because stat sig, that DOESN'T mean "practically significant".
+
+CIs aare better:  they show you the size of the effect.
+
+
+
+
+
+
+
+
+
+Womens heights:  mean = 64", stdev 2.4.  Sample size n=50.
+
+Q:  How big would xbar have to be in order to reject H0?
+
+```{r}
+qnorm(.95, 64, 2.4/sqrt(50))
+```
+
+"rejection region":  (64.558, infty)
+
+xbar = 65
+
+test:
+
+```{r}
+(65-64)/(2.4/sqrt(50))
+```
+
+p-val
+```{r}
+1-pnorm(2.946)
+```
+
+
+
+
+
+
+
+
+```{r}
+1-pnorm(1340, 1300, 60/sqrt(10))
+```
+
+
+test stat:
+
+```{r}
+(1340 - 1300)/(60/sqrt(10))
+```
+```{r}
+1-pnorm(2.108)
+```
+
+
+
+## Z-table
+
+Compute...
+
+a)  pnorm(0.34) = .6331
+
+```{r}
+pnorm(.34)
+```
+
+b)  qnorm(.83) = .95
+
+idea:  find AREA = .83
+
+```{r}
+qnorm(.83)
+```
+
+
+# Ch 9 - Inference on TWO populations
+
+
+Q:  what if we want to COMPARE two populations?
+
+## Two proportions
+
+Prof Miller wonders: is the proportion of DU students who've gone backpacking different than the proportion of Oberlin students who've gone backpacking?  
+
+Care about:
+
+
+           p1 - p2
+           
+           (p1 = denison proportion, p2 = oberlin prop)
+           
+Q:  what aabout p1 aand p2?
+
+A:  compute "pooled" proportion.  combine all together for total proportion:
+
+      p_pooled = (x1 + x2) / (n1 + n2)
+      
+To investigate, sample of 50 DU students and a sample of 70 Oberlin students.  10 out of 50 DU studetns have backpacked, 11/70 Oberlin Students have backpacked.
+
+Test:
+
+1)  Hypotheses
+
+   H0:  p1 - p2  =   0
+   Ha:  p1 - p2  !=  0
+   
+2)  Test stat
+
+pooled:
+
+```{r}
+(10 + 11)/(50+70)
+```
+
+```{r}
+(10/50 - 11/70)/sqrt( .175*(1-.175)/50 + .175*(1-.175)/70 )
+```
+   
+z = .61
+
+3)  p-val
+
+tail area:
+
+```{r}
+1-.7291
+```
+
+p-val
+
+```{r}
+2*.2709
+```
+
+4)  Conclusion
+
+Since p>.05, we fail to reject H0.  There's not strong evidence of a difference in proportion btwn DU and Oberlin.
+
+## Two means
+
+Care about:
+
+      mu1 - mu2
+      
+Ex)  Prof Miller wonders:  is there a difference in mean delivery time btwn Pizza Hut and Donatos?
+
+She records delivery times.  For 17 Pizza Hut deliveries, mean time = 23.4 min, stdev = 3.6 min.
+
+For 21 Donatos deliveries, mean = 20.9 min, stdev 4.3 min.
+
+Construct a 95% CI for the difference in mean delivery time.
+
+wait:  
+
+```{r}
+qt(.025)
+```
+
+
+Note:  
+
+
+         min(n1,n2) < df  <  n1 + n2
+
+She records delivery times.  For 17 Pizza Hut deliveries, mean time = 23.4 min, stdev = 3.6 min.
+
+For 21 Donatos deliveries, mean = 20.9 min, stdev 4.3 min.
+
+Here:
+
+```{r}
+(3.6^2/17 + 4.3^2/21)^2 / ( (3.6^2/17)^2/16 + (4.3^2/21)^2/20)
+```
+
+Use df = 35.
+
+(Technically, always round down)
+
+crit val:
+
+```{r}
+qt(.025, 35)
+```
+
+
+```{r}
+23.4 - 20.9 - 2.03*sqrt(3.6^2/17 + 4.3^2/21)
+```
+
+```{r}
+23.4 - 20.9 + 2.03*sqrt(3.6^2/17 + 4.3^2/21)
+
+```
+
+We're 95% confident that the difference in delivery time is between -0.1 min and 5.1 min.
+
+
+
+
+ xbar ~ norm(1300, 60/sqrt(10))
+ 
+ 
+ z = (1340 - 1300)/(60/sqrt(10))
+ 
+```{r}
+(1340 - 1300)/(60/sqrt(10))
+```
+ 
+ 
+ ->   pnorm(test stat)
+ 
+```{r}
+qnorm(.95, 1300, 60/sqrt(10))
+```
+
+->  If xbar > 1331.209, then we'll reject H0 (since tail area less than .05)
+
+Here:  xbar = 1340 > 1331, so reject H0.
+
+c)  Reject if xbar >1331.209
+
+Now:  if the FOR REAL ACTUAL MEAN is 1350, then what's the probability of observing xbar > 1331.209
+
+For real:  xbar ~ norm(1350, 60/sqrt(10))
+
+Need:   P( xbar > 1331.209)
+
+
+```{r}
+(1331.209 - 1350)/(60/sqrt(10))
+```
+
+pnorm( your test stat,  for real mean,  stdev)
+
+
+## Planning ahead for sample size
+
+
+    MOE = (after +/-)
+    
+    solve back:   n = ........
+    
+    (------------phat------------)
+
+    |            .05             |
+    
+    "irrespective of phat"
+    
+    MOE = z*sqrt(p(1-p)/n)
+
+      n = p (1-p) [ z/MOE ]^2
+      
+      
+
+
+
+Ex)  An athletic scouter suspects:  women at DU are taller on average than the national 64".  It's known that sigma = 2.4".
+
+Magic stats genie:  in reality, the true mean height for women at DU is 64.4".
+
+If the scouter takes sample of size n=35, caclulate beta and power for the test (assuming standard alpha=.05)
+
+z = 1.645  (halfway btwn 1.64 and 1.65)
+
+```{r}
+qnorm(.95)
+```
+
+
+```{r}
+1.645*2.4/sqrt(35) + 64
+```
+
+
+```{r}
+(64.667 - 64.4)/(2.4/sqrt(35))
+```
+
+
+beta = .7454
+
+power:
+```{r}
+1-.7454
+```
+
+
+
+Not surprising (bad power):
+
+- H0 value (64) is close to the for realsies value (64.4).
+
+Q:  would a rejection be PRACTICALLY significant?
+
+H0:
+Ha:  mu > 63
+
+```{r}
+pnorm(1.5)
+```
+```{r}
+pnorm(-.4)
+```
+
+
+```{r}
+pnorm(-2)
+```
+
+.0228
+
+```{r}
+pnorm(2)
+```
+```{r}
+.9772 - .0228
+```
+
+
+```{r}
+pnorm(1.29)
+```
+
+
+```{r}
+pnorm(1.49)
+```
+
+```{r}
+pnorm(.18)
+```
+
+```{r}
+50-17
+```
+
+```{r}
+pnorm(.95)
+```
 
 

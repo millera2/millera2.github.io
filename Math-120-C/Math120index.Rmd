@@ -64,7 +64,7 @@ e)  For which of the above (a-d) did we need to know in advance that finish time
 
 - At DU, 77% of students are from out of state.  If we take a sample of 100 students, what's the probability that fewer than 75% of them are from out-of-state?
 
-    <small> <b>Answer</b> (Hey!  Cut it out!!): .3173 </small>
+    <small> <b>Answer</b> (Hey!  Cut it out!!): .3156 </small>
     
 
 

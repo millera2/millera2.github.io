@@ -408,3 +408,162 @@ qnorm(.25, 43, 4.5)
 
 
 
+
+
+
+## HW 5
+
+```{r}
+data <- c(35, 49, 52, 54, 65, 51, 51, 47, 86, 36, 46, 33, 39, 45, 39, 63, 95, 35, 30, 48)
+
+sort(data)
+
+```
+
+
+### 6.2
+
+a)  45.95
+
+b) 47.5
+
+c) 16.81
+
+d) 4/20
+
+### 6.8
+
+a) 68/80
+
+b) (.85)^2
+
+
+## HW 5
+
+### 6.22 b
+
+thetaa = 3.116  (solution in class notes)
+
+
+### 7.14
+
+Crit val:
+```{r}
+qnorm(.975)
+```
+z = 1.96
+
+low:
+```{r}
+1427 - 1.96*325/sqrt(514)
+```
+hi:
+```{r}
+1427 + 1.96*325/sqrt(514)
+```
+
+We're 95% confident that true mean FEV levels are btwn 1398.9 and 1455.1.
+
+b)  
+
+n = 
+```{r}
+(1.96*320/25)^2
+```
+
+Use n=630.
+
+### 7.32
+
+crit val:
+
+```{r}
+qt(1-.005, 19)
+```
+t = 2.861
+
+```{r}
+1584 - 2.861*607/sqrt(20)
+```
+```{r}
+1584 + 2.861*607/sqrt(20)
+```
+
+
+
+
+## HW 7
+
+### 5.46
+
+a)  
+
+```{r}
+1.6/sqrt(16)
+```
+
+b)
+
+```{r}
+1.6/sqrt(64)
+```
+
+
+c)  Larger n -> more likely to be close to the mean, since smaller stderr.
+
+
+
+
+### 8.12
+
+a)  
+
+       H0:   mu = 1300
+       Ha:   mu > 1300
+       
+b)  We'll reject H0 if xbar is any greater than:
+
+```{r}
+qnorm(.99, 1300, 60/sqrt(10))
+```
+
+Thus, if xbar = 1340, we fail to reject H0.
+
+
+c)  If the true mean is 1350, then P(xbar < 1344) = 
+
+```{r}
+pnorm(1344, 1350, 60/sqrt(10))
+```
+
+Thus $\beta$=37.6%.
+
+### 8.40
+
+1)  Hypotheses
+
+H0:  mu=48
+Ha:  mu>48
+
+2)  Test Stat
+
+```{r}
+(51.3-48)/(1.2/sqrt(10))
+```
+
+3) p-val
+
+```{r}
+1-pt(8.696, 9)
+```
+
+4)  Since p<.05, we reject H0.  There's strong evidence that mean strength is higher than 48 MPa.
+
+
+
+
+
+
+
+
+

@@ -31,118 +31,146 @@ theme_set(theme_tufte() +
 ```
 
 
-# HW 2 - What's In Your Breakfast Cereal?
+ARC
 
-Due Friday Oct 1 before the beginning of class.  Submit as .pdf document, just like HW 1.
+Jacob Brown
+Max
 
-For this HW you'll be looking at data on a selection of common breakfast cereals.  Find the data on our [shared Google Drive folder](https://drive.google.com/drive/folders/1C1XHN3PGe4lMQXS_hq49btBM6QaiEuBW?usp=sharing) (you can click the link here).
 
-(For the record, I'm a Honey Bunches of Oats woman, myself.)
 
-Your goal is to create and analyze linear models for the following:
 
-- Predict `Fiber` based on `Potassium`
-- Predict `Protein` based on `Sugar`.
-
-For each, perform the following:
-
-  1) Make a scatterplot, and describe its key features using language from lecture.
-  2) Compute the 5 key summary statistics:
-    $\bar{x}$, $\bar{y}$, $s_x$, $s_y$, $r$
-  3) Compute the equation of the least-squares line.
-  4) Carefully interpret the slope of the line, as practiced in lecture.
-  4) Make, and interpret, a residual plot.
-  5) Compute and interpret $R^2$.
-
-Everything should be neatly and clearly presented in a Google Docs report in complete English sentences and paragraphs.  Exported to .pdf.  
-
-Late HW will not be accepted for any reason.  Students may turn in HW early, of course.
+- random process/experiment
+- sample space
+- event
+- relations
+- mututally exclusive
+- 3 axioms of probability
+- P(empty)
+- law of large numbers
+- complement
+- general addition rule
+- equally likely outcomes
 
 
 
 
 
-A researcher collects data on 22 study participants.  She measures both their daily coffee consumption (in ounces) and their mean nightly sleep time (in hours) for the duration of the study.
-
-Afterwards, she computes a linear model for predicting sleep time based on coffee consumption:
-
-yhat = 7.834 - .104*x
-
-r = -0.391
-
-SSResid = 6.54
-
-sum( (x-xbar)^2 ) = 98.3
-
-Is there evidence of a linear relationship between coffee consumption and sleep time?  Perform a complete hyp test.
-
-```{r}
--.391*sqrt(20)/sqrt(1-(-.391)^2)
-```
 
 
-```{r}
--0.391*sqrt(20)/sqrt(1-(-0.391^2)) 
-```
 
 
-```{r}
-2*pt(-1.63, 20)
-```
 
 
-```{r}
--.104 - 2.85*sqrt(6.54/20)/sqrt(98.3)
-```
 
-```{r}
--.104+2.85*sqrt(6.54/20)/sqrt(98.3)
-```
+
+
+
+
+
+
+ can do Wednesdays, 4:30pm-6:30pm, and Sundays, 4:00pm-7:00pm. I hope this works for everyone.
+
+Best,
+Ted
+
+
+sunday 1-4pm, monday 4-6
+
+
+\
 
 
 
 ```{r}
--0.104-2.82*sqrt(6.54/20)/sqrt(98.3)
+choose(13,2)*choose(4,2)*choose(4,2)*choose(11,1)*choose(4,1)
+```
+
+
+
+38
+
+```{r}
+x <- c(120, 125, 140, 130, 115, 120, 110, 130, 135)
+
+median(x)
+```
+
+42)  a) add constant
+     b) multiply by constant
+     
+     
+a)  mean({y1, y2, .., y3})
+
+
+44)  
+
+```{r}
+x <- c(180.5, 181.7, 180.9, 181.6, 182.6, 181.6, 181.3, 182.1, 182.1, 180.3, 181.7, 180.5)
+
+sum(x)^2
 ```
 
 ```{r}
-1+1
-```
-
-
-```{r}
--0.391*sqrt(22-2)/sqrt(1-(-0.391^2)) 
-```
-
-
-
-
-```{r}
-df <- 20
-1-pt(.391*sqrt(df)/sqrt(1-.391^2), df)
+.5/15
 ```
 
 ```{r}
-xbar=8
-sx=3
-ybar=7
-sy=.8
-r=-.391
-
-(r*sy/sx)
+182.6-180.3
 ```
 
 ```{r}
-sqrt(6.54/20)/sqrt(98)
+1/15
 ```
 
-1)  r=0.416,  n=38.  Evidence of a linear relationship?
+2.64
+3.32
 
-2)  
 
- - yhat = 15.2 - 2.4x
- - SSResid = 24.91
- - sum( (x-xbar)^2 ) = 6780
- - n = 35
- 
- Compute 99% CI for slope.
+
+
+
+
+
+
+
+
+
+
+6.22:
+
+
+```{r}
+data<-c(.92, .79, .90, .65, .86, .47, .73, .97, .94, .77)
+```
+
+method of moments:
+
+```{r}
+(2*mean(data)-1)/(1-mean(data))
+```
+
+MLE:
+```{r}
+-1-10/sum(log(data))
+```
+
+
+Q:  which is better?  MOM or MLE?
+
+1)  Not all functions are differentiable!  MLE doesn't work!
+
+2)  The MLE is "almost unbiased". As n increases, limits to unbiased.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
