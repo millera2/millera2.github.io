@@ -40,6 +40,19 @@ theme_set(                                #this sets the theme for all    #
 
 
 
+
+
+
+<big>**Even problems due beginning of class Wed April 6.** </big>  All solutions to be written up in RStudio.  Even where R functions are used, take care to show full detail of hypothesis tests (all 4 steps).
+
+<br><br>
+
+## Previous HW
+
+[Abbreviated Solutions Here](https://millera2.github.io/Math-220-S22/Math220HW.html)
+
+### Week 8-9
+
 Example:
 
 - 8.3 [Z test]
@@ -75,15 +88,6 @@ Even **due Wed March 25th at the beginning of class**:
 - 8.22 
 - 8.40 
 
-
-
-<big>**Even problems due beginning of class Wed March 25.** </big>  Full mathematical justifications must be shown for all solutions.  Final answers only will receive zero credit.
-
-<br><br>
-
-## Previous HW
-
-[Abbreviated Solutions Here](https://millera2.github.io/Math-220-S22/Math220HW.html)
 
 ### Week 7
 
