@@ -68,7 +68,7 @@ Exercises to turn in for grading:
 
 
 
-<big>**Problems due beginning of class Wed April 6.** </big>  All solutions to be written up in RStudio.  Even where R functions are used, take care to show full detail of hypothesis tests (all 4 steps).
+<big>**Problems due beginning of class Wed April 6.** </big>  All solutions to be written up in RStudio.  Turn in .html file only.  No credit given for .Rmd.  Even where R functions are used, take care to show full detail of hypothesis tests (all 4 steps).
 
 <br><br>
 
