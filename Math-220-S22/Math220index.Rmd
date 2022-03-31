@@ -38,12 +38,37 @@ theme_set(                                #this sets the theme for all    #
 ## Current HW and Reading
 
 
+HW:
+
+ 
+
+Example:
+
+- 9.6 [two sample t]
+- 9.8 [paired t]
+- 9.9 [paired t]
+- 10.1 [ANOVA]
+- 10.3 [ANOVA]
+
+ 
+
+Exercises to turn in for grading:
+
+ 
+
+- 9.22
+- 9.28
+- 9.38
+- 9.40
+- 9.43
+- 9.84
+- 10.6
+- 10.8
 
 
 
 
-
-<big>**Even problems due beginning of class Wed April 6.** </big>  All solutions to be written up in RStudio.  Even where R functions are used, take care to show full detail of hypothesis tests (all 4 steps).
+<big>**Problems due beginning of class Wed April 6.** </big>  All solutions to be written up in RStudio.  Even where R functions are used, take care to show full detail of hypothesis tests (all 4 steps).
 
 <br><br>
 
