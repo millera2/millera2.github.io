@@ -33,17 +33,44 @@ theme_set(                                #this sets the theme for all    #
 
 
 
-## Quiz 9
+## Quiz 10
 
 **Be sure you have access to a working computer.**  Make sure you can log into Notebowl.  Have a backup if you're worried (library, computer lab, etc).  
 
 If Notebowl freezes up during the quiz, **REFRESH THE PAGE IMMEDIATELY**.  I promise you won't lose any work!
 
-Reading:  4.1, class notes
+Reading:  5.2, 6.1
 
-Topics:  Normal dist (practical scenarios), forwards/backwards problems, sampling distributions, Central Limit Theorem, "large enough"
+Topics:  Confidence Intervals for phat and xbar.  Critical values.  Checking if xbar/phat is normal.  Margin of error.  Planning for sample size.
 
 Practice Problems:
+
+- 5.7 (p187)
+- 5.11 (p188)
+- 5.13 (p188)
+- 6.15 (p216)
+- The admissions office want to estimate the mean IQ of DU students.  They take a sample of 50 DU students, and find their mean IQ to be 108.3.  Construct a 90% confidence interval for the mean IQ of all DU students.  You may use sigma = 15.
+- Suppose the admissions office wants a 99% CI with error no greater than 2.  How many students must they sample?
+
+<small>Answers  (don't look!): (104.8, 111.8),  n=373  </small>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+## Old Practice Problems
+
+### Week 9
 
 - Suppose the amount of time it takes students in a large math class to finish a quiz follows a normal distribution with mean 14 min, stdev 2.5 min.  
 
@@ -67,15 +94,6 @@ e)  For which of the above (a-d) did we need to know in advance that finish time
     <small> <b>Answer</b> (Hey!  Cut it out!!): .3156 </small>
     
 
-
-
-
-
-
-
-<br>
-
-## Old Practice Problems
 
 ### Week 8
 
