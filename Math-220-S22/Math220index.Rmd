@@ -76,6 +76,26 @@ Exercises to turn in for grading:
 
 [Click here for Final Project info](https://millera2.github.io/Math-220-S22/Final.html)
 
+### Guide For Statistical Report Writing
+
+[Click here for pdf](https://millera2.github.io/Math-220-S22/statistical-report-writing.pdf)
+
+### Data Sources
+
+You can choose (or collect!) your own data.  
+
+Two favorites of mine:
+
+- [Kaggle.com](https://www.kaggle.com)
+- [data.world](https://data.world)
+
+Both have active communities and trending datasets.  Easy to take a look and see what's out there.
+
+Here are a couple lists of other sources to check out:
+
+- [Denison Libraries Links (very good!)](https://libguides.denison.edu/statistics/finding_datasets)
+- [Code Camp](https://www.freecodecamp.org/news/https-medium-freecodecamp-org-best-free-open-data-sources-anyone-can-use-a65b514b0f2d/)
+
 ## Previous HW
 
 [Abbreviated Solutions Here](https://millera2.github.io/Math-220-S22/Math220HW.html)

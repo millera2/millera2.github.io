@@ -1,11 +1,7 @@
 ---
 title: "Final Project  Instructions"
 date: "April 1, 2022"
-output: 
-  html_document:
-    toc: true
-    toc_depth: 3
-    theme: yeti
+output: pdf_document
 ---
 
 ## Math 220 Final Project 
