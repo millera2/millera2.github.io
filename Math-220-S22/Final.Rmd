@@ -1,10 +1,14 @@
 ---
 title: "Final Project  Instructions"
 date: "April 1, 2022"
-output: pdf_document
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    theme: yeti
 ---
 
-## Math 220 Final Project 
+## Final Project Proposal (Due Friday April 8 by 5pm on Notebowl) 
 
 It's time to put everything you've learned into practice.  Final Project time!
 
@@ -21,7 +25,7 @@ It's time to put everything you've learned into practice.  Final Project time!
 
 
 
-## Poster Presentation (20 pts, April 28-29 and May 02)
+## Poster Presentation (20 pts, In-class April 28-29 and May 02)
 
 You are going to create a poster for your project. In a poster, you are going to clearly state the research hypothesis, describe the data source, explain the analytical models and make the conclusion. A poster should have titles, headlines, bullets, graphs, acknowledgments and references. A poster should be short, clean, effective and conclusive. Please see the following instructions on how to make a nice poster.
 
