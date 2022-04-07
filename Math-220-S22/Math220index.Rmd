@@ -40,35 +40,17 @@ theme_set(                                #this sets the theme for all    #
 
 HW:
 
- 
-
-Example:
-
-- 9.6 [two sample t]
-- 9.8 [paired t]
-- 9.9 [paired t]
-- 10.1 [ANOVA]
-- 10.3 [ANOVA]
-
- 
-
-Exercises to turn in for grading:
-
- 
-
-- 9.22
-- 9.28
-- 9.38
-- 9.40
-- 9.43
-- 9.84
-- 10.6
-- 10.8
+- 12.16 
+- 12.19
+- 12.24
+- 12.36
+- 12.58 (add part f: residual plot, comment)
 
 
 
 
-<big>**Problems due beginning of class Wed April 6.** </big>  All solutions to be written up in RStudio.  Turn in .html file only.  No credit given for .Rmd.  Even where R functions are used, take care to show full detail of hypothesis tests (all 4 steps).
+
+<big>**Problems due beginning of class Wed April 13.** </big>  All solutions to be written up in RStudio.  Turn in .html file only.  No credit given for .Rmd.  Even where R functions are used, take care to show full detail of hypothesis tests (all 4 steps).
 
 <br><br>
 
@@ -101,6 +83,32 @@ Here are a couple lists of other sources to check out:
 ## Previous HW
 
 [Abbreviated Solutions Here](https://millera2.github.io/Math-220-S22/Math220HW.html)
+
+### Week 10
+
+
+Example:
+
+- 9.6 [two sample t]
+- 9.8 [paired t]
+- 9.9 [paired t]
+- 10.1 [ANOVA]
+- 10.3 [ANOVA]
+
+ 
+
+Exercises to turn in for grading:
+
+ 
+
+- 9.22
+- 9.28
+- 9.38
+- 9.40
+- 9.43
+- 9.84
+- 10.6
+- 10.8
 
 ### Week 8-9
 
