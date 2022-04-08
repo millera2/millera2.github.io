@@ -33,7 +33,7 @@ theme_set(theme_tufte() +
 
 # HW 5 - The Normal Distribution 
 
-Due:  **Mon April on Notebowl by 10pm.**
+Due:  **Mon April 18 on Notebowl by 10pm.**
 
 Turn in a Google Docs report, exported to pdf.  As usual, take care to make it presentable.  
 
