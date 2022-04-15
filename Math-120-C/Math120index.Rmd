@@ -33,24 +33,24 @@ theme_set(                                #this sets the theme for all    #
 
 
 
-## Quiz 11
+## Quiz 12
 
 **Be sure you have access to a working computer.**  Make sure you can log into Notebowl.  Have a backup if you're worried (library, computer lab, etc).  
 
 If Notebowl freezes up during the quiz, **REFRESH THE PAGE IMMEDIATELY**.  I promise you won't lose any work!
 
-Reading:  5.3, 6.1
+Reading:  6.2
 
-Topics:  Hypothesis tests for mu and p.  Hypotheses, test statistics, p-values, conclusions.  Significance level.  t-dist.
+Topics:  Error types.  Practical meaning of Type I/Type II.  alpha, beta, and power.  Factors influencing error and power.  2-proportion hyp tests and CIs
 
 Practice Problems:
 
-- 5.15, 5.17 (p202)
-- 5.21 (p203)
-- 6.11a, 6.13 (p216)
-- 7.1, 7.3 (note: p-vals are 2-tail) (p259)
-- 7.7 (p260)
-- 7.10, 7.11 (p261)
+- 5.25 (p203)
+- 5.29 (p204)
+- 6.19ab (p225)
+- 6.21, 6.23 (p226)
+- 6.24
+
 
 
 
@@ -68,6 +68,15 @@ Practice Problems:
 <br>
 
 ## Old Practice Problems
+
+### Week 11
+
+- 5.15, 5.17 (p202)
+- 5.21 (p203)
+- 6.11a, 6.13 (p216)
+- 7.1, 7.3 (note: p-vals are 2-tail) (p259)
+- 7.7 (p260)
+- 7.10, 7.11 (p261)
 
 ### Week 10
 
