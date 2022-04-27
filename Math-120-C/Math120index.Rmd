@@ -33,23 +33,23 @@ theme_set(                                #this sets the theme for all    #
 
 
 
-## Quiz 12
+## Quiz 13
 
 **Be sure you have access to a working computer.**  Make sure you can log into Notebowl.  Have a backup if you're worried (library, computer lab, etc).  
 
 If Notebowl freezes up during the quiz, **REFRESH THE PAGE IMMEDIATELY**.  I promise you won't lose any work!
 
-Reading:  6.2
+Reading:  6.3, 6.4, 7.3 
 
-Topics:  Error types.  Practical meaning of Type I/Type II.  alpha, beta, and power.  Factors influencing error and power.  2-proportion hyp tests and CIs
+Topics:  Hyp tests and CIs for two means.  Connection btwn hyp tests and CIs.  Test for Goodness-of-Fit.  Test for independence.
 
 Practice Problems:
 
-- 5.25 (p203)
-- 5.29 (p204)
-- 6.19ab (p225)
-- 6.21, 6.23 (p226)
-- 6.24
+- 7.27 (not part a) (p275)
+- 6.33 (p239)
+- 6.37 (p245)
+
+
 
 
 
@@ -68,6 +68,14 @@ Practice Problems:
 <br>
 
 ## Old Practice Problems
+
+### Week 12
+
+- 5.25 (p203)
+- 5.29 (p204)
+- 6.19ab (p225)
+- 6.21, 6.23 (p226)
+- 6.24
 
 ### Week 11
 
