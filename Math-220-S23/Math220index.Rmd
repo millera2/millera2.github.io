@@ -1,22 +1,19 @@
 
 ---
-title: "Prof Miller's Homepage"
+title: "Math 220 Spring 2023 Homepage"
 date: "Updated: `r format(Sys.time(), '%d %B, %Y')`"
 output: 
   html_document:
-    toc: false
+    toc: true
     toc_depth: 3
     theme: yeti
-    includes:
-        in_header: "favicon.html" 
+
       
   
 ---
 
 ```{r setup, include=FALSE}
-###########################################################################
-################# DON'T DELETE THIS PART!!!!!##############################
-###########################################################################
+
                                                                           #
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)      #
                                                                           #
@@ -31,25 +28,18 @@ theme_set(                                #this sets the theme for all    #
                                                                           #
                                                                           #
                                                                           #
-### Below is where you read and store your data.                          #
-                                                                          #
-#youShouldRenameThis <- read_csv("death penalty data.csv")
-                                                                          #
-#
-                                                                          #
-############# ^ ################################# ^ #######################
-############# | ## DON'T DELETE THIS PART!!!!!### | #######################
-############# | ################################# | #######################
+
 ```
 
-## Course Links 
-
-- [Math 120](https://millera2.github.io/Math-120-C/Math120index.html)
-
-- [Math 220](http://millera2.github.io/Math-220-S23/Math220index.html)
 
 
-<br><br><br><br><br>
 
 
-<small> [Prof Miller's Top Secret Super Awesome Private R Server ;D](http://140.141.132.155:8787/) </small>
+## Coming Soon!
+
+
+
+
+
+
+

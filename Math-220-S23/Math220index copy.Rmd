@@ -1,0 +1,324 @@
+
+---
+title: "Math 220 Spring 2022 Homepage"
+date: "Updated: `r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    theme: yeti
+
+      
+  
+---
+
+```{r setup, include=FALSE}
+
+                                                                          #
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)      #
+                                                                          #
+library(tidyverse)           #The tidyverse has all of our data tools     #
+library(ggthemes)            #ggthemes makes our graphs look nicer        #
+                                                                          # 
+theme_set(                                #this sets the theme for all    #
+  theme_tufte() +                         #plots that we make             #
+  theme(text=element_text(family="sans")) + 
+  theme(axis.text.x = element_text(angle=-90))                            #
+  )                                                                       #
+                                                                          #
+                                                                          #
+                                                                          #
+
+```
+
+
+
+
+
+## Current HW and Reading
+
+
+HW:
+
+- 12.16 
+- 12.19
+- 12.24
+- 12.36
+- 12.58 (add part f: residual plot, comment)
+
+
+
+
+
+<big>**Problems due beginning of class Wed April 13.** </big>  All solutions to be written up in RStudio.  Turn in .html file only.  No credit given for .Rmd.  Even where R functions are used, take care to show full detail of hypothesis tests (all 4 steps).
+
+<br><br>
+
+## Final Project
+
+### Project Description and Deadlines
+
+[Click here for Final Project info](https://millera2.github.io/Math-220-S22/Final.html)
+
+### Guide For Statistical Report Writing
+
+[Click here for pdf](https://millera2.github.io/Math-220-S22/statistical-report-writing.pdf)
+
+### Data Sources
+
+You can choose (or collect!) your own data.  
+
+Two favorites of mine:
+
+- [Kaggle.com](https://www.kaggle.com)
+- [data.world](https://data.world)
+
+Both have active communities and trending datasets.  Easy to take a look and see what's out there.
+
+Here are a couple lists of other sources to check out:
+
+- [Denison Libraries Links (very good!)](https://libguides.denison.edu/statistics/finding_datasets)
+- [Code Camp](https://www.freecodecamp.org/news/https-medium-freecodecamp-org-best-free-open-data-sources-anyone-can-use-a65b514b0f2d/)
+
+## Previous HW
+
+[Abbreviated Solutions Here](https://millera2.github.io/Math-220-S22/Math220HW.html)
+
+### Week 10
+
+
+Example:
+
+- 9.6 [two sample t]
+- 9.8 [paired t]
+- 9.9 [paired t]
+- 10.1 [ANOVA]
+- 10.3 [ANOVA]
+
+ 
+
+Exercises to turn in for grading:
+
+ 
+
+- 9.22
+- 9.28
+- 9.38
+- 9.40
+- 9.43
+- 9.84
+- 10.6
+- 10.8
+
+### Week 8-9
+
+Example:
+
+- 8.3 [Z test]
+- 8.4, 8.5 [Type I and II error]
+- 8.6, 8.8 [Z test]
+- 8.10 [t test]
+
+ 
+
+Odds:
+
+- 5.51 [distribution of sample mean]
+- 7.23 [confidence interval for population proportion and sample size calculation]
+- 7.47 [confidence interval]
+- 7.49 [sample size calculation]
+- 8.3 [p-value]
+- 8.11 [type I II error]
+- 8.17 [Z test]
+- 8.35 [t test]
+
+Even **due Wed March 25th at the beginning of class**:
+
+5.46 [distribution of sample mean]
+
+5.54 [distribution of sample mean, normal probability. Hint: you may need to use pnorm() or qnorm() to find certain values]
+
+7.20 [confidence interval for population proportion and sample size calculation] Hing: use the simplified formula we derived in class
+
+- 7.50 
+- 7.52 (a) 
+- 8.4 
+- 8.12 
+- 8.22 
+- 8.40 
+
+
+### Week 7
+
+Reading:  Ch 7.1-7.5
+
+Examples:
+
+- 6.20 [MLE of a function of parameter]
+- 7.1, 7.2, 7.3 [Z confidence interval]
+- 7.4 [sample size calculation]
+- 7.6 [large sample confidence interval]
+- 7.10 [one-sided confidence interval]
+- 7.11 [t confidence interval]
+
+ 
+
+
+Odds:
+
+- 7.3 [interpretation of confidence interval]
+- 7.5 [Z confidence interval and sample size calculation]
+- 7.13 [Large sample Z confidence interval]
+- 7.29 [critical value in t distribution]
+
+Evens:
+
+ 
+- 6.22(b) [MLE for a given distribution]
+- 7.4 [Z confidence interval and sample size calculation]
+- 7.6 [Z confidence interval and critical value]
+- 7.14 [Large sample z confidence interval and sample size calculation]
+- 7.18 [Use Rstudio to construct the boxplot, qqplot and calculate confidence interval]
+- 7.28, 7.30 [Use Rstudio to find the critical value in t distribution]
+- 7.32 [t confidence interval]
+
+
+
+
+ 
+
+### Week 5-6
+
+Reading:  6.1, 6.2, 7.1
+
+Examples: 6.2 [Estimator], 6.4 [Unbiased estimator], 6.15 [MLE of Bernoulli], 6.16 [MLE of Exponential], 6.17 [MLE of Normal], 6.18 [MLE of Poisson], 6.20 [MLE of a function of parameter]
+
+ 
+
+ 
+
+Odds for practice:
+
+- 6.1 [Estimate the parameter from a given sample]
+- 6.23 [MLE of a given distribution]
+- 6.29 [MLE using partial derivative]
+
+ 
+
+Even **due Wed March 2nd at the beginning of class**:
+
+- 6.2 [Estimate the parameter from a given sample]
+- 6.8 [Point Estimation]
+- 6.20 [MLE of a given distribution]
+
+
+### HW 4
+
+HW:
+
+Reading:  Ch 4 (Skip 4.5)
+
+Example: 4.4 [pdf and cdf], 4.5 [pdf and probabiltiy], 4.7 [ find cdf of the pdf], 4.11[expected value], 4.13 [Normal Probability], 4.16[Normal Probabiltiy], 4.21 [exponential distribution],
+
+ 
+
+Odds:
+
+
+4.5 [find probability using pdf], 4.13 [cdf, pdf, expected value and variance], 4.29 [use RStudio to find the critical value in normal], 4.31 [find the critical value in standard normal]
+
+**Even problems due to turn in:** 
+
+
+- 3.52 
+- 3.82 
+- 4.2 
+- 4.6
+- 4.14 
+- 4.40 [Use RStudio to find the value]
+- 4.44
+- 4.60 
+
+
+
+### HW 3
+
+Reading:  3.1-3.6 (skip 3.5)
+
+Example: 3.7, 3.9, 3.10, 3.12, 3.22, 3.30, 3.33, 3.38, 3.41
+
+Odds: 2.51[multiplication rule], 2.71[addition rule and Bayes], 3.13[pmf], 3.39 [expected value and variance], 3.47 [Binomial], 3.85 [Poisson Process]
+
+ 
+
+**Even problems due to turn in:** 
+
+- 2.52 
+- 2.64 
+- 2.74 
+- 3.14 
+- 3.22 
+- 3.32 
+- 3.56 
+- 3.86
+
+
+### HW 2
+
+Lecture Examples: 2.7, 2.10, 2.14, 2.16, 2.22, 2.23, 2.26, 2.31
+
+Odds: 2.3, 2.9, 2.13, 2.21, 2.25, 2.31, 2.47, 2.55
+
+**Even problems due to turn in:** 
+
+- 2.6, 
+- 2.14 
+- 2.26 
+- 2.30 
+- 2.32 
+- 2.34 
+- 2.48 
+- 2.60
+
+### HW 1
+
+Lecture Examples: 1.10, 1.14, 1.15, 1.21
+
+Practice Odds: 1.17, 1.39, 1.49,
+
+Evens to turn in:  
+
+- 1.24, p27
+- 1.38, p35
+- 1.42, p36
+- 1.44, p44
+- 1.56, p46
+
+
+<br><br>
+
+
+## Office Hours 
+
+If you want to see me in person, I'm in my office (Olin 214) **Wed 2:30pm-4pm.**
+
+Or, you can catch me on Zoom by appointment.  Don't be shy!  A few things:
+
+- Schedule 24 hours in advance
+- I'm free most weekdays from 2-4pm
+- When you write, **propose a time** to cut down on back-and-forth.
+
+I never check email after 4pm, so **don't wait till the night before a deadline to get help!**  
+
+I like chatting with students -- come find me!
+
+
+
+
+
+
+
+
+
+
+
