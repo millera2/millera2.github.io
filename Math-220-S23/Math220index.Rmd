@@ -35,7 +35,19 @@ theme_set(                                #this sets the theme for all    #
 
 
 
-## Coming Soon!
+## Lecture Notes
+
+These look great on your phone - easy to study on the go!
+
+[Click here for notes](http://millera2.github.io/Math-220-S23/Math220Lec.html)
+
+
+## Reading (Texbook)
+
+I'll update each week.   
+
+- Week 1: Ch. 1
+- Week 2: Ch 2.1-2.3
 
 
 

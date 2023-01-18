@@ -9,9 +9,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Alice Miller" />
 
 
-<title>Math 220 Spring 2023 Homepage</title>
+<title>Math 220 Spring 20203 Lecture Notes</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -391,33 +392,83 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Math 220 Spring 2023 Homepage</h1>
+<h1 class="title toc-ignore">Math 220 Spring 20203 Lecture Notes</h1>
+<h4 class="author">Alice Miller</h4>
 <h4 class="date">Updated: 18 January, 2023</h4>
 
 </div>
 
 <div id="TOC">
 <ul>
-<li><a href="#lecture-notes" id="toc-lecture-notes">Lecture
+<li><a href="#math-220-notes" id="toc-math-220-notes">Math 220
 Notes</a></li>
-<li><a href="#reading-texbook" id="toc-reading-texbook">Reading
-(Texbook)</a></li>
+<li><a href="#data-basics" id="toc-data-basics">Data Basics</a></li>
+<li><a href="#types-of-data" id="toc-types-of-data">Types of
+Data</a></li>
+<li><a href="#saying-smart-things-about-data-descriptivesummary-stats" id="toc-saying-smart-things-about-data-descriptivesummary-stats">Saying
+smart things about data (descriptive/summary stats)</a></li>
 </ul>
 </div>
 
-<div id="lecture-notes" class="section level2">
-<h2>Lecture Notes</h2>
-<p>These look great on your phone - easy to study on the go!</p>
-<p><a href="http://millera2.github.io/Math-220-S23/Math220Lec.html">Click here
-for notes</a></p>
+<div id="math-220-notes" class="section level2">
+<h2>Math 220 Notes</h2>
+<p>Hi! This is RSTudio!</p>
+<pre class="r"><code>2+2</code></pre>
+<pre><code>## [1] 4</code></pre>
 </div>
-<div id="reading-texbook" class="section level2">
-<h2>Reading (Texbook)</h2>
-<p>I’ll update each week.</p>
+<div id="data-basics" class="section level2">
+<h2>Data Basics</h2>
+<p>Many formats for data!</p>
+<p>Here (and in all DA classes), we only care about RECTANGULAR DATA
+(“tidy data”):</p>
+<p>3 things:</p>
 <ul>
-<li>Week 1: Ch. 1</li>
-<li>Week 2: Ch 2.1-2.3</li>
+<li>rows are CASES (individuals). Ie, from what
+person/animal/thing/whatev did we record? Eg: you guys! remember: rows
+are horizontal!</li>
+<li>columns are VARIABLES. Ie, the qualities of the individuals that we
+care about! columns are vertical!</li>
+<li>each “cell” must contain ONLY one observation/measurement</li>
 </ul>
+</div>
+<div id="types-of-data" class="section level2">
+<h2>Types of Data</h2>
+<p>Big breakdown: numerical (quantitative) or categorical (qualitative)
+ie: number or not!</p>
+<p>All together, 4 types:</p>
+<ul>
+<li><p>discrete numerical data. “countable”. Actually counting real
+object/things/ideas.</p></li>
+<li><p>continuous numerical data. “measureable”. Eg: weight, volume,
+duration of time, etc.</p>
+<pre><code> Philosopical note:  be careful about WHAT you&#39;re measuring.  Ex:
+ Age = integer number of years.  discrete.
+ Age = duration of time living on earth.  continuous.  
+ height = measuring tape.  continuous.  Possible to be 66.1&quot;, 66.7&quot;, 69.23423423&quot;
+
+ Weird example:  money.  gas?  pennies?  currency conversions? interest!
+       Class agreement:  money is continous. </code></pre></li>
+<li><p>nominal categorical. categorical, no INTRINSIC order.<br />
+</p></li>
+<li><p>ordinal categorical. categrocial, YES natural order</p></li>
+</ul>
+<p>MORAL OF THE STORY: Not all data is the same. We use DIFFERENT TOOLS
+for different types!</p>
+</div>
+<div id="saying-smart-things-about-data-descriptivesummary-stats" class="section level2">
+<h2>Saying smart things about data (descriptive/summary stats)</h2>
+<p>Summary statistics for Categorical data: proportion!</p>
+<p>Ex: In our class, 9/15 students had black hair.</p>
+<p>phat:</p>
+<pre class="r"><code>9/15</code></pre>
+<pre><code>## [1] 0.6</code></pre>
+<p>Summary statistics for Quantitative data:</p>
+<p>For quant variables, always describe:</p>
+<ol style="list-style-type: decimal">
+<li>center.</li>
+<li>spread.</li>
+<li>shape.</li>
+</ol>
 </div>
 
 

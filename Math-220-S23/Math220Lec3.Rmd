@@ -1,0 +1,129 @@
+
+---
+title: "Math 220 Spring 20203 Lecture Notes"
+author: "Alice Miller"
+date: "Updated: `r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    theme: yeti
+
+      
+  
+---
+
+```{r setup, include=FALSE}
+
+                                                                          #
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)      #
+                                                                          #
+library(tidyverse)           #The tidyverse has all of our data tools     #
+library(ggthemes)            #ggthemes makes our graphs look nicer        #
+                                                                          # 
+theme_set(                                #this sets the theme for all    #
+  theme_tufte() +                         #plots that we make             #
+  theme(text=element_text(family="sans")) + 
+  theme(axis.text.x = element_text(angle=-90))                            #
+  )                                                                       #
+                                                                          #
+                                                                          #
+                                                                          #
+
+```
+
+
+
+
+
+## Math 220 Notes
+
+
+
+R is cool, because we can do calculations together:
+
+```{r}
+2+2
+1+5
+```
+
+(grey = code chunk)
+
+
+## Data Basics
+
+There are MANY formats for data.  In 220, we only care about one:  RECTANGULAR DATA ("tidy" data)!
+
+3 things:
+
+-  rows are CASES (individuals).  the people/animals/things/whateve that we're collecting data from.
+-  columns are VARIABLES.  Ie, the qualities of the individuals that we record.
+-  each "cell" contains EXACTLY ONE observation/measurment
+
+## Types of Data
+
+Two basic types:  quantitative (numerical), qualitative (categorical)
+
+In all, 4 total types:
+
+- DISCRETE numerical.  "countable" 
+- CONTINUOUS numerical.  "measureable"
+    Ex:   weight, volume, most phyiscal measurments
+      Philospical question:  units?  What do we REALLY mean?
+      
+      Age = total duration of time since birth.   continuous.
+      Age = social cohort.  discrete/categorical.             <-  Prof Miller's bias
+      Height = measure of vertical length.  continuous.       <- Prof Miller's bias
+      Height = categeory?
+      
+      Money.  pennies?  discrete.  crypto/interest.  Classroom agreement:  money is continuous.
+    
+      
+- ORDINAL categorical data.  INTRINSIC ordering.  
+- NOMINAL categorical data.  No natural ordering.
+
+## Say smart things about data. (descriptive statistics)
+
+Categorical variables:  proportions!  Ex:  in our class, 6/18 students had black hair.
+
+phat = 0.3333....
+
+
+Numerical data:  much more complex!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,113 @@
+
+---
+title: "Math 220 Spring 20203 Lecture Notes"
+author: "Alice Miller"
+date: "Updated: `r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    theme: yeti
+
+      
+  
+---
+
+```{r setup, include=FALSE}
+
+                                                                          #
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)      #
+                                                                          #
+library(tidyverse)           #The tidyverse has all of our data tools     #
+library(ggthemes)            #ggthemes makes our graphs look nicer        #
+                                                                          # 
+theme_set(                                #this sets the theme for all    #
+  theme_tufte() +                         #plots that we make             #
+  theme(text=element_text(family="sans")) + 
+  theme(axis.text.x = element_text(angle=-90))                            #
+  )                                                                       #
+                                                                          #
+                                                                          #
+                                                                          #
+
+```
+
+
+
+
+
+## Math 220 Notes
+
+
+
+
+Hi!  This is RSTudio!
+
+
+```{r}
+2+2
+```
+
+
+## Data Basics
+
+Many formats for data!
+
+Here (and in all DA classes), we only care about RECTANGULAR DATA ("tidy data"):
+
+3 things:
+
+- rows are CASES (individuals).  Ie, from what person/animal/thing/whatev did we record?  Eg: you guys!
+  remember:  rows are horizontal!
+- columns are VARIABLES.  Ie, the qualities of the individuals that we care about!
+   columns are vertical!
+- each "cell" must contain ONLY one observation/measurement
+
+## Types of Data
+
+Big breakdown:  numerical (quantitative) or categorical (qualitative)
+               ie:  number or not!
+               
+All together, 4 types:
+
+-  discrete numerical data.  "countable".  Actually counting real object/things/ideas.
+-  continuous numerical data.  "measureable". 
+   Eg:  weight, volume, duration of time, etc.  
+     
+        Philosopical note:  be careful about WHAT you're measuring.  Ex:
+        Age = integer number of years.  discrete.
+        Age = duration of time living on earth.  continuous.  
+        height = measuring tape.  continuous.  Possible to be 66.1", 66.7", 69.23423423"
+        
+        Weird example:  money.  gas?  pennies?  currency conversions? interest!
+              Class agreement:  money is continous. 
+              
+- nominal categorical.  categorical, no INTRINSIC order.  
+- ordinal categorical.  categrocial, YES natural order
+
+MORAL OF THE STORY:  Not all data is the same.  We use DIFFERENT TOOLS for different types!
+
+## Saying smart things about data (descriptive/summary stats)
+
+Summary statistics for Categorical data:  proportion!
+
+Ex:  In our class, 9/15 students had black hair.
+
+phat:
+```{r}
+9/15
+```
+
+
+Summary statistics for Quantitative data:
+
+For quant variables, always describe:
+
+1) center.
+2) spread.
+3) shape.
+
+
+
+
+
