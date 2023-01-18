@@ -48,8 +48,11 @@ Hi!  This is RSTudio!
 2+2
 ```
 
+# Week 1
 
-## Data Basics
+## Wed Jan 18
+
+### Data Basics
 
 Many formats for data!
 
@@ -63,7 +66,7 @@ Here (and in all DA classes), we only care about RECTANGULAR DATA ("tidy data"):
    columns are vertical!
 - each "cell" must contain ONLY one observation/measurement
 
-## Types of Data
+### Types of Data
 
 Big breakdown:  numerical (quantitative) or categorical (qualitative)
                ie:  number or not!
@@ -87,7 +90,7 @@ All together, 4 types:
 
 MORAL OF THE STORY:  Not all data is the same.  We use DIFFERENT TOOLS for different types!
 
-## Saying smart things about data (descriptive/summary stats)
+### Saying smart things about data (descriptive/summary stats)
 
 Summary statistics for Categorical data:  proportion!
 
