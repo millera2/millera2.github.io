@@ -50,8 +50,38 @@ I'll update each week.
 - Week 2: Ch 2.1-2.3
 
 
+## HW
+
+### HW 1
+
+
+Practice Odds: 1.17, 1.39, 1.49,
+
+Evens to turn in:  
+
+- 1.38, p35
+- 1.42, p36
+- 1.44, p44
+- 1.56, p46
+- 1.24, p27 [You may use R for help, sketch your result on paper.  Example below.  Don't forget the Tao of the histogram.]
+
+```{r}
+yourData <- c(1,2,3,4,5,6)
+hist(yourData, breaks = 3)
+```
 
 
 
 
+<br><br>
 
+## Office Hours
+
+I'm in Fellows 212.  I'll be there and available at:  
+
+Mon:  2:30-4pm
+Tues: 9-10:30am
+Wed:  2-4pm
+
+
+<br><br><br><br>

@@ -48,8 +48,11 @@ Hi!  This is RSTudio!
 2+2
 ```
 
+# Week 1
 
-## Data Basics
+## Wed Jan 18
+
+### Data Basics
 
 Many formats for data!
 
@@ -63,7 +66,7 @@ Here (and in all DA classes), we only care about RECTANGULAR DATA ("tidy data"):
    columns are vertical!
 - each "cell" must contain ONLY one observation/measurement
 
-## Types of Data
+### Types of Data
 
 Big breakdown:  numerical (quantitative) or categorical (qualitative)
                ie:  number or not!
@@ -87,7 +90,7 @@ All together, 4 types:
 
 MORAL OF THE STORY:  Not all data is the same.  We use DIFFERENT TOOLS for different types!
 
-## Saying smart things about data (descriptive/summary stats)
+### Saying smart things about data (descriptive/summary stats)
 
 Summary statistics for Categorical data:  proportion!
 
@@ -106,6 +109,122 @@ For quant variables, always describe:
 1) center.
 2) spread.
 3) shape.
+
+
+
+
+
+
+
+
+
+
+
+
+## Friday Jan 20
+
+### Quantitative Variables (saying something smart)
+
+Note:  it doesn't make sense to talk about ONE number in a dataset.  Instead, we care about ALL of them, at the same time!  "Distribution".
+
+ALWAYS MAKE A PICTURE FIRST!
+
+
+For numerical data:  HISTOGRAM!
+
+Ex:  class data:
+
+```{r}
+head(ourData)
+```
+Q:  what can we say about your height?
+
+Hist!
+
+```{r}
+hist(ourData$Height..inches.)
+```
+Observations:  
+ - typical height is around 67/68
+ - spread:  looks like "most" values are btwn 62 - 72
+ - looks symmetrical "ish"
+ 
+ 
+ Q: what if we use more than 5 rectangles?
+ 
+```{r}
+hist(ourData$Height..inches., breaks = 5)
+```
+ Interesting new feature!  Bimodal!  Q:  could it be because of sex?
+ 
+ MORAL OF THE STORY:  Follow the "Tao of the Histogram"!
+ 
+ Ex:  our siblings
+ 
+```{r}
+hist(ourData$Number.of.Siblings, breaks = c(0,.99,1.99,2.99, 3.99))
+```
+ Tao of the histogram!
+ 
+ ### Summary Statistics
+ 
+ Ie, numerical summary of distribution.
+ 
+ - Measures of Center
+    Mean:  average!  "balancing point"
+    Median: "middle number"
+    Mode:  most common number
+    
+- Measures of Spread
+    - Range = max - min.
+       Con:  highly susceptiple to outliers.  
+    - Standard deviation = "average distance btwn points and the mean"
+        Formula:  on the board
+        Note: must square to measure the TOTAL variation!
+    - IQR.  Quartiles:  cutoffs for 25% (Q1) and 75% (Q3) in the dataset.
+        IQR = Q3 - Q1
+        
+        Ex:  Data = {15, 16, 16, 18, 20, 27}
+        
+        Compute IQR = 20 - 16 = 4
+        
+        (M = 17, Q1 = 16, Q3 = 20)
+    
+         Meaning:  range of the MIDDLE 50% of the data!
+         
+         
+A statistic is ROBUST if it is NOT strongly affected by skew or outliers.
+
+Ex:  Data = {1,1,1,1,1,19}
+
+MEasures of center:
+
+mean:
+
+```{r}
+mean(c(1,1,1,1,1,19))
+```
+
+med = 1. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+ourData <- read.csv("StudentData.csv")
+head(ourData)
+```
+
+
 
 
 
