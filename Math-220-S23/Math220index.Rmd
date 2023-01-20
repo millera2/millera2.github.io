@@ -50,18 +50,20 @@ I'll update each week.
 - Week 2: Ch 2.1-2.3
 
 
-## HW
+## Homework
 
-For full credit, be sure to write neatly.
-
-Be sure your phyical (handwritten/printed) HW is in the pile before I take attendance at the beginning of class.  <b><big>Once attendance begins, I will no longer accept HW. </b></big>  I drop 2 low scores, in case of an emergency.
+- For full credit, be sure to write neatly.
+- Be sure your phyical (handwritten/printed) HW is in the pile before I take attendance at the beginning of class.  
+- <b><big>Once attendance begins, I will no longer accept HW. </b></big>  
+- I drop 2 low scores, in case of an emergency.
 
 ### HW 1 (Due Friday Jan 27)
 
+Reading: All of chapter 1.  Some HW problems refer to conepts in the reading.
 
-Practice Odds: 1.17, 1.39, 1.49,
+Practice Odds: 1.17, 1.39, 1.49 *[Solutions in the back of the book!]
 
-Evens to turn in:  
+**Evens to turn in:  $\leftarrow$ [The important part!]**  
 
 - 1.38, p35
 - 1.42, p36
@@ -83,9 +85,11 @@ hist(yourData, breaks = 3)
 
 I'm in Fellows 212.  I'll be there and available at:  
 
-Mon:  2:30-4pm
-Tues: 9-10:30am
-Wed:  2-4pm
+- Mon:  2:30-4pm
+- Tues: 9-10:30am
+- Wed:  2-4pm
 
 
 <br><br><br><br>
+<br><br><br><br>
+
