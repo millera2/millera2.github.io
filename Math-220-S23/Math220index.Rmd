@@ -92,7 +92,11 @@ yourData <- c(1,2,3,4,5,6)
 hist(yourData, breaks = 3)
 ```
 
+<br><br>
 
+## Old Homework Solutions
+
+[Click Here For HW Solutions](https://millera2.github.io/Math-220-S23/Math220HW.html)
 
 
 <br><br>

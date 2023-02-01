@@ -40,84 +40,365 @@ theme_set(                                #this sets the theme for all    #
 
 
 
-R is cool, because we can do calculations together:
+
+Hi!  This is RSTudio!
+
 
 ```{r}
 2+2
-1+5
 ```
 
-(grey = code chunk)
+# Week 1
 
+## Wed Jan 18
 
-## Data Basics
+### Data Basics
 
-There are MANY formats for data.  In 220, we only care about one:  RECTANGULAR DATA ("tidy" data)!
+Many formats for data!
+
+Here (and in all DA classes), we only care about RECTANGULAR DATA ("tidy data"):
 
 3 things:
 
--  rows are CASES (individuals).  the people/animals/things/whateve that we're collecting data from.
--  columns are VARIABLES.  Ie, the qualities of the individuals that we record.
--  each "cell" contains EXACTLY ONE observation/measurment
+- rows are CASES (individuals).  Ie, from what person/animal/thing/whatev did we record?  Eg: you guys!
+  remember:  rows are horizontal!
+- columns are VARIABLES.  Ie, the qualities of the individuals that we care about!
+   columns are vertical!
+- each "cell" must contain ONLY one observation/measurement
 
-## Types of Data
+### Types of Data
 
-Two basic types:  quantitative (numerical), qualitative (categorical)
+Big breakdown:  numerical (quantitative) or categorical (qualitative)
+               ie:  number or not!
+               
+All together, 4 types:
 
-In all, 4 total types:
+-  discrete numerical data.  "countable".  Actually counting real object/things/ideas.
+-  continuous numerical data.  "measureable". 
+   Eg:  weight, volume, duration of time, etc.  
+     
+        Philosopical note:  be careful about WHAT you're measuring.  Ex:
+        Age = integer number of years.  discrete.
+        Age = duration of time living on earth.  continuous.  
+        height = measuring tape.  continuous.  Possible to be 66.1", 66.7", 69.23423423"
+        
+        Weird example:  money.  gas?  pennies?  currency conversions? interest!
+              Class agreement:  money is continous. 
+              
+- nominal categorical.  categorical, no INTRINSIC order.  
+- ordinal categorical.  categrocial, YES natural order
 
-- DISCRETE numerical.  "countable" 
-- CONTINUOUS numerical.  "measureable"
-    Ex:   weight, volume, most phyiscal measurments
-      Philospical question:  units?  What do we REALLY mean?
-      
-      Age = total duration of time since birth.   continuous.
-      Age = social cohort.  discrete/categorical.             <-  Prof Miller's bias
-      Height = measure of vertical length.  continuous.       <- Prof Miller's bias
-      Height = categeory?
-      
-      Money.  pennies?  discrete.  crypto/interest.  Classroom agreement:  money is continuous.
+MORAL OF THE STORY:  Not all data is the same.  We use DIFFERENT TOOLS for different types!
+
+### Saying smart things about data (descriptive/summary stats)
+
+Summary statistics for Categorical data:  proportion!
+
+Ex:  In our class, 9/15 students had black hair.
+
+phat:
+```{r}
+9/15
+```
+
+
+Summary statistics for Quantitative data:
+
+For quant variables, always describe:
+
+1) center.
+2) spread.
+3) shape.
+
+
+
+
+
+
+
+
+
+
+
+
+## Friday Jan 20
+
+### Quantitative Variables (saying something smart)
+
+Note:  it doesn't make sense to talk about ONE number in a dataset.  Instead, we care about ALL of them, at the same time!  "Distribution".
+
+ALWAYS MAKE A PICTURE FIRST!
+
+
+For numerical data:  HISTOGRAM!
+
+Ex:  class data:
+
+```{r include=FALSE}
+ourData <- read.csv("StudentData.csv")
+```
+
+
+```{r}
+head(ourData)
+```
+Q:  what can we say about your height?
+
+Hist!
+
+```{r}
+hist(ourData$Height..inches.)
+```
+Observations:  
+ - typical height is around 67/68
+ - spread:  looks like "most" values are btwn 62 - 72
+ - looks symmetrical "ish"
+ 
+ 
+ Q: what if we use more than 5 rectangles?
+ 
+```{r}
+hist(ourData$Height..inches., breaks = 10)
+```
+ Interesting new feature!  Bimodal!  Q:  could it be because of sex?
+ 
+ MORAL OF THE STORY:  Follow the "Tao of the Histogram"!
+ 
+ Ex:  our siblings
+ 
+```{r}
+hist(ourData$Number.of.Siblings, breaks = c(0,.99,1.99,2.99, 3.99))
+```
+
+Tao of the histogram!
+ 
+### Summary Statistics
+ 
+Ie, numerical summary of distribution.
+ 
+- Measures of Center
+  - Mean:  average!  "balancing point"
+  - Median: "middle number"
+  - Mode:  most common number
     
-      
-- ORDINAL categorical data.  INTRINSIC ordering.  
-- NOMINAL categorical data.  No natural ordering.
+- Measures of Spread
+    - Range = max - min.
+       Con:  highly susceptiple to outliers.  
+    - Standard deviation = "average distance btwn points and the mean"
+        Formula:  on the board
+        Note: must square to measure the TOTAL variation!
+    - IQR.  Quartiles:  cutoffs for 25% (Q1) and 75% (Q3) in the dataset.
+        IQR = Q3 - Q1
+        
+        Ex:  Data = {15, 16, 16, 18, 20, 27}
+        
+        Compute IQR = 20 - 16 = 4
+        
+        (M = 17, Q1 = 16, Q3 = 20)
+    
+         Meaning:  range of the MIDDLE 50% of the data!
+         
+         
+A statistic is ROBUST if it is NOT strongly affected by skew or outliers.
 
-## Say smart things about data. (descriptive statistics)
+Ex:  Data = {1,1,1,1,1,19}
 
-Categorical variables:  proportions!  Ex:  in our class, 6/18 students had black hair.
-
-phat = 0.3333....
-
-
-Numerical data:  much more complex!
-
-
-
-
-
-
-
-
-
-
-
-
-
+Mean = 4, Med = 1.  Seems like median is better!
 
 
-
+# Week 2
 
 
 
 
 
-
+## Wed Jan 25
 
 
 
 
 
 
+Distribution:  The salaries of all employees at a major corporation.
+
+Which would provide a rosier picture of compensation:  the mean or the median?
+
+A:  expect strong right skew (tail)!  expect mean to be bigger (since not robust).
+
+### Outliers
+
+Q:  what "counts" as an outlier? Need a test!
+
+Q:  There are two sections of calculus.  Both take the same exam, both class means are the same.
+
+Is it possible that a student who scores 95 in one section could be an outlier, but a student with same score in the other is NOT an outlier?
+
+
+Yes!  Must factor in the spread!
+
+Let's use IQR!  (robust!)
+
+"Cutoffs" for outliers:
+
+low =   Q1 - 1.5(Q3-Q1) 
+                  IQR
+hi  =.  Q3 + 1.5(Q3-Q1) 
+                  IQR
+                  
+Ex:  Data = { 1, 2, 3, 4, 5, 6, 7, 8, 8, 20}
+
+Q:  are there outliers?
+
+M = 5.5 Q1 = 3, Q3 = 8,  IQR = 8-3 = 5
+
+Cutoffs:
+
+low:
+
+```{r}
+3 - 1.5*5
+```
+
+hi:
+```{r}
+8 + 1.5*5
+```
+
+### Boxplots
+
+Great for comparison!
+
+Ex:  iris dataset
+
+```{r}
+head(iris)
+```
+
+Ex:  sepal length
+
+```{r}
+boxplot(iris$Sepal.Length, horizontal = T)
+```
+Q:  compare species?
+
+```{r}
+boxplot(iris$Sepal.Length ~ iris$Species, horizontal = T)
+```
+
+
+### Ch 2 - Probability!
+
+Plan:  stay to close to book!
+
+Key building blocks:
+
+A random process / chance experiment is any scenario where more than one unknown outcome could occur!
+
+Ex:  Tossing a coin, rolling dice, sampling random student
+
+Sample space = S = the set of all possible outcomes
+Event.       = A = any subset of the sample space (what we care about!)
+
+Ex:  Rolling a dice.   Let A be the event that we get an even number.
+                       Let B be the event that we get a prime.
+
+S = {1,2,3,4,5,6}
+A = {2,4,6}
+B = {2,3,5}
+
+goal:  combine events into useful statements
+
+3 tools:
+
+ - Complement.  "not". A' is everything in S, NOT in A
+ - Union.  A U B = all elements in either a OR b (could be both)
+ - Intersection A intersect B = all elements in both A AND B
+ 
+ Find:
+ 
+ A' = {1,3,5}
+ A U B = {2,3,4,5,6}
+ A intersect B = {2}
+ 
+ 
+ 
+
+
+
+## Friday Jan 27
+
+2.2 Axioms of probability
+
+The very basics!
+
+For some event A, the probability of event A, denoted P(A), satisifies...
+
+1). P(A) >= 0   (for any event A in our sample space S)
+2). P(S) = 1.   (since S is all possibilities)
+3). If A, B are mutually exclusive, then:
+
+            P(A U B) = P(A) + P(B)
+
+Ex) Using only the axioms, prove that P(A') = 1 - P(A)
+
+Ex) Axioms, prove P(A) <= 1 for any A
+
+Ex). P(A U B) = P(A) + P(B) - P(A and B)
+
+Exercise:  prove from axioms!  (it's in the book!)
+
+Ex). Cards!  If we draw at random, what's the prob that our card is a heart or a face?
+
+   P(H U F) = P(H) + P(F) - P(H and F)
+   
+            = 13/52 + 12/52 - 3/52
+            
+### 2.3 - Counting Techniques
+
+The PRODUCT RULE:  if we make a sequence of k decisions, 
+        - with n1 options for the first, 
+        - n2 options for the second, ....
+        - nk options for the kth decision.
+        
+If the decision at any one stage doesn't affect any other, then there are:
+
+         n = n1 * n2 * n3 * ... * nk total possibilities
+         
+Ex). We toss a coin 3 times.  How many possible outcomes?  Ex:  H H H
+
+Ex). Roll 2 dice.  How many outcomes?
+
+          6 * 6 = 36
+        
+Ex). In OH, license plates have 3 letters followed by 4 numbers.
+
+How many plates are possible?
+
+```{r}
+26^3*10^4
+```
+
+Ex). Above, but no letter "O", can't end on an odd number.
+
+### Permutations
+
+Ex) How many arrangements of the letters in ALICE are there?
+
+Ex) How many arrangments of the letters in BANANA are there?
+
+Ex) There are 20 children.  3 swings.  How many seating arrangements are there?
+
+###  Combinations
+
+Ex). There are 20 children.  We need to pick a team of 3 children.  How many teams?
+
+Problem:  teams have no arrangement/order!
+
+What's the difference?  ORDER!!!   
+
+Perms - order matters!
+
+Combs - doesn't
 
 
 
@@ -126,4 +407,22 @@ Numerical data:  much more complex!
 
 
 
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 

@@ -402,19 +402,127 @@ Combs - doesn't
 
 
 
+# Week 3
+
+## Monday Jan 30
 
 
 
+Ex). In a tennis league, there are 16 players.  How many possible matchings are there?
 
 
+Ex2). Same league.  After a competition, someone gets 1st place, 2nd place, 3rd place.  How many possible awards brackets?
 
+Ex3). We toss 8 coins.  What's the probability of getting:
+  
+           H H H H T T T T
+           
+           H T H T H T H T
+           
+Ex4). We toss 8 coins.  WHat's the probability of getting exactly 4 heads?
+
+
+P(Exactly 4 heads) = 70/2^8
+
+```{r}
+70/2^8
+```
 
  
+Ex5)  We toss 10 coins.  What's the probabilit of exactly 3 Heads?
+
+Future:  binomial dist!
+
+--------------------
+
+Alternate version:
+
+Ex3). Roll a dice 10 times.  What's the probability that the first 3 rolls show "4"?, no others are 4.
+
+
+
+Ex:  4 4 4  1 2 3 2 1 5 6
+
+Ex4). What's the prob that the LAST 3 rolls show "4"?
+
+Same thing!
+
+Ex5). What's the prob that EXACTLY 3 of the 10 rolls shows "4"?
+
+Future:  binomial distribution
+
+----------------------
+
+### Card Example 
+
+Ex6). Cards.
+
+Draw a 5-card hand (from 52 card deck).  
+
+a). How many possible hands.
+
+```{r}
+choose(52,5)
+```
+
+b) What's the probability of getting one pair?
+
+    Ex:          3 3 J A 7
+    
+    
+    NO:         3 3 3 A 7
+    
+    No:         3 3 3 3 K
+    
+    NO:         3 3 J J K
+    
+Decisions:
+
+    - decide which kind for the pair?  13 C 1
+    
+    - decide which for the pair?   4 C 2
+    
+    - decide kinds for other 3 cards:  12 C 3
+    
+    - for each of the three: which suit?  4C1 * 4C1 * 4C1
+    
+Final:  13C1 * 4C2 * 12C3 * 4C1 * 4C1 * 4C1
+
+Practice:  wikipedia!  Google:  "wiki poker probabilities"
  
  
- 
- 
- 
+### 2.4 Conditional Probability
+
+Idea:  if it's cloudy, more likely to rain.
+
+      P(A | B) = "the probability that A happens, GIVEN that B has occurred"
+      
+               = P(A and B) / P(B)
+               
+               
+Ex) At DU,  52% of students are female, 48% male.  About 8.2% of all students are female STEM majors.
+
+If we select a student at random, and that student is female, what's the probability that she's a STEM major?
+
+given:  female!
+
+Need:   P(S | F) = P(S and F)/P(F) = .082/.52
+
+Ex) Lie detector test.  It advertises itself as 95% accurate.  This means that IF a person is lying, then there's a 95% chance of a + result.
+
+However, we also know that if a person is NOT lying, there's a 90% chance the test shows -.
+
+Suppose that most people (99%) are honest.
+
+a) Draw a probability tree to summarize.
+
+
+
+
+
+
+      
+      
  
  
  

@@ -134,6 +134,11 @@ For numerical data:  HISTOGRAM!
 
 Ex:  class data:
 
+```{r include=FALSE}
+ourData <- read.csv("StudentData.csv")
+```
+
+
 ```{r}
 head(ourData)
 ```
@@ -153,7 +158,7 @@ Observations:
  Q: what if we use more than 5 rectangles?
  
 ```{r}
-hist(ourData$Height..inches., breaks = 5)
+hist(ourData$Height..inches., breaks = 10)
 ```
  Interesting new feature!  Bimodal!  Q:  could it be because of sex?
  
@@ -164,16 +169,17 @@ hist(ourData$Height..inches., breaks = 5)
 ```{r}
 hist(ourData$Number.of.Siblings, breaks = c(0,.99,1.99,2.99, 3.99))
 ```
- Tao of the histogram!
+
+Tao of the histogram!
  
- ### Summary Statistics
+### Summary Statistics
  
- Ie, numerical summary of distribution.
+Ie, numerical summary of distribution.
  
- - Measures of Center
-    Mean:  average!  "balancing point"
-    Median: "middle number"
-    Mode:  most common number
+- Measures of Center
+  - Mean:  average!  "balancing point"
+  - Median: "middle number"
+  - Mode:  most common number
     
 - Measures of Spread
     - Range = max - min.
@@ -197,36 +203,226 @@ A statistic is ROBUST if it is NOT strongly affected by skew or outliers.
 
 Ex:  Data = {1,1,1,1,1,19}
 
-MEasures of center:
+Mean = 4, Med = 1.  Seems like median is better!
 
-mean:
+
+# Week 2
+
+
+
+
+
+## Wed Jan 25
+
+
+
+
+
+
+Distribution:  The salaries of all employees at a major corporation.
+
+Which would provide a rosier picture of compensation:  the mean or the median?
+
+A:  expect strong right skew (tail)!  expect mean to be bigger (since not robust).
+
+### Outliers
+
+Q:  what "counts" as an outlier? Need a test!
+
+Q:  There are two sections of calculus.  Both take the same exam, both class means are the same.
+
+Is it possible that a student who scores 95 in one section could be an outlier, but a student with same score in the other is NOT an outlier?
+
+
+Yes!  Must factor in the spread!
+
+Let's use IQR!  (robust!)
+
+"Cutoffs" for outliers:
+
+low =   Q1 - 1.5(Q3-Q1) 
+                  IQR
+hi  =.  Q3 + 1.5(Q3-Q1) 
+                  IQR
+                  
+Ex:  Data = { 1, 2, 3, 4, 5, 6, 7, 8, 8, 20}
+
+Q:  are there outliers?
+
+M = 5.5 Q1 = 3, Q3 = 8,  IQR = 8-3 = 5
+
+Cutoffs:
+
+low:
 
 ```{r}
-mean(c(1,1,1,1,1,19))
+3 - 1.5*5
 ```
 
-med = 1. 
+hi:
+```{r}
+8 + 1.5*5
+```
 
+### Boxplots
 
+Great for comparison!
 
-
-
-
-
-
-
-
-
-
+Ex:  iris dataset
 
 ```{r}
-ourData <- read.csv("StudentData.csv")
-head(ourData)
+head(iris)
+```
+
+Ex:  sepal length
+
+```{r}
+boxplot(iris$Sepal.Length, horizontal = T)
+```
+Q:  compare species?
+
+```{r}
+boxplot(iris$Sepal.Length ~ iris$Species, horizontal = T)
 ```
 
 
+### Ch 2 - Probability!
+
+Plan:  stay to close to book!
+
+Key building blocks:
+
+A random process / chance experiment is any scenario where more than one unknown outcome could occur!
+
+Ex:  Tossing a coin, rolling dice, sampling random student
+
+Sample space = S = the set of all possible outcomes
+Event.       = A = any subset of the sample space (what we care about!)
+
+Ex:  Rolling a dice.   Let A be the event that we get an even number.
+                       Let B be the event that we get a prime.
+
+S = {1,2,3,4,5,6}
+A = {2,4,6}
+B = {2,3,5}
+
+goal:  combine events into useful statements
+
+3 tools:
+
+ - Complement.  "not". A' is everything in S, NOT in A
+ - Union.  A U B = all elements in either a OR b (could be both)
+ - Intersection A intersect B = all elements in both A AND B
+ 
+ Find:
+ 
+ A' = {1,3,5}
+ A U B = {2,3,4,5,6}
+ A intersect B = {2}
+ 
+ 
+ 
+
+
+
+## Friday Jan 27
+
+2.2 Axioms of probability
+
+The very basics!
+
+For some event A, the probability of event A, denoted P(A), satisifies...
+
+1). P(A) >= 0   (for any event A in our sample space S)
+2). P(S) = 1.   (since S is all possibilities)
+3). If A, B are mutually exclusive, then:
+
+            P(A U B) = P(A) + P(B)
+
+Ex) Using only the axioms, prove that P(A') = 1 - P(A)
+
+Ex) Axioms, prove P(A) <= 1 for any A
+
+Ex). P(A U B) = P(A) + P(B) - P(A and B)
+
+Exercise:  prove from axioms!  (it's in the book!)
+
+Ex). Cards!  If we draw at random, what's the prob that our card is a heart or a face?
+
+   P(H U F) = P(H) + P(F) - P(H and F)
+   
+            = 13/52 + 12/52 - 3/52
+            
+### 2.3 - Counting Techniques
+
+The PRODUCT RULE:  if we make a sequence of k decisions, 
+        - with n1 options for the first, 
+        - n2 options for the second, ....
+        - nk options for the kth decision.
+        
+If the decision at any one stage doesn't affect any other, then there are:
+
+         n = n1 * n2 * n3 * ... * nk total possibilities
+         
+Ex). We toss a coin 3 times.  How many possible outcomes?  Ex:  H H H
+
+Ex). Roll 2 dice.  How many outcomes?
+
+          6 * 6 = 36
+        
+Ex). In OH, license plates have 3 letters followed by 4 numbers.
+
+How many plates are possible?
+
+```{r}
+26^3*10^4
+```
+
+Ex). Above, but no letter "O", can't end on an odd number.
+
+### Permutations
+
+Ex) How many arrangements of the letters in ALICE are there?
+
+Ex) How many arrangments of the letters in BANANA are there?
+
+Ex) There are 20 children.  3 swings.  How many seating arrangements are there?
+
+###  Combinations
+
+Ex). There are 20 children.  We need to pick a team of 3 children.  How many teams?
+
+Problem:  teams have no arrangement/order!
+
+What's the difference?  ORDER!!!   
+
+Perms - order matters!
+
+Combs - doesn't
 
 
 
 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 

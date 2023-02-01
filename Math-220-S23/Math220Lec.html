@@ -394,7 +394,7 @@ display: none;
 
 <h1 class="title toc-ignore">Math 220 Spring 20203 Lecture Notes</h1>
 <h4 class="author">Alice Miller</h4>
-<h4 class="date">Updated: 27 January, 2023</h4>
+<h4 class="date">Updated: 01 February, 2023</h4>
 
 </div>
 
@@ -435,6 +435,14 @@ Probability!</a></li>
 Counting Techniques</a></li>
 <li><a href="#permutations" id="toc-permutations">Permutations</a></li>
 <li><a href="#combinations" id="toc-combinations">Combinations</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#week-3" id="toc-week-3">Week 3</a>
+<ul>
+<li><a href="#monday-jan-30" id="toc-monday-jan-30">Monday Jan 30</a>
+<ul>
+<li><a href="#card-example" id="toc-card-example">Card Example</a></li>
+<li><a href="#conditional-probability" id="toc-conditional-probability">2.4 Conditional Probability</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -715,6 +723,87 @@ many teams?</p>
 <p>What’s the difference? ORDER!!!</p>
 <p>Perms - order matters!</p>
 <p>Combs - doesn’t</p>
+</div>
+</div>
+</div>
+<div id="week-3" class="section level1">
+<h1>Week 3</h1>
+<div id="monday-jan-30" class="section level2">
+<h2>Monday Jan 30</h2>
+<p>Ex). In a tennis league, there are 16 players. How many possible
+matchings are there?</p>
+<p>Ex2). Same league. After a competition, someone gets 1st place, 2nd
+place, 3rd place. How many possible awards brackets?</p>
+<p>Ex3). We toss 8 coins. What’s the probability of getting:</p>
+<pre><code>       H H H H T T T T
+       
+       H T H T H T H T
+       </code></pre>
+<p>Ex4). We toss 8 coins. WHat’s the probability of getting exactly 4
+heads?</p>
+<p>P(Exactly 4 heads) = 70/2^8</p>
+<pre class="r"><code>70/2^8</code></pre>
+<pre><code>## [1] 0.2734375</code></pre>
+<p>Ex5) We toss 10 coins. What’s the probabilit of exactly 3 Heads?</p>
+<p>Future: binomial dist!</p>
+<hr />
+<p>Alternate version:</p>
+<p>Ex3). Roll a dice 10 times. What’s the probability that the first 3
+rolls show “4”?, no others are 4.</p>
+<p>Ex: 4 4 4 1 2 3 2 1 5 6</p>
+<p>Ex4). What’s the prob that the LAST 3 rolls show “4”?</p>
+<p>Same thing!</p>
+<p>Ex5). What’s the prob that EXACTLY 3 of the 10 rolls shows “4”?</p>
+<p>Future: binomial distribution</p>
+<hr />
+<div id="card-example" class="section level3">
+<h3>Card Example</h3>
+<p>Ex6). Cards.</p>
+<p>Draw a 5-card hand (from 52 card deck).</p>
+<p>a). How many possible hands.</p>
+<pre class="r"><code>choose(52,5)</code></pre>
+<pre><code>## [1] 2598960</code></pre>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><p>What’s the probability of getting one pair?</p>
+<p>Ex: 3 3 J A 7</p>
+<p>NO: 3 3 3 A 7</p>
+<p>No: 3 3 3 3 K</p>
+<p>NO: 3 3 J J K</p></li>
+</ol>
+<p>Decisions:</p>
+<pre><code>- decide which kind for the pair?  13 C 1
+
+- decide which for the pair?   4 C 2
+
+- decide kinds for other 3 cards:  12 C 3
+
+- for each of the three: which suit?  4C1 * 4C1 * 4C1</code></pre>
+<p>Final: 13C1 * 4C2 * 12C3 * 4C1 * 4C1 * 4C1</p>
+<p>Practice: wikipedia! Google: “wiki poker probabilities”</p>
+</div>
+<div id="conditional-probability" class="section level3">
+<h3>2.4 Conditional Probability</h3>
+<p>Idea: if it’s cloudy, more likely to rain.</p>
+<pre><code>  P(A | B) = &quot;the probability that A happens, GIVEN that B has occurred&quot;
+  
+           = P(A and B) / P(B)
+           
+           </code></pre>
+<p>Ex) At DU, 52% of students are female, 48% male. About 8.2% of all
+students are female STEM majors.</p>
+<p>If we select a student at random, and that student is female, what’s
+the probability that she’s a STEM major?</p>
+<p>given: female!</p>
+<p>Need: P(S | F) = P(S and F)/P(F) = .082/.52</p>
+<p>Ex) Lie detector test. It advertises itself as 95% accurate. This
+means that IF a person is lying, then there’s a 95% chance of a +
+result.</p>
+<p>However, we also know that if a person is NOT lying, there’s a 90%
+chance the test shows -.</p>
+<p>Suppose that most people (99%) are honest.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Draw a probability tree to summarize.</li>
+</ol>
 </div>
 </div>
 </div>
