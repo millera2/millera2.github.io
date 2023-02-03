@@ -394,7 +394,7 @@ display: none;
 
 <h1 class="title toc-ignore">Math 220 Spring 20203 Lecture Notes</h1>
 <h4 class="author">Alice Miller</h4>
-<h4 class="date">Updated: 01 February, 2023</h4>
+<h4 class="date">Updated: 03 February, 2023</h4>
 
 </div>
 
@@ -443,6 +443,14 @@ Counting Techniques</a></li>
 <ul>
 <li><a href="#card-example" id="toc-card-example">Card Example</a></li>
 <li><a href="#conditional-probability" id="toc-conditional-probability">2.4 Conditional Probability</a></li>
+<li><a href="#independence" id="toc-independence">2.5
+Independence</a></li>
+</ul></li>
+<li><a href="#friday-feb-3" id="toc-friday-feb-3">Friday Feb 3</a>
+<ul>
+<li><a href="#ch-3.1---3.2-probability-distributions" id="toc-ch-3.1---3.2-probability-distributions">Ch 3.1 - 3.2 Probability
+Distributions</a></li>
+<li><a href="#cumulative-distributions" id="toc-cumulative-distributions">Cumulative distributions</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -804,6 +812,110 @@ chance the test shows -.</p>
 <ol style="list-style-type: lower-alpha">
 <li>Draw a probability tree to summarize.</li>
 </ol>
+<p>b). What’s the prob a rando person tests “+”?</p>
+<p>Only options: L and +, or. L’ and +</p>
+<pre class="r"><code>.01*.95 + .99*.1</code></pre>
+<pre><code>## [1] 0.1085</code></pre>
+<p>This is “Total Prob!”. Breaking it down into cases.</p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>If the test says you’re lying, what’s the prob that you’re actually
+lying?</li>
+</ol>
+<p>P(L | + ) = P( L and + )/P(+)</p>
+<p>Tree:</p>
+<pre class="r"><code>.01*.95/(.01*.95 + .99*.1)</code></pre>
+<pre><code>## [1] 0.0875576</code></pre>
+<p>If you get +, there’s only an 8.7% chance that you really lied!</p>
+<p>Q: Why so small?</p>
+</div>
+<div id="independence" class="section level3">
+<h3>2.5 Independence</h3>
+<p>Idea: somtimes, one outcome DOES NOT AFFECT another!</p>
+<p>Independence!</p>
+<p>Ex: coin tosses.</p>
+<p>Math definition:</p>
+<p>We say events A,B are INDEPENDENT if:</p>
+<pre><code>     P(A | B ) = P(A)
+     
+     P(B | A ) = P(B)</code></pre>
+<p>if one is true, so is the other.</p>
+<p>Ex: poker and snacks</p>
+<p>P(P|C)</p>
+<pre class="r"><code>12/30</code></pre>
+<pre><code>## [1] 0.4</code></pre>
+<p>P(P)</p>
+<pre class="r"><code>25/115</code></pre>
+<pre><code>## [1] 0.2173913</code></pre>
+<p>Q: are these different enough to suggest not independent?</p>
+<p>Ex). Text (Example 2.36)</p>
+</div>
+</div>
+<div id="friday-feb-3" class="section level2">
+<h2>Friday Feb 3</h2>
+<p>Independence:</p>
+<pre><code> P(A | B) = P(A)
+ P(B | A) = P(B)
+ </code></pre>
+<p>EASY WAY TO CHECK:</p>
+<pre><code>     P(A and B) = P(A)*P(B)
+     </code></pre>
+<p>Ex) Cards! Are the events “draw a heart” and “draw a face card”
+independent?</p>
+<p>Justify mathematically.</p>
+<pre><code>  Check:    P(H and F) =? P(H)*P(F)
+  
+                3/52   =?  13/52 * 12/52
+                </code></pre>
+<pre class="r"><code>3/52</code></pre>
+<pre><code>## [1] 0.05769231</code></pre>
+<pre class="r"><code>13/52 * 12/52</code></pre>
+<pre><code>## [1] 0.05769231</code></pre>
+<p>Independent events!</p>
+<div id="ch-3.1---3.2-probability-distributions" class="section level3">
+<h3>Ch 3.1 - 3.2 Probability Distributions</h3>
+<p>Idea: think more holistically about probability.</p>
+<p>RANDOM VARIABLE: map each outcome in sample space to real number.</p>
+<p>Ex1. Roll dice. Let X = the number that shows. Possible values for X
+= {1,2,3,4,5,6}</p>
+<p>Ex2. Roll two dice. Let X = their sum. values for X =
+{2,3,4,…,11,12}</p>
+<p>Ex3. Toss a coin repeatedly until get H. Then stop. Let X = the
+number of coin tosses. {1, 2, 3, …. }</p>
+<p>A <em>discrete</em> PROBABILITY DISTRIBUTION for a RV X is:</p>
+<ul>
+<li>a list of all possible values for X</li>
+<li>for each, an associated probability.</li>
+</ul>
+<p>Notes:</p>
+<ul>
+<li><p>the SUPPORT for the distribution is the set of all X with nonzero
+prob {1,2,3,4,5,6}</p></li>
+<li><p>0 &lt;= P(x) &lt;= 1 for all x in support</p></li>
+<li><p>sum( P(x) ) = 1</p></li>
+</ul>
+<p>Ex1-3) Construct distributions for the RVs listed above. [Solved on
+the board].</p>
+</div>
+<div id="cumulative-distributions" class="section level3">
+<h3>Cumulative distributions</h3>
+<p>CDF - cumulative distribution function</p>
+<p>on board</p>
+<p>Notes about CDF:</p>
+<ul>
+<li>every cdf is defined on ENTIRE REAL LINE</li>
+<li>left hand limit = ____</li>
+<li>right hand limit = ____</li>
+</ul>
+<p>Why cdf?</p>
+<p>A: very useful for RANGES of options for X</p>
+<p>Ie:</p>
+<pre><code>     P(a &lt;= X &lt;= b) = F(b) - F(a-)     &lt;- book, p106
+     
+     </code></pre>
+<p>Ex: What’s the prob we roll a number btwn 2 and 5 (inclusive)?</p>
+<pre><code>    P(2 &lt;= X &lt;= 5) = F(5) - F(1) = 5/6 - 1/6 = 4/6
+    
+    </code></pre>
 </div>
 </div>
 </div>

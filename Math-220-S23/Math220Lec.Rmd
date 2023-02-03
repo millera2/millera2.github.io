@@ -508,6 +508,11 @@ given:  female!
 
 Need:   P(S | F) = P(S and F)/P(F) = .082/.52
 
+
+
+
+
+
 Ex) Lie detector test.  It advertises itself as 95% accurate.  This means that IF a person is lying, then there's a 95% chance of a + result.
 
 However, we also know that if a person is NOT lying, there's a 90% chance the test shows -.
@@ -516,7 +521,167 @@ Suppose that most people (99%) are honest.
 
 a) Draw a probability tree to summarize.
 
+b). What's the prob a rando person tests "+"?
 
+Only options:  L and +,   or.    L' and +
+
+```{r}
+.01*.95 + .99*.1
+```
+
+This is "Total Prob!".  Breaking it down into cases.
+
+c) If the test says you're lying, what's the prob that you're actually lying?
+
+P(L | + ) = P( L and + )/P(+)
+
+Tree:
+```{r}
+.01*.95/(.01*.95 + .99*.1)
+```
+
+If you get +, there's only an 8.7% chance that you really lied!
+
+Q:  Why so small?
+
+
+
+### 2.5 Independence
+
+Idea:  somtimes, one outcome DOES NOT AFFECT another!
+
+Independence!
+
+Ex:  coin tosses.
+
+Math definition:
+
+We say events A,B are INDEPENDENT if:
+
+         P(A | B ) = P(A)
+         
+         P(B | A ) = P(B)
+
+
+if one is true, so is the other.
+
+Ex:  poker and snacks
+
+P(P|C) 
+```{r}
+12/30
+```
+P(P)
+```{r}
+25/115
+```
+
+Q:  are these different enough to suggest not independent?
+
+Ex). Text (Example 2.36)
+
+
+
+
+
+
+
+
+
+
+
+## Friday Feb 3
+
+Independence:  
+
+     P(A | B) = P(A)
+     P(B | A) = P(B)
+     
+EASY WAY TO CHECK:
+
+         P(A and B) = P(A)*P(B)
+         
+Ex) Cards! Are the events "draw a heart" and "draw a face card" independent?
+
+Justify mathematically.
+
+      Check:    P(H and F) =? P(H)*P(F)
+      
+                    3/52   =?  13/52 * 12/52
+                    
+```{r}
+3/52
+```
+```{r}
+13/52 * 12/52
+```
+                    
+Independent events!
+
+### Ch 3.1 - 3.2 Probability Distributions
+
+Idea:  think more holistically about probability.
+
+RANDOM VARIABLE:  map each outcome in sample space to real number.
+
+Ex1.  Roll dice.  Let X = the number that shows.
+       Possible values for X = {1,2,3,4,5,6}
+
+
+Ex2.  Roll two dice.  Let X = their sum.
+                values for X = {2,3,4,...,11,12}
+                
+Ex3.  Toss a coin repeatedly until get H.  Then stop.  Let X = the number of coin tosses.
+                               {1, 2, 3, .... }
+                               
+A *discrete* PROBABILITY DISTRIBUTION for a RV X is:
+
+- a list of all possible values for X
+- for each, an associated probability.
+
+
+Notes:
+
+- the SUPPORT for the distribution is the set of all X with nonzero prob
+  {1,2,3,4,5,6}
+  
+- 0 <= P(x) <= 1 for all x in support
+
+- sum( P(x) ) = 1
+
+Ex1-3)  Construct distributions for the RVs listed above.  [Solved on the board].
+
+
+### Cumulative distributions
+
+CDF - cumulative distribution function
+
+on board
+
+Notes about CDF:
+
+  -  every cdf is defined on ENTIRE REAL LINE
+  -  left hand limit = ____
+  -  right hand limit = ____
+  
+Why cdf?
+
+A:  very useful for RANGES of options for X
+
+Ie:
+
+         P(a <= X <= b) = F(b) - F(a-)     <- book, p106
+         
+         
+Ex:  What's the prob we roll a number btwn 2 and 5 (inclusive)?
+
+        P(2 <= X <= 5) = F(5) - F(1) = 5/6 - 1/6 = 4/6
+        
+        
+
+
+         
+         
 
 
 
