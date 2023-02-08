@@ -392,7 +392,7 @@ display: none;
 
 
 <h1 class="title toc-ignore">Math 220 Spring 2022 HW Solutions</h1>
-<h4 class="date">Updated: 01 February, 2023</h4>
+<h4 class="date">Updated: 08 February, 2023</h4>
 
 </div>
 
@@ -400,11 +400,17 @@ display: none;
 <ul>
 <li><a href="#abbreviated-even-solutions" id="toc-abbreviated-even-solutions">Abbreviated Even Solutions</a>
 <ul>
+<li><a href="#hw-2" id="toc-hw-2">HW 2</a>
+<ul>
+<li><a href="#section" id="toc-section">2.26</a></li>
+<li><a href="#section-1" id="toc-section-1">2.30</a></li>
+<li><a href="#section-2" id="toc-section-2">2.34</a></li>
+</ul></li>
 <li><a href="#hw-1" id="toc-hw-1">HW 1</a>
 <ul>
-<li><a href="#section" id="toc-section">1.38</a></li>
-<li><a href="#section-1" id="toc-section-1">1.42</a></li>
-<li><a href="#section-2" id="toc-section-2">1.44</a></li>
+<li><a href="#section-3" id="toc-section-3">1.38</a></li>
+<li><a href="#section-4" id="toc-section-4">1.42</a></li>
+<li><a href="#section-5" id="toc-section-5">1.44</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -412,9 +418,72 @@ display: none;
 
 <div id="abbreviated-even-solutions" class="section level1">
 <h1>Abbreviated Even Solutions</h1>
+<div id="hw-2" class="section level2">
+<h2>HW 2</h2>
+<div id="section" class="section level3">
+<h3>2.26</h3>
+<ol style="list-style-type: lower-alpha">
+<li>P(A1^C) = 1-.12 = .88</li>
+<li>Since P(A1 or A2) = P(A1)+P(A2)-P(A1 and A2), we plug in:</li>
+</ol>
+<p>.13 = .12 + . 07 - P(A1 and A2)</p>
+<p>Thus P(A1 and A2) = .06</p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li><p>P(A1 and A2 and A3^C) = P(A1 and A2) - P(A1 and A2 and A3) =
+.05</p></li>
+<li><p>P(at most 2) = 1 - P(A1 and A2 and A3) = .99</p></li>
+</ol>
+</div>
+<div id="section-1" class="section level3">
+<h3>2.30</h3>
+<ol style="list-style-type: lower-alpha">
+<li>8P3</li>
+</ol>
+<pre class="r"><code>8*7*6</code></pre>
+<pre><code>## [1] 336</code></pre>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>30C6</li>
+</ol>
+<pre class="r"><code>choose(30,6)</code></pre>
+<pre><code>## [1] 593775</code></pre>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>8C2 10C2 12C2</li>
+</ol>
+<pre class="r"><code>choose(8,2)*choose(10,2)*choose(12,2)</code></pre>
+<pre><code>## [1] 83160</code></pre>
+<ol start="4" style="list-style-type: lower-alpha">
+<li></li>
+</ol>
+<pre class="r"><code>83160/593775</code></pre>
+<pre><code>## [1] 0.1400531</code></pre>
+<ol start="5" style="list-style-type: lower-alpha">
+<li>P(all Zin or all Merlot or all Cab)</li>
+</ol>
+<pre class="r"><code>(choose(8,6)+choose(10,6)+choose(12,6))/choose(30,6)</code></pre>
+<pre><code>## [1] 0.00195697</code></pre>
+</div>
+<div id="section-2" class="section level3">
+<h3>2.34</h3>
+<ol style="list-style-type: lower-alpha">
+<li></li>
+</ol>
+<pre class="r"><code>choose(25,5)</code></pre>
+<pre><code>## [1] 53130</code></pre>
+<ol start="2" style="list-style-type: lower-alpha">
+<li></li>
+</ol>
+<pre class="r"><code>choose(6,2)*choose(19,3)</code></pre>
+<pre><code>## [1] 14535</code></pre>
+<ol start="3" style="list-style-type: lower-alpha">
+<li></li>
+</ol>
+<pre class="r"><code>1-choose(19,5)/choose(25,5)</code></pre>
+<pre><code>## [1] 0.7811406</code></pre>
+</div>
+</div>
 <div id="hw-1" class="section level2">
 <h2>HW 1</h2>
-<div id="section" class="section level3">
+<div id="section-3" class="section level3">
 <h3>1.38</h3>
 <ol style="list-style-type: lower-alpha">
 <li>Reported median is 125.</li>
@@ -425,7 +494,7 @@ display: none;
 <p>Related topic: The shape of a histogram can change drastically
 depending on how wide your bins/categories are!</p>
 </div>
-<div id="section-1" class="section level3">
+<div id="section-4" class="section level3">
 <h3>1.42</h3>
 <ul>
 <li>Mean:</li>
@@ -451,7 +520,7 @@ can say the same about <span class="math inline">\(\frac{x_{n/2}+x_{n/2+1}}{2}\)
 <p><span class="math display">\[ y_{(n+1)/2} = c\cdot
 x_{(n+1)/2}\]</span></p>
 </div>
-<div id="section-2" class="section level3">
+<div id="section-5" class="section level3">
 <h3>1.44</h3>
 <ol style="list-style-type: lower-alpha">
 <li><p>range = 182.6-180.3 = 2.3</p></li>

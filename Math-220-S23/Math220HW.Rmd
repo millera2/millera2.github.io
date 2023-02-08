@@ -34,6 +34,75 @@ theme_set(                                #this sets the theme for all    #
 
 # Abbreviated Even Solutions
 
+## HW 2
+
+
+### 2.26
+
+a)  P(A1^C) = 1-.12 = .88
+b)  Since P(A1 or A2) = P(A1)+P(A2)-P(A1 and A2), we plug in:
+
+.13 = .12 + . 07 - P(A1 and A2) 
+
+Thus P(A1 and A2) = .06
+
+c)  P(A1 and A2 and A3^C) = P(A1 and A2) - P(A1 and A2 and A3) = .05
+
+d) P(at most 2) = 1 - P(A1 and A2 and A3) = .99
+
+### 2.30
+
+a)  8P3
+
+```{r}
+8*7*6
+```
+
+b)  30C6
+
+```{r}
+choose(30,6)
+```
+
+c) 8C2 10C2 12C2
+
+```{r}
+choose(8,2)*choose(10,2)*choose(12,2)
+```
+
+d) 
+
+```{r}
+83160/593775
+```
+
+e) P(all Zin or all Merlot or all Cab)
+
+```{r}
+(choose(8,6)+choose(10,6)+choose(12,6))/choose(30,6)
+```
+
+
+### 2.34
+
+a)
+```{r}
+choose(25,5)
+```
+
+
+b) 
+```{r}
+choose(6,2)*choose(19,3)
+```
+
+
+c)
+```{r}
+1-choose(19,5)/choose(25,5)
+```
+
+
 ## HW 1
 
 ### 1.38
