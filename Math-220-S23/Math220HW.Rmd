@@ -98,8 +98,10 @@ choose(6,2)*choose(19,3)
 
 
 c)
+
+P(4)+P(5)
 ```{r}
-1-choose(19,5)/choose(25,5)
+(choose(19,4)*choose(6,1)+choose(19,5)*choose(6,0))/choose(25,5)
 ```
 
 
