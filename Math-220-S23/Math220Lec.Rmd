@@ -680,19 +680,403 @@ Ex:  What's the prob we roll a number btwn 2 and 5 (inclusive)?
         
 
 
+# Week 4         
+
+## Monday Feb 6
+
+### 3.3 Expected Value and Variance for Discrete RV
+
+Before:  described data that happenED
+
+Now:  expectations for the future!  prob!
+
+### Expected Value
+
+   E[X] = sum( x*P(X=x) )
+   
+Ex). Dice Distro.
+
+```{r}
+1*1/6 + 2*1/6 + 3*1/6 + 4*1/6 + 5*1/6 + 6*1/6
+```
+
+If we rolled the dice MANY times, we'd expect an average close to 3.5.
+
+### Variance
+
+   V[X] = 
+   
+Ex) Find V for dice distro.
+
+V[X]
+```{r}
+(1-3.5)^2*1/6 + (2-3.5)^2*1/6 + (3-3.5)^2*1/6 + (4-3.5)^2*1/6 + (5-3.5)^2*1/6 + (6-3.5)^2*1/6
+```
+
+SD[X]
+```{r}
+sqrt(2.91666666)
+```
+
+
+### Linear Transformations of RVs
+
+
+     E[ h(X) ] = sum( h(x)*P(X=x) )
+     
+     E[ X^2 ] = sum( x^2 * P(X=x) )
+     
+Linear trans: (p115)
+
+     Y = aX1 + bX2 + c
+     
+     where X1, X2 are RVs, and a,b,c are constants
+     
+     then:
+     
+     E[Y] = a * E[X1] + b * E[X2] + c
+     
+     V[Y] = a^2 * V[X1] + b^2 * V[X2] 
+     
+     SD[Y] = sqrt(V[Y]).  (WARNING:  must find V first!)
+
+
+Ex). A grad program values the math portion of entrance exam twice as much as the verbal.
+
+Transf:
+
+     Y = 2*X1 + 1*X2
+     
+         where X1 = math score, X2 = verbal
          
-         
+Info:
+
+    math:   mean = 120,  stdev = 5
+    verb:   mean = 160,  stdev = 7
+    
+Q:  What are the mean and stdev of weighted score?
+
+E[Y] = 2*E[X1] + 1*E[X2]
+     = 2*120 + 1*160
+     
+```{r}
+2*120 + 1*160
+```
+     
+V[Y] = 2^2*V[X1] + 1^2*V[X2]
+     = 2^2 * 5^2 + 1^2 * 7^2
+     
+```{r}
+2^2 * 5^2 + 1^2 * 7^2
+```
+stdev:
+```{r}
+sqrt(149)
+```
+
+Note: must get V first!
+
+### 3.4-3.6 (Skip 3.5) Meet the Famous Prob Distros!
+
+1) Bernoulli.
+
+      X ~ bernoulli(p)             [NOTE:  p is a "parameter" ]
+
+Only two outcomes:  X=0 (fail) or X=1 (success).
+
+    P(X = 1) = p       (prob of success)
+    P(X = 0) = 1-p
+    
+    E[X] = p
+    V[X] = p(1-p)       <- check later!
+    
+2) Binomial Dist
+
+    X ~ binom(n,p)
+    
+ASSUMPTIONS:
+
+- there are a fixed number (n) of trials
+- only two outcomes for each trial:  success or fail (bernoulli!)
+- all trials are independent
+- CONSTANT probability of success (p) in each trial
+
+Ex). If we roll dice 10 times, what's the prob that exactly 3 of them show "4"?
+
+  X~binom(10,1/6)
+  
+  
+  
+## Wed Feb 8
+
+### Famous Distros
+
+1) Bernoulli
+
+    Support:  {0,1}
+    
+2). Binomial
+
+   X~binom(n,p)
+   
+   X counts the number of successes out of n trials.
+   
+Ex). At DU, about 80% of students are from out-of-state.
+
+If we take a sample of 6 students, what's the prob that exactly 3 of them are from out-of-state?
+
+  X ~ binom(6, .8)
+  
+  P(X=3) 
+  
+```{r}
+20*.8^3*.2^3
+```
+  
+
+Binomial facts:
+
+Support: {0,1,2,..,n}
+
+    E[X] = n*p
+
+    V[X] = n*p*(1-p)
+
+
+
+3)  Geometric Distribution
+
+   X ~ geom(p)
+   
+   X = the number of trials needed until the first success.
+   
+Ex:  We toss a coin repeatedly until get H.  WHat's the prob it takes 5 times?
+
+P(T and T and T and T and H) = (1/2)^4 * 1/2
+
+Ex). Suppose we choose students at random until we get one from Ohio.  (remember: 80% from out-of-state).
+
+What's the prob that we must sample at least 3 students until we get the first from Ohio?
+
+Support:  {1,2,3,....}
+
+Expected Value:   E[X] = 1/p.   ONLY FOR GEOMETRIC!
+Variance:         V[X] = (1-p)/p^2
+
+
+4) Poisson Dist
+
+  X ~ pois(mu)
+  
+  X = the number of occurrences of a random event over an interval of space/time
+  
+Assumptions:
+
+   - events happen randomly and independently
+   - constant chance of occurrance at any given time/place
+   - the liklihood of occurance is proportionate to the length of the interval
+       (more time -> more likely!)
+       
+       
+Ex). Since 1883, Tokyo has experienced 5 earthquakes of the "most severe" category.
+
+Assuming constant likelihood over time, what's the probability that at least one occurs in the next year?  In the next 10 years?
+
+mu = 5quakes/140years
+   = 5/140
+   
+P(X>=1) = P(X=1) + P(X=2) + .....
+        = 1 - P(X=0)
+
+        
+```{r}
+1-exp(-5/140)*(5/140)^0/1
+```
+        
+b). next 10 years?
+
+idea:  unit changed!  want quakes/10year period
+ 
+  mu = 10*5/140 = 50/140
+  
+```{r}
+1-exp(-50/140)*(50/140)^0/1
+```
+  
+### Ch 4 - Continuous Distributions
+
+Ex.  Height is cts.
+
+In US, avg height for women is 64", stdev = 2.4".
+
+What's the prob that a rando woman is EXACTLY 64.0000000000...."
+
+A:  zero!  weird!
+
+True for ALL cts dist:
+
+     P(X = a) = 0        for any a!
+     
+So, only makes sense to talk about RANGES for cts variables.
+
+What to do?  probability DENSITY function!
 
 
 
 
+
+## Friday Feb 10
+
+### Ch4: Continuous Dists
+
+Idea:  need a DENSITY function.  f(x).  pdf. 
+       probability = AREA under the curve!
+       
       
-      
- 
- 
- 
- 
- 
+### Uniform Dist
+
+"straight line dist"
+
+Ex) Suppose the time you wait at a bus stop varies uniformly btwn 5 and 15 min.
+
+   X~unif(5,15)
+   
+a). sketch the pdf
+
+b) What's P(X<7)
+
+c). What's P(X<=7)
+
+d). What's P(X=7) = 0
+
+In general:
+
+    X cts:     P(a <= X <= b) = P(a < X < b)
+    
+    WARNING:  not true for X discrete!
+    
+Ex). Suppose f(x) = kx^2   0 <= x <= 2.  (0 otherwise.)
+     What value of k makes f(x) a valid pdf?
+     
+     
+Ex). Compute P(X<1) = F(1)
+
+### 4.2:  Cdf, E[X], V[X]
+
+    cdf = all probability to the lEFT
+    
+    F(x) = P(X <= x)
+    
+    
+Ex). Find cdf for above dist.  
+
+f(x) = (3/8) x^2   0 <= x <= 2.  (0 otherwise.)
+
+Ex). Find P( 1/2 < X < 1 ). = F(1) - F(1/2)
+
+                            = 1^3/8 - (1/2)^3/8
+                            
+Ex). Find cdf for X~unif(a,b)
+
+### E[X] and V[X]
+
+Before:  X discrete:
+
+   E[X] = sum( x*P(x) )
+   
+Now:  replace sum with integral!
+
+   V[X] = sum( (x-mu)^2 * P(x) )
+   
+   
+Now:  replace with integrals!
+
+
+Ex.  Compute E[X] for above
+
+f(x) = 3/8 x^2   0 <= x <= 2.  (0 otherwise.)
+
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+   
+
+
+
+
+
+
+
+
+
+
+
+
+  
  
  
  
