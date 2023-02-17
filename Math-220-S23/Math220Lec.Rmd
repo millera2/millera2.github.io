@@ -1025,10 +1025,247 @@ f(x) = 3/8 x^2   0 <= x <= 2.  (0 otherwise.)
 
 
 
+4.13e) (p155) What's the prob that headway (X) is within 1 standard deviation of the mean value?
 
 
 
 
+Ex). Draw a 5-card hand at random.  What's prob of 1 pair?
+
+Ex:   3 3 7 J Q
+
+NO:   3 3 3 J Q
+
+NO:  3 3 7 7 Q
+
+Decisions:
+
+- which kind for pair?  13C1
+
+- which 3s?  4C2
+
+- what kind for remaining?  12 C 3
+
+- for each card:  4C1. (three of them)
+
+Prob:
+
+    ( 13C1 * 4C2 * 12C3 * (4C1)^3 ) / 52C5
+    
+    (number of ways for 1 pair) / total number of 5-card hands
+    
+    
+    
+    
+    
+    
+Since 1883, tokyo had 5 serious quakes.  What's the prob of at least 8 quakes in the next year?
+
+ X ~ pois(mu=5/140)
+ 
+P(X >= 8) = P(8) + P(9) + P(10) + ...
+
+          = 1 - P(7) - P(6) - ... - P(1) - P(0)
+          
+          
+          
+          
+Ex) Draw a 5-card hand.  What's the prob of getting 1 pair?
+
+Ex:   3 3 7 J K
+
+No:   3 3 3 7 J
+
+No:  3 3 7 7 J
+
+Decisions:
+
+ - which kind for the pair?  13C1
+ 
+ - which couple to use?  4C2
+ 
+ - what kind for other 3?  12C3
+ 
+ - for each, which suit?  4C1 for each!
+ 
+ P(pair) = ( 13C1 * 4C2 * 12C3 * (4C1)^3 ) / 52C5
+ 
+ 
+14) blah blah blah has uniform distribution on (7.5,20) as a model of depth.
+
+a). what are mean and variance of depth?
+
+```{r}
+20^2/25 - 7.5^2/25
+```
+
+```{r}
+20^3/(12.5*3) - 7.5^3/(12.5*3)
+```
+    
+```{r}
+202.08 - 13.75^2
+```
+    
+    
+# Week 5 (Exam I Week)
+    
+## Fri Feb 17
+
+### 4.3 Normal Distribution
+
+Ad:  shows up in nature allll the time!
+
+Idea:  Most of us are in the middle!  More extreme is less likely.
+
+Note:  Tail area is non-negative allll the way down to +/- infty.
+
+Fortunately, gets small quickly.
+
+### pdf/cdf for normal dist
+
+problem:  f(x) is NOT INTEGRABLE BY HAND!
+
+Need computational aid:
+
+- table of values
+- software (r)
+
+Problem!  WHat are mu and sigma?
+
+In general:  from the problem.
+
+Table:  STANDARD NORMAL DIST!!!
+
+       mu = 0,  sigma = 1
+       
+Ex). Suppose Z~normal(0,1)
+
+(ie, std normal!)
+
+a). P(Z < 2.76) = .9971
+
+b)  P(Z > 2.76) = 1 - .9971
+
+```{r}
+1-.9971
+```
+
+c) P(Z<=2.76) = same as a
+
+d). P( -0.25 < Z < 1.87 )
+
+F(1.87) = .9693
+F(-0.25) = .4013
+
+```{r}
+.9693 - .4013
+```
+
+
+### Backwards problems
+
+Suppose Z has std normal dist.  
+
+a). How large would Z have to be in order to be at the 90th percentile?
+
+z = 1.28
+
+Note:  won't always be exact.  Pick the closest.
+
+b). How large would z have to be in order to be in the 40th percentile?
+
+z = -.25
+
+### z-scores
+
+Problem:  real world data NOT standard normal!
+
+Solution:  z-score!
+
+z-scores CONVERT to std normal dist!
+
+Ex). Height for adult women in US follows normal dist with mean 64", stdev 2.4".
+
+a). What's prob that rando woman is less than 65" tall?
+
+P(X<65) = ?
+
+z = (65 - 64)/2.4
+
+```{r}
+(65 - 64)/2.4
+```
+
+look up in table! ->. left area = .6628.
+
+About a 66.3% chance.
+
+b). What's the prob that rando woman is at least 75" tall?
+z
+```{r}
+(75 - 64)/2.4
+```
+
+uh-oh! off the charts!
+
+area < .002
+
+area ~ 0
+
+c)  How tall must a woman be in order to be in the top 5% of womens' heights?
+
+First:  find z-score from table!
+
+halfway btwn:  1.64 and 1.65.  average them!  z = 1.645
+
+now:  solve for x!
+
+```{r}
+1.645*2.4 + 64
+```
+
+She'd have to be at least 67.948" tall.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
 
 
 
