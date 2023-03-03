@@ -1705,6 +1705,286 @@ About 9.3% chance that 10 women have mean height at least 65".
       "large enough":  n >= 30
       
       
+      
+# Week 7
+
+## Monday Feb 27
+
+### 5.3-5.5 Sampling Distributions
+
+Last:  samp dist for xbar
+
+Now: samp dist for phat (sample proportion)
+
+### CLT for phat
+
+If sample size (n) is large enough, then phat follows an (approximately) normal dist, NO MATTER WHAT POPULATION WE'RE SAMPLING FROM!!!
+
+Large enough:
+
+- n*p >=10. (at least 10 successes)
+- n*(1-p) >=10 (at least 10 failures)
+
+z = (obs - exp)/stdev
+
+mean:  expectation for sample proportion is the pop proportion!
+
+Ex). Voters in a particular county are 55% R. 45% D.
+
+If we take a sample of 100 people, what's the prob that half or fewer are R?
+
+P( phat <= .5 )
+
+Is n large enough?
+
+n*p:
+```{r}
+100*.55
+```
+n*(1-p)
+```{r}
+100*(1-.55)
+```
+
+normal dist!  get z-score!
+
+z = (obs - exp)/stdev
+
+obs = .5
+
+exp = .55
+
+stdev = sqrt(.55*(1-.55)/100)
+
+```{r}
+(.5 - .55)/sqrt(.55*(1-.55)/100)
+```
+
+find are on table:
+
+```{r}
+pnorm(-1.01)
+```
+
+About 15.6% chance that fewer than half in our sample are R.
+
+
+### Ch 6:  Parameter Estimation
+
+Q:  what the heck ARE all these parameters we're talking about?
+
+mu? sigma? p?  lambda?
+
+A:  guess (estimate!) based on data!
+
+Think:
+
+Best guess for mu is: xbar!
+
+Best guess for p:  phat
+
+Best guess for sigma:  s (samp stdev)
+
+Best guess for lambda (exponential dist):  ???????
+
+A POINT ESTIMATE is a single number representing a reasonable guess about a parameter.
+
+Big question:  how to find it?  The "best guess" is not always obvious!
+
+3 strategies:
+
+- unbiased estimators
+- method of moments
+- max likelihood estimators (MLEs)
+
+### Unbiased 
+
+Ex). Show that xbar is an unbiased estimator for mu.
+
+Ex). Show that phat is unbiased estimator for p.
+
+Practice:  Show that s^2 is unbiased estimator for sigma^2 (solution: p253)
+
+### Method of Moments
+
+Example 6.12
+
+
+
+
+
+## Wed Mar 1
+
+### 6.2 Parameter estimation
+
+- unbiased
+- m.o.m
+- m.l.e
+
+### Method of Moments
+
+2 kinds:
+
+- moment for distribution
+- moment for data
+
+MoM: match up the moments!  solve for parameters!
+
+Note:  how many moments do we need?  answer: as many as the number of parameters.
+
+Ex). Suppose x1, x2, ..., xn are sampled from EXPONENTIAL distrubion.  Use MoM to estimate lambda.
+
+Ex). x1, ... xn are sampled from NORMAL dist.  Use MoM to estimate mu and sigma.
+
+### Max Likelihood Estimator (MLE)
+
+Likelihood function:
+  
+   probability of observing OUR sample result (x1, x2, ..,xn) GIVEN the value of the params
+   
+MLE:  find choice of params that MAXIMIZES (calculus!) the likelihood function
+
+Ex). Use MLE to find estimate for lambda in exponential dist.
+
+1). get joint pdf
+
+2) sneaky trick: take log of both sides
+
+3). take deriv, set =0. (ie find max!) [NOTE: take deriv with respect to LAMBDA!!!]
+
+
+Ex). 6.22 (p273)
+
+Find estimate for theat using a) MoM and b) MLE
+
+
+
+
+
+
+## Friday Mar 3
+
+### 6.2 MoM and MLE
+
+Ex) Use MLE to estimate mu and sigma for normal dist.
+
+Last time, for both unbiased AND M.O.M:
+
+   mu = xbar
+   sigma = s
+   
+WARNING:  must take deriv with respect to BOTH mu and sigma (not at the same time).
+
+Idea:  two equations, two unknowns!
+
+Conclusion:  MLE estimator for mu is the same (xbar), BUT the estimator for sigma is DIFFERENT!  The MLE is BIASED!!!
+
+### Ch7 - Confidence Intervals
+
+Idea:  what's a RANGE of reasonable values for the parameter (mu, sigma, p, lambda, etc etc), how sure are we the true value is in there?
+
+Ex). Height for adult men is normal with mean 69", stdev 2.7".
+
+mu = 69, sigma = 2.7
+
+If we take a sample of n=36 men, what are the cutoffs for the middle 95% of such sample means?
+
+Q:  is xbar normal?
+
+A: two cases:
+
+- if X is normal, then so is xbar (even small n)
+- if n is large (>=30), then xbar is normal for any population
+
+Middle 95% -> tail area = 2.5% -> z = +/- 1.96
+
+```{r}
+qnorm(.025)
+```
+
+lo:  
+```{r}
+69-1.96*2.7/sqrt(36)
+```
+hi:
+```{r}
+69+1.96*2.7/sqrt(36)
+```
+
+### Conf Int
+
+Idea:  capture the middle 90%/95%/99% of the sampling distribution.
+
+What are reasonable values of mu based on xbar?
+
+Problem:  what about sigma?
+
+Temp solution:  for large n (n>=30), s is a good approximation for sigma.
+
+
+Ex)  A biologist wonders:  what's the mean height of reticulated giraffes?  Collect data on 40 giraffes, their mean height is 18.2', stdev 1.7'.
+
+Construct a 95% C.I for the true mean height of giraffes.
+
+Here:  critical value = z_alpha = 1.96
+
+plug and chug!
+
+low:
+```{r}
+18.2 - 1.96*1.7/sqrt(40)
+```
+hi:
+```{r}
+18.2 + 1.96*1.7/sqrt(40)
+```
+
+We are 95% confident that the true population mean of all reticulated giraffes is btwn 17.67 and 18.72 ft tall.
+
+Is this the same as:    ??
+
+There's a 95% chance that mu is btwn 17.67 and 18.72.
+
+NO!  To be continued...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

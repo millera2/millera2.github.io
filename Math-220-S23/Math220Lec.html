@@ -394,7 +394,7 @@ display: none;
 
 <h1 class="title toc-ignore">Math 220 Spring 20203 Lecture Notes</h1>
 <h4 class="author">Alice Miller</h4>
-<h4 class="date">Updated: 24 February, 2023</h4>
+<h4 class="date">Updated: 03 March, 2023</h4>
 
 </div>
 
@@ -528,6 +528,34 @@ probability plots</a></li>
 <li><a href="#central-limit-theorem" id="toc-central-limit-theorem">CENTRAL LIMIT THEOREM</a></li>
 <li><a href="#is-n-large-enough" id="toc-is-n-large-enough">Is n large
 enough?</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#week-7" id="toc-week-7">Week 7</a>
+<ul>
+<li><a href="#monday-feb-27" id="toc-monday-feb-27">Monday Feb 27</a>
+<ul>
+<li><a href="#sampling-distributions-1" id="toc-sampling-distributions-1">5.3-5.5 Sampling
+Distributions</a></li>
+<li><a href="#clt-for-phat" id="toc-clt-for-phat">CLT for phat</a></li>
+<li><a href="#ch-6-parameter-estimation" id="toc-ch-6-parameter-estimation">Ch 6: Parameter Estimation</a></li>
+<li><a href="#unbiased" id="toc-unbiased">Unbiased</a></li>
+<li><a href="#method-of-moments" id="toc-method-of-moments">Method of
+Moments</a></li>
+</ul></li>
+<li><a href="#wed-mar-1" id="toc-wed-mar-1">Wed Mar 1</a>
+<ul>
+<li><a href="#parameter-estimation" id="toc-parameter-estimation">6.2
+Parameter estimation</a></li>
+<li><a href="#method-of-moments-1" id="toc-method-of-moments-1">Method
+of Moments</a></li>
+<li><a href="#max-likelihood-estimator-mle" id="toc-max-likelihood-estimator-mle">Max Likelihood Estimator
+(MLE)</a></li>
+</ul></li>
+<li><a href="#friday-mar-3" id="toc-friday-mar-3">Friday Mar 3</a>
+<ul>
+<li><a href="#mom-and-mle" id="toc-mom-and-mle">6.2 MoM and MLE</a></li>
+<li><a href="#ch7---confidence-intervals" id="toc-ch7---confidence-intervals">Ch7 - Confidence Intervals</a></li>
+<li><a href="#conf-int" id="toc-conf-int">Conf Int</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -1638,6 +1666,192 @@ xbar is normal no matter what, even for small n.</p></li>
 NEED LARGE n in order to use normal dist (CLT).</p>
 <pre><code>&quot;large enough&quot;:  n &gt;= 30</code></pre></li>
 </ul>
+</div>
+</div>
+</div>
+<div id="week-7" class="section level1">
+<h1>Week 7</h1>
+<div id="monday-feb-27" class="section level2">
+<h2>Monday Feb 27</h2>
+<div id="sampling-distributions-1" class="section level3">
+<h3>5.3-5.5 Sampling Distributions</h3>
+<p>Last: samp dist for xbar</p>
+<p>Now: samp dist for phat (sample proportion)</p>
+</div>
+<div id="clt-for-phat" class="section level3">
+<h3>CLT for phat</h3>
+<p>If sample size (n) is large enough, then phat follows an
+(approximately) normal dist, NO MATTER WHAT POPULATION WE’RE SAMPLING
+FROM!!!</p>
+<p>Large enough:</p>
+<ul>
+<li>n*p &gt;=10. (at least 10 successes)</li>
+<li>n*(1-p) &gt;=10 (at least 10 failures)</li>
+</ul>
+<p>z = (obs - exp)/stdev</p>
+<p>mean: expectation for sample proportion is the pop proportion!</p>
+<p>Ex). Voters in a particular county are 55% R. 45% D.</p>
+<p>If we take a sample of 100 people, what’s the prob that half or fewer
+are R?</p>
+<p>P( phat &lt;= .5 )</p>
+<p>Is n large enough?</p>
+<p>n*p:</p>
+<pre class="r"><code>100*.55</code></pre>
+<pre><code>## [1] 55</code></pre>
+<p>n*(1-p)</p>
+<pre class="r"><code>100*(1-.55)</code></pre>
+<pre><code>## [1] 45</code></pre>
+<p>normal dist! get z-score!</p>
+<p>z = (obs - exp)/stdev</p>
+<p>obs = .5</p>
+<p>exp = .55</p>
+<p>stdev = sqrt(.55*(1-.55)/100)</p>
+<pre class="r"><code>(.5 - .55)/sqrt(.55*(1-.55)/100)</code></pre>
+<pre><code>## [1] -1.005038</code></pre>
+<p>find are on table:</p>
+<pre class="r"><code>pnorm(-1.01)</code></pre>
+<pre><code>## [1] 0.1562476</code></pre>
+<p>About 15.6% chance that fewer than half in our sample are R.</p>
+</div>
+<div id="ch-6-parameter-estimation" class="section level3">
+<h3>Ch 6: Parameter Estimation</h3>
+<p>Q: what the heck ARE all these parameters we’re talking about?</p>
+<p>mu? sigma? p? lambda?</p>
+<p>A: guess (estimate!) based on data!</p>
+<p>Think:</p>
+<p>Best guess for mu is: xbar!</p>
+<p>Best guess for p: phat</p>
+<p>Best guess for sigma: s (samp stdev)</p>
+<p>Best guess for lambda (exponential dist): ???????</p>
+<p>A POINT ESTIMATE is a single number representing a reasonable guess
+about a parameter.</p>
+<p>Big question: how to find it? The “best guess” is not always
+obvious!</p>
+<p>3 strategies:</p>
+<ul>
+<li>unbiased estimators</li>
+<li>method of moments</li>
+<li>max likelihood estimators (MLEs)</li>
+</ul>
+</div>
+<div id="unbiased" class="section level3">
+<h3>Unbiased</h3>
+<p>Ex). Show that xbar is an unbiased estimator for mu.</p>
+<p>Ex). Show that phat is unbiased estimator for p.</p>
+<p>Practice: Show that s^2 is unbiased estimator for sigma^2 (solution:
+p253)</p>
+</div>
+<div id="method-of-moments" class="section level3">
+<h3>Method of Moments</h3>
+<p>Example 6.12</p>
+</div>
+</div>
+<div id="wed-mar-1" class="section level2">
+<h2>Wed Mar 1</h2>
+<div id="parameter-estimation" class="section level3">
+<h3>6.2 Parameter estimation</h3>
+<ul>
+<li>unbiased</li>
+<li>m.o.m</li>
+<li>m.l.e</li>
+</ul>
+</div>
+<div id="method-of-moments-1" class="section level3">
+<h3>Method of Moments</h3>
+<p>2 kinds:</p>
+<ul>
+<li>moment for distribution</li>
+<li>moment for data</li>
+</ul>
+<p>MoM: match up the moments! solve for parameters!</p>
+<p>Note: how many moments do we need? answer: as many as the number of
+parameters.</p>
+<p>Ex). Suppose x1, x2, …, xn are sampled from EXPONENTIAL distrubion.
+Use MoM to estimate lambda.</p>
+<p>Ex). x1, … xn are sampled from NORMAL dist. Use MoM to estimate mu
+and sigma.</p>
+</div>
+<div id="max-likelihood-estimator-mle" class="section level3">
+<h3>Max Likelihood Estimator (MLE)</h3>
+<p>Likelihood function:</p>
+<p>probability of observing OUR sample result (x1, x2, ..,xn) GIVEN the
+value of the params</p>
+<p>MLE: find choice of params that MAXIMIZES (calculus!) the likelihood
+function</p>
+<p>Ex). Use MLE to find estimate for lambda in exponential dist.</p>
+<p>1). get joint pdf</p>
+<ol start="2" style="list-style-type: decimal">
+<li>sneaky trick: take log of both sides</li>
+</ol>
+<p>3). take deriv, set =0. (ie find max!) [NOTE: take deriv with respect
+to LAMBDA!!!]</p>
+<p>Ex). 6.22 (p273)</p>
+<p>Find estimate for theat using a) MoM and b) MLE</p>
+</div>
+</div>
+<div id="friday-mar-3" class="section level2">
+<h2>Friday Mar 3</h2>
+<div id="mom-and-mle" class="section level3">
+<h3>6.2 MoM and MLE</h3>
+<p>Ex) Use MLE to estimate mu and sigma for normal dist.</p>
+<p>Last time, for both unbiased AND M.O.M:</p>
+<p>mu = xbar sigma = s</p>
+<p>WARNING: must take deriv with respect to BOTH mu and sigma (not at
+the same time).</p>
+<p>Idea: two equations, two unknowns!</p>
+<p>Conclusion: MLE estimator for mu is the same (xbar), BUT the
+estimator for sigma is DIFFERENT! The MLE is BIASED!!!</p>
+</div>
+<div id="ch7---confidence-intervals" class="section level3">
+<h3>Ch7 - Confidence Intervals</h3>
+<p>Idea: what’s a RANGE of reasonable values for the parameter (mu,
+sigma, p, lambda, etc etc), how sure are we the true value is in
+there?</p>
+<p>Ex). Height for adult men is normal with mean 69”, stdev 2.7”.</p>
+<p>mu = 69, sigma = 2.7</p>
+<p>If we take a sample of n=36 men, what are the cutoffs for the middle
+95% of such sample means?</p>
+<p>Q: is xbar normal?</p>
+<p>A: two cases:</p>
+<ul>
+<li>if X is normal, then so is xbar (even small n)</li>
+<li>if n is large (&gt;=30), then xbar is normal for any population</li>
+</ul>
+<p>Middle 95% -&gt; tail area = 2.5% -&gt; z = +/- 1.96</p>
+<pre class="r"><code>qnorm(.025)</code></pre>
+<pre><code>## [1] -1.959964</code></pre>
+<p>lo:</p>
+<pre class="r"><code>69-1.96*2.7/sqrt(36)</code></pre>
+<pre><code>## [1] 68.118</code></pre>
+<p>hi:</p>
+<pre class="r"><code>69+1.96*2.7/sqrt(36)</code></pre>
+<pre><code>## [1] 69.882</code></pre>
+</div>
+<div id="conf-int" class="section level3">
+<h3>Conf Int</h3>
+<p>Idea: capture the middle 90%/95%/99% of the sampling
+distribution.</p>
+<p>What are reasonable values of mu based on xbar?</p>
+<p>Problem: what about sigma?</p>
+<p>Temp solution: for large n (n&gt;=30), s is a good approximation for
+sigma.</p>
+<p>Ex) A biologist wonders: what’s the mean height of reticulated
+giraffes? Collect data on 40 giraffes, their mean height is 18.2’, stdev
+1.7’.</p>
+<p>Construct a 95% C.I for the true mean height of giraffes.</p>
+<p>Here: critical value = z_alpha = 1.96</p>
+<p>plug and chug!</p>
+<p>low:</p>
+<pre class="r"><code>18.2 - 1.96*1.7/sqrt(40)</code></pre>
+<pre><code>## [1] 17.67316</code></pre>
+<p>hi:</p>
+<pre class="r"><code>18.2 + 1.96*1.7/sqrt(40)</code></pre>
+<pre><code>## [1] 18.72684</code></pre>
+<p>We are 95% confident that the true population mean of all reticulated
+giraffes is btwn 17.67 and 18.72 ft tall.</p>
+<p>Is this the same as: ??</p>
+<p>There’s a 95% chance that mu is btwn 17.67 and 18.72.</p>
+<p>NO! To be continued…</p>
 </div>
 </div>
 </div>
