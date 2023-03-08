@@ -85,7 +85,9 @@ sqrt(2/40.9^2)
 
 ### 5.40
 
-Looks like most folks got the solution, so I won't repeat it here.  Here's a more interesting variant: what's the sampling distribution if we sample *without* replacement?
+Looks like most folks got the solution, so I won't repeat it here.  Here's a more interesting variant: what's the sampling distribution if we sample *without* replacement?  Can you follow my counting?  Great practice!
+
+For $M=0$, we know all three envelopes had zero.  For $M=5$, there are three possibilities: one 5, two 5s or all 3 5s.  For $M=10$, there are two possibilities: one 10, or two 10s.
 
 |       |         |         |    |
 | --- | --- | ---  | --- |
@@ -112,6 +114,62 @@ For "mean courtship":
 
 d) Absolutely not.  We're sampling from a non-normal population, so we need a large sample size (n>=30) for the CLT to kick in.  Yee haw!
 
+## HW Week 5
+
+
+### 4.38
+
+First machine:
+```{r}
+pnorm(3.1, 3, .1)-pnorm(2.9, 3,.1)
+```
+
+Second machine:
+```{r}
+pnorm(3.1,3.04,.02)-pnorm(2.9, 3.04, .02)
+```
+
+Second one makes more "accpetable" corks.
+ 
+### 4.44
+
+a)
+ 
+```{r}
+pnorm(1.5)-pnorm(-1.5)
+```
+ 
+b) 
+```{r}
+(1-pnorm(2.5))*2
+```
+ 
+c)
+```{r}
+2*(pnorm(2)-pnorm(1))
+```
+ 
+### 4.54
+
+Note:  I used continuity correction.
+
+a) 
+
+```{r}
+pnorm(30.5, 200*.1,sqrt(200*.1*.9)) - pnorm(-.5, 200*.1,sqrt(200*.1*.9))
+```
+
+b) 
+
+```{r}
+pnorm(29.5, 200*.1,sqrt(200*.1*.9)) - pnorm(-.5, 200*.1,sqrt(200*.1*.9))
+
+```
+
+c)
+```{r}
+pnorm(25.5,200*.1,sqrt(200*.1*.9))-pnorm(14.5,200*.1,sqrt(200*.1*.9))
+```
 
 
 
