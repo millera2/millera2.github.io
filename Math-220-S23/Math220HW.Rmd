@@ -34,6 +34,87 @@ theme_set(                                #this sets the theme for all    #
 
 # Abbreviated Even Solutions
 
+## HW Week 6
+
+
+
+### 4.60
+
+a) 
+```{r}
+pexp(200,.01386)-pexp(100,0.01386)
+```
+
+b) $P(X>\mu+2\sigma)$
+```{r}
+lambda <- .01386
+
+1-pexp(1/lambda + 2/lambda, lambda) 
+
+```
+
+c) Set $F(x)=.5$, solve for $x$:
+
+```{r}
+-log(.5)/lambda
+```
+
+### 4.62 
+
+**Note**: I didn't grade this one, but multiple students asked about it.  
+
+First, note that $E[X]=0$, since this pdf is symmetric about $x=0$.  This isn't too tough to show algebraically, but also you could see immediately from a graph of $f(x)$.  
+
+Now, for $\lambda$.  We know $\sigma = 40.9$, so let's use the familiar shortcut:
+
+$$\sigma^2 = E[X^2] - \left(E[X]^2\right)$$
+Using the above fact about expected value, we have:
+$$\sigma^2 = E[X^2]$$
+
+So, let's calculate that.
+
+$$E[X^2]=\int_{-\infty}^{\infty}x^2\cdot f(x) dx = \int_0^\infty x^2 \cdot \lambda e^{-\lambda x} dx $$
+You should spend a little time making sure you believe me on that second equality.  Now, this is exactly the same as $E[X^2]$ for the exponential distribution, which we know from class/textbook:  $E[X^2]=\frac{2}{\lambda^2}$.  (You can verify this yourself; integrate by-parts twice.) All together, we have
+$$40.9^2 = \frac{2}{\lambda^2}-(0)^2$$
+
+Solving, we find $\lambda$:
+
+```{r}
+sqrt(2/40.9^2)
+```
+
+### 5.40
+
+Looks like most folks got the solution, so I won't repeat it here.  Here's a more interesting variant: what's the sampling distribution if we sample *without* replacement?
+
+|       |         |         |    |
+| --- | --- | ---  | --- |
+| $X$   | 0       |  5      |   10  |
+| $P(X)$| $\frac{{5 \choose 3} }{{10 \choose 3}}$        |   $\frac{{3 \choose 1}\cdot {5 \choose 2} + {3 \choose 2}\cdot{5 \choose 1}+{3 \choose 3} }{{10 \choose 3}}$      |  $\frac{{2 \choose 1}\cdot {8 \choose 2} + {2 \choose 2}\cdot{8 \choose 1}+{3 \choose 3} }{{10 \choose 3}}$   |
+
+
+### 5.50
+
+a) Since there's no "negative time", this distribution couldn't be symmetric.  Thus, not normal.  We'd be dead in the water without the CLT!
+
+b) 
+
+```{r}
+pnorm(125, 120, 110/sqrt(50)) - pnorm(100, 120, 110/sqrt(50))
+```
+
+c) Note:  I assume this problem meant to say "mean courtship", not "total courtship".  If the book really meant total, then there's nearly 0% chance of exceeding 150 min total (since there are 50 pairs!).
+
+For "mean courtship":
+```{r}
+1-pnorm(150, 120, 110/sqrt(50))
+```
+
+d) Absolutely not.  We're sampling from a non-normal population, so we need a large sample size (n>=30) for the CLT to kick in.  Yee haw!
+
+
+
+
 ## HW 3
 
 ### 2.48

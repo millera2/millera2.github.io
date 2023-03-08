@@ -392,7 +392,7 @@ display: none;
 
 
 <h1 class="title toc-ignore">Math 220 Spring 2022 HW Solutions</h1>
-<h4 class="date">Updated: 13 February, 2023</h4>
+<h4 class="date">Updated: 08 March, 2023</h4>
 
 </div>
 
@@ -400,23 +400,30 @@ display: none;
 <ul>
 <li><a href="#abbreviated-even-solutions" id="toc-abbreviated-even-solutions">Abbreviated Even Solutions</a>
 <ul>
+<li><a href="#hw-week-6" id="toc-hw-week-6">HW Week 6</a>
+<ul>
+<li><a href="#section" id="toc-section">4.60</a></li>
+<li><a href="#section-1" id="toc-section-1">4.62</a></li>
+<li><a href="#section-2" id="toc-section-2">5.40</a></li>
+<li><a href="#section-3" id="toc-section-3">5.50</a></li>
+</ul></li>
 <li><a href="#hw-3" id="toc-hw-3">HW 3</a>
 <ul>
-<li><a href="#section" id="toc-section">2.48</a></li>
-<li><a href="#section-1" id="toc-section-1">2.64</a></li>
-<li><a href="#section-2" id="toc-section-2">2.80</a></li>
+<li><a href="#section-4" id="toc-section-4">2.48</a></li>
+<li><a href="#section-5" id="toc-section-5">2.64</a></li>
+<li><a href="#section-6" id="toc-section-6">2.80</a></li>
 </ul></li>
 <li><a href="#hw-2" id="toc-hw-2">HW 2</a>
 <ul>
-<li><a href="#section-3" id="toc-section-3">2.26</a></li>
-<li><a href="#section-4" id="toc-section-4">2.30</a></li>
-<li><a href="#section-5" id="toc-section-5">2.34</a></li>
+<li><a href="#section-7" id="toc-section-7">2.26</a></li>
+<li><a href="#section-8" id="toc-section-8">2.30</a></li>
+<li><a href="#section-9" id="toc-section-9">2.34</a></li>
 </ul></li>
 <li><a href="#hw-1" id="toc-hw-1">HW 1</a>
 <ul>
-<li><a href="#section-6" id="toc-section-6">1.38</a></li>
-<li><a href="#section-7" id="toc-section-7">1.42</a></li>
-<li><a href="#section-8" id="toc-section-8">1.44</a></li>
+<li><a href="#section-10" id="toc-section-10">1.38</a></li>
+<li><a href="#section-11" id="toc-section-11">1.42</a></li>
+<li><a href="#section-12" id="toc-section-12">1.44</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -424,9 +431,115 @@ display: none;
 
 <div id="abbreviated-even-solutions" class="section level1">
 <h1>Abbreviated Even Solutions</h1>
+<div id="hw-week-6" class="section level2">
+<h2>HW Week 6</h2>
+<div id="section" class="section level3">
+<h3>4.60</h3>
+<ol style="list-style-type: lower-alpha">
+<li></li>
+</ol>
+<pre class="r"><code>pexp(200,.01386)-pexp(100,0.01386)</code></pre>
+<pre><code>## [1] 0.1875368</code></pre>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><span class="math inline">\(P(X&gt;\mu+2\sigma)\)</span></li>
+</ol>
+<pre class="r"><code>lambda &lt;- .01386
+
+1-pexp(1/lambda + 2/lambda, lambda) </code></pre>
+<pre><code>## [1] 0.04978707</code></pre>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Set <span class="math inline">\(F(x)=.5\)</span>, solve for <span class="math inline">\(x\)</span>:</li>
+</ol>
+<pre class="r"><code>-log(.5)/lambda</code></pre>
+<pre><code>## [1] 50.01062</code></pre>
+</div>
+<div id="section-1" class="section level3">
+<h3>4.62</h3>
+<p><strong>Note</strong>: I didn’t grade this one, but multiple students
+asked about it.</p>
+<p>First, note that <span class="math inline">\(E[X]=0\)</span>, since
+this pdf is symmetric about <span class="math inline">\(x=0\)</span>.
+This isn’t too tough to show algebraically, but also you could see
+immediately from a graph of <span class="math inline">\(f(x)\)</span>.</p>
+<p>Now, for <span class="math inline">\(\lambda\)</span>. We know <span class="math inline">\(\sigma = 40.9\)</span>, so let’s use the familiar
+shortcut:</p>
+<p><span class="math display">\[\sigma^2 = E[X^2] -
+\left(E[X]^2\right)\]</span> Using the above fact about expected value,
+we have: <span class="math display">\[\sigma^2 = E[X^2]\]</span></p>
+<p>So, let’s calculate that.</p>
+<p><span class="math display">\[E[X^2]=\int_{-\infty}^{\infty}x^2\cdot
+f(x) dx = \int_0^\infty x^2 \cdot \lambda e^{-\lambda x} dx \]</span>
+You should spend a little time making sure you believe me on that second
+equality. Now, this is exactly the same as <span class="math inline">\(E[X^2]\)</span> for the exponential distribution,
+which we know from class/textbook: <span class="math inline">\(E[X^2]=\frac{2}{\lambda^2}\)</span>. (You can
+verify this yourself; integrate by-parts twice.) All together, we have
+<span class="math display">\[40.9^2 =
+\frac{2}{\lambda^2}-(0)^2\]</span></p>
+<p>Solving, we find <span class="math inline">\(\lambda\)</span>:</p>
+<pre class="r"><code>sqrt(2/40.9^2)</code></pre>
+<pre><code>## [1] 0.03457735</code></pre>
+</div>
+<div id="section-2" class="section level3">
+<h3>5.40</h3>
+<p>Looks like most folks got the solution, so I won’t repeat it here.
+Here’s a more interesting variant: what’s the sampling distribution if
+we sample <em>without</em> replacement?</p>
+<table>
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(X\)</span></td>
+<td>0</td>
+<td>5</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(P(X)\)</span></td>
+<td><span class="math inline">\(\frac{{5 \choose 3} }{{10 \choose
+3}}\)</span></td>
+<td><span class="math inline">\(\frac{{3 \choose 1}\cdot {5 \choose 2} +
+{3 \choose 2}\cdot{5 \choose 1}+{3 \choose 3} }{{10 \choose
+3}}\)</span></td>
+<td><span class="math inline">\(\frac{{2 \choose 1}\cdot {8 \choose 2} +
+{2 \choose 2}\cdot{8 \choose 1}+{3 \choose 3} }{{10 \choose
+3}}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="section-3" class="section level3">
+<h3>5.50</h3>
+<ol style="list-style-type: lower-alpha">
+<li><p>Since there’s no “negative time”, this distribution couldn’t be
+symmetric. Thus, not normal. We’d be dead in the water without the
+CLT!</p></li>
+<li></li>
+</ol>
+<pre class="r"><code>pnorm(125, 120, 110/sqrt(50)) - pnorm(100, 120, 110/sqrt(50))</code></pre>
+<pre><code>## [1] 0.5267681</code></pre>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Note: I assume this problem meant to say “mean courtship”, not
+“total courtship”. If the book really meant total, then there’s nearly
+0% chance of exceeding 150 min total (since there are 50 pairs!).</li>
+</ol>
+<p>For “mean courtship”:</p>
+<pre class="r"><code>1-pnorm(150, 120, 110/sqrt(50))</code></pre>
+<pre><code>## [1] 0.02689816</code></pre>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Absolutely not. We’re sampling from a non-normal population, so we
+need a large sample size (n&gt;=30) for the CLT to kick in. Yee
+haw!</li>
+</ol>
+</div>
+</div>
 <div id="hw-3" class="section level2">
 <h2>HW 3</h2>
-<div id="section" class="section level3">
+<div id="section-4" class="section level3">
 <h3>2.48</h3>
 <ol style="list-style-type: lower-alpha">
 <li>P(A2 | A1) = P(A2 and A1)/P(A1) = .06/.12</li>
@@ -451,7 +564,7 @@ display: none;
 <pre class="r"><code>.05/.06</code></pre>
 <pre><code>## [1] 0.8333333</code></pre>
 </div>
-<div id="section-1" class="section level3">
+<div id="section-5" class="section level3">
 <h3>2.64</h3>
 <ol style="list-style-type: lower-alpha">
 <li>P(W) = P(W and S)+P(W and M)+P(W and L)</li>
@@ -472,7 +585,7 @@ display: none;
 <pre class="r"><code>.1*.3/.66</code></pre>
 <pre><code>## [1] 0.04545455</code></pre>
 </div>
-<div id="section-2" class="section level3">
+<div id="section-6" class="section level3">
 <h3>2.80</h3>
 <pre><code>  P( 1or2 or 3and 4) 
        = P(1or2) + P(3and4) - P(1or2 and 3and4)
@@ -483,7 +596,7 @@ display: none;
 </div>
 <div id="hw-2" class="section level2">
 <h2>HW 2</h2>
-<div id="section-3" class="section level3">
+<div id="section-7" class="section level3">
 <h3>2.26</h3>
 <ol style="list-style-type: lower-alpha">
 <li>P(A1^C) = 1-.12 = .88</li>
@@ -497,7 +610,7 @@ display: none;
 <li><p>P(at most 2) = 1 - P(A1 and A2 and A3) = .99</p></li>
 </ol>
 </div>
-<div id="section-4" class="section level3">
+<div id="section-8" class="section level3">
 <h3>2.30</h3>
 <ol style="list-style-type: lower-alpha">
 <li>8P3</li>
@@ -525,7 +638,7 @@ display: none;
 <pre class="r"><code>(choose(8,6)+choose(10,6)+choose(12,6))/choose(30,6)</code></pre>
 <pre><code>## [1] 0.00195697</code></pre>
 </div>
-<div id="section-5" class="section level3">
+<div id="section-9" class="section level3">
 <h3>2.34</h3>
 <ol style="list-style-type: lower-alpha">
 <li></li>
@@ -547,7 +660,7 @@ display: none;
 </div>
 <div id="hw-1" class="section level2">
 <h2>HW 1</h2>
-<div id="section-6" class="section level3">
+<div id="section-10" class="section level3">
 <h3>1.38</h3>
 <ol style="list-style-type: lower-alpha">
 <li>Reported median is 125.</li>
@@ -558,7 +671,7 @@ display: none;
 <p>Related topic: The shape of a histogram can change drastically
 depending on how wide your bins/categories are!</p>
 </div>
-<div id="section-7" class="section level3">
+<div id="section-11" class="section level3">
 <h3>1.42</h3>
 <ul>
 <li>Mean:</li>
@@ -584,7 +697,7 @@ can say the same about <span class="math inline">\(\frac{x_{n/2}+x_{n/2+1}}{2}\)
 <p><span class="math display">\[ y_{(n+1)/2} = c\cdot
 x_{(n+1)/2}\]</span></p>
 </div>
-<div id="section-8" class="section level3">
+<div id="section-12" class="section level3">
 <h3>1.44</h3>
 <ol style="list-style-type: lower-alpha">
 <li><p>range = 182.6-180.3 = 2.3</p></li>
