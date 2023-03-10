@@ -2002,6 +2002,297 @@ NO!  To be continued...
 
 
 
+```{r}
+ourData <- sample(1:6,30, replace=TRUE)
+
+mean(ourData) - .67*sd(ourData)/sqrt(30)
+mean(ourData) + .67*sd(ourData)/sqrt(30)
+
+```
+
+
+
+
+```{r}
+qnorm(.25)
+```
+
+
+
+# Week 8
+
+## Monday March 6
+
+### Ch 7 - Confidence Intervals
+
+Idea:  want best guess for pop parameter based on data!
+
+ESTIMATE!!!!
+
+Ex). Prof Miller wonders:  what's the true mean volume of coffee she pours in the morning?
+
+Collects data on 50 days.  Mean volume = 8.2, stdev 1.7oz.
+
+Estimate the true mean volume with 99% confidence.
+
+tail area = .005 -> 2.58
+
+```{r}
+qnorm(.005)
+```
+
+
+plug and chug!
+
+```{r}
+8.2 - 2.58*1.7/sqrt(50)
+```
+```{r}
+8.2 + 2.58*1.7/sqrt(50)
+```
+
+We are 99% confident that the true mean volume of morning coffee is between 7.58oz and 8.82oz.
+
+### What does CONFIDENCE really mean?
+
+Ex). Dice rolls!  Goal:  use sample data to approximate mean value of dice throw.
+
+Note:  we know that mu = 3.5
+
+dice sample: (n=10)
+```{r}
+sample(1:6, 10, replace = T)
+```
+
+Take sample of size n=50, construct 50% CI:
+
+```{r}
+ourData <- sample(1:6, 50, replace = T)
+ourData
+
+mean(ourData) - qnorm(.25)*sd(ourData)/sqrt(50)
+mean(ourData) + qnorm(.25)*sd(ourData)/sqrt(50)
+
+```
+
+
+MORAL OF THE STORY:  the cofindence level is about the METHOD used for constructing CI, it is NOT about the individual bounds you calculated.
+
+You have NO IDEA if your interval was successful or not.
+
+
+### Margin of error
+
+Math:  everyting after the +/- in formula.
+
+
+Goal:  make MOE small!  Two factors that affect MOE:
+
+- sample size (n).  As sample size increases, the MOE for CI decreases
+
+   Think:  yaaaay!
+- confidence level.  As confidence increases, the MOE for CI BIGGER MOE!!!
+
+   Think:  bummer!
+   
+   
+### Planning ahead for sample size
+
+Recall, the MOE in coffee examle was:
+
+```{r}
+2.58*1.7/sqrt(50)
+```
+
+Suppose we wish to conduct a follow-up study that estimates the true volume within 0.1 oz, at 99.9% confidence.
+
+
+How large must our samle be?
+
+Idea:  plug in to MOE formula, solve back for n.
+
+Info:
+
+MOE < .1
+z = 3.29
+```{r}
+qnorm(.0005)
+```
+
+prior estimate for sigma = 1.7oz
+
+plug in!
+
+```{r}
+(3.29*1.7/.1)^2
+```
+
+Need n at least 3129.
+
+Note:  might need to compromise!  Maybe either less confidence, OR accept a bigger margin of error.
+
+
+
+
+
+
+
+
+## Wed March 8
+
+### CH 7: CIs
+
+So far:  CI for mu (large n)
+
+Q:  wait.  if we don't know mu, how the heck do we know sigma?
+
+A:  swap out for s (ok if n large, since s is unbiased).
+
+Q:  what if n is small?
+
+before:
+
+z = (xbar - mu)/(sigma/sqrt(n))
+
+now:
+
+t = (xbar - mu)/(s/sqrt(n))
+
+### the t dist
+
+The t dist comes from using s instead of sigma.
+
+Derivation:  grad school!
+
+Neat t facts:
+
+- t dist looks awful lot like z dist
+- weird thing:  shape of the t dist depends on the sample size
+   - n larger -> t gets closer to normal.  (basically no difference after n=100)
+- t dist has thicker tails than normal dist (always)
+
+Q:  are t-intervals wider or narrower than z-intervals?
+
+A:  t always wider!  more stuff in the tails!
+
+Think:  bummer!  bigger MOE with t dist!
+
+It's the price we pay for not knowing sigma.
+
+### t table
+
+WARNING: t table is BACKWARDS from z table!
+
+In the t-table:
+
+- values IN the table are t-scores
+- area on top margin
+
+Note:  need DEGREES OF FREEDOM
+
+     df = n-1
+     
+     
+Ex). Suppose we wish to estimate mu with 95% confidence from sample with n=15.
+
+
+Note:  it's ESSENTIAL to use t here, not z!
+
+t = 2.145
+
+```{r}
+qt(.025,14)
+```
+
+Ex) Estimate mu with 99% confidence, n=20.
+
+What's t?
+
+t = 2.861
+
+Ex) A researcher wonders, what's the mean height for women in Sweden?
+
+Collect data from 12 women in Sweden, find mean height 65.2", stdev 2.5".
+
+Estimate the true mean height with 90% confidence.
+
+t = 1.796
+
+```{r}
+65.2 - 1.796*2.5/sqrt(12)
+```
+```{r}
+65.2 + 1.796*2.5/sqrt(12)
+```
+
+We are 90% confident that true mean height for Swedish women is btwn 63.9" and 66.5".
+
+### Conf Int for p
+
+Ex). What proportion of DU students will travel out-of-state for break?
+
+random sample of 100 students:  53 of them say "yes", travel.
+
+Estimate the true proportion of travelling students with 94% confidence.
+
+```{r}
+qnorm(.03)
+```
+
+z = 1.88
+
+plug and chug!
+
+```{r}
+.53 - 1.88*sqrt(.53*(1-.53)/100)
+```
+```{r}
+.53 + 1.88*sqrt(.53*(1-.53)/100)
+```
+
+We're 94% confident that the true prop of travelling students is btwn 44% and 62%.
+
+Q:  what if we wanted smaller MOE?
+
+MOE:
+```{r}
+1.88*sqrt(.53*(1-.53)/100)
+```
+
+### Plan ahead for sample size
+
+Ex). Suppose we wish to conduct a future study that estimate the prop to within 1% and 95% confidence.
+
+Idea:  plug in to MOE formula, solve back for n
+
+prior estimate for p = .53
+
+z = 1.96
+
+MOE = .01
+
+```{r}
+.53*(1-.53)*(1.96/.01)^2
+```
+
+
+Q:  what if no prior estimate for p?
+
+A:  use = .5.  Worst-case scenario.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

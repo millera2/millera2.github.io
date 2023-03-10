@@ -394,7 +394,7 @@ display: none;
 
 <h1 class="title toc-ignore">Math 220 Spring 20203 Lecture Notes</h1>
 <h4 class="author">Alice Miller</h4>
-<h4 class="date">Updated: 03 March, 2023</h4>
+<h4 class="date">Updated: 10 March, 2023</h4>
 
 </div>
 
@@ -556,6 +556,29 @@ of Moments</a></li>
 <li><a href="#mom-and-mle" id="toc-mom-and-mle">6.2 MoM and MLE</a></li>
 <li><a href="#ch7---confidence-intervals" id="toc-ch7---confidence-intervals">Ch7 - Confidence Intervals</a></li>
 <li><a href="#conf-int" id="toc-conf-int">Conf Int</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#week-8" id="toc-week-8">Week 8</a>
+<ul>
+<li><a href="#monday-march-6" id="toc-monday-march-6">Monday March 6</a>
+<ul>
+<li><a href="#ch-7---confidence-intervals" id="toc-ch-7---confidence-intervals">Ch 7 - Confidence
+Intervals</a></li>
+<li><a href="#what-does-confidence-really-mean" id="toc-what-does-confidence-really-mean">What does CONFIDENCE really
+mean?</a></li>
+<li><a href="#margin-of-error" id="toc-margin-of-error">Margin of
+error</a></li>
+<li><a href="#planning-ahead-for-sample-size" id="toc-planning-ahead-for-sample-size">Planning ahead for sample
+size</a></li>
+</ul></li>
+<li><a href="#wed-march-8" id="toc-wed-march-8">Wed March 8</a>
+<ul>
+<li><a href="#ch-7-cis" id="toc-ch-7-cis">CH 7: CIs</a></li>
+<li><a href="#the-t-dist" id="toc-the-t-dist">the t dist</a></li>
+<li><a href="#t-table" id="toc-t-table">t table</a></li>
+<li><a href="#conf-int-for-p" id="toc-conf-int-for-p">Conf Int for
+p</a></li>
+<li><a href="#plan-ahead-for-sample-size" id="toc-plan-ahead-for-sample-size">Plan ahead for sample size</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -1852,6 +1875,197 @@ giraffes is btwn 17.67 and 18.72 ft tall.</p>
 <p>Is this the same as: ??</p>
 <p>There’s a 95% chance that mu is btwn 17.67 and 18.72.</p>
 <p>NO! To be continued…</p>
+<pre class="r"><code>ourData &lt;- sample(1:6,30, replace=TRUE)
+
+mean(ourData) - .67*sd(ourData)/sqrt(30)</code></pre>
+<pre><code>## [1] 3.107701</code></pre>
+<pre class="r"><code>mean(ourData) + .67*sd(ourData)/sqrt(30)</code></pre>
+<pre><code>## [1] 3.558965</code></pre>
+<pre class="r"><code>qnorm(.25)</code></pre>
+<pre><code>## [1] -0.6744898</code></pre>
+</div>
+</div>
+</div>
+<div id="week-8" class="section level1">
+<h1>Week 8</h1>
+<div id="monday-march-6" class="section level2">
+<h2>Monday March 6</h2>
+<div id="ch-7---confidence-intervals" class="section level3">
+<h3>Ch 7 - Confidence Intervals</h3>
+<p>Idea: want best guess for pop parameter based on data!</p>
+<p>ESTIMATE!!!!</p>
+<p>Ex). Prof Miller wonders: what’s the true mean volume of coffee she
+pours in the morning?</p>
+<p>Collects data on 50 days. Mean volume = 8.2, stdev 1.7oz.</p>
+<p>Estimate the true mean volume with 99% confidence.</p>
+<p>tail area = .005 -&gt; 2.58</p>
+<pre class="r"><code>qnorm(.005)</code></pre>
+<pre><code>## [1] -2.575829</code></pre>
+<p>plug and chug!</p>
+<pre class="r"><code>8.2 - 2.58*1.7/sqrt(50)</code></pre>
+<pre><code>## [1] 7.579726</code></pre>
+<pre class="r"><code>8.2 + 2.58*1.7/sqrt(50)</code></pre>
+<pre><code>## [1] 8.820274</code></pre>
+<p>We are 99% confident that the true mean volume of morning coffee is
+between 7.58oz and 8.82oz.</p>
+</div>
+<div id="what-does-confidence-really-mean" class="section level3">
+<h3>What does CONFIDENCE really mean?</h3>
+<p>Ex). Dice rolls! Goal: use sample data to approximate mean value of
+dice throw.</p>
+<p>Note: we know that mu = 3.5</p>
+<p>dice sample: (n=10)</p>
+<pre class="r"><code>sample(1:6, 10, replace = T)</code></pre>
+<pre><code>##  [1] 2 4 6 1 6 3 6 4 1 5</code></pre>
+<p>Take sample of size n=50, construct 50% CI:</p>
+<pre class="r"><code>ourData &lt;- sample(1:6, 50, replace = T)
+ourData</code></pre>
+<pre><code>##  [1] 5 4 5 1 6 3 6 4 1 6 6 5 1 2 6 2 5 2 3 3 3 6 5 3 5 6 2 3 1 3 6 4 4 5 1 1 1 1
+## [39] 2 5 5 2 2 4 3 1 1 4 4 2</code></pre>
+<pre class="r"><code>mean(ourData) - qnorm(.25)*sd(ourData)/sqrt(50)</code></pre>
+<pre><code>## [1] 3.589202</code></pre>
+<pre class="r"><code>mean(ourData) + qnorm(.25)*sd(ourData)/sqrt(50)</code></pre>
+<pre><code>## [1] 3.250798</code></pre>
+<p>MORAL OF THE STORY: the cofindence level is about the METHOD used for
+constructing CI, it is NOT about the individual bounds you
+calculated.</p>
+<p>You have NO IDEA if your interval was successful or not.</p>
+</div>
+<div id="margin-of-error" class="section level3">
+<h3>Margin of error</h3>
+<p>Math: everyting after the +/- in formula.</p>
+<p>Goal: make MOE small! Two factors that affect MOE:</p>
+<ul>
+<li><p>sample size (n). As sample size increases, the MOE for CI
+decreases</p>
+<p>Think: yaaaay!</p></li>
+<li><p>confidence level. As confidence increases, the MOE for CI BIGGER
+MOE!!!</p>
+<p>Think: bummer!</p></li>
+</ul>
+</div>
+<div id="planning-ahead-for-sample-size" class="section level3">
+<h3>Planning ahead for sample size</h3>
+<p>Recall, the MOE in coffee examle was:</p>
+<pre class="r"><code>2.58*1.7/sqrt(50)</code></pre>
+<pre><code>## [1] 0.6202741</code></pre>
+<p>Suppose we wish to conduct a follow-up study that estimates the true
+volume within 0.1 oz, at 99.9% confidence.</p>
+<p>How large must our samle be?</p>
+<p>Idea: plug in to MOE formula, solve back for n.</p>
+<p>Info:</p>
+<p>MOE &lt; .1 z = 3.29</p>
+<pre class="r"><code>qnorm(.0005)</code></pre>
+<pre><code>## [1] -3.290527</code></pre>
+<p>prior estimate for sigma = 1.7oz</p>
+<p>plug in!</p>
+<pre class="r"><code>(3.29*1.7/.1)^2</code></pre>
+<pre><code>## [1] 3128.165</code></pre>
+<p>Need n at least 3129.</p>
+<p>Note: might need to compromise! Maybe either less confidence, OR
+accept a bigger margin of error.</p>
+</div>
+</div>
+<div id="wed-march-8" class="section level2">
+<h2>Wed March 8</h2>
+<div id="ch-7-cis" class="section level3">
+<h3>CH 7: CIs</h3>
+<p>So far: CI for mu (large n)</p>
+<p>Q: wait. if we don’t know mu, how the heck do we know sigma?</p>
+<p>A: swap out for s (ok if n large, since s is unbiased).</p>
+<p>Q: what if n is small?</p>
+<p>before:</p>
+<p>z = (xbar - mu)/(sigma/sqrt(n))</p>
+<p>now:</p>
+<p>t = (xbar - mu)/(s/sqrt(n))</p>
+</div>
+<div id="the-t-dist" class="section level3">
+<h3>the t dist</h3>
+<p>The t dist comes from using s instead of sigma.</p>
+<p>Derivation: grad school!</p>
+<p>Neat t facts:</p>
+<ul>
+<li>t dist looks awful lot like z dist</li>
+<li>weird thing: shape of the t dist depends on the sample size
+<ul>
+<li>n larger -&gt; t gets closer to normal. (basically no difference
+after n=100)</li>
+</ul></li>
+<li>t dist has thicker tails than normal dist (always)</li>
+</ul>
+<p>Q: are t-intervals wider or narrower than z-intervals?</p>
+<p>A: t always wider! more stuff in the tails!</p>
+<p>Think: bummer! bigger MOE with t dist!</p>
+<p>It’s the price we pay for not knowing sigma.</p>
+</div>
+<div id="t-table" class="section level3">
+<h3>t table</h3>
+<p>WARNING: t table is BACKWARDS from z table!</p>
+<p>In the t-table:</p>
+<ul>
+<li>values IN the table are t-scores</li>
+<li>area on top margin</li>
+</ul>
+<p>Note: need DEGREES OF FREEDOM</p>
+<pre><code> df = n-1
+ 
+ </code></pre>
+<p>Ex). Suppose we wish to estimate mu with 95% confidence from sample
+with n=15.</p>
+<p>Note: it’s ESSENTIAL to use t here, not z!</p>
+<p>t = 2.145</p>
+<pre class="r"><code>qt(.025,14)</code></pre>
+<pre><code>## [1] -2.144787</code></pre>
+<p>Ex) Estimate mu with 99% confidence, n=20.</p>
+<p>What’s t?</p>
+<p>t = 2.861</p>
+<p>Ex) A researcher wonders, what’s the mean height for women in
+Sweden?</p>
+<p>Collect data from 12 women in Sweden, find mean height 65.2”, stdev
+2.5”.</p>
+<p>Estimate the true mean height with 90% confidence.</p>
+<p>t = 1.796</p>
+<pre class="r"><code>65.2 - 1.796*2.5/sqrt(12)</code></pre>
+<pre><code>## [1] 63.90385</code></pre>
+<pre class="r"><code>65.2 + 1.796*2.5/sqrt(12)</code></pre>
+<pre><code>## [1] 66.49615</code></pre>
+<p>We are 90% confident that true mean height for Swedish women is btwn
+63.9” and 66.5”.</p>
+</div>
+<div id="conf-int-for-p" class="section level3">
+<h3>Conf Int for p</h3>
+<p>Ex). What proportion of DU students will travel out-of-state for
+break?</p>
+<p>random sample of 100 students: 53 of them say “yes”, travel.</p>
+<p>Estimate the true proportion of travelling students with 94%
+confidence.</p>
+<pre class="r"><code>qnorm(.03)</code></pre>
+<pre><code>## [1] -1.880794</code></pre>
+<p>z = 1.88</p>
+<p>plug and chug!</p>
+<pre class="r"><code>.53 - 1.88*sqrt(.53*(1-.53)/100)</code></pre>
+<pre><code>## [1] 0.4361694</code></pre>
+<pre class="r"><code>.53 + 1.88*sqrt(.53*(1-.53)/100)</code></pre>
+<pre><code>## [1] 0.6238306</code></pre>
+<p>We’re 94% confident that the true prop of travelling students is btwn
+44% and 62%.</p>
+<p>Q: what if we wanted smaller MOE?</p>
+<p>MOE:</p>
+<pre class="r"><code>1.88*sqrt(.53*(1-.53)/100)</code></pre>
+<pre><code>## [1] 0.09383065</code></pre>
+</div>
+<div id="plan-ahead-for-sample-size" class="section level3">
+<h3>Plan ahead for sample size</h3>
+<p>Ex). Suppose we wish to conduct a future study that estimate the prop
+to within 1% and 95% confidence.</p>
+<p>Idea: plug in to MOE formula, solve back for n</p>
+<p>prior estimate for p = .53</p>
+<p>z = 1.96</p>
+<p>MOE = .01</p>
+<pre class="r"><code>.53*(1-.53)*(1.96/.01)^2</code></pre>
+<pre><code>## [1] 9569.426</code></pre>
+<p>Q: what if no prior estimate for p?</p>
+<p>A: use = .5. Worst-case scenario.</p>
 </div>
 </div>
 </div>
