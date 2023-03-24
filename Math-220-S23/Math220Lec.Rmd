@@ -2291,6 +2291,311 @@ A:  use = .5.  Worst-case scenario.
 
 
 
+# Week 9
+
+## Monday March 20
+
+
+Recall CLT:  As long as n is large, then our sample statistics (like xbar and phat) follow a normal dist, NO MATTER WHAT POPULATION WE'RE SAMPLING FROM!!!
+
+### Ch 8:  Hypothesis Tests
+
+Ex). A researcher suspects that women in sweden have higher mean height then women in the US.
+
+Data:  a random sample of 50 swedish women have mean height of 65.1", stdev 2.8".
+
+Does this provide evidence that mean height for swedish women is above 64" (mean for the US?)
+
+1) Hypotheses
+
+H0:  mu = 64 (no difference)
+Ha:  mu > 64 (claim/suspicion being investigated)
+
+2) Test statistic (summary of our data)
+
+z-score! (er, actually, the t score here, since we don't know sigma)
+
+t = (obs - exp)/stdev
+  = (65.1 - 64)/(2.8/sqrt(50))
+  
+```{r}
+(65.1 - 64)/(2.8/sqrt(50))
+```
+  
+3) p-value
+
+p-val = probability of observing a sample result as (or more) extreme than ours, ASSUMING THE H0 IS TRUE.
+
+Use "pt" command:
+
+right tail:
+```{r}
+1-pt(2.78, 49)
+```
+
+On exam:  use t table.
+
+Interpret:  If it's true that mean height for swedish women is 64", then the probability of observing a sample mean as big as ours (65.1") is only 0.38%.
+
+Note:  looks like H0 and sample data DISAGREE!!
+
+4) Conclusion
+
+Since our p-val is small (p-val < .05), we REJECT H0.  We found strong evidence that mean height for swedish women is greater than 64".
+
+
+Two big methods for statistical inference:
+
+- conf int:  estimate a parameter
+- hyp test:  answer a question/investigate a claim
+
+### Comparison to Criminal Trial
+
+1). Hypotheses
+
+We assume that the defendant is innocent (H0), BUT we think they're guilty (Ha)!
+
+H0:  default assumption (no difference/ NOT GUILTY!!!)
+   note:  H0 always has "=".  (mu =....,   p=....., sigma =.....)
+  
+
+Ha:  out claim/suspicion/question (GUILTY!!)
+   note:  always inequality:  >,  <,  !=
+   
+2). 
+
+In criminal trial:  witness give testimony.
+In hyp test:  data!
+
+3)
+
+jury deliberates:  is evidence convincing?
+hyp test:  is our p-val small enough?
+
+Note:  
+   - small p-val are evidence AGAINST H0
+   - big p-val aren't evidence of anything
+   
+   
+4)
+
+Are we convinced "beyond a shadow of a doubt"???
+
+Hyp test:  is p-val < significance level ???
+                        (alpha=.05)
+If p<alpha -> reject H0.
+If p>=alpha -> fail to reject H0.
+
+WARNING:  each conclusion must have TWO SENTENCES:
+
+   - reject/fail to reject H0
+   - is there evidence to support Ha?
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+## Wed March 22
+
+### Ch 8 - Hyp Tests
+
+Ex). A researcher suspects that instrumentalists (musicians) have a higher mean IQ than the general population (100).
+
+Data:  in a sample of 100 musicians, mean IQ of 103, stdev 15.2.
+
+Does this provide strong evidence to support their suspicion?
+
+Perform a complete hyp test.
+
+1) Hypotheses
+
+H0:  mu = 100
+Ha:  mu > 100
+
+2). Test stat:  (t/z score!)
+
+```{r}
+(103 - 100)/(15.2/sqrt(100))
+```
+
+3). p-val
+
+note: df = 100-1 = 99
+
+Not on table!  Use next smallest:  df = 60.
+
+  tail area:  btwn .025 and .05
+  
+  .025 < p-val < .05
+  
+p-val = prob of getting a sample like ours, if H0 is true
+
+If it's really true that musicians have mean iq of 100, then there's only a 2.5%-5% chance of observing a sample result as extreme as ours.
+
+4). Since p-val < .05, we REJECT H0!  We have strong evidence that mean iq for musicians is greater than 100.
+
+
+### Hyp tests for p (pop proportion)
+
+Ex) A student suspects that fewer than half of DU students vote R.
+
+To investigate, random sample of 60 DU students.  Of these, 27 vote R.
+   
+Does the data support the claim?  Hyp test!
+
+1) Hypotheses
+
+H0:  p = .5
+Ha:  p < .5
+
+2) Test stat
+
+Note:  always Z for proportions
+
+z = (obs - exp)/stderr
+
+```{r}
+(27/60 - .5)/sqrt(.5*(1-.5)/60)
+```
+
+3) p-val
+
+```{r}
+pnorm(-.77)
+```
+
+p-val = .221
+
+If it's true that 50% of DU students vote R, then there's a 22.1% chance of getting a sample result like ours.
+
+4). Since p-val > .05, we fail to reject H0.  We did not find strong evidence that fewer than half of DU students vote R.
+
+### Errors in Hyp Tests
+
+Conclusion from test:  not always true!
+
+
+
+
+Ex). An EPA enforcement officer suspects that a local well water supply contains too much of Toxin A (the federally mandated level is 0.8 g/ml).
+
+To investigate, she collects water samples (n=50), and computes average concentration of Toxin A.
+
+Hyp test!
+
+Explain, practically, what it would mean for her test to result in a Type I error?  Type II error?
+
+Two issues for each:
+
+- what do we THINK about the water?
+- what's ACTUALLY TRUE about the water?
+
+Type I:  We conclude/think that the water is unsafe (too much toxin).  BUT, actually the water conforms to safety standards (it's fine).
+
+Type II:  We think the water's fine, but actually it's dangerous!
+
+Arguments:
+
+Type II is worse, since people drink dirty water!
+
+Type I is worse, since employee could be fired!
+Type I worse, since wasting precious tax payer dollars!
+
+Ex). Criminal trial!
+
+Practically, what do type I and type II really mean?
+
+H0: innocent
+Ha: guilty
+
+- Type I:  We think they're guilty, but really they're innocent!
+- Type II: We think they're innocent, but really they're guilty!
+
+Arguments:
+
+Type I is worse since innocent people shouldn't go to jail!
+
+
+Type II is worse since, since a dangerous person could be set free!
+
+Moral of the story:  which is worse?  IT DEPENDS!
+
+Upshot:  you (the investigator) can tip the scales!
+
+### Final Project
+
+Big idea:  investigate a question/theses, using a dataset!
+
+My recommendation: pick an ineresting (to you!) public dataset.
+
+The format you NEED!
+
+ " .csv "
+ 
+Rectangular data!
+ 
+Example:  customer data:
+
+[Click here for Kaggle page](https://www.kaggle.com/datasets/datascientistanna/customers-dataset)
+
+Load data: **Note: you need to tell R where the csv file is.  I put mine in my downloads folder.  If you are confused about this, get help in office hours!**
+
+```{r}
+myData <- read.csv("~/Downloads/Customers.csv")
+head(myData)
+hist(myData$Spending.Score..1.100.)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+   
+   
+   
+   
+
+
+
+
+
+
 
 
 

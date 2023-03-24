@@ -54,6 +54,20 @@ These look great on your phone - easy to study on the go!
 - <b><big>Once attendance begins, I will no longer accept HW. </b></big>  
 - I drop 2 low scores, in case of an emergency.
 
+### Exam II 
+
+Reading: 8.1-8.4
+
+Practice Problems:
+
+- 8.29-39odd (p345)
+- 8.42 (p350)
+- 8.43-49 odd
+
+For Friday: Google around for a dataset that interests you.  Load it into R, like we practiced in class.  Play around with it.  Anything interesting?
+
+**The example code from class is in the Lecture Notes here on the site.  Also, see the Data Resources below for inspiration.**
+
 ### HW Week 8 (Due Fri Mar 24)
 
 Reading:  7.1-7.4
@@ -119,7 +133,7 @@ Odds for Practice:  4.29-35odd, 39, 53, 55
 - 4.54
 
 
-### HW 4 (Exam Week)
+### Exam I
 
 Reading:  3.3-3.6, 4.1-4.2
 
