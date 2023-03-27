@@ -34,6 +34,98 @@ theme_set(                                #this sets the theme for all    #
 
 # Abbreviated Even Solutions
 
+## HW Week 8
+
+### 7.14a
+
+Note:  I'm using $t$ for this problem, since it's a $\mu$ interval.  Since n was quite large, there's almost no difference from $z$.
+
+critical value:
+
+```{r}
+qt(.025, 513)
+```
+
+Interval:
+
+```{r}
+1427 - 1.96*325/sqrt(514)
+```
+```{r}
+1427 + 1.96*325/sqrt(514)
+
+```
+
+We're 95% confident that mean FEV level is btwn 1398.9ml and 1455.1ml.  
+
+The MOE is relatively small:
+
+```{r}
+1.96*325/sqrt(514)
+```
+
+### 7.14b
+
+Solve back for n in MOE formula.  Note that if the width of the interval is 50, the MOE must be 25.
+
+```{r}
+(1.96*320/25)^2
+```
+
+So, use n=630.
+
+### 7.20a
+
+Critical value:
+
+```{r}
+qnorm(.005)
+```
+
+Interval:
+
+```{r}
+.53 - 2.575*sqrt(.53*(1-.53)/2343)
+```
+```{r}
+.53 + 2.575*sqrt(.53*(1-.53)/2343)
+
+```
+
+We're 99% confident that the true proportion of Americans who watch streaming programming is btwn 50.3% and 55.7%.
+
+### 7.20b
+
+If width = 5%, MOE = 2.5%.
+
+Since we want "irrespective of $\hat{p}$, we use a proportion of 0.5 for the worst case scenario:
+
+```{r}
+.5*(1-.5)*(2.575/.025)^2
+```
+
+We'd need a big ol' sample size:  n=2653.
+
+
+## HW Week 7
+
+### 6.10a
+
+Using the hint in the book:
+
+$$E\left[\bar{X}^2\right]=V[\bar{X}]+(E[X])^2=\frac{\sigma^2}{n}+\mu^2$$
+Thus, we've shown that $E\left[\bar{X}^2\right] \neq \mu^2$, as desired.  
+
+### 6.22
+
+Solved in class - check notes from Wed March 1.
+
+### 6.23
+
+Solved in class - check notes from Mon March 27
+
+
+
 ## HW Week 6
 
 
