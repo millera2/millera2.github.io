@@ -8,7 +8,7 @@ output:
     theme: yeti
 ---
 
-## Final Project Proposal (Due Friday April 8 by 5pm on Notebowl) 
+## Final Project Proposal (Due Friday April 7 by 5pm on Notebowl) 
 
 It's time to put everything you've learned into practice.  Final Project time!
 
@@ -20,12 +20,12 @@ It's time to put everything you've learned into practice.  Final Project time!
 
 - The final project will have two components: **poster presentation** and **written report**. 
 
-- Start early! Find your teammates, choose a topic, find the data, have a “plan” and submit it by **Friday April 8**. Note: You will submit a informal proposal(data description, research question, model, etc.) along with the data on Notebowl.
+- Start early! Find your teammates, choose a topic, find the data, have a “plan” and submit it by **Friday April 7**. Note: You will submit a informal proposal(data description, research question, model, etc.) along with the data on our Canvas course page.
 
 
 
 
-## Poster Presentation (20 pts, In-class April 28-29 and May 02)
+## Poster Presentation (20 pts, In-class 4/26, 4/28, and 5/1)
 
 You are going to create a poster for your project. In a poster, you are going to clearly state the research hypothesis, describe the data source, explain the analytical models and make the conclusion. A poster should have titles, headlines, bullets, graphs, acknowledgments and references. A poster should be short, clean, effective and conclusive. Please see the following instructions on how to make a nice poster.
 
@@ -35,18 +35,18 @@ You are going to create a poster for your project. In a poster, you are going to
 
 [Some examples from Cornell University](https://www.behance.net/gallery/30160927/Scientific-Posters)
 
-You are going to have a pdf file for the poster. You and your teammates will give a short presentation on it (target length: 8 min). Each and every team member must show up and present his/her own part. Poster presentation will be on April 28-29 and May 02. After the presentation, you will upload the poster to Notebowl.
+You are going to have a pdf file for the poster. You and your teammates will give a short presentation on it (target length: 8 min). Each and every team member must show up and present his/her own part. Poster presentation will be on April 26 and 28, and May 02. After the presentation, you will upload the poster to Canvas.
 
 
 
 
-# Written Report (80 pts, Due 11:59am Monday May 9)
+# Written Report (80 pts, Due on Canvas @ Final Exam time)
 
 
 In the final project paper, you should including all the details(graphs, results,...). For instance, in the poster people may say "all model assumptions are satisfied", in the paper, each assumption should be carefully discussed with solid supportive evidences like p-values or graphs. 
 
 
-
+<br><br>
 
 
 

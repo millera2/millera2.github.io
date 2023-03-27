@@ -215,9 +215,36 @@ Practice Odds: 1.17, 1.39, 1.49 *[Solutions in the back of the book!]
 
 <br><br>
 
-## Data Resources
 
-[Denison Library Data Links](https://libguides.denison.edu/c.php?g=723172&p=5343620)
+
+## Final Project
+
+### Project Description and Deadlines
+
+[Click here for Final Project info](https://millera2.github.io/Math-220-S23/Final.html)
+
+### Guide For Statistical Report Writing
+
+[Click here for pdf](https://millera2.github.io/Math-220-S23/statistical-report-writing.pdf)
+
+### Data Sources
+
+You can choose (or collect!) your own data.  
+
+Two favorites of mine:
+
+- [Kaggle.com](https://www.kaggle.com)
+- [data.world](https://data.world)
+
+Both have active communities and trending datasets.  Easy to take a look and see what's out there.
+
+Here are a couple lists of other sources to check out:
+
+- [Denison Libraries Links (very good!)](https://libguides.denison.edu/statistics/finding_datasets)
+- [Code Camp](https://www.freecodecamp.org/news/https-medium-freecodecamp-org-best-free-open-data-sources-anyone-can-use-a65b514b0f2d/)
+
+
+<br><br>
 
 ## Office Hours
 
