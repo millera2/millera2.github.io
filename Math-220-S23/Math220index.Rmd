@@ -54,6 +54,30 @@ These look great on your phone - easy to study on the go!
 - <b><big>Once attendance begins, I will no longer accept HW. </b></big>  
 - I drop 2 low scores, in case of an emergency.
 
+### HW Week 10 - Final Project Proposal
+
+This week is a little different.  You (and your team) will submit a proposal for the final project.  It should contain:
+
+- A clear list of everyone on the team.  
+  - **You must commit to a team now.**
+  - All team-mates **must be in the same section of 220**.
+- The dataset(s) you plan to use for the project.  A few guidelines:
+  - Must be **rectangular** data.  Refer to our Week 1 notes.
+  - Must be **real** data.  No simulations or "experimental" datasets.  Observations must have come from actual, real-life sources.
+- One paragraph describing your ideas for the project.  The paragraph must contain:
+  - Where the data came from.  Recorded when, where, by who?
+  - Why you're interested in the data.
+  - Two questions that you believe you can answer with the dataset.
+- **One visualization** from the data.  Examples:  histogram, barplot, scatterplot, qqplot, etc etc.
+
+This doesn't need to be a book - your proposal should fit on one page.  **Two page maximum length.**
+
+Export to pdf, and submit to our Canvas page.  Submissions are due **Friday, March 7, by 8am**.
+
+
+
+<br>
+
 ### Exam II 
 
 Reading: 8.1-8.4
@@ -246,13 +270,13 @@ Here are a couple lists of other sources to check out:
 
 <br><br>
 
-## Office Hours **[Exam II Week]**
+## Office Hours 
 
 I'm in Fellows 212.  I'll be there and available at:  
 
 - Mon:  2:30-4pm
-- Tues: 9-10:30am, 2-4pm
-- Wed:  **No hours, since exam.** 
+- Tues: 9-10:30am, 
+- Wed:  2-4pm  
 
 
 <br><br><br><br>
