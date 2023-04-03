@@ -2528,7 +2528,7 @@ Moral of the story:  which is worse?  IT DEPENDS!
 
 Upshot:  you (the investigator) can tip the scales!
 
-### Final Project
+### **Final Project**
 
 Big idea:  investigate a question/theses, using a dataset!
 
@@ -2552,163 +2552,7 @@ head(myData)
 hist(myData$Spending.Score..1.100.)
 ```
 
-
-
-## Friday March 31
-
-### Two tail tests
-
-Before:  we've seen right-tail and left-tail tests.
-
-Look at Ha:
-
-Ha:  mu > ...   ->. right tail test!
-
-Ha:  p < ...    -> left tail test!
-
-Now:
-
-Ha:  mu != ....  ->. two tail test!
-
-Only change:  DOUBLE THE P-VAL!  both tails (equal area).
-
-
-Ex). A researcher wonders if mean IQ for musicians DIFFERS from that of the general population (100).
-
-To investigate, samples 50 musicians.  Finds their mean iq to be 103.5, stdev 9.2.
-
-Is there evidence to support the claim?
-
-
-1) Hypotheses
-
-H0:  mu  = 100
-Ha:  mu != 100
-
-2) test stat
-
-t = (obs-exp)/stdev
-```{r}
-(103.5 - 100)/(9.2/sqrt(50))
-```
-
-3) p-val
-
-right tail area:
-
-```{r}
-1-pt(2.69,49)
-```
-
-p-val = 2xtail area. !  (two tail test)
-
-```{r}
-2*.0049
-```
-
-4) conclusion
-
-Since p-val<.05, we reject H0.  There's strong evidence of a difference in mean IQ btwn musicians and the general population.
-
-Notes:
-
-- two-tail test CAN HAVE DIFFERENT CONCLUSIONS!  
-- which to use?  one-tail or two-tail?
-   Conventional wisdom:  ALWAYS use two tail test, UNLESS there's strong evidence of great/smaller.
-   
-   
-
-
-### Hyp tests for TWO populations
-
-Ex).  Prof Miller suspects that a higher proportion of DU students are from out-of-state than for Oberlin students.
-
-To investigate, random samples from both schools.  
-
-- Out of 50 DU students, 41 were from out-of-state.
-```{r}
-41/50
-```
-
-- Out of 80 Oberlin students, 61 were from out-of-state.
-
-```{r}
-61/80
-```
-
-
-1). Hypotheses
-
-H0: p1 - p2 = 0    (no difference btwn DU and oberlin)
-Ha: p1 - p2 > 0
-
-(p1 = DU proportion, p2 = oberlin proportion)
-
-2) test stat:
-
-z = (obs - exp)/stdev
-
-```{r}
-(41/50 - 61/80 - 0)/sqrt( 102/130*(1-102/130)/50 +  102/130*(1-102/130)/80)
-```
-
-3) p-val
-
-right tail area:
-
-```{r}
-1-pnorm(.78)
-```
-
-Interpret:  If the really is no difference in proportion btwn DU and oberlin, there's about 21.8% chance of getting a sample difference as extereme as ours.
-
-4). Conclusion
-
-Since p-val > .05, we fail to reject H0.  We did not find strong evidence to suggest the DU prop is higher than Oberlin.
-
-### 2-pop test for mu1 - mu2
-
-Ex). Prof miller wonders:  is there a difference in mean delivery time btwn Pizza Hut and Dominos?  To investigate, collect data on on deliveries over the year:
-
-For 23 PH deliveries, mean delivery time 23.2 min, stdev 6.3 min.
-For 28 Dom deliveries, mean delivery time 25.5 min, stdev 7.2 min.
-
-Conditions satisfied?
-- small n, so need t dist
-- assuming that delivery time follows roughly normal dist (check with hist/qqplot)
-
-1). Hypotheses
-
-H0:  mu1 - mu2  = 0
-Ha:  mu1 - mu2 != 0
-
-
-2) test stat
-
-```{r}
-(23.2 - 25.5 - 0)/sqrt(6.3^2/23 + 7.2^2/28)
-```
-
-3) p-val
-
-Q:  what's df?
-
-A:  use the smaller of the two 
-
-Here:  df = 23 -1 =22
-
-tail area:
-
-```{r}
-pt(-1.216, 22)
-```
-
-p-val = 2x0.118
-
-4). Conclusion
-
-Since p>.05, fail to reject H0.  No strong evidence of a difference in mean delivery time.
-
+# Week 10 (Exam II Week)
 
 
 ## Friday March 31
@@ -2928,7 +2772,7 @@ Ex:  if alpha = .05, then use 95% confidence.
 
 Ex:  if alpha = .01, then use 90% confidence.
 
-### Ch 9 - Linear Regression
+### Ch 12 - Linear Regression
 
 Idea:  compare TWO quant variables. (x,y)
 
