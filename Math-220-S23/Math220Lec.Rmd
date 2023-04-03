@@ -2554,11 +2554,435 @@ hist(myData$Spending.Score..1.100.)
 
 
 
+## Friday March 31
+
+### Two tail tests
+
+Before:  we've seen right-tail and left-tail tests.
+
+Look at Ha:
+
+Ha:  mu > ...   ->. right tail test!
+
+Ha:  p < ...    -> left tail test!
+
+Now:
+
+Ha:  mu != ....  ->. two tail test!
+
+Only change:  DOUBLE THE P-VAL!  both tails (equal area).
+
+
+Ex). A researcher wonders if mean IQ for musicians DIFFERS from that of the general population (100).
+
+To investigate, samples 50 musicians.  Finds their mean iq to be 103.5, stdev 9.2.
+
+Is there evidence to support the claim?
+
+
+1) Hypotheses
+
+H0:  mu  = 100
+Ha:  mu != 100
+
+2) test stat
+
+t = (obs-exp)/stdev
+```{r}
+(103.5 - 100)/(9.2/sqrt(50))
+```
+
+3) p-val
+
+right tail area:
+
+```{r}
+1-pt(2.69,49)
+```
+
+p-val = 2xtail area. !  (two tail test)
+
+```{r}
+2*.0049
+```
+
+4) conclusion
+
+Since p-val<.05, we reject H0.  There's strong evidence of a difference in mean IQ btwn musicians and the general population.
+
+Notes:
+
+- two-tail test CAN HAVE DIFFERENT CONCLUSIONS!  
+- which to use?  one-tail or two-tail?
+   Conventional wisdom:  ALWAYS use two tail test, UNLESS there's strong evidence of great/smaller.
+   
+   
+
+
+### Hyp tests for TWO populations
+
+Ex).  Prof Miller suspects that a higher proportion of DU students are from out-of-state than for Oberlin students.
+
+To investigate, random samples from both schools.  
+
+- Out of 50 DU students, 41 were from out-of-state.
+```{r}
+41/50
+```
+
+- Out of 80 Oberlin students, 61 were from out-of-state.
+
+```{r}
+61/80
+```
+
+
+1). Hypotheses
+
+H0: p1 - p2 = 0    (no difference btwn DU and oberlin)
+Ha: p1 - p2 > 0
+
+(p1 = DU proportion, p2 = oberlin proportion)
+
+2) test stat:
+
+z = (obs - exp)/stdev
+
+```{r}
+(41/50 - 61/80 - 0)/sqrt( 102/130*(1-102/130)/50 +  102/130*(1-102/130)/80)
+```
+
+3) p-val
+
+right tail area:
+
+```{r}
+1-pnorm(.78)
+```
+
+Interpret:  If the really is no difference in proportion btwn DU and oberlin, there's about 21.8% chance of getting a sample difference as extereme as ours.
+
+4). Conclusion
+
+Since p-val > .05, we fail to reject H0.  We did not find strong evidence to suggest the DU prop is higher than Oberlin.
+
+### 2-pop test for mu1 - mu2
+
+Ex). Prof miller wonders:  is there a difference in mean delivery time btwn Pizza Hut and Dominos?  To investigate, collect data on on deliveries over the year:
+
+For 23 PH deliveries, mean delivery time 23.2 min, stdev 6.3 min.
+For 28 Dom deliveries, mean delivery time 25.5 min, stdev 7.2 min.
+
+Conditions satisfied?
+- small n, so need t dist
+- assuming that delivery time follows roughly normal dist (check with hist/qqplot)
+
+1). Hypotheses
+
+H0:  mu1 - mu2  = 0
+Ha:  mu1 - mu2 != 0
+
+
+2) test stat
+
+```{r}
+(23.2 - 25.5 - 0)/sqrt(6.3^2/23 + 7.2^2/28)
+```
+
+3) p-val
+
+Q:  what's df?
+
+A:  use the smaller of the two 
+
+Here:  df = 23 -1 =22
+
+tail area:
+
+```{r}
+pt(-1.216, 22)
+```
+
+p-val = 2x0.118
+
+4). Conclusion
+
+Since p>.05, fail to reject H0.  No strong evidence of a difference in mean delivery time.
+
+
+
+## Friday March 31
+
+### Two tail tests
+
+Two tail tests:  
+
+  Ha:    !=
+  
+Ex) A researcher wonders if mean IQ for musicians DIFFERS from the general population (100).
+
+Data:  50 musicians, their mean iq is 102.7, stdev 11.2.
+
+Does this support claim/suspicion?
+
+1) Hypotheses
+
+H0:  mu  = 100
+Ha:  mu != 100
+
+2) test stat
+
+t = (obs - exp)/stdev
+
+```{r}
+(102.7-100)/(11.2/sqrt(50))
+```
+
+3) p-val
+
+right tail area:
+
+```{r}
+1-pt(1.70, 49)
+```
+
+
+p-val = 2*.048 = .096
+
+
+4). conclusion
+
+Since p-val > .05, we fail to reject H0.  There's insufficient evidence that mean iq for musicians differs from 100.
+
+Q:  when to use one-tail vs two tail?
+
+A:
+
+- read the language in problem (bigger/less/differ)
+- in general, best to default to TWO TAIL test!
+
+### Tests for TWO populations.
+
+Ex) A researcher suspects that a higher proportion of DU students are from out-of-state than for Oberlin.
+
+Data:
+
+- Of 60 DU students, 51 were from out-of-state
+- of 80 Ob studetns, 58 were from out-of-state
+
+
+1). Hypotheses
+
+H0:  p1 - p2 = 0
+Ha:  p1 - p2 > 0
+
+(p1 = DU prop, p2 = Ob prop)
+
+2) test stat
+
+z = (obs - exp)/stderr
+
+```{r}
+(51/60 - 58/80 - 0)/sqrt( 109/140*(1-109/140)/60 + 109/140*(1-109/140)/80)
+```
+
+
+3) p-val
+right tail area:
+```{r}
+1-pnorm(1.76)
+```
+
+Interpret:  If there's no difference in proportion btwn DU and Ob, then there's a 3.9% chance of observing a sample difference as extereme as ours.
+
+4). Conclusion
+
+Since p-val < .05, we reject H0.  There's strong evidence that the true proportion of out-of-state studetns at DU is higher than at Oberlin.
+
+
+### 2-pop tests for mu1 - mu2
+
+Ex) Prof Miller wonders, is there a difference in mean delivery time btwn Pizza Hut and Dominos?
+
+Collect data about deliveries:
+
+Of 23 PH deliveries, mean time was 23.4 min, stdev 6.3 min.
+Of 28 Dom deliveries, mean time was 27.9 min, stdev 9.4 min.
+
+1) Hypotheses
+
+H0:  mu1 - mu2 =  0 (no difference)
+Ha:  mu1 - mu2 != 0 (yes difference)
+
+2) test stat
+
+t = (obs-exp)/stderr
+
+```{r}
+(23.4 - 27.9 - 0)/sqrt( 6.3^2/23  +  9.4^2/28 )
+```
+
+3) p-val
+
+Q:  what's df?
+
+A:  use the smaller of the two
+      here:  df = 23 - 1 = 22
+      
+left tail area:
+
+```{r}
+pt(-2.04, 22)
+```
+
+  
+p-val = 2* .026 = .052. (two tail test!)
+
+4). Conclusion
+
+Since p-val > .05, we fail to reject H0.  There's not strong evidence of a difference in mean delivery time.
 
 
 
 
 
+
+
+
+
+# Week 11
+
+## Monday April 3
+
+### Confidence Intervals for two populations
+
+Note about p1-p2:  don't use pooled estimate for CI.  WE'RE NOT ASSUMING p1 = p2 !!!!
+
+
+H0:  p1 - p2 = 0. <- default assumption in Hyp test
+
+In confidence interval, no assumptions.  Trying to estimate the difference!
+
+Ex) A researcher wonders: is there a higher proportion of registered Republicans in Licking county and Franklin county?
+
+Collect data:  
+
+- Of 50 voters in Licking county, 32 were R
+- Of 100 voters in Franklin, 51 were R
+
+Estimate the difference in proportion of R voters btwn the two counties, with 95% confidence.
+Crit val: z = 1.96
+```{r}
+qnorm(.025)
+```
+low:
+```{r}
+32/50 - 51/100 - 1.96*sqrt( 32/50*(1-32/50)/50 + 51/100*(1-51/100)/100 )
+```
+hi:
+```{r}
+32/50 - 51/100 + 1.96*sqrt( 32/50*(1-32/50)/50 + 51/100*(1-51/100)/100 )
+```
+
+Interpret:  we are 95% confident that the difference in prop of R voters is between -3.5% and 29.5%.
+
+Since 0 is contained in the interval, there's no strong evidence of a difference in proportion.
+
+### Connection btwn Hyp Test and CI
+
+If the value in H0 is contained in the CI, then FAIL TO REJECT H0!
+
+Otherwise, reject.
+
+### CI for two means
+
+Ex) A reseracher wonders:  is there a difference in mean ACT score btwn Licking county and Franklin county?
+
+Data:
+
+ - In 50 random Licking students, mean act score was 21.3, stdev 5.4.
+ - In 80 random Franklin students, mean act score was 24.4, stdev 6.1.
+ 
+Estimate the difference in mean ACT score with 95% confidence.
+critical value: t = 2.01
+```{r}
+qt(.025, 49)
+```
+
+low:
+```{r}
+21.3-24.4 - 2.01*sqrt(5.4^2/50 + 6.1^2/80)
+```
+hi:
+```{r}
+21.3-24.4 + 2.01*sqrt(5.4^2/50 + 6.1^2/80)
+```
+
+We're 95% confident that the true difference in mean act score is btwn -5.2 and -1.0.
+
+Looks like mu1-mu2=0 isn't likely.  We reject H0:  there's strong evidence of a difference in mean ACT score btwn Licking and Franklin.
+
+Note:  Hyp test and CI will always have same conclusion AS LONG AS ALPHA AND CONFIDENCE MATCH!!!
+
+Ex:  if alpha = .05, then use 95% confidence.
+
+Ex:  if alpha = .01, then use 90% confidence.
+
+### Ch 9 - Linear Regression
+
+Idea:  compare TWO quant variables. (x,y)
+
+main visualization:  "scatterplot".  x-y plot of all data points.
+
+Ex). mpg
+
+```{r}
+head(mpg)
+```
+Make a scatterplot to visualize cty (x) and hwy (y)
+```{r}
+plot(mpg$cty, mpg$hwy)
+```
+```{r}
+cor(mpg$cty, mpg$hwy)
+```
+
+
+Woah! Strong relationship!  Makes sense - if more efficient in city, you'd expect more efficient on hwy.
+
+Ex) Compare engine size (displ - x) with cty mpg (cty - y )
+
+```{r}
+plot(mpg$displ, mpg$cty)
+```
+```{r}
+cor(mpg$displ, mpg$cty)
+```
+
+Woah!  Strong negative relationship!  As engine size increases, mpg decreases.  Makes sense.
+
+Ex). iris data
+
+```{r}
+head(iris)
+```
+Compare iris sepal length (x) and sepal width (y).
+
+```{r}
+plot(iris$Sepal.Length, iris$Sepal.Width)
+```
+```{r}
+cor(iris$Sepal.Length, iris$Sepal.Width)
+```
+
+Huh.   No obvious relationship btwn sepal length and width.  Weird but true.
+
+### The linear correlation coefficient - r
+
+Note:  capitol "R" is the software.
+       lower.  "r" is the correlation coefficient
+       
+       
 
 
 
