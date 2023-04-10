@@ -2856,8 +2856,472 @@ Note:  capitol "R" is the software.
    
    
    
+
+
+
+
+## Wed April 5
+
+### Ch 12 - Linear Regression
+
+Ex). mpg.  
+
+```{r}
+plot(mpg$cty, mpg$hwy)
+```
+```{r}
+cor(mpg$hwy, mpg$cty)
+```
+
+### Linear Correlation Coefficient - r
+
+r measures the STRENGTH and DIRECTION of a LINEAR relationship.
+
+### Properties of corr coeff
+
+-      -1 <= r <= +1    for ANY variables x,y
+-  If r = 1, then PERFECT (colinear) POSITIVE LINEAR relationship
+-  Id r=-1, then perfect NEGATIVE LINEAR relationship
+- If r~0, then no LINEAR relationship
+   WARNING:  always look at scatterplot with human eyeballs
+- r isn't affected by units (lbs/kgs, in/cm, mi/km)
+- doesn't matter which is x, which is y
+
+
+### Least-squares line
+
+Many names:
+
+- best fit line
+- trend line
+- regression line
+- etc etc
+
+Good news:  all the same!  One UNIQUE "best" line!
+
+Q: What makes it the "best"?
+
+A:  it minimizes the sum of the SQUARE RESIDUALS!
+
+Note:  the sum/average of residuals is ALWAYS ZERO!!!
+
+
+### Computing equation for least squares
+
+In linear model: we make predictions ABOUT y-variable, BASED UPON the x-variable.
+
+x:  input, independent variable
+y:  output, dependedent variable
+
+Be careful, it matters which is which!
+
+Equation:
+
+   yhat = b0 + b1*x
    
+where:
+
+b0 = y-intercept
+b1 = slope
+
+To compute:
+
+1) Find slope
+
+  b1 = r*sy/sx
+  
+  Note:  if correlation is STRONGER, then slope is STEEPER!
+         Ie, if strong relationship, then x has bigger effect on y!
+         
+2). find intercept
+
+Neat fact:  the line ALWAYS touches the point (xbar,ybar)
+
+->
+
+   b0 = ybar - b1*xbar
    
+Ex). Data:  height and weight of 50 men.
+
+Summary:
+
+Height:
+
+avg height = 70.1"
+stdev.     = 3.6"
+
+Weight:
+
+avg weight = 165.2 lbs
+stdev.    = 11.9 lbs
+
+cor = r = 0.71
+
+Find equation for linear model to predict weight based on height.
+
+Here: x=height, y = weight
+
+1) slope:
+```{r}
+.71*11.9/3.6
+```
+2) int
+```{r}
+165.2 - 2.35*70.1
+```
+
+yhat = 0.465 + 2.34*x
+
+
+
+
+```{r}
+head(mpg)
+```
+This is a good dataset:  mixture/variety of BOTH categorical AND quantitative variables!
+
+
+
+
+## Friday April 7
+
+### Ch 12 - Lin Reg
+
+Ex). mpg.  Find equation for linear model for predicting cty (y) mpg based on engine size (displ -x ).
+
+```{r}
+head(mpg)
+```
+Summary stats
+
+xbar = 3.47
+sx.  = 1.29
+ybar = 16.86
+sy.  = 4.26
+
+r.   = -0.80
+
+1) slope = b1 = r*sy/sx = -2.64
+
+```{r}
+-.8*4.26/1.29
+```
+2) y-int = b0 = ybar - b1*xbar
+```{r}
+16.86 + 2.64*3.47
+```
+
+yhat = 26.02 - 2.64*x
+
+```{r}
+plot(mpg$displ, mpg$cty)
+```
+### Making prediction with least squares line
+
+Plug in x!
+
+Ex). A particular car has a 2.8L engine.  Predict its cty mpg.
+
+plug in x=2.8:
+
+```{r}
+26.02 - 2.64*2.8
+```
+
+
+```{r}
+plot(mpg$displ, mpg$cty)
+
+```
+
+Ex). Predict the cty mpg for a car with a 20.5L engine.
+
+```{r}
+26.02 - 2.64*20.5
+```
+
+Can't!  Shouldn't!  EXTRAPOLATION:  making predictions outside the observed range of data. BAD!
+
+Junk in - junk out!
+
+### Interpret the coefficients of linear model
+
+Coeff:  b0, b1
+
+Slope:  y=mx+b.  If x increases by 1 unit, y inc/dec by m.
+
+Lin reg:  If [x-variable] increases by one [x-unit], then we predict/expect [y-variable] to inc/dec by [slope] [y-units].
+
+For each additional L bigger a car's engine is, we predict its city fuel efficiency to decrease by 2.64 mpg.
+
+
+Intercept: if x=0, y = y-int
+
+Lin reg:  If [x-variable] is zero [x-units], then we predict/expect [y-variable] to be [y-int] [y units].
+
+Car:  If a car's engine is 0L big (!!), we'd predict its city mpg to be 26.02 mpg.
+
+EXTRAPOLATION!  Not helpful.
+
+### Coefficient of determination - r^2
+
+r^2 = percentage of variation in the y-data that's due to/because of the linear relationship btwn x and y.
+
+Ex). compute and interpret r^2 for car model.
+
+Of all the variation in city fuel efficiency, about 64% is due to the linear relationship between fuel efficiency and engine size.
+
+compute:
+```{r}
+(-.8)^2
+```
+
+### Residual Plots
+
+residual = y - yhat
+           obs - exp
+           
+Ex). car model.  A particular car has an 3.5 L engine and gets 17mpg in city.  Compute the residual for this car.
+
+x = 3.5
+y = 17
+
+yhat:
+```{r}
+26.02 - 2.64*3.5
+```
+
+resid:
+```{r}
+17 - 16.78
+```
+
+Our model under-approximated the mpg by 0.22mpg.
+
+
+Residual plot:
+
+x-coords: original x-data
+y-coords:  residuals!
+
+Ex). construct resid plot for mpg model.
+
+x-coords = mpg$displ
+
+first:  predicted yhat:
+
+```{r}
+yhat <- 26.02 - 2.64*mpg$displ
+```
+
+next:  resids
+
+```{r}
+resids <- mpg$cty - yhat
+```
+
+resid plot:
+
+```{r}
+plot(mpg$displ, resids)
+```
+
+
+# Week 12
+
+## Monday April 10
+
+### Residual Plots
+
+In R - "lm" command.
+
+Ex). Find linear model for predicting cty mpg based on displ (engine size).
+
+idea:  lm( y ~ x )
+
+~ = "as a function of"
+
+```{r}
+mpgModel <- lm( cty ~ displ, data = mpg)
+```
+
+Trick:  look at variables with $
+
+Summary:
+
+```{r}
+summary(mpgModel)
+```
+
+Residual plot:
+
+x:  original x data
+y:  residuals (from model)
+
+```{r}
+plot(mpg$displ, mpgModel$residuals)
+```
+### Interpreting residual plots
+
+Here's what you DON'T want to see:
+
+1). A pattern (ex: curve-shaped).  Idea:  A pattern in the residuals means that the errors are PREDICTABLE.  Suggests linear model isn't the best.  
+
+2) Heteroskedasticity.  Idea:  we hope that residuals have CONSTANT MAGNITUDE across the range of observations (homoskedastic).  If heteroskedastic, suggests the linear model is failing in some parts of the range.  Bad!
+
+Example:
+
+
+
+Ex). Data = house sales.  Make model to predict price based on sqft_living.
+
+```{r}
+houseData <- read.csv("./House-Sales.csv")
+houseModel <- lm( price ~ sqft_living, data = houseData)
+```
+residuals:
+```{r}
+plot(houseData$sqft_living, houseModel$residuals)
+```
+
+
+
+Google image:  "heteroscestic residuals"
+
+In general:  you HOPE your residuals are a "blob".  Best case scenario.
+
+Ex) mpg.  x=cty, y=hwy.
+
+residuals:
+```{r}
+mpgModel2 <- lm(hwy ~ cty, data = mpg)
+plot(mpg$cty, mpgModel2$residuals)
+```
+Ah!  No pattern, roughly homoskedastic.  Good residuals!
+
+### Distribution of residuals
+
+Idea:  we hope that residuals follow a normal dist.
+
+Ie:  most close to zero, unlikely to be large.
+
+Ex). mpg.  x=cty, y=hwy.
+
+```{r}
+hist(mpgModel2$residuals)
+```
+Good resids!  Roughly symmetric and unimodal!
+
+
+
+
+Ex). mpg.  x=displ, y=cty.
+
+```{r}
+hist(mpgModel$residuals)
+```
+Hm.  Strong right skew suggests linear model not the best.
+
+### Multiple Linear Regression
+
+Idea:  more variables!
+
+In R:  use "+" in the lm command.
+
+Ex). house sales.  first:  predict price based on bedrooms
+
+```{r}
+houseModel1 <- lm(price~bedrooms, data=houseData)
+summary(houseModel1)
+```
+
+Interpret slope:  For each additional bedroom, we predict the house's price to increase by $121,790.
+
+y-int:  If a house has zero bedrooms (hmm....), we predict its price to be 129,649.  Extrapolation.
+
+Note:  r^2 = .095.  Low!  Seems like bedrooms alone don't account for much of the price.
+
+Ex 2). Predict price based on bedrooms and bathrooms.
+
+```{r}
+houseModel2 <- lm(price ~ bedrooms + bathrooms, data = houseData)
+summary(houseModel2)
+```
+
+Ok, better!  Now explaining 28% of sale price.  
+
+Ex3). Predict price based on bedrooms AND bathrooms AND sqft_living
+
+```{r}
+houseModel3 <- lm(price~bedrooms+bathrooms+sqft_living, data=houseData)
+summary(houseModel3)
+```
+
+Idea for multiple variables:  hunt for the variables that give highest R^2 value!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Ex)  House sales.  Seattle area.
+
+```{r}
+houseData <- read.csv("./House-Sales.csv")
+
+```
+
+
+Model:  predict sale price based on sqft_living.
+
+x = sqft
+y = price
+
+```{r}
+houseModel <- lm(houseData$price~houseData$sqft_living)
+summary(houseModel)
+```
+Slope:  For each additional sqft bigger a house is, we expect the price to increase by $280.81.
+
+Residual plot:
+
+
+```{r}
+plot(houseData$sqft_living, houseModel$residuals)
+```
+
+Hm!  Highly heteroskedastic!  Bad residuals!
+
+
+
+
+
+
+
+
+
+
+
+      
+
+
+
 
 
 
