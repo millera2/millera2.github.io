@@ -2994,11 +2994,11 @@ head(mpg)
 ```
 Summary stats
 
+
 xbar = 3.47
 sx.  = 1.29
 ybar = 16.86
 sy.  = 4.26
-
 r.   = -0.80
 
 1) slope = b1 = r*sy/sx = -2.64
@@ -3257,6 +3257,8 @@ houseModel3 <- lm(price~bedrooms+bathrooms+sqft_living, data=houseData)
 summary(houseModel3)
 ```
 
+Best yet!  This model explains over 50% of the variation in the y variable.
+
 Idea for multiple variables:  hunt for the variables that give highest R^2 value!
 
 
@@ -3276,49 +3278,6 @@ Idea for multiple variables:  hunt for the variables that give highest R^2 value
 
 
 
-
-
-
-
-Ex)  House sales.  Seattle area.
-
-```{r}
-houseData <- read.csv("./House-Sales.csv")
-
-```
-
-
-Model:  predict sale price based on sqft_living.
-
-x = sqft
-y = price
-
-```{r}
-houseModel <- lm(houseData$price~houseData$sqft_living)
-summary(houseModel)
-```
-Slope:  For each additional sqft bigger a house is, we expect the price to increase by $280.81.
-
-Residual plot:
-
-
-```{r}
-plot(houseData$sqft_living, houseModel$residuals)
-```
-
-Hm!  Highly heteroskedastic!  Bad residuals!
-
-
-
-
-
-
-
-
-
-
-
-      
 
 
 
