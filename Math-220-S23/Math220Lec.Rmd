@@ -1,6 +1,6 @@
 
 ---
-title: "Math 220 Spring 20203 Lecture Notes"
+title: "Math 220 Spring 2023 Lecture Notes"
 author: "Alice Miller"
 date: "Updated: `r format(Sys.time(), '%d %B, %Y')`"
 output: 

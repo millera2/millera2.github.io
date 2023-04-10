@@ -12,7 +12,7 @@
 <meta name="author" content="Alice Miller" />
 
 
-<title>Math 220 Spring 20203 Lecture Notes</title>
+<title>Math 220 Spring 2023 Lecture Notes</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -392,7 +392,7 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Math 220 Spring 20203 Lecture Notes</h1>
+<h1 class="title toc-ignore">Math 220 Spring 2023 Lecture Notes</h1>
 <h4 class="author">Alice Miller</h4>
 <h4 class="date">Updated: 03 April, 2023</h4>
 
@@ -1927,9 +1927,9 @@ giraffes is btwn 17.67 and 18.72 ft tall.</p>
 <pre class="r"><code>ourData &lt;- sample(1:6,30, replace=TRUE)
 
 mean(ourData) - .67*sd(ourData)/sqrt(30)</code></pre>
-<pre><code>## [1] 3.221015</code></pre>
+<pre><code>## [1] 3.600935</code></pre>
 <pre class="r"><code>mean(ourData) + .67*sd(ourData)/sqrt(30)</code></pre>
-<pre><code>## [1] 3.645652</code></pre>
+<pre><code>## [1] 3.999065</code></pre>
 <pre class="r"><code>qnorm(.25)</code></pre>
 <pre><code>## [1] -0.6744898</code></pre>
 </div>
@@ -1965,16 +1965,16 @@ dice throw.</p>
 <p>Note: we know that mu = 3.5</p>
 <p>dice sample: (n=10)</p>
 <pre class="r"><code>sample(1:6, 10, replace = T)</code></pre>
-<pre><code>##  [1] 1 4 1 4 3 1 3 3 4 1</code></pre>
+<pre><code>##  [1] 6 4 1 6 1 2 2 5 1 3</code></pre>
 <p>Take sample of size n=50, construct 50% CI:</p>
 <pre class="r"><code>ourData &lt;- sample(1:6, 50, replace = T)
 ourData</code></pre>
-<pre><code>##  [1] 5 5 3 3 1 1 5 4 3 1 6 4 4 5 5 2 5 2 1 5 4 5 4 6 1 6 4 5 6 2 4 3 3 5 1 5 2 3
-## [39] 6 5 4 3 3 4 6 4 6 6 4 4</code></pre>
+<pre><code>##  [1] 2 2 2 6 4 5 6 2 6 6 3 1 3 5 6 4 1 3 6 4 2 3 6 5 2 4 5 6 2 4 2 2 5 1 4 3 3 2
+## [39] 4 1 1 2 4 4 6 6 5 2 1 4</code></pre>
 <pre class="r"><code>mean(ourData) - qnorm(.25)*sd(ourData)/sqrt(50)</code></pre>
-<pre><code>## [1] 4.030068</code></pre>
+<pre><code>## [1] 3.723703</code></pre>
 <pre class="r"><code>mean(ourData) + qnorm(.25)*sd(ourData)/sqrt(50)</code></pre>
-<pre><code>## [1] 3.729932</code></pre>
+<pre><code>## [1] 3.396297</code></pre>
 <p>MORAL OF THE STORY: the cofindence level is about the METHOD used for
 constructing CI, it is NOT about the individual bounds you
 calculated.</p>
