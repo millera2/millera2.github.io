@@ -257,6 +257,41 @@ Practice Odds: 1.17, 1.39, 1.49 *[Solutions in the back of the book!]
 <br><br>
 
 
+## How To Get Started On The Final Project
+
+Big idea:  Pose two questions that you can answer with you dataset.  Do so using tools and methods from the class.  Present and write about your results.
+
+1) Read the Final Project Instructions below.  
+  - In particular, read the link on [How to Create a Research Poster](https://guides.nyu.edu/posters)
+2) **Play**!  Have some fun messing around with your data.  Here are some things to try:
+  - Visualizations:  make histograms, boxplots, scatterplots, qqplots, barplots, etc.  **For example code, scan through our class notes online!**
+  - Statistical methods:  Summary stats, confidence intervals and hypothesis tests for   $\mu, p, \mu_1 -\mu_2, p_1-p_2$, linear models, ANOVA.
+3) Come up with questions.  Can you compare groups?  Estimate a parameter?  Explore a possible linear relationship?  
+4) Organize and polish your work.  Make graphs look nice.  Write up complete explanations/interpretations for the methods you used.  What assumptions/conditions?  What conclusions?
+5) Organize your best stuff into a research poster.  Again, check link above for example.
+6) Catalog all of this in your final paper.  You can copy/paste from R into Word or other software you like.  Or, you can do it all in RStudio if you've done so in DA.
+
+<br>
+
+## Grading Guidelines for Final Project
+
+### Presentation/Poster
+
+- Is poster well organized/well presented?  Clean/neat/good grammar/etc.
+- Informational content:  does poster clearly show results and summary of analysis?  Make some cool visualizations, and explain them!
+- Does the poster demonstrate knowledge of course methods?  Depth of understanding?
+- Visually appealing?  Interesting presentations/questions?
+- **Time/Duration**:  at least 6 minutes, no more than 7 minutes.  **Practice!**
+- All group members spend **equal time presenting**.  Practice!
+
+### Final Paper
+
+- Length:  at least 1000 words (not including figures), no more than 2500 words.  **Longer is not better**; you don't have to write a book!
+- **Most important**:  Demonstrate understanding/mastery of concepts from course.
+- Read [Guide For Statistical Writing](https://millera2.github.io/Math-220-S23/statistical-report-writing.pdf)
+- **Clearly show which group members contributed which text.**  Should be balanced among all!
+
+<br>
 
 ## Final Project
 
