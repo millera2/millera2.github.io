@@ -3704,7 +3704,7 @@ mpgTable
 ```
 
 ```{r}
-barplot(mpgTable, beside=T, legend=unique(mpg$cyl))
+barplot(mpgTable, beside=T, legend=c("4","5","6","8"))
 ```
 
 
