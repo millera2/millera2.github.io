@@ -32,8 +32,23 @@ theme_set(                                #this sets the theme for all    #
 ```
 
 
+## **End-of-the-Semester Wrap-Up**
 
+1) Presentation:
+  - Submit final project presentation poster **pdf** to Canvas by 4/25 11:59pm.
+  - Be ready to present in order of your Group Number. 
+  - Present for at least 6, no more than 7 minutes.  **Practice!**
 
+2) Paper
+  - Can be written in any software, but code/math/stats all done in R.  You can copy/paste relevant visualizations, etc.
+  - Turn in either **pdf** (if you use MS Word or similar) or **html** (if you use RMarkdown).  Length:  1000-2500 words, not including pictures/math/code.
+  - Turn in all R code used (the .rmd or .r file)
+  - Due date: 
+    - Sec 1 (8:30-9:20): **Sat May 6 @ 4pm**
+    - Sec 2 (9:30-10:20):  **Wed May 3 @ 11am**
+    - Sec 3 (10:30-9:20):  **Thurs May 4 @ 8:30pm**
+
+<br><br>
 
 ## Lecture Notes
 
