@@ -3593,35 +3593,119 @@ barplot(myTable, beside=T)
 
 
 
+# Week 14
+
+## Mon April 24
+
+### ANOVA
+
+ANOVA = "analysis of variance"
+
+Idea:  Is there evidence of a difference in means (MORE THAN 2 GROUPS!)
+
+Ex). Iris.  Is there evidence of a difference in mean sepal length between the 3 species:  setosa, versicolor, virginica?
 
 
+```{r}
+head(iris)
+```
+
+Visualization: boxplot
+
+```{r}
+boxplot(iris$Sepal.Length ~ iris$Species, horizontal = T)
+```
+
+1) hypotheses
+
+H0: means are equal (no differnce)
+Ha: at least one differs
+
+2) Test stat
+
+Idea:  F = (variation between groups) / (variation WITHIN groups)
+
+compute in r:
+
+```{r}
+irisAnovaModel <- aov(iris$Sepal.Length ~ iris$Species)
+summary(irisAnovaModel)
+```
+
+Test stat = F = 119.3
+
+3). p-val
+
+p-val ~ 0
+
+4). Conclusion
+
+Since p-val < .05, we reject H0.  We've found strong evidence of a difference in mean sepal length between the three species.
+
+```{r}
+boxplot(iris$Sepal.Length~iris$Species, horizontal = T)
+```
 
 
+### Chi Square Test for independence
+
+Idea:  is there evidence of a relationship between two CATEGORICAL variables?
+
+Ex). mpg
+
+```{r}
+head(mpg)
+```
+1) Hypotheses
+
+H0:  cyl and class are independent
+Ha:  there's some relationship btwn cyl and class
+
+2) Test stat
+
+Compute expected counts for all cyl/class combiniations. 
+
+Idea:  If A,B independent, then P(A and B) = P(A)*P(B)
+
+In r:  chisq.test()
+
+```{r}
+chisq.test(mpg$cyl, mpg$class)
+```
+
+```{r}
+ourModel <- chisq.test(mpg$cyl, mpg$class)
+ourModel$observed
+```
+```{r}
+ourModel$expected
+```
 
 
+chisq = 138.03
+
+3) p-val
+
+p-val ~ 0
+
+4) Conclusion
+
+Since p-val < .05, we reject H0.  There's strong evidence of a relationship btwn cyl and class.
 
 
+Visualization: stacked bar plot
 
+1) table
+2) barplot
 
+```{r}
+mpgTable <- table(mpg$cyl, mpg$class)
+mpgTable
+```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```{r}
+barplot(mpgTable, beside=T, legend=unique(mpg$cyl))
+```
 
 
 
